@@ -1,0 +1,64 @@
+{template './common/mainHeader'}
+<ul class="nav nav-tabs">
+	<li ><a href="{php echo $this->createWeburl('sign',array('op'=>'tdmsg','tid'=>$tid))}">公告</a></li>
+	 {if $g_id == ''}
+	<li class="active"><a href="">添加公告</a></li>
+	{elseif $g_id != ''}
+	<li class="active"><a href="#">编辑公告</a></li>
+	{/if}
+</ul>
+<div class="app-content">
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal form">
+			<input type="hidden" name="g_id" value="{$g_id}" />
+			<div class="panel panel-default">
+				<div class="panel-heading">公告设置</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">公告标题<span class="must-fill">*</span></label>
+					<div class="col-sm-9">
+						<input type="text" name="title" required  autocomplete="off" class="form-control" value="{$item['title']}" >
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">公告内容</label>
+					<div class="col-sm-9">
+						{php echo tpl_ueditor('teamtext', $item['teamtext']);}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">公告图片</label>
+					<div class="col-sm-9">
+						{php echo tpl_form_field_multi_image('thumbarr', $item['thumbarr'])}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">是否置顶</label>
+					<div class="col-sm-9">
+						<div class="radio-inline">
+							<input type="radio" name='menttypes' value='1' {if $item['menttipes']==1}checked{/if}>是
+						</div>
+						<div class="radio-inline">
+							<input type="radio" name='menttypes' value='0' {if $item['menttipes']==0}checked{/if}>否
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-9">
+					<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+					<input type="hidden" name="token" value="{$_W['token']}" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	myrequire(['layui'],function(){
+		layui.use(['layer','form','laydate'], function(){
+		  	var layer = layui.layer,
+			form = layui.form();
+		});
+	});
+</script>
+{template './common/footer'}

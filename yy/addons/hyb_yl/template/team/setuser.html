@@ -1,0 +1,73 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+    <ul class="nav nav-tabs">
+        <li>
+            <a href="/index.php?c=site&a=entry&do=jiancha&op=hotareaIndex&ac=hotareaIndex&m=hyb_yl">患者列表</a>
+        </li>
+    </ul>
+    <div class="app-content">
+        <div class="app-form">
+            <form action="" method="post" class="form-horizontal form form-validate">
+                <input type="hidden" name="openid" value="{$openid}" />
+                <input type="hidden" name="zid" value="{$zid}" />
+                <input type="hidden" name="fzid" value="{$fzid}" />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        患者分组
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">患者昵称<span class="must-fill">*</span>
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" name="u_name" readonly="" required placeholder="请输入患者昵称" class="form-control" value="{$u_name}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">分组名<span class="must-fill">*</span></label>
+                            <div class="col-sm-9">
+                                <select name="name" class="form-control">
+                                    {loop $newdate $par}
+                                    <option value="{$par['description']}" {if $par['description'] == $item['label']} selected="" {/if}>{$par['description']}</option>
+                                    {/loop}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-9">
+                                <input type="submit" name="submit" lay-submit value="提交" class="btn btn-primary min-width" />
+                                <input type="hidden" name="token" value="{$_W['token']}" />
+                                <input type="hidden" name="id" value="{$id}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+    <ul class="links ft">
+        <li class="links_item">
+            <div class="copyright">Powered by <a href="http://www.we7.cc">
+                    <b>微擎</b>
+                </a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    $('.checkbox input').on('click',function () {
+        // body...
+        var checkids = [];
+        $("input[name='plugins[]']:checked").each(function(inx,val){
+                checkids.push($(val).parents('label').text().trim())
+        })
+        $('#plugins').val(checkids)
+    })
+</script>

@@ -1,0 +1,103 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			              <div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li class="active"><a href="{php echo $this->createWeburl('medicine',array('op'=>'supplierlist','ac'=>'supplierlist','hid'=>$_SESSION['hid']))}">供应商列表</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-action">
+			<a href="{php echo $this->createWeburl('medicine',array('op'=>'supplierlistadd','keyword'=>$keyword,'ac'=>'supplierlist','hid'=>$_SESSION['hid']))}" class="btn btn-primary">添加供应商</a>
+			<!-- <div class="pull-right"><a href="#" data-toggle='ajaxModal' class="btn btn-success">一键导入供应商</a></div> -->
+		</div>
+		<div class="filter-list">
+			<form action="./index.php" method="get" class="form-horizontal" role="form">
+				<input type="hidden" name="c" value="site" />
+	            <input type="hidden" name="a" value="entry" />
+	            <input type="hidden" name="m" value="hyb_yl" />
+	            <input type="hidden" name="op" value="supplierlist" />
+				<input type="hidden" name="ac" value="medicine" />
+				<input type="hidden" name="do" value="medicine" />
+				<input type="hidden" name="status" value="" />
+				<input type="hidden" name="hid" value="{$_SESSION['hid']}" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label">供应商状态</label>
+					<div class="col-sm-9">
+						<div class="btn-group">
+							<a href="{php echo $this->createWeburl('medicine',array('op'=>'supplierlist','keyword'=>$keyword,'ac'=>'supplierlist','hid'=>$_SESSION['hid']))}" class="btn {if $status == ''} btn-primary {else} btn-default {/if}">不限</a>
+							<a href="{php echo $this->createWeburl('medicine',array('op'=>'supplierlist','keyword'=>$keyword,'status'=>'1','ac'=>'supplierlist','hid'=>$_SESSION['hid']))}" class="btn {if $status == '1'} btn-primary {else} btn-default {/if}">启用中</a>
+							<a href="{php echo $this->createWeburl('medicine',array('op'=>'supplierlist','keyword'=>$keyword,'status'=>'0','ac'=>'supplierlist','hid'=>$_SESSION['hid']))}" class="btn {if $status == '0'} btn-primary {else} btn-default {/if}">禁用中</a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">供应商筛选</label>
+					<div class="col-sm-9">
+						<input type="text" name="keyword" class="form-control" value="{$keyword}" placeholder="输入供应商名称"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-md-9">
+						<button class="btn btn-primary">筛选</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th style="width:100px;text-align:center;">供应商名称</th>
+						<th style="width:100px;text-align:center;">所在地区</th>
+                        <th style="width:100px;text-align:center;">联系方式</th>
+						<th style="width:60px; text-align:center">是否启用</th>
+						<th style="width:200px; text-align:center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				{loop $list $item}
+										<tr>
+						<td class="text-center">
+							{$item['title']}					</td>
+						<td class="text-center">
+							{$item['province']}{$item['city']}{$item['district']}				</td>
+                                          	<td class="text-center">
+							{$item['telphone']}			</td>
+						<td class="text-center">
+							<label class='label label-success'>
+							{if $item['status'] == '1'}
+							启用
+							{else if $item['status'] == '0'}
+							禁用
+							{/if}
+							</label>						
+						</td>
+						<td class="text-center" style="text-align: center;">
+                   		 	<a class="btn btn-default btn-sm" href="{php echo $this->createWeburl('medicine',array('op'=>'supplierlistadd','id'=>$item['id'],'ac'=>'supplierlist','hid'=>$_SESSION['hid']))}" title="编辑">编辑</a>
+                    		<!--<a class="btn btn-default" href="https://www.webstrongtech.com/web/index.php?c=site&a=entry&m=weliam_merchant&p=area&ac=areaagent&do=agentDetail&id=28" title="详情">记录</a> -->
+             
+                    		<a class="btn btn-danger btn-sm" href="{php echo $this->createWeburl('medicine',array('op'=>'supplierlistdel','id'=>$item['id'],'ac'=>'supplierlist','hid'=>$_SESSION['hid']))}" data-toggle="ajaxRemove" data-confirm="确定要删除吗？" title="删除">删除</a> 
+						</td>
+					</tr>
+					{/loop}
+									</tbody>
+			</table>
+		</div>
+		{$pager}
+	</div>
+</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>系统</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	</body>
+</html>
+

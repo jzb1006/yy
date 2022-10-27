@@ -1,0 +1,1002 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+                </div>
+                <!-- end 引入公共头部 -->
+                <div class="pageheader hidden">
+                    <h2><i class="fa fa-credit-card fa-sm"></i> 收费</h2>
+                </div>
+                <!-- start 内容主体 -->
+                <div class="contentpanel">
+                    <ul class="nav nav-tabs patient-tabs">
+                        <li class="active"><a href="#today" data-toggle="tab"><strong>待收费</strong></a></li>
+                        <li><a href="#pending" data-toggle="tab"><strong>待支付 (<span class="J-pending-count">0</span>)</strong></a></li>
+                        <li><a href="#history" data-toggle="tab"><strong>已收费</strong></a></li>
+                        <li class="J-module-control" data-permission="25">
+                            <a href="#back" data-toggle="tab">
+                                <strong>已退费</strong>
+                            </a>
+                        </li>
+                        <li><a href="#unpay" data-toggle="tab"><strong>挂账记录</strong></a></li>
+                        <li><a href="#abnormal" data-toggle="tab"><strong>异常订单</strong></a></li>
+                                            </ul>
+                    <div class="tab-content pd0">
+                        <!-- start 待收费 -->
+                        <!-- 待收费列表 -->
+<div class="tab-pane active" id="today">
+    <div class="panel panel-cascade panel-invoice">
+
+        <div class="panel-heading bgfc pt30">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3 class="panel-title">待收费列表</h3>
+                </div>
+                <div class="col-sm-8 text-right">
+                    <form class="form-inline" id="J-search-form-charge">
+                        <div class="form-group mr5">
+                            <input class="form-control input-sm2 J-charge-start-date mbsc-comp" size="10" type="text" name="startDate" placeholder="待收费日期" value="" id="mobiscroll1560585240390" readonly=""> - 
+                            <input class="form-control input-sm2 J-charge-end-date mbsc-comp" size="10" type="text" name="endDate" placeholder="待收费日期" value="" id="mobiscroll1560585240391" readonly="">
+                        </div>
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">请输入姓名或手机或病案号</label>
+                            <input type="text" size="15" name="patient_name" class="form-control w200p input-sm2 J-patient-name" placeholder="请输入姓名或手机或病案号">
+                        </div>
+                        <button type="button" class="btn btn-sm btn-default J-search-submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <!-- start 病人列表 -->
+            <div class="people-list">
+                <div class="row" id="J-today-list-wrap"></div>
+                <div class="J-pager-wrap1" style="display: none;">
+                </div>
+            </div>
+            <!-- end 病人列表 -->
+        </div>
+    </div>
+</div>
+
+<!-- 进行中收费模板 -->
+<script type="text/template" id="today-list-tpl">
+    <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+        <%if(member_type && member_type_status == 1){%>
+        <div class="p-relative">
+            <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+        </div>
+        <%} else if(member_type && member_type_status == 2){%>
+        <div class="p-relative">
+            <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+        </div>
+        <% } %>
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><img src="<%- image %>" class="img-sm img-border" alt="profile"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <h3><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>" class="white name-nowrap"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info %>">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small></h3>
+                    <span>接诊时间：<%- clinic_time %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                    <% if (clinic_endTime) {%>
+                        <span>结束时间：<%- clinic_endTime %></span>
+                    <% } %>
+                    <span class="text-nowrap">接诊医生：<%- doctor %></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                <li><a href="<%- global_src_api %>/Charge/view?clinic_id=<%- clinic_id %>" class="font18 font-bold black">收费：￥<%- price %></a></li>
+            </ul>
+        </div>
+    </div>
+</script>
+<!-- 进行中收费模板 -->
+                        <!-- end 待收费 -->
+                        <!-- start 待支付 -->
+                        <!-- 待支付列表 -->
+<div class="tab-pane" id="pending">
+    <div class="panel panel-cascade panel-invoice">
+
+        <div class="panel-heading bgfc pt30">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3 class="panel-title">待支付列表</h3>
+                </div>
+                <div class="col-sm-8 text-right">
+                    <form class="form-inline" id="J-search-form-pending">
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">日期</label>
+                            <input class="form-control input-sm2 J-pending-charge-date" size="22" type="text" placeholder="待支付日期" value="">
+                        </div>
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">请输入姓名或手机或病案号</label>
+                            <input type="text" size="15" name="patient_name" class="form-control w200p input-sm2 J-pending-patient-name" placeholder="请输入姓名或手机或病案号">
+                        </div>
+                        <button type="button" class="btn btn-sm btn-default J-pending-search-submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <!-- start 病人列表 -->
+            <div class="people-list">
+                <div class="row" id="J-pending-list-wrap">
+                </div>
+                <div class="J-pager-wrap2">
+                </div>
+            </div>
+            <!-- end 病人列表 -->
+        </div>
+    </div>
+
+    <div class="modal fade" id="J-pending-date-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">待支付日期</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="pt10 pb10">
+                        <form class="form-inline" method="post">
+                            <div class="form-group mr0">
+                                <div class="input-group">
+                                    <input class="form-control input-sm2 radius3 J-pending-start-date mbsc-comp" type="text" placeholder="开始日期" id="mobiscroll1560585240392" readonly="">
+                                </div>
+                            </div>
+                            <div class="form-group mr0">至</div>
+                            <div class="form-group mr5">
+                                <div class="input-group">
+                                    <input class="form-control input-sm2 radius3 J-pending-end-date mbsc-comp" type="text" placeholder="结束日期" id="mobiscroll1560585240393" readonly="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-date-sure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 待收费收费模板 -->
+<script type="text/template" id="J-pending-list-tpl">
+    <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+        <%if(member_type && member_type_status == 1){%>
+            <div class="p-relative">
+                <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+            </div>
+        <%} else if(member_type && member_type_status == 2){%>
+            <div class="p-relative">
+                <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+            </div>
+        <% } %>
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><img src="<%- image %>" class="img-sm img-border" alt="profile"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <h3><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>" class="white name-nowrap"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info %>">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small></h3>
+                    <span>接诊日期：<%- clinic_time %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                    <% if (clinic_endTime) {%>
+                        <span>结束时间：<%- clinic_endTime %></span>
+                    <% } %>
+                    <span class="text-nowrap">接诊医生：<%- doctor %></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                <% if (status == 1 || (status == 4 && (channel != 'wx_pub_qr' && channel != 'alipay_qr'))) {%>
+                    <li><a href="<%- global_src_api %>/Charge/detail.html?clinic_id=<%- clinic_id %>&charge_id=<%- chargeId%>">收费：￥<%- totalPrice %></a></li>
+                <%} else if (status == 4 && (channel == 'wx_pub_qr' || channel == 'alipay_qr')){%>
+                    <li><a href="<%- global_src_api %>/Charge/qrPay.html?clinicId=<%- clinic_id %>&chargeId=<%- chargeId%>&channel=<%- channel%>">收费：￥<%- totalPrice %></a></li>
+                <%} else {%>
+                    <li><a href="javascript:void(0);">收费：￥<%- totalPrice %></a></li>
+                <%}%>
+                <li><a href="" data-charge="<%- chargeId%>" data-status="<%- his_pay_status%>" class="J-cancel-pending">取消支付</a></li>
+            </ul>
+        </div>
+    </div>
+</script>
+<!-- 待收费收费模板 -->
+                        <!-- end 待支付 -->
+                        <!-- start 已收费 -->
+                        <!-- 已收费列表 -->
+<div class="tab-pane" id="history">
+    <div class="panel panel-cascade panel-invoice">
+
+        <div class="panel-heading bgfc pt30">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h3 class="panel-title">已收费列表</h3>
+                </div>
+                <div class="col-sm-10 text-right">
+                    <form class="form-inline" id="J-search-form-finish">
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">收费日期</label>
+                            <input class="form-control input-sm2 J-finish-start-time mbsc-comp" size="10" type="text" name="startDate" readonly="" placeholder="已收费日期" value="" id="mobiscroll1560585240394"> - 
+                            <input class="form-control input-sm2 J-finish-end-time mbsc-comp" size="10" type="text" name="endDate" readonly="" placeholder="已收费日期" value="" id="mobiscroll1560585240395">
+                        </div>
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">请输入姓名或手机或病案号</label>
+                            <input type="text" name="patient_name" class="form-control input-sm2 w200p" id="J-finish-name" placeholder="请输入姓名或手机或病案号">
+                        </div>
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">请输入发票号</label>
+                            <input type="number" name="hisInvoiceNumber" class="form-control input-sm2 w200p" id="J-search-his-number" placeholder="请输入发票号">
+                        </div>
+                        <button type="button" class="btn btn-sm btn-default" id="J-finish-search"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <!-- start 病人列表 -->
+            <div class="people-list">
+                <div class="row" id="J-history-list-wrap"><div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-end panel-alt widget-photoday img-list"> 
+        
+            <div class="p-relative">
+                <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="普通会员a"></span>
+            </div>
+        
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="/Clinic/Patient/profile?patient_id=00020119267"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="img-sm img-border" alt="profile"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <h3><a href="/Clinic/Patient/profile?patient_id=00020119267" class="white name-nowrap">按时发莫斯科</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="21岁5月14天">（女 21岁）</small></h3>
+                    <span class="text-nowrap">接诊医生：李松（初诊）</span>
+                    <span>收费时间：2019-06-15 11:43:26</span>
+                    <span class="text-nowrap">收费人员：莫</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                <li><a href="/Clinic/Charge/chargedView?order_id=24549&amp;clinic_id=77712" class="font18 font-bold black no-wrap">￥120.00</a></li>
+                <li><a href="javascript:void(0);" class="J-print-invoice no-wrap" data-charge="24549" data-his="" data-clinic="77712" data-order="24549" data-type="3" data-loading-text="正在打印">打印发票</a></li>
+                <li class="module-hide J-module-control" data-modules="44">
+                    <a href="javascript:void(0);" class="J-edit-invoice-number no-wrap" data-number="" data-id="24549">
+                        发票号
+                    </a>
+                </li>
+                <li class="J-module-control" data-permission="25"><a href="{php echo $this->createWeburl('shoufei',array('op'=>'tuifei'))}" class="J-da-go-back no-wrap">退费</a></li>
+            </ul>
+        </div>
+    </div>
+</div></div>
+                <div class="J-pager-wrap3"><div class="base_page"><a href="#/patient_name/null/startDate/2019-06-15/endDate/2019-06-15/hisInvoiceNumber/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/1</button><a href="#/patient_name/null/startDate/2019-06-15/endDate/2019-06-15/hisInvoiceNumber/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+            </div>
+            <!-- end 病人列表 -->
+        </div>
+    </div>
+
+    <!-- start 修改发票号 -->
+<div class="modal fade" id="J-invoice-number-modal" tabindex="-1" role="dialog" aria-labelledby="wechatModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title J-invoice-number-title">填写发票号</h4> 
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group mt15">
+                            <label for="invoiceNumberInput" class="col-sm-2 control-label">发票号</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control J-invoice-number-input" id="invoiceNumberInput" onkeyup="if(event.keyCode !=37 &amp;&amp; event.keyCode != 39)value=value.replace(/\D/g,'')">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <span class="J-invoice-number-desc pull-left mt10"></span>
+                    <button type="button" class="btn btn-primary J-invoice-number-save">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end 修改发票号 -->
+</div>
+
+<!-- 已完成收费模板 -->
+<script type="text/template" id="history-list-tpl">
+    <div class="panel panel-<%- className %> panel-alt widget-photoday img-list"> 
+        <%if(member_type && member_type_status == 1){%>
+            <div class="p-relative">
+                <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+            </div>
+        <%} else if(member_type && member_type_status == 2){%>
+            <div class="p-relative">
+                <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+            </div>
+        <% } %>
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><img src="<%- image %>" class="img-sm img-border" alt="profile"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <h3><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>" class="white name-nowrap"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info %>">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small></h3>
+                    <span class="text-nowrap">接诊医生：<%- doctor %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                    <span>收费时间：<%- pay_time %></span>
+                    <span class="text-nowrap">收费人员：<%- cashName %></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                <li><a href="<%- global_src_api %>/Charge/chargedView?order_id=<%- order_id %>&clinic_id=<%- clinic_id %>" class="font18 font-bold black no-wrap">￥<%- price %></a></li>
+                <li><a href="javascript:void(0);" class="J-print-invoice no-wrap" data-charge="<%- charge_id%>" data-his="<%- his_invoice_number%>" data-clinic="<%- clinic_id%>" data-order="<%- order_id%>" data-type="3" data-loading-text="正在打印">打印发票</a></li>
+                <li class="module-hide J-module-control" data-modules="44">
+                    <a href="javascript:void(0);" class="J-edit-invoice-number no-wrap" data-number="<%- his_invoice_number%>" data-id="<%- charge_id%>">
+                        <%- show_his_number || '发票号'%>
+                    </a>
+                </li>
+                <li class="module-hide J-module-control" data-permission="25"><a href="<%- global_src_api %>/Charge/backView?order_id=<%- order_id %>&clinic_id=<%- clinic_id %>" class="J-da-go-back no-wrap">退费</a></li>
+            </ul>
+        </div>
+    </div>
+</script>
+<!-- 已完成收费模板 -->
+                        <!-- end 已收费 -->
+                        <!-- start 已退费 -->
+                        <!-- 已退费列表 -->
+<div class="tab-pane J-module-control" data-permission="25" id="back">
+    <div class="panel panel-cascade panel-invoice">
+
+        <div class="panel-heading bgfc pt30">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3 class="panel-title">已退费列表</h3>
+                </div>
+                <div class="col-sm-8 text-right">
+                    <form class="form-inline text-right" id="J-search-form-back">
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">退费日期</label>
+                            <input class="form-control input-sm2 J-back-start-date mbsc-comp" size="10" type="text" name="startDate" placeholder="退费日期" value="" id="mobiscroll1560585942396" readonly=""> - 
+                            <input class="form-control input-sm2 J-back-end-date mbsc-comp" size="10" type="text" name="endDate" placeholder="退费日期" value="" id="mobiscroll1560585942397" readonly="">
+                        </div>
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">请输入姓名或手机或病案号</label>
+                            <input type="text" name="patientInfo" class="form-control input-sm2 w200p" id="J-back-name" placeholder="请输入姓名或手机或病案号">
+                        </div>
+                        <button type="button" class="btn btn-sm btn-default" id="J-back-search"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <!-- start 病人列表 -->
+            <div class="people-list">
+                <div class="row" id="J-back-list-wrap"><div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-end panel-alt widget-photoday img-list">
+        
+            <div class="p-relative">
+                <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="普通会员a"></span>
+            </div>
+        
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="/Clinic/Patient/profile?patient_id=00020119267"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="img-sm img-border" alt="头像"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <h3><a href="/Clinic/Patient/profile?patient_id=00020119267" class="white name-nowrap">按时发莫斯科</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="21岁5月14天">（女 21岁）</small></h3>
+                    <span class="text-nowrap">收费人员：莫</span>
+                    <span>退费时间：2019-06-15 16:05:05</span>
+                    <span class="text-nowrap">退费人员：张</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                <li><a href="/Clinic/Charge/refund?refundId=1710" class="font18 font-bold black">￥120.00</a></li>
+                <li><a href="javascript:void(0);" class="J-print-invoice" data-refund="1710" data-type="3">打印发票</a></li>
+            </ul>
+        </div>
+    </div>
+</div></div>
+                <div class="J-pager-wrap4"><div class="base_page"><a href="#/patientInfo/@null/startDate/2019-06-15/endDate/2019-06-15/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/1</button><a href="#/patientInfo/@null/startDate/2019-06-15/endDate/2019-06-15/page/1" type="button" data-page_num="1" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+            </div>
+            <!-- end 病人列表 -->
+        </div>
+    </div>
+</div>
+
+
+<!-- 已退费列表模板 -->
+<script type="text/template" id="back-list-tpl">
+    <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+        <%if(member_type && member_type_status == 1){%>
+            <div class="p-relative">
+                <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+            </div>
+        <%} else if(member_type && member_type_status == 2){%>
+            <div class="p-relative">
+                <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+            </div>
+        <% } %>
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><img src="<%- image %>" class="img-sm img-border" alt="头像"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <h3><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>" class="white name-nowrap"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info %>">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small></h3>
+                    <span class="text-nowrap">收费人员：<%- cashName %></span>
+                    <span>退费时间：<%- refund_time %></span>
+                    <span class="text-nowrap">退费人员：<%- refundName %></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                <li><a href="<%- global_src_api %>/Charge/refund?refundId=<%- id %>" class="font18 font-bold black">￥<%- price %></a></li>
+                <li><a href="javascript:void(0);" class="J-print-invoice" data-refund="<%- id%>" data-type="3">打印发票</a></li>
+            </ul>
+        </div>
+    </div>
+</script>
+<!-- 已退费列表模板 -->
+                        <!-- end 已退费 -->
+                        <!-- start 挂账记录 -->
+                        <!-- 挂账记录 -->
+<div class="tab-pane" id="unpay">
+    <div class="panel panel-cascade panel-invoice">
+
+        <div class="panel-heading bgfc pt30">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3 class="panel-title">挂账记录</h3>
+                </div>
+                <div class="col-sm-8">
+                    <form class="form-inline text-right" id="J-search-form-unpay">
+                        <div class="form-group mr10 mt2">
+                            <div class="input-group mt5 text-left">
+                                <div class="ckbox ckbox-default">
+                                    <input type="checkbox" value="1" id="J-charge-status" checked="">
+                                    <label for="J-charge-status">只显示未还清用户</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">请输入姓名或手机或病案号</label>
+                            <input type="text" class="hidden">
+                            <input type="text" name="patientInfo" class="form-control input-sm2 w200p" id="J-unpay-name" placeholder="请输入姓名或手机或病案号">
+                        </div>
+                        <button type="button" class="btn btn-sm btn-default" id="J-unpay-search"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <!-- start 病人列表 -->
+            <div class="people-list">
+                <div class="row" id="J-unpay-list-wrap"><div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-success panel-alt widget-photoday img-list">
+        
+        <div class="p-relative">
+            <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+        </div>
+        
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="/Clinic/Patient/profile?patient_id=00020120679"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/unknown-avatar.png" class="img-sm img-border" alt="头像"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <span class="widget-label badge badge-success room-tag">挂账中</span>
+                    <h3><a href="/Clinic/Patient/profile?patient_id=00020120679" class="white name-nowrap">上饶王老师</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="1岁5月14天">（男 1岁5月14天）</small></h3>
+                    <span>挂账金额：￥80.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                
+                    <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'huanzhang'))}" class="J-da-unpay">还账</a></li>
+                
+                <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}" class="J-da-unpay-detail">查看详情</a></li>
+            </ul>
+        </div>
+    </div>
+</div><div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-success panel-alt widget-photoday img-list">
+        
+        <div class="p-relative">
+            <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="普通会员a"></span>
+        </div>
+        
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="/Clinic/Patient/profile?patient_id=00020119267"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/unknown-avatar.png" class="img-sm img-border" alt="头像"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <span class="widget-label badge badge-success room-tag">挂账中</span>
+                    <h3><a href="/Clinic/Patient/profile?patient_id=00020119267" class="white name-nowrap">按时发莫斯科</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="21岁">（女 21岁）</small></h3>
+                    <span>挂账金额：￥120.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                
+                    <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'huanzhang'))}" class="J-da-unpay">还账</a></li>
+                
+                <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}" class="J-da-unpay-detail">查看详情</a></li>
+            </ul>
+        </div>
+    </div>
+</div><div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-success panel-alt widget-photoday img-list">
+        
+        <div class="p-relative">
+            <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+        </div>
+        
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="/Clinic/Patient/profile?patient_id=00020122058"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/unknown-avatar.png" class="img-sm img-border" alt="头像"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <span class="widget-label badge badge-success room-tag">挂账中</span>
+                    <h3><a href="/Clinic/Patient/profile?patient_id=00020122058" class="white name-nowrap">Lili</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="6岁5月5天">（女 6岁5月5天）</small></h3>
+                    <span>挂账金额：￥200.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                
+                    <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'huanzhang'))}" class="J-da-unpay">还账</a></li>
+                
+                <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}" class="J-da-unpay-detail">查看详情</a></li>
+            </ul>
+        </div>
+    </div>
+</div><div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-success panel-alt widget-photoday img-list">
+        
+        <div class="p-relative">
+            <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+        </div>
+        
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="/Clinic/Patient/profile?patient_id=00020121978"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/unknown-avatar.png" class="img-sm img-border" alt="头像"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <span class="widget-label badge badge-success room-tag">挂账中</span>
+                    <h3><a href="/Clinic/Patient/profile?patient_id=00020121978" class="white name-nowrap">2吴勰</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="0岁5月14天">（男 0岁5月14天）</small></h3>
+                    <span>挂账金额：￥20.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                
+                    <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'huanzhang'))}" class="J-da-unpay">还账</a></li>
+                
+                <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}" class="J-da-unpay-detail">查看详情</a></li>
+            </ul>
+        </div>
+    </div>
+</div><div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-success panel-alt widget-photoday img-list">
+        
+        <div class="p-relative">
+            <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+        </div>
+        
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="/Clinic/Patient/profile?patient_id=00020118790"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/unknown-avatar.png" class="img-sm img-border" alt="头像"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <span class="widget-label badge badge-success room-tag">挂账中</span>
+                    <h3><a href="/Clinic/Patient/profile?patient_id=00020118790" class="white name-nowrap">杜秀供</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="71岁">（女 71岁）</small></h3>
+                    <span>挂账金额：￥50.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                
+                    <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'huanzhang'))}" class="J-da-unpay">还账</a></li>
+                
+                <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}" class="J-da-unpay-detail">查看详情</a></li>
+            </ul>
+        </div>
+    </div>
+</div><div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-success panel-alt widget-photoday img-list">
+        
+        <div class="p-relative">
+            <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+        </div>
+        
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="/Clinic/Patient/profile?patient_id=00020121957"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/unknown-avatar.png" class="img-sm img-border" alt="头像"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <span class="widget-label badge badge-success room-tag">挂账中</span>
+                    <h3><a href="/Clinic/Patient/profile?patient_id=00020121957" class="white name-nowrap">张辰暄</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="18岁">（女 18岁）</small></h3>
+                    <span>挂账金额：￥999999999.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                
+                    <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'huanzhang'))}" class="J-da-unpay">还账</a></li>
+                
+                <li><a href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}" class="J-da-unpay-detail">查看详情</a></li>
+            </ul>
+        </div>
+    </div>
+</div></div>
+                <div class="J-pager-wrap5"><div class="base_page"><a href="#/patientInfo/@null/status/1/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/14</button><a href="#/patientInfo/@null/status/1/page/2" type="button" data-page_num="2" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+            </div>
+            <!-- end 病人列表 -->
+        </div>
+    </div>
+</div>
+
+<!-- 挂账弹窗 -->
+<div class="modal fade" id="J-unpay-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">还账</h4>
+                </div>
+                <div class="modal-body" id="J-unpay-item-wrap">
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-submit disabled">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 挂账弹窗 -->
+
+<!-- 挂账列表模板 -->
+<script type="text/template" id="unpay-list-tpl">
+    <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+        <%if(memberType && memberTypeStatus == 1){%>
+        <div class="p-relative">
+            <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-memberType%>"></span>
+        </div>
+        <% } else if(memberType && memberTypeStatus == 2){%>
+        <div class="p-relative">
+            <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-memberType%>(已到期)"></span>
+        </div>
+        <% } %>
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patientId %>"><img src="<%- image %>" class="img-sm img-border" alt="头像"></a>
+                </div>
+                <div class="col-sm-8 pl0">
+                    <span class="widget-label badge badge-<%- className %> room-tag"><%- status %></span>
+                    <h3><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patientId %>" class="white name-nowrap"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age %>">（<%- sexCode %> <%-age%>）</small></h3>
+                    <span>挂账金额：<% if(loanSum*1) {%>￥<%- loanSum %><% } %><% if(rePaySum*1) {%>/<b>￥<%- rePaySum %></b><% } %></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body text-center">
+            <ul class="photo-meta">
+                <% if(statusCode == 0) {%>
+                    <li><a href="<%- global_src_api %>/Charge/unpayView?patient_id=<%- patientId%>" class="J-da-unpay">还账</a></li>
+                <% } %>
+                <li><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patientId %>" class="J-da-unpay-detail">查看详情</a></li>
+            </ul>
+        </div>
+    </div>
+</script>
+<!-- 挂账列表模板 -->
+
+<!-- 还账信息 -->
+<script type="text/template" id="J-unpay-item-tpl">
+    <input type="hidden" name="patientId" value="<%- patientId %>">
+    <input type="hidden" class="J-total" value="<%- ((loanSum*1 || 0) - (rePaySum*1 || 0)).toFixed(2) %>">
+    <div class="panel panel-dark panel-stat J-title">
+        <div class="panel-heading">
+            <div class="stat max-width">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <div class="col-xs-10 col-sm-10">
+                        <small class="stat-label">挂账金额</small>
+                        <h1 class="J-total-money">￥<%- ((loanSum*1 || 0) - (rePaySum*1 || 0)).toFixed(2) %></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pay">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">还款金额 <span class="asterisk">*</span></label>
+            <div class="col-sm-7">
+                <div class="form-group mlr0 mb0">
+                    <input type="text" name="price" class="form-control J-unpay-money" value="" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">备注</label>
+            <div class="col-sm-7">
+                <div class="form-group mlr0 mb0">
+                    <input type="text" name="remark" class="form-control" value="">
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 还账信息 -->
+                        <!-- end 挂账记录 -->
+                        <!-- start 异常订单 -->
+                        <!-- 异常订单 -->
+<div class="tab-pane" id="abnormal">
+    <div class="panel panel-cascade panel-invoice">
+
+        <div class="panel-heading bgfc pt30">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h3 class="panel-title">异常订单</h3>
+                </div>
+                <div class="col-sm-10">
+                    <form class="form-inline text-right" id="J-search-form-abnormal">
+                        <div class="form-group mr10">
+                            <div class="input-group text-left">
+                                <div class="input-group mt5 text-left">
+                                    <label class="redio">
+                                        <input type="radio" value="1" class="mr10 J-type-status" name="type" checked="">
+                                        退款中、支付中和异常支付
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mr10">
+                            <div class="input-group text-left">
+                                <label class="redio">
+                                    <input type="radio" value="2" class="mr10 J-type-status" name="type">
+                                    支付成功和退款成功
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group mr5">
+                            <label class="sr-only" for="">请输入姓名或手机或病案号</label>
+                            <input type="text" class="hidden">
+                            <input type="text" name="patient_name" class="form-control input-sm2 w200p" id="J-abnormal-name" placeholder="请输入姓名或手机或病案号">
+                        </div>
+                        <button type="button" class="btn btn-sm btn-default" id="J-abnormal-search"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <!-- start 病人列表 -->
+            <div class="table-responsive">
+                <table class="table table-hover table-border table-pd mb20">
+                    <thead>
+                        <tr>
+                            <th class="pl20 black bg-gray2">支付日期</th>
+                            <th class="pl20 black bg-gray2">订单号</th>
+                            <th class="pl20 black bg-gray2">订单类型</th>
+                            <th class="pl20 black bg-gray2">患者姓名</th>
+                            <th class="pl20 black bg-gray2">手机号码</th>
+                            <th class="pl20 black bg-gray2">支付方式</th>
+                            <th class="pl20 black bg-gray2">支付金额</th>
+                            <th class="pl20 black bg-gray2">支付状态</th>
+                            <th class="pl20 black bg-gray2">操作人</th>
+                            <th class="pl20 black bg-gray2">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="J-abnormal-list-wrap">
+                    </tbody>
+                </table>
+            </div>
+            <!-- end 病人列表 -->
+            <div class="J-pager-wrap6 display-none">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- start异常订单列表 -->
+<script type="text/template" id="J-abnormal-list-tpl">
+    <td class="pl20"><%- chargeTime%></td>
+    <td width=""><%- id%></td>
+    <td width="">
+        <% if (type == 4 || type == 14) {%>
+            预约
+        <%} else {%>
+            门诊
+        <%}%>
+    </td>
+    <td width=""><%- patientName%></td>
+    <td width=""><%- mobile%></td>
+    <td width=""><%- channel%></td>
+    <td width="">￥<%- price%></td>
+    <td width="">
+        <% if (type == 1) {%>
+            <span class="badge badge-success">支付中</span>
+        <%} else if (type == 2 || type == 4) {%>
+            <span class="badge badge-primary">退款中</span>
+        <%} else if (type == 3) {%>
+            <span class="badge badge-danger">异常支付</span>
+        <%} else if (type == 11) {%>
+            <span class="badge badge-success">支付成功</span>
+        <%} else if (type == 12 || type == 13 || type == 14) {%>
+            <span class="badge badge-primary">退款成功</span>
+        <%}%>
+    </td>
+    <td width=""><%- operator%></td>
+    <td width="">
+        <% if (type == 1) {%>
+            <a class="J-operated-btn" data-type="<%- type%>" data-orderId="<%- id%>">设为支付成功</a>
+        <%} else if (type == 2 || type == 4) {%>
+            <a class="J-operated-btn" data-type="<%- type%>" data-orderId="<%- id%>">设为退款成功</a>
+        <%} else if (type == 3) {%>
+            <a class="J-operated-btn" data-type="<%- type%>" data-orderId="<%- id%>" data-ping="<%- pingxxOrderId%>">退款</a>
+        <%} else if (type == 11 || type == 12 || type == 13 || type == 14) {%>
+            <a class="J-view-detail" data-operator="<%- operator%>" data-time="<%- chargeTime%>" data-id="<%- id%>" data-channel="<%- channel%>" data-channelId="<%- channelId%>">查看明细</a>
+        <%}%>
+    </td>
+</script>
+<!-- end异常订单列表 -->
+
+<div class="modal fade" id="abModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form lpformnum="2">
+                <div class="modal-body">
+                    <h1 class="text-center green">查看详细</h1>
+                    <hr>
+                    <div class="row pl20 pr20 lh40 font15 J-detail-list-warp">
+                    </div>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">确定</button>
+                </div>
+            </form>
+        </div>
+        <!-- modal-content -->
+    </div>
+    <!-- modal-dialog -->
+</div>
+
+<!-- start 查看详细modal -->
+<script type="text/template" id="J-detail-list-tpl">
+    <div class="col-sm-6">操作人：<%- operator%></div>
+    <div class="col-sm-6">操作时间：<%- time%></div>
+    <div class="col-sm-6">订单号：<%- id%></div>
+    <div class="col-sm-6">渠道：<%- channel%></div>
+    <div class="col-sm-6">渠道号：<%- channelId%></div>
+</script>
+<!-- end 查看详细modal -->
+
+
+                        <!-- end 异常订单 -->
+                        <!-- 已收费列表 -->
+<div class="tab-pane" id="assessment">
+    <div class="panel panel-cascade panel-invoice">
+        <div class="panel-body">
+            <iframe src="/miniprogram/mgmt/index#/wechat/charge" id="myframe" frameborder="0" style="width: 100%;height: 700px;"></iframe>
+        </div>
+    </div>
+</div>
+                    </div>
+                </div>
+    <!-- 打印还账 -->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['charge']);
+    </script>
+    <script>
+        $(function() {
+            // iframe数据传输
+            var iFrame = document.getElementById('myframe')
+            iFrame.onload = function(){
+                var key = window.localStorage.getItem('dxy_institution_code') + '_shop_id'
+                //iframe加载完立即发送一条消息
+                iFrame.contentWindow.postMessage({
+                    orgId: window.localStorage.getItem('dxy_institution_id'),
+                    clinicId: window.localStorage.getItem(key)
+                }, location.origin);
+            }
+        })
+    </script>
+</body>
+
+</html>

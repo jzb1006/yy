@@ -1,0 +1,76 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs">
+		<li>
+			<a href="/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=ceshi.jblblist&ac=jblblist">疾病类别列表</a>
+		</li>
+		<li {if empty($id)}class="active" {/if}> <a href="/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=ceshi.addjblb&ac=addjblb">添加疾病类别</a>
+		</li>
+		{if !empty($id)}
+		<li class="active">
+			<a href="#">编辑疾病类别</a>
+		</li>
+		{/if}
+	</ul>
+	<div class="app-content">
+		<div class="app-form">
+			<form action="" method="post" class="form-horizontal form form-validate">
+				<input type="hidden" name="id" value="" />
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						类别设置
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">类别名称<span class="must-fill">*</span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" name="ctname" required placeholder="请输入类别名称" class="form-control" value="{$res['ctname']}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">类别描述</label>
+							<div class="col-sm-9">
+								<input type="text" name="describe" class="form-control" value="{$res['describe']}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">是否开启</label>
+							<div class="col-sm-9">
+								<label class="radio-inline">
+									<input type="radio" name="state" value="1" {if $res['state']==1} checked='checked' {/if}>是
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="state" value="0" {if $res['state']==0} checked {/if}>否
+										   </label>
+										   </div>
+										   </div>
+										   <div class="form-group">
+									<label class="col-sm-2 control-label"></label>
+									<div class="col-sm-9">
+										<input type="submit" name="submit" lay-submit value="提交" class="btn btn-primary min-width" />
+										<input name="token" type="hidden" value="{$_W['token']}" />
+                                        <input name="id" type="hidden" value="{$id}" />
+									</div>
+							</div>
+						</div>
+					</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+</body>
+</html>

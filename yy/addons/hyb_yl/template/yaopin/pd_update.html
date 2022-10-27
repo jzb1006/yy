@@ -1,0 +1,312 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+        </div>
+        <div class="pageheader">
+            <h2><i class="fa fa-archive fa-sm"></i> 药房</h2>
+            <div class="breadcrumb-wrapper">
+                <a href="https:///Clinic/Pharmacy/manage.html#inventory" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+            </div>
+        </div>
+        <div class="contentpanel">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title J-page-header">修改盘点</h4>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline J-search-form" method="post">
+                        <div class="row mb10">
+                            <div class="col-sm-8 pull-left">
+                                <div class="form-group mr5">
+                                    <div class="input-group input-group-sm mb10">
+                                        <input type="text" class="form-control J-search-key" placeholder="商品名称或条形码">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-default btn-search J-search-btn"><i class="fa fa-search"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-custom-xs-12 pull-right">
+                                <div class="form-group mr5">
+                                    <label class="control-label">筛选：</label>
+                                    <div class="input-group mt5 text-left">
+                                        <div class="ckbox ckbox-default">
+                                            <input type="checkbox" name="include_zero" value="1" id="J-gt-zero" checked="true">
+                                            <label for="J-gt-zero">账面数量大于0</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mr5">
+                                    <div class="input-group mt5 text-left">
+                                        <div class="ckbox ckbox-default">
+                                            <input type="checkbox" name="excludeDisabled" value="1" id="J-add-excludeDisabled">
+                                            <label for="J-add-excludeDisabled">药品状态正常</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive border-top">
+                            <input type="hidden" id="J-temp-data">
+                            <table class="table table-hover shadow-none mb0">
+                                <thead>
+                                    <tr>
+                                        <th class="pl20">商品名称</th>
+                                        <th width="">规格</th>
+                                        <th width="">单位</th>
+                                        <th width="">生产厂商</th>
+                                        <th width="">供应商</th>
+                                        <th width="">批号</th>
+                                        <th width="">有效期</th>
+                                        <th width="">账面数量</th>
+                                        <th width="">实际数量</th>
+                                        <th width="">盘盈盘亏</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="J-inventory-list-wrap"><tr>
+    <td class="pl20">
+        0.9%氯化钠注射液（有国药准字）<span class="text-danger">（被停用）</span>
+        <input type="hidden" class="J-medicine-id" value="1937">
+    </td>
+    <td>100ml:</td>
+    <td>瓶</td>
+    <td>华东制药</td>
+    <td></td>
+    <td>20170506</td>
+    <td>0210-01-31</td>
+    <td class="J-current-count">35瓶</td>
+    <td><input type="text" class="form-control input-sm J-actual-input" size="5" value="23"></td>
+    <td><span class="label label-danger">-12</span>
+        
+    </td>
+</tr><tr>
+    <td class="pl20">
+        0.9%氯化钠注射液（有国药准字）<span class="text-danger">（被停用）</span>
+        <input type="hidden" class="J-medicine-id" value="2136">
+    </td>
+    <td>100ml:</td>
+    <td>瓶</td>
+    <td>华东制药</td>
+    <td></td>
+    <td>101010</td>
+    <td>2001-10-10</td>
+    <td class="J-current-count">25瓶</td>
+    <td><input type="text" class="form-control input-sm J-actual-input" size="5" value=""></td>
+    <td><span class="label label-default"></span>
+    </td>
+</tr><tr>
+    <td class="pl20">
+        0.9%氯化钠注射液（有国药准字）<span class="text-danger">（被停用）</span>
+        <input type="hidden" class="J-medicine-id" value="2173">
+    </td>
+    <td>100ml:</td>
+    <td>瓶</td>
+    <td>华东制药</td>
+    <td></td>
+    <td>123</td>
+    <td>2012-03-05</td>
+    <td class="J-current-count">23瓶</td>
+    <td><input type="text" class="form-control input-sm J-actual-input" size="5" value=""></td>
+    <td><span class="label label-default"></span>
+    </td>
+</tr><tr>
+    <td class="pl20">
+        0.9%氯化钠注射液（有国药准字）<span class="text-danger">（被停用）</span>
+        <input type="hidden" class="J-medicine-id" value="1743">
+    </td>
+    <td>100ml:</td>
+    <td>瓶</td>
+    <td>华东制药</td>
+    <td></td>
+    <td>12345</td>
+    <td>2015-01-04</td>
+    <td class="J-current-count">23瓶</td>
+    <td><input type="text" class="form-control input-sm J-actual-input" size="5" value=""></td>
+    <td><span class="label label-default"></span>
+    </td>
+</tr><tr>
+    <td class="pl20">
+        灭菌注射用水
+        <input type="hidden" class="J-medicine-id" value="1497">
+    </td>
+    <td>5ml×1支</td>
+    <td>支</td>
+    <td></td>
+    <td>浙江上药新欣医药有限公司</td>
+    <td>2016-11-18</td>
+    <td>2017-11-18</td>
+    <td class="J-current-count">2支</td>
+    <td><input type="text" class="form-control input-sm J-actual-input" size="5" value=""></td>
+    <td><span class="label label-default"></span>
+    </td>
+</tr><tr>
+    <td class="pl20">
+        灭菌注射用水
+        <input type="hidden" class="J-medicine-id" value="1991">
+    </td>
+    <td>5ml×1支</td>
+    <td>支</td>
+    <td></td>
+    <td></td>
+    <td>20170417</td>
+    <td>2018-05-02</td>
+    <td class="J-current-count">1支</td>
+    <td><input type="text" class="form-control input-sm J-actual-input" size="5" value=""></td>
+    <td><span class="label label-default"></span>
+    </td>
+</tr><tr>
+    <td class="pl20">
+        灭菌注射用水
+        <input type="hidden" class="J-medicine-id" value="2127">
+    </td>
+    <td>5ml×1支</td>
+    <td>支</td>
+    <td></td>
+    <td></td>
+    <td>123456</td>
+    <td>2018-06-03</td>
+    <td class="J-current-count">2支</td>
+    <td><input type="text" class="form-control input-sm J-actual-input" size="5" value=""></td>
+    <td><span class="label label-default"></span>
+    </td>
+</tr><tr>
+    <td class="pl20">
+        灭菌注射用水
+        <input type="hidden" class="J-medicine-id" value="2128">
+    </td>
+    <td>5ml×1支</td>
+    <td>支</td>
+    <td></td>
+    <td></td>
+    <td>123456</td>
+    <td>2018-06-07</td>
+    <td class="J-current-count">56支</td>
+    <td><input type="text" class="form-control input-sm J-actual-input" size="5" value=""></td>
+    <td><span class="label label-default"></span>
+    </td>
+</tr></tbody>
+                            </table>
+                            <div class="J-page-wrap pd20 mb45"><div class="base_page"><a href="#/inventoryId/578/key/@null/gtZero/true/excludeDisabled/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/201</button><a href="#/inventoryId/578/key/@null/gtZero/true/excludeDisabled/@null/page/2" type="button" data-page_num="2" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="panel-footer panel-btn-col2">
+                    <button class="btn btn-primary mr5 J-submit-btn">保存</button>
+                    <button class="btn btn-default mr5 J-check-btn-submit J-module-control" data-permission="36" data-type="saveCheck">保存并审核</button>
+                    <button class="btn btn-default J-cancel-btn">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 审核失败modal弹窗 -->
+<div class="modal fade" id="jumpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="jumpModalLabel">系统提示</h4>
+            </div>
+            <div class="modal-body">
+                <h4 id="J-result-label">审核失败，是否跳转到修改页面？</h4>
+            </div>
+            <div class="modal-footer modal-btn-col2">
+                <button type="button" class="btn btn-primary J-jump-btn">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+
+<script type="text/template" id="J-inventory-list-tpl">
+    <td class="pl20">
+        <%- medicinename%><%if(pharmacyStatus != 1){%><span class="text-danger">（被停用）</span><% } %>
+        <input type="hidden" class="J-medicine-id" value="<%- id%>">
+    </td>
+    <td><%- medicinespec%></td>
+    <td><%- medicineunit%></td>
+    <td><%- manufacturer%></td>
+    <td><%- vendor%></td>
+    <td><%- batchNumber%></td>
+    <td><%- validity%></td>
+    <td class="J-current-count"><%- currentCount%><%- medicineunit%></td>
+    <td><input type="text" class="form-control input-sm J-actual-input" size="5" value="<%- realCount%>"></td>
+    <td><% if(diff > 0){ %><span class="label label-primary"><%- diff%></span>
+        <% }else if(diff < 0){ %><span class="label label-danger"><%- diff%></span>
+        <% }else{%><span class="label label-default"><%- diff%></span><% } %>
+    </td>
+</script>
+
+<script type="text/javascript">
+    require(['pharmacy_add_inventory']);
+</script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

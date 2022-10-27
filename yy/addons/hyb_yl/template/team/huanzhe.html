@@ -1,0 +1,164 @@
+{template './common/mainHeader'}
+<style>
+  .df{
+    display:flex;
+    align-items: center;
+  }
+  .tab_cg{
+    border:1px solid #eaeaea;
+    margin-left:20px;
+  }
+  .tab_text,.tab_btn{
+    padding: 5px 10px;
+  }
+  .tab_btn{
+    border-left:1px solid #eaeaea;
+  }
+  button{
+    outline: none;
+  }
+  .tabBox{
+    margin-top:20px;
+  }
+  label{
+    margin:0;
+  }
+  .tab_box{
+    height:200px;
+    overflow:hidden;
+    overflow-y:auto;
+    margin-top:20px;
+  }
+  .tab{
+    display:inline-block;
+    padding:5px;
+    border:1px solid #eaeaea;
+    margin-right:10px;
+    cursor: pointer;
+  }
+  
+  .tabBox label{
+    white-space: nowrap;
+  }
+  #tabBox_xz{
+    flex-wrap:wrap;
+    max-height:200px;
+    overflow:hidden;
+    overflow-y:auto;
+  }
+    #tabBox_xz .tab_cg{
+    margin-bottom:10px;
+  }
+  .tab:hover{
+    background:#2aabd2;
+    color:#fff;
+  }
+  #myModal{
+    background: rgba(0,0,0,0.5)
+  }
+  .we7-modal-dialog, .modal-dialog{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /*账户充值样式*/
+   .recharge_info{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;justify-content: space-around;margin-bottom: 10px;}
+.recharge_info>div{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;border:1px solid #efefef;padding:10px 22px;line-height: 25px;color: #333;}
+.recharge_info>div:first-child{margin-right: 10px;}
+.recharge_info>div:last-child{margin-left: 10px;}
+.zhe{background: rgba(0,0,0,0.6);position: fixed;display: flex;align-items: center;justify-content: center;width: 100%;height: 100%;top: 0;left: 0;}
+.modal-dialog{position: initial;}
+  /*账户充值end*/
+  .text-warning {
+    color: #f8ac59;
+    white-space: nowrap;
+    width: 180px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
+<div class="app-container-right">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#">患者分组</a>
+        </li>
+    </ul>
+    <div class="app-content">
+        <div class="app-filter">
+            <div class="filter-list">
+                <div class="filter-action">
+            <a href="./index.php?c=site&a=entry&op=add_fenzu&do=team&m=hyb_yl&ac=docindex&labelList=$newdates" class="btn btn-primary">添加分组</a>
+        </div>
+                
+            </div>
+        </div>
+        <div class="app-table-list">
+            <div class="table-responsive">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th style="width: 250px;">分组名</th>
+                            <th style="">患者总数</th>
+                            
+                            <th style="width: 350px;text-align: right;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {loop $newdate $item}
+                        <tr>
+                            <td style="overflow: visible"><!-- <span>总消费：</span>6000元<br/>-->
+                                {$item['description']}
+                            </td>
+                            <td style="position: relative;">
+                                {$item['count']}
+                            </td>
+                            <td style="position: relative;text-align: right;">
+                                <a class="btn btn-default btn-sm" href="{php echo $this->createWeburl('team',array('op'=>'users','zid'=>$zid,'name'=>$item['description']))}" title="用户列表">用户列表</a>
+                                {if $item['description'] != '未分组'}
+                                 <a class="btn btn-danger btn-sm" data-toggle='ajaxRemove' href="./index.php?c=site&a=entry&op=del_fenzu&do=team&m=hyb_yl&ac=huanzhe&zid={$zid}&name={$item['description']}" data-confirm="确定要删除该分组吗？">删除</a>
+                                {/if}
+                            </td>
+                        </tr>
+                    {/loop}
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>
+  {template './common/mainfooter'}
+
+<script>
+    require(['bootstrap'], function ($) {
+        $('[data-toggle="tooltip"]').tooltip({
+            container: $(document.body)
+        });
+        $('[data-toggle="popover"]').popover({
+            container: $(document.body)
+        });
+        $('[data-toggle="dropdown"]').dropdown({
+            container: $(document.body)
+        });
+    });
+    myrequire(['js/init']);
+        $('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+      $('.app-login-info-sel').show();
+    });
+    $('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+      $('.app-login-info-sel').hide();
+    });
+    $('.app-login-info-sel .login-out').hover(function(){
+      $('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+    },function(){
+      $('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+    });
+</script>
+
+
+

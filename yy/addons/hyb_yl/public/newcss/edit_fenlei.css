@@ -1,0 +1,209 @@
+.title{
+    padding: 5px;
+    background: #eeeeee;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.title::before{
+    content: '';
+    display: inline-block;
+    background: #5FB878;
+    width: 5px;
+    height: 20px;
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.cont{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.name{
+    margin-right: 30px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+.conts{
+    margin-top: 40px;
+    margin-left: 40px;
+}
+input,textarea{
+    font-size: 18px;
+}
+.layui-input:hover, .layui-textarea:hover {
+    border-color: #76d263 !important;
+}
+.fs22{
+    font-size: 26px;
+}
+.layui-form-checkbox[lay-skin=primary] i{
+    width: 26px!important;
+    height: 26px!important;
+    line-height: 26px;
+    font-size: 20px;
+}
+.layui-form-checkbox[lay-skin=primary] span{
+    font-size: 18px;
+    line-height: 26px;
+}
+.layui-form-label{
+    width: 150px;
+}
+.df{
+    display: flex;
+}
+.jcsb{
+    justify-content: space-between;
+}
+.pbtn{
+    position: relative;
+}
+.tpxz{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.imgBox{
+    border: 1px solid #eaeaea;
+    padding: 5px;
+    width: 220px;
+    margin-top: 20px;
+    position: relative;
+}
+.imgBox1{
+    border: 1px solid #eaeaea;
+    padding: 5px;
+    width: 220px;
+    position: relative;
+}
+.imgBox1 img{
+    width: 100%;
+}
+.imgBox img{
+    width: 100%;
+}
+
+.close{
+    position: absolute;
+    top: 5px ;
+    right: -20px;
+    cursor: pointer;
+}
+
+.layui-textarea{
+    height: 300px;
+    resize: inherit;
+}
+
+
+.zhe,.zhe1,.zhe2,.zhe3{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.ysconts{
+    width: 85%;
+    background: #fff;
+    padding: 0 20px;
+}
+
+form{
+    display: contents;
+}
+
+.title1{
+    text-align: center;
+    font-size: 24px;
+    padding: 20px;
+}
+.layui-table img {
+    max-width: 50px;
+    border-radius: 50%;
+}
+.layui-table td, .layui-table th {
+    text-align: center!important;
+}
+.yscont{
+    padding: 20px;
+}
+
+.btnBox3{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.rule{
+    font-size: 16px;
+    color: #999;
+    text-align: center;
+}
+.mr30{
+    margin-right: 30px;
+}
+.bottom_info{
+    padding:0 10px;
+    margin-top: 30px;
+}
+.left_name{
+    font-size: 22px;
+}
+.left_div{
+    border-bottom: 1px solid #eaeaea;
+    padding: 10px 0;
+}
+.layui-tab-title{
+    height: auto;
+}
+.layui-form-item{
+    display: flex;
+}
+.right{
+    width: 80%;
+}
+.dfsac .layui-form-select{
+    margin-right: 20px;
+}
+.btnBox{
+    display: flex;
+    align-items: center;
+}
+.btnBox div{
+    padding: 5px;
+    border: 1px solid #eaeaea;
+    margin-right: 5px;
+    text-align: center;
+}
+.dfsac{
+    display: flex;
+    align-items: center;
+}
+.bohui{
+    display: none;
+}
+.vip{
+    font-size: 16px;
+    color: #FFB800;
+}
+.vip a{
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.cont1{
+    background: #fff;
+    padding: 20px;
+}

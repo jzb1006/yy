@@ -1,0 +1,121 @@
+  <div class="v-modal" style="z-index:8;display: none"></div>
+  <form>
+  <div data-v-056cb741="" data-v-155af19b="" class="el-dialog__wrapper labelBox " data-v-10803746="" style="z-index: 9999; display: none;">
+    <div role="dialog" aria-modal="true" aria-label="用户标签" class="el-dialog small-dialog common-dialog" style="margin-top: 0px;">
+      <div class="el-dialog__header">
+        <span class="el-dialog__title">用户标签</span>
+        <button type="button" aria-label="Close" class="el-dialog__headerbtn closetab">
+          <i class="el-dialog__close el-icon el-icon-close closetab"></i>
+        </button>
+      </div>
+      <div class="el-dialog__body">
+        <div data-v-056cb741="" class="dialog-container">
+          <div data-v-056cb741="" class="tags-view">
+            <p data-v-056cb741="" class="title">现有标签</p>
+             {$biaoqian}
+            <div data-v-056cb741="" class="selected">
+
+            </div>
+          </div>
+          <div data-v-056cb741="" class="tags-group">
+            <div data-v-056cb741="" role="group" aria-label="checkbox-group" class="el-checkbox-group">
+              <div data-v-056cb741="" class="el-tabs el-tabs--top" style="height: 200px;">
+                <div class="el-tabs__header is-top">
+                  <div class="el-tabs__nav-wrap is-top">
+                    <div class="el-tabs__nav-scroll">
+                      <div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);">
+                        <div class="el-tabs__active-bar is-top" style="width: 56px; transform: translateX(0px);"></div>
+                        <div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">
+                          新增标签
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="el-tabs__content">
+                  <div data-v-056cb741="" role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style="">
+                    
+
+                    {loop $res $item}
+                    <div data-v-056cb741="" class="checkbox-item lebbtn">
+                      <label data-v-056cb741="" class="el-checkbox" closable="">
+                        <span class="el-checkbox__input">
+                          <span class="el-checkbox__inner"></span>
+                          <input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="{$item['name']}" />
+                        </span>
+                        <span class="el-checkbox__label">{$item['name']}
+                         
+                        </span>
+                      </label>
+                    </div>
+                    {/loop}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="el-dialog__footer">
+        <span data-v-056cb741="" class="dialog-footer">
+          <button data-v-056cb741="" type="button" class="el-button el-button--default el-button--medium closetab">
+            <!---->
+            <!---->
+            <span>取 消</span>
+          </button>
+          <button data-v-6013d768="" data-v-056cb741="" type="button" class="el-button el-button--primary el-button--medium lebsend" style="min-width: 0px;">
+            <!---->
+            <!---->
+            <span>
+              <span data-v-6013d768="" class="button-loading white" style="display: none;"></span>确 定
+            </span>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+  </form>
+  <script type="text/javascript">
+          //确定选择用户标签  lebsend
+        $('.lebsend').on('click', function () {
+            $('.yhlab').html('')
+            for (var i = 0; i < arr2.length; i++) {
+                $('.yhlab').append(`
+                 <span data-v-155af19b="" data-v-10803746="">用户标签：${arr2[i]}</span>
+            `)
+            }
+            $('.v-modal').hide()
+            $('.labelBox ').hide()
+        })
+        $('.closetab').on('click', function () {
+            $('.v-modal').hide()
+            $('.tabBox').hide()
+            $('.labelBox').hide()
+            $('.wxfzBox').hide()
+            $('.bzBox').hide()
+        })
+                $(document).on('click', '.lebbtn', function (e) {
+            if ($(e.target).is("input")) {
+                console.log($(this).find('.el-checkbox__original').is(':checked'));
+                if ($(this).find('.el-checkbox__original').is(':checked')) {
+                    arr2.push($(this).text().trim())
+                } else {
+                    for (var i = 0; i < arr2.length; i++) {
+                        if ($(this).text().trim() == arr2[i]) {
+                            arr2.splice(i, 1)
+                        }
+                    }
+                }
+                $(this).parents('.dialog-container').find('.selected').html('')
+                for (var i = 0; i < arr2.length; i++) {
+                    $(this).parents('.dialog-container').find('.selected').append(`
+                    <span data-v-056cb741="" class="tag-item el-tag el-tag--danger el-tag--medium el-tag--light">
+    ${arr2[i]}
+    <i class="el-tag__close el-icon-close"></i>
+    </span>
+                    `)
+                }
+            }
+        })
+  </script>

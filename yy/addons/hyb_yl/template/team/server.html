@@ -1,0 +1,170 @@
+
+{template './common/mainHeader'}
+<style type="text/css">
+.footer{
+    background:none !important;
+    color:#666;
+    opacity: 1;
+    width: 100%;
+}
+  .quan1{background-color: #fff;/*height: 365px;*/border-radius: 8px;margin-right: 20px;border:1px solid #eaeaea;padding: 15px;/*margin: 0 15px 30px;*/overflow: hidden;margin-bottom: 10px;}
+  /*.quan1:hover{background-color: rgba(234,234,234,0.3);}*/
+  .quan1_top{/*padding: 0px 15px 0px 15px;*//*height: 314px;*/}
+  .quan1_bom{padding: 15px;background-color: #f5f5f5;height:50px;}
+  .quan1_top_t{/*padding: 15px 0px 0px 0px;*/position: relative;display: flex;}
+  .quan1_top_c_img{width: 425px;height:150px;}
+  .quan1_top_b{font-size: 14px;color: #ababab;/*width: 340px;*/overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+  .quan1_bom_l{padding:0;font-size: 15px;font-weight: 600;}
+  .quan1_img{height: 90px;width: 90px;overflow: hidden;margin-right: 20px;float: left;}
+  .quan1_img>img{width: 100%;height: auto;min-height: 100%;border:none;}
+  .quan_title{
+  	border-left: 3px solid #44ABF7;
+  	margin-bottom: 15px;
+  	font-weight: bold;
+  	font-size: 15px;
+  }
+  #sw-content{
+  	position: absolute;
+  	right: 20px;
+  	top: 20px;
+  }
+  #sw-content2{
+  	position: absolute;
+  	right: 20px;
+  	top: 20px;
+  }
+  .bootstrap-switch-handle-on{
+  	background-color: #025aa5;
+  	color: #fff;
+  }
+  .quan1_text button{
+  	/*margin-top: 20px;*/
+  	/*margin-left: 64px;*/
+  	position: absolute;
+  	right: 35px;
+  	bottom: 14px;
+  	border:none;
+  	background-color: #f5f5f5;
+  	font-weight: 600;
+  }
+  .quan1_text{margin-left: 10px;float: left;}
+  .quan1_text p:first-child{font-size: 18px;color: #6a6f73;}
+  .quan1_text>p:nth-child(1){font-size: 14px;font-weight: bold;}
+  .quan1_text>p:nth-child(2){font-size: 14px;color: #999;}
+  .quan_mar{margin-top: 20px;}
+  .quanyg{padding: 0px;margin-bottom: 20px;}
+  .applicationBox2{width: 33.3%;padding: 40px;box-sizing: border-box;text-align: center;}
+  .AppImgBox2{/*width: 100%;*/}
+  .panel-body2{display: flex;flex-direction: row;}
+  .myTitle2{font-size: 32px;font-weight: bold;margin-bottom: 30px;}
+  .yun-bindBox2 td{text-align: center;}
+  .AppBtnBox2{background-color: #44ABF7;color: #fff;font-size: 20px;padding: 6px 20px;border-radius: 4px;font-size: 12px}
+  .AppBtnBox2:hover{
+  	color: #fff;
+  }
+  .text-center{margin-top: 55px;}
+  .text-center img{width: 98%;height: 170px;}
+  .panel-default{margin-top:10px;}
+  .grayFont{color: red;}
+
+  .quan1_btn{position: absolute;top: 50%;left:50%;margin-top: -12px;margin-left:70px;}
+  .quan1_btn .btn{padding:2px 10px;outline: none;border:none;}
+  .vip_priceBox{display: inline-block;font-size: 12px;color: #f5a229;line-height: normal;height: auto;position: relative;animation: float 2s ease-in-out infinite;}
+  @keyframes float{
+  	0%{transform: translateY(0px);}
+  	50%{transform: translateY(-6px);}
+  	100%{transform: translateY(0px);}
+  }
+</style>
+</div>
+
+
+<div>
+ <div class="text-center" style="margin-top: 15px;">
+		    <ul class="nav nav-tabs patient-tabs J-panel-tabs" style="margin-left: 15px">
+            <li class="J-module-control " data-permission="8">
+                <a  href="{php echo $this->createWeburl('team',array('op'=>'doctor'))}&type_id={$type_id}" ><strong>医生列表</strong></a>
+            </li>
+            <li class="J-module-control " data-permission="10">
+                <a href="{php echo $this->createWeburl('team',array('op'=>'add'))}&type_id={$type_id}" ><strong>添加医生</strong></a>
+            </li>
+            <li class="J-module-control active" data-permission="10">
+                <a href="{php echo $this->createWeburl('team',array('op'=>'server','zid'=>$zid))}&type_id={$type_id}" ><strong>医生服务</strong></a>
+            </li>
+        </ul>
+	</div>
+    <div class="panel-default" style="margin-left: 15px;">
+
+        <div class="panel-body" style="padding:0px;">
+				<div class="col-md-12 quan_title">服务中心</div>
+				<div class="col-md-12" id='dataBox1'>
+              {$o}
+         </div>
+	       </div>
+    </div> 
+</div>  
+<script type="text/javascript">
+                var url=window.location.href;
+                var that=this
+           		 	$(document).on("click",'.js-delete',function(){
+           		 		var serid = $(this).attr('data-id');
+                  var zid = $(this).attr('data-zid');
+                  if(zid =="0"){
+                     alert("请先添加医生");
+                  }else{
+                     if(serid!==""){
+                         if($(this).text().trim()=='关闭'){
+                            $(this).text('开启')
+                            $(this).parents('.quan1_top_t').find('a').css({color:'#079200'})
+                            $(this).css({background:'#079200'})
+                      $.ajax({
+                         type: "POST",  
+                         data:{type:'update_xz',serid:serid},
+                         url: url,  
+                         dataType: "json", 
+                         cache:false, 
+                     success:function(json){
+                              window.location.href="{php echo $this->createWeburl('team',array('op'=>'message'))}";
+                           }
+                       })
+                       }else{
+                        $(this).text('关闭')
+                        $(this).parents('.quan1_top_t').find('a').css({color:'#ca4242'})
+                        $(this).css({background:'#ca4242'})
+                        $.ajax({
+                        type: "POST",  
+                        data:{type:'update_an',serid:serid},
+                        url: url,  
+                        dataType: "json", 
+                        cache:false, 
+                    success:function(json){
+                            window.location.href="{php echo $this->createWeburl('team',array('op'=>'message'))}";
+                           }
+                         })
+                         }
+                        }else{
+
+                          //执行添加
+                          var sid = $(this).attr('data-sid');
+                          var zid = $(this).attr('data-zid');
+                          var thumb = $(this).attr('data-thumb');
+                          var desc = $(this).attr('data-desc');
+                          var name = $(this).attr('data-name');
+                          $.ajax({
+                          type: "POST",  
+                          data:{type:'add',sid:sid,zid:zid,thumb:thumb,desc:desc,name:name},
+                          url: url,  
+                          dataType: "json", 
+                          cache:false, 
+                          success:function(json){
+                               
+                               window.location.href="{php echo $this->createWeburl('team',array('op'=>'message'))}";
+                             }
+                           })
+                        }
+                  }
+
+
+           		 	})
+           
+</script>

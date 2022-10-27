@@ -1,0 +1,264 @@
+{template './common/mainHeader'}
+
+<style type='text/css'>
+	.trbody td {text-align: center; vertical-align:top;border-left:1px solid #ccc; border-bottom: 1px solid #ddd;}
+		.order-rank img{width:16px; height:16px;}
+		.js-remark,.js-admin-remark{word-break:break-all; overflow:hidden; background: #FDEEEE;color: #ED5050;padding: 5px 10px;}
+		td.goods-info{position:relative; padding-left:60px;}
+		.goods-info .img{position:absolute;top:50%; margin-top:-25px; background: url(https://xiaochuang.webstrongtech.net/addons/hyb_yl/web/resource/images/loading.gif) center center no-repeat; width:50px;height:50px; }
+		.goods-info span {white-space: inherit;overflow: hidden;text-overflow: ellipsis;display: block;}
+		.status-text{cursor:pointer;}
+		.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {border-top: 1px solid rgba(221, 221, 221, 0);}
+		.col-md-1{padding-right: 0px;}
+		.asd{cursor: pointer;}
+		.cont_text{overflow: hidden; width:200px;text-overflow: ellipsis;display:-webkit-box; -webkit-box-orient:vertical;-webkit-line-clamp:3;}
+		.name_text{overflow: hidden;text-overflow: ellipsis;width: 200px;white-space: nowrap;}
+</style>
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#">代理列表</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+		<div class="alert alert-warning">
+			代理登录地址：<a href="{$_W['siteroot']}web/agent.php?p=user&ac=login&do=agent_login&" target="_blank">{$_W['siteroot']}web/agent.php?p=user&ac=login&do=agent_login&</a>
+		</div>
+		<div class="filter-action">
+			<a class="btn btn-primary" href="{php echo $this->createWebUrl('jiancha',array('ac'=>'agentIndex','op'=>'agentEdit'))}">添加代理</a>
+		</div>
+		<div class="filter-list">
+			<form action="" method="get" class="form-horizontal" role="form">
+				<input type="hidden" name="c" value="site" />
+	            <input type="hidden" name="a" value="entry" />
+	            <input type="hidden" name="m" value="{MODULE_NAME}" />
+	            <input type="hidden" name="p" value="area" />
+				<input type="hidden" name="ac" value="areaagent" />
+				<input type="hidden" name="do" value="agentIndex" />
+				<input type="hidden" name="status" value="{$_GPC['status']}" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label">代理状态</label>
+					<div class="col-sm-9">
+						<div class="btn-group">
+							<a href="{php echo filter_url('status:0');}" class="btn {if intval($_GPC['status']) == 0}btn-primary{else}btn-default{/if}">不限</a>
+							<a href="{php echo filter_url('status:1');}" class="btn {if $_GPC['status'] == 1}btn-primary{else}btn-default{/if}">启用中</a>
+							<a href="{php echo filter_url('status:2');}" class="btn {if $_GPC['status'] == 2}btn-primary{else}btn-default{/if}">禁用中</a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">代理筛选</label>
+					<div class="col-sm-9">
+						<input type="text" name="agentname" class="form-control" value="{$_GPC['agentname']}" placeholder="输入代理名称、联系人或者手机号"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-md-9">
+						<button class="btn btn-primary">筛选</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="panel-body table-responsive collapse in" id="order-template-item-4" style="padding: 0;">
+			<table class="table table-bordered">
+				<thead style="background-color: #FFFFFF;">
+					<tr>
+						<th style="width:100px;text-align:center;">代理名称</th>
+						<th style="width:100px;text-align:center;">联系人</th>
+						<th style="width:100px; text-align:center;">代理分组</th>
+						<th style="width:150px; text-align:center;">代理时间</th>
+						<th style="width:60px; text-align:center">是否到期</th>
+						<th style="width:60px; text-align:center">是否启用</th>
+						<th style="width:200px; text-align:center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{loop $agents $agent}
+					<tr>
+						<td class="text-center">
+							{$agent['agentname']}
+						</td>
+						<td class="text-center">
+							{$agent['realname']}<br />{$agent['mobile']}
+						</td>
+						<td class="text-center">
+							<label class='label'>{$agent['groupname']}</label>
+						</td>
+						<td class="text-center">
+							{php echo date('Y-m-d',$agent['starttime'])}至{php echo date('Y-m-d',$agent['endtime'])}
+						</td>
+						<td class="text-center">
+							{if $agent['endtime'] < time()}<label class='label label-danger'>到期</label>{else}<label class='label label-success'>未到期</label>{/if}
+						</td>
+						<td class="text-center">
+							{if $agent['status']==1}<label class='label label-success'>启用</label>{else}<label class='label label-default'>禁用</label>{/if}
+						</td>
+						<td class="text-center" style="text-align: center;">
+                   		 	<a class="btn btn-default btn-sm" href="{php echo web_url('area/areaagent/agentEdit', array('id' => $agent['id']));}" title="编辑">编辑</a>
+                    		
+                    		<a class="btn btn-success btn-sm" href="{php echo web_url('area/areaagent/manage', array('id' => $agent['id']));}" target="_blank" title="管理">管理</a>
+                    		<a class="btn btn-danger btn-sm" href="{php echo web_url('area/areaagent/deletearea', array('id' => $agent['id']));}" data-toggle="ajaxRemove" data-confirm="删除代理会导致代理下商户和商品活动无法使用，确定要删除吗？" title="删除">删除</a> 
+						</td>
+					</tr>
+					{/loop}
+				</tbody>
+			</table>
+			
+		</div>
+		<div class="app-table-foot clearfix">
+			<div id="de1" class="pull-left">
+				<label class="btn btn-default min-width " style="display: inline-flex;align-items:center;margin-right:1rem;">
+				<input type="checkbox" name="checkbox" value="" id="checkbox" onclick="var ck = this.checked; $(':checkbox').each(function(){this.checked = ck});"/>
+				<div style="margin-left: 10px">全选</div>
+				</label>
+				<a href="javascript:;" class="btn btn-default min-width js-batch js-delete pass_delete">批量删除</a>
+			</div>
+			<div class="pull-right">{$pager}</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#search").click(function(){
+		$('#form1')[0].submit();
+	});
+</script>
+<script type="text/javascript">
+	// 批量删除
+	$('#de1').delegate('.pass_delete','click',function(e){
+
+		e.stopPropagation();
+		var order_ids = [];
+		var $checks=$('.item:checkbox:checked');
+
+		$checks.each(function() {
+			if (this.checked) {
+				order_ids.push(this.value);
+			};
+		});
+		var $this = $(this);
+		var ids = order_ids;
+
+		util.nailConfirm(this, function(state) {console.log(state)
+		if(!state)  return;
+			$.post("{php echo $this->createWebUrl('apply',array('ac'=>'dynamiclist','op'=>'dynamiclistsave_pldelete'))}", { ids : ids }, function(data){
+				if(data.errno=='1'){ 
+					util.tips("操作成功！");
+					window.location.reload();
+				}else{
+					util.tips("操作失败"); 	
+				};
+			}, 'json');
+		}, {html: '确认删除?'});
+	});
+	// 批量审核通过
+	$('#de1').delegate('.pass_shenhetg','click',function(e){
+
+		e.stopPropagation();
+		var order_ids = [];
+		var $checks=$('.item:checkbox:checked');
+
+		$checks.each(function() {
+			if (this.checked) {
+				order_ids.push(this.value);
+			};
+		});
+		var $this = $(this);
+		var ids = order_ids;
+
+		util.nailConfirm(this, function(state) {console.log(state)
+		if(!state)  return;
+			$.post("{php echo $this->createWebUrl('apply',array('ac'=>'dynamiclist','op'=>'dynamiclistsave_plshenhetg'))}", { ids : ids }, function(data){
+				if(data.errno=='1'){ 
+					util.tips("操作成功！");
+					window.location.reload();
+				}else{
+					util.tips("操作失败"); 	
+				};
+			}, 'json');
+		}, {html: '确认审核通过?'});
+	});	
+	// 批量审核拒绝
+	$('#de1').delegate('.pass_noshenhetg','click',function(e){
+
+		e.stopPropagation();
+		var order_ids = [];
+		var $checks=$('.item:checkbox:checked');
+
+		$checks.each(function() {
+			if (this.checked) {
+				order_ids.push(this.value);
+			};
+		});
+		var $this = $(this);
+		var ids = order_ids;
+
+		util.nailConfirm(this, function(state) {console.log(state)
+		if(!state)  return;
+			$.post("{php echo $this->createWebUrl('apply',array('ac'=>'dynamiclist','op'=>'dynamiclistsave_plnoshenhetg'))}", { ids : ids }, function(data){
+				if(data.errno=='1'){ 
+					util.tips("操作成功！");
+					window.location.reload();
+				}else{
+					util.tips("操作失败"); 	
+				};
+			}, 'json');
+		}, {html: '确认审核拒绝?'});
+	});	
+	// 批量推荐
+	$('#de1').delegate('.pass_tuijian','click',function(e){
+
+		e.stopPropagation();
+		var order_ids = [];
+		var $checks=$('.item:checkbox:checked');
+
+		$checks.each(function() {
+			if (this.checked) {
+				order_ids.push(this.value);
+			};
+		});
+		var $this = $(this);
+		var ids = order_ids;
+
+		util.nailConfirm(this, function(state) {console.log(state)
+		if(!state)  return;
+			$.post("{php echo $this->createWebUrl('apply',array('ac'=>'dynamiclist','op'=>'dynamiclistsave_pltuijian'))}", { ids : ids }, function(data){
+				if(data.errno=='1'){ 
+					util.tips("操作成功！");
+					window.location.reload();
+				}else{
+					util.tips("操作失败"); 	
+				};
+			}, 'json');
+		}, {html: '确认推荐?'});
+	});	
+	// 批量取消推荐
+	$('#de1').delegate('.pass_notuijian','click',function(e){
+
+		e.stopPropagation();
+		var order_ids = [];
+		var $checks=$('.item:checkbox:checked');
+
+		$checks.each(function() {
+			if (this.checked) {
+				order_ids.push(this.value);
+			};
+		});
+		var $this = $(this);
+		var ids = order_ids;
+
+		util.nailConfirm(this, function(state) {console.log(state)
+		if(!state)  return;
+			$.post("{php echo $this->createWebUrl('apply',array('ac'=>'dynamiclist','op'=>'dynamiclistsave_plnotuijian'))}", { ids : ids }, function(data){
+				if(data.errno=='1'){ 
+					util.tips("操作成功！");
+					window.location.reload();
+				}else{
+					util.tips("操作失败"); 	
+				};
+			}, 'json');
+		}, {html: '确认不推荐?'});
+	});	
+</script>
+		
+{template './common/mainfooter'}

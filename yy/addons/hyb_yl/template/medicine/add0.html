@@ -1,0 +1,850 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+    <link rel="stylesheet" href="{php echo HYB_YL_ADMIN}/layui/css/layui.css">
+    <link rel="stylesheet" href="{php echo HYB_YL_ADMIN}/index.css">
+  <style type="text/css">
+      .dataBox{
+        padding: 0 10px;
+        margin-bottom: 30px;
+        margin-top: 0;
+      }
+  </style>
+<style type="text/css">
+    .inputBox2{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .inputBox2 input  {
+        width: 30%
+    }
+    .dataBox1{
+        padding: 0!important;
+    }
+.layui-table{
+    width: 1200px;
+    margin: 0 auto;
+}
+.tabBox{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 25px;
+    overflow: hidden;
+    flex-wrap: wrap;
+    transition: all ease 0.2s;
+}
+.tabBox div{
+    padding: 0 5px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+.down{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.content{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    height: 600px;
+    border: 1px solid #f1f1f1;
+    margin: 0 auto;
+    background: #ffff;
+}
+.left{
+    border-right: 1px solid #f1f1f1;
+    height: 100%;
+    padding: 10px;
+    flex-grow: 0.1;
+}
+.right{
+    flex-grow: 0.9;
+}
+
+.layui-tab-title{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    border: none!important;
+}
+.layui-tab-title li{
+    display: flex!important;
+    justify-content: space-between;
+    align-items: center;
+}
+.zhe{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    padding-top: 80px;
+}
+*{
+    box-sizing: border-box;
+}
+.box{
+    background: #fff;
+    width: 1200px;
+    margin: 0 auto;
+}
+.close{
+    padding: 20px;
+    text-align: right;
+}
+.btnBox{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+ .cli_item{
+    display: flex;
+     border-bottom: 1px solid #eaeaea;
+}
+.cli_item li{
+    padding-right: 20px;
+     padding-bottom: 20px;
+}
+/*.select_one{margin-bottom: 0;display: inline-block;margin-right: 2rem;line-height: 2.0557rem;background: red;}
+.select_one input ~ .label-icon{background-size:15px 15px;background: url(/addons/hyb_yl/template/images/icon_circle-empty.png);}
+.select_one input:checked ~ .label-icon {background: url(/addons/hyb_yl/template/images/icon_circle-slelected.png);}*/
+ .rdio label:before {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    content: '';
+    display: inline-block;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    border: 1px solid #eee;
+    background: #fff
+}
+.rdio input[type=radio]:checked+label::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    display: inline-block;
+    font-size: 11px;
+    width: 10px;
+    height: 10px;
+    background-color: #44abf7;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px
+}
+.rdio-default input[type=radio]:checked+label:before {
+    border-color: #44abf7;
+}
+</style>
+</div>
+<div class="basics">
+    <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+        <li class="J-module-control {if $op=='site'} active {/if}" data-permission="8">
+            <a  href="{php echo $this->createWeburl('medicine',array('op'=>'site','type_id'=>$type_id))}" ><strong>商品列表</strong></a>
+        </li>
+        <li class="J-module-control {if $op=='add'} active {/if}" data-permission="10">
+            <a href="{php echo $this->createWeburl('medicine',array('op'=>'add','type_id'=>$type_id))}" ><strong>添加商品</strong></a>
+        </li>
+    </ul>
+    <div class="main-content">
+        <div class="panel panel-default">
+            <div class="panel-body collapse in">
+                <ul class="cli_item">
+                    <li style="color: #44abf7;">基本信息</li>
+                    <li>规格</li>
+                    <li>主体</li>
+                    <li>选择</li>
+                </ul>
+                <form  action="" method="post" novalidate="novalidate">
+                    <!-- <div> -->
+                    <div class="boxcontent">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-10">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">商品名称 <span class="asterisk">*</span></label>
+                                            <input type="text" class="form-control max128 J-isDisable" value="{$res['sname']}" required="" name="sname">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">商品金额</label>
+                                            <input type="text" class="form-control max128 J-isDisable" value="{$res['smoney']}" required="" name="smoney">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--规格开始-->
+                                <div flex="dir:left box:first;" class="step-block">
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="" class="control-label col-sm-1">商品销量</label>
+                                            <div class="form-controls col-sm-5" style="margin-left: 30px;">
+                                                <input type="text" name="spxl" id="spxl" value="{$res['spxl']}" class="form-control ng-pristine ng-untouched ng-valid ng-empty"  placeholder="" autocomplete="off">
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                            <div class="form-controls col-sm-4 help-block">商品销量</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="control-label col-sm-1">展示分类</label>
+                                            <div class="form-controls col-sm-5" style="margin-left: 30px;">
+                                                <select name="g_id" class="form-control">
+                                                    <option value="">--请选择--</option>
+                                                    {loop $cate_list $item}
+                                                    <option value="{$item['fid']}" {if $res['g_id'] == $item['fid']} selected="selected" {/if}>{$item['fenlname']}</option>
+                                                    {/loop}
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                            <div class="form-controls col-sm-4 help-block">所属分类</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--规格结束-->
+
+
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">商品库存</label>
+                                            <input type="number" class="form-control max128 J-isDisable" value="{$res['snum']}" required="" name="snum">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">单次最多购买</label>
+                                            <input type="number" class="form-control max128 J-isDisable" value="{$res['mostgt']}" required="" name="mostgt">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">商品供应商</label>
+                                            <input type="text" class="form-control max128 J-isDisable" value="{$res['supplier']}" required="" name="supplier">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">商品主体</label>
+                                            <div class="inpotBox">
+                                                <div class="col-sm-9"  style="padding: 0;">
+                                                    <div class="form-group inputBox2">
+                                                        主体名称
+                                                        <input type="text" name="t_msg[]" class="form-control max2000 J-content" value="" required="">
+                                                        主体描述
+                                                        <input type="text" name="t_msg1[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item hidden"><i class="fa fa-minus"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">推荐 <span class="gai_tishi">推荐后在商品首页展示</span></label>
+                                            <div class="pianshen_kaiqi">
+                                                <input type="text" name="rec" value="{$res['rec']}" style="display: none;" class="zt"> 
+                                                <div class="pianshen_kaiqi_xuanze {if $res['rec'] =='1'} pianshen_kaiqi_xuanzes {/if}"
+                                                data-val='1'>
+                                                    <div class="pianshen_kaiqi_xuanze_title  {if $res['rec'] =='1'} pianshen_kaiqi_xuanze_titles {/if}">开启</div>
+                                                    <div class="pianshen_kaiqi_xuanze_img {if $res['rec'] =='1'} pianshen_kaiqi_xuanze_imgs {/if} "><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                                </div>
+                                                <div class="pianshen_kaiqi_xuanze  {if $res['rec'] =='0'} pianshen_kaiqi_xuanzes {/if}"
+                                                data-val='0'>
+                                                    <div class="pianshen_kaiqi_xuanze_title {if $res['rec'] =='0'} pianshen_kaiqi_xuanze_titles {/if}">不开启</div>
+                                                    <div class="pianshen_kaiqi_xuanze_img {if $res['rec'] =='0'} pianshen_kaiqi_xuanze_imgs {/if}"><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">是否上架 <span class="gai_tishi">若不选择默认下架</span></label>
+                                            <div class="pianshen_kaiqi">
+                                                <input type="text" name="state" value="{$res['state']}" style="display: none;" class="state"> 
+                                                <div class="pianshen_kaiqi_xuanze_u {if $res['state'] =='1'} pianshen_kaiqi_xuanzes_u {/if}">
+                                                    <div class="pianshen_kaiqi_xuanze_title_u  {if $res['state'] =='1'} pianshen_kaiqi_xuanze_titles_u {/if}">开启</div>
+                                                    <div class="pianshen_kaiqi_xuanze_img_u {if $res['state'] =='1'} pianshen_kaiqi_xuanze_imgs_u {/if} "><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                                </div>
+                                                <div class="pianshen_kaiqi_xuanze_u  {if $res['state'] =='0'} pianshen_kaiqi_xuanzes_u {/if}">
+                                                    <div class="pianshen_kaiqi_xuanze_title_u {if $res['state'] =='0'} pianshen_kaiqi_xuanze_titles_u {/if}">不开启</div>
+                                                    <div class="pianshen_kaiqi_xuanze_img_u {if $res['state'] =='0'} pianshen_kaiqi_xuanze_imgs_u {/if}"><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group" style="display: block;">
+                                            <label class="control-label" style="width: auto;">商品缩略图<span class="gai_tishi">商品其他图片（建议尺寸 172*172）</span></label>
+                                             {php echo tpl_form_field_image('sthumb', $res['sthumb'])}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group" style="display: block;">
+                                            <label class="control-label" style="width: auto;">商品其他图片<span class="gai_tishi">（建议尺寸411X411）</span></label>
+                                             {php echo  tpl_form_field_multi_image('spic', $res['spic'])}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group" style="display: block;">
+                                            <label class="control-label" style="width: auto;">商品描述<span class="gai_tishi">商品描述文字不易过长</span></label>
+                                            <textarea class="form-control max2000" rows="5" name="sdescribe">{$res['sdescribe']}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <style type="text/css">
+                                            .view{
+                                                overflow-y: auto; height: 8272px; cursor: text;
+                                            }
+                                        </style>
+                                        <div class="form-group" style="display: block;">
+                                            <label class="control-label" >商品详细内容</label>
+                                            {php echo tpl_ueditor('scontent', $res['scontent']);}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                    <div class="boxcontent">
+                        <div flex="dir:left box:first;" class="step-block">
+                            <div>
+                                <div id="guige"></div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-1 required" >开启规格参数</label>
+                                    <div class="form-controls col-sm-5" style="margin-left: 30px; display: flex;">
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="gg_type" id="g_guigeopen" value="1"  {if $items['gg_type'] == '1'} checked{/if} ><label for="g_guigeopen">是</label>
+                                            </div>
+                                        </div>
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="gg_type" id="g_guigeclose" value="0"  {if $items['gg_type'] == '0'} checked{/if}><label for="g_guigeclose">否</label>
+                                            </div>
+                                        </div>
+                                        <!-- <label class="select_one" >
+                                            <input type="radio" name="gg_type" id="g_guigeopen"  value="1" {if $items['gg_type'] == '1'} checked{/if} class="custom-control-input" />
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">是</span>
+                                        </label>
+                                        <label class="select_one">
+                                            <input type="radio" name="gg_type" id="g_guigeclose"  value="0" {if $items['gg_type'] == '0'} checked{/if} checked="checked" class="custom-control-input" />
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">否</span>
+                                        </label> -->
+                                        <script type="text/javascript">
+                                            $("#g_guigeopen").click(function(){
+                                                console.log(1)
+                                                $("#guige_box").show();
+                                                $("#attr-edit-block").show();
+                                                $("#kucun").hide();
+                                                $('#BtnBox').show()
+                                            })
+                                            $("#g_guigeclose").click(function(){
+                                                console.log(2)
+                                                $("#kucun").show();
+                                                $("#attr-edit-block").hide();
+                                                $("#guige_box").hide();
+                                                $('#BtnBox').hide()
+                                            })
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="row" id="BtnBox" style="display: none;">
+                                    <div class="dataBox">
+                                        <ul class="topBtn">
+                                            <button type="button" data-arr="{$json_arr}" class="btn-primary add" id="btn-img-upload">添加规格</button>
+                                        </ul>
+                                        <div class="dataBox1 col-sm-9">
+                                       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxcontent">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">商品主体</label>
+                                    <div class="inpotBox">
+                                        <div class="col-sm-9"  style="padding: 0;">
+                                            <div class="form-group inputBox2">
+                                                主体名称
+                                                <input type="text" name="t_msg[]" class="form-control max2000 J-content" value="" required="">
+                                                主体描述
+                                                <input type="text" name="t_msg1[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item hidden"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxcontent">
+                        <div flex="dir:left box:first;" class="step-block">
+                            <div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-1" >是否包邮</label>
+                                     <div class="form-controls col-sm-5" style="margin-left: 30px;display: flex;">
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="search_type" id="y_baoyou" value="1" {if $res['g_baoyou'] == '1'} checked{/if}><label for="y_baoyou">是</label>
+                                            </div>
+                                        </div>
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="search_type" id="x_baoyou" value="0" {if $res['g_baoyou'] == '0'} checked{/if}><label for="x_baoyou">否</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- <label class="select_one" >
+                                            <input type="radio" name="g_baoyou" id="y_baoyou"  value="1" {if $res['g_baoyou'] == '1'} checked{/if} class="custom-control-input"/>
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">是</span>
+                                        </label>
+                                        <label class="select_one" >
+                                            <input type="radio" name="g_baoyou" id="x_baoyou"  value="0" {if $res['g_baoyou'] == '0'} checked{/if} class="custom-control-input"/>
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">否</span>
+                                        </label> -->
+                                        <script type="text/javascript">
+                                            $("#x_baoyou").click(function(){
+                                                $(".kuaidi_box").show();
+                                            })
+                                            $("#y_baoyou").click(function(){
+                                                $(".kuaidi_box").hide();
+                                            })
+                                        </script>
+                                    </div>
+                                </div>
+                              
+                                <div class="form-group kuaidi_box"  style="display: none" >
+                                    <label for="" class="control-label col-sm-1">快递费</label>
+                                    <div class="form-controls col-sm-5" style="margin-left: 30px;">
+                                        <input type="text" name="g_kuaidi"  value="{$items['g_kuaidi']}" class="form-control ng-pristine ng-untouched ng-valid ng-empty"  placeholder="" autocomplete="off">
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="form-controls col-sm-4 help-block">快递费</div>
+                                </div>
+                               
+                                <!-- <div class="form-group">
+                                    <label for="" class="control-label col-sm-1">商品销量</label>
+                                    <div class="form-controls col-sm-5" style="margin-left: 30px;">
+                                        <input type="text" name="spxl" id="spxl" value="{$res['spxl']}" class="form-control ng-pristine ng-untouched ng-valid ng-empty"  placeholder="" autocomplete="off">
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="form-controls col-sm-4 help-block">商品销量</div>
+                                </div> -->
+                      
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2" >是否开启会员权益</label>
+                                     <div class="form-controls col-sm-5" style="margin-left: 30px;display: flex;">
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="adminqy" id="adminqyYes" value="1" {if $res['adminqy'] == '1'} checked{/if} ><label for="adminqyYes">是</label>
+                                            </div>
+                                        </div>
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="adminqy" id="adminqyNo" value="0" {if $res['adminqy'] == '0'} checked{/if}><label for="adminqyNo">否</label>
+                                            </div>
+                                        </div>
+                                        <!-- <label class="select_one">
+                                            <input type="radio" name="adminqy"  value="1" {if $res['adminqy'] == '1'} checked{/if} class="custom-control-input"/>
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">是</span>
+                                        </label>
+                                        <label class="select_one">
+                                            <input type="radio" name="adminqy"  value="0" {if $res['adminqy'] == '0'} checked{/if} class="custom-control-input"/>
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">否</span>
+                                        </label> -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2" >是否处方药</label>
+                                     <div class="form-controls col-sm-5" style="margin-left: 30px; display: flex;">
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="ifcfy" id="ifcfyYes" value="1"  {if $res['ifcfy'] == '1'} checked{/if} ><label for="ifcfyYes">是</label>
+                                            </div>
+                                        </div>
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="ifcfy" id="ifcfyNo" value="0" {if $res['ifcfy'] == '0'} checked{/if}><label for="ifcfyNo">否</label>
+                                            </div>
+                                        </div>
+                                        <!-- <label class="select_one">
+                                            <input type="radio" name="ifcfy"  value="1" {if $res['ifcfy'] == '1'} checked{/if} class="custom-control-input"/>
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">是</span>
+                                        </label>
+                                        <label class="select_one">
+                                            <input type="radio" name="ifcfy"  value="0" {if $res['ifcfy'] == '0'} checked{/if} class="custom-control-input"/>
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">否</span>
+                                        </label> -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="control-label col-sm-2" >是否开启优惠券权益</label>
+                                     <div class="form-controls col-sm-5" style="margin-left: 30px;display: flex;">
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="yhqy" id="yhqyYes" value="1"  {if $res['yhqy'] == '1'} checked{/if} ><label for="yhqyYes">是</label>
+                                            </div>
+                                        </div>
+                                        <div class="mr10">
+                                            <div class="rdio rdio-default mt5">
+                                                <input type="radio" class="J-search-type" name="yhqy" id="yhqyNo" value="0" {if $res['yhqy'] == '0'} checked{/if}><label for="yhqyNo">否</label>
+                                            </div>
+                                        </div>
+                                        <!-- <label class="select_one">
+                                            <input type="radio" name="yhqy"  value="1" {if $res['yhqy'] == '1'} checked{/if} class="custom-control-input"/>
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">是</span>
+                                        </label>
+                                        <label class="select_one">
+                                            <input type="radio" name="yhqy"  value="0" {if $res['yhqy'] == '0'} checked{/if} class="custom-control-input"/>
+                                            <span class="label-icon"></span>
+                                            <span class="label-text">否</span>
+                                        </label> -->
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="" class="control-label col-sm-1">展示分类</label>
+                                    <div class="form-controls col-sm-5" style="margin-left: 30px;">
+                                        <select name="g_id" class="form-control">
+                                            <option value="">--请选择--</option>
+                                            {loop $cate_list $item}
+                                            <option value="{$item['fid']}" {if $res['g_id'] == $item['fid']} selected="selected" {/if}>{$item['fenlname']}</option>
+                                            {/loop}
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="form-controls col-sm-4 help-block">所属分类</div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <input name="token" type="hidden" value="{$_W['token']}" />
+                    <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list.js"></script>
+<script type="text/javascript">
+    $.extend({
+        tab:function(a,b){
+            a.click(function(){
+               var index=$(this).index();
+               console.log(index)
+                a.css({"color":"#000"}).eq(index).css({"color":"#44abf7"})
+                b.hide().eq(index).show();
+            })
+        }
+    })
+    $.tab($(".cli_item >li"),$(".boxcontent"));
+    $(".pianshen_kaiqi_xuanze_u").click(function(){
+    for(var i = 0;i<$(".pianshen_kaiqi_xuanze_u").length;i++){
+        $(".pianshen_kaiqi_xuanze_u").eq(i).removeClass("pianshen_kaiqi_xuanzes_u").children().eq(0).removeClass("pianshen_kaiqi_xuanze_titles_u").next().removeClass("pianshen_kaiqi_xuanze_imgs_u");
+    }
+    $(this).addClass("pianshen_kaiqi_xuanzes_u").children().eq(0).addClass("pianshen_kaiqi_xuanze_titles_u").next().addClass("pianshen_kaiqi_xuanze_imgs_u");
+    if($(this).children().eq(0).html() == "开启"){
+        $(".pian_lunbu").css("display","block");
+        //1
+        $(".state").val("1");
+    }else{
+        $(".pian_lunbu").css("display","none");
+       //0
+        $(".state").val("0");
+    }
+
+})
+$(".pian_gai_lun_box_img_div").click(function(){
+    $(this).parent().remove()
+})
+</script>
+
+<script type="text/javascript">
+   var sub_num = 9000;
+   var arr = [];
+   var url = window.location.href;
+   var tid = "{$tid}"
+   $.ajax({  
+        url: url, 
+        type: "POST",  
+        dataType: "json",  
+        cache:false, 
+        data: {op:'jseon',tid:tid},  
+        success: function(json){ 
+          //   console.log(json)
+          //  for(var i=0;i<json.length;i++){
+          //       arr.push(json[i])
+          //  }
+          // addData()
+        }})
+   
+    //全部删除
+    $('.allDel').on('click',function () {
+        arr=[]
+        addData()
+    })
+    //删除
+    $(document).on('click', '.del', function () {
+        var index = $(this).parents('.datas').attr('data-uid')
+        arr.splice(index, 1)
+        addData()
+    })
+    //置顶
+    $(document).on('click', '.zd', function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        var arr1=arr.splice(index, 1);
+        arr.unshift(arr1[0]);
+        addData()
+    });
+
+    //置地
+    $(document).on('click', '.zdi', function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        var arr1=arr.splice(index, 1);
+        arr.push(arr1[0]);
+        addData()
+    });
+    //上移
+    $(document).on('click', '.sy', function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        var arr1=arr.splice(index, 1);
+        if(index==0){
+            var index=1
+        }
+            arr.splice(index - 1, 0, arr1[0])
+            addData()
+    });
+    //下移
+    $(document).on('click', '.xy', function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        var arr2=arr.splice(index,1)
+        arr.splice(index*1+1, 0, arr2[0])
+        addData()
+    });
+    //关闭遮罩
+    $('.close').on('click',function () {
+        $('.zhezhao').hide()
+    })
+    //弹出遮罩
+    $(document).on('click','.btns',function () {
+         input=$(this).parents('.link').find('input')
+        $('.zhezhao').show()
+
+    });
+
+    //选择链接
+    $('.choice').on('click',function () {
+        var link=$(this).parents('tr').find('.linkData').text().trim()
+        input.val(link)
+        input.blur()
+        $('.zhezhao').hide()
+    });
+    //失去焦点事件
+    $(document).on('blur','.titleInput',function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        arr[index].title=$(this).val()
+    })
+    $(document).on('blur','.money',function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        arr[index].money=$(this).val()
+    })
+    $(document).on('blur','.number',function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        arr[index].kucun=$(this).val()
+    })
+    $(document).on('blur','.text1',function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        arr[index].text=$(this).val()
+    })
+    $(document).on('blur','.zhongl',function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        arr[index].text=$(this).val()
+    })
+    $(document).on('blur','.orderbh',function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        arr[index].text=$(this).val()
+    })
+    function addData() {
+        console.log(arr,'11')
+        $('.dataBox1').html('');
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i].src==''){
+                var src=''
+            }else {
+                var src=arr[i].src
+            }
+            $('.dataBox1').append(`
+            <div class="datas" data-uid="${i}">
+                    <div class="left">
+                        <div class="imgBox"><img src="${src}" alt="" ></div>
+                        <input type="hidden" name="gg_thumb[]" value="${src}">
+                        <div class="title1" style="height:auto">
+                            <div>
+                                <div class="text">商品名称</div>
+                                <input type="text" placeholder="请输入商品名称" class="form-control titleInput" value="${arr[i].title}" name="gg_name[]">
+                            </div>
+                            <div class="link">
+                                <div class="text">商品描述</div>
+                                <input type="text" placeholder="请输入商品描述" class="form-control text1" value="${arr[i].text}" name="gg_text[]">
+                            </div>
+                            <div class="link">
+                                <div class="text">商品金额</div>
+                                <input type="text" placeholder="请输入商品金额" class="form-control money" value="${arr[i].money}" name="gg_money[]">
+                            </div>
+                             <div class="link">
+                                <div class="text">商品重量</div>
+                                <input type="text" placeholder="请输入商品重量" class="form-control zhongl" value="${arr[i].zhongl}" name="zhongl[]">g
+                            </div>
+                            <div class="link">
+                                <div class="text">商品编号</div>
+                                <input type="text" placeholder="请输入商品编号" class="form-control orderbh" value="${arr[i].orderbh}" name="orderbh[]">
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="right">
+                        <li class="btn-default zd">置顶</li>
+                        <li class="btn-default sy">上移</li>
+                        <li class="btn-default xy">下移</li>
+                        <li class="btn-default zdi">置底</li>
+                        <li class="btn-primary btn-replace-pic">替换</li>
+                        <li class="btn-danger del">删除</li>
+                    </ul>
+                </div>
+              `)
+        }
+    }
+                // 换图
+    $(document).on('click', '.btn-replace-pic', function () {
+        let $_this = $(this).closest('.photo-item');
+        console.log($(this))
+        var that=$(this)
+        var index=$('.btn-replace-pic').index(this)
+        require(["util"], function(util){
+            options = '.str_replace("\"", "\'", json_encode($options)).';
+            util.image('', function(url){
+                if(url.url){
+                    $_this.find('.input-attr').val(url.attachment);
+                    that.parents('.datas').find('img').attr('src',url.url)
+                    arr[index].src=url.url
+                }
+                if(url.media_id){
+                    $_this.find('.input-attr').val(url.media_id);
+                    that.parents('.datas').find('img').attr('src',url.url)
+                }
+            }, options);
+        });
+    });
+     //添加
+    $('.add').on('click',function () {
+        var $item_num = $('.photo-list').children('.photo-item').length;
+            require(["util"], function(util){
+                options = '.str_replace("\"", "\'", json_encode($options)).';
+                util.image('', function(url){
+                    
+                    $obj = $('.photo-clone .photo-item-common').clone(true);
+                     
+                    if(url.url){
+                        $obj.find('.imgBox img').attr('src', url.url);
+                        $('.dataBox1').append($obj);
+                        sub_num += 1;
+                         var arr1={
+                            src:url.url,
+                            title:'',
+                            money:'',
+                            text:'',
+                            zhongl:'',
+                            orderbh:'',
+                        }
+
+                    arr.push(arr1)
+                    addData()
+                    }
+                }, options);
+            });
+
+    })
+</script>
+                        <script type="text/javascript">
+                           $(document).on('click','.J-add-content-item',function(){
+                                        var conts=$(this).parents('.inpotBox').find('.J-content').val()
+                                    $(this).parents('.inpotBox').after(`<div class="inpotBox">
+                                        <div class="col-sm-9"  style="padding: 0;">
+                                            <div class="form-group inputBox2">
+                                                主体名称
+                                                <input type="text" name="t_msg[]" class="form-control max2000 J-content" value="${conts}" required="">
+                                                主体描述
+                                                <input type="text" name="t_msg1[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item hidden"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </div>`)
+                                        if($('.inpotBox').length>0){
+                                            $('.J-del-content-item').removeClass('hidden')
+                                        }
+
+                                })
+                                    $(document).on('click','.J-del-content-item',function(){
+                                            $(this).parents('.inpotBox').remove()
+                                            console.log($('.inpotBox').length)
+                                            $('.inpotBox').last().find('.J-add-content-item').removeClass('hidden')
+                                                if($('.inpotBox').length-1<=0){
+                                                    $('.J-del-content-item').addClass('hidden')
+                                                    $('.J-add-content-item').removeClass('hidden')
+                                          } 
+
+                                      })
+
+                        </script> 
+</html> 

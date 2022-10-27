@@ -1,0 +1,150 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li ><a href="/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=index.banner&ac=banner">广告位</a></li>
+	<li class="active"><a href="/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=index.banneradd&ac=banneradd">添加广告</a></li>
+	</ul>
+<div class="app-content">
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" >
+			<input type="hidden" name="id" value="" />
+			<div class="panel panel-default">
+				<div class="panel-heading">广告位设置</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">排序</label>
+						<div class="col-sm-9">
+							<input type="text" name="banner[displayorder]"  placeholder="默认排序为0" autocomplete="off" class="form-control" value="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">广告位标题<span class="must-fill">*</span></label>
+						<div class="col-sm-9">
+							<input type="text" name="banner[name]" required  autocomplete="off" class="form-control" value="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">广告位图片<span class="must-fill">*</span></label>
+						<div class="col-sm-9">
+							
+		<script type="text/javascript">
+			function showImageDialog(elm, opts, options) {
+				require(["util"], function(util){
+					var btn = $(elm);
+					var ipt = btn.parent().prev();
+					var val = ipt.val();
+					var img = ipt.parent().next().children();
+					options = {'global':false,'class_extra':'','direct':true,'multiple':false,'fileSizeLimit':5120000};
+					util.image(val, function(url){
+						if(url.url){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.attachment);
+							ipt.attr("filename",url.filename);
+							ipt.attr("url",url.url);
+						}
+						if(url.media_id){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.media_id);
+						}
+					}, options);
+				});
+			}
+			function deleteImage(elm){
+				$(elm).prev().attr("src", "./resource/images/nopic.jpg");
+				$(elm).parent().prev().find("input").val("");
+			}
+		</script>
+		<div class="input-group ">
+			<input type="text" name="banner[thumb]" value="" class="form-control" autocomplete="off">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" onclick="showImageDialog(this);">选择图片</button>
+			</span>
+		</div>
+		<div class="input-group " style="margin-top:.5em;">
+			<img src="./resource/images/nopic.jpg" onerror="this.src='./resource/images/nopic.jpg'; this.title='图片未找到.'" class="img-responsive img-thumbnail"  width="150" />
+			<em class="close" style="position:absolute; top: 0px; right: -14px;" title="删除这张图片" onclick="deleteImage(this)">×</em>
+		</div>							<span class="help-block">建议图片大小为640*100，所有图片比例一样。</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">广告位连接</label>
+						<div class="col-sm-9">
+							<div class="input-group form-group" style="margin: 0;">
+								<input type="text" name="banner[link]"  class="form-control valid" readonly="readonly" placeholder="" id="advlink" value="">
+								<span data-input="#advlink" data-toggle="selectUrl" class="input-group-addon btn btn-default">选择链接</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">是否显示</label>
+						<div class="col-sm-9">
+							<div class="radio-inline">
+								<input type="radio" name='enabled' value='1' >是
+							</div>
+							<div class="radio-inline">
+								<input type="radio" name='enabled' value='0' checked>否
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-9">
+					<input type="submit" name="submit" lay-submit value="提交" class="btn btn-primary min-width" />
+					<input type="hidden" name="token" value="da1c10f4" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	$('input[name="banner[thumb]"]').attr('required','required');
+	myrequire(['layui'],function(){
+		layui.use(['layer','form','laydate'], function(){
+		  	var layer = layui.layer,
+			form = layui.form();
+		});
+	});
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	
+    <script>
+		require(['bootstrap'], function ($) {
+		    $('[data-toggle="tooltip"]').tooltip({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="popover"]').popover({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="dropdown"]').dropdown({
+	            container: $(document.body)
+	        });
+	    });
+		myrequire(['js/init']);
+		$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+			$('.app-login-info-sel').show();
+		});
+		$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+			$('.app-login-info-sel').hide();
+		});
+		$('.app-login-info-sel .login-out').hover(function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+		},function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+		});
+	</script>
+	</body>
+</html>

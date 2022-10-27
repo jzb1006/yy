@@ -1,0 +1,84 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li><a href="{php echo $this->createWebUrl('team',array('op'=>'hjsort'))}">患教分类管理</a></li>
+	<li class="active"><a href="{php echo $this->createWebUrl('team',array('op'=>'hjsortadd'))}">添加患教分类</a></li>
+	</ul>
+<div class="app-content">
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+			<div class="panel panel-default" id="step1">
+				<div class="panel-heading">分类管理</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">患教名称<span class="must-fill">*</span></label>
+						<div class="col-sm-9">
+							<input type="text" name="hj_name" required autocomplete="off" class="form-control" value="{$item['hj_name']}">
+						</div>
+					</div>
+                  	<div class="form-group">
+						<label class="col-sm-2 control-label">患教排序<span class="must-fill">*</span></label>
+						<div class="col-sm-9">
+							<input type="text" name="sord" required autocomplete="off" class="form-control" value="{$item['sord']}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">上级id<span class="must-fill">*</span></label>
+						<div class="col-sm-9">
+							<select name="pid" class="form-control">
+                                <option value="">默认为一级</option>
+                                {loop $parent $pa}
+                            	<option value="{$pa['hj_id']}" {if $pid == $pa['hj_id'] || $item['pid'] == $pa['hj_id']} selected="" {/if}>{$pa['hj_name']}</option>
+                            	{/loop}
+                            </select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">分类图片</label>
+						<div class="col-sm-9">
+							{php echo tpl_form_field_image('thumb', $item['thumb'])}
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">是否开启</label>
+						<div class="col-sm-9">
+                            <label class="radio-inline">
+                                <input type="radio" name='status' value='1' {if $item['status'] == '1'} checked="" {/if}>开启
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name='status' value='0' {if $item['status'] == '0'} checked="" {/if}>关闭
+                            </label>
+						</div>
+					</div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-9">
+                            <input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+                            <input type="hidden" name="token" value="c5514e9f" />
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	myrequire(['layui'],function(){
+		layui.use(['layer','form','laydate'], function(){
+		  	var layer = layui.layer,
+			form = layui.form();
+		});
+	});
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	</body>
+</html>
+

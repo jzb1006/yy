@@ -1,0 +1,109 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			              <div class="app-container-right">
+			
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-list">
+			<form action="./index.php" method="get" class="form-horizontal" role="form">
+				<input type="hidden" name="c" value="site" />
+	            <input type="hidden" name="a" value="entry" />
+	            <input type="hidden" name="m" value="hyb_yl" />
+	            <input type="hidden" name="op" value="profit_list" />
+				<input type="hidden" name="ac" value="pharmacistlist" />
+				<input type="hidden" name="do" value="medicine" />
+				<input type="hidden" name="status" value="" />
+				<input type="hidden" name="hid" value="{$_SESSION['hid']}" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label">时间筛选</label>
+					
+					<div class="col-md-2">
+						<script type="text/javascript">
+							require(["daterangepicker"], function(){
+								$(function(){
+									$(".daterange.daterange-date").each(function(){
+										var elm = this;
+										$(this).daterangepicker({
+											startDate: $(elm).prev().prev().val(),
+											endDate: $(elm).prev().val(),
+											format: "YYYY-MM-DD"
+										}, function(start, end){
+											$(elm).find(".date-title").html(start.toDateStr() + " 至 " + end.toDateStr());
+											$(elm).prev().prev().val(start.toDateStr());
+											$(elm).prev().val(end.toDateStr());
+										});
+									});
+								});
+							});
+						</script>
+						<input name="start" type="hidden" value="{$start}" />
+						<input name="end" type="hidden" value="{$end}" />
+						<button class="btn btn-default daterange daterange-date" type="button"><span class="date-title">{$start} 至 {$end}</span> <i class="fa fa-calendar"></i></button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">关键字筛选</label>
+					<div class="col-sm-9">
+						<input type="text" name="keyword" class="form-control" value="{$keyword}" placeholder="输入关键字筛选"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-md-9">
+						<button class="btn btn-primary">筛选</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th style="width:100px;text-align:center;">id</th>
+						<th style="width:100px;text-align:center;">提现金额</th>
+						<th style="width:100px;text-align:center;">到账金额</th>
+						<th style="width:60px; text-align:center">提现时间</th>
+						<th style="width:200px; text-align:center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				{loop $list $item}
+					<tr>
+						<td class="text-center">
+							{$item['id']}					
+						</td>
+						<td class="text-center">
+							{$item['money']}				
+						</td>
+                        <td class="text-center">
+							{$item['old_money']}			
+						</td>
+						<td class="text-center">
+							{php echo date("Y-m-d H:i:s",$item['created'])}					
+						</td>
+						<td class="text-center" style="text-align: center;">
+                   		 	
+                    		<a class="btn btn-danger btn-sm" href="{php echo $this->createWeburl('medicine',array('op'=>'del_cash','id'=>$item['id'],'ac'=>'del_cash','y_id'=>$id,'hid'=>$_SESSION['hid']))}" data-toggle="ajaxRemove" data-confirm="确定要删除吗？" title="删除">删除</a> 
+						</td>
+					</tr>
+					{/loop}
+									</tbody>
+			</table>
+		</div>
+		{$pager}
+	</div>
+</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>系统</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	</body>
+</html>
+

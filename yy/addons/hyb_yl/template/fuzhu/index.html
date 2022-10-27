@@ -1,0 +1,1515 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+                </div>
+                <div class="pageheader hidden">
+                    <h2><i class="fa fa-stethoscope"></i> 辅助检查</h2>
+                </div>
+                <div class="contentpanel">
+                    <ul class="nav nav-tabs patient-tabs">
+                        <li class="active"><a href="#today" data-toggle="tab"><strong>今日病人</strong></a></li>
+                        <li id="J-da-special-need-patient">
+                            <a href="#special" data-toggle="tab">
+                                <strong>特需病人</strong>
+                                <small class="title-remark">(历史待检查)</small>
+                            </a>
+                        </li>
+                        <li id="J-da-delivery-specimens" class="J-module-control" data-permission="80"><a href="#history" data-toggle="tab" ><strong>外送标本</strong></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 今日病人 -->
+                        <div class="tab-pane active" id="today">
+                            <div class="row mb10">
+                                <form class="form-inline" method="post">
+                                    <div class="col-sm-4">
+                                        <div class="btn-group J-select-box">
+        <span class="btn btn-sm btn-white active" data-status="">全部</span>
+        <span class="btn btn-sm btn-white " data-status="1"><i class="fa fa-circle red"></i> 待检查0人</span>
+        <span class="btn btn-sm btn-white " data-status="2"><i class="fa fa-circle green"></i> 检查中0人</span>
+        <span class="btn btn-sm btn-white " data-status="3"><i class="fa fa-circle end"></i> 已完成0人</span>
+    </div>
+                                    </div>
+                                    <div class="col-sm-8 pull-right text-right">
+                                        <div class="form-group mr10 mt2">
+                                            <label class="control-label">收费状态：</label>
+                                            <div class="input-group mt5 text-left">
+                                                <div class="ckbox ckbox-default">
+                                                    <input type="checkbox" value="0" id="J-today-status-1" name="charged" checked="" class="J-today-charged-status">
+                                                    <label for="J-today-status-1" class="pr10">未收费</label>
+                                                </div>
+                                            </div>
+                                            <div class="input-group mt5 text-left">
+                                                <div class="ckbox ckbox-default">
+                                                    <input type="checkbox" value="1" id="J-today-status-2" name="charged" checked="" class="J-today-charged-status">
+                                                    <label for="J-today-status-2" class="pr10">已收费</label>
+                                                </div>
+                                            </div>
+                                            <div class="input-group mt5 text-left">
+                                                <div class="ckbox ckbox-default">
+                                                    <input type="checkbox" value="2" id="J-today-status-3" name="charged" class="J-today-charged-status">
+                                                    <label for="J-today-status-3" class="pr10">已退费</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr5">
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 J-date mbsc-comp" placeholder="开单日期" name="date" type="text" size="11" id="mobiscroll1560581649300" readonly="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group input-group input-group-sm mb10">
+                                            <input type="text" class="form-control w200p" placeholder="请输入姓名或手机或病案号" id="J-search-input">
+                                            <span class="input-group-btn">
+                                                <button id="J-search-submit" type="button" class="btn btn-default btn-search"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- 病人列表 -->
+                            <div class="bloglist row" id="J-today-list-wrap"></div>
+                            <div class="J-pager-wrap" style="display: none;">
+                            </div>
+                        </div>
+                        <!-- 今日病人 -->
+                        <!-- 特需病人 -->
+                        <div class="tab-pane" id="special">
+                            <div class="row mb10">
+                                <form class="form-inline" method="post">
+                                    <div class="col-sm-5">
+                                        <div class="btn-group J-special-box">
+        <span class="btn btn-sm btn-white active" data-status="">全部</span>
+        <span class="btn btn-sm btn-white " data-status="1"><i class="fa fa-circle red"></i> 待检查16897人</span>
+        <span class="btn btn-sm btn-white " data-status="2"><i class="fa fa-circle green"></i> 检查中2178人</span>
+        <span class="btn btn-sm btn-white " data-status="3"><i class="fa fa-circle end"></i> 已完成0人</span>
+    </div>
+                                    </div>
+                                    <div class="col-sm-7 pull-right text-right" id="J-search-special-form">
+                                        <div class="form-group mr10 mt2">
+                                            <label class="control-label">收费状态：</label>
+                                            <div class="input-group mt5 text-left">
+                                                <div class="ckbox ckbox-default">
+                                                    <input type="checkbox" value="0" id="J-special-status-1" name="charged" checked="" class="J-special-charged-status">
+                                                    <label for="J-special-status-1" class="pr10">未收费</label>
+                                                </div>
+                                            </div>
+                                            <div class="input-group mt5 text-left">
+                                                <div class="ckbox ckbox-default">
+                                                    <input type="checkbox" value="1" id="J-special-status-2" name="charged" checked="" class="J-special-charged-status">
+                                                    <label for="J-special-status-2" class="pr10">已收费</label>
+                                                </div>
+                                            </div>
+                                            <div class="input-group mt5 text-left">
+                                                <div class="ckbox ckbox-default">
+                                                    <input type="checkbox" value="2" id="J-special-status-3" name="charged" class="J-special-charged-status">
+                                                    <label for="J-special-status-3" class="pr10">已退费</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group input-group-sm pull-right mb10">
+                                            <input type="text" class="hidden">
+                                            <input type="text" class="form-control J-search-input w200p" name="patient_name" placeholder="请输入姓名或手机或病案号">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default btn-search J-search-special"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- 病人列表 -->
+                            <div class="bloglist row" id="J-special-list-wrap"><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=002112350"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-success room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=002112350">吴佳佳</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="18岁7月4天">（女 18岁）</small></h3>
+                                <span class="text-nowrap">检查：常规心电图检查(甲状腺),常规心电图检查(胸片-侧位),B超检查(盆腔)</span>
+                                <span class="text-nowrap">
+                                    检查中 
+                                    / 等候1天 / 
+                                    
+                                        未收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：王先生（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+
+                            <!-- 检查中 -->
+                            
+                                <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查中<em>(3)</em></a></li>
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-danger panel-alt widget-photoday img-list">
+                    
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="三级会员"></span>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=002100239"><img src="https:///japi/session/102010?id=2217&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-danger room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=002100239">杨国轩</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="5岁5月6天">（男 5岁5月6天）</small></h3>
+                                <span class="text-nowrap">检查：经直肠彩色多普勒超声检查(阑尾),经直肠彩色多普勒超声检查(膀胱)</span>
+                                <span class="text-nowrap">
+                                    待检查 
+                                    / 等候1天 / 
+                                    
+                                        未收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：张医生（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+                                <li><a href="javascript:void(0);" class="J-modal-checked" data-id="77681" data-text="[{&quot;id&quot;:817,&quot;bill_id&quot;:43671,&quot;name&quot;:&quot;经直肠彩色多普勒超声检查(阑尾)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;},{&quot;id&quot;:817,&quot;bill_id&quot;:43672,&quot;name&quot;:&quot;经直肠彩色多普勒超声检查(膀胱)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;}]" data-name="杨国轩">待检查<em class="text-danger">(2)</em></a></li>
+                            
+
+                            <!-- 检查中 -->
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-danger panel-alt widget-photoday img-list">
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=002113201"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/child-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-danger room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=002113201">任小强</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="8岁5月14天">（男 8岁5月14天）</small></h3>
+                                <span class="text-nowrap">检查：心电图测试用(心脏),24小时动态心电图(甲状腺)</span>
+                                <span class="text-nowrap">
+                                    待检查 
+                                    / 等候3天 / 
+                                    
+                                        未收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：曾先生（复诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+                                <li><a href="javascript:void(0);" class="J-modal-checked" data-id="77601" data-text="[{&quot;id&quot;:1212,&quot;bill_id&quot;:43666,&quot;name&quot;:&quot;心电图测试用(心脏)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;1&quot;},{&quot;id&quot;:830,&quot;bill_id&quot;:43667,&quot;name&quot;:&quot;24小时动态心电图(甲状腺)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;含心率变异性分析&quot;}]" data-name="任小强">待检查<em class="text-danger">(2)</em></a></li>
+                            
+
+                            <!-- 检查中 -->
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=00020121051"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-success room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=00020121051">吴佳佳</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="20岁11月4天">（男 20岁）</small></h3>
+                                <span class="text-nowrap">检查：颅内段血管彩色多普勒超声(阴道)</span>
+                                <span class="text-nowrap">
+                                    检查中 
+                                    / 等候3天 / 
+                                    
+                                        已收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：吴朦佳（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+
+                            <!-- 检查中 -->
+                            
+                                <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查中<em>(1)</em></a></li>
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=002115601"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/unknown-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-success room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=002115601">吱吱吱吱吱</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="26岁9月26天">（未知 26岁）</small></h3>
+                                <span class="text-nowrap">检查：彩超常规检查(一个部位 ）(甲状腺)</span>
+                                <span class="text-nowrap">
+                                    检查中 
+                                    / 等候10天 / 
+                                    
+                                        已收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：吱吱吱（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+
+                            <!-- 检查中 -->
+                            
+                                <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查中<em>(1)</em></a></li>
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="一级会员"></span>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=00020117238"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-success room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=00020117238">00001</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="34岁6月30天">（男 34岁）</small></h3>
+                                <span class="text-nowrap">检查：心电图123(阴道),心电图123(前列腺),心电图123(双下肢静脉),心电图123(双下肢动脉),心电图123(乳房),心电图123(胸片-侧位),心电图123(子宫、卵巢),心电图123(盆腔),心电图123(正位片),心电图123(输尿管),心电图123(脚踝)</span>
+                                <span class="text-nowrap">
+                                    检查中 
+                                    / 等候11天 / 
+                                    
+                                        已收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：张仲景（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+
+                            <!-- 检查中 -->
+                            
+                                <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查中<em>(11)</em></a></li>
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-danger panel-alt widget-photoday img-list">
+                    
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="普通会员a"></span>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=00020122870"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-danger room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=00020122870">孟星魂</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="27岁4月11天">（男 27岁）</small></h3>
+                                <span class="text-nowrap">检查：胸片(正位片),胸片(胸片-侧位)</span>
+                                <span class="text-nowrap">
+                                    待检查 
+                                    / 等候11天 / 
+                                    
+                                        未收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：林超（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+                                <li><a href="javascript:void(0);" class="J-modal-checked" data-id="77458" data-text="[{&quot;id&quot;:1122,&quot;bill_id&quot;:43645,&quot;name&quot;:&quot;胸片(正位片)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;},{&quot;id&quot;:1122,&quot;bill_id&quot;:43646,&quot;name&quot;:&quot;胸片(胸片-侧位)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;}]" data-name="孟星魂">待检查<em class="text-danger">(2)</em></a></li>
+                            
+
+                            <!-- 检查中 -->
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-danger panel-alt widget-photoday img-list">
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=00020116854"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-danger room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=00020116854">%E9%A9%AC%E5%A5%94</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="26岁8月25天">（男 26岁）</small></h3>
+                                <span class="text-nowrap">检查：艾灸(颈动脉（双侧）),艾灸(心脏),艾灸(肝胆脾胰)</span>
+                                <span class="text-nowrap">
+                                    待检查 
+                                    / 等候11天 / 
+                                    
+                                        未收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：刘迟（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+                                <li><a href="javascript:void(0);" class="J-modal-checked" data-id="77441" data-text="[{&quot;id&quot;:1506,&quot;bill_id&quot;:43641,&quot;name&quot;:&quot;艾灸(颈动脉（双侧）)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;},{&quot;id&quot;:1506,&quot;bill_id&quot;:43642,&quot;name&quot;:&quot;艾灸(心脏)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;},{&quot;id&quot;:1506,&quot;bill_id&quot;:43643,&quot;name&quot;:&quot;艾灸(肝胆脾胰)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;}]" data-name="%E9%A9%AC%E5%A5%94">待检查<em class="text-danger">(3)</em></a></li>
+                            
+
+                            <!-- 检查中 -->
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=00020122868"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-success room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=00020122868">调铺的小豆丁</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="28岁10月4天">（女 28岁）</small></h3>
+                                <span class="text-nowrap">检查：血管彩超（颈部血管）(颈动脉（双侧）),超声计算机图文报告(颈动脉（双侧）),医用超声耦合剂(颈动脉（双侧）),彩色一次成像（波拉）照片(颈动脉（双侧）),血管彩超每增加2根血管加收(颈动脉（双侧）)</span>
+                                <span class="text-nowrap">
+                                    检查中 
+                                    / 等候15天 / 
+                                    
+                                        未收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：陈雪雪1（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+
+                            <!-- 检查中 -->
+                            
+                                <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查中<em>(5)</em></a></li>
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="普通会员a"></span>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=00020118220"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-success room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=00020118220">傅天林</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="59岁4月21天">（男 59岁）</small></h3>
+                                <span class="text-nowrap">检查：浅表器官彩超检查(≥二个部位)(胸片-侧位),浅表器官彩超检查(≥二个部位)(盆腔),浅表器官彩超检查(≥二个部位)(输尿管),浅表器官彩超检查(≥二个部位)(阑尾,膀胱,胸片-侧位)</span>
+                                <span class="text-nowrap">
+                                    检查中 
+                                    / 等候16天 / 
+                                    
+                                        未收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：MR.LEE（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+
+                            <!-- 检查中 -->
+                            
+                                <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查中<em>(4)</em></a></li>
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-danger panel-alt widget-photoday img-list">
+                    
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="普通会员a"></span>
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/Clinic/Patient/profile?patient_id=00020122776"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-danger room-tag"></span>
+                                <h3><a class="white name-nowrap" href="/Clinic/Patient/profile?patient_id=00020122776">吴三桂</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="22岁5月14天">（男 22岁）</small></h3>
+                                <span class="text-nowrap">检查：彩超常规检查(一个部位 ）(颈动脉（双侧）),彩超常规检查(一个部位 ）(膀胱),彩超常规检查(一个部位 ）(前列腺)</span>
+                                <span class="text-nowrap">
+                                    待检查 
+                                    / 等候19天 / 
+                                    
+                                        未收费
+                                    
+                                </span>
+                                <span class="text-nowrap">开单医生：李（初诊）</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            
+                                <li><a href="javascript:void(0);" class="J-modal-checked" data-id="77244" data-text="[{&quot;id&quot;:754,&quot;bill_id&quot;:43612,&quot;name&quot;:&quot;彩超常规检查(一个部位 ）(颈动脉（双侧）)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;},{&quot;id&quot;:754,&quot;bill_id&quot;:43613,&quot;name&quot;:&quot;彩超常规检查(一个部位 ）(膀胱)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;},{&quot;id&quot;:754,&quot;bill_id&quot;:43614,&quot;name&quot;:&quot;彩超常规检查(一个部位 ）(前列腺)&quot;,&quot;status&quot;:1,&quot;charged&quot;:0,&quot;remark&quot;:&quot;&quot;}]" data-name="吴三桂">待检查<em class="text-danger">(3)</em></a></li>
+                            
+
+                            <!-- 检查中 -->
+                            
+
+                            <!-- 已完成 -->
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div>
+                            <!-- 病人列表 -->
+                            <div class="J-pager-wrap2"><div class="base_page"><a href="#/patient_name/@null/patient_status/@null/charged/0,1/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/1612</button><a href="#/patient_name/@null/patient_status/@null/charged/0,1/page/2" type="button" data-page_num="2" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                        </div>
+                        <!-- 特需病人 -->
+                        <!-- 外送标本 -->
+                        <div class="tab-pane J-module-control" data-permission="80" id="history">
+                            <div class="row mb10">
+                                <div class="col-sm-2 col-md-4">
+                                    <div class="form-group">
+                                        <a href="javascript:void();" class="btn btn-sm btn-default J-add-outside"><i class="fa fa-plus"></i> 新增外送</a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-8 pull-right">
+                                    <form class="form-inline pull-right" method="post" id="J-search-form-outside">
+                                          <div class="form-group mr5">
+                                              <input type="text" placeholder="条码号" name="barcode" class="J-barcode form-control input-sm2" size="15">
+                                          </div>
+                                          <div class="form-group mr5">
+                                              <input type="text" placeholder="患者姓名或手机号" name="patientInfo" class="form-control input-sm2 J-outside-input" size="15">
+                                          </div>
+                                          <div class="form-group mr5">
+                                              <select class="form-control input-xs2 J-status" name="status">
+                                                  <option value="" selected="selected">状态</option>
+                                                  <option value="1">外送中</option>
+                                                  <option value="2">已完成</option>
+                                                  <option value="">全部</option>
+                                              </select>
+                                          </div>
+                                          <button type="button" class="btn btn-default btn-sm J-outside-submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="panel panel-default shadow-none">
+                                <div class="panel-body pd0 pt20">
+                                    <!-- 病人列表 -->
+                                    <div class="bloglist row" id="J-outside-list-wrap"><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002105224"><img src="https:///japi/session/102010?id=1387&amp;pattern=200&amp;pattern=200&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002105224" class="white name-nowrap">刘忠龙</a> <small class="media-span">（男 29岁）</small></h3>
+                              <span>条码号：1000010696（初诊）</span>
+                              <span>手机号：</span>
+                              <span class="text-nowrap">检查项目：四肢多普勒血流图</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2017-05-18 00:04:31</span>
+                              <span>外送时间：2019-04-24 14:21:18</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="44" data-target="#myModal1" class="J-del-outside" data-barcode="1000010696">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002105223"><img src="https:///japi/session/102010?id=6800&amp;pattern=200&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002105223" class="white name-nowrap">周珰</a> <small class="media-span">（男 26岁）</small></h3>
+                              <span>条码号：1000010695（初诊）</span>
+                              <span>手机号：</span>
+                              <span class="text-nowrap">检查项目：其他血管彩色多普勒超声检查</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2017-05-18 00:04:28</span>
+                              <span>外送时间：2019-04-24 14:19:52</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="43" data-target="#myModal1" class="J-del-outside" data-barcode="1000010695">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002105223"><img src="https:///japi/session/102010?id=6800&amp;pattern=200&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002105223" class="white name-nowrap">周珰</a> <small class="media-span">（男 26岁）</small></h3>
+                              <span>条码号：1000010694（初诊）</span>
+                              <span>手机号：</span>
+                              <span class="text-nowrap">检查项目：四肢多普勒血流图</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2017-05-18 00:04:28</span>
+                              <span>外送时间：2019-04-24 14:19:02</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="42" data-target="#myModal1" class="J-del-outside" data-barcode="1000010694">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002100213"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002100213" class="white name-nowrap">张三</a> <small class="media-span">（男 39岁）</small></h3>
+                              <span>条码号：1000010693（初诊）</span>
+                              <span>手机号：</span>
+                              <span class="text-nowrap">检查项目：颈部血管彩色多普勒超声</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2017-05-17 17:40:01</span>
+                              <span>外送时间：2019-04-24 14:18:26</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="41" data-target="#myModal1" class="J-del-outside" data-barcode="1000010693">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002100213"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002100213" class="white name-nowrap">张三</a> <small class="media-span">（男 39岁）</small></h3>
+                              <span>条码号：1000010692（初诊）</span>
+                              <span>手机号：</span>
+                              <span class="text-nowrap">检查项目：门静脉系彩色多普勒超声</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2017-05-17 17:40:01</span>
+                              <span>外送时间：2019-04-24 14:17:35</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="40" data-target="#myModal1" class="J-del-outside" data-barcode="1000010692">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002105374"><img src="https:///japi/session/102010?id=1374&amp;pattern=200&amp;pattern=200&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002105374" class="white name-nowrap">张茜</a> <small class="media-span">（女 37岁）</small></h3>
+                              <span>条码号：1000010074（初诊）</span>
+                              <span>手机号：138****1135</span>
+                              <span class="text-nowrap">检查项目：彩超常规检查(一个部位 ）</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2017-04-26 11:51:04</span>
+                              <span>外送时间：2017-04-26 11:51:29</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="28" data-target="#myModal1" class="J-del-outside" data-barcode="1000010074">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002113479"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002113479" class="white name-nowrap">王小二</a> <small class="media-span">（女 32岁）</small></h3>
+                              <span>条码号：1000010067（初诊）</span>
+                              <span>手机号：187****5006</span>
+                              <span class="text-nowrap">检查项目：浅表器官彩超检查(一个部位)</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2017-04-26 11:08:14</span>
+                              <span>外送时间：2017-04-26 11:08:44</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="26" data-target="#myModal1" class="J-del-outside" data-barcode="1000010067">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002105227"><img src="https:///japi/session/102010?id=1395&amp;pattern=200&amp;pattern=200&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002105227" class="white name-nowrap">吴柏星</a> <small class="media-span">（男 28岁）</small></h3>
+                              <span>条码号：1000003123（初诊）</span>
+                              <span>手机号：138****1123</span>
+                              <span class="text-nowrap">检查项目：彩超常规检查(一个部位 ）</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2016-07-28 00:15:11</span>
+                              <span>外送时间：2017-04-10 17:27:11</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="25" data-target="#myModal1" class="J-del-outside" data-barcode="1000003123">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002112383"><img src="https:///japi/session/102010?id=2168&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002112383" class="white name-nowrap">韩寒</a> <small class="media-span">（女 18岁）</small></h3>
+                              <span>条码号：1000006435（初诊）</span>
+                              <span>手机号：150****2279</span>
+                              <span class="text-nowrap">检查项目：彩超常规检查(一个部位 ）</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2016-12-05 23:01:23</span>
+                              <span>外送时间：2016-12-15 13:14:02</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="23" data-target="#myModal1" class="J-del-outside" data-barcode="1000006435">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002112848"><img src="https:///japi/session/102010?id=2425&amp;pattern=200&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002112848" class="white name-nowrap">张翼</a> <small class="media-span">（男 2岁9月17天）</small></h3>
+                              <span>条码号：1000006463（初诊）</span>
+                              <span>手机号：183****0270</span>
+                              <span class="text-nowrap">检查项目：颅内段血管彩色多普勒超声</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2016-12-06 14:30:23</span>
+                              <span>外送时间：2016-12-07 11:11:08</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="22" data-target="#myModal1" class="J-del-outside" data-barcode="1000006463">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002105223"><img src="https:///japi/session/102010?id=6800&amp;pattern=200&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002105223" class="white name-nowrap">贾晓昀</a> <small class="media-span">（男 29岁）</small></h3>
+                              <span>条码号：1000006436（初诊）</span>
+                              <span>手机号：138****1119</span>
+                              <span class="text-nowrap">检查项目：彩超常规检查(一个部位 ）</span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2016-12-06 00:15:06</span>
+                              <span>外送时间：2016-12-06 10:28:54</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="21" data-target="#myModal1" class="J-del-outside" data-barcode="1000006436">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-success panel-alt widget-photoday img-list">
+                    
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="/Clinic/Patient/profile?patient_id=002105362"><img src="https:///japi/session/102010?id=1395&amp;pattern=200&amp;pattern=200&amp;pattern=200" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-success room-tag">外送中</span>
+                              <h3><a href="/Clinic/Patient/profile?patient_id=002105362" class="white name-nowrap">吴柏星</a> <small class="media-span">（男 13岁5月4天）</small></h3>
+                              <span>条码号：1000006279（初诊）</span>
+                              <span>手机号：138****1345</span>
+                              <span class="text-nowrap">检查项目：彩超常规检查(≥二个部位) </span>
+                              <span class="text-nowrap">诊断：</span>
+                              <span>开单时间：2016-11-29 11:13:37</span>
+                              <span>外送时间：2016-11-29 11:14:08</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="18" data-target="#myModal1" class="J-del-outside" data-barcode="1000006279">删除</a></li>
+                        
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div></div>
+                                    <!-- 病人列表 -->
+                                    <div class="J-pager-wrap2"><div class="base_page"><a href="#/patientInfo/@null/barcode/@null/time/@null/status/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/2</button><a href="#/patientInfo/@null/barcode/@null/time/@null/status/@null/page/2" type="button" data-page_num="2" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                                </div>
+                                <!-- panel-body -->
+                            </div>
+
+                            <!-- 删除外送 -->
+                            <div class="modal fade in" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title" id="myModalLabel">删除确认</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="hidden" id="J-del-id" value="">
+                                            <h4><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> 确定删除该条记录？</h4>
+                                        </div>
+                                        <div class="modal-footer modal-btn-col2">
+                                            <button type="button" class="btn btn-primary J-del-submit">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 新增外送 -->
+                            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title J-title" id="myModalLabel">新增外送标本</h4>
+                                        </div>
+                                        <form class="form-horizontal">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="input-group mt10">
+                                                            <input type="text" class="form-control J-add-barcode" placeholder="请输入条形码">
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-default btn-find J-barcode-search">搜索</button>
+                                                            </span>
+                                                        </div>
+                                                        <div class="form-group mt10 mlr0">
+                                                            <label class="control-label">选择外送单位 <span class="asterisk">*</span></label>
+                                                            <select class="form-control input-sm J-outcompany" data-placeholder="请选择" required="">
+                                                                <option value=""></option>
+                                                                <option value="上海四维医学科技有限公司" selected="selected">上海四维医学科技有限公司</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group mb30 mlr0">
+                                                            <label class="control-label">选择检查类型 <span class="asterisk">*</span></label>
+                                                            <select class="form-control input-sm J-check-type" data-placeholder="请选择" required="">
+                                                                <option value="1" selected="selected">普通心电</option>
+                                                                <option value="2">动态心电</option>
+                                                                <option value="3">超声</option>
+                                                                <option value="4">影像</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="table-responsive">
+                                                    <table class="table table-profile">
+                                                        <tbody id="patient-info-wrap">
+                                                            <!-- 新增患者信息 -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer modal-btn-col2">
+                                                <button type="button" class="btn btn-primary J-add-submit disabled">确定</button>
+                                                <button type="button" class="btn btn-primary J-add-submit-artificial hidden disabled">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 新增外送 -->
+                        </div>
+                        <!-- 外送标本 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 检查确认 -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">检查确认</h4>
+                    </div>
+                    <div class="modal-body" id="list-box">
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary J-checked-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 检查确认 -->
+        <!-- 特需病人检查确认 -->
+        <div class="modal fade" id="specialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">检查确认</h4>
+                    </div>
+                    <div class="modal-body" id="list-box">
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary J-checked-special-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 特许病人检查确认 -->
+    </div>
+    
+    <!-- 打印条形码 -->
+    <div id="print"></div>
+
+    <!-- 打印条形码 -->
+    <script type="text/template" id="barcode-tpl">
+        <% for(var i = 0, len = data.length; i < len; i++) {%>
+            <div class="print-page-code">
+                <div class="print-subpage-code">
+                    <div class="print-header-code">
+                        <div class="p-code-img"><img src="/Clinic/Barcode/getBarCode/type/128/barcode/<%-data[i].barcode%>"></div>
+                        <div class="p-code-numb">
+                            <span class="mb1"><%-data[i].barcode%></span>
+                            <span><%- new Date().Format('yyyy-MM-dd')%></span>
+                        </div>
+                    </div>  
+
+                    <div class="print-name-code"> 
+                        <div class="p-code-name">
+                            <span><%-data[i].name%></span><span><%-data[i].sex_name%></span><span class="font-normal"><%-data[i].age%></span>
+                            <small><%-data[i].checkpoint%></small>
+                        </div>
+                    </div>
+
+                    <div class="print-content-box">
+                        <div class="print-content-code">
+                            <div class="p-code-content">
+                                <%-data[i].checks%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <%}%>
+    </script>
+
+    <!-- 今日病人 -->
+    <script type="text/template" id="today-list-tpl">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+                    <%if(member_type && member_type_status == 1){%>
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+                    </div>
+                    <%} else if(member_type && member_type_status == 2){%>
+                    <div class="p-relative">
+                        <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+                    </div>
+                    <% } %>
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><img src="<%- image %>" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-<%- className %> room-tag"><%- room_name %></span>
+                                <h3><a class="white name-nowrap" href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info %>">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small></h3>
+                                <span class="text-nowrap">检查：<%- check %></span>
+                                <span class="text-nowrap">
+                                    <%- status %> 
+                                    <%if(status_code<2){%>/ 等候<%- wait_time %><%}%> / 
+                                    <% if (chargedStatus == 2) { %>
+                                        未收费
+                                    <% } else if (chargedStatus == 3) { %>
+                                        已收费
+                                    <% } else if (chargedStatus == 1) { %>
+                                        已退费
+                                    <% } %>
+                                </span>
+                                <span class="text-nowrap">开单医生：<%- doctor %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            <% if(no_start_num){  %>
+                                <li><a href="javascript:void(0);" class="J-modal-checked" data-id="<%- clinic_id %>" data-text="<%- inspect_unchecked %>" data-name="<%- name %>">待检查<em class="text-danger">(<%-no_start_num%>)</em></a></li>
+                            <% } %>
+
+                            <!-- 检查中 -->
+                            <% if(under_way_num){  %>
+                                <li><a href="{<%- global_src_api %>/Checking/input?clinic_id=<%- clinic_id %>&patient_id=<%- patient_id %>}">检查中<em>(<%-under_way_num%>)</em></a></li>
+                            <% } %>
+
+                            <!-- 已完成 -->
+                            <% if(complete_num){  %>
+                                <li><a href="<%- global_src_api %>/Checking/report?clinic_id=<%- clinic_id %>&patient_id=<%- patient_id %>">已完成<em>(<%-complete_num%>)</em></a></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    
+    <!-- 状态 -->
+    <script type="text/template" id="J-select-item-tpl">
+        <span class="btn btn-sm btn-white <% if (!status) { %>active<%}%>" data-status="">全部</span>
+        <span class="btn btn-sm btn-white <% if (status == 1) { %>active<%}%>" data-status="1"><i class="fa fa-circle red"></i> 待检查<%- status_count[1] %>人</span>
+        <span class="btn btn-sm btn-white <% if (status == 2) { %>active<%}%>" data-status="2"><i class="fa fa-circle green"></i> 检查中<%- status_count[2] %>人</span>
+        <span class="btn btn-sm btn-white <% if (status == 3) { %>active<%}%>" data-status="3"><i class="fa fa-circle end"></i> 已完成<%- status_count[3]%>人</span>
+    </script>
+
+    <!-- 每一项 -->
+    <script type="text/template" id="modal-list-tpl">
+    <form>
+        <h4>是否确定对<%- name %>的检查项目进行检查？</h4>
+        <div class="row mt20 font16">
+            <% _.each(items, function(item,i){ %>
+                <% if(item.status == 1){ %>
+                    <div class="col-sm-12">
+                      <div class="ckbox ckbox-primary">
+                        <input type="checkbox" class="pull-left" name="bill_ids[]" value="<%- item.bill_id %>" id="<%- item.bill_id %>+<%-i%>" checked="checked">
+                        <label class="pl24 display-block" for="<%- item.bill_id %>+<%-i%>">
+                            <%- item.name %> 
+                            <span class="font12 gray">（
+                                <%if(item.charged == 1){%>
+                                    <span class="end">已收费</span>
+                                <%} else if(item.charged == 2) {%>
+                                    已退费
+                                <%} else {%>
+                                    <span class="red">待收费</span>
+                                <%}%><%if(item.remark != '' && item.remark != null){%> / 备注：<%}%><% %><%-item.remark%>）</span>
+                        </label>
+                      </div>
+                    </div>
+                <% } %>
+            <% }); %>
+        </div>
+    </form>
+    </script>
+
+    <!-- 特需病人 -->
+    <script type="text/template" id="special-list-tpl">
+        <div class="blog-item shadow-none">
+            <div class="blog-details">
+                <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+                    <%if(member_type && member_type_status == 1){%>
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+                    </div>
+                    <%} else if(member_type && member_type_status == 2){%>
+                    <div class="p-relative">
+                        <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+                    </div>
+                    <% } %>
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><img src="<%- image %>" class="img-sm img-border" alt="profile"></a>
+                            </div>
+                            <div class="col-sm-8 pl0">
+                                <span class="widget-label badge badge-<%- className %> room-tag"></span>
+                                <h3><a class="white name-nowrap" href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info %>">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small></h3>
+                                <span class="text-nowrap">检查：<%- check %></span>
+                                <span class="text-nowrap">
+                                    <%- status %> 
+                                    <%if(status_code<2){%>/ 等候<% if (wait_time.indexOf('天') >= 0) {%><%- parseInt(wait_time) %>天<%} else {%><%- wait_time %><%}%><%}%> / 
+                                    <% if (chargedStatus == 2) { %>
+                                        未收费
+                                    <% } else if (chargedStatus == 3) { %>
+                                        已收费
+                                    <% } else if (chargedStatus == 1) { %>
+                                        已退费
+                                    <% } %>
+                                </span>
+                                <span class="text-nowrap">开单医生：<%- doctor %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body text-center">
+                        <ul class="photo-meta">
+                            <!-- 待检查 -->
+                            <% if(no_start_num){  %>
+                                <li><a href="javascript:void(0);" class="J-modal-checked" data-id="<%- clinic_id %>" data-text="<%- inspect_unchecked %>" data-name="<%- name %>">待检查<em class="text-danger">(<%-no_start_num%>)</em></a></li>
+                            <% } %>
+
+                            <!-- 检查中 -->
+                            <% if(under_way_num){  %>
+                                <li><a href="<%- global_src_api %>/Checking/input?clinic_id=<%- clinic_id %>&patient_id=<%- patient_id %>">检查中<em>(<%-under_way_num%>)</em></a></li>
+                            <% } %>
+
+                            <!-- 已完成 -->
+                            <% if(complete_num){  %>
+                                <li><a href="<%- global_src_api %>/Checking/report?clinic_id=<%- clinic_id %>&patient_id=<%- patient_id %>">已完成<em>(<%-complete_num%>)</em></a></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- 状态 -->
+    <script type="text/template" id="J-special-item-tpl">
+        <span class="btn btn-sm btn-white <% if (status == 0 || !status) { %>active<%}%>" data-status="">全部</span>
+        <span class="btn btn-sm btn-white <% if (status == 1) { %>active<%}%>" data-status="1"><i class="fa fa-circle red"></i> 待检查<%- status_count[1] %>人</span>
+        <span class="btn btn-sm btn-white <% if (status == 2) { %>active<%}%>" data-status="2"><i class="fa fa-circle green"></i> 检查中<%- status_count[2] %>人</span>
+        <span class="btn btn-sm btn-white <% if (status == 3) { %>active<%}%>" data-status="3"><i class="fa fa-circle end"></i> 已完成<%- status_count[3]%>人</span>
+    </script>
+
+    <!-- 外送标本列表模板 -->
+    <script type="text/template" id="outside-list-tpl">
+      <div class="blog-item shadow-none">
+          <div class="blog-details">
+              <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+                    <%if(member_type && member_type_status == 1){%>
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+                    </div>
+                    <%} else if(member_type && member_type_status == 2){%>
+                    <div class="p-relative">
+                        <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+                    </div>
+                    <% } %>
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patientId %>"><img src="<%- image %>" class="img-sm img-border" alt="profile"></a>
+                          </div>
+                          <div class="col-sm-8 pl0">
+                              <span class="widget-label badge badge-<%- className %> room-tag"><%- status %></span>
+                              <h3><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patientId %>" class="white name-nowrap"><%- name %></a> <small class="media-span">（<%- sex %> <%- age%>）</small></h3>
+                              <span>条码号：<%- barcode %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                              <span>手机号：<%- mobile %></span>
+                              <span class="text-nowrap">检查项目：<%- checkItem %></span>
+                              <span class="text-nowrap">诊断：<%- diagnosis %></span>
+                              <span>开单时间：<%- checkTime %></span>
+                              <span>外送时间：<%- outTime %></span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-body text-center">
+                      <ul class="photo-meta">
+                        <% if(status_code === 1){ %>
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">查看报告</a></li>
+                        <% }else{ %>
+                            <li><a href="{php echo $this->createWeburl('fuzhu',array('op'=>'baogao'))}">检查结果</a></li>
+                            <li><a href="#" data-toggle="modal" data-id="<%- id%>" data-target="#myModal1" class="J-del-outside" data-barcode="<%- barcode %>">删除</a></li>
+                        <% } %>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </script>
+
+    <!-- 新增患者信息 -->
+    <script type="text/template" id="patient-info-tpl">
+        <tr>
+            <th colspan="3">患者信息</th>
+        </tr>
+        <tr>
+            <input type="hidden" id="J-barcode-id" value="<%-barcode%>" />
+            <td width="30%"><strong>姓名：</strong><%-name%></td>
+            <td width="30%"><strong>性别：</strong><%-sex%></td>
+            <td width="35%"><strong>年龄：</strong><%- age %></td>
+        </tr>
+        <tr>
+            <td><strong>手机号：</strong><%- mobile %></td>
+            <td colspan="2"><strong>开单时间：</strong><%- createTime %></td>
+        </tr>
+        <tr>
+            <td colspan="3"><strong>诊断：</strong><%- diagnosis %></td>
+        </tr>
+        <tr>
+            <td colspan="3"><strong>检查项目：</strong>
+                <a class="btn btn-primary-alt font14"><%-checkItem%></a>
+            </td>
+        </tr>
+    </script>
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['checking']);
+    </script>
+</body>
+
+</html>

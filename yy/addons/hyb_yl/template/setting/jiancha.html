@@ -1,0 +1,98 @@
+{template './common/siteheader'}
+<head>
+    <link href="{php echo HYB_YL_URL}/admin/site.css?date=6.9.4" rel="stylesheet">
+    <link href="{php echo HYB_YL_URL}/admin/codemirror.css" rel="stylesheet">
+    <style>
+        .top-tips {
+            height: 50px;
+            width: 100%;
+            color: red;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            background-color: white;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: bold;
+            display: none;
+        }
+        .container-fluid{
+            float: right;
+            width: 89%;
+        }
+        .soft-filter .soft-filter-box:first-child{
+            margin-bottom: 0;
+        }
+    </style>
+<link rel="stylesheet" href="{php echo HYB_YL_URL}/admin/laydate.css" id="layuicss-skinlayercss">
+<link rel="stylesheet" href="{php echo HYB_YL_URL}/admin/layer.css" id="layuicss-laydate"></head>
+ <div class="container-fluid" style="padding-bottom:54px"> 
+   <div class="pos-box bgw mtb15"> 
+    <div class="position f14 c9 pull-left"> 
+     <a class="plr10 c4" href="/">首页</a>/
+     <span class="plr10 c4">应用中心</span> 
+    </div> 
+    <div class="search pull-right"> 
+    </div> 
+   </div> 
+   <div class="softbox bgw mtb15"> 
+    <div class="softlist"> 
+     <div class="soft-filter pd15"> 
+      <div class="row soft-filter-box"> 
+       <div class="col-md-12"> 
+        <span class="filter-title f14 c4">应用搜索</span> 
+        <div class="soft-search"> 
+         <form target="hid" onsubmit="soft.get_list(1,0,$(&quot;#SearchValue&quot;).val())"> 
+          <input type="text" id="SearchValue" class="ser-text pull-left" placeholder="search" style="width:232px" /> 
+          <button type="button" class="ser-sub pull-left" onclick="soft.get_list(1,0,$(&quot;#SearchValue&quot;).val())"></button> 
+         </form> 
+         <iframe name="hid" id="hid" style="display:none"></iframe> 
+        </div> 
+       </div> 
+      </div> 
+
+     </div> 
+     <div class="divtable pd15 relative"> 
+      <table id="softList" class="table table-hover" width="100%" cellspacing="0" cellpadding="0" border="0">
+       <thead>
+        <tr>
+         <th width="165">服务名称</th>
+         <th width="92">副标题</th>
+         <th width="92">服务标识</th>
+         <th style="width: 550.571px;">说明</th>
+         <th width="64" >首页显示</th>
+         <th width="120" style="text-align:right;">操作</th>
+        </tr>
+       </thead>
+       <tbody>
+       {loop $newdata $key $item}
+        <tr>
+         <td><span onclick="soft.set_soft_config('nginx')" style="cursor:pointer"><img src="{media $item['thumb']}" />{$item['name']}</span></td>
+         <td>{$item['subtitle']}</td>
+         <td>{$item['pinyin']}</td>
+         <td><span>{$item['desc']}</span></td>
+         <td>
+          <div class="index-item">
+           <input class="btswitch btswitch-ios" id="index_{$key}" type="checkbox" />
+           <label class="btswitch-btn" for="index_{$key}" ></label>
+          </div></td>
+          {if $item['state']=='1'}
+         <td style="text-align:right;"><a class="btlink" style="color: red;" href="<?php echo $this->copysiteUrl('setting.jiancha_del')?>&serid={$item['serid']}">卸载</a></td>
+         {else}
+         <td style="text-align:right"><a class="btlink" href="<?php echo $this->copysiteUrl('setting.jiancha_add')?>&name={$item['name']}&desc={$item['desc']}&subtitle={$item['subtitle']}&thumb={$item['thumb']}&sid={$item['sid']}&pinyin={$item['pinyin']}">安装</a></td>
+         {/if}
+        </tr>
+        {/loop}
+       </tbody>
+      </table> 
+     </div> 
+    </div> 
+   </div> 
+  </div>
+  <script type="text/javascript" src="{php echo HYB_YL_URL}/admin/layui/layui.js"> 
+  var index = layer.load(1, {
+          shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+</script>

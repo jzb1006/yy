@@ -1,0 +1,147 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li class="active"><a href="#">绿通服务项目</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-action">
+			<a class="btn btn-primary" href="/index.php?c=site&a=entry&do=green&m=hyb_yl&op=addspecial&ac=addspecial&pid={$pid}">添加二级绿通服务项目</a>
+		</div>
+		<div class="filter-list">
+			<form action="" method="get" class="form-horizontal" role="form" id="form1">
+                    <input type="hidden" name="c" value="site" />
+                    <input type="hidden" name="a" value="entry" />
+                    <input type="hidden" name="m" value="hyb_yl" />
+                    <input type="hidden" name="op" value="specialtwo" />
+                    <input type="hidden" name="ac" value="special" />
+                    <input type="hidden" name="do" value="green" />
+                     <input type="hidden" name="pid" value="{$pid}" />
+                    <div class="form-group form-inline">
+                        <!-- <label class="col-sm-2 control-label">所在位置</label> -->
+                        <div class="col-sm-9">
+                            
+                            <input type="text" name="keyword" class="form-control" value="{$_GPC['keyword']}" placeholder="请输入关键字" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-md-9">
+                            <button class="btn btn-primary" type="submit">筛选</button>
+                        </div>
+                    </div>
+                </form>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th class="text-center">缩略图片</th>
+						<th class="text-center">显示顺序</th>
+						<th class="text-center">标题</th>
+						<th class="text-center">上级项目</th>
+						<th class="text-center">状态</th>
+						<th class="text-center">价格</th>
+						<th class="text-center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				{loop $list $item}
+						<tr  class="text-center">
+							<td><img class="scrollLoading" src="{$item['thumb']}" data-url="{$item['thumb']}"  height="50" width="100"/></td>
+							<td>{$item['sort']}</td>
+							<td>{$item['title']}</td>
+							<td class="text-lue">
+							{$item['parent']} 
+							
+							<td><input type="checkbox" class="js-switch tpl_change_status" data-url="" data-open="1" data-close="0"  onchange="changestatus('{$item['id']}','{$item['status']}','{$item['pid']}')" {if $item['status'] =='1'} checked="checked" {/if}></td>
+							<td>
+								{$item['money']}
+								
+							</td>
+							<td>
+								<a class="btn btn-sm btn-warning" href="/index.php?c=site&a=entry&do=green&m=hyb_yl&op=addspecial&ac=special&id={$item['id']}&pid={$item['pid']}">编辑</a>
+								<a class="btn btn-sm btn-danger" data-toggle="ajaxRemove" href="/index.php?c=site&a=entry&do=green&m=hyb_yl&op=delspecial&ac=special&id={$item['id']}&pid={$item['pid']}" data-confirm="确定删除当前信息?">删除</a>
+							</td>
+						</tr>
+						{/loop}
+					</tbody>
+			</table>
+			{$pager}
+		</div>
+		<div class="app-table-foot clearfix">
+			<div class="pull-left">
+
+			</div>
+			<div class="pull-right">
+							</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#search").click(function(){
+		$('#form1')[0].submit();
+	});
+	function changestatus(id,status,pid)
+	{
+		if(status == '1')
+		{
+			var  statuss = '0';
+		}else{
+			 var statuss = '1';
+		}
+		$.ajax({
+            url:"/index.php?c=site&a=entry&do=green&m=hyb_yl&op=change_special&ac=special&id="+id+"&status="+statuss + "&pid="+pid,
+            type:"post",
+            dataType:"json",
+            cache: false,
+            processData: false,
+            contentType: false,
+            async:false,
+            success:function(data){
+                window.location.reload()
+            },
+            error:function(){
+                
+            }
+        });
+	}
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+    <script>
+		require(['bootstrap'], function ($) {
+		    $('[data-toggle="tooltip"]').tooltip({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="popover"]').popover({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="dropdown"]').dropdown({
+	            container: $(document.body)
+	        });
+	    });
+		myrequire(['js/init']);
+		$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+			$('.app-login-info-sel').show();
+		});
+		$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+			$('.app-login-info-sel').hide();
+		});
+		$('.app-login-info-sel .login-out').hover(function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+		},function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+		});
+	</script>
+	</body>
+</html>

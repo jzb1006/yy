@@ -1,0 +1,51 @@
+
+.commonBox{ background:#fff; margin:20px 20px 0px 0px; padding:15px 0px 0px 15px;border:1px solid #e9eced;border-radius:5px;}
+.myTitle{height:44px; line-height:44px; font-size:16px; margin-bottom:0px;}
+.myTitle .tabs{float:right;height:24px;border:1px solid #6f7c83;border-radius:3px; overflow:hidden;margin:7px 15px 0px 0px;}
+.myTitle .tabs dt{float:left; font-size:14px;width:24px;border-left:1px solid #6f7c83;height:24px;color:#6f7c83; line-height:24px; text-align:center; cursor:pointer;}
+.myTitle .tabs dt input{ background:none;border:0px; outline:none; cursor:pointer;color:#6f7c83;}
+.myTitle .tabs dt.on{ background:#6f7c83;color:#fff;}
+.myTitle .tabs dt.on input{color:#fff;}
+
+.todayBusiness{ padding-bottom:10px; margin-left:20px; padding:0;background: none;border: 0;}
+.todayBusiness .myTitle{ margin-left:5px;}
+.todayBusiness ul{ background:#fff;border: 1px solid #e9eced;padding: 10px 5px 10px 15px;}
+.todayBusiness li{width:20%;float:left;}
+.todayBusiness li .inner{margin:10px 15px 10px 5px; background:#f3f5f6;color:#63686b; text-align:right;height:44px; padding:11px 15px 11px 69px;line-height:22px; font-size:14px; position:relative;border-radius:4px;}
+.todayBusiness li .inner span{ display:block;color:#8c9499; font-size:12px;}
+.todayBusiness li .icon{width:44px;height:44px; position:absolute;left:15px;top:10px; background:url("icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/icon.png*/ no-repeat;}
+.todayBusiness li .icon-evaluation{}
+.todayBusiness li .icon-course{ background-position:-128px 0px;}
+.todayBusiness li .icon-evaluation{ background-position:-64px 0px;}
+.todayBusiness li .icon-user{ background-position:-192px 0px;}
+.todayBusiness li .icon-exam{ background-position:-251px 0px;}
+
+
+.highcharts-legend{}
+text{ font-family:'HelveticaLT55Roman','hiragino sans gb',arial,'microsoft yahei ui','microsoft yahei',simsun,sans-serif; color:#303234;font-weight:normal !important;}
+
+.highcharts-button{ display:none;}
+.mainCont{ position:relative; padding:0px 380px 0px 20px;height:479px;}
+/*contLeft*/
+.mainCont .orderStatistics{height:405px;}
+
+
+/*contRight*/
+.mainCont .contRight{ position:absolute;right:0;top:0;width:380px;}
+.mainCont .courseTop ul{margin-top:-5px;}
+.mainCont .courseTop li{ position:relative;height:65px; margin-left:5px; padding:15px 20px 15px 115px;border-bottom:1px solid #eaeef0; margin-bottom:-1px;}
+.mainCont .courseTop li.no-border{border-top:0px;}
+.mainCont .courseTop li .img{width:100px;height:65px; position:absolute;left:0;top:15px;}
+.mainCont .courseTop li .img img{width:100%;height:65px;}
+.mainCont .courseTop li .title{ font-size:14px; line-height:22px;height:44px; overflow:hidden;}
+.mainCont .courseTop li .title a{color:#50869f;}
+.mainCont .courseTop li .buynum{line-height:18px;color:#8c9499;margin-top:5px; overflow:hidden;}
+.mainCont .purchaseHistory ul{margin-top:-5px;}
+.mainCont .purchaseHistory li{ line-height:22px;color:#63686b; font-size:12px;border-bottom:1px solid #eaeef0; padding:12px 0px 12px 0px; margin:0px 0px -1px 5px; font-size:14px;}
+.mainCont .purchaseHistory li a{color:#50869f;}
+.mainCont .purchaseHistory li span{ display:block;color:#f46344; font-size:12px;}
+
+.copyright{height:44px; line-height:44px; font-size:12px;color:#b0b9bf;}
+.copyright div{ font-family:'HelveticaLT55Roman','hiragino sans gb',arial,'microsoft yahei ui','microsoft yahei',simsun,sans-serif !important;}
+.copyright a{color:#50869f;}
+.copyright-absolute{ position:absolute;width:100%;left:0;bottom:44px; }

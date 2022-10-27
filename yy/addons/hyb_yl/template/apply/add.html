@@ -1,0 +1,108 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+</div>
+<div class="basics">
+        <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control " data-permission="8">
+                <a  href="{php echo $this->createWeburl('apply',array('val'=>'display','type_id'=>$type_id))}" ><strong>服务列表</strong></a>
+            </li>
+            <li class="J-module-control active" data-permission="10">
+                <a href="{php echo $this->createWeburl('apply',array('val'=>'add','type_id'=>$type_id))}" ><strong>添加服务</strong></a>
+            </li>
+        </ul>
+        <div class="main-content">
+            <div class="panel panel-default">
+                <div class="panel-body collapse in">
+            <form  action="" method="post" novalidate="novalidate">
+                <div class="row">
+                    <div class="col-sm-12 col-md-10">
+                         <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务标题 <span class="asterisk">*</span></label>
+                                    <input  type="text" class="form-control max128 J-isDisable" value="{$res['name']}" required="" name="name">
+                                </div>
+                            </div>
+                          </div>
+                         <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">副标题 <span class="asterisk">*</span></label>
+                                    <input  type="text" class="form-control max128 J-isDisable" value="{$res['subtitle']}" required="" name="subtitle">
+                                </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务标签</label>
+                                    <input disabled="disabled" type="text" class="form-control max128 J-isDisable" value="{$res['pinyin']}" required="" name="pinyin">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务缩略图<span class="gai_tishi">商品其他图片（建议尺寸 172*172）</span></label>
+                                     {php echo tpl_form_field_image('thumb', $res['thumb'])}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务描述<span class="gai_tishi">商品描述文字不易过长</span></label>
+                                    <textarea class="form-control max2000" rows="5" name="desc">{$res['desc']}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务协议</label>
+                                    {php echo tpl_ueditor('tiaokuan', $res['tiaokuan']);}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务提示</label>
+                                    <textarea class="form-control max5000" rows="9" name="tishi">{$res['tishi']}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input name="token" type="hidden" value="{$_W['token']}" />
+                <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+            </form>
+             </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list.js"></script>
+<script type="text/javascript">
+    $(".pianshen_kaiqi_xuanze_u").click(function(){
+    for(var i = 0;i<$(".pianshen_kaiqi_xuanze_u").length;i++){
+        $(".pianshen_kaiqi_xuanze_u").eq(i).removeClass("pianshen_kaiqi_xuanzes_u").children().eq(0).removeClass("pianshen_kaiqi_xuanze_titles_u").next().removeClass("pianshen_kaiqi_xuanze_imgs_u");
+    }
+    $(this).addClass("pianshen_kaiqi_xuanzes_u").children().eq(0).addClass("pianshen_kaiqi_xuanze_titles_u").next().addClass("pianshen_kaiqi_xuanze_imgs_u");
+    if($(this).children().eq(0).html() == "开启"){
+        $(".pian_lunbu").css("display","block");
+        //1
+        $(".state").val("1");
+    }else{
+        $(".pian_lunbu").css("display","none");
+       //0
+        $(".state").val("0");
+    }
+
+})
+$(".pian_gai_lun_box_img_div").click(function(){
+    $(this).parent().remove()
+})
+</script>
+</html>

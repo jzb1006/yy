@@ -1,0 +1,748 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+                </div>
+                <div class="pageheader hidden">
+                    <h2><i class="fa fa-credit-card fa-sm J-back-pay"></i> 零售药品</h2>
+                </div>
+                <div class="contentpanel">
+                    <div class="tab-content pd0">
+                        <!-- 待收费列表 -->
+                        <div class="tab-pane active" id="chargeDrugLst">
+                            <!-- 待收费列表 -->
+                            <div class="panel panel-cascade panel-invoice">
+                                <div class="panel-heading bgfc pt30">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <h3 class="panel-title">零售药品列表</h3>
+                                        </div>
+                                        <div class="col-sm-8 text-right">
+                                            <form class="form-inline" id="J-search-form-drug">
+                                                <div class="form-group mr5 module-hide J-module-control" data-permission="70">
+                                                    <a href="#" class="btn btn-default btn-sm font14 J-retail-pharmacy-btn">零售药品</a>
+                                                </div>
+                                                <div class="form-group mr5">
+                                                    <label class="sr-only" for="">日期</label>
+                                                    <input class="form-control input-sm2" id="chargeDrugDate" size="20" type="text" name="date" placeholder="日期" value="">
+                                                </div>
+                                                <button type="button" class="btn btn-sm btn-default J-drug-search"><i class="fa fa-search"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <!-- 病人列表 -->
+                                    <div class="people-list">
+                                        <div class="row" id="J-drug-list-wrap">
+                                        </div>
+                                        <div class="J-pager-wrap">
+                                        </div>
+                                    </div>
+                                    <!-- 病人列表 -->
+                                </div>
+                            </div>
+                            <!-- 待收费列表 -->
+                        </div>
+                        <!-- 待收费列表 -->
+
+                        <!-- 药品零售 -->
+                        <div class="tab-pane" id="retailPharmacy">
+                            <div class="panel panel-cascade panel-invoice">
+                                <div class="panel-heading bgfc pt30">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <h3 class="panel-title">零售药品</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body pt0">
+                                    <div class="table-responsive border-top mlrf20">
+                                        <form class="form-inline" method="post">
+                                            <table class="table table-hover shadow-none mb0">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="pl20">药品名称</th>
+                                                        <th width="8%">规格</th>
+                                                        <th width="11%">生产厂商</th>
+                                                        <th width="8%">零售价</th>
+                                                        <th width="8%" class="hidden">成本价</th>
+                                                        <th width="8%">批号</th>
+                                                        <th width="11%">有效期</th>
+                                                        <th width="9%">库存数量</th>
+                                                        <th width="10%">数量</th>
+                                                        <th width="6%">单位</th>
+                                                        <th width="8%">操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="select-box">
+                                                        <td class="pl20" colspan="11">
+                                                            <div class="pr10 select2-container J-select-prescription" id="s2id_vo" style="width: 100%;">
+                                                                <input type="hidden" class="w100 J-select-pharmacy" id="warepahrmacy" data-placeholder="请选择" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- panel-body -->
+                                <div class="panel-footer">
+                                    <button class="btn btn-primary mr5 J-btn-parmacy-submit">收费</button>
+                                    <a class="btn btn-default" href="https:///Clinic/Charge/drugView.html">取消</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 药品零售 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 付款 -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="form-horizontal" action="https:///Clinic/Charge/setPrice.html" method="post" id="priceForm">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">付款</h4>
+                        </div>
+                        <div class="modal-body J-charge-drugs-warp">
+                        </div>
+                        <div class="modal-footer modal-btn-col2">
+                            <button type="button" class="btn btn-primary J-submit-btn disabled">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 付款 -->
+
+        <!-- 删除 -->
+        <div class="modal fade" id="delPharmacyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">系统提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>是否删除该条记录？</h4>
+                        <input type="hidden" class="J-del-id" value="">
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary J-del-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 删除 -->
+    </div>
+
+    <!-- 零售药品打印模板 -->
+    <!-- 打印项目 -->
+<script type="text/template" id="J-charge-print-tpl">
+    <div class="print-page1 p-report next-page">
+        <div class="print-subpage1">
+            <div class="print-header1 no-border h2cm position-relative">
+                <% if (CURRENT_SHOP_PRINT_NAME && CURRENT_SHOP_PRINT_NAME.length < 5) {%>
+                    <h1><%- CURRENT_SHOP_PRINT_NAME%> 收费清单</h1>
+                <% } else { %>
+                    <h1><%- CURRENT_SHOP_PRINT_NAME%><br/>收费清单</h1>
+                <% } %>
+                <% if(CURRENT_SHOP_PRINT_LOGO) {%>
+                    <img class="charge_a5_logo" src="<%- CURRENT_SHOP_PRINT_LOGO %>" />
+                <% } %>
+            </div>
+            <div class="print-body2">
+                <div class="p-patient-info1 fs105 p-info-small clearfix no-border">
+                    <div class="p-row">
+                        <div class="p-col7">&nbsp;</div>
+                        <div class="p-col7">&nbsp;</div>
+                        <div class="p-col7">&nbsp;</div>
+                        <div class="p-col7">&nbsp;</div>
+                    </div>
+                    <div class="p-row">
+                        <div class="p-col3">&nbsp;</div>
+                        <div class="p-col3">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="p-table clearfix position-relative">
+                    <table class="p-table-body1 fs105">
+                        <thead>
+                            <tr>
+                                <th width="30%" class="font-bold">项目名称</th>
+                                <th width="15%" class="font-bold">单价（元）</th>
+                                <th width="40%" class="font-bold">数量</th>
+                                <th width="15%" class="font-bold">收费金额</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%$.each(items, function(i, item) {%>
+                                <tr class="p-charge-a5-tr">
+                                    <td><%- item.name%></td>
+                                    <td><%- item.unitPrice%></td>
+                                    <td><%- item.count%></td>
+                                    <td><%- item.realPrice%></td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>                 
+                </div>
+            </div>
+            <div class="print-signature1 print-center1 position-relative">
+                <div class="clearfix">
+                    <div class="p-row clearfix">
+                        <div class="p-col2">
+                            <div class="p-signature fs105">应收金额：<span class="span-date"><%- totalPrice%> 元</span></div>
+                        </div>
+                        <%if(chargeReduce*1 > 0){%>
+                        <div class="p-col2">
+                            <div class="p-signature fs105">减免金额：<span>-<%- chargeReduce%> 元</span></div>
+                        </div>
+                        <% } %>
+                        <%if(medicareReduce*1 > 0 && PERMISSIONANDMODULES.modules.indexOf(44) > -1){%>
+                        <div class="p-col2">
+                            <div class="p-signature fs105">医保支付：<span>-<%- medicareReduce%> 元</span></div>
+                        </div>
+                        <% } %>
+                        <%if(commercialReduce*1 > 0){%>
+                        <div class="p-col2">
+                            <div class="p-signature fs105">商保支付：<span class="span-date">-<%- commercialReduce%> 元</span></div>
+                        </div>
+                        <% } %>
+                        <div class="p-col2">
+                            <div class="p-signature fs105">实收金额：<span><%- (totalPrice*1 - (chargeReduce*1 + commercialReduce*1 + medicareReduce*1)).toFixed(2) %> 元</span></div>
+                        </div>
+                        <div class="p-col2">
+                            <div class="p-signature fs105">收款人：<span>
+                                <% if (operatorSignature) {%>
+                                    <img src="<%- operatorSignature%>" class="print-signature-a5">
+                                <%} else {%>
+                                    <%- operator%>
+                                <%}%>
+                            </span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 打印项目 -->
+
+<!-- 退费打印项目 -->
+<script type="text/template" id="J-charge-back-print-tpl">
+    <div class="print-page1 p-report next-page">
+        <div class="print-subpage1">
+            <div class="print-header1 no-border h2cm position-relative">
+                <% if (CURRENT_SHOP_PRINT_NAME && CURRENT_SHOP_PRINT_NAME.length < 5) {%>
+                    <h1><%- CURRENT_SHOP_PRINT_NAME%> 退费清单</h1>
+                <% } else { %>
+                    <h1><%- CURRENT_SHOP_PRINT_NAME%><br/>退费清单</h1>
+                <% } %>
+                <% if(CURRENT_SHOP_PRINT_LOGO) {%>
+                    <img class="charge_a5_logo" src="<%- CURRENT_SHOP_PRINT_LOGO %>" />
+                <% } %>
+            </div>
+            <div class="print-body2">
+                <div class="p-patient-info1 fs105 p-info-small clearfix no-border">
+                    <div class="p-row">
+                        <div class="p-col7">&nbsp;</div>
+                        <div class="p-col7">&nbsp;</div>
+                        <div class="p-col7">&nbsp;</div>
+                        <div class="p-col7">&nbsp;</div>
+                    </div>
+                    <div class="p-row">
+                        <div class="p-col3">&nbsp;</div>
+                        <div class="p-col3">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="p-table clearfix position-relative">
+                    <table class="p-table-body1 fs105">
+                        <thead>
+                            <tr>
+                                <th width="30%" class="font-bold">项目名称</th>
+                                <th width="15%" class="font-bold">单价（元）</th>
+                                <th width="40%" class="font-bold">数量</th>
+                                <th width="15%" class="font-bold">收费金额</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%$.each(items, function(i, item) {%>
+                                <tr class="p-charge-a5-tr">
+                                    <td><%- item.name%></td>
+                                    <td><%- item.unitPrice%></td>
+                                    <td><%- item.count%></td>
+                                    <td><%- item.realPrice%></td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>                 
+                </div>
+            </div>
+            <div class="print-signature1 print-center1 position-relative">
+                <div class="clearfix">
+                    <div class="p-row clearfix mt0">
+                        <div class="p-col2">
+                            <div class="p-col2">
+                                <div class="p-signature fs105">退费金额：<span><%- (totalPrice*1 - (chargeReduce*1 + commercialReduce*1 + medicareReduce*1)).toFixed(2) %> 元</span></div>
+                            </div>
+                        </div>
+                        <div class="p-col2">&nbsp;</div>
+                        <div class="p-col2">
+                            <div class="p-signature fs105">退款人：<span>
+                                <% if (operatorSignature) {%>
+                                    <img src="<%- operatorSignature%>" class="print-signature-a5">
+                                <%} else {%>
+                                    <%- operator%>
+                                <%}%>
+                            </span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 退费打印项目 -->
+    <!-- 零售药品打印模板 -->
+    <!-- 收费弹窗模板 -->
+    <script type="text/template" id="J-charge-drugs-tpl">
+        <!-- <input type="hidden" name="clinic_id" value=""> -->
+        <input type="hidden" name="price" value="<%- data.realPriceLabel%>">
+        <input type="hidden" name="charge_id" class="J-pay-number" value="">
+        <input type="hidden" name="force" class="J-pay-force" value="true">
+        <input type="hidden" class="J-charge-drug-bills" value="<%- data.bills%>">
+        <!-- 费用 -->
+        <div class="panel panel-dark panel-stat J-title">
+            <div class="panel-heading">
+                <div class="stat max-width">
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2">
+                            <i class="fa fa-money"></i>
+                        </div>
+                        <div class="col-xs-8 col-sm-5">
+                            <small class="stat-label">应收费用</small>
+                            <h1 class="J-total-money">￥<%- data.realPriceLabel%></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 费用 -->
+        <div class="pay">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">实际应付 <span class="asterisk">*</span></label>
+                <div class="col-sm-8">
+                    <input type="number" name="real_price" disabled="true" class="form-control J-btn-pay" value="<%- data.realPriceLabel%>" placeholder="元" required>
+                </div>
+            </div>
+            <!-- 各种支付 -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-8">
+                    <button type="button" class="btn btn-default btn-sm J-minus-money module-hide J-module-control" data-permission="27" data-class="J-minus-panel" data-cancel="cancelMinus">减免金额</button>
+                    <button type="button" class="btn btn-default btn-sm hidden J-update-minus-money">修改减免</button>
+                    <button type="button" class="btn btn-default btn-sm J-use-medicare" data-class="J-medicare-panel" data-cancel="cancelMedicare">医保支付</button>
+                    <button type="button" class="btn btn-default btn-sm J-use-commercial" data-class="J-commercial-panel" data-cancel="cancelCommercial">商保支付</button>
+                </div>
+            </div>
+            <!-- 减免金额 -->
+            <div class="form-group hidden J-minus-panel">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-7 well mb0">
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label ml0 pr0">减免金额 <span class="asterisk">*</span></label>
+                        <div class="col-sm-8">
+                            <div class="mb10">
+                                <input type="number" class="form-control J-charge_reduce J-check-price" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 control-label ml0 pr0">减免原因 <span class="asterisk">*</span></label>
+                        <div class="col-sm-8">
+                            <div class="mb10">
+                                <input type="text" class="form-control J-charge_reduce_reason" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 control-label ml0"></label>
+                        <div class="col-sm-8">
+                            <button type="button" class="btn btn-primary mr5 J-minus-submit">保存</button>
+                            <button type="button" class="btn btn-default J-minus-cancel">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 显示减免金额 -->
+            <div class="hidden J-minus-showBox">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">减免金额</label>
+                    <div class="col-sm-7 mt10">
+                        <span class="J-minus-title"></span> 元
+                        <input type="hidden" class="form-control" name="charge_reduce" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">减免原因</label>
+                    <div class="col-sm-7 mt10">
+                        <span class="J-minus-reason"></span>
+                        <input type="hidden" class="form-control" name="charge_reduce_reason" value="">
+                    </div>
+                </div>
+            </div>
+            <!-- 医保支付 -->
+            <div class="form-group hidden J-medicare-panel">
+                <label class="col-sm-2 control-label">医保支付</label>
+                <div class="col-sm-7">
+                    <input type="number" name="medicare_reduce" class="form-control J-medicare_reduce J-check-price" data-val="0">
+                </div>
+                <div class="col-sm-1 pl0">
+                    <a class="btn input-sm btn-white mt0 J-del-medicare"><i class="fa fa-minus"></i></a>
+                </div>
+            </div>
+            <!-- 商保支付 -->
+            <div class="form-group hidden J-commercial-panel">
+                <label class="col-sm-2 control-label">商保支付</label>
+                <div class="col-sm-7">
+                    <input type="number" name="commercial_reduce" class="form-control J-commercial_reduce J-check-price" data-val="0">
+                </div>
+                <div class="col-sm-1 pl0">
+                    <a class="btn input-sm btn-white mt0 J-del-commercial"><i class="fa fa-minus"></i></a>
+                </div>
+            </div>
+            <!-- 备注 -->
+            <div class="form-group J-remark-panel hidden">
+                <label class="col-sm-2 control-label">备注</label>
+                <div class="col-sm-8">
+                    <input type="text" name="insurance_remark" class="form-control J-remark" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">选择支付方式</label>
+                <div class="col-sm-9 J-pay-method">
+                    <div class="row mt10">
+                        <div class="col-sm-5">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="channel" id="radioDefault1" data-method="" value="1">
+                                <label for="radioDefault1"><i class="fa fa-money"></i> 现金</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="channel" id="radioDefault2" data-method="" value="2">
+                                <label for="radioDefault2"><i class="fa fa-credit-card"></i> 刷卡</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt10">
+                        <div class="col-sm-5">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="channel" id="radioDefault3" data-method="wx_pub_qr" value="3">
+                                <label for="radioDefault3"><i class="fa fa-wechat"></i> 微信支付</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="channel" id="radioDefault4" data-method="alipay_qr" value="4">
+                                <label for="radioDefault4"><i class="icon-alipay"></i> 支付宝支付</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt10">
+                        <div class="col-sm-5 hidden J-member-card-method">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="channel" id="radioDefault5" data-method="member_card" value="5">
+                                <label for="radioDefault5"><i class="fa fa-database"></i> 充值预付费</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden J-member-card-infos">
+                <!-- 共享人卡信息 -->
+            </div>
+            <div class="form-group J-real-price hide">
+                <label class="col-sm-3 control-label J-ready-money">实收现金 <span class="asterisk">*</span></label>
+                <div class="col-sm-7 lh40">
+                    <input type="number" class="form-control J-btn-cash J-check-price" placeholder="元" required>
+                    <span class="red font20 J-dis-text hide"></span>
+                </div>
+            </div>
+            <div class="form-group J-charge hide">
+                <label class="col-sm-3 control-label">找零</label>
+                <div class="col-sm-7 lh40">
+                    <span class="red font20 J-text-charge hd">￥-<%- data.realPriceLabel%></span>
+                </div>
+            </div>
+            <div class="form-group J-qrcode hide">
+                <div class="col-sm-12">
+                    <p align="center" class="red hidden J-not-qrcode"></p>
+                </div>
+                <!-- 选择对应的支付方式 -->
+                <label class="col-sm-3 control-label">&nbsp;</label>
+                <div class="panel panel-success col-sm-7 shadow-none background-transparent">
+                    <a class="btn btn-default-alt mr3 font14 J-card-charge-btn lh13 pdtb5">
+                        <i class="icon-scan-code"></i> 
+                        <span>
+                            条码支付
+                            <span class="font12 ml5 display-block">商家扫</span>
+                        </span>
+                    </a>
+                    <a class="btn btn-default-alt mr3 font14 J-qr-charge-btn lh13 pdtb5">
+                        <i class="icon-qr-code"></i> 
+                        <span>
+                            扫码支付
+                            <span class="font12 ml5 display-block">买家扫</span>
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="col-sm-12 J-card-charge-panel hidden">
+                    <p align="center" class="J-scan-mode-not-support hidden">
+                        如需要开通扫码枪扫码支付，请联系客服<br/>
+                        0571-26899787
+                    </p>
+                    <div class="form-group J-scan-mode-support hidden">
+                        请使用扫码枪读取用户手机上的条码
+                        <label class="col-sm-2">&nbsp;</label>
+                        <div class="col-sm-8 pd0">
+                            <input type="number" class="form-control input-focus J-card-charge-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 J-qr-charge-panel hidden">
+                    <p align="center">
+                        <img src="" class="img-responsive J-pay-qrcode" alt="" />
+                    </p>
+                </div>
+                <label class="col-sm-2">&nbsp;</label>
+                <p class="col-sm-8 pd0 text-center J-charge-fresh-way hidden"><a class="btn btn-white btn-block">没有收到支付结果？点我刷新</a></p>
+            </div>
+        </div>
+    </script>
+    <!-- 收费弹窗模板 -->
+    <!-- 零售药品收费模板 -->
+    <script type="text/template" id="J-retail-pharmacy-tpl">
+        <tr class="select-list">
+            <td class="pl20">
+                <input type="hidden" class="form-control input-sm J-medicineid" value="<%-medicineid%>" name="medicineid[]">
+                <%-medicinename%>
+            </td>
+            <td>
+                <%-medicinespec%>
+            </td>
+            <td>
+                <%-manufacturer%>
+            </td>
+            <td>
+                <%-medicineprice%>
+            </td>
+            <%if(storage && storage.length > 1) {%>
+                <td class="hidden">
+                    <select name="cost_price[]" class="form-control input-sm hidden J-select-price" data-placeholder="请选择" required>
+                        <option value="">请选择</option>
+                        <%$.each(storage, function(i, obj) {%>
+                            <option value="<%- obj.cost_price%>">
+                                <%- obj.cost_price%>
+                            </option>
+                        <%});%>
+                    </select>
+                    <span class="J-price-text"></span>
+                </td>
+                <td>
+                    <select name="storage_id[]" class="form-control input-sm J-select-storage" data-placeholder="请选择" required>
+                        <option value="">请选择</option>
+                        <%$.each(storage, function(i, obj) {%>
+                            <option value="<%- obj.storage_id%>">
+                                <%- obj.batch_number%>
+                            </option>
+                        <%});%>
+                    </select>
+                </td>
+                <td>
+                    <select name="validity[]" class="form-control input-sm hidden J-select-validity" data-placeholder="请选择" required>
+                        <option value="">请选择</option>
+                        <%$.each(storage, function(i, obj) {%>
+                            <option value="<%- obj.validity%>" data-outdate="<%- obj.expire%>">
+                                <%- obj.validity%>
+                            </option>
+                        <%});%>
+                    </select>
+                    <span class="J-validity-text"></span>
+                </td>
+                <td>
+                    <select name="real_count[]" class="form-control input-sm hidden J-select-real_count" data-placeholder="请选择" required>
+                        <option value="">请选择</option>
+                        <%$.each(storage, function(i, obj) {%>
+                            <option value="<%- obj.real_count%>">
+                                <%- obj.real_count%>
+                            </option>
+                        <%});%>
+                    </select>
+                    <span class="J-real-text"></span>
+                </td>
+                <%} else if(storage && storage.length == 1){%>
+                    <td class="hidden">
+                        <%-storage[0].cost_price%>
+                    </td>
+                    <td>
+                        <input type="hidden" name="storage_id[]" value="<%- storage[0].storage_id%>" />
+                        <%-storage[0].batch_number%>
+                    </td>
+                    <td>
+                        <% if (storage[0].expire) {%>
+                            <span class="red J-pharmacy-outdate"><%-storage[0].validity%>（已过期）</span>
+                        <%} else {%>
+                            <%-storage[0].validity%>
+                        <%}%>
+                    </td>
+                    <td>
+                        <%-storage[0].real_count%>
+                    </td>
+                    <%} else {%>
+                        <% var nowDate = new Date().Format('yyyy-MM-dd'); %>
+                        <td class="hidden">
+                            <%-cost_price%>
+                        </td>
+                        <td>
+                            <input type="hidden" name="storage_id[]" value="<%-id%>" />
+                            <%-batch_number%>
+                        </td>
+                        <td>
+                            <% if (expire) {%>
+                                <span class="red J-pharmacy-outdate"><%-validity%>（已过期）</span>
+                            <%} else {%>
+                                <%-validity%>
+                            <%}%>
+                        </td>
+                        <td>
+                            <%-real_count%>
+                        </td>
+                        <%}%>
+                        <td>
+                            <input type="hidden" class="J-real-count" value="<%-real_count%>" />
+                            <input type="number" class="form-control input-sm w60 J-count" value="<%-excount%>" name="count[]" required>
+                        </td>
+                        <td>
+                            <%if(is_dismounted == '1'){%>
+                                <select name="medicineunit[]" class="form-control input-sm">
+                                    <option value="<%- medicineunit%>" selected="selected">
+                                        <%- medicineunit%>
+                                    </option>
+                                    <option value="<%- min_medicineunit%>">
+                                        <%- min_medicineunit%>
+                                    </option>
+                                </select>
+                            <%} else {%>
+                                <input type="hidden" name="medicineunit[]" value="<%- medicineunit%>" />
+                                <%- medicineunit%>
+                            <%}%>
+                        </td>
+                        <td><a data-toggle="modal" data-target="#delPharmacyModal" data-id="<%-medicineid%>" class="J-del"><i class="fa fa-trash-o"></i> 删除</a></td>
+        </tr>
+    </script>
+    <!-- 零售药品收费模板 -->
+
+    <!-- 药品零售记录 -->
+    <script type="text/template" id="J-drug-list-tpl">
+        <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-11 pl20">
+                        <h3><a href="<%- global_src_api %>/Charge/drugDetail.html?id=<%- id%>" class="white">零售药品</a></h3>
+                        <span>收费日期：<%- chargeTime%></span>
+                        <span class="text-nowrap">收费人员：<%- cashName%></span>
+                        <span><br></span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <ul class="photo-meta">
+                    <li><a href="<%- global_src_api %>/Charge/drugDetail.html?id=<%- id%>">查看详情 ￥<%- totalPrice%></a></li>
+                </ul>
+            </div>
+        </div>
+    </script>
+    <!-- 药品零售记录 -->
+
+    <div id="print">
+    </div>
+
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['charge_drug_list']);
+    </script>
+</body>
+
+</html>

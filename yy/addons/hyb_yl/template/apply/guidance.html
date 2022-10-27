@@ -1,0 +1,193 @@
+{template './common/mainHeader'}
+  <div class="app-container-right">
+                    <div class="app-container-right">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#">用户列表</a>
+        </li>
+    </ul>
+    <div class="app-content">
+        <div class="app-filter">
+            <div class="filter-list">
+                <form action="" method="get" class="form-horizontal" role="form" id="form1">
+
+                 
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">全部消息</label>
+                        <div class="col-sm-9">
+                            <div class="btn-group">
+                                <a href="" class="btn btn-primary">不限</a>
+                                <a href="" class="btn btn-default">已读</a>
+                                   <a href="" class="btn btn-default">未读</a>
+                            </div>
+                        </div>
+                    </div>
+                 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-md-9">
+                            <button class="btn btn-primary" type="submit">筛选</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="app-table-list">
+            <div class="table-responsive">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th style="width: 250px;">用户</th>
+                            <th style="">时间</th>
+                            <th style="">消息</th>
+                            <th style="">状态</th>
+                            <th style="">接待客服</th>
+                            <th style="">接待机构</th>
+                            <th style="">接待科室</th>
+                            <th style="">导诊金额</th>
+                            <th style="">患者标签</th>
+                            <th style="">用户身份</th>
+                            <th style="width: 350px;text-align: right;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                            <tr>
+                            <td style="overflow: visible">
+                                <div rel="pop" style="display: flex" data-content=" <span>ID: </span>5924 </br>                                                                       <span>真实姓名：</span> 未填写<br/>
+                          <span>手机号：</span>未绑定 <br/>
+                           <span>问诊次数：</span>3 <br/>
+                           <span>购药订单：</span>5 <br/>
+                           <span>体检订单：</span>5 <br/>
+                            <span>挂号订单：</span>6<br/>
+                            <span>总消费：</span>6000元<br/>
+                            <span>用户余额：</span>610元<br/>
+                           <span>推荐人：</span>无 <br/>
+                           <span>用户来源：</span>
+                             <i>自然进入</i>
+                            <br/>
+                           <span>状态:</span>正常">
+                                    <img class="img-40" src="https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKOL7xkia743QNepaqTE6fqCbeVkR9jtpsibMZnhYdPK24fKuRMGounyCmlicib6AREjwN0kRYYBVoCPw/132" style='border-radius:50%;border:1px solid #efefef;' onerror="this.src='https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKOL7xkia743QNepaqTE6fqCbeVkR9jtpsibMZnhYdPK24fKuRMGounyCmlicib6AREjwN0kRYYBVoCPw/132'" height="40" width="40" />
+                                    <span style="display: flex;flex-direction: column;justify-content: center;align-items: flex-start;padding-left: 5px">
+                                        <span class="nickname">
+
+                                            Great </span>
+                                    </span>
+
+                                </div>
+                            </td>
+                           <td>2020-03-13
+                                <br />19:31:38</td>
+                            <td>
+                               您好在码？                            </td>
+                               <td>
+                                已读                            </td>
+                                 <td>
+                                客服1                            </td>
+                                 <td>
+                                <label class="text-warning">山西大医院 </label>                          </td>
+                                  <td>
+                                <label class="text-info">心脑科 </label>                          </td>
+                                  <td>
+                                <label class="text-success">￥:30.00 </label>                          </td>
+                            <td>
+                                <span class="text-info">心脏病</span>
+                                <span class="text-info">高血压高血脂</span>
+                                <span class="text-warning">尿酸高</span>
+                            </td>
+                            <td>
+                                <span class="text-info">普通用户</span>
+                            </td>
+                           
+                            <!--<td>普通会员</td>-->
+
+                            <td style="overflow:visible;text-align: right;">
+                                <a class="btn btn-primary btn-sm" href="" title="">快速回复</a>
+                                <a class="btn btn-info btn-sm" href="">患者标记</a>
+                                <a class="btn btn-danger btn-sm" data-toggle='ajaxRemove' href="" data-confirm="确定要删除该会员吗？">删除</a>
+                            </td>
+                        </tr>
+
+                                         
+                                        </tbody>
+                </table>
+            </div>
+            <div class="app-table-foot clearfix">
+                <div class="pull-left">
+
+                </div>
+                <div class="pull-right">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+                require(['bootstrap'], function () {
+                    $("[rel=pop]").popover({
+                        trigger: 'manual',
+                        placement: 'right',
+                        title: $(this).data('title'),
+                        html: 'true',
+                        content: $(this).data('content'),
+                        animation: false
+                    }).on("mouseenter", function () {
+                        var _this = this;
+                        $(this).popover("show");
+                        $(this).siblings(".popover").on("mouseleave", function () {
+                            $(_this).popover('hide');
+                        });
+                    }).on("mouseleave", function () {
+                        var _this = this;
+                        setTimeout(function () {
+                            if (!$(".popover:hover").length) {
+                                $(_this).popover("hide")
+                            }
+                        }, 100);
+                    });
+                });
+            });
+    </script>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+    <ul class="links ft">
+        <li class="links_item">
+            <div class="copyright">Powered by <a href="http://www.we7.cc">
+                    <b>系统</b>
+                </a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+
+<script>
+    require(['bootstrap'], function ($) {
+                $('[data-toggle="tooltip"]').tooltip({
+                    container: $(document.body)
+                });
+                $('[data-toggle="popover"]').popover({
+                    container: $(document.body)
+                });
+                $('[data-toggle="dropdown"]').dropdown({
+                    container: $(document.body)
+                });
+            });
+ 
+                    $('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+                $('.app-login-info-sel').show();
+            });
+            $('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+                $('.app-login-info-sel').hide();
+            });
+            $('.app-login-info-sel .login-out').hover(function(){
+                $('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+            },function(){
+                $('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+            });
+</script>
+</body>
+</html>

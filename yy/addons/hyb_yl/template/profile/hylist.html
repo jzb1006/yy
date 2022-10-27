@@ -1,0 +1,129 @@
+{template './common/mainHeader'}
+
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#">会员列表</a>
+				</li>
+			</ul>
+			<div class="app-content">
+				<div class="app-filter">
+					<div class="filter-list">
+						<form action="" method="post" class="form-horizontal" role="form" id="form1">
+							<div class="form-group form-inline">
+								<label class="col-sm-2 control-label">会员筛选</label>
+								<div class="col-sm-9">
+									<select name="type" class="form-control">
+										<option value="5">MID</option>
+										<option value="2">手机号</option>
+										<option value="3">真实姓名</option>
+										<option value="4">昵称</option>
+									</select>
+									<input type="text" name="keyword" class="form-control" value="" placeholder="请输入关键字" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">会员状态</label>
+								<div class="col-sm-9">
+									<div class="btn-group">
+										<a href="./index.php?c=site&a=entry&m=hyb_yl&p=member&ac=wlMember&do=memberIndex&blackflag=0&page=1" class="btn btn-primary">不限</a>
+										<a href="./index.php?c=site&a=entry&m=hyb_yl&p=member&ac=wlMember&do=memberIndex&blackflag=2&page=1" class="btn btn-default">正常</a>
+										<a href="./index.php?c=site&a=entry&m=hyb_yl&p=member&ac=wlMember&do=memberIndex&blackflag=1&page=1" class="btn btn-default">黑名单</a>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label"></label>
+								<div class="col-md-9">
+									<button class="btn btn-primary" type="submit">筛选</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="app-table-list">
+					<div class="table-responsive">
+						<table class="table table-responsive">
+							<thead>
+								<tr>
+									<th style="width: 250px;">粉丝</th>
+									<th style="">积分/余额</th>
+									<th style="">注册时间</th>
+									<!--<th style="">客户来源</th>-->
+									<th style="">成交</th>
+									<th style="width: 350px;text-align: right;">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+					<div class="app-table-foot clearfix">
+						<div class="pull-left">
+
+						</div>
+						<div class="pull-right">
+						</div>
+					</div>
+				</div>
+			</div>
+			<script>
+				$(function(){
+						require(['bootstrap'], function () {
+					        $("[rel=pop]").popover({
+					            trigger: 'manual',
+					            placement: 'right',
+					            title: $(this).data('title'),
+					            html: 'true',
+					            content: $(this).data('content'),
+					            animation: false
+					        }).on("mouseenter", function () {
+					            var _this = this;
+					            $(this).popover("show");
+					            $(this).siblings(".popover").on("mouseleave", function () {
+					                $(_this).popover('hide');
+					            });
+					        }).on("mouseleave", function () {
+					            var _this = this;
+					            setTimeout(function () {
+					                if (!$(".popover:hover").length) {
+					                    $(_this).popover("hide")
+					                }
+					            }, 100);
+					        });
+					    });
+					});
+			</script>
+		</div>
+	</div>
+</div>
+ {template './common/mainfooter'}
+
+
+
+<script>
+	require(['bootstrap'], function ($) {
+			    $('[data-toggle="tooltip"]').tooltip({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="popover"]').popover({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="dropdown"]').dropdown({
+		            container: $(document.body)
+		        });
+		    });
+			myrequire(['js/init']);
+					$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+				$('.app-login-info-sel').show();
+			});
+			$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+				$('.app-login-info-sel').hide();
+			});
+			$('.app-login-info-sel .login-out').hover(function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+			},function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+			});
+</script>
+</body>
+</html>

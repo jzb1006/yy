@@ -1,0 +1,1760 @@
+
+{template './common/siteheader'}
+
+<div class="content">
+    <div class="header">
+        <h1 class="page-title">处方医嘱</h1>
+        <div class="stats">
+            <a href="{php echo $this->createWeburl('setting',array('op'=>'xcf_display'))}" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="panel panel-default">
+            <div class="panel-heading no-collapse">
+                西/成药品信息
+            </div>
+            <div class="panel-body collapse in">
+                <form id="recipeedit_form" method="post" action="{php echo $this->createWeburl('setting',array('op'=>'xcf_display'))}" novalidate="novalidate">
+    <input type="hidden" value="17600" name="medicineid" id="J-medicine-id">
+    <input type="hidden" value="1" name="type" id="J-medicine-type">
+    <div class="row">
+        <div class="col-sm-12 col-md-10">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control w88" placeholder="国药准字" value="" name="search_number">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group w88">
+                        <input type="text" class="form-control" placeholder="药品条形码" value="" name="search_barcode">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default J-find-medicine-detail" type="button">查找</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-sm-12 col-md-12 mb15 ml0 w95 border-bottom pl0">
+                <h5 class="font16 mb15">药品基本信息</h5>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">通用名 <span class="asterisk">* </span>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <!--<input type="text" class="form-control hidden w88 max128 J-select-prescription" placeholder="通用名/商品名/国药准字/拼音码搜索" value="大布洛芬" required>-->
+                        
+                        <input type="text" name="medicinename" class="form-control w88 max32 J-input-name" value="大布洛芬">
+                        
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">规格</label>
+                        <input type="text" class="form-control w88 max32" value="" name="medicinespec">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">生产厂家</label>
+                        <input type="text" class="form-control w88 max128" value="" name="manufacturer">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">剂型</label>
+                        <select class="form-control input-sm w88" data-placeholder="请选择" name="dosage_from">
+                            <option value="">请选择</option>
+                            
+                            <option value="1">注射液</option>
+                            
+                            <option value="2">肠溶片</option>
+                            
+                            <option value="3">滴剂</option>
+                            
+                            <option value="4">滴眼剂</option>
+                            
+                            <option value="5">冻干粉针剂</option>
+                            
+                            <option value="6">粉针剂</option>
+                            
+                            <option value="7">含片</option>
+                            
+                            <option value="8">混悬剂</option>
+                            
+                            <option value="9">胶浆剂</option>
+                            
+                            <option value="10">胶囊剂</option>
+                            
+                            <option value="11">颗粒剂</option>
+                            
+                            <option value="12">口服药</option>
+                            
+                            <option value="13">凝胶</option>
+                            
+                            <option value="14">泡腾片</option>
+                            
+                            <option value="15">喷剂</option>
+                            
+                            <option value="16">喷雾</option>
+                            
+                            <option value="17">片剂</option>
+                            
+                            <option value="18">溶液</option>
+                            
+                            <option value="19">乳膏剂</option>
+                            
+                            <option value="20">软膏剂</option>
+                            
+                            <option value="21">散剂</option>
+                            
+                            <option value="22">栓剂</option>
+                            
+                            <option value="23">糖浆</option>
+                            
+                            <option value="24">贴剂</option>
+                            
+                            <option value="25">贴膜</option>
+                            
+                            <option value="26">眼膏</option>
+                            
+                            <option value="27">针剂</option>
+                            
+                            <option value="28">注射剂</option>
+                            
+                            <option value="29">口服液</option>
+                            
+                            <option value="30">软膏</option>
+                            
+                            <option value="31">乳膏</option>
+                            
+                            <option value="32">粉剂</option>
+                            
+                            <option value="33">饮片</option>
+                            
+                            <option value="34">汤剂</option>
+                            
+                            <option value="35">中药</option>
+                            
+                            <option value="36">中药饮片</option>
+                            
+                            <option value="37">滴鼻剂</option>
+                            
+                            <option value="38">丸剂</option>
+                            
+                            <option value="39">缓释制剂</option>
+                            
+                            <option value="40">混悬液</option>
+                            
+                            <option value="41">口服混悬剂</option>
+                            
+                            <option value="42">片剂(肠溶片)</option>
+                            
+                            <option value="43">糖浆剂</option>
+                            
+                            <option value="44">凝胶剂</option>
+                            
+                            <option value="45">合剂</option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">商品名 </label>
+                        <input type="text" class="form-control w88 max128" value="" name="generic_name">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">国药准字</label>
+                        <input type="text" class="form-control w88 max128" value="" name="app_number">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">药品分类</label>
+                        <input type="text" class="form-control w88 J-medicine-class">
+                        <input type="hidden" class="J-medicine-Id" name="medicine_class" value="">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">拼音码</label>
+                        <input type="text" class="form-control w88" value="dblf" name="pn_code">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">药品条形码 </label>
+                        <input type="text" class="form-control w88 max32" value="" name="barcode">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">状态</label>
+                        <div class="row mt10">
+                            <div class="col-sm-6">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="status" id="radio1" value="1" checked="checked">
+                                    <label for="radio1">正常</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="status" id="radio2" value="2">
+                                    <label for="radio2">停用</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-sm-12 col-md-12 mb15 w95 ml0 border-bottom pl0">
+                <h5 class="font16 w88 mb15">销售信息</h5>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label">编辑规格</label>
+                        <div class="row mt10">
+                            <div class="col-sm-2 pr5">
+                                <label class="control-label">剂量</label>
+                                <div class="input-group form-group w95">
+                                    <input type="number" class="form-control J-check" name="dose_formula" placeholder="" value="0">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 pl0">
+                                <label class="control-label">剂量单位</label>
+                                <div class="input-group form-group w95">
+                                    <select class="form-control input-sm J-check" data-placeholder="" name="dose_unit">
+                                        <option value="">剂量单位</option>
+                                        
+                                        <option value="1">袋</option>
+                                        
+                                        <option value="2">片</option>
+                                        
+                                        <option value="3">支</option>
+                                        
+                                        <option value="4">粒</option>
+                                        
+                                        <option value="5">瓶</option>
+                                        
+                                        <option value="6">mg</option>
+                                        
+                                        <option value="7">g</option>
+                                        
+                                        <option value="8">ml</option>
+                                        
+                                        <option value="9">l</option>
+                                        
+                                        <option value="10">ug</option>
+                                        
+                                        <option value="11">IU</option>
+                                        
+                                        <option value="12">U</option>
+                                        
+                                        <option value="13">包</option>
+                                        
+                                        <option value="14">盒</option>
+                                        
+                                        <option value="15">枚</option>
+                                        
+                                        <option value="16">丸</option>
+                                        
+                                        <option value="18">颗</option>
+                                        
+                                        <option value="19">滴</option>
+                                        
+                                        <option value="20">件</option>
+                                        
+                                        <option value="21">条</option>
+                                        
+                                        <option value="22">万单位</option>
+                                        
+                                        <option value="23">万U</option>
+                                        
+                                        <option value="24">份</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <span class="pull-left lh34 mt27">*</span>
+                            <div class="col-sm-2 pr5">
+                                <label class="control-label">制剂数量 <span class="asterisk J-required-asterisk hidden">*</span></label>
+                                <div class="input-group form-group w95">
+                                    <input type="number" class="form-control J-add-required J-formula J-check" name="formula" placeholder="" value="0">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 pl0">
+                                <label class="control-label">制剂单位 <span class="asterisk J-required-asterisk hidden">*</span></label>
+                                <div class="input-group form-group w95">
+                                    <select class="form-control input-sm J-add-required J-min_medicineunit J-check" data-placeholder="" name="min_medicineunit">
+                                        <option value="">制剂单位</option>
+                                        
+                                        <option value="袋">袋</option>
+                                        
+                                        <option value="片">片</option>
+                                        
+                                        <option value="支">支</option>
+                                        
+                                        <option value="粒">粒</option>
+                                        
+                                        <option value="瓶">瓶</option>
+                                        
+                                        <option value="mg">mg</option>
+                                        
+                                        <option value="g">g</option>
+                                        
+                                        <option value="ml">ml</option>
+                                        
+                                        <option value="l">l</option>
+                                        
+                                        <option value="ug">ug</option>
+                                        
+                                        <option value="IU">IU</option>
+                                        
+                                        <option value="U">U</option>
+                                        
+                                        <option value="包">包</option>
+                                        
+                                        <option value="盒">盒</option>
+                                        
+                                        <option value="枚">枚</option>
+                                        
+                                        <option value="丸">丸</option>
+                                        
+                                        <option value="颗">颗</option>
+                                        
+                                        <option value="滴">滴</option>
+                                        
+                                        <option value="件">件</option>
+                                        
+                                        <option value="条">条</option>
+                                        
+                                        <option value="万单位">万单位</option>
+                                        
+                                        <option value="万U">万U</option>
+                                        
+                                        <option value="份">份</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <span class="pull-left lh34 mt27">/</span>
+                            <div class="col-sm-2">
+                                <label class="control-label">包装单位 <span class="asterisk">*</span></label>
+                                <div class="input-group form-group w95">
+                                    <select class="form-control input-sm J-medicineunit J-check" data-placeholder="" name="medicineunit" required="">
+                                        <option value="">包装单位</option>
+                                        
+                                        <option value="袋">袋</option>
+                                        
+                                        <option value="片">片</option>
+                                        
+                                        <option value="支">支</option>
+                                        
+                                        <option value="粒">粒</option>
+                                        
+                                        <option value="瓶">瓶</option>
+                                        
+                                        <option value="mg">mg</option>
+                                        
+                                        <option value="g">g</option>
+                                        
+                                        <option value="ml">ml</option>
+                                        
+                                        <option value="l">l</option>
+                                        
+                                        <option value="ug">ug</option>
+                                        
+                                        <option value="IU">IU</option>
+                                        
+                                        <option value="U">U</option>
+                                        
+                                        <option value="包">包</option>
+                                        
+                                        <option value="盒" selected="selected">盒</option>
+                                        
+                                        <option value="枚">枚</option>
+                                        
+                                        <option value="丸">丸</option>
+                                        
+                                        <option value="颗">颗</option>
+                                        
+                                        <option value="滴">滴</option>
+                                        
+                                        <option value="件">件</option>
+                                        
+                                        <option value="条">条</option>
+                                        
+                                        <option value="万单位">万单位</option>
+                                        
+                                        <option value="万U">万U</option>
+                                        
+                                        <option value="份">份</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 col-md-1 mt5 pl0 pr0 mt27 dropdown">
+                                <button type="button" class="btn-dropdown dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-image"></i> 示例</button>
+                                <div class="dropdown-menu w250 pd0" role="menu" aria-labelledby="dropdownMenu1">
+                                    <table class="table table-hover mtb0">
+                                        <thead>
+                                        <tr>
+                                            <th class="pl20">示例</th>
+                                            <th>正确填写方式</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><img src="//assets.dxycdn.com/app/DXYClinic/test/system/images/sl-1.png" width="115" height="30" alt="" border="0"></td>
+                                            <td>1片*20片/盒</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="//assets.dxycdn.com/app/DXYClinic/test/system/images/sl-2.png" width="115" height="30" alt="" border="0"></td>
+                                            <td>40mg*14片/盒</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="//assets.dxycdn.com/app/DXYClinic/test/system/images/sl-3.png" width="115" height="30" alt="" border="0"></td>
+                                            <td>1片*10片/盒</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="//assets.dxycdn.com/app/DXYClinic/test/system/images/sl-4.png" width="115" height="30" alt="" border="0"></td>
+                                            <td>500ml*1瓶/瓶</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">零售价 <span class="asterisk">*</span></label>
+                        <div class="input-group form-group w88">
+                            <input type="number" class="form-control border-right-none eqnumber J-medicine-price" value="20.0000" name="medicineprice" required="">
+                            <span class="input-group-btn">
+                            <span class="btn btn-white btn-find border-left-none mh34 J-price-unit"></span>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">成本价 </label>
+                        <div class="input-group form-group w88">
+                            <input type="text" class="form-control border-right-none J-cost-price eqnumber" value="0.0000" name="costPrice">
+                            <span class="input-group-btn">
+                                <span class="btn btn-white btn-find border-left-non mh34 J-price-unit"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">允许折扣 </label>
+                        <div class="row mt10">
+                            <div class="col-sm-4 col-pad-sm">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="discount" id="radioDiscount1" value="1" checked="checked">
+                                    <label for="radioDiscount1">是</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-pad-sm">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="discount" id="radioDiscount2" value="2">
+                                    <label for="radioDiscount2">否</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">是否拆零 <span class="asterisk">*（保存后不可修改）</span></label>
+                        <div class="row mt10">
+                            <div class="col-sm-4 col-pad-sm">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="is_dismounted" id="radioDefault1" class="J-is_dismounted" value="1" disabled="">
+                                    <label for="radioDefault1">是</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-pad-sm">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="is_dismounted" id="radioDefault2" class="J-is_dismounted" value="2" checked="checked" disabled="">
+                                    <label for="radioDefault2">否</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">拆零售价 <span class="asterisk hidden" id="J-dismounted-asterisk">*</span></label>
+                        <div class="input-group form-group w88">
+                            <input type="text" class="form-control eqnumber border-right-none J-dismounted-price" value="0.0000" name="minMedicineprice" disabled="">
+                            <span class="input-group-btn">
+                                <span class="btn btn-white btn-find mh34 border-left-none bg-eee" id="J-min-price-unit"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label class="control-label">取药地点 </label>
+                    <div class="row mt10">
+                        <div class="col-sm-4 col-pad-sm">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="address" id="radioAddress1" class="J-is_dismounted" value="1" checked="checked">
+                                <label for="radioAddress1">本院</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-pad-sm">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="address" id="radioAddress2" class="J-is_dismounted" value="2">
+                                <label for="radioAddress2">外购</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-pad-sm">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="address" id="radioAddress3" class="J-is_dismounted" value="3">
+                                <label for="radioAddress3">代购</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-sm-12 col-md-12 mb15 ml0 w95 border-bottom pl0">
+                <h5 class="font16 mb15 w88">默认用法用量</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">单次剂量</label>
+                        <div class="input-group w88">
+                            <input type="text" class="form-control " placeholder="剂量" value="0" name="dosage">
+                            <span class="input-group-btn">
+                            
+                            <select class="input-sm J-dosage-select">
+                                <option value="1">袋</option>
+                            </select>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control hidden J-dosage-ids" name="dosage_units" value="1">
+                        <!--<input type="text" class="form-control J-dosage-names" data-toggle="modal" data-target="#myModal1" value="">-->
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">默认用法</label>
+                        <select class="form-control input-sm w88" data-placeholder="请选择" name="dusage">
+                            <option value="">请选择</option>
+                            
+                            <option value="1">口服</option>
+                            
+                            <option value="2">注射</option>
+                            
+                            <option value="3">静脉滴注</option>
+                            
+                            <option value="4">静脉注射</option>
+                            
+                            <option value="5">舌下含服</option>
+                            
+                            <option value="6">皮下注射</option>
+                            
+                            <option value="7">滴入</option>
+                            
+                            <option value="8">塞肛用</option>
+                            
+                            <option value="9">阴道用</option>
+                            
+                            <option value="10">外用</option>
+                            
+                            <option value="11">肌肉注射</option>
+                            
+                            <option value="31">皮内注射</option>
+                            
+                            <option value="32">吸入</option>
+                            
+                            <option value="33">滴耳</option>
+                            
+                            <option value="34">滴鼻</option>
+                            
+                            <option value="35">滴眼</option>
+                            
+                            <option value="36">嚼服</option>
+                            
+                            <option value="43">静滴</option>
+                            
+                            <option value="44">高压泵雾化吸入</option>
+                            
+                            <option value="45">纳肛</option>
+                            
+                            <option value="49">喷鼻</option>
+                            
+                            <option value="50">雾化吸入</option>
+                            
+                            <option value="52">外涂</option>
+                            
+                            <option value="65">含漱</option>
+                            
+                            <option value="66">煎服</option>
+                            
+                            <option value="67">滴左眼</option>
+                            
+                            <option value="68">局部封闭</option>
+                            
+                            <option value="69">先煎</option>
+                            
+                            <option value="70">后下</option>
+                            
+                            <option value="71">单煎</option>
+                            
+                            <option value="72">包煎</option>
+                            
+                            <option value="73">劈开</option>
+                            
+                            <option value="74">打碎</option>
+                            
+                            <option value="75">烊化</option>
+                            
+                            <option value="76">冲服</option>
+                            
+                            <option value="77">研磨冲服</option>
+                            
+                            <option value="78">煎汤代水饮</option>
+                            
+                            <option value="79">另煎</option>
+                            
+                            <option value="80">捣碎</option>
+                            
+                            <option value="81">生汁兑入</option>
+                            
+                            <option value="82">另煎后兑入</option>
+                            
+                            <option value="83">溶化</option>
+                            
+                            <option value="84">煎汤代水</option>
+                            
+                            <option value="85">烊化冲入</option>
+                            
+                            <option value="86">作丸内服</option>
+                            
+                            <option value="87">直接服用</option>
+                            
+                            <option value="88">温水助服</option>
+                            
+                            <option value="89">泡水</option>
+                            
+                            <option value="90">生吃</option>
+                            
+                            <option value="91">水煎服两次服用</option>
+                            
+                            <option value="92">碾碎分两次服用</option>
+                            
+                            <option value="93">外敷</option>
+                            
+                            <option value="94">合药冲服</option>
+                            
+                            <option value="95">水煎服</option>
+                            
+                            <option value="96">副药</option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">默认频次</label>
+                        <select class="form-control input-sm w88" data-placeholder="请选择" name="freq">
+                            <option value="">请选择</option>
+                            
+                            <option value="14">每天一次</option>
+                            
+                            <option value="15">每天两次</option>
+                            
+                            <option value="2">每天三次</option>
+                            
+                            <option value="1">每天四次</option>
+                            
+                            <option value="5">两天一次</option>
+                            
+                            <option value="6">每周两次</option>
+                            
+                            <option value="7">每周一次</option>
+                            
+                            <option value="8">需要时</option>
+                            
+                            <option value="9">立即</option>
+                            
+                            <option value="12">睡前</option>
+                            
+                            <option value="21">每日二次</option>
+                            
+                            <option value="23">每日1次</option>
+                            
+                            <option value="29">饭前</option>
+                            
+                            <option value="30">空腹</option>
+                            
+                            <option value="31">饭后</option>
+                            
+                            <option value="32">饭中</option>
+                            
+                            <option value="33">必要时</option>
+                            
+                            <option value="37">bid</option>
+                            
+                            <option value="38">晚睡前</option>
+                            
+                            <option value="40">Qd</option>
+                            
+                            <option value="41">Tid</option>
+                            
+                            <option value="42">Q2h</option>
+                            
+                            <option value="43">Q4h</option>
+                            
+                            <option value="44">Q6h</option>
+                            
+                            <option value="45">Q8h</option>
+                            
+                            <option value="46">QN</option>
+                            
+                            <option value="47">Q2D</option>
+                            
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">说明</label>
+                        <input type="text" class="form-control w88 max256" name="remark" value="认真吃药">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-sm-12 col-md-12 mb15 w95 ml0 border-bottom pl0">
+                <h5 class="font16 mb15 w88">预警设置</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">效期预警</label>
+                        <div class="input-group w88">
+                            <input type="number" name="warn_effective_date" value="60" class="form-control border-right-none">
+                            <span class="input-group-btn">
+                                <span class="btn btn-white btn-find border-left-none">天</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">库存预警数</label>
+                        <div class="input-group w88">
+                            <input type="text" name="storage_num" value="0" class="form-control number border-right-none J-storage_num">
+                            <span class="input-group-btn">
+                                <span class="btn btn-white btn-find border-left-none mh34" id="J-storage-unit"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-sm-12 col-md-12 mb15 ml0 w95 border-bottom pl0">
+                <h5 class="font16 mb15 w88">其他信息</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">英文名称</label>
+                        <input type="text" class="form-control w88 max256" value="" name="enname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">上药编码 </label>
+                        <input type="text" class="form-control w88 max16" value="" name="yiyao_code">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 选择(次)剂量单位 -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">单次剂量</h4>
+                </div>
+                <div class="modal-body pl20">
+                    <div class="row mt10 font16">
+                        <div class="col-sm-12">
+                            默认剂量单位
+                        </div>
+                        <div class="col-sm-12 mt5 ml10" id="J-default-dosage">袋</div>
+                    </div>
+                    <div class="row mt10 font16" id="J-dosages">
+                        <div class="col-sm-12">
+                            可选的剂量单位
+                        </div>
+                        <div class="ml10">
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="袋" value="1" id="1a">
+                                <label for="1a">袋</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="片" value="2" id="2a">
+                                <label for="2a">片</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="支" value="3" id="3a">
+                                <label for="3a">支</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="粒" value="4" id="4a">
+                                <label for="4a">粒</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="瓶" value="5" id="5a">
+                                <label for="5a">瓶</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="mg" value="6" id="6a">
+                                <label for="6a">mg</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="g" value="7" id="7a">
+                                <label for="7a">g</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="ml" value="8" id="8a">
+                                <label for="8a">ml</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="l" value="9" id="9a">
+                                <label for="9a">l</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="ug" value="10" id="10a">
+                                <label for="10a">ug</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="IU" value="11" id="11a">
+                                <label for="11a">IU</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="U" value="12" id="12a">
+                                <label for="12a">U</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="包" value="13" id="13a">
+                                <label for="13a">包</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="盒" value="14" id="14a">
+                                <label for="14a">盒</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="枚" value="15" id="15a">
+                                <label for="15a">枚</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="丸" value="16" id="16a">
+                                <label for="16a">丸</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="颗" value="18" id="18a">
+                                <label for="18a">颗</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="滴" value="19" id="19a">
+                                <label for="19a">滴</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="件" value="20" id="20a">
+                                <label for="20a">件</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="条" value="21" id="21a">
+                                <label for="21a">条</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="万单位" value="22" id="22a">
+                                <label for="22a">万单位</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="万U" value="23" id="23a">
+                                <label for="23a">万U</label>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="份" value="24" id="24a">
+                                <label for="24a">份</label>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-dosage-submit">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 选择(次)剂量单位 -->
+</form>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary btn-sml J-submit-btn">保存</button>&nbsp;
+                <button class="btn btn-default btn-sml J-submit-btn J-save-add-btn hidden" data-type="add">保存并新增入库</button>&nbsp;
+                <button class="btn btn-default btn-sml" onclick="window.history.back(-1);">取消</button>
+            </div>
+        </div>
+
+        <!-- 新增期初库存 -->
+        <div class="modal fade in" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content"  id="J-modal-wrap">
+                </div>
+            </div>
+        </div>
+        <!-- 新增期初库存 -->
+
+        <!-- 国药准字搜索多个药品列表 -->
+        <div class="modal fade J-drug-list-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">选择药品</h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="row">
+                            <div class="col-sm-12 mb10">
+                                <div class="panel-group">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="50%" class="pl20">通用名</th>
+                                                <th width="25%">规格</th>
+                                                <th width="25%">生产厂家</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="J-drug-list-warp">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 国药准字搜索多个药品列表 -->
+
+        <footer>
+	<hr>
+	<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+	<p class="pull-right"> <a href="http://www.DXY.cn" target="_blank">DXY</a> by <a href="http://www.dxy.cn" target="_blank">DXY.CN</a>
+	</p>
+	<p>© 2015 <a href="http://www.dxy.cn" target="_blank">DXY</a></p>
+</footer>
+    </div>
+</div>
+
+<!-- 选择药品模板 -->
+<script type="text/template" id="J-drug-list-tpl">
+    <% _.each(items, function(item, i) { %>
+        <tr class="J-select-drug-btn pointer" data-id="<%- i%>">
+            <td class="pl20"><%- item.commonName%></td>
+            <td><%- item.form%></td>
+            <td><%- item.companyName%></td>
+        </tr>
+    <% }) %>
+</script>
+<!-- 选择药品模板 -->
+
+<script type="text/template" id="J-recipe-tpl">
+    <input type="hidden" value="<%-medicineid%>" name="medicineid" id="J-medicine-id">
+    <input type="hidden" value="1" name="type" id="J-medicine-type">
+    <div class="row">
+        <div class="col-sm-12 col-md-10">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control w88" placeholder="国药准字" value="" name="search_number">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group w88">
+                        <input type="text" class="form-control" placeholder="药品条形码" value="" name="search_barcode" >
+                        <span class="input-group-btn">
+                            <button class="btn btn-default J-find-medicine-detail" type="button">查找</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-sm-12 col-md-12 mb15 ml0 w95 border-bottom pl0">
+                <h5 class="font16 mb15">药品基本信息</h5>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">通用名 <span class="asterisk">* </span>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <!--<input type="text" class="form-control hidden w88 max128 J-select-prescription" placeholder="通用名/商品名/国药准字/拼音码搜索" value="<%-medicinename%>" required>-->
+                        <% if(!medicineid) { %>
+                        <input type="text" name="medicinename" class="form-control w88 max32 J-input-name" placeholder="通用名/商品名/国药准字/拼音码搜索" tabindex="-1" value="<%-medicinename%>" id="J-select-name">
+                        <% } else {  %>
+                        <input type="text" name="medicinename" class="form-control w88 max32 J-input-name" value="<%-medicinename%>">
+                        <% } %>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">规格</label>
+                        <input type="text" class="form-control w88 max32" value="<%-medicinespec%>" name="medicinespec">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">生产厂家</label>
+                        <input type="text" class="form-control w88 max128" value="<%-manufacturer%>" name="manufacturer">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">剂型</label>
+                        <select class="form-control input-sm w88" data-placeholder="请选择" name="dosage_from">
+                            <option value="">请选择</option>
+                            <% $.each(dosageList, function(i, item){ %>
+                            <option value="<%-item.id%>" <% if(dosage_from == item.id){ %>selected="selected"<% } %>><%-item.text%></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">商品名 </label>
+                        <input type="text" class="form-control w88 max128" value="<%-generic_name%>" name="generic_name" >
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">国药准字</label>
+                        <input type="text" class="form-control w88 max128" value="<%-app_number%>" name="app_number">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">药品分类</label>
+                        <input type="text" class="form-control w88 J-medicine-class">
+                        <input type="hidden" class="J-medicine-Id" name="medicine_class" value="<%-category_code%>">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">拼音码</label>
+                        <input type="text" class="form-control w88" value="<%-pn_code%>" name="pn_code">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">药品条形码 </label>
+                        <input type="text" class="form-control w88 max32" value="<%-barcode%>" name="barcode">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">状态</label>
+                        <div class="row mt10">
+                            <div class="col-sm-6">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="status" id="radio1" value="1" <% if(status == 1 || !status){ %>checked="checked"<% } %>>
+                                    <label for="radio1">正常</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="status" id="radio2" value="2" <% if(status == 2){ %>checked="checked"<% } %>>
+                                    <label for="radio2">停用</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-sm-12 col-md-12 mb15 w95 ml0 border-bottom pl0">
+                <h5 class="font16 w88 mb15">销售信息</h5>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="control-label">编辑规格</label>
+                        <div class="row mt10">
+                            <div class="col-sm-2 pr5">
+                                <label class="control-label">剂量</label>
+                                <div class="input-group form-group w95">
+                                    <input type="number" class="form-control J-check" name="dose_formula" placeholder="" value="<%-dose_formula%>">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 pl0">
+                                <label class="control-label">剂量单位</label>
+                                <div class="input-group form-group w95">
+                                    <select class="form-control input-sm J-check" data-placeholder="" name="dose_unit">
+                                        <option value="">剂量单位</option>
+                                        <% $.each(unitList, function(i, item){ %>
+                                        <option value="<%-item.id%>" <% if(dose_unit == item.id){ %>selected="selected"<% } %>><%-item.text%></option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+                            </div>
+                            <span class="pull-left lh34 mt27">*</span>
+                            <div class="col-sm-2 pr5">
+                                <label class="control-label">制剂数量 <span class="asterisk J-required-asterisk <% if(is_dismounted == 2 || !medicineid){ %>hidden<% } %>">*</span></label>
+                                <div class="input-group form-group w95">
+                                    <input type="number" class="form-control J-add-required J-formula J-check" name="formula" placeholder="" value="<%-formula%>" <% if(is_dismounted == 1){ %>required<% } %> <% if(medicineid && !(is_dismounted == 2 && (formula == '' || !min_medicineunit))){ %>disabled<% } %>>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 pl0">
+                                <label class="control-label">制剂单位 <span class="asterisk J-required-asterisk <% if(is_dismounted == 2 || !medicineid){ %>hidden<% } %>">*</span></label>
+                                <div class="input-group form-group w95">
+                                    <select class="form-control input-sm J-add-required J-min_medicineunit J-check" data-placeholder="" name="min_medicineunit" <% if(is_dismounted == 1){ %>required<% } %> <% if(medicineid && !(is_dismounted == 2 && (formula == '' || !min_medicineunit))){ %>disabled<% } %>>
+                                        <option value="">制剂单位</option>
+                                        <% $.each(unitList, function(i, item){ %>
+                                        <option value="<%-item.text%>" <% if(min_medicineunit == item.text){ %>selected="selected"<% } %>><%-item.text%></option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+                            </div>
+                            <span class="pull-left lh34 mt27">/</span>
+                            <div class="col-sm-2">
+                                <label class="control-label">包装单位 <span class="asterisk">*</span></label>
+                                <div class="input-group form-group w95">
+                                    <select class="form-control input-sm J-medicineunit J-check" data-placeholder="" name="medicineunit" required>
+                                        <option value="">包装单位</option>
+                                        <% $.each(unitList, function(i, item){ %>
+                                        <option value="<%-item.text%>" <% if(medicineunit == item.text){ %>selected="selected"<% } %>><%-item.text%></option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 col-md-1 mt5 pl0 pr0 mt27 dropdown">
+                                <button type="button" class="btn-dropdown dropdown-toggle" id="dropdownMenu" data-toggle="dropdown" data-hover="dropdown"><i class="fa fa-image"></i> 示例</button>
+                                <div class="dropdown-menu w250 pd0" role="menu" aria-labelledby="dropdownMenu1">
+                                    <table class="table table-hover mtb0">
+                                        <thead>
+                                        <tr>
+                                            <th class="pl20">示例</th>
+                                            <th>正确填写方式</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><img src="<%- GLOBAL_ASSETS %>system/images/sl-1.png" width="115" height="30" alt="" border="0"></td>
+                                            <td>1片*20片/盒</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="<%- GLOBAL_ASSETS %>system/images/sl-2.png" width="115" height="30" alt="" border="0"></td>
+                                            <td>40mg*14片/盒</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="<%- GLOBAL_ASSETS %>system/images/sl-3.png" width="115" height="30" alt="" border="0"></td>
+                                            <td>1片*10片/盒</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img src="<%- GLOBAL_ASSETS %>system/images/sl-4.png" width="115" height="30" alt="" border="0"></td>
+                                            <td>500ml*1瓶/瓶</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">零售价 <span class="asterisk">*</span></label>
+                        <div class="input-group form-group w88">
+                            <input type="number" class="form-control border-right-none eqnumber J-medicine-price" value="<% if(!_.isNaN(medicineprice*1)){ %><%-medicineprice%><% } %>" name="medicineprice" required>
+                            <span class="input-group-btn">
+                            <span class="btn btn-white btn-find border-left-none mh34 J-price-unit"></span>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">成本价 </label>
+                        <div class="input-group form-group w88">
+                            <input type="text" class="form-control border-right-none J-cost-price eqnumber" value="<% if(!_.isNaN(cost_price*1)){ %><%-cost_price%><% } %>" name="costPrice">
+                            <span class="input-group-btn">
+                                <span class="btn btn-white btn-find border-left-non mh34 J-price-unit"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">允许折扣 </label>
+                        <div class="row mt10">
+                            <div class="col-sm-4 col-pad-sm">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="discount" id="radioDiscount1" value="1" <% if(discount == 1){ %>checked="checked"<% } %>>
+                                    <label for="radioDiscount1">是</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-pad-sm">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="discount" id="radioDiscount2" value="2" <% if(discount == 2 || !discount){ %>checked="checked"<% } %>>
+                                    <label for="radioDiscount2">否</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">是否拆零 <span class="asterisk">*（保存后不可修改）</span></label>
+                        <div class="row mt10">
+                            <div class="col-sm-4 col-pad-sm">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="is_dismounted" id="radioDefault1" class="J-is_dismounted" value="1" <% if(is_dismounted == 1){ %>checked="checked"<% } %> <% if(medicineid){ %>disabled<% } %>>
+                                    <label for="radioDefault1">是</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-pad-sm">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" name="is_dismounted" id="radioDefault2" class="J-is_dismounted" value="2" <% if(is_dismounted == 2 || !is_dismounted){ %>checked="checked"<% } %> <% if(medicineid){ %>disabled<% } %>>
+                                    <label for="radioDefault2">否</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">拆零售价 <span class="asterisk <% if(is_dismounted == 2 || !is_dismounted){ %>hidden<% } %>" id="J-dismounted-asterisk">*</span></label>
+                        <div class="input-group form-group w88">
+                            <input type="text" class="form-control eqnumber border-right-none J-dismounted-price" value="<%-min_medicineprice%>" name="minMedicineprice" <% if(is_dismounted == 2 || !is_dismounted){ %>disabled<% } %>>
+                            <span class="input-group-btn">
+                                <span class="btn btn-white btn-find mh34 border-left-none <% if(is_dismounted == 2 || !is_dismounted){ %>bg-eee<% } %>" id="J-min-price-unit"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label class="control-label">取药地点 </label>
+                    <div class="row mt10">
+                        <div class="col-sm-4 col-pad-sm">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="address" id="radioAddress1" class="J-is_dismounted" value="1" <% if(address == 1 || !address){ %>checked="checked"<% } %>>
+                                <label for="radioAddress1">本院</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-pad-sm">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="address" id="radioAddress2" class="J-is_dismounted" value="2" <% if(address == 2){ %>checked="checked"<% } %>>
+                                <label for="radioAddress2">外购</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-pad-sm">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="address" id="radioAddress3" class="J-is_dismounted" value="3" <% if(address == 3){ %>checked="checked"<% } %>>
+                                <label for="radioAddress3">代购</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-sm-12 col-md-12 mb15 ml0 w95 border-bottom pl0">
+                <h5 class="font16 mb15 w88">默认用法用量</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">单次剂量</label>
+                        <div class="input-group w88">
+                            <input type="text" class="form-control " placeholder="剂量" value="<%-dosage%>" name="dosage" >
+                            <span class="input-group-btn">
+                            <%  var minUnit = '';
+                                var minUnitIndex = 0;
+                                var dosage_units = dosage_units || '';
+                                $.each(dosage_units.split(','), function(i, item){
+                                    if (!minUnit) {
+                                        minUnit = item * 1;
+                                        minUnitIndex = i;
+                                    } else if (minUnit > item * 1) {
+                                        minUnit = item * 1;
+                                        minUnitIndex = i;
+                                    }
+                                });
+                            %>
+                            <select class="input-sm J-dosage-select">
+                                <option value="<% if(dosage_units){ %><%-minUnit%><% } %>"><% if(minUnit){ %><%-(dosage_names.split(','))[minUnitIndex]%><% }else{ %>单位<%}%></option>
+                            </select>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control hidden J-dosage-ids" name="dosage_units" value="<%-dosage_units%>">
+                        <!--<input type="text" class="form-control J-dosage-names" data-toggle="modal" data-target="#myModal1" value="<% if(type == 2){ %>g<% } %>">-->
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">默认用法</label>
+                        <select class="form-control input-sm w88" data-placeholder="请选择" name="dusage">
+                            <option value="">请选择</option>
+                            <% $.each(usageList, function(i, item){ %>
+                            <option value="<%-item.id%>" <% if(dusage == item.id){ %>selected="selected"<% } %>><%-item.text%></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">默认频次</label>
+                        <select class="form-control input-sm w88" data-placeholder="请选择" name="freq">
+                            <option value="">请选择</option>
+                            <% $.each(frequencyList, function(i, item){ %>
+                            <option value="<%-item.id%>" <% if(freq == item.id){ %>selected="selected"<% } %>><%-item.text%></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">说明</label>
+                        <input type="text" class="form-control w88 max256" name="remark" value="<%-remark%>">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-sm-12 col-md-12 mb15 w95 ml0 border-bottom pl0">
+                <h5 class="font16 mb15 w88">预警设置</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">效期预警</label>
+                        <div class="input-group w88">
+                            <input type="number" name="warn_effective_date" value="<%-warn_effective_date%>" class="form-control border-right-none">
+                            <span class="input-group-btn">
+                                <span class="btn btn-white btn-find border-left-none">天</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">库存预警数</label>
+                        <div class="input-group w88">
+                            <input type="text" name="storage_num" value="<%-warn_storage_num%>" class="form-control number border-right-none J-storage_num">
+                            <span class="input-group-btn">
+                                <span class="btn btn-white btn-find border-left-none mh34" id="J-storage-unit"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row col-sm-12 col-md-12 mb15 ml0 w95 border-bottom pl0">
+                <h5 class="font16 mb15 w88">其他信息</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">英文名称</label>
+                        <input type="text" class="form-control w88 max256" value="<%-enname%>" name="enname">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">上药编码 </label>
+                        <input type="text" class="form-control w88 max16" value="<%-yiyao_code%>" name="yiyao_code">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 选择(次)剂量单位 -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">单次剂量</h4>
+                </div>
+                <div class="modal-body pl20">
+                    <div class="row mt10 font16">
+                        <div class="col-sm-12">
+                            默认剂量单位
+                        </div>
+                        <div class="col-sm-12 mt5 ml10" id="J-default-dosage"><%-(dosage_names.split(','))[minUnitIndex]%></div>
+                    </div>
+                    <div class="row mt10 font16" id="J-dosages">
+                        <div class="col-sm-12">
+                            可选的剂量单位
+                        </div>
+                        <div class="ml10">
+                            <% $.each(unitList, function(i, item){ %>
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="J-checkbox-dosage" data-name="<%-item.text%>" value="<%-item.id%>" id="<%-item.id%>a">
+                                <label for="<%-item.id%>a"><%-item.text%></label>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-dosage-submit">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 选择(次)剂量单位 -->
+</script>
+
+<script type="text/template" id="J-modal-tpl">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalTitle">期初库存</h4>
+    </div>
+    <div class="modal-body pd20 pb0">
+        <form id="J-storage-form">
+            <div class="font16 mb15">
+                <span class="mr20">药品名称：<b><%-medicinename%></b></span>
+                <span class="mr20">规格：<b><%-medicinespec%></b></span>
+                <span class="mr20">生产厂商：<b><%-manufacturer%></b></span>
+            </div>
+            <div class="form-inline">
+                <div class="form-group mr10">
+                    <label class="control-label">发货日期</label>
+                    <input type="text" size="10" class="form-control appDate" name="delivery_date">
+                </div>
+                <div class="form-group mr10">
+                    <label class="control-label">入库日期<span class="asterisk ml5">*</span></label>
+                    <input type="text" size="10" class="form-control appDate J-warehouse-time" name="warehouse_time">
+                </div>
+                <div class="form-group mr10">
+                    <label class="control-label">入库方式<span class="asterisk ml5">*</span></label>
+                    <select class="form-control J-storage-method" name="method">
+                        <option value="1" selected="selected">采购入库</option>
+                        <option value="2">其他入库</option>
+                    </select>
+                </div>
+                <div class="row pd15">
+                    <div class="form-group mr10">
+                        <label class="control-label">供应商</label>
+                    </div>
+                    <div class="form-group mr10">
+                        <input type="hidden" placeholder="" id="suppliers" class="mtf3 select2-offscreen" size="15" style="min-width: 200px">
+                    </div>
+                    <div class="form-group mr10">
+                        <label class="control-label">备注</label>
+                        <input type="text" size="30" class="form-control" name="bio">
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive mt20">
+                <table class="table table-hover table-border">
+                    <thead>
+                    <tr>
+                        <th class="pl20">序号</th>
+                        <th>数量</th>
+                        <th>零售价(￥)</th>
+                        <th>成本价(￥)</th>
+                        <th>成本合计(￥)</th>
+                        <th>批号</th>
+                        <th>有效期</th>
+                        <th width="8%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="J-pharmacy-wrap">
+                    <tr class="select-box">
+                        <td class="pl20" colspan="6"><a href="#" class="J-add-btn"><i class="fa fa-plus"></i> 添加</a></td>
+                        <td class="font-bold pr20 text-right" colspan="2">合计：<span id="J-all-cost">0.0000</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer modal-btn-col2">
+        <button type="button" class="btn btn-primary J-add-submit-btn">保存</button>
+        <% if (PERMISSIONANDMODULES.permissions.indexOf('32') > -1){ %><button type="button" data-type="saveCheck" class="btn btn-default J-add-submit-btn">保存并审核</button><% } %>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+    </div>
+</script>
+
+<!-- 新增库存模板 -->
+<script type="text/template" id="J-pharmacy-tpl">
+    <tr class="select-list">
+        <input type="hidden" name="medicineid[]" value="<%-medicineId%>">
+        <td class="pl20 J-row-index">1</td>
+        <td class="form-inline">
+            <input type="text" size="8" class="form-control J-cal-count" name="count[]" style="width: 58%" required>
+            <% if (is_dismounted == 1 && formula > 1) {%>
+                <input type="hidden" name="unit[]" value="<%-medicineunit%>">
+                <select class="form-control J-select-unit" data-placeholder="单位" name="type[]" style="width: 38%">
+                    <option value="1" <% if(medicineunit){ %>selected="selected"<% } %>><%-medicineunit%></option>
+                    <% if(min_medicineunit){ %><option value="2"><%-min_medicineunit%></option><% } %>
+                </select>
+            <% } else { %>
+                <%-medicineunit%>
+                <input type="hidden" value="1" name="type[]">
+                <input type="hidden" value="<%-medicineunit%>" name="unit[]">
+            <% } %>
+        </td>
+        <td class="J-sold-price"><%-medicinePrice%></td>
+        <td><div class="input-group tooltips" data-toggle="tooltip" data-placement="top" data-original-title="拆零成本">
+                <input type="text" size="8" class="form-control J-cal-cost" name="cost_price[]" value="<%-costPrice%>" required>
+                <span class="input-group-btn J-dismount-cost display-none">
+                    <button type="button" class="btn btn-white btn-find2 border-left-0"><i class="fa fa-exclamation-triangle yellow font12"></i></button>
+                </span>
+            </div>
+        </td>
+        <td><input type="text" size="8" class="form-control J-cal-total" name="total_price[]" required></td>
+        <td><input type="text" size="8" class="form-control" name="batch_number[]"></td>
+        <td><input type="text" size="8" class="form-control J-validity" name="validity[]" placeholder="____年__月__日" required></td>
+        <td>
+            <a href="#" class="J-delete-btn"><i class="fa fa-trash-o"></i> 删除</a>
+        </td>
+    </tr>
+</script>
+<!-- 新增库存模板 -->
+
+<script type="text/template" id="row-list-tpl">
+    <div class="col-sm-6 row-list">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="bootstrap-timepicker">
+                    <input type="text" id="timepicker3" class="form-control J-timepicker" name="dosing_times[]" value="">
+                </div>
+                <a href="#" class="input-group-addon gray J-btn-delete-row"><i class="fa fa-times"></i></a>
+                <a href="#" class="input-group-addon gray J-btn-add-row"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+    </div>
+</script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action='#'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+<script type="text/javascript">
+    require(['recipe_edit']);
+</script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+{template '/common/mainHeader'}
+	<div class="app-container-right">
+			<ul class="nav nav-tabs" id="myTab">
+	<li class="active"><a href="#tab_share">添加社区</a></li>
+              <li ><a href="/index.php?c=site&a=entry&do=sign&op=sqlist&ac=sqlist&m=hyb_yl">社区列表</a></li>
+</ul>
+<div class="app-content">
+<div class="app-form">
+	<form action="" method="post" class="form-horizontal form">
+		<div class="panel-heading">社区设置</div>
+		<div class="tab-content">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">社区名称<span class="must-fill">*</span></label>
+				<div class="col-sm-9">
+					<input type="text" name="title" required="" class="form-control" value="{$item['title']}">
+				</div>
+			</div>
+          	<div class="form-group">
+	            <label class="col-sm-2 control-label">所在区域<span class="must-fill">*</span>
+	            </label>
+	            <div class="col-sm-9">
+	             {php echo tpl_form_field_district('address',array('province' =>$item['province'],'city'=>$item['city'],'district'=>$item['district']))}
+	            </div>
+        	</div>
+        	<div class="form-group">
+	            <label class="col-sm-2 control-label">所在位置</label>
+	            <div class="col-sm-9">
+	                <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&amp;ak=F51571495f717ff1194de02366bb8da9&amp;s=1"></script>
+	                <script type="text/javascript" src="https://api.map.baidu.com/getscript?v=2.0&amp;ak=F51571495f717ff1194de02366bb8da9&amp;services=&amp;t=20200327103013"></script>
+	                <script type="text/javascript">
+	                    function showCoordinate(elm) {
+	                        require(["util"], function(util){
+	                            var val = {};
+	                            val.lng = parseFloat($(elm).parent().prev().prev().find(":text").val());
+	                            val.lat = parseFloat($(elm).parent().prev().find(":text").val());
+	                            util.map(val, function(r){
+	                                $(elm).parent().prev().prev().find(":text").val(r.lng);
+	                                $(elm).parent().prev().find(":text").val(r.lat);
+	                            });
+	    
+	                        });
+	                    }
+	                </script>
+	                <div class="row row-fix">
+	                    <div class="col-xs-4 col-sm-4">
+	                        <input type="text" name="register[location][lon]"  placeholder="地理经度" class="form-control" value="{$item['lon']}">
+	                    </div>
+	                    <div class="col-xs-4 col-sm-4">
+	                        <input type="text" name="register[location][lat]" placeholder="地理纬度" class="form-control" value="{$item['lat']}">
+	                    </div>
+	                    <div class="col-xs-4 col-sm-4">
+	                        <button onclick="showCoordinate(this);" class="btn btn-default" type="button">选择坐标</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">是否启用</label>
+				<div class="col-sm-9">
+					<label class="radio-inline">
+						<input type="radio" class="form-control" name="status" value="1" {if $item['status'] == '1'} checked="" {/if}> 开启
+					</label>
+					<label class="radio-inline">
+						<input type="radio" class="form-control" name="status" value="0" {if $item['status'] == '0'} checked="" {/if}> 关闭
+					</label>
+					
+				</div>
+			</div>
+			
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label"></label>
+			<div class="col-sm-9">
+				<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+				<input type="hidden" name="token" value="c5514e9f" />
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+<script>
+$(function () {
+		window.optionchanged = false;
+		$('#myTab a').click(function (e) {
+			e.preventDefault();//阻止a链接的跳转行为
+			$(this).tab('show');//显示当前选中的链接及关联的content
+		})
+	});
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,314 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            <!-- headerbar -->
+            <div class="pageheader">
+                <h2><i class="fa fa-archive fa-sm"></i> 药房</h2>
+                <div class="breadcrumb-wrapper">
+                    <a href="https:///Clinic/Pharmacy/manage.html#delivery" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+                </div>
+            </div>
+            <div class="contentpanel">
+                <div class="panel panel-default" id="house">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">修改出库</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form class="form-inline J-add-exwarehouse" method="post">
+                            <div class="row mb20">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="control-label">出库日期 <span class="asterisk">*</span>：</label>
+                                        <input class="form-control input-sm radius3 appDate mbsc-comp" name="exwarehouse_time" type="text" placeholder="出库日期" size="10" readonly="" required="" id="mobiscroll1560607594992">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">出库方式 <span class="asterisk">*</span>：</label>
+                                        <select class="form-control input-sm" name="method" data-placeholder="出库方式" required="">
+                                            <option value="1" selected="selected">科室出库</option>
+                                            <option value="2">报损出库</option>
+                                            <option value="3">退货出库</option>
+                                            <option value="4">其他出库</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">领用科室：</label>
+                                        <div class="select2-container select-auto J-department-list" id="s2id_autogen4" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-5">请选择</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen5" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-5" id="s2id_autogen5"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen5_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-5" id="s2id_autogen5_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-5">   </ul></div></div><input type="hidden" name="department" class="select-auto J-department-list select2-offscreen" tabindex="-1" title="">
+                                    </div>   
+                                    <div class="form-group">
+                                        <label class="control-label">领用人员：</label>
+                                        <div class="select2-container J-worker-list select-auto" id="s2id_autogen2" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-3">请选择</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen3" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-3" id="s2id_autogen3"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen3_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-3" id="s2id_autogen3_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-3">   </ul></div></div><input type="hidden" name="worker_id" class="J-worker-list select-auto select2-offscreen" tabindex="-1" title="">
+                                    </div>  
+
+                                    <div class="form-group mb0">
+                                        <label class="control-label">备注：</label>
+                                        <input type="text" placeholder="" name="bio" class="form-control input-sm" size="10">
+                                    </div>
+                                    <input type="hidden" name="id" class="J-house-id" value="757">
+                                </div>
+                            </div>
+                            
+                            <div class="table-responsive border-top mobile-recipe">
+                                <div class="mw1000">
+                                    <table class="table table-hover shadow-none mb0">
+                                        <thead>
+                                            <tr>
+                                                <th width="6%" class="pl20">序号</th>
+                                                <th>商品名称</th>
+                                                <th width="6%">生产厂商</th>
+                                                <th width="6%">供应商</th>
+                                                <th width="8%">零售价(￥)</th>
+                                                <th width="8%">成本价(￥)</th>
+                                                <th width="8%">批次</th>
+                                                <th width="10%">有效期</th>
+                                                <th width="8%">库存数量</th>
+                                                <th width="8%">出库数量</th>
+                                                <th width="9%">出库单位</th>
+                                                <th width="8%">操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-house-list-wrap">
+                                            
+        <tr class="select-list">
+            <td class="J-line-num pl20">1</td>
+            <td>
+                <input type="hidden" class="form-control input-sm J-medicineid" value="6602" name="medicineid[]">
+                <input type="hidden" class="form-control input-sm J-medicineid" value="5218" name="storage_id[]">
+                阿奇霉素片<br>
+                0.25gx1片
+            </td>
+            <td>辉瑞制药有限公司</td>
+            <td>哈哈哈</td>
+            <td>62.3000</td>
+            <td>62.2700</td>
+            <td></td>
+            <td>
+                
+                    2020-06-04
+                
+            </td>
+            <td>0盒0片</td>
+            <td>
+                <div class="form-group">
+                    <input type="hidden" class="J-real-count" value="0盒0片">
+                    <input type="number" class="form-control input-sm w60 J-count" value="1" name="count[]" required="">
+                </div>
+            </td>
+            <td>
+                
+                    
+                        <select name="medicineunit[]" class="form-control input-sm">
+                            <option value="盒" selected="selected">盒</option>
+                            <option value="片">片</option>
+                        </select>
+                    
+                
+            </td>
+            <td><a data-toggle="modal" data-target="#myModal" data-id="6602" class="J-del"><i class="fa fa-trash-o"></i> 删除</a></td>
+        </tr>
+    
+        <tr class="select-list">
+            <td class="J-line-num pl20">2</td>
+            <td>
+                <input type="hidden" class="form-control input-sm J-medicineid" value="15199" name="medicineid[]">
+                <input type="hidden" class="form-control input-sm J-medicineid" value="3996" name="storage_id[]">
+                注射用阿昔洛韦<br>
+                0.25g
+            </td>
+            <td>湖北荷普药业股份有限公司</td>
+            <td></td>
+            <td>160.0000</td>
+            <td>50.0000</td>
+            <td>20170804</td>
+            <td>
+                
+                    2019-08-18
+                
+            </td>
+            <td>2盒0支</td>
+            <td>
+                <div class="form-group">
+                    <input type="hidden" class="J-real-count" value="2盒0支">
+                    <input type="number" class="form-control input-sm w60 J-count" value="1" name="count[]" required="">
+                </div>
+            </td>
+            <td>
+                
+                    
+                        <select name="medicineunit[]" class="form-control input-sm">
+                            <option value="盒" selected="selected">盒</option>
+                            <option value="支">支</option>
+                        </select>
+                    
+                
+            </td>
+            <td><a data-toggle="modal" data-target="#myModal" data-id="15199" class="J-del"><i class="fa fa-trash-o"></i> 删除</a></td>
+        </tr>
+    <tr class="select-box">
+                                                <td colspan="11">
+                                                    <div id="diagnosis_box">
+                                                        <div class="select2-container w100 J-select-house mobile-recipe-select" id="s2id_warehouse" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">请选择</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1"><div class="select2-drop select2-display-none select2-custom J-select-house select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div><div class="select2-table-title"><table class="table table-bordered select2-table"><tbody><tr><td width="420px">药品名称</td><td width="200px">规格</td><td width="200px">生产厂家</td><td width="200px">供应商</td><td width="200px">零售价</td><td width="200px">批号</td><td width="240px">有效期</td><td width="200px">库存数量</td></tr></tbody></table></div>   <ul class="select2-results" role="listbox" id="select2-results-1">   </ul></div></div><input type="hidden" class="w100 J-select-house mobile-recipe-select select2-offscreen" id="warehouse" data-initlist="" data-placeholder="请选择" tabindex="-1" title="">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-footer panel-btn-col2">
+                        <button class="btn btn-primary mr5 J-btn-submit">保存</button>
+                        <button class="btn btn-default mr5 J-check-btn-submit J-module-control" data-permission="34" data-type="saveCheck">保存并审核</button>
+                        <button class="btn btn-default" onclick="javascript:window.history.go(-1);">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- mainpanel -->
+    </section>
+    <!-- 删除 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>是否删除该条记录？</h4>
+                    <input type="hidden" class="J-del-id" value="">
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-del-submit">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 删除 -->
+    <!-- 新增出库 -->
+    <script type="text/template" id="house-list-tpl">
+        <tr class="select-list">
+            <td class="J-line-num pl20"><%-lineNum%></td>
+            <td>
+                <input type="hidden" class="form-control input-sm J-medicineid" value="<%-medicineid%>" name="medicineid[]">
+                <input type="hidden" class="form-control input-sm J-medicineid" value="<%-id%>" name="storage_id[]">
+                <%-medicinename%><br/>
+                <%-medicinespec%>
+            </td>
+            <td><%-manufacturer%></td>
+            <td><%-factory%></td>
+            <td><%-medicineprice%></td>
+            <td><%-cost_price%></td>
+            <td><%- batch_number%></td>
+            <td>
+                <% if (expire) {%>
+                    <span class="red J-material-outdate"><%-validity%><br/>(已过期)</span>
+                <%} else {%>
+                    <%-validity%>
+                <%}%>
+            </td>
+            <td><%- real_count%></td>
+            <td>
+                <div class="form-group">
+                    <input type="hidden" class="J-real-count" value="<%-real_count%>" />
+                    <input type="number" class="form-control input-sm w60 J-count" value="<%-excount%>" name="count[]" required>
+                </div>
+            </td>
+            <td>
+                <%if(exunit){%>
+                    <%if(is_dismounted == '1'){%>
+                        <select name="medicineunit[]" class="form-control input-sm">
+                            <option value="<%- medicineunit%>" <%if(exunit==medicineunit){%>selected="selected"<%}%>><%- medicineunit%></option>
+                            <option value="<%- minMedicineunit%>" <%if(exunit==minMedicineunit){%>selected="selected"<%}%>><%- minMedicineunit%></option>
+                        </select>
+                    <%} else {%>
+                        <input type="hidden" name="medicineunit[]" value="<%- exunit%>"/>
+                        <%- exunit%>
+                    <%}%>
+                <%}else{%>
+                    <%if(is_dismounted == '1'){%>
+                        <select name="medicineunit[]" class="form-control input-sm">
+                            <option value="<%- medicineunit%>" selected="selected"><%- medicineunit%></option>
+                            <option value="<%- minMedicineunit%>"><%- minMedicineunit%></option>
+                        </select>
+                    <%} else {%>
+                        <input type="hidden" name="medicineunit[]" value="<%- medicineunit%>"/>
+                        <%- medicineunit%>
+                    <%}%>
+                <%}%>
+            </td>
+            <td><a data-toggle="modal" data-target="#myModal" data-id="<%-medicineid%>" class="J-del"><i class="fa fa-trash-o"></i> 删除</a></td>
+        </tr>
+    </script>
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['pharmacy_add_delivery']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span></body></html>

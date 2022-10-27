@@ -1,0 +1,113 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs">
+		<li>
+			<a href="/index.php?c=site&a=entry&do=jiancha&op=register&ac=register&m=hyb_yl">分组列表</a>
+		</li>
+		<li class="active">
+			<a href="https://www.webstrongtech.com/web/index.php?c=site&a=entry&m=hyb_yl&p=area&ac=areaagent&do=groupEdit&">添加分组</a>
+		</li>
+	</ul>
+	<div class="app-content">
+		<div class="app-form">
+			<form action="" method="post" class="form-horizontal form form-validate">
+				<input type="hidden" name="id" value="" />
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						分组设置
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">分组名称<span class="must-fill">*</span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" name="name" required placeholder="请输入分组名称" class="form-control" value="{$res['name']}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">开放插件</label>
+							<div class="col-sm-9">
+							<input type="hidden" name="grouparr" placeholder="请输入分组名称" value="{$res['grouparr']}" id='plugins'>
+								<label class="checkbox checkbox-inline">
+									<input type="checkbox" name="plugins[]" value="store" {if in_array('store',$plug_in_back)}  checked {/if}/>专家</label>
+								<label class="checkbox checkbox-inline">
+									<input type="checkbox" name="plugins[]" value="member" {if in_array('member',$plug_in_back)}  checked {/if}/>用户 </label>
+								<label class="checkbox checkbox-inline">
+									<input type="checkbox" name="plugins[]" value="remoteregistration" {if in_array('remoteregistration',$plug_in_back)}  checked {/if}/>挂号 </label>
+								<label class="checkbox checkbox-inline">
+									<input type="checkbox" name="plugins[]" value="ask" {if in_array('ask',$plug_in_back)}  checked {/if}/>问诊 </label>
+								<label class="checkbox checkbox-inline">
+									<input type="checkbox" name="plugins[]" value="drugstore" {if in_array('drugstore',$plug_in_back)}  checked {/if} />药房 </label>
+								<label class="checkbox checkbox-inline">
+									<input type="checkbox" name="plugins[]" value="order" {if in_array('order',$plug_in_back)}  checked {/if}/>订单 </label>
+								<label class="checkbox checkbox-inline">
+									<input type="checkbox" name="plugins[]" value="financ" {if in_array('financ',$plug_in_back)}  checked {/if}/>财务 </label>
+								<label class="checkbox checkbox-inline">
+									<input type="checkbox" name="plugins[]" value="datacenter" {if in_array('datacenter',$plug_in_back)}  checked {/if}/>数据 </label>
+								<label class="checkbox checkbox-inline">
+									<span class="help-block">不勾选则默认包含所有插件</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">是否默认</label>
+							<div class="col-sm-9">
+							   
+								<label class="radio-inline">
+									<input type="radio" name="default" value="1" {if $res['default'] == '1' || !$res}  checked 	{/if}>是
+								</label>
+								
+								<label class="radio-inline">
+									<input type="radio" name="default" value="0"   {if $res['default'] == '0' }  checked {/if}>否
+								</label>
+							
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">是否开启</label>
+							<div class="col-sm-9">
+								<label class="radio-inline">
+									<input type="radio" name="state" value="1" {if $res['state'] == '1' || !$res}  checked 	{/if}>是
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="state" value="0" {if $res['state'] == '0' }  checked {/if}>否
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label"></label>
+							<div class="col-sm-9">
+								<input type="submit" name="submit" lay-submit value="提交" class="btn btn-primary min-width" />
+								<input type="hidden" name="token" value="{$_W['token']}" />
+								<input type="hidden" name="id" value="{$id}" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	$('.checkbox input').on('click',function () {
+		// body...
+		var checkids = [];
+		$("input[name='plugins[]']:checked").each(function(inx,val){
+				checkids.push($(val).parents('label').text().trim())
+		})
+		$('#plugins').val(checkids)
+	})
+</script>

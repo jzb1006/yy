@@ -1,0 +1,58 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+    <script type="text/javascript" src="http://www.webstrongtech.com/addons/hyb_yl/web/resource/js/diyarea.js"></script>
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active">
+            <a href="#tab_1">编辑分类</a>
+        </li>
+    </ul>
+    <div class="app-content">
+        <div class="app-form">
+            <form action="" method="post" class="form-horizontal form form-validate"  onsubmit="return checkValidate(this.form);">
+                <input type="hidden" name="id" value="" />
+                <div class="tab-content">
+                    <div class="tab-pane  active" id="tab_1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                模板分类
+                            </div>
+                            <div class="panel-body">
+                                 <div class="form-group">
+                                    <label class="col-sm-2 control-label">分类名称<span class="must-fill">*</span>
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="title" id="login_name" required placeholder="请输处方名称" class="form-control" value="{$item['title']}">
+                                    </div>
+                                 </div>
+			                    <div class="form-group">
+			                        <label class="col-sm-2 control-label">分类图标</label>
+			                        <div class="col-sm-9">
+			                            {php echo tpl_form_field_image('icon', $res['icon'])}
+			                            <span class="help-block">分类图标</span>
+			                        </div>
+
+			                    </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="id" value="{$id}">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-9">
+                            <input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+                            <input type="hidden" name="token" value="{$_W['token']}" />
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+                window.optionchanged = false;
+                $('#myTab a').click(function (e) {
+                    e.preventDefault();//阻止a链接的跳转行为
+                    $(this).tab('show');//显示当前选中的链接及关联的content
+                })
+            });
+    </script>
+</div>

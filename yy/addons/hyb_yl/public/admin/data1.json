@@ -1,0 +1,33 @@
+
+
+{
+  "code": 0,
+  "msg": "ok",
+  "data": [
+    {
+      "id": 1,
+      "name": "xx",
+      "sex": "male",
+      "parentid": -1
+    },
+    {
+      "id": 2,
+      "name": "xx",
+      "sex": "male",
+      "parentid": 1
+    },
+    {
+      "id": 3,
+      "name": "xx",
+      "sex": "male",
+      "parentid": 1
+    },
+    {
+      "id": 4,
+      "name": "xx",
+      "sex": "male",
+      "parentid": 1
+    }
+  ],
+  "count": 4
+}

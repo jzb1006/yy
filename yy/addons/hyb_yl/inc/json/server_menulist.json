@@ -1,0 +1,103 @@
+[{
+	"ids": "1",
+	"uniacid": "23",
+	"server_key": "tuwenwenzhen",
+	"titles": "图文问诊",
+	"ser_url": "\/hyb_yl\/backstageLife\/pages\/shipinwenzhen\/shipinwenzhen"
+}, {
+	"ids": "2",
+	"uniacid": "23",
+	"server_key": "dianhuajizhen",
+	"titles": "电话急诊",
+	"ser_url": "\/hyb_yl\/backstageLife\/pages\/shipinwenzhen\/shipinwenzhen"
+}, {
+	"ids": "3",
+	"uniacid": "23",
+	"server_key": "shipinwenzhen",
+	"titles": "视频问诊",
+	"ser_url": "\/hyb_yl\/backstageLife\/pages\/shipinwenzhen\/shipinwenzhen"
+}, {
+	"ids": "4",
+	"uniacid": "23",
+	"server_key": "wenyisheng",
+	"titles": "问医生",
+	"ser_url": "\/hyb_yl\/userLife\/pages\/faxian\/faxian"
+}, {
+	"ids": "5",
+	"uniacid": "23",
+	"server_key": "shoushukuaiyue",
+	"titles": "手术安排",
+	"ser_url": "\/hyb_yl\/backstageServices\/pages\/shoushukuaiyue\/shoushukuaiyue"
+}, {
+	"ids": "6",
+	"uniacid": "23",
+	"server_key": "sirenyisheng",
+	"titles": "私人医生",
+	"ser_url": "\/hyb_yl\/mycenter\/pages\/followDoc\/followDoc"
+}, {
+	"ids": "7",
+	"uniacid": "23",
+	"server_key": "yuanchengguahao",
+	"titles": "远程挂号",
+	"ser_url": "\/hyb_yl\/czhuanjiasubpages\/pages\/longsever\/index"
+}, {
+	"ids": "8",
+	"uniacid": "23",
+	"server_key": "yuanchengkaifang",
+	"titles": "远程开方",
+	"ser_url": "\/hyb_yl\/backstageServices\/pages\/yuanchengkaifang\/yuanchengkaifang"
+}, {
+	"ids": "9",
+	"uniacid": "23",
+	"server_key": "kuaisudaozhen",
+	"titles": "快速导诊",
+	"ser_url": "\/hyb_yl\/backstageLife\/pages\/daozhen\/daozhen"
+}, {
+	"ids": "10",
+	"uniacid": "23",
+	"server_key": "yuyuetijian",
+	"titles": "预约体检",
+	"ser_url": "\/hyb_yl\/userLife\/pages\/tijian\/tijian"
+}, {
+	"ids": "11",
+	"uniacid": "23",
+	"server_key": "chajibing",
+	"titles": "查疾病",
+	"ser_url": "\/hyb_yl\/twosubpages\/pages\/yuzhen\/yuzhen"
+}, {
+	"ids": "12",
+	"uniacid": "23",
+	"server_key": "svip",
+	"titles": "SVIP",
+	"ser_url": "\/hyb_yl\/backstageServices\/pages\/vip\/vip"
+}, {
+	"ids": "13",
+	"uniacid": "23",
+	"server_key": "remenwenda",
+	"titles": "热门问答",
+	"ser_url": "\/hyb_yl\/twosubpages\/pages\/publicProblems\/publicProblems"
+}, {
+	"ids": "14",
+	"uniacid": "23",
+	"server_key": "lanmengyiyuan",
+	"titles": "机构列表",
+	"ser_url": "\/hyb_yl\/userLife\/pages\/hospitalList\/hospitalList"
+}, {
+	"ids": "15",
+	"uniacid": "23",
+	"server_key": "zhuanjiajiangtan",
+	"titles": "专家讲坛",
+	"ser_url": "\/hyb_yl\/tabBar\/index\/index"
+}, {
+	"ids": "16",
+	"uniacid": "23",
+	"server_key": "kanyikan",
+	"titles": "看一看",
+	"ser_url": "\/hyb_yl\/tabBar\/jibingyufang\/jibingyufang"
+}, {
+	"ids": "17",
+	"uniacid": "23",
+	"server_key": "jiankangfenxi",
+	"titles": "健康分析",
+	"ser_url": "\/hyb_yl\/tabBar\/index\/index"
+}]

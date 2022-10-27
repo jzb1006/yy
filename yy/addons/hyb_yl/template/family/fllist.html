@@ -1,0 +1,128 @@
+{template './common/mainHeader'}
+</div>
+<style type="text/css">
+    .edtior a:hover{
+        color: #20a0ff!important;
+    }
+    .del a:hover{
+        color: red;
+    }
+</style>
+<div class="contentpanel">
+    <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+        <li class="J-module-control active">
+            <a href="<?php echo  $this->copysiteUrl('family.fllist');?>&type_id={$type_id}" >
+                <strong>
+                    人群列表
+                </strong>
+            </a>
+        </li>
+        <li class="J-module-control" >
+            <a href="<?php echo  $this->copysiteUrl('family.addfl',array('type_id'=>$type_id));?>&type_id={$type_id}" >
+                <strong>
+                    添加人群
+                </strong>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content pd0">
+        <div class="tab-pane active" id="health_records">
+            <div class="panel panel-default" id="today">
+                <input type="hidden" class="J-patientId" />
+                <div class="panel-heading">
+                    <!-- 查找 -->
+                    <div class="row">
+                        <form id="J-search-form" method="post" class="form-inline" action="/japi/session/190110">
+                            <div class="col-sm-9 col-md-8 pull-right text-right" id="J-type-patient">
+                                <div class="form-group mr5 mb5_i">
+                                    <label class="control-label display-none">
+                                        人群名称：
+                                    </label>
+                                    <input type="text" size="10" class="form-control input-sm2 w180 col-custom-xs-12 J-card-no"
+                                    placeholder="输入人群名称" name="patient_id_card" />
+                                </div>
+                                <button class="btn btn-default btn-sm col-custom-xs-12 j_search_submit mb5_i"
+                                type="submit" onclick="return false;">
+                                    <i class="fa fa-search">
+                                    </i>
+                                </button>
+                            </div>
+                            <div class="col-sm-9 col-md-8 pull-right text-right hidden" id="J-type-clinic">
+                                <button class="btn btn-default btn-sm col-custom-xs-12 j_search_submit"
+                                type="submit" onclick="return false;">
+                                    <i class="fa fa-search">
+                                    </i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- 查找 -->
+                </div>
+                <div class="panel-body">
+                    <!-- 病人列表 -->
+                    <div class="bloglist row" id="J-today-list-wrap" style="display: none;">
+                    </div>
+                    <div class="bloglist row" id="J-today-list-2-wrap">
+                        <table class="table table-bordered table-hover table-gray background-white fixed-header-setting pos-relative J-patient-list-table">
+                            <thead>
+                                <tr class="font12">
+                                    <td class="font-wb table-action" width="10%">
+                                        ID
+                                    </td>
+                                    <td class="font-wb table-action" width="7%">
+                                        人群
+                                    </td>
+                                    <td class="font-wb table-action" width="7%">
+                                        缩列图
+                                    </td>
+                                    <td class="font-wb table-action" width="10%">
+                                        添加时间
+                                    </td>
+                                    <td class="font-wb table-action" width="17%">
+                                        操作
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="J-today-list-wrap-2">
+                                {loop $res $item}
+                                <?php $id = $item['id']?>
+                                <tr class="bg-white">
+                                    <td width="7%" class="text-align">
+                                        {$item['id']}
+                                    </td>
+                                    <td width="10%" class="text-align">
+                                        {$item['crowd_name']}
+                                    </td>
+                                    <td width="10%" class="text-align">
+                                       <img src="{media $item['thumb']}" width="50px" > 
+                                    </td>
+                                    <td class="text-align" width="7%">
+                                        {$item['create_time']}
+                                    </td>
+                                    <td width="17%" class="text-align">
+
+                                        <span class="edtior J-da-add-reservation J-module-control mr5" data-permission="13">
+                                            <a href='{php echo  $this->copysiteUrl('family.addfl')."&id=$id&type_id=$type_id"}'>
+                                                编辑
+                                            </a>
+                                        </span>
+                                        <span class="del J-da-add-reservation J-module-control mr5" data-permission="13">
+                                            <a href='{php echo  $this->copysiteUrl('family.delfl')."&id=$id&type_id=$type_id"}'>
+                                                删除
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                {/loop}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="j_page_wrap">
+                        <div class="base_page">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

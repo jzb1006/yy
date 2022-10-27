@@ -1,0 +1,185 @@
+
+{template './common/mainHeader'}
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tree-table</title>
+    <link rel="stylesheet" href="{php echo HYB_YL_ADMIN}/layui/css/layui.css">
+</head>
+<style type="text/css">
+   .laytable-cell-1-imageUrl{
+    height: 100%;
+    max-width: 100%;
+   } 
+   .layui-table-cell div{
+    width: 40%;
+    margin: 0 auto;
+   }
+   .layui-table-cell img{
+        width: 100%;
+   }
+</style>
+<body>
+</div>
+<div class="layui-container" style="margin-top: 100px;margin-left: 280px;width: 1050px; background: white;">
+<i class="layui-icon layui-icon-face-smile" style="color: red;">症状一级分类建议填写身体部位</i> 
+            <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+                <li class="J-module-control active " data-permission="8">
+                    <a  href="<?php echo  $this->copysiteUrl('zhen.zhenlist');?>&type_id={$type_id}" ><strong>症状列表</strong></a>
+                </li>
+                <li class="J-module-control " data-permission="10">
+                    <a href="<?php echo $this->copysiteUrl('zhen.add');?>&type_id={$type_id}" ><strong>添加症状</strong></a>
+                </li>
+
+            </ul>
+    <br><br>
+    <div class="layui-btn-group" >
+        <button class="layui-btn" id="btn-expand">全部展开</button>
+        <button class="layui-btn" id="btn-fold">全部折叠</button>
+        <button class="layui-btn" id="btn-refresh">刷新表格</button>
+        <button class="layui-btn layui-btn-danger" id="getCheckData" >批量删除</button>
+    </div>
+<!--     <form action="" method="POST">
+  <input class="btn btn-primary" type="submit" value="一键拉取数据" name="submit" style="height: 30px;">
+</form> -->
+    <table id="table1" class="layui-table" lay-filter="table1"></table>
+    <div id="test1"></div>
+</div>
+
+<!-- 操作列 -->
+<script type="text/html" id="oper-col">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit" >修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script src="{php echo HYB_YL_ADMIN}/layui/layui.js"></script>
+<script>
+    var type_id = "{$type_id}";
+// console.log("https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=zhen.ajax")
+    layui.config({
+        base: '{php echo HYB_YL_ADMIN}/module/'
+    }).extend({
+        treetable: 'treetable-lay/treetable'
+    }).use(['table', 'form', 'element', 'treetable'], function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        var form = layui.form;
+        var element = layui.element;
+        var treetable = layui.treetable;
+        var laypage = layui.laypage;
+        var imgUrl  ="https://"+window.location.host+'/attachment/'
+        
+        // 渲染表格
+
+        var renderTable = function () {
+
+            layer.load(2)
+            treetable.render({
+                treeColIndex: 2,
+                treeSpid: -1,
+                treeIdName: 'id',
+                treePidName: 'pid',
+                elem: '#table1',
+                url: "https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=zhen.ajax&type_id={$type_id}",
+                page: false,
+                cols: [[
+                    {checkbox:true,align:'center',LAY_CHECKED:false,filter:'test'},
+                    {field: 'id', title: 'id'},
+                    {field: 'name', title: '症状名称'},
+                    {field: 'imageUrl',width:100, title: '图标', align: "center", sort: false,
+                    templet:function (d) { 
+                        return '<div ><img src='+imgUrl+d.icon+'></div>' }
+                    },
+                    {field: 'pid', title: 'pid'},
+                    {templet: '#oper-col', title: '操作'}
+
+                ]],
+                id: 'testReload',
+                done: function (res, curr, count) {
+                      layer.closeAll('loading');
+                }
+            });
+
+        };
+
+        renderTable();
+
+        $('#btn-expand').click(function () {
+            treetable.expandAll('#table1');
+        });
+
+        $('#btn-fold').click(function () {
+            treetable.foldAll('#table1');
+        });
+
+        $('#btn-refresh').click(function () {
+            renderTable();
+        });
+        $('#getCheckData').click(function () {
+            var checkStatus = table.checkStatus('testReload'),
+            data = checkStatus.data;
+            if(data == ""){
+               layer.msg('至少选择一个吧',{icon:2});
+               return;
+            }
+            var ids ="";
+            if(data.length>0){
+              for (var i = 0; i<data.length; i++) {
+                  ids +=data[i].id+",";
+              }
+            }
+            layer.confirm('确定删除吗？'+ids,function(index){
+                    layer.close(index);
+                    layer.closeAll('loading')
+                $.ajax({  
+                        type: "POST",  
+                        url: "https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=zhen.deleteall",  
+                        dataType: "json",  
+                        cache:false, 
+                        data: {id:ids},  
+                        success: function(json){  
+                          console.log(json)
+                          window.parent.location.reload();
+                        }
+                });
+            })
+        });
+
+          //头工具栏事件
+
+        //监听工具条
+        table.on('tool(table1)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if (layEvent === 'del') {
+              layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    layer.close(index);
+                    $.ajax({  
+                        type: "POST",  
+                        url: "https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=zhen.del",  
+                        dataType: "json",  
+                        cache:false, 
+                        data: {id:id},  
+                        success: function(json){  
+                          layer.closeAll('loading')
+                        }
+                    });
+                  });
+                var id =data.id
+
+            } else if (layEvent === 'edit') {
+                 var id =data.id
+                 window.location.href="https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=zhen.add&id="+id;
+                 layer.msg('修改' + data.id);
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

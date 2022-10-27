@@ -1,0 +1,1311 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+</div>
+<div class="pageheader">
+    <h2><i class="fa fa-tint"></i> 实验室检查 <span class="J-inspect-room-space"></span></h2>
+    <div class="breadcrumb-wrapper">
+        <a href="{php echo $this->createWeburl('jiancha',array('op'=>'display','type_id'=>$type_id))}" class="btn btn-sm btn-white J-back-btn"><i class="fa fa-angle-left"></i> 返回</a>
+    </div>
+</div>
+<div class="contentpanel">
+   <div class="row">
+   <div class="col-sm-12 col-md-2" id="J-patient-info-warp">
+   <div class="row">
+    <div class="col-xs-12 col-sm-2 col-md-12">
+      
+        <div class="p-relative">
+            <span class="icon-vip tooltips vip-reception" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+        </div>
+      
+      <img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="thumbnail img-responsive" alt="">
+    </div>
+
+    <div class="col-xs-12 col-sm-10 col-md-12">
+      <h2 class="profile-name">
+        <a href="/Clinic/Patient/profile/patient_id/00020122868.html" target="_blank">调铺的小豆丁</a>
+                <span class="display-block pad-inline">
+                <span><a class="btn btn-sm btn-default J-isFill" data-toggle="modal" data-target="#myModal3">查看病历</a></span>
+                <span><a class="btn btn-sm btn-default J-isFill" data-toggle="modal" data-target="#J-history-modal">历史记录</a></span>
+            </span>      
+        </h2>
+      <div class="mb20 mbn20"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-12 col-md-10 J-inspect" id="J-inspect-content-list">
+    <ul class="nav nav-tabs patient-tabs nav-tabs-white">
+                <li class="active"><a href="#tab0" data-toggle="tab"><strong>医院信息</strong></a></li>
+        
+    </ul>
+    <div class="tab-content pd0">
+                <div class="tab-pane active" id="tab0">
+                    <form class="form-inline J-inspect-form" method="post" action="" novalidate="novalidate">
+                        <!-- 报告单 -->
+                        <div class="panel">
+                            <div class="panel-body prl0 pt0" style="display: block;">
+                                <div>
+                                    <table class="table table-report shadow-none mt10 mbf10">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="6" class="pl20">
+                                                    <p class="mt5">排序:</p>
+                                                    <input name="strot" class="form-control w100 mb20 J-remark" value="{$list['strot']}">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6" class="pl20">
+                                                    <p class="mt5">医院名称/账号:</p>
+                                                    <input name="hospital" class="form-control w100 mb20 J-remark" value="{$list['hospital']}">
+                                                </td>
+                                                <td colspan="6" class="pl20">
+                                                    <p class="mt5">密码:</p>
+                                                    <input name="password" class="form-control w100 mb20 J-remark" value="{$list['apassword']}">
+                                                </td>
+                                                <td colspan="6" class="pl20">
+                                                    <p class="mt5">是否推荐:</p>
+                                                    <input type="radio" name="hos_tuijian" value="0" {if $list['hos_tuijian'] == '0'} checked='checked' {/if}>不推荐</input>
+                                                    <input type="radio" name="hos_tuijian" value="1" {if $list['hos_tuijian'] == '1'} checked='checked' {/if}>推荐</input>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- panel-body -->
+                            <div class="panel-footer panel-btn-col3">
+                                  <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+                                  <input name="token" type="hidden" value="{$_W['token']}" />
+                            </div>
+                        </div>
+                        <!-- 报告单 -->
+                    </form>
+
+                    <!-- 条形码打印暂存 -->
+  <!-- 通用打印单 -->
+  <div class="J-print-barcode hidden">
+    <div class="print-page-code" style="overflow:hidden;">
+      <div class="print-subpage-code">
+        <div class="print-header-code">
+          <div class="p-code-img">
+            <img src="/Clinic/Barcode/getBarCode/type/128/barcode/10011010">
+          </div>
+          <div class="p-code-numb">
+            <span class="mb1">
+              10011010</span>
+            <span>
+              2019-06-15</span>
+          </div>
+        </div>
+
+        <div class="print-name-code">
+          <div class="p-code-name" style="width: 40mm;">
+            <span>
+              调铺的小豆丁</span><span>
+              女</span><span class="font-normal">
+              28岁</span>
+            <small>
+              血清</small>
+          </div>
+          <div class="p-codes-circle">
+            <span>
+              无</span>
+          </div>
+        </div>
+
+        <div class="print-content-box">
+          <div class="print-content-code">
+            <div class="p-code-content">
+              脑利钠肽(NT-pro-BNP)
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>                    
+                </div>
+                
+            
+        
+            
+                <div class="tab-pane " id="tab1">
+                    <form class="form-inline J-inspect-form" method="post" action="{php echo $this->createWeburl('jiancha',array('op'=>'display'))}" novalidate="novalidate">
+                        <input type="hidden" name="clinic_id" value="77381">
+                        <input type="hidden" name="bill_id" value="29953">
+                        <!-- 报告单 -->
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <div class="panel-btns">
+                                    <a href="javascript:;" class="minimize">−</a>
+                                    <h4 align="center" class="panel-title">肝功12项 - 10011011（
+                                        
+                                            <span class="red">未收费</span>
+                                        ）
+                                    </h4>
+                                    <div class="row font12 mt10">
+                                        <div class="col-xs-4">
+                                            <span>开单医生：陈雪雪1</span>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <span>开单时间：2019-05-30 23:12:58</span>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="form-group mb0 mr0 pull-right">
+                                                <label for="">报告时间</label>
+                                                <input value="2019-06-15 14:33:46" class="form-control input-xsm font12 J-report-time mbsc-comp" readonly="" name="checkTime" type="text" size="15" id="mobiscroll1560580426796">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                        <div class="alert alert-warning mt10 mb0 J-alert-allergy">
+                                            过敏史：<span>否认</span>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="panel-body prl0 pt0" style="display: block;">
+                                <div>
+                                    <table class="table table-hover table-report shadow-none mt0 mbf10">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center" width="8%">序号</th>
+                                                <th width="35%">项目</th>
+                                                <th width="20%">检查结果</th>
+                                                <th width="10%">单位</th>
+                                                <th class="text-center">性质</th>
+                                                <th width="12%">参考范围</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="J-inspect-wrap">
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">1</td>
+                                                <td data-id="16318" class="J-show-item">血清总蛋白[TP](TP)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16318">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>g/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="65.0~85.0">65.0~85.0</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">2</td>
+                                                <td data-id="16310" class="J-show-item">血清白蛋白[ALB](ALB)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16310">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>g/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="40.0~55.0">40.0~55.0</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">3</td>
+                                                <td data-id="16446" class="J-show-item">血清天门冬氨酸氨基转移酶[AST](AST)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16446">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>U/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="0~37">0~37</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">4</td>
+                                                <td data-id="16316" class="J-show-item">血清总胆红素[T-BIL](T-Bil)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16316">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>μmol/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="0.0~17.1">0.0~17.1</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">5</td>
+                                                <td data-id="16315" class="J-show-item">血清直接胆红素[DBIL](D-Bil)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16315">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>μmol/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="0.0~6.8">0.0~6.8</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">6</td>
+                                                <td data-id="16312" class="J-show-item">血清间接胆红素[IBIL](IBIL)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16312">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>μmol/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="0.0~10.2">0.0~10.2</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">7</td>
+                                                <td data-id="16313" class="J-show-item">血清碱性磷酸酶[ALP](ALP)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16313">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>U/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="我是谁">我是谁</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">8</td>
+                                                <td data-id="16309" class="J-show-item">血清γ-谷氨酰基转移酶[GGT](γ-GT)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16309">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>U/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="7~45">7~45</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">9</td>
+                                                <td data-id="16317" class="J-show-item">血清总胆汁酸[TBA](TBA)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16317">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>μmol/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="0.0~10.0">0.0~10.0</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">10</td>
+                                                <td data-id="16364" class="J-show-item">血清α-L-岩藻糖苷酶[AFU](AFU)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16364">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>U/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="10.0~35.0">10.0~35.0</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">11</td>
+                                                <td data-id="16314" class="J-show-item">血清前白蛋白[PAB](PAB)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16314">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>g/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="0.20~0.40">0.20~0.40</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-report shadow-none mt10 mbf10">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="6" class="pd20">
+                                                    <div class="select2-container J-select-inspect bigdrop" id="s2id_autogen3" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-4">请选择</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen4" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-4" id="s2id_autogen4"><div class="select2-drop select2-display-none bigdrop select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen4_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-4" id="s2id_autogen4_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-4">   </ul></div></div><input type="hidden" class="J-select-inspect bigdrop select2-offscreen" data-init="" data-initlist="" data-placeholder="请选择" tabindex="-1" title="">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-report shadow-none mt10 mbf10">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="6" class="pl20">
+                                                    <p class="mt5">备注</p>
+                                                    <input name="remark" class="form-control w100 mb20 J-remark" value="">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6" class="pl20 border-none">
+                                                    <!-- 修改图片列表 -->
+                                                    <div class="form-group J-imgs-box">
+                                                        <div class="file-upload-module file-upload-module2">
+                                                            
+                                                        <div class="J_image_upload mr10 mt10 col-sm-3 image-btn hidden"><div class="image-select J-image-select empty"><div class="image-preview"></div><div class="image-upload"><input type="hidden" name="is_protected" value="true"><input type="hidden" name="type" value="1"><input type="hidden" name="owner_type" value="1"><input type="hidden" name="media_type" value="image"><input type="hidden" name="dispositionType" value="1"><input type="file" multiple="" name="uploadFile" class="J-image-upload"> <a class="btn btn-default btn-sm J-image-btn">上传文件</a></div></div></div></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- panel-body -->
+                            <div class="panel-footer panel-btn-col3">
+                                <input type="submit" class="btn btn-primary mr5 J-submit-btn" value="保存">
+                                <a class="btn btn-default" href="{php echo $this->createWeburl('jiancha',array('op'=>'display'))}">取消</a>
+                                <a href="javascript:void(0);" class="btn btn-white pull-right J-print"><i class="fa fa-print"></i> 补打条码</a>
+                                <a href="javascript:void(0);" class="btn btn-white pull-right mr5 J-upload-btn"><i class="fa fa-upload"></i> 上传文件</a>
+                            </div>
+                        </div>
+                        <!-- 报告单 -->
+                    </form>
+
+                    <!-- 条形码打印暂存 -->
+  <!-- 通用打印单 -->
+  <div class="J-print-barcode hidden">
+    <div class="print-page-code" style="overflow:hidden;">
+      <div class="print-subpage-code">
+        <div class="print-header-code">
+          <div class="p-code-img">
+            <img src="/Clinic/Barcode/getBarCode/type/128/barcode/10011011">
+          </div>
+          <div class="p-code-numb">
+            <span class="mb1">
+              10011011</span>
+            <span>
+              2019-06-15</span>
+          </div>
+        </div>
+
+        <div class="print-name-code">
+          <div class="p-code-name" style="width: 40mm;">
+            <span>
+              调铺的小豆丁</span><span>
+              女</span><span class="font-normal">
+              28岁</span>
+            <small>
+              血清</small>
+          </div>
+          <div class="p-codes-circle">
+            <span>
+              紫</span>
+          </div>
+        </div>
+
+        <div class="print-content-box">
+          <div class="print-content-code">
+            <div class="p-code-content">
+              肝功12项
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>                    
+                </div>
+                
+            
+        
+            
+                <div class="tab-pane " id="tab2">
+                    <form class="form-inline J-inspect-form" method="post" action="{php echo $this->createWeburl('jiancha',array('op'=>'display'))}" novalidate="novalidate">
+                        <input type="hidden" name="clinic_id" value="77381">
+                        <input type="hidden" name="bill_id" value="29954">
+                        <!-- 报告单 -->
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <div class="panel-btns">
+                                    <a href="javascript:;" class="minimize">−</a>
+                                    <h4 align="center" class="panel-title">血清高密度脂蛋白胆固醇测定(HDL-CH) - 10011012（
+                                        
+                                            <span class="red">未收费</span>
+                                        ）
+                                    </h4>
+                                    <div class="row font12 mt10">
+                                        <div class="col-xs-4">
+                                            <span>开单医生：陈雪雪1</span>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <span>开单时间：2019-05-30 23:12:58</span>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <div class="form-group mb0 mr0 pull-right">
+                                                <label for="">报告时间</label>
+                                                <input value="2019-06-15 14:33:46" class="form-control input-xsm font12 J-report-time mbsc-comp" readonly="" name="checkTime" type="text" size="15" id="mobiscroll1560580426797">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                        <div class="alert alert-warning mt10 mb0 J-alert-allergy">
+                                            过敏史：<span>否认</span>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="panel-body prl0 pt0" style="display: block;">
+                                <div>
+                                    <table class="table table-hover table-report shadow-none mt0 mbf10">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center" width="8%">序号</th>
+                                                <th width="35%">项目</th>
+                                                <th width="20%">检查结果</th>
+                                                <th width="10%">单位</th>
+                                                <th class="text-center">性质</th>
+                                                <th width="12%">参考范围</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="J-inspect-wrap">
+                                            
+                                            <tr>
+                                                <td class="text-center J-index">1</td>
+                                                <td data-id="16278" class="J-show-item">血清高密度脂蛋白胆固醇[HDL-CH](HDL-C)</td>
+                                                <td>
+                                                    <div class="form-group mrf15 mb0">
+                                                        <input type="hidden" name="sub_key[]" value="16278">
+                                                        <input type="text" name="sub_value[]" value="" class="form-control input-sm input-auto J-reference-input">
+                                                    </div>
+                                                </td>
+                                                <td>mmol/L</td>
+                                                <td class="text-center J-reference-style">
+                                                    
+                                                </td>
+                                                <td class="J-reference" data-reference="1.04~1.549">1.04~1.549</td>
+                                                <td>
+                                                    <a href="javascript:;" class="btn btn-sm btn-white J-del-item"><i class="fa fa-minus"></i></a>
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-report shadow-none mt10 mbf10">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="6" class="pd20">
+                                                    <div class="select2-container J-select-inspect bigdrop" id="s2id_autogen5" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-6">请选择</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen6" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-6" id="s2id_autogen6"><div class="select2-drop select2-display-none bigdrop select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen6_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-6" id="s2id_autogen6_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-6">   </ul></div></div><input type="hidden" class="J-select-inspect bigdrop select2-offscreen" data-init="" data-initlist="" data-placeholder="请选择" tabindex="-1" title="">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-report shadow-none mt10 mbf10">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="6" class="pl20">
+                                                    <p class="mt5">备注</p>
+                                                    <input name="remark" class="form-control w100 mb20 J-remark" value="">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6" class="pl20 border-none">
+                                                    <!-- 修改图片列表 -->
+                                                    <div class="form-group J-imgs-box">
+                                                        <div class="file-upload-module file-upload-module3">
+                                                            
+                                                        <div class="J_image_upload mr10 mt10 col-sm-3 image-btn hidden"><div class="image-select J-image-select empty"><div class="image-preview"></div><div class="image-upload"><input type="hidden" name="is_protected" value="true"><input type="hidden" name="type" value="1"><input type="hidden" name="owner_type" value="1"><input type="hidden" name="media_type" value="image"><input type="hidden" name="dispositionType" value="1"><input type="file" multiple="" name="uploadFile" class="J-image-upload"> <a class="btn btn-default btn-sm J-image-btn">上传文件</a></div></div></div></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- panel-body -->
+                            <div class="panel-footer panel-btn-col3">
+                                <input type="submit" class="btn btn-primary mr5 J-submit-btn" value="保存">
+                                <a class="btn btn-default" href="{php echo $this->createWeburl('jiancha',array('op'=>'display'))}">取消</a>
+                                <a href="javascript:void(0);" class="btn btn-white pull-right J-print"><i class="fa fa-print"></i> 补打条码</a>
+                                <a href="javascript:void(0);" class="btn btn-white pull-right mr5 J-upload-btn"><i class="fa fa-upload"></i> 上传文件</a>
+                            </div>
+                        </div>
+                        <!-- 报告单 -->
+                    </form>
+
+                    <!-- 条形码打印暂存 -->
+  <!-- 通用打印单 -->
+  <div class="J-print-barcode hidden">
+    <div class="print-page-code" style="overflow:hidden;">
+      <div class="print-subpage-code">
+        <div class="print-header-code">
+          <div class="p-code-img">
+            <img src="/Clinic/Barcode/getBarCode/type/128/barcode/10011012">
+          </div>
+          <div class="p-code-numb">
+            <span class="mb1">
+              10011012</span>
+            <span>
+              2019-06-15</span>
+          </div>
+        </div>
+
+        <div class="print-name-code">
+          <div class="p-code-name" style="width: 40mm;">
+            <span>
+              调铺的小豆丁</span><span>
+              女</span><span class="font-normal">
+              28岁</span>
+            <small>
+              血清</small>
+          </div>
+          <div class="p-codes-circle">
+            <span>
+              红</span>
+          </div>
+        </div>
+
+        <div class="print-content-box">
+          <div class="print-content-code">
+            <div class="p-code-content">
+              血清高密度脂蛋白胆固醇测定(HDL-CH)
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>                    
+                </div>
+                
+            
+        
+    </div>
+</div>
+                    </div>
+                </div>
+
+<!-- 侧边栏个人信息模板 -->
+<script type="text/template" id="J-patient-info-tpl">
+  <input type="hidden" value="<%-data.birthDate%>" class="J-addRecor-birth"/>
+  <input type="hidden" value="<%-data.name%>" class="J-patient-name">
+  <div class="row">
+    <div class="col-xs-12 col-sm-2 col-md-12">
+      <%if(data.memberType && data.memberTypeStatus == 1){%>
+        <div class="p-relative">
+            <span class="icon-vip tooltips vip-reception" data-toggle="tooltip" data-placement="top" data-original-title="<%-data.memberTypeName%>"></span>
+        </div>
+      <%} else if(data.memberType && data.memberTypeStatus == 2){%>
+        <div class="p-relative">
+            <span class="icon-vip-expire tooltips vip-reception" data-toggle="tooltip" data-placement="top" data-original-title="<%-data.memberTypeName%>(已到期)"></span>
+        </div>
+      <% } %>
+      <img src="<%-data.image%>" class="thumbnail img-responsive" alt="" />
+    </div>
+
+    <div class="col-xs-12 col-sm-10 col-md-12">
+      <h2 class="profile-name">
+        <a href='<%- global_src_api %>/Patient/profile/patient_id/<%-data.patientId%>.html' target="_blank"><%-data.name%></a>
+        <!--<label class="tooltips font16" data-toggle="tooltip" data-placement="top" data-original-title="<%-data.address%> 手机: <%-data.mobileNumber%>"><i class="fa fa-phone"></i></label>-->
+
+                    <span class="display-block pad-inline">
+                <span><a class="btn btn-sm btn-default J-isFill" data-toggle="modal" data-target="#myModal3">查看病历</a></span>
+                <span><a class="btn btn-sm btn-default J-isFill" data-toggle="modal" data-target="#J-history-modal">历史记录</a></span>
+            </span>      </h2>
+      <div class="mb20 mbn20"></div>
+      <ul class="profile-social-list sm-10" >
+        <%  if(data.mobileNumber){ %><li>电话：<span class="J-mobileNumber"><%-data.mobileNumber%></span></li><% } %>
+        <li>性别：<span class="J-sexName"><%-data.sexName%></span></li>
+        <li>年龄：<span class="J-age"><% if (data.age && data.age >= 14) {%><%-data.age%><%} else {%><%-data.ageInfo%><% } %></span></li>
+        <li>身高：<% if (data.heightcm) {%><span class="J-heightcm"><%-data.heightcm%></span>CM<% } %></li>
+        <li>体重：<% if (data.weightkg) {%><span class="J-weightkg"><%-data.weightkg%></span>KG<% } %></li>
+
+        <li>BMI 指数：
+          <% if(data.bmi && data.bmi > 0) { %>
+            <span class="J-bmi"><%-data.bmi%></span>
+            <% if(data.age >= 14){ %>
+            <% if (data.bmi < 18.5) {%><span>体重过低</span>
+            <% } else if (data.bmi >= 18.5 && data.bmi < 24) { %><span>体重正常</span>
+            <% } else if (data.bmi >= 24 && data.bmi < 27.9) { %><span>超重</span>
+            <% } else if (data.bmi >= 28) { %><span>肥胖</span><% } %>
+            <% } %>
+          <% } %>
+        </li>
+        <li>
+          体温：<% if ( isNaN(parseFloat(data.temperature)) ) {%>
+            <span class="J-temperature"><%-data.temperature%></span>
+          <% }else{ %>
+            <span class="J-temperature"><%-data.temperature%></span>&#176;C - <%-data.temperatureType%>
+          <% } %>
+        </li>
+        <li>
+            呼吸：<% if ( isNaN(parseFloat(data.breathing)) ) {%>
+            <span class="J-breathing"><%-data.breathing%></span>
+            <% }else{ %>
+            <span class="J-breathing"><%-data.breathing%></span>次/分钟
+            <% } %>
+        </li>
+        <li>
+            脉搏：<% if ( isNaN(parseFloat(data.pulse)) ) {%>
+            <span class="J-pulse"><%-data.pulse%></span>
+            <% }else{ %>
+            <span class="J-pulse"><%-data.pulse%></span>次/分钟
+            <% } %>
+        </li>
+        <li>血压：<% if ( isNaN(parseFloat(data.shrinkpressure)) || isNaN(parseFloat(data.diastolic_pressure)) ) {%>
+            <span class="J-shrinkpressure"><%-data.shrinkpressure%>/<%-data.diastolic_pressure%></span>
+            <% }else{ %>
+            <span class="J-shrinkpressure"><%-data.shrinkpressure%>/<%-data.diastolic_pressure%></span>mmHg
+            <% } %>
+        </li>
+        <li>血糖浓度：<span class="J-shrinkpressure"><%-data.bloodsugar%></span>
+        </li>
+          <li>视力：<span class="J-shrinkpressure">
+              <% if(data.leftEyesight !== ''){ %>
+                <%-data.leftEyesight%>°
+              <% } %>/
+              <% if(data.rightEyesight !== ''){ %>
+                <%-data.rightEyesight%>°
+              <% } %>
+              </span>
+          </li>
+        <li>氧饱和度：<% if ( isNaN(parseFloat(data.oxygen_saturation)) ) {%>
+            <span class="J-oxygen_saturation"><%-data.oxygen_saturation%></span>
+            <% }else{ %>
+            <span class="J-oxygen_saturation"><%-data.oxygen_saturation%></span>%
+            <% } %>
+        </li>
+        <li>疼痛评分：<span class="J-pain_score"><%-data.pain_score%></span></li>
+        <li>初步诊断：
+            <div class="row form-group mb10">
+                <% if (data.result && data.result.length > 0) {%>
+                  <% _.each(data.result, function(item, i) { %>
+                    <% if (item.disease_info || item.treatment_advice || item.recipe_info) {%>
+                      <div class="col-md-8 mt5 text-nowrap" title="<%-item.name%>">
+                          <%-item.name%>
+                      </div>
+                      <div class="col-md-4 mt5">
+                          <span class="badge badge-dark pull-right cursor-pointer J-item-detail" data-id="<%-item.id%>" title="<%-item.name%>"><i class="fa fa-book mr5"></i>指南1</span>
+                      </div>
+                    <% } else {%>
+                      <div class="col-md-12 mt5 text-nowrap" title="<%-item.name%>">
+                          <%-item.name%>
+                      </div>
+                    <% } %>
+                  <%})%>
+                <% } %>
+            </div>
+        </li>
+        <li class="hidden J-cache-allergy"></li>
+        <li class="hidden J-cache-result"></li>
+      </ul>
+    </div>
+  </div>
+</script>
+
+<!-- 查看病历 -->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">查看病历</h4>
+      </div>
+      <div class="modal-body">
+
+         <div class="panel-body pd0">
+            <table class="table table-user-information shadow-none mb0">
+              <tbody id="J-case-info-wrap">
+              </tbody>
+            </table>
+          </div>
+      </div>
+
+      <div class="modal-footer modal-btn-col1">
+        <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+      </div>
+    </div><!-- modal-content -->
+  </div><!-- modal-dialog -->
+</div>
+<!-- 查看病历 -->
+
+<!-- 历史记录 -->
+<div class="modal fade" id="J-history-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">查看历史记录</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 mb10">
+                        <div class="panel-group J-history-record-wrap"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer modal-btn-col1">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 历史记录 -->
+
+<script type="text/template" id="J-case-info-tpl">
+    <tr>
+        <% if(window.winIsFirst == 3 || window.winIsFirst == 4){ %>
+            <td width="18%"><strong>体检日期：</strong></td>
+        <% }else{ %>
+            <td width="18%"><strong>发病日期：</strong></td>
+        <% } %>
+        <td><%-data.onset_date%></td>
+    </tr>
+    <tr>
+        <td width="18%"><strong>主诉：</strong></td>
+        <td><%-data.subjective%></td>
+    </tr>
+    <tr>
+        <td><strong>现病史：</strong></td>
+        <td><%-data.description%></td>
+    </tr>
+    <tr>
+        <td><strong>既往史：</strong></td>
+        <td><%-data.history_case%></td>
+    </tr>
+    <tr>
+        <td><strong>过敏史：</strong></td>
+        <td>
+            <% if(data.allergy){ %>
+                <% $.each(JSON.parse(data.allergy || '[]'), function(i, item){ %>
+                    <p>
+                    <% $.each(item || [], function(o, obj){ %>
+                        <%-obj.text + '，' %>
+                    <% }); %>
+                    </p>
+                <% }); %>
+            <% }else{ %>
+                否认
+            <% } %>
+        </td>
+    </tr>
+    <tr>
+        <td><strong>个人史：</strong></td>
+        <td><%-data.personalhistory%></td>
+    </tr>
+    <tr>
+        <td><strong>家族史：</strong></td>
+        <td><%-data.genetichistory%></td>
+    </tr>
+    <tr>
+        <td><strong>疫苗接种史：</strong></td>
+        <td><%-data.vaccination_history%></td>
+    </tr>
+    <tr>
+        <td><strong>实验室及辅助检查：</strong></td>
+        <td><%-data.checktest_examination%></td>
+    </tr>
+    <tr>
+        <td><strong>体格检查：</strong></td>
+        <td><%-data.physical_examination%></td>
+    </tr>
+    <tr>
+        <td><strong>四诊：</strong></td>
+        <td><%-data.fourDiagnosis%></td>
+    </tr>
+    <tr>
+        <td><strong>中医诊断：</strong></td>
+        <td><%-data.chineseDiagnosis%></td>
+    </tr>
+    <tr>
+        <td><strong>初步诊断：</strong></td>
+        <td><% $.each(data.result || [], function(i, item){ %>
+                <%- item.name + '，' %>
+            <% }); %>
+        </td>
+    </tr>
+    <tr>
+        <% if(window.winIsFirst == 3 || window.winIsFirst == 4){ %>
+            <td><strong>体检小结：</strong></td>
+            <td><%-data.physical_result%></td>
+        <% } %>
+    </tr>
+    <tr>
+        <% if(window.winIsFirst == 3 || window.winIsFirst == 4){ %>
+            <td><strong>健康管理建议：</strong></td>
+        <% }else{ %>
+            <td><strong>治疗意见：</strong></td>
+        <% } %>
+        <td><%-data.bio%></td>
+    </tr>
+    <tr>
+        <td class="border-none"><strong>备注：</strong></td>
+        <td class="border-none"><%-data.remark%></td>
+    </tr>
+</script>
+
+<!-- 完善信息模板 -->
+<script type="text/template" id="supply-info-tpl">
+    <div class="progress active">
+        <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="width: 50%;"></div>
+    </div>
+    <!-- start 体征信息 -->
+    <div class="tab-pane mt10 active" id="ptab5" data-type="5">
+        <form class="form-horizontal" id="j_tab5Form">
+            <!-- start 第一行 -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">体重(KG)</label>
+                                <input type="text" value="<% if(age >= 14 || modifyTime > new Date(new Date()-86400000).Format('yyyy-MM-dd hh:mm:ss')){ %><%-weightkg*1?weightkg:''%><% } %>" name="weightkg" class="form-control display-ilb number" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">身高(CM)</label>
+                                <input type="text" value="<% if(age >= 14 || modifyTime > new Date(new Date()-86400000).Format('yyyy-MM-dd hh:mm:ss')){ %><%-heightcm*1?heightcm:''%><% } %>" name="heightcm" class="form-control display-ilb number" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 第一行 -->
+            <!-- start 第二行 -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">BMI指数</label>
+                                <%if(age < 14){%>
+                                    <input type="text" value="<%-bmi*1?bmi:''%>" name="bmi" value="20.00（体质指数：18.5-23.9）" class="form-control" readonly>
+                                    <span class="input-group-addon tooltips hidden" data-toggle="tooltip" data-placement="left" data-original-title="参考值为：体重过低：<18.5，体重正常：18.5-23.9，超重：24.0-27.9，肥胖：≥28"></span>
+                                <%} else {%>
+                                    <div class="input-group">
+                                        <input type="text" value="<%-bmi*1?bmi:''%>" name="bmi" value="20.00（体质指数：18.5-23.9）" class="form-control" readonly>
+                                        <span class="input-group-addon tooltips" data-toggle="tooltip" data-placement="left" data-original-title="参考值为：体重过低：<18.5，体重正常：18.5-23.9，超重：24.0-27.9，肥胖：≥28"><%-bmi_name%></span>
+                                    </div>
+                                <%}%>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">血型</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <select class="form-control input-sm mt0" data-placeholder="ABO血型" name="bloodtype">
+                                            <option value="">ABO型</option>
+                                            <option value="A" <%- bloodtype=='A' ? selected="selected" : ""%>>A型</option>
+                                            <option value="B" <%- bloodtype=='B' ? selected="selected" : ""%>>B型</option>
+                                            <option value="O" <%- bloodtype=='O' ? selected="selected" : ""%>>O型</option>
+                                            <option value="AB" <%- bloodtype=='AB' ? selected="selected" : ""%>>AB型</option>
+                                            <option value="0" <%- bloodtype=='0' ? selected="selected" : ""%>>未查</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <select class="form-control input-sm mt0" data-placeholder="请选择" name="blood2type">
+                                            <option value="">RH血型</option>
+                                            <option value="F" <%- blood2type=='F' ? selected="selected" : ""%>>RH阴性</option>
+                                            <option value="M" <%- blood2type=='M' ? selected="selected" : ""%>>RH阳性</option>
+                                            <option value="0" <%- blood2type=='0' ? selected="selected" : ""%>>未查</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 第二行 -->
+            <!-- start 第三行 -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">体温(&#176;C)</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <select class="form-control input-sm mt0" data-placeholder="请选择" name="temperature_type">
+                                            <option value="1" <% if(temperature_type == 1 || (temperature_type == 0 && age >= 14)){ %>selected<% } %>>口温</option>
+                                            <option value="2" <% if(temperature_type == 2 || (temperature_type == 0 && age < 14)){ %>selected<% } %>>耳温</option>
+                                            <option value="3" <% if(temperature_type == 3){ %>selected<% } %>>额温</option>
+                                            <option value="4" <% if(temperature_type == 4){ %>selected<% } %>>腋温</option>
+                                            <option value="5" <% if(temperature_type == 5){ %>selected<% } %>>肛温</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" value="<%-temperature%>" name="temperature" class="form-control display-ilb ah" placeholder="" maxlength="32">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">呼吸(次/分钟)</label>
+                                <input type="text" value="<%-breathing%>" name="breathing" class="form-control display-ilb rsv" placeholder="" maxlength="32">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 第三行 -->
+            <!-- start 第四行 -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">脉搏(次/分钟)</label>
+                                <input type="text" value="<%-pulse%>" name="pulse" class="form-control display-ilb pwv" placeholder="" maxlength="32">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">血压(mmHg)</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" value="<%-shrinkpressure%>" name="shrinkpressure" class="form-control sbp" maxlength="32" placeholder="收缩压">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" value="<%-diastolic_pressure%>" name="diastolic_pressure" class="form-control dpb" maxlength="32" placeholder="舒张压">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 第四行 -->
+            <!-- start 第五行 -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">血糖浓度(mmol/I)</label>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <input type="text" value="<%- date || new Date().Format('yyyy-MM-dd hh:mm')%>" name="date" class="form-control display-ilb J-sugar-date-input">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select class="form-control input-sm mt0" name="bloodsugar_checktime">
+                                            <option value="3" <% if (checktime == 3) {%>selected<%}%>>凌晨</option>
+                                            <option value="1" <% if (checktime == 1) {%>selected<%}%>>空腹</option>
+                                            <option value="4" <% if (checktime == 4) {%>selected<%}%>>早餐前</option>
+                                            <option value="2" <% if (checktime == 2) {%>selected<%}%>>早餐后</option>
+                                            <option value="5" <% if (checktime == 5) {%>selected<%}%>>午餐前</option>
+                                            <option value="6" <% if (checktime == 6) {%>selected<%}%>>午餐后</option>
+                                            <option value="7" <% if (checktime == 7) {%>selected<%}%>>晚餐前</option>
+                                            <option value="8" <% if (checktime == 8) {%>selected<%}%>>晚餐后</option>
+                                            <option value="0" <% if (checktime == 0) {%>selected<%}%>>睡前</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" value="<%-bloodsugar%>" name="bloodsugar_value" class="form-control display-ilb J-sugar-input" placeholder="血糖浓度" maxlength="32">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">视力</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <input type="text" value="<%-leftEyesight%>" name="leftEyesight" class="form-control display-ilb" placeholder="左眼" maxlength="32">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" value="<%-rightEyesight%>" name="rightEyesight" class="form-control display-ilb" placeholder="右眼" maxlength="32">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 第五行 -->
+            <!-- start 第六行 -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">氧饱和度(%)</label>
+                                <input type="text" value="<%-oxygen_saturation%>" name="oxygen_saturation" class="form-control display-ilb pwv" placeholder="" maxlength="32">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="form-group reset-margin">
+                                <label class="control-label">疼痛评分(0-10)</label>
+                                <select class="form-control input-sm mt0" data-placeholder="请选择" name="pain_score">
+                                    <option value="0" <%- pain_score=='0' ? selected="selected" : ""%>>0</option>
+                                    <option value="1" <%- pain_score=='1' ? selected="selected" : ""%>>1</option>
+                                    <option value="2" <%- pain_score=='2' ? selected="selected" : ""%>>2</option>
+                                    <option value="3" <%- pain_score=='3' ? selected="selected" : ""%>>3</option>
+                                    <option value="4" <%- pain_score=='4' ? selected="selected" : ""%>>4</option>
+                                    <option value="5" <%- pain_score=='5' ? selected="selected" : ""%>>5</option>
+                                    <option value="6" <%- pain_score=='6' ? selected="selected" : ""%>>6</option>
+                                    <option value="7" <%- pain_score=='7' ? selected="selected" : ""%>>7</option>
+                                    <option value="8" <%- pain_score=='8' ? selected="selected" : ""%>>8</option>
+                                    <option value="9" <%- pain_score=='9' ? selected="selected" : ""%>>9</option>
+                                    <option value="10" <%- pain_score=='10' ? selected="selected" : ""%>>10</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end 第六行 -->
+        </form>
+    </div>
+    <!-- end体征信息 -->
+    <!-- 病历信息 -->
+    <div class="tab-pane" id="ptab3" data-type="3">
+        <form class="form-horizontal" id="j_tab3Form">
+            <div class="J-allergy-box">
+                <div class="form-group mb0">
+                    <div class="col-xs-2 col-sm-2 w10"><strong>过敏史：</strong></div>
+                    <div class="col-xs-3 col-sm-3 w10 rdio rdio-default mr20">
+                        <input type="radio" class="J-has-allergy1 J-check-wrap" name="has_allergy" id="radioDefault5" value="1">
+                        <label for="radioDefault5">有</label>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 rdio rdio-default mr20">
+                        <input type="radio" class="J-has-allergy0 J-check-wrap" name="has_allergy" id="radioDefault6" value="0">
+                        <label for="radioDefault6">否认</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-12"><strong>个人史：</strong></label>
+                <div class="col-sm-12">
+                    <textarea class="form-control display-ilb J-textarea-limit" name="personalhistory" maxlength="500" placeholder="" rows="5"><%- personalhistory%></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-12"><strong>家族史：</strong></label>
+                <div class="col-sm-12">
+                    <textarea class="form-control display-ilb J-ipt-genetichistory J-textarea-limit" maxlength="500" placeholder="" rows="5" name="genetichistory"><%- genetichistory%></textarea>
+                </div>
+            </div>
+            <% if(age < 14){ %>
+              <div class="form-group">
+                  <label class="col-sm-12"><strong>疫苗接种史：</strong></label>
+                  <div class="col-sm-12">
+                      <input type="text" class="form-control display-ilb" placeholder="" name="vaccination_history" value="<%- vaccination_history%>">
+                  </div>
+              </div>
+              <% } %>
+              <% if(sex != 1){ %>
+              <div class="form-group">
+                  <label class="col-sm-12"><strong>月经史：</strong></label>
+                  <div class="col-sm-4">
+                      <div class="input-group">
+                          <span class="input-group-addon">初潮</span>
+                          <input type="text" placeholder="xx岁" id="age" class="form-control" name="menarche" value="<%- menarche%>">
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="input-group">
+                          <span class="input-group-addon">经期</span>
+                          <input type="text" placeholder="xxx天-xxx天" id="date" value="<%-taketime%>" class="form-control" name="taketime">
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="input-group">
+                          <span class="input-group-addon">周期</span>
+                          <input type="text" placeholder="xxx天-xxx天" id="day" class="form-control" name="cycle" value="<%-cycle%>">
+                      </div>
+                  </div>
+              </div>
+               <div class="form-group">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">末次月经</span>
+                            <input type="text" class="form-control display-ilb J-ipt-last_menarche" placeholder="" name="last_menarche" value="<%- last_menarche%>">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">孕周</span>
+                            <input type="text" placeholder="xx周" class="form-control J-pregnancy-week" name="pregnancy_week" value="<%- pregnancy_week %>">
+                        </div>
+                    </div>
+                </div>
+              <% } %>
+              <% if(sex != 1){ %>
+              <div class="form-group">
+                  <label class="col-sm-12"><strong>生育史：</strong></label>
+                  <div class="col-sm-12">
+                      <input type="text" placeholder="足月产<%- term_production%>-早产<%- pretermbirth%>-流产<%- abortion%>-现存子女数<%- childern%>" id="numb" class="form-control display-ilb" name="historychildbearing">
+                  </div>
+              </div>
+              <% } %>
+        </form>
+    </div>
+</script>
+<!-- 完善信息模板 -->
+
+<!-- 完善信息过敏史 -->
+<script type="text/template" id="allergy-row-tpl">
+  <div class="form-group allergy-list">
+    <div class="col-sm-4">
+      <input type="hidden" data-placeholder="过敏源" name="allergy1[]" class="mt0 J-sel-allergy1" />
+    </div>
+
+    <div class="col-sm-4">
+      <input type="hidden" data-placeholder="过敏反应" name="allergy2[]" class="mt0 J-sel-allergy2" />
+    </div>
+
+    <div class="col-sm-2">
+      <input type="hidden" data-placeholder="过敏程度" name="allergy3[]" class="mt0 J-sel-allergy3" />
+    </div>
+
+    <div class="col-sm-2">
+      <a class="btn input-sm mt0 btn-white J-btn-delete-allergy"><i class="fa fa-minus"></i></a>
+      <a class="btn input-sm mt0 btn-white J-btn-add-allergy"><i class="fa fa-plus"></i></a>
+    </div>
+  </div>
+</script>
+<!-- 完善信息过敏史 -->
+
+<!-- 临床诊断 -->
+<div class="modal fade" id="J-result-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">初步诊断指南</h4>
+            </div>
+            <div class="modal-body pd0">
+                <div class="basic-wizard" id="J-result-items-wrap">
+                </div>
+            </div>
+            <div class="modal-footer modal-btn-col1">
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 临床诊断 -->
+
+<!-- 临床诊断模板 -->
+
+<!-- 历史记录模板 -->
+
+                        <div class="col-xs-12 col-sm-12 col-md-10 J-inspect" id="J-inspect-content-list">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- 关联项目 -->
+    <div class="modal fade" id="online-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">关联项目</h4>
+                </div>
+                <div class="modal-body pd0">
+                    <div class="table-responsive" id="J-inspect-list-wrap">
+                        <!-- 关联项目 -->
+                    </div>
+                </div>
+                <div class="modal-footer modal-btn-col1">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 关联项目 -->
+    <!-- 切换窗口保存信息提示 -->
+    <div class="modal fade" id="saveForm-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>你填写的内容已修改，是否需要保存？</h4>
+                    <input type="hidden" class="J-del-patientId">
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-save-submit">保存</button>
+                    <button type="button" class="btn btn-default J-cancel-save">不保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

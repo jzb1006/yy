@@ -1,0 +1,427 @@
+	{template '/common/mainHeader'}
+	<div class="app-container-right">
+			<style>
+.select2{width: 100%;}
+.select2-container .select2-choice .select2-arrow b{background-color: #eeeeee}
+.w200{width: 200px;}
+.w60{width: 60px;text-align: right;}
+.form-horizontal .form-group{margin-left: 0;margin-right: 0;}
+.table> thead> tr> th{border: none;}
+.is_default{display: table-block;}
+.is_advanced{display: none;}
+#openids_selector .input-group{width: 100%;}
+.is_sms{display: table-block;}
+.layui-anim-upbit{-webkit-animation-name: layui-upbit;animation-name: layui-upbit;}
+.layui-anim{-webkit-animation-duration: .3s;animation-duration: .3s;-webkit-animation-fill-mode: both;animation-fill-mode: both;}
+.layui-form-selected ul{display: block;}
+.layui-input-block, .layui-input-inline{position: relative;}
+.layui-form-select ul{display: none;position: absolute;left: 0;top: 37px;margin-bottom: 50px;padding: 0;z-index: 999;width: 100%;border: 1px solid #d2d2d2;max-height: 300px;overflow-y: auto;background-color: #fff;border-radius: 2px;box-shadow: 0 2px 4px rgba(0, 0, 0, .12);box-sizing: border-box;}
+.layui-form-select{position: absolute;margin-top: -18px;display: none;}
+</style>
+<ul class="nav nav-tabs" id="myTab">
+	<li class="active">
+		<a href="#tab_basic">基本设置</a>
+	</li>
+	<li>
+		<a href="#tab_share">列表分享</a>
+	</li>
+</ul>
+<div class="app-content">
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal" id="setting-form">
+			<div class="panel panel-default">
+				<div class="panel-heading">模块设置</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_basic">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">是否开启分销(默认)</label>
+								<div class="col-sm-9">
+									<label class="radio-inline">
+										<input type="radio" value="0" name="base[distribution]"  checked  /> 关闭
+									</label>
+									<label class="radio-inline">
+										<input type="radio" value="1" name="base[distribution]"  /> 开启
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">是否开启独立结算(默认)</label>
+								<div class="col-sm-9">
+									<label class="radio-inline">
+										<input type="radio" value="0" name="base[settlement]"  checked > 关闭
+									</label>
+									<label class="radio-inline">
+										<input type="radio" value="1" name="base[settlement]" > 开启
+									</label>
+								</div>
+							</div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">消费截止时间提前通知</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group">
+                                        <input type="text" name="base[cutoff_time]" class="form-control" value="" />
+                                        <span class="input-group-addon">天</span>
+                                    </div>
+                                    <span class="help-block">订单消费截止时间到来通知，默认7天</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">分享栏</label>
+                                <div class="col-sm-9">
+                                    <label class="radio-inline">
+                                        <input type="radio" value="1" name="noshare" >开启
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" value="0" name="noshare"  checked >禁用
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">搜索框</label>
+                                <div class="col-sm-9">
+                                    <label class="radio-inline">
+                                        <input type="radio" value="0" name="base[search]"  checked >启用
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" value="1" name="base[search]" >禁用
+                                    </label>
+                                </div>
+                            </div>
+							<div class="form-group search_float" >
+								<label class="col-sm-2 control-label">搜索框是否浮动</label>
+								<div class="col-sm-9">
+									<label class="radio-inline">
+										<input type="radio" value="0" name="base[search_float]"  checked > 浮动
+									</label>
+									<label class="radio-inline">
+										<input type="radio" value="1" name="base[search_float]" > 固定
+									</label>
+									<span class="help-block">设置为浮动时，会覆盖一部分内容。设为固定则不会覆盖内容</span>
+								</div>
+							</div>
+							<div class="form-group search_bgColor" style="display:none;">
+								<label class="col-sm-2 control-label">搜索框背景颜色</label>
+								<div class="col-sm-9">
+									<div class="input-group">
+										<input type="color" value="#000000" name="base[search_bgColor]" class="form-control" style="width: 120px;padding: 0px 3px;">
+									</div>
+									<span class="help-block">当搜索框设为固定是请设置背景颜色，否则默认为黑色背景</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">种类设置</label>
+								<div class="col-sm-9 col-xs-9">
+									<table class="table table-hover">
+										<thead class="bannerbar-inner">
+										<tr>
+											<th style="width:10%;text-align: center;">卡券名称</th>
+											<th style="width:15%;text-align: center;">修改名称</th>
+											<th style="width:35%;text-align: center;">修改图片</th>
+											<th style="width:15%;text-align: center;">排序(大数字靠前)</th>
+											<th style="width:10%;text-align: center;">是否启用</th>
+											<th style="width:15%;text-align: center;">复制链接</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<td style="text-align: center;">折扣券</td>
+											<td style="text-align: center;"><input type="text" class="form-control" placeholder="折扣券"  name="coupon[zkname]"  value=""/></td>
+											<td style="text-align: center;">
+												<div class="input-group img-item">
+													<div class="input-group-addon">
+														<img  src="http://www.webstrongtech.com/addons/weliam_merchant/plugin/wlcoupon/app/resource/images/2.png"  style="height:20px;width:20px" />
+													</div>
+													<input type="text" class="form-control" name="coupon[zkimg]"  value=""/>
+													<div class="input-group-btn">
+														<button type="button" class="btn btn-default btn-select-pic">选择图片</button>
+													</div>
+												</div>
+											</td>
+											<td style="text-align: center;"><input class="form-control" type="number"  name="coupon[zkorder]"  value=""/></td>
+											<td style="text-align: center;">
+												<input type="checkbox" class="js-switch" name="coupon[zkstatus]" >
+											</td>
+											<td style="text-align: center;position: relative;">
+												<a href='javascript:;' class="js-clip" data-url="http://www.webstrongtech.com/app/index.php?i=17&c=entry&m=weliam_merchant&p=wlcoupon&ac=coupon_app&do=couponslist&typeid=1" >
+													<button type="button" class="btn btn-default">复制链接</button>
+												</a>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center;">代金券</td>
+											<td style="text-align: center;"><input type="text" class="form-control" placeholder="代金券"  name="coupon[djname]"  value=""/></td>
+											<td style="text-align: center;">
+												<div class="input-group img-item">
+													<div class="input-group-addon">
+														<img  src="http://www.webstrongtech.com/addons/weliam_merchant/plugin/wlcoupon/app/resource/images/3.png"  style="height:20px;width:20px" />
+													</div>
+													<input type="text" class="form-control" name="coupon[djimg]"  value=""/>
+													<div class="input-group-btn">
+														<button type="button" class="btn btn-default btn-select-pic">选择图片</button>
+													</div>
+												</div>
+											</td>
+											<td style="text-align: center;"><input class="form-control" type="number"  name="coupon[djorder]"  value=""/></td>
+											<td style="text-align: center;">
+												<input type="checkbox" class="js-switch" name="coupon[djstatus]" >
+											</td>
+											<td style="text-align: center;position: relative;">
+												<a href='javascript:;' class="js-clip" data-url="http://www.webstrongtech.com/app/index.php?i=17&c=entry&m=weliam_merchant&p=wlcoupon&ac=coupon_app&do=couponslist&typeid=2" >
+													<button type="button" class="btn btn-default">复制链接</button>
+												</a>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center;">套餐券</td>
+											<td style="text-align: center;"><input type="text" class="form-control" placeholder="套餐券"  name="coupon[tcname]"  value=""/></td>
+											<td style="text-align: center;">
+												<div class="input-group img-item">
+													<div class="input-group-addon">
+														<img  src="http://www.webstrongtech.com/addons/weliam_merchant/plugin/wlcoupon/app/resource/images/4.png"  style="height:20px;width:20px" />
+													</div>
+													<input type="text" class="form-control" name="coupon[tcimg]"  value=""/>
+													<div class="input-group-btn">
+														<button type="button" class="btn btn-default btn-select-pic">选择图片</button>
+													</div>
+												</div>
+											</td>
+											<td style="text-align: center;"><input class="form-control" type="number"  name="coupon[tcorder]"  value=""/></td>
+											<td style="text-align: center;">
+												<input type="checkbox" class="js-switch" name="coupon[tcstatus]" >
+											</td>
+											<td style="text-align: center;position: relative;">
+												<a href='javascript:;' class="js-clip" data-url="http://www.webstrongtech.com/app/index.php?i=17&c=entry&m=weliam_merchant&p=wlcoupon&ac=coupon_app&do=couponslist&typeid=3" >
+													<button type="button" class="btn btn-default">复制链接</button>
+												</a>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center;">团购券</td>
+											<td style="text-align: center;"><input type="text" class="form-control" placeholder="团购券"  name="coupon[tgname]"  value=""/></td>
+											<td style="text-align: center;">
+												<div class="input-group img-item">
+													<div class="input-group-addon">
+														<img  src="http://www.webstrongtech.com/addons/weliam_merchant/plugin/wlcoupon/app/resource/images/5.png"  style="height:20px;width:20px" />
+													</div>
+													<input type="text" class="form-control" name="coupon[tgimg]"  value=""/>
+													<div class="input-group-btn">
+														<button type="button" class="btn btn-default btn-select-pic">选择图片</button>
+													</div>
+												</div>
+											</td>
+											<td style="text-align: center;"><input class="form-control" type="number"  name="coupon[tgorder]"  value=""/></td>
+											<td style="text-align: center;">
+												<input type="checkbox" class="js-switch" name="coupon[tgstatus]" >
+											</td>
+											<td style="text-align: center;position: relative;">
+												<a href='javascript:;' class="js-clip" data-url="http://www.webstrongtech.com/app/index.php?i=17&c=entry&m=weliam_merchant&p=wlcoupon&ac=coupon_app&do=couponslist&typeid=4" >
+													<button type="button" class="btn btn-default">复制链接</button>
+												</a>
+											</td>
+										</tr>
+										<tr>
+											<td style="text-align: center;">优惠券</td>
+											<td style="text-align: center;"><input type="text" class="form-control" placeholder="优惠券"  name="coupon[yhname]"  value=""/></td>
+											<td style="text-align: center;">
+												<div class="input-group img-item">
+													<div class="input-group-addon">
+														<img  src="http://www.webstrongtech.com/addons/weliam_merchant/plugin/wlcoupon/app/resource/images/1.png"  style="height:20px;width:20px" />
+													</div>
+													<input type="text" class="form-control" name="coupon[yhimg]"  value=""/>
+													<div class="input-group-btn">
+														<button type="button" class="btn btn-default btn-select-pic">选择图片</button>
+													</div>
+												</div>
+											</td>
+											<td style="text-align: center;"><input class="form-control" type="number"  name="coupon[yhorder]"  value=""/></td>
+											<td style="text-align: center;">
+												<input type="checkbox" class="js-switch" name="coupon[yhstatus]" >
+											</td>
+											<td style="text-align: center;position: relative;">
+												<a href='javascript:;' class="js-clip" data-url="http://www.webstrongtech.com/app/index.php?i=17&c=entry&m=weliam_merchant&p=wlcoupon&ac=coupon_app&do=couponslist&typeid=5" >
+													<button type="button" class="btn btn-default">复制链接</button>
+												</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab_share">
+							<div class="alert alert-info">
+								<b>适用模板变量：[昵称] [时间] [系统名称]</b>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">分享标题</label>
+								<div class="col-sm-8">
+									<input type="text" name="base[share_title]" class="form-control" value="" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">分享图片</label>
+								<div class="col-sm-8">
+									
+		<script type="text/javascript">
+			function showImageDialog(elm, opts, options) {
+				require(["util"], function(util){
+					var btn = $(elm);
+					var ipt = btn.parent().prev();
+					var val = ipt.val();
+					var img = ipt.parent().next().children();
+					options = {'global':false,'class_extra':'','direct':true,'multiple':false,'fileSizeLimit':5120000};
+					util.image(val, function(url){
+						if(url.url){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.attachment);
+							ipt.attr("filename",url.filename);
+							ipt.attr("url",url.url);
+						}
+						if(url.media_id){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.media_id);
+						}
+					}, options);
+				});
+			}
+			function deleteImage(elm){
+				$(elm).prev().attr("src", "./resource/images/nopic.jpg");
+				$(elm).parent().prev().find("input").val("");
+			}
+		</script>
+		<div class="input-group ">
+			<input type="text" name="base[share_image]" value="" class="form-control" autocomplete="off">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" onclick="showImageDialog(this);">选择图片</button>
+			</span>
+		</div>
+		<div class="input-group " style="margin-top:.5em;">
+			<img src="./resource/images/nopic.jpg" onerror="this.src='./resource/images/nopic.jpg'; this.title='图片未找到.'" class="img-responsive img-thumbnail"  width="150" />
+			<em class="close" style="position:absolute; top: 0px; right: -14px;" title="删除这张图片" onclick="deleteImage(this)">×</em>
+		</div>								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">分享描述</label>
+								<div class="col-sm-8">
+									<input id="description" name="base[share_desc]" class="form-control description" value="">
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab_distri">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">一级佣金比例</label>
+								<div class="col-sm-9">
+									<div class="input-group">
+										<input type="text" name="base[onecommission]" class="form-control" value="" />
+										<span class="input-group-addon">%</span>
+									</div>
+									<span class="help-block">买家上级所获佣金</span>
+								</div>
+							</div>
+																				</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-9">
+					<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+					<input type="hidden" name="token" value="c5514e9f" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	$(function() {
+		window.optionchanged = false;
+		$('#myTab a').click(function(e) {
+			e.preventDefault(); //阻止a链接的跳转行为
+			$(this).tab('show'); //显示当前选中的链接及关联的content
+		});
+		bindEvents();
+	});
+	function bindEvents() {
+		require(['jquery', 'util'], function ($, util) {
+			$('.btn-select-pic').unbind('click').click(function () {
+				var imgitem = $(this).closest('.img-item');
+				util.image('', function (data) {
+					imgitem.find('img').attr('src', data['url']);
+					imgitem.find('input').val(data['attachment']);
+				});
+			});
+		});
+		require(['jquery.ui'] ,function(){
+			$("#tbody").sortable({handle: '.btn-move'});
+		})
+	}
+    //监听搜索框是否启用
+    $("[name='base[search]']").change(function () {
+        var val = $(this).val();
+        if(val == 1){
+            $(".form-group.search_float").hide();
+            $(".form-group.search_bgColor").hide();
+        }else{
+            $(".form-group.search_float").show();
+            if($("[name='base[search_float]']:checked").val() == 1){
+                $(".form-group.search_bgColor").show();
+            }else{
+                $(".form-group.search_bgColor").hide();
+            }
+        }
+    });
+    //监听搜索框是否浮动
+    $("[name='base[search_float]']").change(function () {
+        var val = $(this).val();
+        if(val == 1){
+            $(".form-group.search_bgColor").show();
+        }else{
+            $(".form-group.search_bgColor").hide();
+        }
+    });
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	
+    
+    <script>
+		require(['bootstrap'], function ($) {
+		    $('[data-toggle="tooltip"]').tooltip({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="popover"]').popover({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="dropdown"]').dropdown({
+	            container: $(document.body)
+	        });
+	    });
+		myrequire(['js/init']);
+				$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+			$('.app-login-info-sel').show();
+		});
+		$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+			$('.app-login-info-sel').hide();
+		});
+		$('.app-login-info-sel .login-out').hover(function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+		},function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+		});
+		
+			</script>
+	</body>
+</html>
+

@@ -1,0 +1,164 @@
+
+{template './common/siteheader'}
+    <link href="{php echo HYB_YL_ADMIN}/bootstrap.min.css?v={IMS_RELEASE_DATE}" rel="stylesheet">
+    <link href="{php echo HYB_YL_ADMIN}/common.css?v={IMS_RELEASE_DATE}" rel="stylesheet">
+<div class="content">
+    <div class="header">
+        <h1 class="page-title">基础设置</h1>
+    </div>
+    <div class="main-content">
+        <div class="panel panel-default">
+            <div class="panel-heading no-collapse">
+                基础设置
+            </div>
+            <div class="panel-body collapse in">
+      <form id="items_form" action="" method="post" novalidate="novalidate">
+        <input type="hidden" name="id" value="32921">
+        <input type="hidden" name="p" value="1">
+        <input type="hidden" value="0" class="J-stdid">
+        <div class="row">
+            <div class="col-sm-12 col-md-10">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">医院名称 <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control max128 J-isDisable" value="{$rew['hospital']}" required="" name="hospital">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">医院人数</label>
+                            <input type="text" class="form-control max128 J-isDisable" value="{$rew['docnumber']}" required="" name="docnumber">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">医院logo</label>
+                             {php echo  tpl_form_field_image('logo',$rew['logo'])}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">医院电话</label>
+                            <input type="text" class="form-control max128 J-isDisable" value="{$rew['hospitaltel']}" required="" name="hospitaltel">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">医院工作时间</label>
+                            <input type="text" class="form-control max128 J-isDisable" value="{$rew['workshift']}" required="" name="workshift">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                   <div class="col-sm-9">
+                     <div class="form-group">
+                        <label for="" class="control-label col-sm-2" >医院所在城市<span class="asterisk">*</span></label>
+                        <div class="form-controls col-sm-5" style="margin-left: 75px;">
+                            <div class="row row-fix tpl-category-container" >
+                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                               <select name="pid" class="form-control tpl-category-parent we7-select"  onchange="checkAAA(this.value);">
+                                 <option value="">请选择一级分类</option>
+                                {loop $subcatess $item} 
+                                   <option value="{$item['id']}" {if $item['id']==$rew['pid']}selected{/if}>{$item['name']}</option>
+                                {/loop}
+                                </select>
+                              </div>
+                              <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-top: -20px;">
+                              <select name="floor" id="floor"  class="form-control tpl-category-child we7-select">
+                                    {$o}
+                               </select>
+                              </div>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                <script type="text/javascript">
+                    // $("#floor").html('<option value="">请选择二级分类</option>');
+                    function checkAAA(id) {
+                       var url ="{php echo $this->copysiteurl('setting.erji');}"; 
+                        $.ajax({  
+                            type: "POST",  
+                            url: url,  
+                            dataType: "json",  
+                            data: {"id":id},  
+                            success: function(jsonStr){  
+                                console.log(jsonStr)
+                            $("#floor").html('<option value="">请选择城市</option>');
+                            for ( var i in jsonStr) {
+                                $("#floor").append(
+                                        "<option value='"+jsonStr[i].id+"'>"
+                                                + jsonStr[i].name + "</option>");
+                            } 
+                          }
+                        });
+
+                    }
+                </script>
+                <div class="row">
+                <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">医院详细地址 <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control max128 J-isDisable" value="{$rew['address']}" required="" name="address">
+                        </div>
+                        </div>
+                        <div class="col-sm-9">
+                    <div class="form-group">
+                        <label class="control-label">医院经纬度<span class="asterisk">*</span></label>
+                        <div class="form-inline">
+                            <?php  echo tpl_form_field_coordinate('log',array('lat' =>$rew['latitude'],'lng' =>$rew['longitude']));?>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">医院等级 <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control max128 J-isDisable" value="{$rew['grade']}" required="" name="grade">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">医院介绍</label>
+                            <textarea class="form-control max2000" rows="5" name="lntroduction">{$rew['lntroduction']}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">医院擅长<span class="asterisk">按英文状态下逗 “ , ”号隔开</span></label>
+                            <input type="text" class="form-control max128 J-isDisable" value="{$rew['shanchang']}" required="" name="shanchang">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <input type="hidden" name="type_id" value="{$type_id}">
+            <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>&nbsp;
+            <button class="btn btn-default btn-sml" onclick="window.history.back(-1);">取消</button>
+            <input name="token" type="hidden" value="{$_W['token']}" />
+     
+    </form>
+ </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        angular.bootstrap($('.js-system-welcome'), ['systemApp']);
+    });
+</script>

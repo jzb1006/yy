@@ -1,0 +1,485 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+    <script type="text/javascript" src="http://www.webstrongtech.com/addons/hyb_yl/web/resource/js/diyarea.js"></script>
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active">
+            <a href="#tab_1">添加挂号</a>
+        </li>
+    </ul>
+    <div class="app-content">
+        <div class="app-form">
+            <form action="" method="post" class="form-horizontal form form-validate"  onsubmit="return checkValidate(this.form);">
+                <input type="hidden" name="id" value="{$id}" />
+                <div class="tab-content">
+                    <!--代理商基本信息-->
+                    <div class="tab-pane  active" id="tab_1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                添加预约
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">预约类型<span class="must-fill">*</span>
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <select name="yy_type" class="form-control" id="yy_type">
+                                            <option value="">请选择预约类型家</option>
+                                            {loop $yy_type $typs}
+                                            <option value="{$typs['id']}" {if $item['yy_type'] == $typs['id']} selected="" {/if}>{$typs['title']}</option>
+                                            {/loop}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">所属机构<span class="must-fill">*</span>
+                                    </label>
+                                    <div class="col-sm-9">
+
+
+                                        <div class="row row-fix tpl-category-container">
+                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            
+                                                <select class="form-control tpl-category-parent we7-select" id="category_parentjg" name="qx_id" required="">
+                                                    <option>请选择一级分类</option>
+                                                    <option value="1" {if $item['qx_id'] =='1'} selected {/if}>医院</option>
+                                                    <option value="2" {if $item['qx_id'] =='2'} selected {/if}>药房</option>
+                                                    <option value="3" {if $item['qx_id'] =='3'} selected {/if}>体检机构</option>
+                                                    <option value="4" {if $item['qx_id'] =='4'} selected {/if}>诊所</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <select class="form-control tpl-category-child we7-select" id="category_childjg" name="hid" required="">
+                                                    <option value=''>请选择二级分类</option>
+                                                    {loop $quanxian2 $qx}
+                                                    <option value="{$qx['hid']}" {if $item['hid'] == $qx['hid']} selected {/if}>{$qx['agentname']}</option>
+                                                    {/loop}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">预约时间</label>
+                                    <div class="col-sm-9">
+                                    {loop $curdate $key $se}
+                                         <label class="checkbox-inline"><input type="radio" name="time" value="{$key}" {if $item['week'] == $se['week']} checked="" {/if} onclick="searchzhuanjia({$se['weeks']})" >{$se['week']}{$se['dates']}</label>
+                                    {/loop}
+                                    </div>
+                                </div>
+                                <script>
+                                    function search_members_docs() {
+                                        $("#module-menus-doc").html("正在搜索....");
+                                        var hid = $("#category_childjg").val();
+                                        var url ="../web/index.php?c=site&a=entry&do=alldoctor&op=user&m=hyb_yl";
+                                        $.ajax({  
+                                            type: "POST",  
+                                            url: url,  
+                                            dataType: "html",  
+                                            data: {keyword_user: $.trim($("#search-kwd-doc").val()),op:'user',hid:hid},  
+                                            success: function(dat){ 
+                                                console.log(dat)
+                                            $("#module-menus-doc").html(dat);
+                                          }
+                                      });
+                                    }
+                                    function select_member_doc(o) {
+                                        console.log(o)
+                                        $("#zid").val(o.zid);
+                                        $("#salerdoc").val(o.z_name);
+                                        $("#search-kwd-doc").val(o.u_name);
+                                        $("#register_jobtime").val(o.register_jobtime);
+                                        $("#module-menus-doc").html("");
+                                        $("#myModaldoc").modal("hide");
+                                        $(".modal-backdrop").remove();
+                                        $.ajax({
+                                            'url':"../web/index.php?c=site&a=entry&do=doctorjobtime&op=user&m=hyb_yl",
+                                            type:"POST",
+                                            data:{
+                                                register_jobtime:o.register_jobtime,
+                                            },
+                                            dataType:"json",
+                                            success:function(res){
+                                                
+                                            }
+                                        })
+                                    }
+                                    function searchzhuanjia(week)
+                                    {
+                                        
+                                        var hid = $("#category_childjg").val()
+                                        if(hid == '0' || hid == '')
+                                        {
+                                            alert('请先选择所属机构');
+                                        }else{
+                                            $.ajax({
+                                                "url":"{php echo $this->createWebUrl('remoteregistration',array('op'=>'allzhuanjia'))}",
+                                                data:{
+                                                    hid:hid,
+                                                    week:week
+                                                },
+                                                dataType:"json",
+                                                type:'get',
+                                                success:function(res){
+                                                    var html = "";
+                                                    for(var i=0;i<res.length;i++)
+                                                    {
+                                                        html += "<option value='"+res[i].zid+"'>"+res[i]['z_name']+"</option>";
+                                                    }
+                                                    $("#zid").html(html);
+                                                }
+                                            })
+                                        }
+                                        
+                                    }
+                                    function selectbq()
+                                    {
+                                        var zid = $('#zid option:selected').val()
+                                        $.ajax({
+                                            'url':"{php echo $this->createWebUrl('remoteregistration',array('op'=>'docbiaoqian'))}",
+                                            data:{
+                                                zid:zid,
+                                            },
+                                            dataType:"json",
+                                            type:'get',
+                                            success:function(res){
+                                                var html = "";
+                                                var authority = res.authority;
+                                                var times = res.times;
+                                                for(var i=0;i<authority.length;i++)
+                                                {
+                                                    html += "<label class='checkbox-inline'><input type='checkbox' name='authority[]' value='"+authority[i]+"'>"+authority[i]+"</label>";
+                                                }
+                                                $("#biaoqian").html(html);
+                                                var htmls = "";
+                                                for(var j=0;j<times.length;j++)
+                                                {
+                                                    var datas = times[j]['startTime'] + '-'+ times[j]['endTime'];
+                                                    htmls += "<label class='checkbox-inline'><input type='radio' name='month_time' value='"+datas+"'>"+datas+"</label>";
+                                                }
+                                                $("#guahao").html(htmls);
+                                            }
+                                        })
+                                    }
+                                </script>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">所属专家<span class="must-fill">*</span>
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <select name="zid" class="form-control" id="zid" onchange="selectbq()">
+                                            <option value="">请选择所属专家</option>
+                                            {loop $zhuanjias $zj}
+                                            <option value="{$zj['zid']}" {if $zj['zid'] == $item['zid']} selected="" {/if}>{$zj['z_name']}</option>
+                                            {/loop}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">标签</label>
+                                    <div class="col-sm-9" id="biaoqian">
+                                        {loop $label $lb}
+                                        <label class='checkbox-inline'><input type='checkbox' name='authority[]' value="{$lb}" {if in_array($lb,$item['biaoqian'])} checked="" {/if}>{$lb}</label>
+                                        {/loop}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">挂号时间</label>
+                                    <div class="col-sm-9" id="guahao">
+                                        {loop $times $tims}
+                                        <label class='checkbox-inline'><input type='radio' name='month_time' {if $tims['tms'] == $item['month_time']} checked="" {/if} value="{$tims['tms']}">{$tims['tms']}</label>
+                                        {/loop}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+									<label class="col-sm-2 control-label">绑定用户微信</label>
+									<div class="col-sm-9">
+										<input type="hidden" id="u_id" name="u_id" value="{$item['userid']}">
+										<input type="hidden" id="openid" name="openid" value="{$item['openid']}">
+										<div class="input-group">
+											<input type="text" name="nickname" maxlength="30" value="{$item['u_name']}" id="saler" class="form-control" readonly="">
+											<div class="input-group-btn">
+												<button class="btn btn-default" type="button" data-toggle="modal" data-target="#myModal">绑定用户微信</button>
+											</div>
+										</div>
+										<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog" style="width: 660px;">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+														<h3>绑定用户微信</h3>
+													</div>
+													<div class="modal-body">
+														<div class="row">
+															<div class="input-group">
+																<input type="text" class="form-control" name="keyword" value="" id="search-kwd" placeholder="可搜索微信昵称，openid，UID">
+																<span class="input-group-btn">
+																	<button type="button" class="btn btn-default" onclick="search_members();">搜索</button>
+																</span>
+															</div>
+														</div>
+														<div id="module-menus" style="padding-top:5px;"></div>
+													</div>
+													<div class="modal-footer">
+														<a href="#" class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="form-group">
+                                    <label class="col-sm-2 control-label">就诊人员<span class="must-fill">*</span>
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <select name="j_id" class="form-control" id="jid">
+                                            <option value="">请选择就诊人员</option>
+                                            {loop $userjr $jr}
+                                            <option value="{$jr['j_id']}" {if $jr['j_id'] == $item['j_id']} selected="" {/if}>{$jr['names']}</option>
+                                            {/loop}
+                                        </select>
+                                    </div>
+                                </div>
+								<div class="form-group">
+                                    <label class="col-sm-2 control-label">病情描述<span class="must-fill">*</span>
+                                    </label>
+                                    <div class="col-sm-9">
+                                    <textarea rows="6" cols="20" name="content" id="content" class="form-control ng-pristine ng-untouched ng-valid ng-empty">{$item['describe']['text']}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">病情图片<span class="must-fill">*</span>
+                                    </label>
+                                    <div class="col-sm-9">
+                                     {php echo  tpl_form_field_multi_image('imgpath', $item['describe']['upload_picture_list'])}
+                                    </div>
+                                </div>
+                                
+                                <!--<div class="form-group">-->
+                                <!--    <label class="col-sm-2 control-label">订单状态</label>-->
+                                <!--    <div class="col-sm-9">-->
+                                <!--        <label class="checkbox-inline"><input type="radio" name="status" {if $item['status'] == '0'} checked="" {/if} value="0">未支付</label>-->
+                                <!--        <label class="checkbox-inline"><input type="radio" name="status" {if $item['status'] == '1'} checked="" {/if} value="1">待接诊</label>-->
+                                <!--        <label class="checkbox-inline"><input type="radio" name="status" {if $item['status'] == '2'} checked="" {/if} value="2">已到诊</label>-->
+                                <!--        <label class="checkbox-inline"><input type="radio" name="status" {if $item['status'] == '3'} checked="" {/if} value="3">已结束</label>-->
+                                <!--        <label class="checkbox-inline"><input type="radio" name="status" {if $item['status'] == '4'} checked="" {/if} value="4">已取消</label>-->
+                                <!--        <label class="checkbox-inline"><input type="radio" name="status" {if $item['status'] == '5'} checked="" {/if} value="5">已失约</label>-->
+                                <!--        <label class="checkbox-inline"><input type="radio" name="status" {if $item['status'] == '6'} checked="" {/if} value="6">申请退款</label>-->
+                                <!--    </div>-->
+                                <!--</div>-->
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">订单状态</label>
+                                    <div class="col-sm-9">
+                                        <label class="checkbox-inline"><input type="radio" name="ifpay" {if $item['ifpay'] == '0'} checked="" {/if} value="0">待支付</label>
+                                        <label class="checkbox-inline"><input type="radio" name="ifpay" {if $item['ifpay'] == '1'} checked="" {/if} value="1">已支付待接诊</label>
+                                        <label class="checkbox-inline"><input type="radio" name="ifpay" {if $item['ifpay'] == '2'} checked="" {/if} value="2">接诊中</label>
+                                        <label class="checkbox-inline"><input type="radio" name="ifpay" {if $item['ifpay'] == '3'} checked="" {/if} value="3">已完成待评价</label>
+                                        <label class="checkbox-inline"><input type="radio" name="ifpay" {if $item['ifpay'] == '4'} checked="" {/if} value="4">已评价</label>
+                                        <label class="checkbox-inline"><input type="radio" name="ifpay" {if $item['ifpay'] == '5'} checked="" {/if} value="5">申请退款</label>
+                                        <label class="checkbox-inline"><input type="radio" name="ifpay" {if $item['ifpay'] == '6'} checked="" {/if} value="6">退款成功</label>
+                                        <label class="checkbox-inline"><input type="radio" name="ifpay" {if $item['ifpay'] == '7'} checked="" {/if} value="7">订单关闭</label>
+                                        <label class="checkbox-inline"><input type="radio" name="ifpay" {if $item['ifpay'] == '8'} checked="" {/if} value="8">已取消</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">付款时间<span class="must-fill">*</span>
+                                    </label>
+                                    <div class="col-sm-9">
+                                     {php echo  tpl_form_field_date('paytime', $item['paytime'])}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">付款时间</label>
+                                    <div class="col-sm-9">
+                                        <label class="checkbox-inline"><input type="radio" name="p_type" {if $item['p_type'] == '0'} checked="" {/if} value="0">微信支付</label>
+                                        <label class="checkbox-inline"><input type="radio" name="p_type" {if $item['p_type'] == '1'} checked="" {/if} value="1">余额支付</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-9">
+                            <input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+                            <input type="hidden" name="token" value="{$_W['token']}" />
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+                window.optionchanged = false;
+                $('#myTab a').click(function (e) {
+                    e.preventDefault();//阻止a链接的跳转行为
+                    $(this).tab('show');//显示当前选中的链接及关联的content
+                })
+            });
+    </script>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+    <ul class="links ft">
+        <li class="links_item">
+            <div class="copyright">Powered by <a href="http://www.we7.cc">
+                    <b>微擎</b>
+                </a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    function checkValidate(e)
+    {
+        console.log(111)
+        return
+      var username = $("#username").val();
+      if(username=='admin'){
+        util.tips("禁止使用admin");
+        return false;
+      }
+    }
+
+</script>
+
+<script type="text/javascript">
+    $('.star').click(function(){
+        var _t = $(this);
+        var star = _t.attr('alt');
+        $('#star').val(star);
+        $('.caption').html('');
+        if(star==1){
+            $('.caption').html('<span class="label label-default">非常差</span>');
+        }else if(star==2){
+            $('.caption').html('<span class="label label-warning">不太好</span>');
+        }else if(star==3){
+            $('.caption').html('<span class="label label-info">一般</span>');
+        }else if(star==4){
+            $('.caption').html('<span class="label label-success">很好!</span>');
+        }else if(star==5){
+            $('.caption').html('<span class="label label-danger">非常棒!!</span>');
+        }
+        $(".star").each(function(){
+            $(".rating-container").find('img').each(function(){
+                var _this = $(this);
+                if(_this.attr('alt') <= star){
+                    _this.attr('src','../addons/hyb_yl/web/resource/images/star-on-big.png');
+                }else{
+                    _this.attr('src','../addons/hyb_yl/web/resource/images/star-off-big.png');
+                }
+            }
+            );
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    $("#category_parent").on("change",function(){
+    
+     var id = $(this).val()
+     //查询二级
+        $.post("/index.php?c=site&a=entry&do=team&op=ajax&type=all&m=hyb_yl&id="+id,{id:id},function (res) {
+              
+                $("select[name='parentid']").empty();
+                var html = "<option value='0'>请选择二级分类</option>";
+                $(res).each(function (v, k) {
+
+                    html += "<option value='" + k.id + "'>" + k.name + "</option>";
+                });
+                //把遍历的数据放到select表里面
+                $("select[name='parentid']").append(html);
+
+            },'json');
+    });
+
+    $("#category_child").on("change",function(){
+    
+     var id = $(this).val()
+     //查询二级
+
+        $.post("/index.php?c=site&a=entry&do=team&op=ajax&type=detail&m=hyb_yl&id="+id,{id:id},function (res) {
+            console.log(res)
+                var html="";
+                $(res.description).each(function (v, k) {
+                    html += "<label class='checkbox-inline'>";
+                    html += "<input type='checkbox' name='authority[]' value='"+k+"'>"+ k +"</input>";
+                    html += "</label>";
+                });
+            
+                 $("#biaoqian").html(html);
+            },'json');
+    });
+
+//机构
+    $("#category_parentjg").on("change",function(){
+    
+     var id = $(this).val()
+     //查询二级
+        $.post("/index.php?c=site&a=entry&do=team&op=ajax&type=jgall&m=hyb_yl&id="+id,{id:id},function (res) {
+              console.log(res)
+                $("select[name='hid']").empty();
+                var html = "<option value='0'>请选择二级分类</option>";
+                $(res).each(function (v, k) {
+
+                    html += "<option value='" + k.hid + "'>" + k.agentname + "</option>";
+                });
+                //把遍历的数据放到select表里面
+                $("select[name='hid']").append(html);
+
+            },'json');
+    });
+
+
+</script>
+<!-- <script src="{php echo HYB_YL_ADMIN}/js/user.js" type="text/javascript"></script>  -->
+<script type="text/javascript">
+    function search_members() {
+        $("#module-menus").html("正在搜索....");
+        var url ="../web/index.php?c=site&a=entry&do=alluser&op=user&m=hyb_yl";
+        $.ajax({  
+            type: "POST",  
+            url: url,  
+            dataType: "html",  
+            data: {keyword_user: $.trim($("#search-kwd").val()),op:'user'},  
+            success: function(dat){ 
+            $("#module-menus").html(dat);
+          }
+      });
+    }
+    function select_member(o) {
+        console.log(o);
+        $("#openid").val(o.openid);
+        $("#u_id").val(o.u_id);
+        $("#saler").val(o.u_name);
+        $("#search-kwd").val(o.u_name);
+        $("#module-menus").html("");
+        $("#myModal").modal("hide");
+        $(".modal-backdrop").remove();
+        $.ajax({
+            'url':"../web/index.php?c=site&a=entry&do=remoteregistration&op=userjiaren&m=hyb_yl",
+            data:{
+                openid:o.openid
+            },
+            dataType:"json",
+
+            success:function(res){
+                console.log(res);
+                var html = "<option value=''>请选择就诊人员</option>";
+                for(var i=0;i<res.length;i++)
+                {
+                    
+                    html +="<option value='"+res[i].j_id+"'>"+res[i].names+"</option>";
+                }
+                console.log(html)
+                $("#jid").html(html)
+            }
+        })
+    }
+</script>
+<script src="{php echo HYB_YL_ADMIN}/js/doctor.js" type="text/javascript"></script> 
+</body>
+</html>

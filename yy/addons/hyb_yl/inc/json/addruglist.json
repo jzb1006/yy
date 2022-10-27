@@ -1,0 +1,404 @@
+{
+    "data": {
+        "items": [
+            {
+                "special_topic": {
+                    "id": 1275,
+                    "title": "家庭常备药",
+                    "text": "",
+                    "pic_url": "https://img1.dxycdn.com/2020/0107/769/3389579559312947186-22.jpg",
+                    "thumbnail_url": "",
+                    "weapp_qrcode": "https://img1.dxycdn.com/2020/0103/627/3388819672224202822-15.jpg",
+                    "support_weapp_bottom_share": false,
+                    "share_text": "",
+                    "share_wx_converse_pic_url": "",
+                    "share_wx_moments_pic_url": "",
+                    "buy_type": 0,
+                    "price": 0,
+                    "origin_price": 0,
+                    "buy_goods": []
+                },
+                "special_topic_modules": [
+                    {
+                        "title": "解热镇痛药",
+                        "text": "用于退烧、止痛。不可用于胃痛。",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "对乙酰氨基酚",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10337"
+                            },
+                            {
+                                "title": "对乙酰氨基酚溶液（小儿用药）",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10067"
+                            },
+                            {
+                                "title": "布洛芬",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10032"
+                            },
+                            {
+                                "title": "布洛芬混悬滴剂（小儿用药）",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10035"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "复方感冒药",
+                        "text": "用于缓解发热、头痛、鼻塞、咳嗽等感冒症状。",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "酚麻美敏",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10063"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "口服抗过敏药",
+                        "text": "用于治疗过敏。",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "西替利嗪",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10108"
+                            },
+                            {
+                                "title": "氯雷他定",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10051"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "外用止痒剂",
+                        "text": "用于消炎、止痒。",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "炉甘石洗剂",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10145"
+                            },
+                            {
+                                "title": "氢化可的松乳膏",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10093"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "外用消毒剂和抗生素",
+                        "text": "用于消毒皮肤小伤口，预防和治疗感染。",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "聚维酮碘溶液",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10121"
+                            },
+                            {
+                                "title": "创可贴",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10241"
+                            },
+                            {
+                                "title": "莫匹罗星软膏",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10023"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "胃药",
+                        "text": "用于缓解偶尔的胃痛、反酸。",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "铝碳酸镁",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10122"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "口服补液盐",
+                        "text": "用于预防或治疗腹泻导致的脱水",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "口服补液盐 Ⅲ",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10951"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "通便药",
+                        "text": "用于缓解偶尔的便秘。",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "开塞露",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10206"
+                            },
+                            {
+                                "title": "乳果糖口服溶液",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10360"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "避孕药",
+                        "text": "用于避孕。",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "短效复方避孕药",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24594"
+                            },
+                            {
+                                "title": "紧急避孕药",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=22449"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "晕车药",
+                        "text": "用于预防晕车。",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "茶苯海明",
+                                "href_url": ""
+                            }
+                        ]
+                    },
+                    {
+                        "title": "其他",
+                        "text": "其他常用医疗物品",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "电子体温计",
+                                "href_url": ""
+                            },
+                            {
+                                "title": "生理盐水",
+                                "href_url": ""
+                            },
+                            {
+                                "title": "生理性海水",
+                                "href_url": ""
+                            },
+                            {
+                                "title": "医用棉签",
+                                "href_url": ""
+                            },
+                            {
+                                "title": "医用纱布",
+                                "href_url": ""
+                            },
+                            {
+                                "title": "医用胶带",
+                                "href_url": ""
+                            },
+                            {
+                                "title": "医用口罩",
+                                "href_url": ""
+                            },
+                            {
+                                "title": "安全套",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24574"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "",
+                        "text": "",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 0,
+                        "pic_iterms": [
+                            {
+                                "pic_url": "https://img1.dxycdn.com/2020/0103/089/3388822019424086690-22.png",
+                                "href_url": "",
+                                "width": 0,
+                                "height": 0
+                            }
+                        ],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": []
+                    }
+                ]
+            }
+        ]
+    }
+}

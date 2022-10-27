@@ -1,0 +1,125 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            
+            <div class="contentpanel">
+                <input type="hidden" id="init_anchor" value="">
+                <ul class="nav nav-tabs patient-tabs J-report-tabs">
+                    <li class="J-module-control" data-permission="48,49,50,51,52,53,60,61,95"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'display'))}"><strong>费用统计</strong></a></li>
+                    <li class="J-module-control" data-permission="42,43,44,47,55,9004,58,59,68,69,89,90,100"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yiwu'))}"><strong>医务统计</strong></a></li>
+                    <li class="J-module-control" data-permission="62,63,64,65,66,67"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'jinxiao'))}"><strong>进销存统计</strong></a></li>
+                    <li class="J-module-control" data-permission="45,46,56,57,91,92,93"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yunyin'))}"><strong>运营统计</strong></a></li>
+                    <li class="J-module-control active J-mobile-report-tab" data-permission="73"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yidong'))}"><strong>移动报表</strong></a></li>
+                </ul>
+                <div class="tab-content pd0">
+                    <!-- 移动报表 -->
+                    <div class="tab-pane active" id="mReport">
+                        <div class="bloglist row">
+                            <!-- col-sm-3 -->
+                            <div class="col-sm-12 col-md-12 col-lg-12 border-left pd20">
+                                <div class="panel panel-default shadow-none mb0">
+                                    <div class="panel-heading pb20 lh25">
+                                        1. 请先确认超级管理员已给你开通 “微信移动报表” 权限（超管默认已开通）<br>
+                                        <img width="50%" src="//assets.dxycdn.com/app/DXYClinic/test/business/images/we_report_1.png?t=1560312126"><br>
+                                        2. 个人账号绑定微信<br>
+                                        <input type="button" value="绑定微信" class="btn btn-primary J-bind-wechat"><br>
+                                        3.关注诊所公众号，每天晚9点定时推送报表进行查看
+                                        <br>
+                                        <img width="50%" src="//assets.dxycdn.com/app/DXYClinic/test/business/images/we_report_2.png?t=1560312126"><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 移动报表 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- wechat 绑定 -->
+        <div class="modal fade" id="wechatModal" tabindex="-1" role="dialog" aria-labelledby="wechatModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="wechatModalLabel">扫码二维码绑定</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" class="wechat-qr-code center-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['mobile_statistics']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

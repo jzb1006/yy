@@ -1,0 +1,60 @@
+<style>
+	.fui-goods-list{width:100%;border-bottom: 1px dashed #e1ecee;padding-top:5px;padding-bottom:5px;}
+	.fui-goods-list span{display: block;padding:0;}
+	th{text-align: center;}
+	.head_img{width: 50px;height: 50px;border-radius: 50%;overflow: hidden;display: flex;justify-content: center;align-items: center;margin: 0 auto;}
+	.head_img img{width: 100%;}
+	.cont_text{overflow: hidden; width:200px;text-overflow: ellipsis;display:-webkit-box; -webkit-box-orient:vertical;-webkit-line-clamp:3;font-size: 16px;}
+	.time_text{white-space: nowrap;text-align: center;color: #666;}
+	.name{width: 100px;overflow: hidden;text-overflow: ellipsis;color: #666;}
+	.modal-body{overflow: hidden;overflow-y: auto;max-height: 500px;}
+	.label1{display: block;margin: 5px 0;}
+</style>
+<form class="form-horizontal form-validate" action="" method="post" enctype="multipart/form-data">
+	<input type='hidden' name='oid' value='{$_GPC["oid"]}' />
+	<input type='hidden' name='edit_flag' value='{$_GPC["edit_flag"]}' />
+	<div class="modal-dialog">
+           <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">回复详情</h4>
+            </div>
+            <div class="modal-body">
+            	<table class="table table-striped" style="text-align: center;">
+					<col width="100px" />
+					<col width="100px" />
+					<col width="200px" />
+            		<thead>
+            			<th>头像</th>
+            			<th>昵称</th>
+            			<th>回复内容</th>
+            			<th>回复时间</th>
+            			<th>操作</th>
+            		</thead>
+            		<tbody>
+            			{loop $huifulist $list}
+            			<tr>
+            				<td><div class="head_img"><img src="{$list['usertoux']}"></div></td>
+            				<td class="name">{$list['name']}
+            				{if $list['user_identity']=='1'}
+                         	&nbsp<span class="label label-success label1">{$list['zhuanjia_jigou_info']}</span><span class="label label-warning label1">{$list['zhuanjia_zhichen_info']}</span>
+                         	{/if}
+                         	</td>
+            				<td ><div class="cont_text">{$list['rcontent']}</div></td>
+            				<td class="time_text">{php echo date("Y-m-d H:i:s",$list['pl_time'])}</td>
+            				<td class="text-center">
+	                        <a class="btn btn-danger btn-sm" href="{php echo $this->createWebUrl('apply',array('ac'=>'dynamiclist','op'=>'dynamicpllist_delete','a_id'=>$a_id,'pl_id'=>$list['pl_id']))}" class="js-remove"  data-id="{$item['a_id']}">删除</a> 
+	                    </td>
+            			</tr>
+            			{/loop}
+            		</tbody>
+            	</table>
+
+            </div>
+        </div>
+</form>
+
+
+
+
+

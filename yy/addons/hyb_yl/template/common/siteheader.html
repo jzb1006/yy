@@ -1,0 +1,554 @@
+{template './common/myheader'}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<title>管理后台</title>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="//assets.dxycdn.com/app/DXYClinic/test/business/images/favicon.ico?t=1562655104" />
+<link rel="apple-touch-icon" href="//assets.dxycdn.com/app/DXYClinic/test/business/images/touch-icon-144.png" />
+<link rel="stylesheet" href="{php echo HYB_YL_ADMIN}/layui/css/layui.css">
+<!-- 合并、压缩css -->
+<link rel="stylesheet" type="text/css" href="//assets.dxycdn.com/app/DXYClinic/test/system/css/vendor.css?t=1562655104">
+
+
+<script type="text/javascript">
+    var GLOBAL_ASSETS = '//assets.dxycdn.com/app/DXYClinic/test/';
+    var TIMESTAMP = '1562655104';
+    var ENV = "/Public";
+    var ROOT = "";
+    var SOURCE = ENV + '/clidev/';
+</script>
+
+<script type="text/javascript">
+    var _daq = _daq || [];
+    _daq.push(['_setAccount', 'da-10009-1']);
+
+    (function () {
+            var da = document.createElement('script');
+            da.type = 'text/javascript';
+            da.async = true;
+            da.src = '//da.dxy.cn/da.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(da, s);
+    })();
+</script>
+
+</head>
+
+<body class="theme-blue">
+    <!-- Demo page code -->
+<script type="text/javascript">
+        $(function() {
+            var match = document.cookie.match(new RegExp('color=([^;]+)'));
+            if(match) var color = match[1];
+            if(color) {
+                $('body').removeClass(function (index, css) {
+                    return (css.match (/\btheme-\S+/g) || []).join(' ')
+                })
+                $('body').addClass('theme-' + color);
+            }
+
+            $('[data-popover="true"]').length && $('[data-popover="true"]').popover({html: true});
+
+        });
+    </script>
+
+ 
+    <script type="text/javascript">
+        $(function() {
+            var uls = $('.sidebar-nav > ul > *').clone();
+            uls.addClass('visible-xs').find('ul').removeClass('hide');
+            $('#main-menu').append(uls.clone());
+        });
+    </script>
+
+
+<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <style type="text/css">
+          .navbar-brand{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: #fff!important;
+            
+          }
+          #main-menu .aText,.dropdown-toggle{
+            color: #fff!important;
+          }
+
+      </style>
+      <?php 
+       $res =pdo_get('hyb_yl_hospital',array('uniacid'=>$_W['uniacid'],'uid'=>$_W['uid']));
+      ?>
+      {if !$res}
+      <a class="" href=""><span class="navbar-brand"><img src="{media $res['logo']}" class="navbar-logo" /> 上传logo</span></a>
+      {else}
+      <a class="" href=""><span class="navbar-brand"><img src="{media $res['logo']}" class="navbar-logo" /> {$res['hospital']}</span></a>
+      {/if}
+    </div>
+
+    <div class="navbar-collapse collapse" style="height: 1px;">
+      <ul id="main-menu" class="nav navbar-nav navbar-right">
+        <li class="dropdown hidden-xs">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span><span id="J-basic-info-name">{$_W['user']['username']}</span>
+                <i class="fa fa-caret-down"></i>
+            </a>
+
+          <ul class="dropdown-menu">
+            <li><a href='https:///Clinic/User/account.html'><i class="glyphicon glyphicon-user"></i> 我的账号</a></li>
+
+            <li><a href='https:///Admin/Usernew/resetPwd/id/26549.html'><i class="glyphicon glyphicon-cog"></i> 修改密码</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#myModalClinic"><i class="glyphicon glyphicon-map-marker"></i> 切换诊所</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#sysMessageModal"><i class="fa fa-bell"></i> 系统通知</a></li>
+            <li><a href="/Clinic/User/help.html"><i class="glyphicon glyphicon-question-sign"></i> 帮助中心</a></li>
+            <li><a href="/japi/session/100013?union_uri=dxy"><i class="glyphicon glyphicon-log-out"></i> 退出</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+<!-- 切换诊所 -->
+<div class="modal fade" id="myModalClinic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">切换诊所</h4>
+      </div>
+      <div class="modal-body pd20">
+          <form class="form-horizontal">
+             <div class="form-group">
+                <label class="col-sm-2 control-label">诊所名称</label>
+                <div class="col-sm-7">
+                  <select id="J-wrap-clinic" class="form-control input-sm">
+                        <option selected="selected"value="13">演示诊所</option>                   </select>
+                </div>
+              </div>
+          </form>
+      </div>
+
+
+    </div><!-- modal-content -->
+  </div><!-- modal-dialog -->
+</div><!-- 切换诊所 -->
+
+<!-- 系统通知 -->
+<div class="modal fade" id="sysMessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="blog-sidebar border-right">
+                            <ul class="sidebar-list mr20" id="J-sysMessages-wrap">
+                                <!-- 系统通知列表 -->
+                            </ul>
+                            <ul class="J-pager-wrap99 pager mt10 mb10">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="panel panel-default panel-blog shadow-none bg-white">
+                            <div class="panel-body" id="J-sysMessages-item-wrap">
+                                <!-- 每一条详细系统通知消息 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer modal-btn-col1">
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 系统通知 -->
+
+<!-- 系统通知列表项模板 -->
+<script type="text/template" id="J-sysMessages-tpl">
+    <a href="javascript:void(0);" class="J-sysMessages-item text-nowrap" data-id="<%-id%>"><i class="fa fa-angle-right"></i> <%-title%></a>
+</script>
+<!-- 系统通知列表项模板 -->
+
+<!-- 系统通知详情项模板 -->
+<script type="text/template" id="J-sysMessages-item-tpl">
+    <h3 class="blogsingle-title"><%- title %></h3>
+    <div class="mb20"></div>
+    <p><%- content %></p>
+    <%if(attachment){%><div><a href="<%- attachment %>" target="blank" class="btn btn-white"><i class="fa fa-paperclip"></i> 下载附件</a></div><%}%>
+</script>
+<!-- 系统通知详情项模板 -->
+
+    </div>
+<div class="sidebar-nav">
+    <ul class="mb0">
+
+        <!--<li><a href="https:////Clinic/DoctorPanel/index" class="nav-header"><i class="fa fa-fw fa-mail-reply"></i> 返回诊所系统</a></li>-->
+        <li>
+                <a href="javascript:void(0);" data-target=".clinic-mgr-project" class="nav-header" data-toggle="collapse">
+                    <i class="fa fa-fw  fa-money"></i> 医院设置
+                    <i class="fa fa-angle-up pull-right font16 admin-point-style "></i>
+                </a>
+            </li>
+            <li>
+                <ul {if $op=="base" || $op=="jiancha" } class="clinic-mgr-project nav nav-list collapse" {else} class="clinic-mgr-project nav nav-list collapse in hide" {/if}>
+                    <li   {if $op=="base"}  id="recipe" class="active"  data-target=".cure" data-toggle="collapse" {/if}>
+                        <a href="{php echo $this->copysiteUrl('setting.base')}&op=base"> 基础设置</a>
+                    </li> 
+                    <li   {if $op=="jiancha"} class="active"  data-target=".cure" data-toggle="collapse"{/if}>
+                        <a href="{php echo $this->copysiteUrl('setting.jiancha')}&op=jiancha"> 应用中心</a>
+                    </li>  
+
+                 </ul>
+                <input type="hidden" value="recipe" id="active_tag">
+            </li><li>
+                <a href="javascript:void(0);" data-target=".clinic-mgr-physical" class="nav-header" data-toggle="collapse">
+                    <i class="fa fa-fw  fa-th"></i> 体检套餐
+                    <i class="fa fa-angle-up pull-right font16 admin-point-style"></i>
+                </a>
+            </li>
+            <li>
+                <ul {if $op=="tiyan" || $op=="tiyan_add"} class="clinic-mgr-physical nav nav-list collapse " {else} class="clinic-mgr-physical nav nav-list collapse  in hide " {/if}  >
+                    <li  {if $op=="tiyan" || $op=="tiyan_add"} id="recipe" class="active" data-target=".physical" data-toggle="collapse"{/if}  >
+                    <a href="{php echo $this->copysiteUrl('setting.tiyan')}&op=tiyan"> 体检套餐</a>
+                    </li>
+                </ul>
+                <input type="hidden" value="recipe" id="active_tag">
+            </li><li>
+                <a href="javascript:void(0);" data-target=".clinic-mgr-group" class="nav-header" data-toggle="collapse">
+                    <i class="fa fa-fw  fa-file-text"></i> 模板设置
+                    <i class="fa fa-angle-up pull-right font16 admin-point-style"></i>
+                </a>
+            </li>
+            <li>
+                <ul class="clinic-mgr-group nav nav-list collapse in hide">
+                           <li id="template" data-target=".template" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'display'))}"> 病历模板</a>
+                            </li>                                                    <li id="inspectgroup" data-target=".inspectgroup" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'sy_display'))}"> 实验室检查模板</a>
+                            </li>                                                    <li id="checkgroup" data-target=".checkgroup" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'fz_display'))}"> 辅助检查模板</a>
+                            </li>                                                    <li id="checkreport" data-target=".checkreport" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'jiancha'))}"> 检查报告模板</a>
+                            </li>                                                    <li id="curegroup" data-target=".curegroup" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'zl'))}"> 治疗模板</a>
+                            </li>                                                    <li id="recipegroup" data-target=".recipegroup" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'xcf_display'))}"> 西/成药处方模板</a>
+                            </li>                                                    <li id="chinagroup" data-target=".chinagroup" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'zcf_display'))}"> 中药处方模板</a>
+                            </li>                                                    <li id="cncategroup" data-target=".cncategroup" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'type'))}"> 中药处方模板分类</a>
+                            </li>                                                    <li id="materialgroup" data-target=".materialgroup" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'sy_display'))}"> 物资模板</a>
+                            </li>                                                    <li id="followcontent" data-target=".followcontent" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'sfcontent'))}"> 随访内容模板</a>
+                            </li>                                                    <li id="followresult" data-target=".followresult" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'sfjielun'))}"> 随访结论模板</a>
+                            </li>                                                    <li id="phyreport" data-target=".phyreport" data-toggle="collapse">
+                                <a href="{php echo $this->copysiteUrl('moban',array('op'=>'tiyan'))}"> 丁香诊所体检模板</a>
+                            </li>                                        </ul>
+                <input type="hidden" value="recipe" id="active_tag">
+            </li><li>
+                <a href="javascript:void(0);" data-target=".clinic-mgr-follow" class="nav-header" data-toggle="collapse">
+                                            <i class="fa fa-fw  fa-asterisk"></i> 专家管理
+                                            <i class="fa fa-angle-up pull-right font16 admin-point-style"></i>
+                </a>
+            </li>
+            <li>
+                <ul {if $op=="fz_display" || $op=="wuzi" || $op=='wuzi_add'} class="clinic-mgr-follow nav nav-list collapse " {else} class="clinic-mgr-follow nav nav-list collapse  in hide " {/if}>
+
+                    <li {if $op=="wuzi" || $op=='wuzi_add'}  class="active" id="type" data-target=".type" data-toggle="collapse" {/if} data-target=".type" data-toggle="collapse">
+                      <a href="{php echo $this->copysiteUrl('setting.wuzi')}&op=wuzi"> 专家团队</a>
+                    </li> 
+                      <li {if $op=="fz_display"}  class="active" id="type" data-target=".type" data-toggle="collapse" {/if}>
+                      <a href="{php echo $this->copysiteUrl('setting.fz_display')}&op=fz_display"> 专家注册设置</a>
+                    </li>                                       
+               </ul>
+                <input type="hidden" value="recipe" id="active_tag">
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-target=".clinic-mgr-shop" class="nav-header" data-toggle="collapse">
+                    <i class="fa fa-fw  fa-h-square"></i> 会员设置
+                    <i class="fa fa-angle-up pull-right font16 admin-point-style"></i>
+                </a>
+            </li>
+            <li>
+                <ul class="clinic-mgr-shop nav nav-list collapse in hide">
+                    <li {if $op=="member"} id="recipe"  {/if} data-target=".member" data-toggle="collapse">
+                        <a href="{php echo $this->copysiteUrl('type',array('op'=>'member'))}"> 会员类型管理</a>
+                    </li>
+                    <li {if $op=="jifen"} id="recipe"  {/if} data-target=".point" data-toggle="collapse">
+                        <a href="{php echo $this->copysiteUrl('type',array('op'=>'jifen'))}"> 积分设置</a>
+                    </li>
+                    <li {if $op=="label"} id="recipe"  {/if} data-target=".tag" data-toggle="collapse">
+                        <a href="{php echo $this->copysiteUrl('type',array('op'=>'label'))}"> 标签管理</a>
+                    </li>                                       
+                 </ul>
+                <input type="hidden" value="recipe" id="active_tag">
+            </li> 
+            <li>
+                <a href="{php echo $this->copysiteUrl('kepu.site')}&op=list" data-target=".clinic-mgr-kepu" class="nav-header" data-toggle="collapse">
+                    <i class="fa fa-fw  fa-h-square"></i> 患教管理
+                </a>
+            </li>
+
+    </ul>
+</div>
+<script>
+    $(function () {
+        var active = $('#active_tag').val();
+        $('.sidebar-nav>ul>li>ul').removeClass('hide');
+        $('.sidebar-nav').find('#' + active).addClass('active');
+        $('.sidebar-nav').find('#' + active).parents('li').prev().find('i.admin-point-style').addClass('rotate180');
+
+        // hack 左侧栏菜单折叠
+        $('.sidebar-nav .nav-header').trigger('click');
+        $('.sidebar-nav').find('#' + active).closest('ul').parent().prev().find('a').trigger('click');
+        $('.sidebar-nav .nav-header').on('click', function() {
+            var adminPoint = $(this).find('i.admin-point-style');
+            if (adminPoint.hasClass('rotate180')){
+                adminPoint.removeClass('rotate180');
+            } else {
+                adminPoint.addClass('rotate180');
+            }
+        });
+
+        if (localStorage.getItem('v_clinic_isbasic')) {
+            $('.clinic-mgr-group #materialgroup').remove()
+        }
+    });
+
+</script>
+    <!-- 标准数据模板 -->
+    <script type="text/template" id="data-wrap-list-tpl">
+    <td class="pl20">
+        <input type="checkbox" <%if(is_check){%>checked<%}%> value="<%- id%>" />
+    </td>
+    <td class="text-ellipsis"><%- medicinename%></td>
+    <td class="text-ellipsis"><%- medicinespec%></td>
+    <td><%- medicineunit%></td>
+    <td><%- manufacturer%></td>
+    </script>
+    <!-- 标准数据模板 -->
+
+    <!-- 中药处方列表模版 -->
+    <script type="text/template" id="J-recipe-list-tpl">
+        <td class="pl20 text-ellipsis"><%- medicinename%></td>
+        <td class="text-ellipsis"><%- medicinespec%></td>
+        <td class="text-ellipsis"><%- medicineunit%></td>
+        <td class="text-ellipsis"><%- medicineprice%></td>
+        <td class="text-ellipsis"><%- pn_code%></td>
+        <td><%if(discount == 1){%>
+                <i class="fa fa-check"></i>
+            <%}else{%>否
+            <%}%>
+        </td>
+        <td class="text-ellipsis"><%- remark%></td>
+        <td><%if(status == 2){%>
+            <span style="color:#a94442">停用</span>
+            <%}else{%>正常<%}%>
+        </td>
+        <td><% if(type == 1){ %>
+                <a href='/Admin/Recipe/index?medicineid=<%- medicineid%>&p=<%-p%>&type=<%- type%>' class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <% }else if (type == 2){ %>
+                <a href='/Admin/Recipe/recipeedit?medicineid=<%- medicineid%>&p=<%-p%>&type=<%- type%>' class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <% } %>
+            <%if(status == 2){%>
+                <a href='#' class="J-back-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="1" data-id="<%- medicineid%>"><i class="fa fa-trash-o "></i> 恢复</a>
+            <%}else{%>
+                <a href='#' class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="<%- medicineid%>"><i class="fa fa-trash-o "></i> 停用</a>
+            <%}%>
+        </td>
+    </script>
+    <!-- 中药处方列表模版 -->
+
+    <!--  西成药处方分类树-->
+    <script type="text/template" id="J-tree-tpl">
+        <% $.each(data || [], function(i1, item1){ %>
+            <li class="tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-item1.label%>（<%-countList[item1.key]%>）">
+                <a class="J-search-tooltips" href="javascript: void(0)" data-class="<%-item1.key%>"><%-item1.label%> <span class="tree-count">(<%-countList[item1.key]%>)</span></a>
+                <ul class="w155">
+                    <% if(item1.children){ %>
+                        <% $.each(item1.children || [], function(i2, item2){ %>
+                            <li class="tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-item2.label%>（<%-countList[item2.key]%>）">
+                                <a class="J-search-tooltips" href="javascript: void(0)" data-class="<%-item2.key%>"><%-item2.label%> <span class="tree-count">(<%-countList[item2.key]%>)</span></a>
+                                <ul class="w135">
+                                    <% if(item2.children){ %>
+                                        <% $.each(item2.children || [], function(i3, item3){ %>
+                                            <li class="tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-item3.label%>（<%-countList[item3.key]%>）">
+                                                <a class="J-search-tooltips" href="javascript: void(0)" data-class="<%-item3.key%>"><%-item3.label%> <span class="tree-count">(<%-countList[item3.key]%>)</span></a>
+                                            </li>
+                                        <% }); %>
+                                    <% } %>
+                                </ul>
+                            </li>
+                        <% }); %>
+                    <% } %>
+                </ul>
+            </li>
+        <% }); %>
+    </script>
+    <!--  西成药处方分类树-->
+ 
+
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action='#'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+    <script type="text/javascript">
+    require(['recipe']);
+    </script>
+</body>
+
+</html>

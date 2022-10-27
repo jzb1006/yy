@@ -1,0 +1,350 @@
+{template './common/siteheader'}
+
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">检验医嘱</h1>
+            <div class="stats">
+                <a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_display'))}" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+            </div>
+        </div>
+        <div class="main-content J-inspect-content">
+            <div class="panel panel-default">
+                <div class="panel-heading no-collapse">新增检验医嘱</div>
+                <div class="panel-body collapse in">
+                    <form id="inspectionedit_form">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-10">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">检验医嘱名称 <span class="asterisk">*</span></label>
+                                            <input type="text" name="define" class="form-control max256" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">英文名称</label>
+                                            <input type="text" name="english_name" class="form-control max128">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">单位</label>
+                                            <input type="text" name="checkunit" class="form-control max128">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">零售价 <span class="asterisk">*</span></label>
+                                            <input type="text" name="checkprice" class="form-control eqnumber required" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">成本价 </label>
+                                            <input type="text" name="cost_price" class="form-control eqnumber">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">拼音码</label>
+                                            <input type="text" name="metaid" class="form-control max128">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">备注 </label>
+                                            <input type="text" name="description" class="form-control max256">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">允许折扣</label>
+                                            <select class="form-control input-sm" data-placeholder="请选择" name="is_discount">
+                                                <option value="2">否</option>
+                                                <option value="1">是</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">是否外送</label>
+                                            <div class="row mt10">
+                                                <div class="col-sm-2 col-pad-sm">
+                                                    <div class="rdio rdio-default">
+                                                        <input type="radio" class="J-send-out-btn" id="deliver1" name="location" value="2">
+                                                        <label for="deliver1">是</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 col-pad-sm">
+                                                    <div class="rdio rdio-default">
+                                                        <input type="radio" id="deliver2" class="J-send-out-btn" name="location" value="1" checked="checked">
+                                                        <label for="deliver2">否</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row J-send-out display-none">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">外送单位</label>
+                                            <select class="form-control input-sm" data-placeholder="请选择" name="deliver_company">
+                                                <option value="0">请选择</option>
+                                                <option value="1">迪安诊断</option>
+                                                <option value="2">金域检验</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">对应编码</label>
+                                            <input type="text" class="form-control" name="andi_id">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">标本种类</label>
+                                            <select class="form-control input-sm" data-placeholder="请选择" name="specimentype" id="J-specimen-wrap">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">试管颜色</label>
+                                            <select class="form-control input-sm" data-placeholder="请选择" name="cuvette">
+                                                <option value="">请选择</option>
+                                                <option value="1">红</option>
+                                                <option value="2">紫</option>
+                                                <option value="3">黑</option>
+                                                <option value="4">蓝</option>
+                                                <option value="5">黄</option>
+                                                <option value="6">绿</option>
+                                                <option value="7">灰</option>
+                                                <option value="8">橙</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">合并标记</label>
+                                            <input type="text" name="merge_remark" class="form-control" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">报告所需时间</label>
+                                            <input type="text" name="report_duration" class="form-control max64" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">临床意义</label>
+                                            <input type="text" name="clinical_significance" class="form-control max256" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">国际编码</label>
+                                            <input type="text" name="international_code" class="form-control max128" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">状态</label>
+                                            <select class="form-control input-sm" name="status" data-placeholder="请选择">
+                                                <option value="1">正常</option>
+                                                <option value="2">停用</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary btn-sml J-submit-btn">保存</button>&nbsp;
+                    <button class="btn btn-default btn-sml J-cancel-btn">取消</button>
+                </div>
+            </div>
+            <footer>
+	<hr>
+	<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+	<p class="pull-right"> <a href="http://www.DXY.cn" target="_blank">DXY</a> by <a href="http://www.dxy.cn" target="_blank">DXY.CN</a>
+	</p>
+	<p>© 2015 <a href="http://www.dxy.cn" target="_blank">DXY</a></p>
+</footer>
+        </div>
+    </div>
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action='#'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+
+    <script type="text/template" id="J-specimen-tpl">
+        <option value="">请选择</option>
+        <% $.each(specimenType, function(i, item){ %>
+        <option value="<%-item.id%>"><%-item.name%></option>
+        <% }); %>
+    </script>
+
+    <script type="text/javascript">
+    require(['inspect_add']);
+    </script>
+</body>
+
+</html>

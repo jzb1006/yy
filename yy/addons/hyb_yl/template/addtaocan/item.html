@@ -1,0 +1,84 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+<link rel="stylesheet" type="text/css" href="{php echo HYB_YL_ADMIN}/css/tcorder.css">
+</div>
+
+<div class="basics">
+    <div class="gai_huanzhe">
+        <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control active" data-permission="8">
+                <a  href="{php echo $this->createWeburl('addtaocan',array('op'=>'taocan','type_id'=>$type_id))}" ><strong>检查项目</strong></a>
+            </li>
+        </ul>
+
+    </div>
+ <form action="" class="layui-form" method="post" novalidate="novalidate">
+
+    <div class="title">
+        <div>项目填写员：<input type="text" placeholder="" class="nameInput"></div>
+    </div>
+    <table width="98%" rules="all" cellpadding="10px" frame="border" >
+        <thead>
+        <tr>
+            <th>项目</th>
+            <th>参考值</th>
+            <th>单位</th>
+            <th>结果</th>
+            <th>医生建议</th>
+        </tr>
+        </thead>
+        {loop $res['content'] $item}
+        <tbody align="center" bgcolor="#fff">
+        <tr>
+            <td>{$item['t_msg']}</td>
+            <td>{$item['t_msg3']}</td>
+            <td>{$item['t_msg4']}</td>
+            <td>
+                <input type="text" placeholder="请输入结果" value="{$item['jieguo']}" name="jieguo[]">
+            </td>
+
+            <td class="textarea">
+                <textarea name="jianyi[]"  placeholder="点击输入医生建议">{$item['jianyi']}</textarea>
+            </td>
+        </tr>
+        </tbody>
+       {/loop}
+    </table>
+    {if $prpject==1}
+    <div class="title">
+        <div>通用加包项</div>
+    </div>
+    <table width="98%" rules="all" cellpadding="10px" frame="border" >
+        <thead>
+        <tr>
+            <th>项目</th>
+            <th>参考值</th>
+            <th>单位</th>
+            <th>结果</th>
+            <th>医生建议</th>
+        </tr>
+        </thead>
+        {loop $res['addproject'] $item}
+        <tbody align="center" bgcolor="#fff">
+        <tr>
+            <td>{$item['y_msg']}({$item['y_msg1']})</td>
+            <td>{$item['y_msg2']}</td>
+            <td>{$item['y_msg3']}</td>
+            <td>
+                <input type="text" name="jieguo1[]" placeholder="请输入结果" value="{$item['jieguo1']}">
+            </td>
+
+            <td class="textarea">
+                <textarea name="jianyi1[]"  placeholder="点击输入医生建议">{$item['jianyi1']}</textarea>
+            </td>
+        </tr>
+        </tbody>
+       {/loop}
+    </table>    
+    {/if}
+    <button class="btn" type="submit">保存</button>
+    <input name="token" type="hidden" value="{$_W['token']}" />
+</form>
+</body>
+</html>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list_all.js"></script>

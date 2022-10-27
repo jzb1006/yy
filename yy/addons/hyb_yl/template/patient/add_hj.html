@@ -1,0 +1,445 @@
+{template './common/mainHeader'}
+</div>
+<div class="basics">
+        <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control" data-permission="8">
+                <a  href="<?php echo $this->copysiteurl('patient.listhj');?>&type_id={$type_id}" ><strong>患教列表</strong></a>
+            </li>
+            <li class="J-module-control active" data-permission="10">
+                <a href="<?php echo $this->copysiteurl('patient.addhj');?>&type_id={$type_id}" ><strong>添加患教</strong></a>
+            </li>
+        </ul>
+        <div class="main-content">
+            <div class="panel panel-default">
+                <div class="panel-body collapse in">
+            <form  action="" method="post" novalidate="novalidate">
+                <div class="row">
+                    <div class="col-sm-12 col-md-10">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">患教名称 <span class="asterisk">*</span></label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['h_title']}" required="" name="h_title">
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">类型 <span class="gai_tishi">选择公共或者讲师，公共类型属于平台添加，讲师属于医生添加</span></label>
+                                <div class="pianshen_kaiqi">
+                                    <input type="text" name="h_type" value="{$res['h_type']}" style="display: none;" class="zt"> 
+                                    <div class="pianshen_kaiqi_xuanze {if $res['h_type'] =='1'} pianshen_kaiqi_xuanzes {/if}" data-val='1'>
+                                        <div class="pianshen_kaiqi_xuanze_title  {if $res['h_type'] =='1'} pianshen_kaiqi_xuanze_titles {/if}">公共</div>
+                                        <div class="pianshen_kaiqi_xuanze_img {if $res['h_type'] =='1'} pianshen_kaiqi_xuanze_imgs {/if} "><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                    </div>
+                                    <div class="pianshen_kaiqi_xuanze  {if $res['h_type'] =='0'} pianshen_kaiqi_xuanzes {/if}" data-val='0'>
+                                        <div class="pianshen_kaiqi_xuanze_title {if $res['h_type'] =='0'} pianshen_kaiqi_xuanze_titles {/if}">讲师</div>
+                                        <div class="pianshen_kaiqi_xuanze_img {if $res['h_type'] =='0'} pianshen_kaiqi_xuanze_imgs {/if}"><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group jiangshi" style="display: {if $res['h_type'] =='0'} flex {else} none {/if};white-space: nowrap;">
+                                    <label class="control-label" style="margin-right: 10px;">讲师</label>
+                                    <input type="text" name="link" id="user_nickname" class="form-control max128 J-isDisable" value="{$res['z_name']}" onblur="seluser()" style="display:inline-block;width:78%" disabled>
+                                    <input type="hidden" name="info[zid]" id="select_uid" value="{$res['zid']}" >
+                                    <input type="hidden" name="info[z_name]" id="z_name" value="{$res['z_name']}" >
+                                    <button class="btn btn-default btn_seluser" type="button" style="width:20%;height:34px;line-height:25px;">选择讲师</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">患教分类</label>
+                                    <div class="gai_shangping_fenlie">
+                                        <select id="sex" name="h_flid">
+                                            <option>---请选择---</option>
+                                            {loop $cate_list $item}
+                                            <option value="{$item['hj_id']}" {if $res['h_flid'] == $item['hj_id']} selected="selected" {/if}>{$item['hj_name']}</option>
+                                            {/loop}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">患教缩略图<span class="gai_tishi">患教缩略图(172*172）</span></label>
+                                     {php echo tpl_form_field_image('h_pic', $res['h_pic'])}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">选择患教素材 <span class="gai_tishi">选择公共或者讲师，公共类型属于平台添加，讲师属于医生添加</span></label>
+                                    <div class="pianshen_kaiqi">
+                                        <input type="text" name="h_leixing" value="{$res['h_leixing']}" style="display: none;" class="zt"> 
+                                        <div class="pianshen_kaiqi_xuanze {if $res['h_leixing'] =='1'} pianshen_kaiqi_xuanzes {/if}" data-val='1'>
+                                            <div class="pianshen_kaiqi_xuanze_title  {if $res['h_leixing'] =='1'} pianshen_kaiqi_xuanze_titles {/if}">视频</div>
+                                            <div class="pianshen_kaiqi_xuanze_img {if $res['h_leixing'] =='1'} pianshen_kaiqi_xuanze_imgs {/if} "><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                        </div>
+                                        <div class="pianshen_kaiqi_xuanze  {if $res['h_leixing'] =='0'} pianshen_kaiqi_xuanzes {/if}" data-val='0'>
+                                            <div class="pianshen_kaiqi_xuanze_title {if $res['h_leixing'] =='0'} pianshen_kaiqi_xuanze_titles {/if}">音频</div>
+                                            <div class="pianshen_kaiqi_xuanze_img {if $res['h_leixing'] =='0'} pianshen_kaiqi_xuanze_imgs {/if}"><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="row" id="video" style="display: {if $res['h_leixing'] =='1'} flex {else} none {/if};white-space: nowrap;">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">患教视频<span class="gai_tishi">也可复制视频完整链接在此处</span></label>
+                                     {php echo tpl_form_field_video('h_video', $res['h_video'])}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="audeo"  style="display: {if $res['h_leixing'] =='0'} flex {else} none {/if};white-space: nowrap;">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">患教音频<span class="gai_tishi">也可复制音频完整链接在此处</span></label>
+                                     {php echo tpl_form_field_audio('audios', $res['audios'])}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">患教详细内容</label>
+                                    {php echo tpl_ueditor('h_text', $res['h_text']);}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input name="token" type="hidden" value="{$_W['token']}" />
+                <input type="hidden" name="type_id" value="{$type_id}">
+                <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+            </form>
+             </div>
+            </div>
+        </div>
+    </div>
+</body>
+<input type="hidden" value="0" id="Infos">
+
+<!-- 选择用户 -->
+<div class="modal fade" id="user-info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" style="width:800px;top:360px;">
+
+        <div class="modal-content">
+
+            <input type="hidden" name="m" value="" />
+
+            <div class="modal-header">
+
+                <button type="button" class="close close_user" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+
+                <h4>选择用户</h4>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="input-group">
+
+                        <input type="text" class="form-control" name="keyword" value="" id="keyword_user" placeholder="请输入用户名称关键字">
+
+                        <span class="input-group-btn"><button type="button" class="btn btn-default" onclick="search_users();">搜索</button></span>
+
+                    </div>
+
+                </div>
+
+                <div id="module-menus" style="padding-top:5px;">
+                    <div style="max-height:500px;overflow:auto;min-width:750px;">
+
+                        <table class="table table-hover" style="min-width:750px;">
+
+                            <tbody id="user_list">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <style>
+        .a_div {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, .3);
+            color: #000;
+            z-index: 10000000000000000;
+        }
+        
+        .confirm {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            height: 164px;
+            text-align: left;
+            line-height: 50px;
+            font-size: 14px;
+            background-color: #fff;
+        }
+        
+        .tishi {
+            width: 100%;
+            height: 42px;
+            line-height: 42px;
+            background-color: #F8F8F8;
+            padding-left: 20px;
+        }
+        
+        .confirm_aife {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding-right: 20px;
+        }
+        
+        .confirm_btn {
+            float: right;
+            width: 60px;
+            height: 28px;
+            line-height: 28px;
+            padding: 0 15px;
+            border: 2px solid ##1E9FFF;
+            background-color: #1E9FFF;
+            color: #fff;
+        }
+        
+        .tishi_con {
+            height: 30px;
+            line-height: 30px;
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        .c{
+            height: 50px;
+            line-height: 18px;
+            font-size: 12px;
+            color:#f60;
+            padding-left: 20px;
+        }
+    </style>
+    <script>
+        $("#cjziqustatus").on("click", function(e) {
+            if($(this).val() == 0) {
+                $(this).attr("checked", true).val(1)
+                $("#ziqu_status").show()
+            } else {
+                $(this).attr("checked", false).val(0)
+                $("#ziqu_status").hide()
+            }
+
+//          console.log($(this).val())
+        })
+        $(".team_status").on("click", function(e) {
+            $(this).attr("checked", true).siblings("input").attr("checked", false)
+            if($(this).val() == 1) {
+                $("#team_if").show()
+            } else {
+                $("#team_if").hide()
+            }
+
+//          console.log($(this).val())
+        })
+        $("#cjmail_status").on("click", function(e) {
+            if($(this).val() == 0) {
+                $(this).attr("checked", true).val(1)
+                $("#mail_status").show()
+            } else {
+                $(this).attr("checked", false).val(0)
+                $("#mail_status").hide()
+            }
+
+//          console.log($(this).val())
+        })
+
+
+        $("#cjYouSong").on("click", "input", function() {
+
+            $(this).attr("checked", true).siblings("input").attr("checked", false)
+        })
+
+        //点击确认关闭
+        $(document).on("click", ".confirm_aife", function() {
+            $(".a_div").css("display", "none");
+        })
+        $(".btn_seluser").click(function() {
+
+            $('#user-info').modal('show');
+            $('#Infos').val(0);
+
+        });
+
+
+        function search_users() {
+            var keyword_user = $("#keyword_user").val();
+            $("#user_list").empty();
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                url: "{$_W['siteroot']}web/index.php?i={$uniacid}&c=site&a=entry&do=alldoctor&op=user&m=hyb_yl",
+                data: {
+                    keyword_user: keyword_user
+                },
+
+                success: function(result) {
+                    console.log(result)
+                    if(result.data == '') {
+                        var html = '未找到该用户...'
+                        $("#user_list").append(html);
+                    } else {
+                        var html = getuserRows(result.data);
+                        $("#user_list").append(html);
+                    }
+
+                }
+            });
+        }
+
+        function seluser() {
+            var user_nickname = $("#user_nickname").val();
+            if(user_nickname != '') {
+                $.ajax({
+                    type: 'post',
+                    dataType: 'json',
+                    url: "{$_W['siteroot']}web/index.php?i={$uniacid}&c=site&a=entry&do=alldoctor&op=user&m=hyb_yl",
+                    data: {
+                        user_nickname: user_nickname
+                    },
+
+                    success: function(result) {
+                        
+                        if(result.success == 1) {
+
+                            $("#select_uid").val(result.data);
+
+                        } else {
+
+                            alert(result.data);
+
+                        }
+                    }
+                });
+
+            }
+
+        }
+
+        function getuserRows(data) {
+
+            var html = '';
+
+            for(i = 0; i < data.length; i++) {
+
+                html += '<tr>';
+
+                html += '<td><img src="' + data[i].z_thumbs + '" style="width:30px;height:30px;padding1px;border:1px solid #ccc"> ' + data[i].z_name + '</td>';
+
+                html += '<td></td>';
+
+                html += '<td></td>';
+
+                html += '<td style="width:80px;"><a href="javascript:;" onclick="select_user(this)" link_name=' + data[i].z_name + ' u_id=' + data[i].zid + '>选择</a></td>';
+
+                html += '</tr>';
+
+            }
+
+            return html;
+
+        }
+
+        function select_user(obj) {
+            var infos = $('#Infos').val();
+
+            if(infos == 0) {
+
+                $("#user_nickname").val($(obj).attr('link_name'));
+                $("#z_name").val($(obj).attr('link_name'));
+                $("#select_uid").val($(obj).attr('u_id'));
+            } else if(infos == 1) {
+                var user_nicknames = $("#user_nicknames").val();
+
+                if(user_nicknames == '') {
+                    var str_user = $(obj).attr('link_name');
+                } else {
+                    var str_user = user_nicknames + '++' + $(obj).attr('link_name');
+                }
+
+                $("#user_nicknames").val(str_user);
+                // $("#select_uid1").val(str_uid);
+            }
+
+            $('#user-info').modal('hide');
+
+            $("#keyword_user").val('');
+
+            $("#user_list").html('');
+
+        }
+    </script>
+
+ 
+
+
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list1.js"></script>
+<script type="text/javascript">
+    $(".pianshen_kaiqi_xuanze_u").click(function(){
+    for(var i = 0;i<$(".pianshen_kaiqi_xuanze_u").length;i++){
+        $(".pianshen_kaiqi_xuanze_u").eq(i).removeClass("pianshen_kaiqi_xuanzes_u").children().eq(0).removeClass("pianshen_kaiqi_xuanze_titles_u").next().removeClass("pianshen_kaiqi_xuanze_imgs_u");
+    }
+    $(this).addClass("pianshen_kaiqi_xuanzes_u").children().eq(0).addClass("pianshen_kaiqi_xuanze_titles_u").next().addClass("pianshen_kaiqi_xuanze_imgs_u");
+    if($(this).children().eq(0).html() == "开启"){
+        $(".pian_lunbu").css("display","block");
+        //1
+        $(".state").val("1");
+    }else{
+        $(".pian_lunbu").css("display","none");
+       //0
+        $(".state").val("0");
+    }
+
+})
+$(".pian_gai_lun_box_img_div").click(function(){
+    $(this).parent().remove()
+})
+</script>
+
+
+
+</html>

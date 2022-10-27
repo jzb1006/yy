@@ -1,0 +1,53 @@
+{template '/common/mainHeader'}
+<ul class="nav nav-tabs" id="myTab">
+	<li><a href="{php echo $this->createWebUrl('apply', array('ac'=>'couponchangecode','op'=>'couponchangecode'))}">兑换码列表</a></li>
+	<li class="active"><a href="javascript:;">添加兑换码</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-form">
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab_basic">
+					<form action="#" method="post" class="form-horizontal form">
+						<div class="panel panel-default">
+							<div class="panel-heading">基本信息</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">创建个数<span class="must-fill">*</span></label>
+									<div class="col-xs-12 col-sm-6">
+										<input type="text" name="num" class="form-control" placeholder="创建个数" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">所属优惠券<span class="must-fill">*</span></label>
+									<div class="col-md-6">
+										<select name="cid" style="width: 100%;">
+											<option value="" >--请选择--</option>
+											{loop $couponlist $list}
+											<option value="{$list['id']}">{$list['title']}</option>
+											{/loop}
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">激活码前缀<span class="must-fill">*</span></label>
+									<div class="col-xs-12 col-sm-6">
+										<input type="text" name="prefix" required autocomplete="off" class="form-control" placeholder="兑换码前缀请输入英文或数字" />
+										<span class="help-block">可以用于区分不同优惠券的兑换码</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label"></label>
+							<div class="col-sm-9">
+								<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+								<input type="hidden" name="token" value="{$_W['token']}" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+	</div>
+</div>
+{template './common/mainfooter'}

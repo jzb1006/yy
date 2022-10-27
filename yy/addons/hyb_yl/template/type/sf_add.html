@@ -1,0 +1,1645 @@
+{template './common/siteheader'}
+<div class="content">
+    <div class="header">
+        <h1 class="page-title" id="J-header-text">新增随访类型</h1>
+        <div class="stats">
+            <a href="{php echo $this->createWeburl('type',array('op'=>'display'))} class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+        </div>
+    </div>
+    <form id="follow_type_edit_form">
+        <div id="J-main-warp" class="main-content">
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">
+            参数设置
+        </div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">随访类型名称 <span class="asterisk">*</span></label>
+                                <input type="text" class="form-control max20 J-isDisable" data-value="" required="" name="name" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">主观资料（S）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_1" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_1">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_11" data-value="11">
+                                        <label class="control-label" for="ck_11">&nbsp;病史及并发症</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_12" data-value="12">
+                                        <label class="control-label" for="ck_12">&nbsp;血糖</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_13" data-value="13">
+                                        <label class="control-label" for="ck_13">&nbsp;药物</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_14" data-value="14">
+                                        <label class="control-label" for="ck_14">&nbsp;饮食</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_15" data-value="15" checked="checked">
+                                        <label class="control-label" for="ck_15">&nbsp;运动</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_16" data-value="16">
+                                        <label class="control-label" for="ck_16">&nbsp;认知及其他</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">客观资料（O）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">生命体征 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_2" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_2">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_21" data-value="21">
+                                            <label class="control-label" for="ck_21">&nbsp;体温(℃)</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_22" data-value="22">
+                                            <label class="control-label" for="ck_22">&nbsp;脉搏(次/分）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_23" data-value="23">
+                                            <label class="control-label" for="ck_23">&nbsp;呼吸(次/分）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_24" data-value="24">
+                                            <label class="control-label" for="ck_24">&nbsp;血压（mmHg）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">身体测量 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_3" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_3">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_31" data-value="31">
+                                            <label class="control-label" for="ck_31">&nbsp;身高（cm）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_32" data-value="32">
+                                            <label class="control-label" for="ck_32">&nbsp;体重（kg）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_33" data-value="33">
+                                            <label class="control-label" for="ck_33">&nbsp;腰围（cm）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_34" data-value="34">
+                                            <label class="control-label" for="ck_34">&nbsp;臀围（cm）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_35" data-value="35">
+                                            <label class="control-label" for="ck_35">&nbsp;体脂率（%）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">血糖 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_4" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_4">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_41" data-value="41">
+                                            <label class="control-label" for="ck_41">&nbsp;血糖（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_42" data-value="42">
+                                            <label class="control-label" for="ck_42">&nbsp;糖化血红蛋白A1C（%）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">血脂 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_5" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_5">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_51" data-value="51">
+                                            <label class="control-label" for="ck_51">&nbsp;总胆固醇 TC （mmol/L）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_52" data-value="52">
+                                            <label class="control-label" for="ck_52">&nbsp;甘油三酯 TG（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_53" data-value="53">
+                                            <label class="control-label" for="ck_53">&nbsp;高密度脂蛋白HDL-C（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_54" data-value="54">
+                                            <label class="control-label" for="ck_54">&nbsp;低密度脂蛋白 LDL-C（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">血尿酸 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_14" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_14">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_141" data-value="141">
+                                            <label class="control-label" for="ck_141">&nbsp;血尿酸（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">并发症相关 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_6" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_6">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_61" data-value="61">
+                                            <label class="control-label" for="ck_41">&nbsp;ACR（mg/g）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_62" data-value="62">
+                                            <label class="control-label" for="ck_62">&nbsp;视网膜病变检查</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_63" data-value="63">
+                                            <label class="control-label" for="ck_63">&nbsp;足部检查</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_64" data-value="64">
+                                            <label class="control-label" for="ck_64">&nbsp;心电图</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">治疗用药 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_7" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_7">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_71" data-value="71">
+                                            <label class="control-label" for="ck_71">&nbsp;治疗用药</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">饮食 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_8" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_8">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_81" data-value="81">
+                                            <label class="control-label" for="ck_81">&nbsp;热量摄入（千卡）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_82" data-value="82">
+                                            <label class="control-label" for="ck_82">&nbsp;糖类</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_83" data-value="83">
+                                            <label class="control-label" for="ck_83">&nbsp;豆鱼肉蛋类</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_84" data-value="84">
+                                            <label class="control-label" for="ck_84">&nbsp;蔬菜类</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_85" data-value="85">
+                                            <label class="control-label" for="ck_85">&nbsp;油脂类</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_86" data-value="86">
+                                            <label class="control-label" for="ck_86">&nbsp;蛋白质类</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 饮食摄入 -->
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">饮食摄入 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_15" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_15">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_151" data-value="151">
+                                            <label class="control-label" for="ck_151">&nbsp;全谷根茎类（份）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_152" data-value="152">
+                                            <label class="control-label" for="ck_152">&nbsp;水果（份）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_153" data-value="153">
+                                            <label class="control-label" for="ck_153">&nbsp;低脂奶类（杯）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_154" data-value="154">
+                                            <label class="control-label" for="ck_154">&nbsp;豆鱼肉蛋类（份）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_155" data-value="155">
+                                            <label class="control-label" for="ck_155">&nbsp;蔬菜类（份）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_156" data-value="156">
+                                            <label class="control-label" for="ck_156">&nbsp;油脂类（份）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">运动 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_9" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_9">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_91" data-value="91">
+                                            <label class="control-label" for="ck_91">&nbsp;运动习惯（有/无）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_92" data-value="92">
+                                            <label class="control-label" for="ck_92">&nbsp;运动形式</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_93" data-value="93">
+                                            <label class="control-label" for="ck_93">&nbsp;时间（分钟）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_94" data-value="94">
+                                            <label class="control-label" for="ck_94">&nbsp;频次（次/周）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_95" data-value="95">
+                                            <label class="control-label" for="ck_95">&nbsp;运动心率（次/分）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">备注及其他情况 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_10" class="J-check-all" data-value="true" checked="checked">
+                                    <label class="control-label" for="cka_10">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_101" data-value="101" checked="checked">
+                                        <label class="control-label" for="ck_101">&nbsp;备注及其他情况（有/无）</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">评估结果（A）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_11" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_11">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_111" data-value="111">
+                                        <label class="control-label" for="ck_111">&nbsp;病程</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_112" data-value="112">
+                                        <label class="control-label" for="ck_112">&nbsp;血糖</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_113" data-value="113">
+                                        <label class="control-label" for="ck_113">&nbsp;药物</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_114" data-value="114">
+                                        <label class="control-label" for="ck_114">&nbsp;并发症</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_115" data-value="115">
+                                        <label class="control-label" for="ck_115">&nbsp;血糖监测</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_116" data-value="116">
+                                        <label class="control-label" for="ck_116">&nbsp;饮食</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_117" data-value="117">
+                                        <label class="control-label" for="ck_117">&nbsp;运动</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_118" data-value="118" checked="checked">
+                                        <label class="control-label" for="ck_118">&nbsp;其他说明</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">计划实施（P）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_12" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_12">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_121" data-value="121">
+                                        <label class="control-label" for="ck_121">&nbsp;病程</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_122" data-value="122">
+                                        <label class="control-label" for="ck_122">&nbsp;血糖</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_123" data-value="123">
+                                        <label class="control-label" for="ck_123">&nbsp;药物</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_124" data-value="124">
+                                        <label class="control-label" for="ck_124">&nbsp;并发症</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_125" data-value="125">
+                                        <label class="control-label" for="ck_125">&nbsp;血糖监测</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_126" data-value="126">
+                                        <label class="control-label" for="ck_126">&nbsp;饮食</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_127" data-value="127">
+                                        <label class="control-label" for="ck_127">&nbsp;运动</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_128" data-value="128" checked="checked">
+                                        <label class="control-label" for="ck_128">&nbsp;备注及其他情况</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">效果评价（E）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_13" class="J-check-all" data-value="true" checked="checked">
+                                    <label class="control-label" for="cka_13">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_131" data-value="131" checked="checked">
+                                        <label class="control-label" for="ck_131">&nbsp;健康饮食（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_132" data-value="132" checked="checked">
+                                        <label class="control-label" for="ck_132">&nbsp;体育锻炼（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_133" data-value="133" checked="checked">
+                                        <label class="control-label" for="ck_133">&nbsp;血糖监测（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_134" data-value="134" checked="checked">
+                                        <label class="control-label" for="ck_134">&nbsp;药物处理（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_135" data-value="135" checked="checked">
+                                        <label class="control-label" for="ck_135">&nbsp;解决问题（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_136" data-value="136" checked="checked">
+                                        <label class="control-label" for="ck_136">&nbsp;疾病共存（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_137" data-value="137" checked="checked">
+                                        <label class="control-label" for="ck_137">&nbsp;风险减少（0-10）</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="panel-footer">
+            <button class="btn btn-primary btn-sml J-submit-btn">保存</button>&nbsp;
+            <button class="btn btn-default btn-sml J-cancel-btn" onclick="window.history.back(-1);">取消</button>
+        </div>
+    </form>
+    <footer>
+	<hr>
+	<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+	<p class="pull-right"> <a href="http://www.DXY.cn" target="_blank">DXY</a> by <a href="http://www.dxy.cn" target="_blank">DXY.CN</a>
+	</p>
+	<p>© 2015 <a href="http://www.dxy.cn" target="_blank">DXY</a></p>
+</footer>
+</div>
+
+<!-- 随访结论表单填写模板 -->
+<script type="text/template" id="J-follow-type-tpl">
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">
+            参数设置
+        </div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">随访类型名称 <span class="asterisk">*</span></label>
+                                <input type="text" class="form-control max20 J-isDisable" data-value="<%-name%>"
+                                       required="" name="name" value="<%-name%>">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">主观资料（S）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_1" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_1">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_11" data-value="11">
+                                        <label class="control-label" for="ck_11">&nbsp;病史及并发症</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_12" data-value="12">
+                                        <label class="control-label" for="ck_12">&nbsp;血糖</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_13" data-value="13">
+                                        <label class="control-label" for="ck_13">&nbsp;药物</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_14" data-value="14">
+                                        <label class="control-label" for="ck_14">&nbsp;饮食</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_15" data-value="15">
+                                        <label class="control-label" for="ck_15">&nbsp;运动</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_16" data-value="16">
+                                        <label class="control-label" for="ck_16">&nbsp;认知及其他</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">客观资料（O）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">生命体征 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_2" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_2">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_21" data-value="21">
+                                            <label class="control-label" for="ck_21">&nbsp;体温(℃)</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_22" data-value="22">
+                                            <label class="control-label" for="ck_22">&nbsp;脉搏(次/分）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_23" data-value="23">
+                                            <label class="control-label" for="ck_23">&nbsp;呼吸(次/分）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_24" data-value="24">
+                                            <label class="control-label" for="ck_24">&nbsp;血压（mmHg）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">身体测量 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_3" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_3">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_31" data-value="31">
+                                            <label class="control-label" for="ck_31">&nbsp;身高（cm）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_32" data-value="32">
+                                            <label class="control-label" for="ck_32">&nbsp;体重（kg）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_33" data-value="33">
+                                            <label class="control-label" for="ck_33">&nbsp;腰围（cm）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_34" data-value="34">
+                                            <label class="control-label" for="ck_34">&nbsp;臀围（cm）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_35" data-value="35">
+                                            <label class="control-label" for="ck_35">&nbsp;体脂率（%）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">血糖 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_4" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_4">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_41" data-value="41">
+                                            <label class="control-label" for="ck_41">&nbsp;血糖（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_42" data-value="42">
+                                            <label class="control-label" for="ck_42">&nbsp;糖化血红蛋白A1C（%）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">血脂 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_5" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_5">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_51" data-value="51">
+                                            <label class="control-label" for="ck_51">&nbsp;总胆固醇 TC （mmol/L）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_52" data-value="52">
+                                            <label class="control-label" for="ck_52">&nbsp;甘油三酯 TG（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_53" data-value="53">
+                                            <label class="control-label" for="ck_53">&nbsp;高密度脂蛋白HDL-C（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_54" data-value="54">
+                                            <label class="control-label" for="ck_54">&nbsp;低密度脂蛋白 LDL-C（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">血尿酸 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_14" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_14">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_141" data-value="141">
+                                            <label class="control-label" for="ck_141">&nbsp;血尿酸（mmol/L）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">并发症相关 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_6" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_6">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_61" data-value="61">
+                                            <label class="control-label" for="ck_41">&nbsp;ACR（mg/g）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_62" data-value="62">
+                                            <label class="control-label" for="ck_62">&nbsp;视网膜病变检查</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_63" data-value="63">
+                                            <label class="control-label" for="ck_63">&nbsp;足部检查</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_64" data-value="64">
+                                            <label class="control-label" for="ck_64">&nbsp;心电图</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">治疗用药 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_7" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_7">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_71" data-value="71">
+                                            <label class="control-label" for="ck_71">&nbsp;治疗用药</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">饮食 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_8" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_8">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_81" data-value="81">
+                                            <label class="control-label" for="ck_81">&nbsp;热量摄入（千卡）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_82" data-value="82">
+                                            <label class="control-label" for="ck_82">&nbsp;糖类</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_83" data-value="83">
+                                            <label class="control-label" for="ck_83">&nbsp;豆鱼肉蛋类</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_84" data-value="84">
+                                            <label class="control-label" for="ck_84">&nbsp;蔬菜类</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_85" data-value="85">
+                                            <label class="control-label" for="ck_85">&nbsp;油脂类</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_86" data-value="86">
+                                            <label class="control-label" for="ck_86">&nbsp;蛋白质类</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 饮食摄入 -->
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">饮食摄入 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_15" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_15">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_151" data-value="151">
+                                            <label class="control-label" for="ck_151">&nbsp;全谷根茎类（份）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_152" data-value="152">
+                                            <label class="control-label" for="ck_152">&nbsp;水果（份）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_153" data-value="153">
+                                            <label class="control-label" for="ck_153">&nbsp;低脂奶类（杯）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_154" data-value="154">
+                                            <label class="control-label" for="ck_154">&nbsp;豆鱼肉蛋类（份）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_155" data-value="155">
+                                            <label class="control-label" for="ck_155">&nbsp;蔬菜类（份）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_156" data-value="156">
+                                            <label class="control-label" for="ck_156">&nbsp;油脂类（份）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group mb30">
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">运动 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_9" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_9">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_91" data-value="91">
+                                            <label class="control-label" for="ck_91">&nbsp;运动习惯（有/无）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_92" data-value="92">
+                                            <label class="control-label" for="ck_92">&nbsp;运动形式</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_93" data-value="93">
+                                            <label class="control-label" for="ck_93">&nbsp;时间（分钟）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_94" data-value="94">
+                                            <label class="control-label" for="ck_94">&nbsp;频次（次/周）</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <div class="input-group mr20 text-left">
+                                            <input type="checkbox" id="ck_95" data-value="95">
+                                            <label class="control-label" for="ck_95">&nbsp;运动心率（次/分）</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <label class="control-label mr20">备注及其他情况 </label>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_10" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_10">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_101" data-value="101">
+                                        <label class="control-label" for="ck_101">&nbsp;备注及其他情况（有/无）</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">评估结果（A）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_11" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_11">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_111" data-value="111">
+                                        <label class="control-label" for="ck_111">&nbsp;病程</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_112" data-value="112">
+                                        <label class="control-label" for="ck_112">&nbsp;血糖</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_113" data-value="113">
+                                        <label class="control-label" for="ck_113">&nbsp;药物</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_114" data-value="114">
+                                        <label class="control-label" for="ck_114">&nbsp;并发症</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_115" data-value="115">
+                                        <label class="control-label" for="ck_115">&nbsp;血糖监测</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_116" data-value="116">
+                                        <label class="control-label" for="ck_116">&nbsp;饮食</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_117" data-value="117">
+                                        <label class="control-label" for="ck_117">&nbsp;运动</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_118" data-value="118">
+                                        <label class="control-label" for="ck_118">&nbsp;其他说明</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">计划实施（P）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_12" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_12">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_121" data-value="121">
+                                        <label class="control-label" for="ck_121">&nbsp;病程</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_122" data-value="122">
+                                        <label class="control-label" for="ck_122">&nbsp;血糖</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_123" data-value="123">
+                                        <label class="control-label" for="ck_123">&nbsp;药物</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_124" data-value="124">
+                                        <label class="control-label" for="ck_124">&nbsp;并发症</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_125" data-value="125">
+                                        <label class="control-label" for="ck_125">&nbsp;血糖监测</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_126" data-value="126">
+                                        <label class="control-label" for="ck_126">&nbsp;饮食</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_127" data-value="127">
+                                        <label class="control-label" for="ck_127">&nbsp;运动</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_128" data-value="128">
+                                        <label class="control-label" for="ck_128">&nbsp;备注及其他情况</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading no-collapse J-follow-title">效果评价（E）</div>
+        <div class="panel-body collapse in">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb10 form-inline">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cka_13" class="J-check-all" data-value="true">
+                                    <label class="control-label" for="cka_13">&nbsp;全选</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-inline">
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_131" data-value="131">
+                                        <label class="control-label" for="ck_131">&nbsp;健康饮食（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_132" data-value="132">
+                                        <label class="control-label" for="ck_132">&nbsp;体育锻炼（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_133" data-value="133">
+                                        <label class="control-label" for="ck_133">&nbsp;血糖监测（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_134" data-value="134">
+                                        <label class="control-label" for="ck_134">&nbsp;药物处理（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_135" data-value="135">
+                                        <label class="control-label" for="ck_135">&nbsp;解决问题（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_136" data-value="136">
+                                        <label class="control-label" for="ck_136">&nbsp;疾病共存（0-10）</label>
+                                    </div>
+                                </div>
+                                <div class="checkbox">
+                                    <div class="input-group mr20 text-left">
+                                        <input type="checkbox" id="ck_137" data-value="137">
+                                        <label class="control-label" for="ck_137">&nbsp;风险减少（0-10）</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- 随访结论表单填写模板 -->
+
+
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action="#">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+<script type="text/javascript">
+    require(['follow_type_edit']);
+</script>
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

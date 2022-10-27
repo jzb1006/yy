@@ -1,0 +1,93 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=ceshi.jblblist&ac=jblblist">疾病类别列表</a>
+		</li>
+     
+  
+	</ul>
+	<div class="app-content">
+		<div class="app-filter">
+			<div class="filter-action">
+				<a href="/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=ceshi.addjblb&ac=addjblb" class="btn btn-primary">添加疾病类别</a>
+			</div>
+		</div>
+		<div class="app-table-list">
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>类别名称</th>
+							<th>描述</th>
+							<th>是否开启</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+                      {loop $row $item}
+						<tr>
+							<td> {$item['ctname']}</td>
+							<td>{$item['describe']}</td>
+					        <td>{if $item['state'] == 0}<span class="label label-default">开启</span>{/if}
+						    	{if $item['state'] == 1}<span class="label label-success">显示</span>{/if}
+							</td>
+							<td>
+								<a href="<?php echo $this->copysiteUrl('ceshi.edit_jbtype');?>&id={$item['id']}&ac=addjblb&page={$_GPC['page']}">编辑</a> -
+								<a href="<?php echo $this->copysiteUrl('ceshi.delcate_jb');?>&id={$item['id']}">删除</a>
+							</td>
+						</tr>
+                      {/loop}
+					</tbody>
+				</table>
+			</div>
+			<div class="app-table-foot clearfix">
+				<div class="pull-left">
+
+				</div>
+				<div class="pull-right">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<script>
+	require(['bootstrap'], function ($) {
+			    $('[data-toggle="tooltip"]').tooltip({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="popover"]').popover({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="dropdown"]').dropdown({
+		            container: $(document.body)
+		        });
+		    });
+			myrequire(['js/init']);
+					$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+				$('.app-login-info-sel').show();
+			});
+			$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+				$('.app-login-info-sel').hide();
+			});
+			$('.app-login-info-sel .login-out').hover(function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+			},function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+			});
+</script>
+</body>
+</html>

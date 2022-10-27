@@ -1,0 +1,11 @@
+.dynamic-tab-pane-control.tab-pane {position:	relative;}
+.dynamic-tab-pane-control .tab-row{border-bottom: #dce4e5 solid 1px;margin-bottom: 20px;}
+.dynamic-tab-pane-control .tab-row:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.dynamic-tab-pane-control .tab-row .tab {float: left;margin-right: 10px;height: 34px;line-height: 34px;color: gray;display: block;text-align: center;text-align: center;cursor: pointer;margin: 0 34px;padding: 0 0px 10px;}
+.dynamic-tab-pane-control .tab-row .tab a{font-size: 16px;font-weight: normal;color: #62686A;text-decoration: none;cursor: pointer;line-height: 34px;display: block;}
+.dynamic-tab-pane-control .tab-row .tab.selected {height: 34px;position: relative;}
+.dynamic-tab-pane-control .tab-row .tab.selected a{color: #35a7ba;}
+.dynamic-tab-pane-control .tab-row .tab.selected:after {content: '';position: absolute;width: 60px;height: 2px;background: #35a7ba;bottom: -1px;left: 50%;margin-left: -30px;}
+
+.dynamic-tab-pane-control .tab-row .tab.selected.hover{background:#fff;}
+.dynamic-tab-pane-control .tab-page {border: 0px solid #DDD;background: #fff;color: #333;clear:both;}

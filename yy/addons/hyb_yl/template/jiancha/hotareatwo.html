@@ -1,0 +1,169 @@
+{template './common/mainHeader'}
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#">运营地区列表</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-list">
+			<form action="" method="get" class="form-horizontal" role="form">
+				<input type="hidden" name="c" value="site" />
+				<input type="hidden" name="a" value="entry" />
+				<input type="hidden" name="m" value="hyb_yl" />
+				<input type="hidden" name="op" value="hotareatwo" />
+				<input type="hidden" name="ac" value="hotareaIndex" />
+				<input type="hidden" name="do" value="jiancha" />
+				<input type="hidden" name="parentid" value="{$parentid}" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label">是否开启</label>
+					<div class="col-sm-9">
+						<div class="btn-group">
+							<a href="{php echo $this->createWebUrl('jiancha',array('op'=>'hotareatwo','ac'=>'hotareaIndex','status'=>'','is_hot'=>$is_hot,'keyword'=>$keyword,'parentid'=>$parentid))}" class="btn {if $status == ''}btn-primary{else}btn-default{/if}">不限</a>
+							<a href="{php echo $this->createWebUrl('jiancha',array('op'=>'hotareatwo','ac'=>'hotareaIndex','status'=>'1','is_hot'=>$is_hot,'keyword'=>$keyword,'parentid'=>$parentid))}" class="btn {if $status == '1'}btn-primary{else}btn-default{/if}">开启</a>
+							<a href="{php echo $this->createWebUrl('jiancha',array('op'=>'hotareatwo','ac'=>'hotareaIndex','status'=>'0','is_hot'=>$is_hot,'keyword'=>$keyword,'parentid'=>$parentid))}" class="btn {if $status == '0'}btn-primary{else}btn-default{/if}">禁用</a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">是否热门</label>
+					<div class="col-sm-9">
+						<div class="btn-group">
+							<a href="{php echo $this->createWebUrl('jiancha',array('op'=>'hotareatwo','ac'=>'hotareaIndex','status'=>$status,'is_hot'=>'','keyword'=>$keyword,'parentid'=>$parentid))}" class="btn {if $is_hot == ''}btn-primary{else}btn-default{/if}">不限</a>
+							<a href="{php echo $this->createWebUrl('jiancha',array('op'=>'hotareatwo','ac'=>'hotareaIndex','status'=>$status,'is_hot'=>'1','keyword'=>$keyword,'parentid'=>$parentid))}" class="btn {if $is_hot == '1'}btn-primary{else}btn-default{/if}">热门</a>
+							<a href="{php echo $this->createWebUrl('jiancha',array('op'=>'hotareatwo','ac'=>'hotareaIndex','status'=>$status,'is_hot'=>'0','keyword'=>$keyword,'parentid'=>$parentid))}" class="btn {if $is_hot == '0'}btn-primary{else}btn-default{/if}">普通</a>
+						</div>
+					</div>
+				</div>
+				<div class="form-group form-inline">
+					<label class="col-sm-2 control-label">地区搜索</label>
+					<div class="col-sm-9">
+						<!-- <select name="keywordtype" class="form-control">
+							<option value="0" {if $_GPC['keywordtype']==0}selected="selected"{/if}>请选择</option>
+							<option value="1" {if $_GPC['keywordtype']==1}selected="selected"{/if}>地区名称</option>
+							<option value="2" {if $_GPC['keywordtype']==2}selected="selected"{/if}>所属代理</option>
+						</select> -->
+						<input type="text" name="keyword" class="form-control" value="{$_GPC['keyword']}" placeholder="请输入关键字"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-md-9">
+						<button class="btn btn-primary">筛选</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="app-filter">
+			<div class="filter-action">
+				<a href="{php echo $this->createWeburl('jiancha',array('op'=>'hotareaedit','ac'=>'hotareaedit','parentid'=>$parentid))}" class="btn btn-primary">添加地区</a>
+				
+			</div>
+		</div> 
+		<form class="form form-horizontal form-validate" action="" method="post">
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th style="width:100px; text-align:center;">编码</th>
+							<th style="width:100px; text-align:center;">名称</th>
+							<!-- <th style="width:100px; text-align:center;">分组</th> -->
+							<th style="width:50px; text-align:center;">排序(数字越大越靠前)</th>
+							<!-- <th style="width:100px; text-align:center;">所属代理</th> -->
+							<th style="width:100px; text-align:center;">下级地区</th>
+							<th style="width:100px; text-align:center;">是否开启</th>
+							<th style="width:100px; text-align:center;">是否热门</th>
+							<th style="width:100px; text-align:center;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					{loop $list $address}
+						<tr>
+							<td style="white-space: normal;" class="text-center">{$address['id']}</td>
+							<td class="text-center">{$address['name']}</td>
+							<!-- <td class="text-center">
+								<select name="group[{$address['id']}]" style="width: 100%;" class="select2">
+									<option value="0" {if empty($address['gid'])}selected="selected"{/if}>请选择地区分组</option>
+									{loop $remark_arr $row}
+							            <option value="{$row['id']}" {if $address['gid'] == $row['id']}selected="selected"{/if}>{$row['name']}</option>
+									{/loop}
+						        </select>
+							</td> -->
+							<td class="text-center">
+								<span class="form-control">{$address['sort']}</span>
+								<!-- <input type="number" class="form-control" value="{$address['sort']}" name="sort" /> -->
+							</td>
+							<!-- <td class="text-center">{$address['agent']}</td> -->
+							<td class="text-center">
+							    <a class="btn btn-success btn-sm" href="{php echo $this->createWebUrl('jiancha',array('op'=>'hotareathree','ac'=>'hotareaIndex','parentid'=>$address['parentid']))}">下级地区</a>
+							</td>
+							<td class="text-center">
+								<input type="checkbox" class="js-switch" onchange="changestatus('{$address['id']}','{$address['status']}','{$address['level']}')" name="status" {if $address['status'] == 1} checked="checked" {/if}>
+							</td>
+							<td class="text-center">
+								<input type="checkbox" class="js-switch" onchange="changehot('{$address['id']}','{$address['is_host']}','{$address['level']}')" name="is_hots" {if $address['is_host'] == 1} checked="checked" {/if}>
+							</td>
+							<td class="text-center">
+								<a class="btn btn-success btn-sm" data-toggle="ajaxModal" href="{php echo $this->createWebUrl('jiancha',array('op'=>'hotareaedit','ac'=>'hotareaedit','id'=>$address['id'],'parentid'=>$parentid))}">编辑地区</a>
+								<a class="btn btn-success btn-sm" data-toggle="ajaxModal" data-confirm="删除地区会导致下级地区同步删除，确定要删除吗？" href="{php echo $this->createWebUrl('jiancha',array('op'=>'hotareadel','ac'=>'hotareadel','id'=>$address['id'],'level'=>$address['level']))}">删除地区</a>
+							</td>
+						</tr>
+					{/loop}
+					</tbody>
+				</table>
+			</div>
+			{$pager}
+			
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	
+	function changestatus(id,status,level)
+	{
+		if(status == '1')
+		{
+			var  statuss = '0';
+		}else{
+			 var statuss = '1';
+		}
+		$.ajax({
+            url:"/index.php?c=site&a=entry&do=jiancha&op=change_area&ac=change_area&m=hyb_yl&id="+id+"&type=status&status="+statuss + '&level='+level,
+            type:"post",
+            dataType:"json",
+            cache: false,
+            processData: false,
+            contentType: false,
+            async:false,
+            success:function(data){
+                
+            },
+            error:function(){
+                
+            }
+        });
+	}
+	function changehot(id,hot,level)
+	{
+		if(hot == '1')
+		{
+			var  hots = '0';
+		}else{
+			 var hots = '1';
+		}
+		$.ajax({
+            url:"/index.php?c=site&a=entry&do=jiancha&op=change_area&m=hyb_yl&id="+id+"&type=hot&hot="+hots+"&level="+level,
+            type:"post",
+            dataType:"json",
+            cache: false,
+            processData: false,
+            contentType: false,
+            async:false,
+            success:function(data){
+            },
+            error:function(){
+            }
+        });
+	}
+</script>
+{template './common/mainfooter'}

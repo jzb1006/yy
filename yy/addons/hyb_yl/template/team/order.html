@@ -1,0 +1,458 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+	<style type='text/css'>
+		.trhead td{background:#efefef;text-align: center}
+				.trbody td{text-align: center;vertical-align:top;border-left:1px solid #f2f2f2;overflow: hidden;font-size:12px;}
+				.trorder{background:#f8f8f8;border:1px solid #f2f2f2;text-align:left;}
+				.ops{border-right:1px solid #f2f2f2;text-align: center;}
+				.ops a,.ops span{margin: 3px 0;}
+				.table-top{padding: 0 20px;background: #f7f7f7;border-bottom: 1px solid #e5e5e5;}
+				.table-top .op:hover{color: #000;}
+				.tables{border:1px solid #e5e5e5;font-size: 14px;line-height: 18px;}
+				.tables:hover{border:1px solid #1ab394;}
+				.table-row,.table-header,.table-footer,.table-top{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;justify-content: center;-webkit-justify-content: center;-webkit-align-content: space-around;align-content: space-around;}
+				.tables .table-row.table-top>div{padding: 10.5px 0;}
+				.tables .table-row .ops.list-inner{border-right:none;}
+				.tables .table-row .buyremark{background:#fdeeee;color:red;flex: 1;padding: 10px 20px!important;}
+				.tables .table-row .remark{background:#ffffcc;color:red;flex: 1;padding: 10px 20px!important;}
+				.tables .list-inner{border-right: 1px solid #efefef;vertical-align: middle;}
+				.table-row .goods-des .title{width:180px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+				.table-row .goods-des{border-right: 1px solid #efefef;vertical-align: middle;width:400px;text-align: left;padding: 14px 0;}
+				.table-row .list-inner{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;text-align: center;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-align-items: center;align-items: center;-webkit-justify-content: center;justify-content: center;-webkit-flex-direction: column;flex-direction: column;}
+				.saler>div{width:130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+				.table-row .list-inner.ops, .table-row .list-inner.paystyle{-webkit-flex-direction: column;flex-direction: column;-webkit-justify-content: center;justify-content: center;}
+				.table-header{background:#f8f8f8;height: 40px;line-height: 40px;padding: 0 20px;font-weight: 600;}
+				.table-header .others{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;text-align: center;}
+				.table-footer{border-top: 1px solid #efefef;margin:0 20px;padding: 10.5px 0;}
+				
+				.fixed-header div{padding:0;}
+				.fixed-header.table-header{display: none;}
+				.fixed-header.table-header.active{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;}
+				.shop{display: inline-block;width:48px;height:18px;text-align: center;border:1px solid #1b86ff;color: #1b86ff;margin-right: 10px;}
+				.min_program{display: inline-block;width:48px;height:18px;text-align: center;border:1px solid #ff5555;color: #ff5555;margin-right: 10px;}
+				.ordertype{display: inline-block;height:18px;margin-right: 10px;border-radius: 0;font-weight: 500;}
+				.popover{border: 1px solid #efefef;border: 1px solid #efefef;border-radius: 6px;-webkit-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));-moz-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .1));-o-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .1));filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));padding: 0!important;}
+				.popover-content{padding: 10px!important;font-size:12px;}
+				.popover-content table{margin-bottom: 0!important;}
+				.popover.right>.arrow{border-right-color: #efefef;}
+				.cored{color: orangered;}
+				.table-footer>div, .table-top>div{
+					-webkit-box-flex: 1;
+					-ms-flex: 1;
+					flex: 1;
+				}
+	</style>
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="javascript:;">收益明细</a>
+		</li>
+	</ul>
+<form action="" method="post" class="form-horizontal" role="form" >
+	<div class="app-content">
+		<div class="app-filter">
+			<div class="filter-list">
+				<form action="" method="post" class="form-horizontal">
+					<input type="hidden" name="zid" value="{$zid}">
+					<div class="form-group" style="max-width: 1180px;">
+						<label class="col-sm-2 control-label">订单类型</label>
+						<div class="col-sm-10">
+							<div class="btn-group">
+								<a href="{php echo $this->createWebUrl('team',array('op'=>'shouyi','ac'=>'shouyi','keywordtype'=>$keywordtype,'keyword'=>$keyword,'server'=>'','zid'=>$zid))}" class="btn {if $server == ''} btn-primary {else} btn-default {/if}">不限</a>
+							{loop $server_arr $fuwu}
+								<a href="{php echo $this->createWebUrl('team',array('op'=>'shouyi','ac'=>'shouyi','keywordtype'=>$keywordtype,'keyword'=>$keyword,'server'=>$fuwu['key_words'],'zid'=>$zid))}" class="btn {if $server == $fuwu['key_words']} btn-primary {else} btn-default {/if}">{$fuwu['titlme']}</a>
+							{/loop}
+							</div>
+						</div>
+					</div>
+					<div class="form-group form-inline">
+						<label class="col-sm-2 control-label">订单搜索</label>
+						<div class="col-sm-9">
+							<select name="keywordtype" class="form-control">
+								<option value="" {if $keywordtype == ''} selected="" {/if}>订单搜索</option>
+								<option value="1" {if $keywordtype == '1'} selected="" {/if}>用户姓名</option>
+								<option value="2" {if $keywordtype == '2'} selected="" {/if}>用户电话</option>
+								<option value="3" {if $keywordtype == '3'} selected="" {/if}>订单号</option>
+							</select>
+							<input type="text" name="keyword" class="form-control" value="{$keyword}" placeholder="请输入关键字" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label"></label>
+						<div class="col-md-9">
+							<button class="btn btn-primary btn-sml J-submit-btn" type="submit" name="shaixuan">筛选</button>
+							<input name="token" type="hidden" value="{$_W['token']}" />
+							<input type="file" id="excelUpload" class="hide" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="app-table-list">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="">
+						<div class="table-header">
+							<!-- <div style='width: 400px;text-align: left;'>订单信息</div> -->
+							<div class="others">用户信息</div>
+							<!-- <div class="others">支付方式</div> -->
+							<div class="others">费用信息</div>
+							<div class="others">时间信息</div>
+							<!-- <div class="others">状态</div> -->
+							<div class="others">操作</div>
+						</div>
+						<div class="table-row">
+							<div style='height:20px;padding:0;border-top:none;'>&nbsp;</div>
+						</div>
+						{loop $list $item}
+						<div class="tables">
+
+							<div class='table-row table-top'>
+								<div style="text-align: left;color: #8f8e8e;">
+									<span style="font-weight: bold;margin-right: 10px;color: #2d2d31">
+										<span class="label label-info ordertype">{$item['typs']}</span> {$item['times']}
+									</span>
+									订单编号：{$item['back_orser']}
+								</div>
+								<div class='aops text-right'>
+
+								<!-- 	<i class="icow icow-shutDown" title="订单退款" style="color: #999;margin-right: 3px;display: inline-block;vertical-align: middle"></i>
+									订单退款
+									&nbsp -->
+									</a>
+
+								<!-- 	<a class='op' data-toggle='ajaxPost' href="/index.php?c=site&a=entry&m=hyb_yl&p=order&ac=wlOrder&do=createdisorder&id={$item['id']}&type=a" data-confirm="确认生成相关分销订单？">
+										<i class="icow icow-shutDown" title="查看详情" style="color: #999;margin-right: 3px;display: inline-block;vertical-align: middle"></i>
+										生成推客订单
+										&nbsp
+									</a> -->
+								</div>
+							</div>
+
+							<div class='table-row' style="margin:0  20px">
+								
+
+								<div class="list-inner saler" style='text-align: center;'>
+									<div>
+										<a href="/index.php?c=site&a=entry&op=adduser&do=copysite&m=hyb_yl&act=profile.adduser&ac=notice&u_id={$item['u_id']}">
+											{$item['u_name']}</a>
+										<br />
+										{$item['names']}
+										<br />{$item['tel']}
+										<br />MID:{$item['randnum']}
+									</div>
+								</div>
+								<!-- <div class="list-inner paystyle" style='text-align:center;'>
+									<span>
+										<i class="icow icow-yue text-warning" style="font-size: 17px;"></i>
+										<span>微信支付</span>
+									</span>
+								</div> -->
+								{if $item['typs'] == '在线开方'}
+								<a class="list-inner" data-toggle='popover' data-html='true' data-placement='right' data-trigger="hover" data-content="<table style='width:100%;'>
+ <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>下单费用：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['money']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>总开方费：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['money']}</td>
+	                                    </tr>
+	         <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>药师抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{php echo $item['yaoshimoney'] ? $item['yaoshimoney'] : '0.00'}</td>
+	                                    </tr>
+                                         <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>平台抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{php echo $item['ptmoney'] ? $item['ptmoney'] : '0.00'}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td style='border:none;text-align:right;padding: 5px!important;'>分销支出：</td>
+	                                        <td  style='border:none;text-align:right;color:green;padding: 5px!important;'>-￥{php echo $item['tkmoney'] ? $item['tkmoney'] : '0.00'}</td>
+	                                    </tr>
+                                                                                                                                                       <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>实际到账：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{php echo $item['money']-$item['ptmoney']-$item['tkmoney']-$item['yaoshimoney']}</td>
+	                                    </tr>                                  	                                    
+	                                    
+	
+	                                </table>
+	                            ">
+									<div style='text-align:center'>
+										￥{php echo $item['money']-$item['ptmoney']-$item['tkmoney']-$item['yaoshimoney']} </div>
+								</a>
+								{else if $item['typs'] == '在线挂号'}
+								<a  class="list-inner" data-toggle='popover' data-html='true' data-placement='right' data-trigger="hover" data-content="<table style='width:100%;'>
+	                                    <td  style='border:none;text-align:right;padding: 5px!important;'>平台抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['ptmoney']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>机构抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['hosmoney']}</td>
+	                                    </tr>
+	         <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>分销支出：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{php echo $item['tk_one']+$item['tk_two']}</td>
+	                                    </tr>
+                                         <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>优惠券抵扣：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['coupon_dk']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>会员抵扣：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['card_dk']}</td>
+	                                    </tr>
+	                                    	                                    	                                    	                                    	                                    <tr>
+	                                        <td style='border:none;text-align:right;padding: 5px!important;'>应收款：</td>
+	                                        <td  style='border:none;text-align:right;color:green;padding: 5px!important;'>￥{$item['moneyss']}</td>
+	                                    </tr>
+	
+	                                </table>
+	                    "
+	                    	>
+	                        	<div style='text-align:center' >
+	                                	￥{$item['money']}                                	                            </div>
+	                        </a>
+	                        {else if $typs == '商品订单'}
+	                        <a class="list-inner" data-toggle='popover' data-html='true' data-placement='right' data-trigger="hover" data-content="<table style='width:100%;'>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>商品小计：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['totalMoney']}</td>
+	                                    </tr>
+<tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>平台抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['ptmoney']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>分销支出：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{php echo $item['tkmoney']?$item['tkmoney']:0}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>药师抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['ysmoney']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>开药服务费支出：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['docmoney']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>会员卡抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['vip_dk']}</td>
+	                                    </tr>
+	                                        <td style='border:none;text-align:right;padding: 5px!important;'>机构实收款：</td>
+	                                        <td  style='border:none;text-align:right;color:green;padding: 5px!important;'>￥{$item['moneys']}</td>
+	                                    </tr>
+	
+	                                </table>
+	                    ">
+									<div style='text-align:center'>
+										￥{$item['moneys']} </div>
+
+								</a>
+								{else if $item['typs'] == '体检订单'}
+								<a class="list-inner" data-toggle='popover' data-html='true' data-placement='right' data-trigger="hover" data-content="<table style='width:100%;'>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>机构实收：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['moneys']}</td>
+	                                    </tr>
+	           <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>平台抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['ptmoney']}</td>
+	                                    </tr>
+	                                      <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>分销支出：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{php echo $item['tk_one']+$item['tk_two']}</td>
+	                                    </tr>
+                                                                                                                                                       <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>会员折扣：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['card_dk']}</td>
+	                                    </tr>
+	                                    	                                    	                                    	                                    	                                    <tr>
+	                                        <td style='border:none;text-align:right;padding: 5px!important;'>应收款：</td>
+	                                        <td  style='border:none;text-align:right;color:green;padding: 5px!important;'>￥{$item['moneys']}</td>
+	                                    </tr>
+	
+	                                </table>
+	                    ">
+									<div style='text-align:center'>
+										￥{$item['moneys']} </div>
+								</a>
+								{else}
+								<a class="list-inner" data-toggle='popover' data-html='true' data-placement='right' data-trigger="hover" data-content="<table style='width:100%;'>
+ <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>平台抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['ptmoney']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>机构抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['hosmoney']}</td>
+	                                    </tr>
+	         <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>分销支出：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{php echo $item['tk_one'] + $item['tk_two']}</td>
+	                                    </tr>
+                                         <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>优惠券抵扣：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['coupon_dk']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td style='border:none;text-align:right;padding: 5px!important;'>会员抵扣：</td>
+	                                        <td  style='border:none;text-align:right;color:green;padding: 5px!important;'>-￥{php echo $item['card_dk']}</td>
+	                                    </tr>
+                                                                                                                                                       <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>年卡折扣：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>-￥{$item['year_dk']}</td>
+	                                    </tr>                                  	                                    
+	                                    <tr>
+	                                        <td style='border:none;text-align:right;padding: 5px!important;'>应收款：</td>
+	                                        <td  style='border:none;text-align:right;color:green;padding: 5px!important;'>￥{$item['moneyss']}</td>
+	                                    </tr>
+	
+	                                </table>
+	                            ">
+									<div style='text-align:center'>
+										￥{$item['moneyss']} </div>
+								</a>
+								{/if}
+								<div class="list-inner paystyle">
+
+									<!-- 时间信息 -->
+									<span>
+										<i class="icow icow-yue text-warning" style="font-size: 13px;"></i>
+										<br />{$item['times']}
+								</div>
+								<div class="list-inner paystyle" style="border-right: 0">
+								{if $item['typs'] == '电话问诊'}
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWebUrl('ask',array('op'=>'telaskdetails','id'=>$item['id'],'ac'=>'telask','hid'=>$_SESSION['hid']))}" title="">查看详情</a>
+								{else if $item['typs'] == '视频问诊'}
+									<a class="btn btn-primary btn-sm" href="/index.php?c=site&a=entry&do=ask&op=videoaskdetails&ac=videoask&m=hyb_yl&id={$item['id']}&hid={$_SESSION['hid']}" title="">查看详情</a>
+								{else if $item['typs'] == '图文问诊'}
+									<a class="btn btn-primary btn-sm" href="/index.php?c=site&a=entry&do=ask&op=askdetails&ac=asklist&m=hyb_yl&id={$item['id']}&hid={$_SESSION['hid']}" title="">查看详情</a>
+								{else if $item['typs'] == '在线开方'}
+									<a class="btn btn-primary btn-sm" href="/index.php?c=site&a=entry&do=ask&op=squareaskdetails&ac=squareask&m=hyb_yl&c_id={$item['c_id']}&hid={$_SESSION['hid']}" title="">查看详情</a>
+								{else if $item['typs'] == '在线挂号'}
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWebUrl('remoteregistration',array('op'=>'orderdetail','id'=>$item['id'],'hid'=>$_SESSION['hid']))}" title="">详情</a>
+								{else if $item['typs'] == '手术快约'}
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWebUrl('ask',array('id'=>$item['id'],'ac'=>'operativeaskdetails','op'=>'operativeaskdetails','hid'=>$_SESSION['hid']))}" title="">查看详情</a>
+								{else if $item['typs'] == '体检解读'}
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWebUrl('ask',array('id'=>$item['id'],'ac'=>'informaskdetails','op'=>'informaskdetails','hid'=>$_SESSION['hid']))}" title="">查看详情</a> 
+								{else if $item['typs'] == '商品订单'}
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWebUrl('order',array('op'=>'yporderxq','ac'=>'yporderxq','id'=>$item['id'],'hid'=>$_SESSION['hid']))}" title="">查看详情</a>
+								{else if $item['typs'] == '体检订单'}
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWebUrl('order',array('op'=>'tjorderxq','ac'=>'tjorderxq','id'=>$item['id'],'bm_id'=>$item['bm_id']))}" title="">查看详情</a>
+								{/if}
+									
+								</div>
+
+
+
+
+
+								<!-- <div class="list-inner" style='text-align:center'>
+									{if $item['ifpay'] =='0'}
+									<span class="label label-warning">待支付</span>
+									{/if}
+									{if $item['ifpay'] =='1'}
+									<span class="label label-warning">已支付待接诊</span>
+									{/if}
+									{if $item['ifpay'] =='3'}
+									<span class="label label-warning">已完成待评价</span>
+									{/if}
+									{if $item['ifpay'] =='4'}
+									<span class="label label-warning">已评价</span>
+									{/if}
+									{if $item['ifpay'] =='5'}
+									<span class="label label-warning">申请退款</span>
+									{/if}
+									{if $item['ifpay'] =='6'}
+									<span class="label label-warning">已退款</span>
+									{/if}
+									{if $item['ifpay'] =='7'}
+									<span class="label label-warning">订单关闭</span>
+									{/if}
+									{if $item['ifpay'] =='8'}
+									<span class="label label-warning">订单已取消</span>
+									{/if}
+								</div> -->
+
+
+								<!-- <div class="" style="overflow:visible;margin-top: 40px; text-align: center;">
+
+									
+									{if  $item['ifpay'] =='0'}
+									<a class="btn btn-info btn-sm" href="{php echo $this->createWebUrl('ask',array('id'=>$item['id'],'ac'=>'asklist','op'=>'enterorder'))}">确定付款</a>
+                                    {/if}
+									<a class="btn btn-info btn-sm" href="/index.php?c=site&a=entry&do=ask&op=askchat&ac=asklist&m=hyb_yl&back_orser={$item['back_orser']}">快速回复</a>
+
+                                     <a class="btn btn-danger btn-sm" data-toggle='ajaxRemove' href="/index.php?c=site&a=entry&do=ask&op=deletetuwen&ac=asklist&m=hyb_yl&back_orser={$item['back_orser']}" data-confirm="确定要删除该记录吗？">快速删除</a>
+
+								</div> -->
+
+							</div>
+
+						</div>
+                       {/loop}
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+{$pager}
+</form>
+
+</div>
+  {template './common/mainfooter'}
+</body>
+</html>
+<script>
+    $(function(){
+        require(['bootstrap'], function () {
+            $("[rel=pop]").popover({
+                trigger: 'manual',
+                placement: 'right',
+                title: $(this).data('title'),
+                html: 'true',
+                content: $(this).data('content'),
+                animation: false
+            }).on("mouseenter", function () {
+                var _this = this;
+                $(this).popover("show");
+                $(this).siblings(".popover").on("mouseleave", function () {
+                    $(_this).popover('hide');
+                });
+            }).on("mouseleave", function () {
+                var _this = this;
+                setTimeout(function () {
+                    if (!$(".popover:hover").length) {
+                        $(_this).popover("hide")
+                    }
+                }, 100);
+            });
+        });
+    });
+</script>
+<script>
+    require(['bootstrap'], function ($) {
+        $('[data-toggle="tooltip"]').tooltip({
+            container: $(document.body)
+        });
+        $('[data-toggle="popover"]').popover({
+            container: $(document.body)
+        });
+        $('[data-toggle="dropdown"]').dropdown({
+            container: $(document.body)
+        });
+    });
+    myrequire(['js/init']);
+        $('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+      $('.app-login-info-sel').show();
+    });
+    $('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+      $('.app-login-info-sel').hide();
+    });
+    $('.app-login-info-sel .login-out').hover(function(){
+      $('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+    },function(){
+      $('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+    });
+</script>

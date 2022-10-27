@@ -1,0 +1,78 @@
+{template './common/mainHeader'}
+
+<style type='text/css'>
+	.trbody td {text-align: center; vertical-align:top;border-left:1px solid #ccc; border-bottom: 1px solid #ddd;}
+		.order-rank img{width:16px; height:16px;}
+		.js-remark,.js-admin-remark{word-break:break-all; overflow:hidden; background: #FDEEEE;color: #ED5050;padding: 5px 10px;}
+		td.goods-info{position:relative; padding-left:60px;}
+		.goods-info .img{position:absolute;top:50%; margin-top:-25px; background: url(https://xiaochuang.webstrongtech.net/addons/hyb_yl/web/resource/images/loading.gif) center center no-repeat; width:50px;height:50px; }
+		.goods-info span {white-space: inherit;overflow: hidden;text-overflow: ellipsis;display: block;}
+		.status-text{cursor:pointer;}
+		.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {border-top: 1px solid rgba(221, 221, 221, 0);}
+		.col-md-1{padding-right: 0px;}
+		.asd{cursor: pointer;}
+		.cont_text{overflow: hidden; width:200px;text-overflow: ellipsis;display:-webkit-box; -webkit-box-orient:vertical;-webkit-line-clamp:3;}
+		.name_text{overflow: hidden;text-overflow: ellipsis;width: 200px;white-space: nowrap;}
+</style>
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#">分组列表</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-action">
+			<a class="btn btn-primary" href="{php echo $this->createWebUrl('jiancha',array('ac'=>'groupIndex','op'=>'groupEdit'))}">添加分组</a>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>分组名称</th>
+						<th>应用权限</th>
+						<th>是否默认</th>
+						<th>是否开启</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{loop $groups $pcate}
+					<tr>
+						<td>
+							{$pcate['name']}
+						</td>
+						<td>
+							{if !empty($pcate['package'])}
+							{loop $pcate['package'] $plugin}
+								{if $plugins[$plugin]['name']}{$plugins[$plugin]['name']}；{/if}
+							{/loop}
+							{else}
+							包含所有插件
+							{/if}
+						</td>
+						<td>
+							{if $pcate['isdefault'] == 1}<label class='label label-success'>是</label>{else}<label class='label label-default'>否</label>{/if}
+						</td>
+						<td>
+							{if $pcate['enabled'] == 1}<label class='label label-success'>开启</label>{else}<label class='label label-default'>关闭</label>{/if}
+						</td>
+						<td>
+							<a href="{php echo web_url('area/areaagent/groupEdit', array('id' => $pcate['id']));}">编辑</a> -
+							<a href="{php echo web_url('area/areaagent/groupDelete', array('id' => $pcate['id']));}">删除</a>
+						</td>
+					</tr>
+					{/loop}
+				</tbody>
+			</table>
+		</div>
+		<div class="app-table-foot clearfix">
+			<div class="pull-left">
+				
+			</div>
+			<div class="pull-right">
+				{$pager}
+			</div>
+		</div>
+	</div>
+</div>
+{template './common/mainfooter'}

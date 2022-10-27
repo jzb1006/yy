@@ -1,0 +1,200 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+                </div>
+                <div class="pageheader">
+                    <h2><i class="fa fa-archive fa-sm"></i> 药房</h2>
+                    <div class="breadcrumb-wrapper">
+                        <a href="https:///Clinic/Pharmacy/manage.html#inventory" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+                    </div>
+                </div>
+                <div class="contentpanel">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">盘点详情</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline J-search-form" method="get">
+                                <div class="row mb10">
+                                    <div class="col-sm-6">
+                                        <div class="form-group mr5">
+                                            <div class="input-group input-group-sm mb10">
+                                                <input type="text" class="form-control J-search-key" placeholder="商品名称或条形码">
+                                                <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-default btn-search J-search-btn"><i class="fa fa-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 text-right">
+                                        <a href="/japi/session/401055?id=575" class="btn btn-sm btn-default J-download-btn"><i class="fa fa-download"></i> 导出</a>
+                                    </div>
+
+                                </div>
+                                <div class="table-responsive border-top mlrf20">
+                                    <table class="table table-hover shadow-none mb0">
+                                        <thead>
+                                            <tr id="J-header-info">
+        <th colspan="10" class="font12 border-none">
+            <div class="col-xs-3">
+                <span>盘点日期：2019-06-12 10:13</span>
+            </div>
+            <div class="col-xs-3">
+                <span>盘点人员：姚俊</span>
+            </div>
+            <div class="col-xs-4">
+                <span>审核日期：2019-06-12 10:13</span>
+            </div>
+            <div class="col-xs-2">
+                <span>审核人员：姚俊</span>
+            </div>
+        </th>
+    </tr>
+                                            <tr>
+                                                <th class="pl20">商品名称</th>
+                                                <th>规格</th>
+                                                <th>单位</th>
+                                                <th>生产厂商</th>
+                                                <th>供应商</th>
+                                                <th>批号</th>
+                                                <th>有效期</th>
+                                                <th>账面数量</th>
+                                                <th>实际数量</th>
+                                                <th width="">盘盈盘亏</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-inventory-list-wrap"><tr>
+        <td class="pl20">0.9%氯化钠注射液（有国药准字）</td>
+        <td>100ml:</td>
+        <td>瓶</td>
+        <td>华东制药</td>
+        <td></td>
+        <td>20170506</td>
+        <td>2100131</td>
+        <td>20瓶</td>
+        <td>35瓶</td>
+        <td><span class="label label-primary">15</span>
+            
+        </td>
+    </tr></tbody>
+                                    </table>
+                                    <div class="J-page-wrap pd20 mb45"><div class="base_page"><a href="#/id/575/key/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/1</button><a href="#/id/575/key/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="panel-footer panel-btn-col2">
+                            <button class="btn btn-default J-cancel-btn">返回</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+
+    <!--头部模板-->
+    <script type="text/template" id="J-header-info-tpl">
+        <th colspan="10" class="font12 border-none">
+            <div class="col-xs-3">
+                <span>盘点日期：<%- new Date(inventoryTime).Format('yyyy-MM-dd hh:mm')%></span>
+            </div>
+            <div class="col-xs-3">
+                <span>盘点人员：<%- workerName%></span>
+            </div>
+            <div class="col-xs-4">
+                <span>审核日期：<%- new Date(checkTime).Format('yyyy-MM-dd hh:mm')%></span>
+            </div>
+            <div class="col-xs-2">
+                <span>审核人员：<%- checkName%></span>
+            </div>
+        </th>
+    </script>
+    <!--头部模板-->
+
+    <!-- 页面模板 -->
+    <script type="text/template" id="J-inventory-list-tpl">
+        <td class="pl20"><%- medicinename%></td>
+        <td><%- medicinespec%></td>
+        <td><%- medicineunit%></td>
+        <td><%- manufacturer%></td>
+        <td><%- factory%></td>
+        <td><%- batchNumber%></td>
+        <td><%- validity%></td>
+        <td><%- currentCount%><%- medicineunit%></td>
+        <td><%- realCount%><%- medicineunit%></td>
+        <td><% if(diff > 0){ %><span class="label label-primary"><%- diff%></span>
+            <% }else if(diff < 0){ %><span class="label label-danger"><%- diff%></span>
+            <% }else{%><span class="label label-default"><%- diff%></span><% } %>
+        </td>
+    </script>
+
+    <script type="text/javascript">
+        require(['pharmacy_check_inventory']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

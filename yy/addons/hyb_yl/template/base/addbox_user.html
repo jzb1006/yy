@@ -1,0 +1,60 @@
+{template './common/mainHeader'}
+<ul class="nav nav-tabs">
+	<li ><a href="/index.php?c=site&a=entry&op=box_user&ac=box_user&do=base&m=hyb_yl">云音响可操作用户</a></li>
+	<li {if empty($id)}class="active"{/if}><a href="">添加可操作用户</a></li>
+	{if !empty($id)}
+	<li class="active"><a href="#">编辑可操作用户</a></li>
+	{/if}
+</ul>
+<div class="app-content">
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" >
+			<input type="hidden" name="id" value="{$id}" />
+			<div class="panel panel-default">
+				<div class="panel-heading">可操作用户设置</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用户id</label>
+					<div class="col-sm-9">
+						<input type="text" name="uid" placeholder="不可重复及修改" class="form-control" value="{$item['uid']}" >
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-9">
+				{if $id == ''}
+					<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+					{/if}
+					<input type="hidden" name="token" value="{$_W['token']}" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{template './common/menulist'}
+<script type="text/javascript">
+	$(function(){
+		bindEvents();
+		url_system();
+		hideModal();
+
+	});
+	function bindEvents() {
+		require(['jquery', 'util'], function ($, util) {
+			$('.btn-select-pic').unbind('click').click(function () {
+				var imgitem = $(this).closest('.img-item');
+				util.image('', function (data) {
+					imgitem.find('img').attr('src', data['url']);
+					imgitem.find('input').val(data['attachment']);
+				});
+			});
+		});
+	}
+</script>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/showmodel.js"></script>
+<script>
+	$('input[name="nav[thumb]"]').attr('required','required');
+	$("#reset").on('click',function(){
+		$("#color").val('#666').trigger('propertychange');
+	});
+</script>

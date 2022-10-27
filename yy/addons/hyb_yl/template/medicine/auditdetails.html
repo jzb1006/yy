@@ -1,0 +1,668 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="">处方详情</a>
+		</li>
+	</ul>
+	<div class="app-content">
+		<div class="order-detail">
+			<div class="col-sm-4 padding-0">
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td width="150">用户微信：</td>
+								<td>
+									<img src="{$item['u_thumb']}" style="width: 30px;height: 30px;margin-right: 5px;">{$item['u_name']}</td>
+							</tr>
+							<tr>
+								<td width="150">用户姓名：</td>
+								<td>{$user_my['names']}</td>
+							</tr>
+							<tr>
+								<td width="150">用户电话：</td>
+								<td>{$user_my['tel']}</td>
+							</tr>
+							<tr>
+								<td width="150">用户地址：</td>
+								<td>{$user_my['region']}</td>
+							</tr>
+							<tr>
+								<td width="150">开方订单编号：</td>
+								<td>{$item['orders']}</td>
+							</tr>
+							<tr>
+								<td>开方时间：</td>
+								<td>{php echo date('Y-m-d H:i:s',$item['time'])}</td>
+							</tr>
+							{if $item['status'] != '0'}
+							<tr>
+								<td>审核时间：</td>
+								<td>{php echo date('Y-m-d H:i:s',$item['s_time'])}</td>
+							</tr>
+							{/if}
+							{if $item['ispay'] != '0'}
+							<tr>
+								<td>支付时间：</td>
+								<td>{$item['paytime']}</td>
+							</tr>
+							{/if}
+							<tr>
+								<td>开方状态：</td>
+								<td>
+									<span class="label label-info">
+										{if $item['status'] == '0'}
+										待审核
+										{else if $item['status'] == '1'}
+										审核通过
+										{else if $item['status'] == '2'}
+										审核拒绝
+										{else if $item['status'] == '3'}
+										已取消
+										{/if}
+									</span>
+								</td>
+							</tr>
+							{if $item['ispay'] != '0'}
+							<tr>
+								<td>付款方式：</td>
+								<td>
+									<span class="label label-info">
+										{if $item['p_type'] == '0'}
+										余额支付
+										{else if $item['p_type'] == '1'}
+										微信支付
+										{/if}
+									</span>
+								</td>
+							</tr>
+							{/if}
+						</table>
+					</div>
+				</div>
+				
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>操作日志</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{php echo date('Y-m-d H:i:s',$item['time'])}</strong>
+									</p>
+									<p style="padding-left:15px; ">用户提交申请处方</p>
+								</td>
+							</tr>
+							{if $item['ispay'] == '1' || $item['ispay'] == '2' || $item['ispay'] == '3' || $item['ispay'] == '4'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										{if !empty($item['paytime'])}
+										<strong>{php echo date('Y-m-d H:i:s',$item['paytime'])}</strong>
+										{else}
+										<strong>暂无</strong>
+										{/if}
+									</p>
+									<p style="padding-left:15px; ">用户支付了成功</p>
+								</td>
+							</tr>
+							{/if}
+							{if $item['status'] != '0'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										{if !empty($item['s_time'])}
+										<strong>{php echo date('Y-m-d H:i:s',$item['s_time'])}</strong>
+										{else}
+										<strong>暂无</strong>
+										{/if}
+
+									</p>
+									<p style="padding-left:15px; ">药师审核时间</p>
+								</td>
+							</tr>
+							{/if}
+							{if $goods}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										{if !empty($goods['createTime'])}
+										<strong>{php echo date('Y-m-d H:i:s',$item['createTime'])}</strong>
+										{else}
+										<strong>暂无</strong>
+										{/if}
+									</p>
+									<p style="padding-left:15px; ">专家开方时间</p>
+								</td>
+							</tr>
+							{/if}
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8 padding-r-0">
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>开方费用</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td width="150">开方费：</td>
+								<td>+￥ {$item['money']} </td>
+							</tr>
+							<!-- 					<tr>
+							<td width="150">分销推广支出：</td>
+							<td>-￥ 1.00 </td>
+
+						</tr> -->
+							<!-- 						<tr>
+							<td width="150">推荐人：</td>
+							<td>张三 </td>
+							
+						</tr> -->
+							<tr>
+								<td width="150">专家实际收入：</td>
+								<td>
+									{if $item['ispay'] == '0'}暂未结算{else if $item['ispay'] == '1'} 已结算 {/if} (本单用户实际支付:￥{$item['money']})</td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>开方信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th style="width: 20rem;">专家名</th>
+									<th>科室</th>
+									<th>职称</th>
+									<th>所属机构</th>
+									<th>开方费(元)</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tr>
+								<td>
+									<img src="{$zhuanjia['advertisement']}" style="width: 30px;height: 30px;margin-right: 5px;"> {$item['zhuanjia']['z_name']}</td>
+								<td> {$item['zhuanjia']['keshi']} </td>
+								<td>{$item['zhuanjia']['zhicheng']}</td>
+								<td>{$zhuanjie['jigou']}</td>
+								<td>{$item['totals']} 元</td>
+								<td>
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWeburl('team',array('op'=>'edit','zid'=>$item['zhuanjia']['zid']))}">专家信息</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				{if $item['yid'] != '0'}
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>审核信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th style="width: 20rem;">药师名</th>
+									<th>科室</th>
+									<th>所属机构</th>
+									<th>审核时间</th>
+									<th>审核状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tr>
+								<td>
+									<img src="{$item['yaoshi']['thumb']}" style="width: 30px;height: 30px;margin-right: 5px;">  {$item['yaoshi']['name']}</td>
+								<td> {$item['yaoshi']['keshi']} </td>
+								<td>{$item['yaoshi']['jigou']}</td>
+								<td>{$item['s_time']}</td>
+								<td>
+									<span class="label label-info">
+										{if $item['state'] == '0'}
+										待审核
+										{else if $item['state'] == '1'}
+										审核通过
+										{else if $item['state'] == '2'}
+										审核通过
+										{/if}
+									</span>
+								</td>
+								<td>
+									<a class="btn btn-primary btn-sm" target="_blank" href="{php echo $this->createWeburl('medicine',array('op'=>'edit_yaoshi','id'=>$item['yaoshi']['id']))}">药师信息</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				{/if}
+				{if $goods != false}
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>处方信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th style="width: 20rem;">处方编号</th>
+									<th>处方类型</th>
+									<th>开具时间</th>
+									<th>诊断结果</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+							
+								<tr>
+									<td>{$goods['back_orders']}</td>
+									<td> 
+									{loop $goods['sid'] $good}
+									{$good['use']};
+									{/loop}
+									 </td>
+									<td>{$goods['createTime']}</td>
+									<td>
+									{loop $goods['sid'] $good}
+									{$good['sname']};
+									{/loop}
+									</td>
+									<td>
+										<a class="btn btn-primary btn-sm chakanchufang" href="javascript:;">处方查看</a>
+									</td>
+								</tr>
+							
+							</tbody>
+						</table>
+					</div>
+				</div>
+				{/if}
+			</div>
+		</div>
+
+		<div class="modal fade" id="addCateModal" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button data-dismiss="modal" class="close" type="button">×</button>
+						<h4 class="modal-title">新建分类</h4>
+					</div>
+					<div class="modal-body form-horizontal">
+						<div class="form-group">
+							<div class="col-sm-2 control-label must">分类名称</div>
+							<div class="col-sm-10">
+								<input class="form-control input-sm" placeholder="请输入分类名称" id="saveTempName" value="未命名分类" />
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="btn btn-primary" id="saveCate">保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- 处方单详情 -->
+	<div class="el-dialog__wrapper" style="z-index: 2052;display: none;">
+		<div role="dialog" aria-modal="true" aria-label="dialog" class="el-dialog" style="margin-top: 15vh;">
+			<div class="el-dialog__header">
+				<span class="el-dialog__title"></span>
+				<!---->
+			</div>
+			<div class="el-dialog__body">
+			<div class="boxPresMain">
+				<p class="presId">
+			
+					<span class="sub floatR">
+						普通
+					</span>
+				</p>
+				<div class="cardHead">
+					<p class="title">
+						{$zhuanjia['z_name']}医生
+					</p>
+					<p class="presType">
+						处方单
+					</p>
+					<p class="row1 flex justyBetween">
+						<span>姓名：{$user_my['names']}</span>
+						<span>性别：{$user_my['sex']}</span>
+						<span>年龄：<span>{$user_my['age']}岁</span>
+						</span>
+						<span>科室：{$zhuanjia['keshi']}</span>
+						<span>费用：自费</span>
+					</p>
+					<p class="row1 flex justyBetween">
+						<span>病历号：{$user['randnum']}</span>
+						<span>住址：{$user_my['region']}</span>
+						<span>电话：{$user_my['tel']}</span>
+					</p>
+					<p class="row1 flex justyBetween">
+						<span>诊断信息：{$goods['conets']['text']};{loop $goods['sid'] $good}
+									{$good['sname']}({$good['use']});
+									{/loop}</span>
+						<span>开具日期：{$goods['createTime']}</span>
+					</p>
+				</div>
+				<div class="cardBody chinese">
+					<p class="rp">
+						Rp：<span class="sub"></span>
+					</p>
+					<div class="itemMed read chinese">
+						{$goods['conets']['text']}
+					</div>
+					
+					<!---->
+					<p class="boxSign flex justyBetween" style="margin-bottom: 60px;">
+						<span>药师：<span class="area">{$item['yaoshi']}</span>
+						</span>
+						<span>审核：<span class="area"></span>
+						</span>
+						<span>调配：<span class="area"></span>
+						</span>
+					</p>
+					<p class="boxSign flex justyBetween">
+						<span>发药：<span class="area"></span>
+						</span>
+						<span>核对：<span class="area"></span>
+						</span>
+						<span>金额：<span class="area">{$goods['realTotalMoney']}元</span>
+						</span>
+					</p>
+				</div>
+			</div>
+		</div>
+			<div class="el-dialog__footer">
+				<div class="dialog-footer">
+					<button type="button" class="el-button el-button--primary close2">
+						<span>
+							关闭
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<style type="text/css">
+		.el-dialog__wrapper {
+				 position:fixed;
+				 top:0;
+				 right:0;
+				 bottom:0;
+				 left:0;
+				 overflow:auto;
+				 margin:0;
+				 background: rgba(0,0,0,0.5);
+				}
+				.el-dialog {
+				 position:relative;
+				 margin:0 auto 50px;
+				 border-radius:2px;
+				 -webkit-box-shadow:0 1px 3px rgba(0,0,0,.3);
+				 box-shadow:0 1px 3px rgba(0,0,0,.3);
+				 -webkit-box-sizing:border-box;
+				 box-sizing:border-box;
+				 width:50%;
+				 background: #fff;
+		
+				}
+				.el-dialog__body {
+				 padding:30px 20px;
+				 color:#606266;
+				 font-size:14px;
+				 word-break:break-all;
+				}
+				 .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain {
+				 margin:0;
+				 width:calc(100% - 26px);
+				 position:relative;
+				 border-radius:4px;
+				 background-color:#fff;
+				 padding:24px 13px 30px 13px
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain p {
+				 margin:0
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead {
+				 color:#b9b9b9;
+				 font-size:14px;
+				 line-height:14px;
+				 border-bottom:1px dashed rgba(0,0,0,.15)
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead .title {
+				 color:#4a4a4a;
+				 font-size:16px;
+				 line-height:16px;
+				 text-align:center;
+				 margin-top:33px
+				}
+				 .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead .presType {
+				 color:#4a4a4a;
+				 font-size:20px;
+				 line-height:20px;
+				 text-align:center;
+				 margin-top:17px;
+				 margin-bottom:44px
+				}
+				 .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead .row1 {
+				 margin-bottom:22px;
+				 padding:0 25px 0 12px
+				}
+				.floatR {
+				 float:right;
+				}
+				.flex{
+				  display: flex;
+				}
+				.justyBetween{
+				  justify-content: space-between;
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody.chinese {
+				    padding: 30px 25px 100px 12px;
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody {
+				    color: #6b6b6b;
+				    font-size: 14px;
+				}
+				.rp {
+				    color: #4a4a4a;
+				    font-size: 16px;
+				    margin-bottom: 8px;
+				}
+				 .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .itemMed.read.chinese {
+				    display: inline-block;
+				    width: 33%;
+				    border-bottom: none;
+				    padding: 0;
+				    margin-top: 22px;
+				    overflow: hidden;
+				    text-overflow: ellipsis;
+				    white-space: nowrap;
+				}
+				.yellow {
+				    color: #ffa726;
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .chineseTotalRead {
+				    color: #6b6b6b;
+				    font-size: 14px;
+				}
+				 .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .chineseTotalRead p:first-child {
+				    margin: 20px 0 25px;
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .chineseTotalRead p {
+				    margin-top: 12px;
+				}
+				.area {
+				    display: inline-block;
+				    min-width: 60px;
+				    border-bottom: 1px solid #6b6b6b;
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__footer .el-button.el-button--primary:hover {
+				    background-color: #2f6eb4;
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__footer .el-button {
+				    padding: 0;
+				    height: 32px;
+				    line-height: 32px;
+				    width: 100px;
+				}
+				.el-button {
+				    display: inline-block;
+				    line-height: 1;
+				    white-space: nowrap;
+				    cursor: pointer;
+				    background: #fff;
+				    border: 1px solid #dcdfe6;
+				    color: #606266;
+				    -webkit-appearance: none;
+				    text-align: center;
+				    -webkit-box-sizing: border-box;
+				    box-sizing: border-box;
+				    outline: 0;
+				    margin: 0;
+				    -webkit-transition: .1s;
+				    transition: .1s;
+				    font-weight: 500;
+				    padding: 12px 20px;
+				    font-size: 14px;
+				    border-radius: 4px;
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__footer .el-button {
+				    padding: 0;
+				    height: 32px;
+				    line-height: 32px;
+				    width: 100px;
+				    background: 
+				}
+				.el-dialog__footer {
+				    padding: 10px 35px 25px;
+				}
+				.el-dialog__footer {
+				    text-align: right;
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__footer .el-button.el-button--primary {
+				    background-color: #4381c6;
+				}
+				.el-button--primary {
+				    color: #fff;
+				    background-color: #409eff;
+				    border-color: #409eff;
+				}
+				.el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .boxSign {
+				    position: absolute;
+				    bottom: 20px;
+				    left: 34px;
+				    right: 34px;
+				}
+	</style>
+	<script type="text/javascript">
+		$(document).on('click','.chakanchufang',function(){
+		    $('.el-dialog__wrapper').show()
+		  })
+		  $('.close2').on('click',function(){
+		    $('.el-dialog__wrapper').hide()
+		  })
+	</script>
+	<!--处方单详情结束  -->
+
+
+
+
+
+	<script type="text/javascript">
+		$("#addRemark").unbind('click').click(function () {
+		        $("#addCateModal").modal();
+		        $("#saveCate").unbind('click').click(function () {
+		            var state = $(this).data('state');
+		            if(state) {
+		                tip.msgbox.err("正在保存，请稍候。");
+		                return;
+		            }
+		            var name = $.trim($("#saveTempName").val());
+		            if(!name) {
+		                tip.msgbox.err("请填写备注内容！");
+		                $("#saveTempName").focus();
+		                return;
+		            }
+		            $(this).data('state',1).text('保存中')
+		            $.post("http://www.webstrongtech.com/web/index.php?c=site&a=entry&m=weliam_merchant&p=rush&ac=category&do=add&", {
+		                name: name
+		            }, function (ret) {
+		                if(ret.state==0){
+		                    tip.msgbox.err(ret.result.message);
+		                }else{
+		                    tip.msgbox.suc("保存成功！");
+		                }
+		                $("#addCateModal .close").trigger('click');
+		                setTimeout(function () {
+		                    location.reload();
+		                }, 500);
+		            }, 'json');
+		        });
+		    });
+	</script>
+
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+
+
+<script>
+	require(['bootstrap'], function ($) {
+			    $('[data-toggle="tooltip"]').tooltip({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="popover"]').popover({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="dropdown"]').dropdown({
+		            container: $(document.body)
+		        });
+		    });
+			myrequire(['js/init']);
+					$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+				$('.app-login-info-sel').show();
+			});
+			$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+				$('.app-login-info-sel').hide();
+			});
+			$('.app-login-info-sel .login-out').hover(function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+			},function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+			});
+</script>
+</body>
+</html>

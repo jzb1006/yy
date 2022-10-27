@@ -1,0 +1,71 @@
+{template '/common/mainHeader'}
+    <div class="app-container-right">
+            <ul class="nav nav-tabs" id="myTab">
+    <li class="active"><a href="#tab_share">添加物流公司</a></li>
+              <li ><a href="{php echo $this->createWeburl('wuliu',array('op'=>'wuliulist','ac'=>'wuliulist'))}">物流公司列表</a></li>
+</ul>
+<div class="app-content">
+<div class="app-form">
+    <form action="" method="post" class="form-horizontal form">
+        <div class="panel-heading">物流公司设置</div>
+        <div class="tab-content">
+            <div class="form-group">
+                                <label class="col-sm-2 control-label">排序<span class="must-fill">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="number" name="sort" required="" class="form-control" value="{$res['sort']}">
+                                </div>
+                            </div>
+            <div class="form-group">
+                                <label class="col-sm-2 control-label">物流公司名称<span class="must-fill">*</span></label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="name" required="" class="form-control" value="{$res['name']}">
+                                </div>
+                            </div>
+                             <div class="form-group">
+                            <label class="col-sm-2 control-label">物流公司编码（物流公司英文全拼）</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="com" placeholder="请输入联系电话" class="form-control" value="{$res['com']}">
+                            </div>
+                        </div>
+                             <div class="form-group">
+                            <label class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="tel" placeholder="请输入联系电话" class="form-control" value="{$res['tel']}">
+                            </div>
+                        </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">是否启用</label>
+                <div class="col-sm-9">
+                    <label class="radio-inline">
+                        <input type="radio" class="form-control" name="status" value="1" {if $res['status'] == '1'} checked="checked" {/if}> 开启
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" class="form-control" name="status" value="0" {if $res['status'] == '0'} checked="checked" {/if}> 关闭
+                    </label>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-9">
+                <input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+                <input type="hidden" name="token" value="{$_W['token']}" />
+                <input type="hidden" name="id" value="{$id}" />
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="foot" id="footer">
+        <ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+        </ul>
+    </div>
+    </body>
+</html>

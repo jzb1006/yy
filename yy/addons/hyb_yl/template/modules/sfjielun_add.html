@@ -1,0 +1,817 @@
+{template './common/siteheader'}
+<div class="content">
+    <div class="header">
+        <h1 class="page-title">随访结论模版</h1>
+        <div class="stats">
+            <a href="{php echo $this->createWeburl('moban',array('op'=>'sfjielun_add'))}" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+        </div>
+    </div>
+    <div id="J-main-content" class="main-content J-follow-result">
+        <div class="panel panel-default">
+            <div class="panel-heading no-collapse J-follow-title">新增随访结论模版</div>
+            <div class="panel-body collapse in">
+
+                    <div class="row" id="J-content-warp">
+    <div class="col-sm-12 col-md-10">
+        <form id="cureedit_form">
+            <input type="hidden" name="id" value="">
+            <input type="hidden" name="template_type" value="1">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <label class="control-label">模版名称 <span class="asterisk">*</span></label>
+                        <input type="text" class="form-control max64" value="" required="required" name="name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        模板类型
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="rdio rdio-default">
+                        <input type="radio" name="type" id="radioDefault" value="0" checked="">
+                        <label for="radioDefault">通用</label>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="rdio rdio-default">
+                        <input type="radio" name="type" id="radioDefault2" value="1">
+                        <label for="radioDefault2">个人</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <label class="control-label">随访结论 <span class="asterisk">*</span></label>
+                        <textarea class="form-control max2000" rows="5" name="content"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form id="J-soape-form">
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h4>主观资料（S）</h4>
+                    <div class="form-group">
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">病史及并发症 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_history" class="form-control" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">血糖 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_blood" class="form-control" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">药物 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_medicine" class="form-control" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">饮食 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_eating" class="form-control" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">运动 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_sport" class="form-control" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">认知及其他 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_other" class="form-control" rows="1"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12">
+                <h4>评估结果（A）</h4>
+                <div class="form-group">
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">病程 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_history" class="form-control" rows="1" placeholder="例：糖尿病首诊/季度复查/年度复查"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">血糖 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_blood" class="form-control" rows="1" placeholder="例：血糖不达标"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">药物 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_medicine" class="form-control" rows="1" placeholder="例：药物使用不规范"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">并发症 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_complication" class="form-control" rows="1" placeholder="例：低血糖风险"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">血糖检测 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_blood_monitor" class="form-control" rows="1" placeholder="例：血糖监测频次及轮替不足"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">饮食 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_eating" class="form-control" rows="1" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">运动 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_sport" class="form-control" rows="1" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">其他 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_other" class="form-control" rows="1" placeholder=""></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12">
+                <h4>计划实施（P）</h4>
+                <div class="form-group">
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">病程 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_history" class="form-control" rows="1" placeholder="包括糖尿病的危害及相关理念知识学习，对未掌握的知识进行指导"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">血糖 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_blood" class="form-control" rows="1" placeholder="包括血糖控制目标及其重要性"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">药物 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_medicine" class="form-control" rows="1" placeholder="包括口服药物及胰岛素使用"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">并发症 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_complication" class="form-control" rows="1" placeholder="低血糖预防、各种并发症的预防及照护方法"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">血糖检测 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_blood_monitor" class="form-control" rows="1" placeholder="血糖监测的方法、重要性及监测方案"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">饮食 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_eating" class="form-control" rows="1" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">运动 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_sport" class="form-control" rows="1" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">其他 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_other" class="form-control" rows="1" placeholder=""></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12">
+                <h4>效果评价（E）</h4>
+                <div class="form-group">
+                    <div class="col-sm-3 col-md-3 pl0">
+                        <div class="form-group">
+                            <label class="control-label">健康饮食（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_eating" value="">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">体验锻炼（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_sport" value="">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">血糖监测（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_blood_monitor" value="">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">药物处理（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_medicine" value="">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 pl0">
+                        <div class="form-group">
+                            <label class="control-label">解决问题（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_solution" value="">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">疾病共存（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_diseases" value="">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">风险减少（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_risk" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+                
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary btn-sml J-submit-btn">保存</button>&nbsp;
+                <button class="btn btn-default btn-sml" onclick="window.history.back(-1);">取消</button>
+            </div>
+        </div>
+        <footer>
+	<hr>
+	<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+	<p class="pull-right"> <a href="http://www.DXY.cn" target="_blank">DXY</a> by <a href="http://www.dxy.cn" target="_blank">DXY.CN</a>
+	</p>
+	<p>© 2015 <a href="http://www.dxy.cn" target="_blank">DXY</a></p>
+</footer>
+    </div>
+</div>
+
+<!-- 随访结论表单填写模板 -->
+<script type="text/template" id="J-follow-result-tpl">
+    <div class="col-sm-12 col-md-10">
+        <form id="cureedit_form">
+            <input type="hidden" name="id" value="<%-id%>">
+            <input type="hidden" name="template_type" value="1">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <label class="control-label">模版名称 <span class="asterisk">*</span></label>
+                        <input type="text" class="form-control max64" value="<%- name%>" required="required" name="name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        模板类型
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="rdio rdio-default">
+                        <input type="radio" name="type" id="radioDefault" value="0" <% if(resultType == 0 || !resultType){ %>checked<% } %>>
+                        <label for="radioDefault">通用</label>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="rdio rdio-default">
+                        <input type="radio" name="type" id="radioDefault2" value="1" <% if(resultType == 1){ %>checked<% } %>>
+                        <label for="radioDefault2">个人</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <label class="control-label">随访结论 <span class="asterisk">*</span></label>
+                        <textarea class="form-control max2000" rows="5" name="content"><%- content%></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form id="J-soape-form">
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h4>主观资料（S）</h4>
+                    <div class="form-group">
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">病史及并发症 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_history" class="form-control" rows="1"><%-soape.s_history%></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">血糖 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_blood" class="form-control" rows="1"><%-soape.s_blood%></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">药物 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_medicine" class="form-control" rows="1"><%-soape.s_medicine%></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">饮食 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_eating" class="form-control" rows="1"><%-soape.s_eating%></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">运动 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_sport" class="form-control" rows="1"><%-soape.s_sport%></textarea>
+                            </div>
+                        </div>
+                        <div class="row mb10">
+                            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                                <label class="control-label pt7">认知及其他 </label>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                                <textarea maxlength="500" name="s_other" class="form-control" rows="1"><%-soape.s_other%></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12">
+                <h4>评估结果（A）</h4>
+                <div class="form-group">
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">病程 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_history" class="form-control" rows="1" placeholder="例：糖尿病首诊/季度复查/年度复查"><%-soape.a_history%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">血糖 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_blood" class="form-control" rows="1" placeholder="例：血糖不达标"><%-soape.a_blood%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">药物 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_medicine" class="form-control" rows="1" placeholder="例：药物使用不规范"><%-soape.a_medicine%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">并发症 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_complication" class="form-control" rows="1" placeholder="例：低血糖风险"><%-soape.a_complication%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">血糖检测 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_blood_monitor" class="form-control" rows="1" placeholder="例：血糖监测频次及轮替不足"><%-soape.a_blood_monitor%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">饮食 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_eating" class="form-control" rows="1" placeholder=""><%-soape.a_eating%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">运动 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_sport" class="form-control" rows="1" placeholder=""><%-soape.a_sport%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">其他 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="a_other" class="form-control" rows="1" placeholder=""><%-soape.a_other%></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12">
+                <h4>计划实施（P）</h4>
+                <div class="form-group">
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">病程 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_history" class="form-control" rows="1" placeholder="包括糖尿病的危害及相关理念知识学习，对未掌握的知识进行指导"><%-soape.p_history%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">血糖 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_blood" class="form-control" rows="1" placeholder="包括血糖控制目标及其重要性"><%-soape.p_blood%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">药物 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_medicine" class="form-control" rows="1" placeholder="包括口服药物及胰岛素使用"><%-soape.p_medicine%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">并发症 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_complication" class="form-control" rows="1" placeholder="低血糖预防、各种并发症的预防及照护方法"><%-soape.p_complication%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">血糖检测 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_blood_monitor" class="form-control" rows="1" placeholder="血糖监测的方法、重要性及监测方案"><%-soape.p_blood_monitor%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">饮食 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_eating" class="form-control" rows="1" placeholder=""><%-soape.p_eating%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">运动 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_sport" class="form-control" rows="1" placeholder=""><%-soape.p_sport%></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb10">
+                        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 text-right">
+                            <label class="control-label pt7">其他 </label>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                            <textarea maxlength="500" name="p_other" class="form-control" rows="1" placeholder=""><%-soape.p_other%></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12">
+                <h4>效果评价（E）</h4>
+                <div class="form-group">
+                    <div class="col-sm-3 col-md-3 pl0">
+                        <div class="form-group">
+                            <label class="control-label">健康饮食（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_eating" value="<%-soape.e_eating%>">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">体验锻炼（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_sport" value="<%-soape.e_sport%>">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">血糖监测（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_blood_monitor" value="<%-soape.e_blood_monitor%>">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">药物处理（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_medicine" value="<%-soape.e_medicine%>">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 pl0">
+                        <div class="form-group">
+                            <label class="control-label">解决问题（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_solution" value="<%-soape.e_solution%>">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">疾病共存（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_diseases" value="<%-soape.e_diseases%>">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">风险减少（0-10）</label>
+                            <input type="text" class="form-control input-sm" name="e_risk" value="<%-soape.e_risk%>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+<!-- 随访结论表单填写模板 -->
+
+<script type="text/template" id="J-blood-tpl">
+    <div class="col-sm-12 col-md-12 mb20 J-blood-row">
+        <div class="display-inline ml10 mr30">
+            <div class="form-inline">
+                记录时间：
+                <input type="text" class="form-control J-blood-date" value="">
+            </div>
+        </div>
+        <div class="display-inline mr30">
+            <div class="form-inline">
+                <div class="form-group mlr0 mb0">
+                    <span>血糖： </span>
+
+                    <select class="form-control input-sm w80 ml5 J-blood-checktime">
+                        <option value="">请选择</option>
+                        <option value="3">凌晨</option>
+                        <option value="1">空腹</option>
+                        <option value="4">早饭前</option>
+                        <option value="2">早饭后</option>
+                        <option value="5">午饭前</option>
+                        <option value="6">午饭后</option>
+                        <option value="7">晚饭后</option>
+                        <option value="8">晚饭后</option>
+                        <option value="0">睡前</option>
+                    </select>
+
+                    <div class="input-group w250">
+                        <input type="text" class="form-control J-blood-value" value="">
+                        <span class="input-group-btn">
+                            <span class="btn btn-white btn-text btn-find">mmol/L</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="display-inline mr30">
+            <a class="btn btn-sm btn-white J-btn-delete-item" data-type="blood"><i class="fa fa-minus"></i></a>
+            <a class="btn btn-sm btn-white J-btn-add-item" data-type="blood"><i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="J-medicine-tpl">
+    <div class="col-sm-12 col-md-12 mb20 J-medicine-row">
+        <div class="col-sm-3">
+            <input type="text" class="form-control J-medicine-name" placeholder="药品名称" value="">
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control J-medicine-dosage" placeholder="剂量" value="">
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control J-medicine-method" placeholder="用法" value="">
+        </div>
+        <div class="col-sm-3 pt7">
+            <a class="btn btn-sm btn-white J-btn-delete-medicine" data-type="medicine"><i class="fa fa-minus"></i></a>
+            <a class="btn btn-sm btn-white J-btn-add-medicine" data-type="medicine"><i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+</script>
+
+
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action="#">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+<script type="text/javascript">
+    require(['follow_result_add']);
+</script>
+
+<div style="position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px; display: none;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

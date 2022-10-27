@@ -1,0 +1,279 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#">用户列表</a></li>
+    </ul>
+    <div class="app-content">
+        <div class="app-filter">
+            <div class="filter-list">
+                <form action="" method="get" class="form-horizontal" role="form" id="form1">
+                    <input type="hidden" name="c" value="site" />
+                    <input type="hidden" name="a" value="entry" />
+                    <input type="hidden" name="m" value="weliam_merchant" />
+                    <input type="hidden" name="p" value="member" />
+                    <input type="hidden" name="ac" value="wlMember" />
+                    <input type="hidden" name="do" value="memberIndex" />
+                    <input type="hidden" name="vipstatus" value="" />
+                    <input type="hidden" name="blackflag" value="" />
+                    <div class="form-group form-inline">
+                        <label class="col-sm-2 control-label">用户筛选</label>
+                        <div class="col-sm-9">
+                            <select name="type" class="form-control">
+                                <option value="5">病案号</option>
+                                <option value="2">手机号</option>
+                                <option value="3">昵称</option>
+
+                            </select>
+                            <input type="text" name="keyword" class="form-control" value="" placeholder="请输入关键字" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">用户状态</label>
+                        <div class="col-sm-9">
+                            <div class="btn-group">
+                                <a href="./index.php?c=site&a=entry&m=weliam_merchant&p=member&ac=wlMember&do=memberIndex&blackflag=0&page=1" class="btn btn-primary">不限</a>
+                                <a href="./index.php?c=site&a=entry&m=weliam_merchant&p=member&ac=wlMember&do=memberIndex&blackflag=2&page=1" class="btn btn-default">待转化</a>
+                                <a href="./index.php?c=site&a=entry&m=weliam_merchant&p=member&ac=wlMember&do=memberIndex&blackflag=2&page=1" class="btn btn-default">已转化</a>
+                                <a href="./index.php?c=site&a=entry&m=weliam_merchant&p=member&ac=wlMember&do=memberIndex&blackflag=1&page=1" class="btn btn-default">无效用户</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">时间筛选</label>
+                        <div class="col-md-3">
+                            <select name="timetype" class="form-control">
+                                <option value="">时间类型</option>
+                                <option value="1">加入时间</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+
+                            <script type="text/javascript">
+                                require(["daterangepicker"], function() {
+                                    $(function() {
+                                        $(".daterange.daterange-date").each(function() {
+                                            var elm = this;
+                                            $(this).daterangepicker({
+                                                startDate: $(elm).prev().prev().val(),
+                                                endDate: $(elm).prev().val(),
+                                                format: "YYYY-MM-DD"
+                                            }, function(start, end) {
+                                                $(elm).find(".date-title").html(start.toDateStr() + " 至 " + end.toDateStr());
+                                                $(elm).prev().prev().val(start.toDateStr());
+                                                $(elm).prev().val(end.toDateStr());
+                                            });
+                                        });
+                                    });
+                                });
+                            </script>
+
+                            <input name="time_limit[start]" type="hidden" value="2020-02-15">
+                            <input name="time_limit[end]" type="hidden" value="2020-03-15">
+                            <button class="btn btn-default daterange daterange-date" type="button"><span class="date-title">2020-02-15 至 2020-03-15</span> <i class="fa fa-calendar"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-md-9">
+                            <button class="btn btn-primary" type="submit">筛选</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="app-table-list">
+            <div class="table-responsive">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th style="width: 250px;">用户</th>
+                            <th style="">性别年龄</th>
+                            <th style="">病案号</th>
+                            <th style="">异常指标</th>
+                            <th style="">疾病分析</th>
+                            <th style="">严重程度</th>
+                            <th style="">患者标记</th>
+                            <th style="">转化状态</th>
+                            <th style="">加入时间</th>
+                            <th style="width: 350px;text-align: right;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                        <tr>
+                            <td style="overflow: visible">
+                                <div rel="pop" style="display: flex" data-content=" 
+                                    <span>ID: </span>{$item['userinfo']['u_id']} </br>                                                                    
+                                    <span>真实姓名：</span> {if empty($item['zhenshixingming'])} 未填写 {else} {$item['zhenshixingming']} {/if}<br/>
+                                    <span>手机号：</span>{if $item['telphone'] ==''} 未绑定 {else} {$item['telphone']}   {/if}<br/>
+                                    <span>问诊次数：</span>{$item['numcount']} <br/>
+                                    <span>购药订单：</span>{$item['gycount']} <br/>
+                                    <span>体检订单：</span>{$item['tjcount']} <br/>
+                                    <span>挂号订单：</span>{$item['ghcount']} <br/>
+                                   
+                                
+                                    <span>推荐人：</span>无 <br/>
+                                    <span>用户来源：</span><i>自然进入</i><br/>
+                                    <span>状态:</span>{if $item['type'] =='1'} 正常 {else} 黑户 {/if}">
+                                    <img class="img-40" src="{$item['userinfo']['u_thumb']}" style='border-radius:50%;border:1px solid #efefef;' height="40" width="40" />
+                                    <span style="display: flex;flex-direction: column;justify-content: center;align-items: flex-start;padding-left: 5px">
+                                        <span class="nickname">
+
+                                            {$item['u_name']}  </span>
+                                    </span>
+
+                                </div>
+                            </td>
+                            <td><span class="label label-info">{$item['xingbie']}</span>
+                                <br /><span class="label label-warning" style="display: inline-block;margin-top: 5px;">{$item['nianlin']}岁</span>
+                            </td>
+                            <td>
+                                {$item['userinfo']['randnum']}
+                            </td>
+                            <td>
+                                <a>共计{$item['ycount']}项</a>
+                            </td>
+                            <td>
+                               {$item['userinfo']['u_label']} 
+                            </td>
+                            <td>
+                                 <span class="label label-danger">{if $item['ycount']>3}危险{else if $item['ycount']<=3} 中度{else} 一般 {/if}</span> </td>
+                            </td>
+                            <td>
+                                {$item['userinfo']['u_label']} 
+                            </td>
+                            <td>
+                            {if $item['ifzhuanhua']=='0'}
+                                 <span class="label label-warning">待转化</span>
+                                {else}
+                                 <span class="label label-warning">已转化</span>
+                            {/if} 
+                            </td>
+                            <td>{$item['addtime']}</td>
+                            <!--<td>普通会员</td>-->
+
+                            <td style="overflow:visible;text-align: right;">
+                                <a class="btn btn-primary btn-sm" href="/index.php?c=site&a=entry&op=adduser&do=copysite&m=hyb_yl&act=profile.adduser&ac=notice&u_id={$item['userinfo']['u_id']}&openid={$item['userinfo']['openid']}" title="">用户标记</a>
+                                <a class="btn btn-info btn-sm" href="/index.php?c=site&a=entry&op=suifanglist&do=physical&m=hyb_yl&ac=suifanglist&u_id={$item['userinfo']['u_id']}&openid={$item['userinfo']['openid']}&id={$item['id']}">随访记录</a>
+
+                                <a class="btn btn-warning btn-sm ajaxModal" data-id="{$item['id']}" data-toggle="ajaxModal" href="javascript:;">转化状态</a>
+
+                                <a class="btn btn-danger btn-sm" data-toggle='ajaxRemove' href="{php echo $this->createWebUrl('physical',array('op'=>'delete','id'=>$item['id']))}" data-confirm="确定要删除该会员吗？">删除</a>
+                            </td>
+                        </tr>
+                     {/loop}
+                    </tbody>
+                </table>
+            </div>
+            <div class="app-table-foot clearfix">
+                <div class="pull-left">
+
+                </div>
+                <div class="pull-right">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div  id="content"></div>
+
+    <script language='javascript'>
+        $('.ajaxModal').on('click', function(e) {
+             $('.zhe').show();
+             var id = e.currentTarget.dataset.id
+             var url ="../web/index.php?c=site&a=entry&do=physical&op=zhuanhua&m=hyb_yl&id="+id;
+             $.ajax({
+                method:"post",
+                url:url,
+                dataType:"html",
+                success:function(result){
+                   $("#content").html(result);
+                },
+            });
+            
+        })
+
+        $(function() {
+            $('[data-toggle="tab"]').click(function() {
+                var type = $(this).data('rechargetype');
+                if (type == 'credit1') {
+                    $('.name').html('已转化');
+                    $(".btn-submit").text('确认已转化');
+                } else {
+                    $('.name').html('未转化');
+                    $(".btn-submit").text('确认未转化');
+                }
+                $(':hidden[name=type]').val(type);
+            });
+        })
+    </script>
+    <script type="text/javascript" src="/addons/hyb_yl/web/resource/js/init.js"></script>
+    <script>
+        $(function() {
+            require(['bootstrap'], function() {
+                $("[rel=pop]").popover({
+                    trigger: 'manual',
+                    placement: 'right',
+                    title: $(this).data('title'),
+                    html: 'true',
+                    content: $(this).data('content'),
+                    animation: false
+                }).on("mouseenter", function() {
+                    var _this = this;
+                    $(this).popover("show");
+                    $(this).siblings(".popover").on("mouseleave", function() {
+                        $(_this).popover('hide');
+                    });
+                }).on("mouseleave", function() {
+                    var _this = this;
+                    setTimeout(function() {
+                        if (!$(".popover:hover").length) {
+                            $(_this).popover("hide")
+                        }
+                    }, 100);
+                });
+            });
+        });
+    </script>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+    <ul class="links ft">
+        <li class="links_item">
+            <div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div>
+        </li>
+    </ul>
+</div>
+
+
+
+<script>
+    require(['bootstrap'], function($) {
+        $('[data-toggle="tooltip"]').tooltip({
+            container: $(document.body)
+        });
+        $('[data-toggle="popover"]').popover({
+            container: $(document.body)
+        });
+        $('[data-toggle="dropdown"]').dropdown({
+            container: $(document.body)
+        });
+    });
+    myrequire(['js/init']);
+    $('.app-login-info-name, .app-login-info-sel').mouseover(function() {
+        $('.app-login-info-sel').show();
+    });
+    $('.app-login-info-name, .app-login-info-sel').mouseout(function() {
+        $('.app-login-info-sel').hide();
+    });
+    $('.app-login-info-sel .login-out').hover(function() {
+        $('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+    }, function() {
+        $('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+    });
+</script>
+</body>
+
+</html>

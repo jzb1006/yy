@@ -1,0 +1,126 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+<style type="text/css">
+    .view{
+        overflow-y: auto!important;
+    }
+</style>
+</div>
+<div class="basics">
+        <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control " data-permission="8">
+                <a  href="{php echo $this->createWeburl('zixun',array('op'=>'zixun'))}" ><strong>资讯列表</strong></a>
+            </li>
+            <li class="J-module-control active" data-permission="10">
+                <a href="{php echo $this->createWeburl('zixun',array('op'=>'add'))}" ><strong>添加资讯</strong></a>
+            </li>
+        </ul>
+        <div class="main-content">
+            <div class="panel panel-default">
+                <div class="panel-body collapse in">
+            <form  action="" method="post" novalidate="novalidate">
+                <div class="row">
+                    <div class="col-sm-12 col-md-10">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">资讯标题 <span class="asterisk">*</span></label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['zx_names']}" required="" name="zx_names">
+                                </div>
+                            </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">资讯标签</label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['title']}" required="" name="title">
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">推荐 <span class="gai_tishi">推荐后在资讯首页展示</span></label>
+                                <div class="pianshen_kaiqi">
+                                    <input type="hidden" name="status" value="{$res['status']}" class="zt"> 
+                                    <div class="pianshen_kaiqi_xuanze {if $res['status'] =='1'} pianshen_kaiqi_xuanzes {/if}" data-val='1'>
+                                        <div class="pianshen_kaiqi_xuanze_title  {if $res['status'] =='1'} pianshen_kaiqi_xuanze_titles {/if}">开启</div>
+                                        <div class="pianshen_kaiqi_xuanze_img {if $res['status'] =='1'} pianshen_kaiqi_xuanze_imgs {/if} "><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                    </div>
+                                    <div class="pianshen_kaiqi_xuanze  {if $res['status'] =='0'} pianshen_kaiqi_xuanzes {/if}" data-val='0'>
+                                        <div class="pianshen_kaiqi_xuanze_title {if $res['status'] =='0'} pianshen_kaiqi_xuanze_titles {/if}">不开启</div>
+                                        <div class="pianshen_kaiqi_xuanze_img {if $res['status'] =='0'} pianshen_kaiqi_xuanze_imgs {/if}"><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">资讯分类</label>
+                                    <div class="gai_shangping_fenlie">
+                                        <select id="sex" name="p_id">
+                                            <option>---请选择---</option>
+                                            {loop $cate_list $item}
+                                            <option value="{$item['zx_id']}" {if $res['p_id'] == $item['zx_id']} selected="selected" {/if}>{$item['zx_name']}</option>
+                                            {/loop}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">资讯缩略图<span class="gai_tishi">商品其他图片（建议尺寸 172*172）</span></label>
+                                     {php echo tpl_form_field_image('thumb', $res['thumb'])}
+                                </div>
+                            </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">资讯阅读数</label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['dianj']}" required="" name="dianj">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">资讯描述<span class="gai_tishi">商品描述文字不易过长</span></label>
+                                    <textarea class="form-control max2000" rows="5" name="title_fu">{$res['title_fu']}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">详细内容</label>
+                                    {php echo tpl_ueditor('content', $res['content']);}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="display: none;">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">详细内容</label>
+                                    {php echo tpl_ueditor('content1');}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input name="token" type="hidden" value="{$_W['token']}" />
+                <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+            </form>
+             </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list.js?version=yyyy-MM-dd"></script>
+
+</html>

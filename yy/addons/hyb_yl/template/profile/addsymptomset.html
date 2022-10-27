@@ -1,0 +1,228 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+			<div class="app-content">
+	<ul class="nav nav-tabs" id="myTab">
+		<li class="active"><a href="#">档案设置</a></li>
+	</ul>
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal form" id="form">
+			<div class="panel panel-default">
+				<div class="panel-heading">档案字段设置</div>
+				<div class="panel-body">
+					<div class="panel-body" id="datas">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">步骤</label>
+							<div class="col-sm-9">
+								<select name="step" class="form-control">
+                                    <option value="1" {if $item['step'] == '1'} selected="" {/if}>第一步</option>
+                                    <option value="2" {if $item['step'] == '2'} selected="" {/if}>第二步</option>
+                                    <option value="3" {if $item['step'] == '3'} selected="" {/if}>第三步</option>
+                                </select>
+							</div>
+						</div>
+						{if count($item['content']) > 0}
+						{loop $item['content'] $key $cont}
+							<div id="content" class="data-item">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">标题_{php echo $key+1}</label>
+									<div class="col-sm-9">
+										<input type="text" name="content[{$key}][title]" class="form-control" value="{$cont['title']}" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">类型_{php echo $key+1}</label>
+									<div class="col-xs-12 col-sm-8">
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[{$key}][type]" onchange="changetype(this,0)" value="0" {if $cont['type'] == '0'} checked="checked" {/if}>输入框
+										</label>
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[{$key}][type]" onchange="changetype(this,1)" value="1" {if $cont['type'] == '1'} checked="checked" {/if}>单选框
+										</label>
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[{$key}][type]" onchange="changetype(this,2)" value="2" {if $cont['type'] == '2'} checked="checked" {/if}>多选框
+										</label>
+									</div>
+								</div>
+								
+								<div class="form-group xuanze" {if $con['type'] != '0'} style="display: block" {else} style="display: none" {/if}>
+									<label class="col-sm-2 control-label">选项_{php echo $key+1}</label>
+									<div class="col-sm-9">
+										<input type="text" name="content[{$key}][detail]" placeholder="请用|隔开" class="form-control" value="{$cont['detail']}" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">是否必填_{php echo $key+1}</label>
+									<div class="col-xs-12 col-sm-8">
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[{$key}][status]" value="0" {if $cont['status'] == '0'} checked="checked" {/if}>否
+										</label>
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[{$key}][status]" value="1" {if $cont['status'] == '1'} checked="checked" {/if}>是
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">提示语_{php echo $key+1}</label>
+									<div class="col-sm-9">
+										<input type="text" name="content[{$key}][tip]" class="form-control" value="{$cont['tip']}" />
+									</div>
+								</div>
+							</div>
+						{/loop}
+						{else}
+						
+							<div id="content" class="data-item">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">标题_1</label>
+									<div class="col-sm-9">
+										<input type="text" name="content[0][title]" class="form-control" value="" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">类型_1</label>
+									<div class="col-xs-12 col-sm-8">
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[0][type]" onchange="changetype(this,0)" value="0">输入框
+										</label>
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[0][type]" onchange="changetype(this,1)" value="1"}>单选框
+										</label>
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[0][type]" onchange="changetype(this,2)" value="2">多选框
+										</label>
+									</div>
+								</div>
+								<div class="form-group xuanze">
+									<label class="col-sm-2 control-label">选项_1</label>
+									<div class="col-sm-9">
+										<input type="text" name="content[0][detail]" placeholder="请用|隔开" class="form-control" value="" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">是否必填_1</label>
+									<div class="col-xs-12 col-sm-8">
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[0][status]" value="0">否
+										</label>
+										<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[0][status]" value="1">是
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">提示语_1</label>
+									<div class="col-sm-9">
+										<input type="text" name="content[0][tip]" class="form-control" value="" />
+									</div>
+									<span class="input-group-addon btn btn-default data-item-delete">
+										<i class="fa fa-remove"></i>删除
+									</span>
+								</div>
+							</div>
+						
+						{/if}
+						
+						<script type="text/javascript">
+							$(document).on('click', '.data-item-delete', function () {
+							        $(this).closest('.data-item').remove();
+							  });
+						</script>
+						<script type="text/javascript">
+							function changetype(that,type)
+							{
+								
+								if(type != '0')
+								{
+									$(that).parent().parent().parent().next().attr('style','display:block');
+								}else{
+									$(that).parent().parent().parent().next().attr('style','display:none');
+								}
+							}
+							function addType()
+							{
+								var length = $(".data-item").length;
+								var lengths = length+1;
+								var html = `<div id="content" class="data-item">
+											<div class="form-group">
+											<label class="col-sm-2 control-label">标题_`+lengths+`</label>
+											<div class="col-sm-9">
+											<input type="text" name="content[`+length+`][title]" class="form-control" value="" />
+											</div>
+											</div>
+											<div class="form-group">
+											<label class="col-sm-2 control-label">类型_`+lengths+`</label>
+											<div class="col-xs-12 col-sm-8">
+											<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[`+length+`][type]" onchange="changetype(this,0)" value="0">输入框
+											</label>
+											<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[`+length+`][type]" onchange="changetype(this,1)" value="1"}>单选框
+											</label>
+											<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[`+length+`][type]" onchange="changetype(this,2)" value="2">多选框
+											</label>
+											</div>
+											</div>
+											<div class="form-group xuanze">
+											<label class="col-sm-2 control-label">选项_`+lengths+`</label>
+											<div class="col-sm-9">
+											<input type="text" name="content[`+length+`][detail]" placeholder="请用|隔开" class="form-control" value="" />
+											</div>
+											</div>
+											<div class="form-group">
+											<label class="col-sm-2 control-label">是否必填_`+lengths+`</label>
+											<div class="col-xs-12 col-sm-8">
+											<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[`+length+`][status]" value="0">否
+											</label>
+											<label class="radio radio-success radio-inline">
+											<input type="radio" name="content[`+length+`][status]" value="1">是
+											</label>
+											</div>
+											</div>
+											<div class="form-group">
+											<label class="col-sm-2 control-label">提示语_`+lengths+`</label>
+											<div class="col-sm-9">
+											<input type="text" name="content[`+length+`][tip]" class="form-control" value="" />
+											</div>
+											<span class="input-group-addon btn btn-default data-item-delete">
+											<i class="fa fa-remove"></i>删除
+											</span>
+											</div>
+											</div>`;
+									$("#datas").append(html)
+							}
+
+						</script>
+					</div>
+					<div class="form-group sms-template-1" style="display:block;">
+							<div class="col-sm-6" style="padding-left: 0;">
+								<a class="btn btn-default btn-add-type btn1 col-sm-12 col-xs-12" href="javascript:;" onclick="addType();">
+									<i class="fa fa-plus" title=""></i>增加字段
+								</a>
+							</div>
+						</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label"></label>
+			<div class="col-sm-9">
+				<input type="hidden" name="postType" value="" />
+				<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+				<input type="hidden" name="token" value="da1c10f4" />
+				<input type="button" name="back" onclick="history.back()" style="margin-left:10px;" value="返回列表" class="btn btn-default min-width">
+			</div>
+		</div>
+		</from>
+	</div>
+</div>
+<script>
+	function distri(flag){
+		if (flag == 1) {
+			$('#distridiv').show();
+		} else{
+			$('#distridiv').hide();
+		}
+	}
+</script>
+{template './common/mainfooter'}

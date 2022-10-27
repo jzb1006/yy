@@ -1,0 +1,188 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li><a href="/index.php?c=site&a=entry&do=ask&op=asksort&ac=asksort&m=hyb_yl">问题分类列表</a></li>
+	<li class="active"><a href="/index.php?c=site&a=entry&do=ask&op=asksortadd&ac=asksortadd&m=hyb_yl">添加问题分类</a></li>
+	</ul>
+<div class="app-content">
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+			<div class="panel panel-default" id="step1">
+				<div class="panel-heading">分类管理</div>
+				<div class="panel-body">
+										<div class="form-group">
+						<label class="col-sm-2 control-label">分类名称<span class="must-fill">*</span></label>
+						<div class="col-sm-9">
+							<input type="text" name="category[name]" required autocomplete="off" class="form-control" value="">
+						</div>
+					</div>
+						<div class="form-group">
+						<label class="col-sm-2 control-label">关键词<span class="must-fill">*</span></label>
+						<div class="col-sm-9">
+							<input type="text" name="keywords[name]" required autocomplete="off" class="form-control" value="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">分类图片</label>
+						<div class="col-sm-9">
+							
+		<script type="text/javascript">
+			function showImageDialog(elm, opts, options) {
+				require(["util"], function(util){
+					var btn = $(elm);
+					var ipt = btn.parent().prev();
+					var val = ipt.val();
+					var img = ipt.parent().next().children();
+					options = {'global':false,'class_extra':'','direct':true,'multiple':false,'fileSizeLimit':5120000};
+					util.image(val, function(url){
+						if(url.url){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.attachment);
+							ipt.attr("filename",url.filename);
+							ipt.attr("url",url.url);
+						}
+						if(url.media_id){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.media_id);
+						}
+					}, options);
+				});
+			}
+			function deleteImage(elm){
+				$(elm).prev().attr("src", "./resource/images/nopic.jpg");
+				$(elm).parent().prev().find("input").val("");
+			}
+		</script>
+		<div class="input-group ">
+			<input type="text" name="category[thumb]" value="" class="form-control" autocomplete="off">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" onclick="showImageDialog(this);">选择图片</button>
+			</span>
+		</div>
+		<div class="input-group " style="margin-top:.5em;">
+			<img src="./resource/images/nopic.jpg" onerror="this.src='./resource/images/nopic.jpg'; this.title='图片未找到.'" class="img-responsive img-thumbnail"  width="150" />
+			<em class="close" style="position:absolute; top: 0px; right: -14px;" title="删除这张图片" onclick="deleteImage(this)">×</em>
+		</div>						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">分类排序</label>
+						<div class="col-sm-9">
+							<input type="text" name="category[displayorder]"   placeholder="排序号越大排列越靠前" class="form-control" value="" >
+						</div>
+					</div>
+				<div class="form-group">
+								<label class="col-sm-2 control-label">绑定科室<span class="must-fill">*</span></label>
+								<div class="col-sm-9">
+									
+		<script type="text/javascript">
+			window._category = [];
+		</script>
+		<script type="text/javascript">
+			function renderCategory(obj, name){
+				var index = obj.options[obj.selectedIndex].value;
+				require(['jquery', 'util'], function($, u){
+					$selectChild = $('#'+name+'_child');
+					var html = '<option value="0">请选择二级分类</option>';
+					if (!window['_'+name] || !window['_'+name][index]) {
+						$selectChild.html(html);
+						return false;
+					}
+					for(var i=0; i< window['_'+name][index].length; i++){
+						html += '<option value="'+window['_'+name][index][i]['id']+'">'+window['_'+name][index][i]['name']+'</option>';
+					}
+					$selectChild.html(html);
+					if($("select").niceSelect) {
+						$("select").niceSelect("update");
+					}
+				});
+			}
+		</script>
+					<div class="row row-fix tpl-category-container">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<select class="form-control tpl-category-parent we7-select" id="category_parent" name="category[parentid]" onchange="renderCategory(this,'category')">
+					<option value="0">请选择一级分类</option>
+						<option value="840">常见科室</option>
+				</select>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<select class="form-control tpl-category-child we7-select" id="category_child" name="category[childid]">
+					<option value="0">请选择二级分类</option>
+				</select>
+			</div>
+		</div>
+									</div>
+							</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">是否开启</label>
+						<div class="col-sm-9">
+                            <label class="radio-inline">
+                                <input type="radio" name='enabled' value='1' >开启
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name='enabled' value='0' checked>关闭
+                            </label>
+						</div>
+					</div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-9">
+                            <input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+                            <input type="hidden" name="token" value="c5514e9f" />
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	myrequire(['layui'],function(){
+		layui.use(['layer','form','laydate'], function(){
+		  	var layer = layui.layer,
+			form = layui.form();
+		});
+	});
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	
+    
+    <script>
+		require(['bootstrap'], function ($) {
+		    $('[data-toggle="tooltip"]').tooltip({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="popover"]').popover({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="dropdown"]').dropdown({
+	            container: $(document.body)
+	        });
+	    });
+		myrequire(['js/init']);
+				$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+			$('.app-login-info-sel').show();
+		});
+		$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+			$('.app-login-info-sel').hide();
+		});
+		$('.app-login-info-sel .login-out').hover(function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+		},function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+		});
+		
+			</script>
+	</body>
+</html>

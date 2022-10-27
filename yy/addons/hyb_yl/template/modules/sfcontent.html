@@ -1,0 +1,312 @@
+{template './common/siteheader'}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">随访内容模版</h1>
+        </div>
+        <!-- main-content -->
+        <div class="main-content pr">
+            <div class="row mb5">
+                <div class="col-sm-2 col-md-2">
+                    <div class="btn-toolbar list-toolbar">
+                        <a href="{php echo $this->createWeburl('moban',array('op'=>'sfcontent_add'))}" class="btn btn-primary"><i class="fa fa-plus"></i>
+                            新增</a>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-10">
+                    <div class="p-right">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label class="control-label">筛选：</label>
+                                <input type="text" placeholder="模版名称" class="form-control J-search-name" name="name" value="">
+                            </div>
+                            <div class="form-group">
+                                <div class="select2-container mtf3" id="s2id_J-creator-name" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">选择创建人</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1" tabindex="-1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-1">   </ul></div></div><input type="hidden" class="mtf3 select2-offscreen" name="creator_id" id="J-creator-name" data-placeholder="选择创建人" tabindex="-1" data-type="select" title="">
+                            </div>
+                            <button type="button" class="btn btn-default J-search-btn">查找</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th class="pl20">序号</th>
+                            <th width="25%">模版名称</th>
+                            <th width="25%">随访内容</th>
+                            <th width="">创建人员</th>
+                            <th width="">创建日期</th>
+                            <th width="140">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="J-follow-content-list"><tr>
+        <td class="pl20">1</td>
+        <td>肥胖</td>
+        <td class="text-ellipsis">肥胖</td>
+        <td>胡婧怡</td>
+        <td>2019-06-06</td>
+        <td width="140">
+            <a href="{php echo $this->createWeburl('moban',array('op'=>'sfcontent_add'))}"><i class="fa fa-pencil"></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="96"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">2</td>
+        <td>天津</td>
+        <td class="text-ellipsis">77</td>
+        <td>张先生</td>
+        <td>2019-05-16</td>
+        <td width="140">
+            <a href="{php echo $this->createWeburl('moban',array('op'=>'sfcontent_add'))}"><i class="fa fa-pencil"></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="95"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">3</td>
+        <td>血糖管理</td>
+        <td class="text-ellipsis">水电费</td>
+        <td>李医生</td>
+        <td>2019-04-24</td>
+        <td width="140">
+            <a href="{php echo $this->createWeburl('moban',array('op'=>'sfcontent_add'))}"><i class="fa fa-pencil"></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="90"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">4</td>
+        <td>哈哈哈1</td>
+        <td class="text-ellipsis">yeah</td>
+        <td>曹云</td>
+        <td>2019-04-18</td>
+        <td width="140">
+            <a href="{php echo $this->createWeburl('moban',array('op'=>'sfcontent_add'))}"><i class="fa fa-pencil"></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="88"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">5</td>
+        <td>糖尿病随访</td>
+        <td class="text-ellipsis">test</td>
+        <td>王先生</td>
+        <td>2019-02-20</td>
+        <td width="140">
+            <a href="{php echo $this->createWeburl('moban',array('op'=>'sfcontent_add'))}"><i class="fa fa-pencil"></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="83"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">6</td>
+        <td>模板</td>
+        <td class="text-ellipsis">测试内容</td>
+        <td>王强</td>
+        <td>2019-01-23</td>
+        <td width="140">
+            <a href="{php echo $this->createWeburl('moban',array('op'=>'sfcontent_add'))}"><i class="fa fa-pencil"></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="78"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">7</td>
+        <td>7天回访一次1</td>
+        <td class="text-ellipsis"> 茶疗期间请多关注身体反应
+&nbsp;
+ 大小便情况（颜色、气味、次数、量）
+ 出汗情况（尤其是泡脚和泡澡后，请关注出汗部位和出汗时间）
+ 身体酸痛情况（肌肉 还是 关节，有无关节屈伸不利情况）
+ 是否有怕冷、流鼻涕、打喷嚏等现象
+ 是否出疹子、长痘
+ 睡眠情况（睡觉时间，起床时间，失眠还是容易入睡等）
+ 精神状态（昏沉、困倦还是精神十足）
+ 女生月经情况（颜色、是否有血块、月经周期，每次持续时间，例假期间是否有腰酸背痛等身体反应等）
+&nbsp;
+需要详细记录即时反馈，
+好关注咱们的身体健康哦！</td>
+        <td>胡大伟</td>
+        <td>2019-01-05</td>
+        <td width="140">
+            <a href="{php echo $this->createWeburl('moban',array('op'=>'sfcontent_add'))}"><i class="fa fa-pencil"></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="77"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">8</td>
+        <td>3天回访一次</td>
+        <td class="text-ellipsis"> 茶疗期间请多关注身体反应
+&nbsp;
+ 大小便情况（颜色、气味、次数、量）
+ 出汗情况（尤其是泡脚和泡澡后，请关注出汗部位和出汗时间）
+ 身体酸痛情况（肌肉 还是 关节，有无关节屈伸不利情况）
+ 是否有怕冷、流鼻涕、打喷嚏等现象
+ 是否出疹子、长痘
+ 睡眠情况（睡觉时间，起床时间，失眠还是容易入睡等）
+ 精神状态（昏沉、困倦还是精神十足）
+ 女生月经情况（颜色、是否有血块、月经周期，每次持续时间，例假期间是否有腰酸背痛等身体反应等）
+&nbsp;
+需要详细记录即时反馈，
+好关注咱们的身体健康哦！</td>
+        <td>胡大伟</td>
+        <td>2019-01-05</td>
+        <td width="140">
+            <a href="{php echo $this->createWeburl('moban',array('op'=>'sfcontent_add'))}"><i class="fa fa-pencil"></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="76"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr></tbody>
+                    </table>
+                    <div class="J-page-wrap pd20 mb45"><div class="base_page"><a href="#/name/@null/template_type/0/creator_id/@null/status/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/1</button><a href="#/name/@null/template_type/0/creator_id/@null/status/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                </div>
+            </div>
+        </div>
+        <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action="#">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+    </div>
+    <!-- 随访内容列表模版 -->
+    <script type="text/template" id="J-follow-content-list-tpl">
+        <td class="pl20"><%- index%></td>
+        <td><%- name%></td>
+        <td class="text-ellipsis"><%- content%></td>
+        <td><%- creator%></td>
+        <td><%- create_time%></td>
+        <td width="140">
+            <a href='/Admin/FollowContent/contentadd.html?id=<%- id%>'><i class="fa fa-pencil"></i> 修改</a> -
+            <a href='#' class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="<%- id%>"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </script>
+    <!-- 随访内容列表模版 -->
+    <script type="text/javascript">
+        require(['follow_content_list']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div><span role="status" aria-live="polite" class="select2-hidden-accessible"></span></body></html>

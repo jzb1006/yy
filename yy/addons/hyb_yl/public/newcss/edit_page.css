@@ -1,0 +1,40 @@
+.title{
+    padding: 10px;
+    background: #eeeeee;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+}
+.title::before{
+    content: '';
+    display: inline-block;
+    background: #5FB878;
+    width: 5px;
+    height: 30px;
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-left: 30px;
+}
+.cont{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.name{
+    margin-right: 30px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+.conts{
+    margin-top: 40px;
+    margin-left: 40px;
+}
+input,textarea{
+    font-size: 18px;
+}
+.layui-input:hover, .layui-textarea:hover {
+    border-color: #76d263 !important;
+}
+.layui-form-label{
+    width: 100px;
+}

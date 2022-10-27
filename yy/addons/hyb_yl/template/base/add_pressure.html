@@ -1,0 +1,122 @@
+{template '/common/mainHeader'}
+
+<div class="app-container-right">
+	<ul class="nav nav-tabs" id="myTab">
+		<li class="active">
+			<a href="#tab_basic">新增血压标准</a>
+		</li>
+	</ul>
+	<div class="app-content">
+		<div class="app-form">
+			<form action="" method="post" class="form-horizontal form form-validate">
+				<div class="panel panel-default">
+					<div class="panel-heading">新增血压标准</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">高压低端</label>
+							<div class="col-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon">mmhg</span>
+									<input type="number" name="high_range_down" class="form-control" value="{$item['high_range_down']}">
+								</div>
+							</div>
+							<div class="help-block col-md-10 col-lg-offset-2">高压低端</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">高压高端</label>
+							<div class="col-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon">mmhg</span>
+									<input type="number" name="high_range_up" class="form-control" value="{$item['high_range_up']}">
+								</div>
+							</div>
+							<div class="help-block col-md-10 col-lg-offset-2">高压高端</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">低压低端</label>
+							<div class="col-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon">mmhg</span>
+									<input type="number" name="low_range_down" class="form-control" value="{$item['low_range_down']}">
+								</div>
+							</div>
+							<div class="help-block col-md-10 col-lg-offset-2">低压低端</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">低压高端</label>
+							<div class="col-sm-9">
+								<div class="input-group">
+									<span class="input-group-addon">mmhg</span>
+									<input type="number" name="low_range_up" class="form-control" value="{$item['low_range_up']}">
+								</div>
+							</div>
+							<div class="help-block col-md-10 col-lg-offset-2">低压高端</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">最小年龄</label>
+							<div class="col-sm-9">
+								<input type="number" name="min_age" class="form-control" value="{$item['min_age']}">
+							</div>
+							<div class="help-block col-md-10 col-lg-offset-2">最小年龄</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">适用最大年龄</label>
+							<div class="col-sm-9">
+								<input type="number" name="max_age" class="form-control" value="{$item['max_age']}">
+							</div>
+							<div class="help-block col-md-10 col-lg-offset-2">适用最大年龄</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">性别</label>
+							<div class="col-sm-9">
+								<label class="radio-inline">
+									<input type="radio" id="inlineRadio1" name="sex" value="男" {if $item['sex'] == '男'} checked="" {/if}>男
+								</label>
+								<label class="radio-inline">
+									<input type="radio" id="inlineRadio2" name="sex" value="女" {if $item['sex'] == '女'} checked="" {/if}>女
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">偏低建议</label>
+							<div class="col-sm-9">
+								{php echo tpl_ueditor('proposal_low',$item['proposal_low']);}</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">偏高建议</label>
+							<div class="col-sm-9">
+								{php echo tpl_ueditor('proposal_high',$item['proposal_high']);}</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">正常建议</label>
+							<div class="col-sm-9">
+								{php echo tpl_ueditor('proposal_normal',$item['proposal_normal']);}</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-sm-9">
+						<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+						<input type="hidden" name="token" value="{$_W['token']}" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+</body>
+</html>

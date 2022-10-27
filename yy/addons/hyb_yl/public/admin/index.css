@@ -1,0 +1,234 @@
+* {
+    padding: 0;
+    margin:0 ;
+    list-style: none;
+    box-sizing:border-box;
+}
+
+a {
+    text-decoration: none;
+
+}
+img{
+    border: 0;
+}
+.box{
+    padding-left: 270px;
+    margin-top: 85px;
+    width: 97%;
+}
+.smallbox{
+    width: 100%;
+    background:#fff;
+}
+.toptitle{
+    width: 100%;
+    border-bottom: 2px solid #eee;
+    display: flex;
+}
+.toptext{
+    color: #0693ea;
+    border-bottom: 2px solid #0693ea;
+    width: auto;
+    text-align: center;
+    padding: 10px 20px;
+}
+.contens{
+    padding: 0 20px;
+}
+.radioBox{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+.state{
+    margin-left: 10px;
+}
+.layui-form-radio>i:hover, .layui-form-radioed>i {
+    color: #2196f3;
+}
+.layui-form-radio {
+    margin: 0;
+}
+.layui-form-pane .layui-form-radio, .layui-form-pane .layui-form-switch {
+     margin: 0;
+    padding: 0;
+}
+.layui-form-radio>i {
+     margin-right: 0px;
+    font-size: 16px;
+    /*color: #c2c2c2;*/
+}
+.numBox{
+    display: flex;
+    justify-content: space-between;
+    /*align-items: center;*/
+    margin-top: 20px;
+}
+.label{
+    white-space: nowrap;
+    padding: 0;
+    text-align: left;
+    height: 38px;
+    line-height: 38px;
+    margin-right: 10px;
+    color: #000;
+}
+.rule{
+    font-size: 12px;
+    color: #cccccc;
+    margin-top: 10px;
+}
+.dataBox{
+    padding: 0 20px;
+    margin-top: 20px;
+}
+.topBtn{
+    display: flex;
+    align-items: center;
+}
+.topBtn>li{
+    margin-right: 10px;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+.datas{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-left: 4px solid #1E9FFF;
+    margin-top: 10px;
+    background: rgb(236,243,250);
+    padding: 10px;
+}
+.imgBox{
+    width: 150px;
+    height: 90px;
+    background: #fff;
+    overflow: hidden;
+}
+.imgBox img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.datas .left{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title1{
+    width: 60%;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.datas .right{
+    display: flex;
+    justify-content: space-between;
+}
+.datas .right>li{
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+    margin-right: 10px;
+    padding: 0 10px;
+    white-space: nowrap;
+    border-radius: 5px;
+}
+.title1>div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+}
+.text{
+    margin-right: 10px;
+}
+.radio-inline{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+input[type=checkbox], input[type=radio]{
+    margin: 0;
+}
+.btns{
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    font-size: 12px;
+}
+.zhezhao{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.choiceBox{
+    width: 50%;
+    height: 80%;
+    background: #fff;
+    overflow: hidden;
+}
+.title{
+    width: 100%;
+    font-size: 14px;
+    padding: 5px 20px;
+    background: aliceblue;
+    border-bottom: 1px solid #cccccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: baseline;
+    border-top: 1px solid #ddd;
+}
+.btn{
+    padding: 5px 10px;
+}
+.close{
+    cursor: initial;
+}
+.btn-danger,.btn-primary,.btn-default,.imgBox{
+    cursor:pointer;
+}
+button{
+    outline: none;
+    height: 38px;
+    padding: 0 20px;
+    border: none;
+    margin-right: 10px;
+}
+/*input[type="radio"] {*/
+    /*content: "\a0"; /*不换行空格*/*/
+    /*display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 15px;
+    height: 15px;
+    margin-right:10px;
+    border-radius: 50%;
+    border: 1px solid #01cd78;
+    text-indent: .15em;
+    line-height: 1; */
+/*}*/

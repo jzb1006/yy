@@ -1,0 +1,165 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#">评论列表</a></li>
+</ul>
+<div class="app-content">
+    <div class="app-filter">
+		<div class="filter-list">
+			<form action="" method="get" class="form-horizontal" role="form" id="form1">
+				<input type="hidden" name="c" value="site" />
+				<input type="hidden" name="a" value="entry" />
+				<input type="hidden" name="m" value="hyb_yl" />
+				<input type="hidden" name="do" value="apply" />
+				<input type="hidden" name="op" value="dynamicpllist" />
+				<input type="hidden" name="ac" value="dynamiclist" />
+				<input type="hidden" name="a_id" value="{$a_id}" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label">关键字</label>
+					<div class="col-md-4">
+						<input type="text" name="keyword" class="form-control" value="{$keyword}" placeholder="可搜索评论者昵称" />
+					</div>
+				</div>
+              	<div class="form-group">
+					<label class="col-sm-2 control-label">时间筛选</label>
+					<div class="col-md-3">
+						<select name="timetype" class="form-control">
+							<option value="">时间类型</option>
+							<option value="1" {if $timetype=='1'} selected  {/if}>评论时间</option>
+						</select>
+                    </div>
+					<div class="col-md-2">
+					{php echo tpl_form_field_daterange('time_limit', array('starttime' =>$starttime,'endtime' => $endtime));}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-md-9">
+						<button class="btn btn-primary" id="search">筛选</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+       
+        
+    <div class="app-table-list">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center" width="5%"><input type="checkbox" name="checkall" value="" id="checkall" class="checkboxall" onclick="var ck = this.checked; $(':checkbox').each(function(){this.checked = ck});"></th>
+                        <th class="text-center" width="20%">评论用户</th>
+                        <th class="text-center" width="15%">评论内容</th>
+                        <th class="text-center" width="10%">评论时间</th>
+                        <th class="text-center" width="5%">回复数</th>
+                        <th class="text-center" width="20%">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	{loop $list $item}
+                    <tr >
+                        <td class="text-center">
+                            <center>
+								<input type="checkbox" name="checkbox[]" value="{$item['pl_id']}"  class="item" />
+							</center>
+                        </td>
+                       <td class="text-center">
+                       		<img class="scrollLoading" src="{$item['usertoux']}" data-url="{$item['usertoux']}" width="50" height="50">
+                         	{$item['name']} 
+                         	{if $item['user_identity']=='1'}
+                         	&nbsp<span class="label label-success">{$item['zhuanjia_jigou_info']}</span><span class="label label-warning">{$item['zhuanjia_zhichen_info']}</span>{/if}
+                         	
+						</td>
+	                    <td class="text-center">
+	    					{$item['rcontent']}
+						</td>
+                        
+                        <td class="text-center">{php echo date("Y-m-d H:i:s",$item['pl_time'])}
+                        </td>
+                        <td class="text-center">
+	                       {$item['huifunum']}
+	                    </td>
+	                    <td class="text-center">
+	                    	<a class="btn btn-default btn-sm" data-toggle="ajaxModal"  href="{php echo $this->createWebUrl('apply',array('ac'=>'dynamiclist','op'=>'dynamicpllist_hflist','a_id'=>$a_id,'pl_id'=>$item['pl_id']))}" title="查看回复详情">查看回复详情</a>
+	                        <a class="btn btn-danger btn-sm" href="{php echo $this->createWebUrl('apply',array('ac'=>'dynamiclist','op'=>'dynamicpllist_delete','a_id'=>$a_id,'pl_id'=>$item['pl_id']))}" class="js-remove"  data-id="{$item['a_id']}">删除</a> 
+	                    </td>
+                    </tr>
+                    {/loop}
+                </tbody>
+            </table>
+        </div>
+        <div class="app-table-foot clearfix">
+            <div class="pull-left" id='de1'>
+                <label class="btn btn-default min-width " style="display: inline-flex;align-items:center;margin-right:1rem;">
+				<input type="checkbox" name="checkbox" value="" id="checkbox" onclick="var ck = this.checked; $(':checkbox').each(function(){this.checked = ck});"/>
+				<div style="margin-left: 10px">全选</div>
+				</label>
+				<a href="javascript:;" class="btn btn-default min-width js-batch js-delete pass_delete">批量删除</a>
+            </div>
+            <div class="pull-right">{$pagers}</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#search").click(function(){
+        $('#form2')[0].submit();
+    })
+    // 批量删除
+	$('#de1').delegate('.pass_delete','click',function(e){
+
+		e.stopPropagation();
+		var order_ids = [];
+		var $checks=$('.item:checkbox:checked');
+	
+		$checks.each(function() {
+			if (this.checked) {
+				order_ids.push(this.value);
+			};
+		});
+		var $this = $(this);
+		var ids = order_ids;
+
+		util.nailConfirm(this, function(state) {console.log(state)
+		if(!state)  return;
+			$.post("{php echo $this->createWebUrl('apply',array('ac'=>'dynamiclist','op'=>'dynamiclistsave_pass_pldelete'))}", { ids : ids }, function(data){
+				if(data.errno=='1'){ 
+					util.tips("操作成功！");
+					setTimeout(function(){ 
+						window.location.reload();
+					}, 1000);
+				}else{
+					util.tips("操作失败"); 	
+				};
+			}, 'json');
+		}, {html: '确认删除?'});
+	});
+</script>
+    
+<script>
+	require(['bootstrap'], function ($) {
+	    $('[data-toggle="tooltip"]').tooltip({
+	        container: $(document.body)
+	    });
+	    $('[data-toggle="popover"]').popover({
+	        container: $(document.body)
+	    });
+	    $('[data-toggle="dropdown"]').dropdown({
+	        container: $(document.body)
+	    });
+	});
+	myrequire(['js/init']);
+			$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+		$('.app-login-info-sel').show();
+	});
+	$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+		$('.app-login-info-sel').hide();
+	});
+	$('.app-login-info-sel .login-out').hover(function(){
+		$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+	},function(){
+		$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+	});
+
+</script>
+{template './common/mainfooter'}

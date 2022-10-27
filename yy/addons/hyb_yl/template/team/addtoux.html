@@ -1,0 +1,226 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li ><a href="/index.php?c=site&a=entry&do=team&op=txlist&ac=txlist&m=hyb_yl">头衔列表</a></li>
+	<li class="active"><a href="/index.php?c=site&a=entry&do=team&op=addtoux&ac=addtoux&m=hyb_yl">添加头衔</a></li>
+	</ul>
+<div class="app-content">
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal form form-validate" id="form">
+		<div class="panel panel-default">
+		<div class="panel-heading">头衔设置</div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">头衔标题</label>
+				<div class="col-sm-7 col-xs-12">
+					<input type="text" name="active[title]" class="form-control" value="" />
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">头衔图标</label>
+				<div class="col-sm-6 col-xs-6">
+					
+		<script type="text/javascript">
+			function showImageDialog(elm, opts, options) {
+				require(["util"], function(util){
+					var btn = $(elm);
+					var ipt = btn.parent().prev();
+					var val = ipt.val();
+					var img = ipt.parent().next().children();
+					options = {'global':false,'class_extra':'','direct':true,'multiple':false,'fileSizeLimit':5120000};
+					util.image(val, function(url){
+						if(url.url){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.attachment);
+							ipt.attr("filename",url.filename);
+							ipt.attr("url",url.url);
+						}
+						if(url.media_id){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.media_id);
+						}
+					}, options);
+				});
+			}
+			function deleteImage(elm){
+				$(elm).prev().attr("src", "./resource/images/nopic.jpg");
+				$(elm).parent().prev().find("input").val("");
+			}
+		</script>
+		<div class="input-group ">
+			<input type="text" name="active[img]" value="" class="form-control" autocomplete="off">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" onclick="showImageDialog(this);">选择图片</button>
+			</span>
+		</div>
+		<div class="input-group " style="margin-top:.5em;">
+			<img src="./resource/images/nopic.jpg" onerror="this.src='./resource/images/nopic.jpg'; this.title='图片未找到.'" class="img-responsive img-thumbnail"  width="150" />
+			<em class="close" style="position:absolute; top: 0px; right: -14px;" title="删除这张图片" onclick="deleteImage(this)">×</em>
+		</div>				</div>
+			</div>
+			
+			<div class="form-group layui-form-item">
+				<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">获取方式</label>
+				<div class="col-sm-9 layui-input-block">
+					<label class="checkbox-inline" onclick="showplu()" >
+						<input type="checkbox" value="rush" name="plugin[]" /> 问答数最多
+					</label>
+					<label class="checkbox-inline" onclick="showplu()" >
+						<input type="checkbox" value="groupon" name="plugin[]" /> 开方数最多
+					</label>
+					<label class="checkbox-inline" onclick="showplu()" >
+						<input type="checkbox" value="fightgroup" name="plugin[]" /> 解读数最多
+					</label>
+					<label class="checkbox-inline" onclick="showplu()" >
+						<input type="checkbox" value="coupon" name="plugin[]" /> 评分数最多
+					</label>
+					<label class="checkbox-inline" onclick="showplu()" >
+						<input type="checkbox" value="halfcard" name="plugin[]" /> 关注数最多
+					</label>
+					<label class="checkbox-inline" onclick="showplu()" >
+						<input type="checkbox" value="charge" name="plugin[]" /> 患教最多
+					</label>
+					
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">状态</label>
+				<div class="col-sm-9 col-xs-12">
+					<label class="radio-inline" >
+                        <input type="radio" value="1" name="status" >启用
+                    </label>
+					<label class="radio-inline" >
+                        <input type="radio" value="0" name="status"  checked >禁止
+                    </label>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label"></label>
+			<div class="col-sm-9">
+				<input type="hidden" name="id" value="0" id="id"/>
+				<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+				<input type="hidden" name="token" value="da1c10f4" />
+			</div>
+		</div>
+		</form>
+	</div>
+</div>
+<script>
+	function changeorderstatus(flag){
+		if(flag){
+			$('#orderprice').hide();
+			$('#ordergoods').show();
+		}else{
+			$('#orderprice').show();
+			$('#ordergoods').hide();
+		}
+		showplu();
+	}
+
+	function changegiftstatus(flag){
+		if(flag == 1){
+			$('#giftcoupon').show();
+			$('#giftcode').hide();
+			$('#getstatus').show();
+		}else if(flag == 2){
+			$('#giftcoupon').hide();
+			$('#giftcode').show();
+			$('#getstatus').hide();
+		}else{
+			$('#giftcoupon').hide();
+			$('#giftcode').hide();
+			$('#getstatus').hide();
+		}
+	}
+	$(function(){
+		var t = setInterval(de,1000);
+		function de(){
+			$('.layui-form-select').remove();
+		}
+		showplu();
+	});
+
+	function showplu(){
+		var arrChk=$("input[name='plugin[]']:checked");
+		var arrplu = new Array();
+		$(arrChk).each(function(){
+			arrplu.push($(this).val());
+		});
+		if($.inArray('rush',arrplu) > -1){
+			$('#rushgoods').show();
+		}else{
+			$('#rushgoods').hide();
+		}
+		if($.inArray('groupon',arrplu) > -1){
+			$('#groupongoods').show();
+		}else{
+			$('#groupongoods').hide();
+		}
+		if($.inArray('fightgroup',arrplu) > -1){
+			$('#fightgroupgoods').show();
+		}else{
+			$('#fightgroupgoods').hide();
+		}
+		if($.inArray('coupon',arrplu) > -1){
+			$('#coupongoods').show();
+		}else{
+			$('#coupongoods').hide();
+		}
+		if($.inArray('halfcard',arrplu) > -1){
+			$('#halfcardgoods').show();
+		}else{
+			$('#halfcardgoods').hide();
+		}
+		if($.inArray('charge',arrplu) > -1){
+			$('#chargegoods').show();
+		}else{
+			$('#chargegoods').hide();
+		}
+	}
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	
+    
+    <script>
+		require(['bootstrap'], function ($) {
+		    $('[data-toggle="tooltip"]').tooltip({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="popover"]').popover({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="dropdown"]').dropdown({
+	            container: $(document.body)
+	        });
+	    });
+		myrequire(['js/init']);
+				$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+			$('.app-login-info-sel').show();
+		});
+		$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+			$('.app-login-info-sel').hide();
+		});
+		$('.app-login-info-sel .login-out').hover(function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+		},function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+		});
+		
+			</script>
+	</body>
+</html>

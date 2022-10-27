@@ -1,0 +1,711 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            <!-- headerbar -->
+            <div class="pageheader hidden">
+                <h2>
+                    <i class="fa fa-ruble fa-sm"></i> 积分管理
+                </h2>
+            </div>
+            <div class="contentpanel">
+                <div class="tab-content" id="pointsPanel">
+                    <div class="tab-pane active">
+                        <!-- 头部筛选 -->
+                        <div class="row mb10">
+                            <div class="col-sm-12 col-md-12 pull-right">
+                                <form class="form-inline pull-right" method="post" id="J-delivery-form" _lpchecked="1">
+                                    <div class="form-group mr5">
+                                        <div class="input-group">
+                                            <input class="form-control input-sm2 radius3 J-search-name" name="search_name" type="text" placeholder="输入患者姓名/手机后4位" size="24">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-default btn-sm J-search-btn">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- 内容主体 -->
+                        <div class="table-responsive border-top mlrf20">
+                            <table class="table table-hover shadow-none">
+                                <thead>
+                                    <tr>
+                                        <th class="pl20">姓名</th>
+                                        <th>手机号</th>
+                                        <th>积分</th>
+                                        <th class="text-center">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="J-points-list-warp"><tr>
+        <td class="pl20">周敏</td>
+        <td>13378449555</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123016">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123016">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123016">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">夏凯</td>
+        <td>17858267739</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123015">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123015">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123015">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">焦二</td>
+        <td></td>
+        <td>333</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123014">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123014">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123014">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">李颖</td>
+        <td>13965435678</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123013">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123013">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123013">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">Tai-Chiou Yu</td>
+        <td>15100423281</td>
+        <td>10</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123012">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123012">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123012">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">李白</td>
+        <td>13809783245</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123011">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123011">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123011">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">洪小翔</td>
+        <td></td>
+        <td>10</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123009">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123009">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123009">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">段龙燕</td>
+        <td>13728710194</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123008">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123008">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123008">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">李昆</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123007">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123007">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123007">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">123</td>
+        <td>13937510386</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123006">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123006">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123006">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">9999</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123005">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123005">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123005">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">化橘红</td>
+        <td></td>
+        <td>320</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123004">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123004">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123004">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">野菊花</td>
+        <td></td>
+        <td>120</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123003">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123003">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123003">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">猪丫丫</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123002">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123002">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123002">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">展素之</td>
+        <td>15936972795</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123001">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123001">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123001">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">十三</td>
+        <td>15536997898</td>
+        <td>123</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020123000">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020123000">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020123000">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">张恒</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122999">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122999">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122999">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">方法</td>
+        <td>15804471099</td>
+        <td>69</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122998">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122998">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122998">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">1</td>
+        <td>18841488598</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122997">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122997">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122997">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">孙抗抗</td>
+        <td>15162129126</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122996">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122996">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122996">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">古月</td>
+        <td>15228679222</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122995">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122995">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122995">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">12</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122994">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122994">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122994">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">二哥</td>
+        <td>13988776645</td>
+        <td>400</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122993">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122993">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122993">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">接口的</td>
+        <td>13988776698</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122992">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122992">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122992">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">复合肥</td>
+        <td>17688887654</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122991">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122991">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122991">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">王小4</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122990">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122990">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122990">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">赵四</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122989">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122989">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122989">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">武林</td>
+        <td>18012345678</td>
+        <td>100</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122988">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122988">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122988">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">赵四</td>
+        <td>13216094141</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122987">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122987">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122987">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">赵四</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122986">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122986">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122986">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">赵四</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122985">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122985">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122985">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">赵四</td>
+        <td></td>
+        <td>5</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122984">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122984">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122984">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">赵四</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122983">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122983">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122983">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">王大锤1</td>
+        <td>15574820945</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122982">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122982">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122982">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">张钰权</td>
+        <td>15697568703</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122981">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122981">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122981">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">壬伟</td>
+        <td>13734125678</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122980">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122980">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122980">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">嘻嘻</td>
+        <td>15874917499</td>
+        <td>100</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122979">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122979">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122979">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">哈哈</td>
+        <td>15874917499</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122978">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122978">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122978">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">赵文香</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122977">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122977">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122977">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">唐胜芬</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122976">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122976">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122976">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">王佳年</td>
+        <td>13830585270</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122975">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122975">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122975">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">张倩</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122974">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122974">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122974">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">小红2222</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122973">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122973">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122973">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">李琦</td>
+        <td>13558241163</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122972">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122972">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122972">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">蓝河</td>
+        <td>15535667994</td>
+        <td>100</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122971">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122971">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122971">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">肖兵</td>
+        <td>13534568879</td>
+        <td>100</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122970">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122970">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122970">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">重新</td>
+        <td></td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122969">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122969">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122969">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">张琪</td>
+        <td></td>
+        <td>270</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122968">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122968">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122968">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">啊啊啊</td>
+        <td>13222221231</td>
+        <td>100</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122967">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122967">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122967">查看记录</a></span>
+        </td>
+    </tr><tr>
+        <td class="pl20">TEST P Self Pay</td>
+        <td>15812344321</td>
+        <td>0</td>
+        <td class="text-center">
+            <span class="J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="00020122966">更改积分</a> - </span>
+            <span class="J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="00020122966">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="00020122966">查看记录</a></span>
+        </td>
+    </tr></tbody>
+                            </table>
+                        </div>
+                        <div class="J-pager-wrap"></div>
+
+                    </div>
+
+                    <!-- 更改积分 -->
+                    <div class="modal fade" id="J-change-points-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">更改积分</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group pt10">
+                                        <form class="form-horizontal J-change-points-form">
+                                            <div class="row">
+                                                <label class="col-sm-3 control-label">选择类型</label>
+                                                <div class="col-sm-8 mt10">
+                                                    <!-- <div class="form-group"> -->
+                                                        <!-- <div class="row"> -->
+                                                            <div class="col-sm-4">
+                                                                <div class="rdio rdio-default">
+                                                                    <input type="radio" name="points_change_type" id="addPoints" value="1" checked>
+                                                                    <label for="addPoints">增加</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="rdio rdio-default">
+                                                                    <input type="radio" name="points_change_type" id="reducePoints" value="2">
+                                                                    <label for="reducePoints">扣减</label>
+                                                                </div>
+                                                            </div>
+                                                        <!-- </div> -->
+                                                    <!-- </div> -->
+                                                </div>
+                                            </div>
+                                            <div class="row mt20">
+                                                <label class="col-sm-3 control-label">变动积分<span class="asterisk">*</span></label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control J-change-points-count">
+                                                </div>
+                                            </div>
+                                            <div class="row mt20">
+                                                <label class="col-sm-3 control-label">备注</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control J-change-points-remark">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer modal-btn-col2">
+                                    <button type="button" class="btn btn-primary J-change-submit-btn">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 清空积分 -->
+                    <div class="modal fade" id="J-empty-points-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">清空积分</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group pt10">
+                                        <form class="form-horizontal J-empty-points-form">
+                                            <div class="row">
+                                                <label class="col-sm-3 control-label">备注</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control J-empty-points-remark">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer modal-btn-col2">
+                                    <button type="button" class="btn btn-primary J-empty-submit-btn">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 操作记录 -->
+                    <div class="modal fade" id="J-history-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title">查看记录</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 mb10">
+                                            <div class="panel-group">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="15%">变动类型</th>
+                                                            <th width="15%">时间</th>
+                                                            <th width="25%">诊所</th>
+                                                            <th>备注</th>
+                                                            <th width="15%">数额</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="J-history-wrap">
+                                                    </tbody>
+                                                </table>
+                                                <div class="J-history-page-wrap"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer modal-btn-col2">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 积分列表模板 -->
+    <script type="text/template" id="J-points-list-tpl">
+        <td class="pl20"><%- name%></td>
+        <td><%- mobile%></td>
+        <td><%- point%></td>
+        <td class="text-center">
+            <span class="module-hide J-module-control" data-permission="97"><a class="J-change-points" href="" data-id="<%- id%>">更改积分</a> - </span>
+            <span class="module-hide J-module-control" data-permission="98"><a class="J-empty-points" href="" data-id="<%- id%>">清零</a> - </span>
+            <span><a class="J-points-history" href="" data-id="<%- id%>">查看记录</a></span>
+        </td>
+    </script>
+
+    <!-- 操作记录模板 -->
+    <script type="text/template" id="J-history-tpl">
+        <td><%- type%></td>
+        <td><%- date%></td>
+        <td><%- shop%></td>
+        <td><%- remark%></td>
+        <td><%- point%></td>
+    </script>
+
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+        require(['points_manage']);
+    </script>
+</body>
+
+</html>

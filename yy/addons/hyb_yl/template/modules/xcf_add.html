@@ -1,0 +1,862 @@
+{template './common/siteheader'}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">
+                西/成药处方模板
+                            </h1>
+            <div class="stats">
+                <a href="{php echo $this->createWeburl('moban',array('op'=>'xcf_display'))}" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+            </div>
+        </div>
+        <div class="main-content" id="J-clinic-tpl">
+            <div class="panel panel-default">
+                <div class="panel-heading no-collapse">
+                    新增模板
+                </div>
+                <div class="panel-body collapse in">
+                    <form id="J-group-form" action="#" method="post">
+        <input type="hidden" name="suite_id" value="">
+        <input type="hidden" class="J-type" name="suite_type" value="3">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">模板名称 <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control max64" value="" required="" name="name">
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                模板类型
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="template_type" id="radioDefault" value="1" checked="checked">
+                                <label for="radioDefault">通用</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="template_type" id="radioDefault2" value="2">
+                                <label for="radioDefault2">个人</label>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                
+                <div class="row">
+                    <div class="col-sm-9">
+                        <label class="control-label">医嘱内容 <span class="asterisk">*</span></label>
+                    </div>
+                </div>
+                <div class="row J-input-box">
+                    
+                        <div class="col-sm-12">
+                            <div class="panel panel-default pd0">
+                                <div class="table-responsive">
+                                    <table class="table mt0">
+                                        <thead>
+                                        <tr class="font12">
+                                            <th width="8%">组号</th>
+                                            <th class="pl20">药品名</th>
+                                            <th width="8%">(次)剂量</th>
+                                            <th width="8%">(次)单位</th>
+                                            <th>用法</th>
+                                            <th>用药频次</th>
+                                            <th width="8%">天数</th>
+                                            <th width="8%">数量</th>
+                                            <th width="8%">单位</th>
+                                            <th width="12%">说明</th>
+                                            <th width="8%">取药地点</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="J-pharmacy-box">
+                                            <td colspan="2" class="pl20">
+                                                <div class="select2-container select2-container-multi" id="s2id_J-input-tpl" style="width: 100%;"><ul class="select2-choices">  <li class="select2-search-field">    <label for="s2id_autogen1" class="select2-offscreen"></label>    <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input select2-default" id="s2id_autogen1" placeholder="" style="width: 215px;">  </li></ul><div class="select2-drop select2-drop-multi select2-display-none">   <ul class="select2-results">   <li class="select2-no-results"></li></ul></div></div><input type="hidden" id="J-input-tpl" data-init="" data-initlist="[{&quot;id&quot;:6530,&quot;name&quot;:&quot;5％葡萄糖氯化钠注射液&quot;,&quot;genericName&quot;:&quot;糖盐水&quot;,&quot;spec&quot;:&quot;250ml&quot;,&quot;factory&quot;:&quot;天地药业有限公司&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:6656512},{&quot;id&quot;:6531,&quot;name&quot;:&quot;0.9%氯化钠注射液&quot;,&quot;genericName&quot;:&quot;&quot;,&quot;spec&quot;:&quot;250ml:12.5g&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:4748719},{&quot;id&quot;:6544,&quot;name&quot;:&quot; 甲硝唑氯化钠注射液&quot;,&quot;genericName&quot;:&quot;&quot;,&quot;spec&quot;:&quot;100ml:0.5g&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:2144},{&quot;id&quot;:6567,&quot;name&quot;:&quot;注射用阿奇霉素&quot;,&quot;genericName&quot;:&quot;&quot;,&quot;spec&quot;:&quot;0.25&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:10097},{&quot;id&quot;:6568,&quot;name&quot;:&quot;复方氨基比林注射液&quot;,&quot;genericName&quot;:&quot; &quot;,&quot;spec&quot;:&quot;2mlx1支&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:9982},{&quot;id&quot;:6570,&quot;name&quot;:&quot;酚磺乙胺注射液&quot;,&quot;genericName&quot;:&quot; 止血敏&quot;,&quot;spec&quot;:&quot;0.25g：2ml&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:6602,&quot;name&quot;:&quot;阿奇霉素片&quot;,&quot;genericName&quot;:&quot;希舒美&quot;,&quot;spec&quot;:&quot;0.25gx1片&quot;,&quot;factory&quot;:&quot;辉瑞制药有限公司&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:6310},{&quot;id&quot;:6612,&quot;name&quot;:&quot;黄体酮胶囊&quot;,&quot;genericName&quot;:&quot;益玛欣&quot;,&quot;spec&quot;:&quot;50mgx1粒&quot;,&quot;factory&quot;:&quot;浙江仙琚制药&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:6726,&quot;name&quot;:&quot;雌三醇乳膏&quot;,&quot;genericName&quot;:&quot;欧维婷&quot;,&quot;spec&quot;:&quot;15mg／15g／支&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:6727,&quot;name&quot;:&quot;阴道用乳杆菌活菌胶囊&quot;,&quot;genericName&quot;:&quot; 定君生&quot;,&quot;spec&quot;:&quot;0.25g／粒&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:6750,&quot;name&quot;:&quot;麝香痔疮栓&quot;,&quot;genericName&quot;:&quot;马应龙&quot;,&quot;spec&quot;:&quot;1.5g*1粒&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:6751,&quot;name&quot;:&quot;鱼石脂软膏&quot;,&quot;genericName&quot;:&quot;&quot;,&quot;spec&quot;:&quot;10% 20g&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:6760,&quot;name&quot;:&quot;葡萄糖酸钙注射液&quot;,&quot;genericName&quot;:&quot;&quot;,&quot;spec&quot;:&quot;10ml:1g&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:5000},{&quot;id&quot;:6771,&quot;name&quot;:&quot;阿托品注射液&quot;,&quot;genericName&quot;:&quot; &quot;,&quot;spec&quot;:&quot;1ml:0.5mg&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:6772,&quot;name&quot;:&quot; 0.9%氯化钠注射液&quot;,&quot;genericName&quot;:&quot; &quot;,&quot;spec&quot;:&quot;500ml:4.5g&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:1},{&quot;id&quot;:10828,&quot;name&quot;:&quot;维生素C注射液&quot;,&quot;genericName&quot;:&quot;&quot;,&quot;spec&quot;:&quot;0.5&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:10838,&quot;name&quot;:&quot;克霉唑阴道片&quot;,&quot;genericName&quot;:&quot;伊悦&quot;,&quot;spec&quot;:&quot;500mg&quot;,&quot;factory&quot;:&quot;华钠大药厂&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:10843,&quot;name&quot;:&quot;0.9%氯化钠注射液&quot;,&quot;genericName&quot;:&quot;&quot;,&quot;spec&quot;:&quot;10ml×10支&quot;,&quot;factory&quot;:&quot;&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:2957},{&quot;id&quot;:10855,&quot;name&quot;:&quot;盐酸消旋山莨菪碱注射液&quot;,&quot;genericName&quot;:&quot;民生&quot;,&quot;spec&quot;:&quot;1ml:10mg&quot;,&quot;factory&quot;:&quot;杭州民生药业有限公司&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0},{&quot;id&quot;:10856,&quot;name&quot;:&quot;聚肌胞注射液&quot;,&quot;genericName&quot;:&quot;南国&quot;,&quot;spec&quot;:&quot;2ml:2mg&quot;,&quot;factory&quot;:&quot;广东南国药业有限公司&quot;,&quot;status&quot;:1,&quot;currentNum&quot;:0}]" data-placeholder="请选择" tabindex="-1" class="select2-offscreen">
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">状态</label>
+                                <select class="form-control input-sm" data-placeholder="请选择" name="status">
+                                    <option value="1">正常</option>
+                                    <option value="0">停用</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        
+    </form>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary btn-sml J-save-submit">保存</button>&nbsp;
+                    <button class="btn btn-default btn-sml" onclick="window.history.back(-1);">取消</button>
+                </div>
+            </div>
+            <footer>
+	<hr>
+	<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+	<p class="pull-right"> <a href="http://www.DXY.cn" target="_blank">DXY</a> by <a href="http://www.dxy.cn" target="_blank">DXY.CN</a>
+	</p>
+	<p>© 2015 <a href="http://www.dxy.cn" target="_blank">DXY</a></p>
+</footer>
+        </div>
+    </div>
+
+    <!-- 辅助检查部位 -->
+    <div class="modal fade" id="check-part-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">检查部位</h4>
+                </div>
+                <div class="modal-body pl20">
+                    <div class="row mt10 font16" id="J-check-part">
+                    </div>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-part-sub">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 辅助检查部位 -->
+
+    <script type="text/template" id="J-group-tpl">
+        <input type="hidden" name="suite_id" value="">
+        <input type="hidden" class='J-type' name="suite_type" value="<%-type%>">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">模板名称 <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control max64" value="" required="" name="name">
+                        </div>
+                    </div>
+                </div>
+                <% if(type == 3 || type == 4 ){ %>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                模板类型
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="template_type" id="radioDefault" value="1" checked="checked">
+                                <label for="radioDefault">通用</label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="rdio rdio-default">
+                                <input type="radio" name="template_type" id="radioDefault2" value="2">
+                                <label for="radioDefault2">个人</label>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                <% if(type == 4){ %>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">模板分类 </label>
+                                <div class="row" id="J-tpl-type-wrap">
+                                </div>
+                                <input type="hidden" name="category_id" class="J-tpl-type-val">
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                <% if([0, 1, 2, 5, 6].indexOf(type*1) > -1){ %>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">状态</label>
+                                <select class="form-control input-sm" data-placeholder="请选择" name="status">
+                                    <option value="1">正常</option>
+                                    <option value="0">停用</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <label class="control-label">医嘱内容 <span class="asterisk">*</span></label>
+                    </div>
+                </div>
+                <div class="row J-input-box">
+                    <% if(type == 0){ %>
+                        <div class="select2-container select2-container-multi width100p mb10 col-sm-9">
+                            <input type="hidden" id="J-input-tpl" data-init='' data-initlist='<%-inspectList%>' data-placeholder="请选择" />
+                            <input type="hidden" class="J-input-vals">
+                        </div>
+                    <% }else if(type == 1){ %>
+                        <input type="hidden" class="J-checkpointList" value="<%-checkpointList%>">
+                        <div class="select2-container select2-container-multi width100p mb10 col-sm-9">
+                            <input type="hidden" id="J-input-tpl" data-init='' data-initlist='<%-inspectList%>' data-placeholder="请选择" />
+                            <input type="hidden" class="J-input-vals">
+                        </div>
+                    <% }else if(type == 2){ %>
+                        <div class="col-sm-9">
+                            <div class="panel panel-default pd0">
+                                <div class="table-responsive">
+                                    <table class="table mt0">
+                                        <thead>
+                                        <tr>
+                                            <th width="30%" class="pl20">名称</th>
+                                            <th width="15%">单位</th>
+                                            <th>次数</th>
+                                            <th>说明</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="J-cure-box">
+                                            <td colspan="2" class="pl20">
+                                                <input type="hidden" id="J-input-tpl" data-init='' data-initlist='<%-inspectList%>' data-placeholder="请选择" />
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    <% }else if(type == 3){ %>
+                        <div class="col-sm-12">
+                            <div class="panel panel-default pd0">
+                                <div class="table-responsive">
+                                    <table class="table mt0">
+                                        <thead>
+                                        <tr class="font12">
+                                            <th width="8%">组号</th>
+                                            <th class="pl20">药品名</th>
+                                            <th width="8%">(次)剂量</th>
+                                            <th width="8%">(次)单位</th>
+                                            <th>用法</th>
+                                            <th>用药频次</th>
+                                            <th width="8%">天数</th>
+                                            <th width="8%">数量</th>
+                                            <th width="8%">单位</th>
+                                            <th width="12%">说明</th>
+                                            <th width="8%">取药地点</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="J-pharmacy-box">
+                                            <td colspan="2" class="pl20">
+                                                <input type="hidden" id="J-input-tpl" data-init='' data-initlist='<%-inspectList%>' data-placeholder="请选择" />
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    <% }else if(type == 4){ %>
+                        <div class="col-sm-9">
+                            <div class="panel panel-default pd0">
+                                <div class="table-responsive">
+                                    <table class="table mt0">
+                                        <thead>
+                                        <tr>
+                                            <th class="pl20" width="25%">药品名</th>
+                                            <th width="25%">(次)剂量</th>
+                                            <th width="15%">(次)单位</th>
+                                            <th width="20%">说明</th>
+                                            <th width="8%">总计</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="J-cnPharmacy-box">
+                                            <td colspan="2" class="pl20">
+                                                <input type="hidden" id="J-input-tpl" data-init='' data-initlist='<%-inspectList%>' data-placeholder="请选择" />
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="7">
+                                                <table class="mt0">
+                                                    <tbody>
+                                                    <tr class="J-pharmacy-item">
+                                                        <td class="pl15">用法：</td>
+                                                        <td>
+                                                            <input type="hidden" data-id="dusage" data-init="<%-usageList%>" class="selectinput input-xs J-method select-sm2" value="" data-placeholder="请选择"/>
+                                                        </td>
+                                                        <td class="pl20">频次：</td>
+                                                        <td>
+                                                            <input type="hidden" data-id="freq" data-init="<%-frequencyList%>" class="selectinput input-xs J-freq select-sm2" value=""/>
+                                                        </td>
+                                                        <td class="pl20">天数：</td>
+                                                        <td>
+                                                            <input type="number" class="form-control input-sm J-day number w60" value="" size="5" name="day">
+                                                        </td>
+                                                        <td class="pl20">总付数：</td>
+                                                        <td>
+                                                            <input type="number" class="form-control input-sm J-medicineCount J-cn-medicineCount number w60" value="" size="5" data-type="medicinecount">
+                                                        </td>
+                                                        <td class="pl20">取药地点：</td>
+                                                        <td>
+                                                            <select class="form-control input-sm J-address">
+                                                                <option value="1">本院</option>
+                                                                <option value="2">外购</option>
+                                                                <option value="3">代购</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    <% }else if(type == 5){ %>
+                        <div class="col-sm-9">
+                            <div class="panel panel-default pd0">
+                                <div class="table-responsive">
+                                    <table class="table mt0">
+                                        <thead>
+                                        <tr>
+                                            <th class="pl20" width="30%">名称</th>
+                                            <th width="15%">规格</th>
+                                            <th width="10%">单位</th>
+                                            <th width="15%">数量</th>
+                                            <th>说明</th>
+                                            <th width="5%"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="J-cnPharmacy-box">
+                                            <td colspan="2" class="pl20">
+                                                <input type="hidden" id="J-input-tpl" data-init='' data-initlist='<%-inspectList%>' data-placeholder="请选择" />
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    <% }else if(type == 6){ %>
+                        <div class="col-sm-9">
+                            <div class="panel panel-default pd0">
+                                <div class="table-responsive">
+                                    <table class="table mt0">
+                                        <thead>
+                                        <tr>
+                                            <th class="pl20" width="30%">名称</th>
+                                            <th width="10%">单位</th>
+                                            <th width="15%">数量</th>
+                                            <th>说明</th>
+                                            <th width="5%"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="J-cnPharmacy-box">
+                                            <td colspan="2" class="pl20">
+                                                <input type="hidden" id="J-input-tpl" data-init='' data-initlist='<%-inspectList%>' data-placeholder="请选择" />
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                    </div>
+                </div>
+                <% if(type == 3 || type == 4){ %>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">状态</label>
+                                <select class="form-control input-sm" data-placeholder="请选择" name="status">
+                                    <option value="1">正常</option>
+                                    <option value="0">停用</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </script>
+
+    <!-- 检验关联项目模板 -->
+    <script type="text/template" id="J-inspect-list-tpl">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="form-group">
+                    <input type="text" class="form-control" value=<%-content%> disabled>
+                    <input type="hidden" class="form-control J-suitInfo" value=<%-id%>>
+                </div>
+            </div>
+            <div class="col-sm-2 pl0"><a href="javascript:;" class="btn input-sm2 btn-white J-del-row"><i class="fa fa-minus"></i></a></div>
+        </div>
+    </script>
+    <!-- 检验关联项目模板 -->
+
+    <!-- 检查关联项目模板 -->
+    <script type="text/template" id="J-check-list-tpl">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" value=<%-content%> disabled>
+                    <input type="hidden" class="J-test" value="<%-id%>" id="test+<%-id%>">
+                </div>
+            </div>
+            <div class="col-sm-3 pl0">
+                <input type="text" data-id="test+<%-id%>" class="form-control input-sm2 J-part-list" placeholder="部位">
+            </div>
+            <div class="col-sm-2 pl0"><a href="javascript:;" class="btn input-sm2 btn-white J-del-row"><i class="fa fa-minus"></i></a></div>
+        </div>
+    </script>
+    <!-- 检查关联项目模板 -->
+
+    <!-- 辅助检查部位 -->
+    <script type="text/template" id="check-part-tpl">
+        <%for(var i=0,len=items.length;i<len;i++){%>
+          <div class="col-sm-6">
+              <div>
+                  <input type="checkbox" value="<%-items[i].id%>" id="<%-items[i].id%>+<%-i%>">
+                  <label for="<%-items[i].id%>+<%-i%>"><%-items[i].text%></label>
+              </div>
+          </div>
+        <%}%>
+        <div class="col-sm-6">
+            <div>
+                <input type="checkbox" value="<%-items.length%>" id="<%-items.length%>" data-other="other">
+                <label for="<%-items.length%>">其他</label>
+                <input type="text" class="form-control mb10 J-checkpoint-other" value="">
+            </div>
+        </div>
+    </script>
+    <!-- 辅助检查部位 -->
+
+    <!-- 辅助检查项目模板 -->
+    <script type="text/template" id="J-cure-list-tpl">
+        <tr class="J-cure-item">
+            <td class="pl20">
+                <%-content%>
+                <input type="hidden" class="J-id" value="<%-id%>">
+                <input type="hidden" class="J-name" value="<%-content%>">
+                <input type="hidden" class="J-unit" value="次">
+            </td>
+            <td>次</td>
+            <td>
+                <input type="text" class="form-control J-gtzero J-count" value="">
+            </td>
+            <td>
+                <input type="text" class="form-control J-remark" value="">
+            </td>
+            <td><a href="javascript:void(0);" class="btn btn-sm btn-white J-del-row"><i class="fa fa-minus"></i></a></td>
+        </tr>
+    </script>
+    <!-- 辅助检查项目模板 -->
+
+    <!-- 处方项目模板 -->
+    <script type="text/template" id="J-pharmacy-list-tpl">
+        <tr class="J-pharmacy-item">
+            <td>
+                <select class="form-control input-sm font13 no-arrow J-group-number">
+                    <option value="" <%if(!group_id*1){%>selected="selected"<%}%>></option>
+                    <option value="1" <%if(group_id==1){%>selected="selected"<%}%>>1</option>
+                    <option value="2" <%if(group_id==2){%>selected="selected"<%}%>>2</option>
+                    <option value="3" <%if(group_id==3){%>selected="selected"<%}%>>3</option>
+                    <option value="4" <%if(group_id==4){%>selected="selected"<%}%>>4</option>
+                    <option value="5" <%if(group_id==5){%>selected="selected"<%}%>>5</option>
+                    <option value="6" <%if(group_id==6){%>selected="selected"<%}%>>6</option>
+                    <option value="7" <%if(group_id==7){%>selected="selected"<%}%>>7</option>
+                    <option value="8" <%if(group_id==8){%>selected="selected"<%}%>>8</option>
+                    <option value="9" <%if(group_id==9){%>selected="selected"<%}%>>9</option>
+                    <option value="10" <%if(group_id==10){%>selected="selected"<%}%>>10</option>
+                </select>
+            </td>
+            <td class="pl20">
+                <%- medicinename %><%if(generic_name&&generic_name.trim()){%>(<%-generic_name%>)<%}%> <%- medicinespec %>
+                <input type="hidden" class="J-medicineId" value="<%- medicineid %>">
+                <input type="hidden" class="J-medicineName" value="<%- medicinename %>">
+                <input type="hidden" class="J-medicineSpec" value="<%- medicinespec %>">
+            </td>
+            <td>
+                <input type="text" class="form-control input-sm2 J-dosage" value="<%- dosage %>">
+            </td>
+            <td>
+                <select class="form-control input-sm font13 no-arrow J-storespec">
+                    <% $.each(unitList, function(i, item){ %>
+                    <option value="<%-item.text%>"><%-item.text%></option>
+                    <% }); %>
+                </select>
+            </td>
+            <td>
+                <input type="hidden" data-id="dusage" data-init="<%-usageList%>" class="selectinput J-method" value="<%- dusage %>" />
+            </td>
+            <td>
+                <input type="hidden" data-id="freq" data-init="<%-frequencyList%>" class="selectinput J-freq" value="<%- freq %>" />
+            </td>
+            <td>
+                <input type="text" class="form-control input-sm2 J-day gtnumber" value="<%- day %>">
+            </td>
+            <td>
+                <input type="text" class="form-control input-sm2 J-medicineCount gtnumber" value="<%- medicinecount %>">
+            </td>
+            <td>
+                <select class="form-control input-sm font13 no-arrow J-medicineunit">
+                  <%if(medicineunit){%>
+                  <option class="J-unit" data-price="<%-common_price%>" value="<%- medicineunit %>" <%if(medicineunit==countunit){%>selected="selected"<%}%>>
+                      <%- medicineunit %>
+                  </option>
+                  <% } %>
+                  <%if(is_dismounted == '1' && min_medicineunit){%>
+                  <option class="J-small-unit" data-price="<%-min_medicineprice%>" value="<%- min_medicineunit %>" <%if(min_medicineunit && min_medicineunit==countunit){%>selected="selected"<%}%>>
+                        <%- min_medicineunit %>
+                  </option>
+                  <% }%>
+                </select>
+            </td>
+            <td>
+                <input type="text" placeholder="填写说明" class="form-control input-sm2 J-desc input-noborder" value="<%- desc %>">
+            </td>
+            <td>
+                <select class="form-control input-sm font13 J-address">
+                    <option value="1" <%if(address == '1'){%>selected="selected"<%}%>>本院</option>
+                    <option value="2" <%if(address == '2'){%>selected="selected"<%}%>>外购</option>
+                    <option value="3" <%if(address == '3'){%>selected="selected"<%}%>>代购</option>
+                </select>
+            </td>
+            <td>
+                <a href="javascript:void(0);" class="btn btn-default input-sm2 J-del-row">删除</a>
+            </td>
+        </tr>
+    </script>
+    <!-- 处方项目模板 -->
+
+    <!-- 物资项目模板 -->
+    <script type="text/template" id="J-material-list-tpl">
+        <tr class="J-material-item">
+            <input type="hidden" class="J-id" value="<%-goodsId%>">
+            <td class="text-ellipsis pd20 J-name"><%-goodsName%></td>
+            <td class="J-spec"><%-goodsSpec%></td>
+            <td class="J-unit"><%-goodsUnit%></td>
+            <td><input type="number" placeholder="数量" class="form-control input-sm L-count J-count"></td>
+            <td><input type="text" placeholder="说明" size="5" class="form-control input-sm L-dose J-remark" value="<%-remark%>"></td>
+            <td><a href="javascript:void(0);" class="btn btn-sm btn-white J-del-row"><i class="fa fa-minus"></i></a></td>
+        </tr>
+    </script>
+    <!-- 物资项目模板 -->
+
+    <!-- 其他收费项目模板 -->
+    <script type="text/template" id="J-other-list-tpl">
+        <tr class="J-other-item">
+            <input type="hidden" class="J-id" value="<%-id%>">
+            <td class="text-ellipsis pd20 J-name"><%-name%></td>
+            <td class="J-unit"><%-charge_unit%></td>
+            <td><input type="number" placeholder="数量" class="form-control input-sm L-count J-count"></td>
+            <td><input type="text" placeholder="说明" size="5" class="form-control input-sm L-dose J-remark" value="<%-remark%>"></td>
+            <td><a href="javascript:void(0);" class="btn btn-sm btn-white J-del-row"><i class="fa fa-minus"></i></a></td>
+        </tr>
+    </script>
+    <!-- 其他收费项目模板 -->
+
+    <!-- 中药处方项目模板 -->
+    <script type="text/template" id="J-cnPharmacy-list-tpl">
+        <tr class="J-cnPharmacy-item">
+            <td class="pl20">
+                <%- medicinename %><%if(generic_name&&generic_name.trim()){%>(<%-generic_name%>)<%}%> <%- medicinespec %>
+                <input type="hidden" class="J-medicineId" value="<%- medicineid %>">
+                <input type="hidden" class="J-medicineName" value="<%- medicinename %>">
+                <input type="hidden" class="J-medicineSpec" value="<%- medicinespec %>">
+            </td>
+            <td>
+                <input type="text" class="form-control input-sm J-dosage J-cn-dosage" value="" size="10" name="dosage" data-type="dosage">
+            </td>
+            <td>
+                <select class="form-control input-sm J-storespec">
+                    <option value="<%- medicineunit %>"><%- medicineunit %></option>
+                </select>
+            </td>
+            <td class="pos-relative">
+                <input type="text" class="form-control input-sm J-desc J-cn-remark-input" value="" size="18" name="desc">
+                <div class="select2-drop select2-drop-multi select2-drop-active w90 hide J-cn-remark-select2">
+                    <ul class="select2-results">
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">先煎</div>
+                        </li>
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">后下</div>
+                        </li>
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">单煎</div>
+                        </li>
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">包煎</div>
+                        </li>
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">烊化</div>
+                        </li>
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">冲服</div>
+                        </li>
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">劈开</div>
+                        </li>
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">打碎</div>
+                        </li>
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">外用</div>
+                        </li>
+                        <li class="select2-results-dept-0 select2-result select2-result-selectable" role="presentation">
+                            <div class="select2-result-label J-cn-remark-select" role="option">煎汤代水饮</div>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+            <td><span class="J-total-dosage"></span><%- medicineunit %></td>
+            <td><a href="javascript:void(0);" class="btn btn-default btn-sm J-del-row">删除</a></td>
+        </tr>
+    </script>
+    <!-- 中药处方项目模板 -->
+
+    <!-- 中药处方模板分类 -->
+    <script type="text/template" id="J-tpl-type-tpl">
+        <div class="col-sm-3">
+            <select class="form-control input-sm J-tpl-type" data-type="<%- index %>" data-placeholder="请选择">
+                <option value="">请选择</option>
+                <%$.each(data, function(i, name) {%>
+                <option value="<%-name%>"><%-name%></option>
+                <%});%>
+            </select>
+        </div>
+    </script>
+    <!-- 中药处方模板分类 -->
+
+    <!-- 中药处方模板分类 -->
+    <script type="text/template" id="J-tpl-type-tpl1">
+        <div class="col-sm-3">
+            <select class="form-control input-sm J-tpl-type" data-type="<%- index %>" data-placeholder="请选择">
+                <option value="">请选择</option>
+                <%var temp = {}; $.each(data, function(i, obj) {%>
+                    <%if(index == 1) {%>
+                        <%if(name == obj.kb && !temp[obj['lb' + index]]){ temp[obj['lb' + index]] = 1;%>
+                        <option value="<%-obj['lb' + index]%>" <%if(!obj['lb' + (index+1)]){%>data-id="<%-obj.id%>"<%}%>><%-obj['lb' + index]%></option>
+                        <%}%>
+                    <%} else {%>
+                        <%if(name == obj['lb' + (index - 1)] && !temp[obj['lb' + index]]){ temp[obj['lb' + index]] = 1;%>
+                        <option value="<%-obj['lb' + index]%>" <%if(!obj['lb' + (index+1)]){%>data-id="<%-obj.id%>"<%}%>><%-obj['lb' + index]%></option>
+                        <%}%>
+                    <%}%>
+                <%});%>
+            </select>
+        </div>
+    </script>
+    <!-- 中药处方模板分类 -->
+
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action="#">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+    <script type="text/javascript">
+    require(['group_select_new']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div><span role="status" aria-live="polite" class="select2-hidden-accessible"></span></body></html>

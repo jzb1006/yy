@@ -1,0 +1,106 @@
+    <style>
+        .recharge_info {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+
+        .recharge_info>div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            border: 1px solid #efefef;
+            padding: 10px 22px;
+            line-height: 25px;
+            color: #333;
+        }
+
+        .recharge_info>div:first-child {
+            margin-right: 10px;
+        }
+
+        .recharge_info>div:last-child {
+            margin-left: 10px;
+        }
+
+        .zhe {
+            background: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .modal-dialog {
+            position: initial;
+        }
+    </style>
+    <div class="zhe" >
+        <form action="{php echo $this->createWebUrl('physical',array('op'=>'successzhuanhua','id'=>$id))}" method="post" class="form-horizontal form-validate" enctype="multipart/form-data">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button">×</button>
+                        <h4 class="modal-title">转化状态</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="recharge_info">
+                            <div>
+                                <label class="pull-left" style="margin-right: 25px">用户</label>
+                                <div class="pull-left">
+                                    <img class="radius50" src="{$list['userinfo']['u_thumb']}" style='width:20px;height:20px;padding:1px;border:1px solid #ccc' />
+                                    {$list['userinfo']['u_name']} </div>
+                            </div>
+                            <div>
+                                <label class="pull-left " style="margin-right: 25px">会员信息</label>
+                                <div class="pull-left">
+                                    ID: {$list['userinfo']['randnum']}</br>
+                                    姓名: {$list['zhenshixingming']}</br>
+                                    手机号: {$list['telphone']}</div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">转化</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <label class='radio-inline'>
+                                    <input type='radio' name='ifzhuanhua' value='1' {if $list['ifzhuanhua']=='1'} checked{/if} /> 已转化
+                                </label>
+                                <label class='radio-inline'>
+                                    <input type='radio' name='ifzhuanhua' value='0'  {if $list['ifzhuanhua']=='0'} checked{/if} /> 未转化
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">备注</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <textarea name="conetnt" class="form-control richtext" cols="70">{$list['conetnt']}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary btn-submit" type="submit">确认</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        $('.close').on('click', function() {
+            $('.zhe').hide()
+
+        })
+    </script>

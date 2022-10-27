@@ -1,0 +1,1269 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            
+            <div class="contentpanel">
+                <input type="hidden" id="init_anchor" value="">
+                <ul class="nav nav-tabs patient-tabs J-report-tabs">
+                    <li class="J-module-control" data-permission="48,49,50,51,52,53,60,61,95"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'display'))}"><strong>费用统计</strong></a></li>
+                    <li class="J-module-control" data-permission="42,43,44,47,55,9004,58,59,68,69,89,90,100"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yiwu'))}"><strong>医务统计</strong></a></li>
+                    <li class="J-module-control" data-permission="62,63,64,65,66,67"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'jinxiao'))}"><strong>进销存统计</strong></a></li>
+                    <li class="J-module-control active" data-permission="45,46,56,57,91,92,93"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yunyin'))}"><strong>运营统计</strong></a></li>
+                    <li class="J-module-control J-mobile-report-tab" data-permission="73"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yidong'))}"><strong>移动报表</strong></a></li>
+                </ul>
+                <div class="tab-content pd0">
+
+                    <div class="panel panel-default J-jsxlist-block mb0">
+                        <div class="panel-heading bgfc pb5">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="form-group J-toggle-tabs">
+                                        <a href="#transactions" data-toggle="tab" class="btn btn-sm btn-default J-module-control active" data-permission="56,91"><i class="fa fa-sign-in"></i> 交易总额</a>
+                                        <a href="#profit" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="57,92"><i class="fa fa-sign-out"></i> 利润表</a>
+                                        <a href="#patientAnalysis" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="46"><i class="fa fa-sign-out"></i> 患者分析</a>
+                                        <a href="#diagnoseAnalysis" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="45,93"><i class="fa fa-sign-out"></i> 诊断分析</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body tab-content no-border">
+
+                        <!-- 交易总额 -->
+                        <div class="tab-pane J-module-control J-jsx-stock active" data-permission="56,91" id="transactions">
+                            <div class="row mb15">
+                                <div class="col-sm-9 col-md-9">
+                                    <form class="form-inline" id="J-transactions-form" method="post">
+                                        <div class="form-group mr0">
+                                            <label class="control-label">日期：</label>
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 appDate J-start-date mbsc-comp" name="startDate" type="text" placeholder="开始日期" size="10" id="mobiscroll1560610954151" readonly="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr0">-</div>
+                                        <div class="form-group mr5">
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 appDate J-end-date mbsc-comp" name="endDate" type="text" placeholder="结束日期" size="10" id="mobiscroll1560610954152" readonly="">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-default btn-sm mr10 J-transactions-submit"><i class="fa fa-search"></i></button>
+                                        <div class="form-group mr5 mt10">
+                                            <div class="rdio">
+                                                <input type="radio" name="type" class="J-transactions-type" id="transactions_day" value="1" checked="checked">
+                                                <label for="transactions_day">日</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr5 mt10">
+                                            <div class="rdio">
+                                                <input type="radio" name="type" class="J-transactions-type" id="transactions_week" value="2">
+                                                <label for="transactions_week">周</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr5 mt10">
+                                            <div class="rdio">
+                                                <input type="radio" name="type" class="J-transactions-type" id="transactions_month" value="3">
+                                                <label for="transactions_month">月</label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-sm-3 col-md-3 text-right">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-transactions"><i class="fa fa-download"></i> 导出</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 h480" id="J-report-transactions-chart" _echarts_instance_="ec_1560610954200" style="opacity: 1; -webkit-tap-highlight-color: transparent; user-select: none; position: relative; background-color: transparent;"><div style="position: relative; overflow: hidden; width: 1013px; height: 500px; cursor: default;"><canvas width="1013" height="500" data-zr-dom-id="zr_0" style="position: absolute; left: 0px; top: 0px; width: 1013px; height: 500px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></canvas></div><div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px/21px &quot;Microsoft YaHei&quot;; padding: 5px; left: 520px; top: 49px;"><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#d9534f"></span>演示诊所 : -, 89.00<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#5bc0de"></span>丁香诊所二店 : -, 0.00<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#f0ad4e"></span>丁香诊所三店 : -, 0.00<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#1caf9a"></span>云医美护肤诊所 : -, 0.00<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#428bca"></span>医美诊所 : -, 0.00<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#749f83"></span>天爱 : -, 0.00<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#797b7f"></span>清徐汉唐门诊部 : -, 0.00<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#334b5c"></span>清徐县汉唐诊所 : -, 0.00<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#c23531"></span>合计 : -, 89.00</div></div>
+                            </div>
+                            <div class="operate">
+                                <div class="table-responsive">
+                                    <table width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%"></td>
+                                                <td width="60%" align="center">
+                                                    <h4 class="pb5 font20 black"><span class="J-date">2019年06月01日 - 06月15日 交易总额</span></h4>
+                                                </td>
+                                                <td width="20%" align="right">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <form class="form-inline table-responsive">
+                                        <table class="table table-bordered table-hover table-gray background-white fixed-header-setting pos-relative J-setting-list">
+                                            <thead class="header" id="J-transactions-header-wrap">
+                                <tr class="font12">
+                                        <th class="font-wb vertical-middle J-clinic-date" style="width: 114px !important;height:39px!important;">日期</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 110px !important;height:39px!important;">演示诊所</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 107px !important;height:39px!important;">丁香诊所二店</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 105px !important;height:56px!important;">丁香诊所三店</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 103px !important;height:56px!important;">云医美护肤诊所</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 101px !important;height:56px!important;">医美诊所</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 101px !important;height:56px!important;">天爱</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 100px !important;height:56px!important;">清徐汉唐门诊部</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 99px !important;height:56px!important;">清徐县汉唐诊所</th>
+                                        
+                                    </tr>
+                                </thead>
+                                            <tbody id="J-transactions-list-wrap"><tr>
+        
+        
+        <td>
+            2019-06-01
+            
+        </td>
+        
+        <td>
+            12171.50
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-02
+            
+        </td>
+        
+        <td>
+            1805.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-03
+            
+        </td>
+        
+        <td>
+            2266.60
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-04
+            
+        </td>
+        
+        <td>
+            1957.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-05
+            
+        </td>
+        
+        <td>
+            6287.81
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-06
+            
+        </td>
+        
+        <td>
+            126245.23
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-07
+            
+        </td>
+        
+        <td>
+            89.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-08
+            
+        </td>
+        
+        <td>
+            350.05
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-09
+            
+        </td>
+        
+        <td>
+            514.50
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-10
+            
+        </td>
+        
+        <td>
+            5577.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-11
+            
+        </td>
+        
+        <td>
+            1381.47
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-12
+            
+        </td>
+        
+        <td>
+            920.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-13
+            
+        </td>
+        
+        <td>
+            118582.52
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            23.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            2019-06-14
+            
+        </td>
+        
+        <td>
+            1064.15
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            46.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+    </tr><tr>
+        
+        
+        <td>
+            合计
+            
+        </td>
+        
+        <td>
+            279211.83
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            69.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+        <td>
+            0.00
+            
+        </td>
+        
+    </tr></tbody>
+                                        <thead class="header-copy hide header-fixed-copys" id="J-transactions-header-wrap" style="margin: 50px auto 0px; width: 1011px; background-color: rgb(238, 238, 238);">
+                                <tr class="font12">
+                                        <th class="font-wb vertical-middle J-clinic-date" style="width: 122px !important;height:56px!important;">日期</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 118px !important;height:56px!important;">演示诊所</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 115px !important;height:56px!important;">丁香诊所二店</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 113px !important;height:56px!important;">丁香诊所三店</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 111px !important;height:56px!important;">云医美护肤诊所</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 109px !important;height:56px!important;">医美诊所</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 109px !important;height:56px!important;">天爱</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 108px !important;height:56px!important;">清徐汉唐门诊部</th>
+                                        
+                                        <th class="font-wb vertical-middle J-clinic-item" style="width: 107px !important;height:56px!important;">清徐县汉唐诊所</th>
+                                        
+                                    </tr>
+                                </thead></table>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- 交易总额表头设置 -->
+                            <script type="text/template" id="J-transactions-header-tpl">
+                                <tr class="font12">
+                                        <th class="font-wb vertical-middle J-clinic-date">日期</th>
+                                        <%$.each(title, function(i, obj) {%>
+                                        <th class="font-wb vertical-middle J-clinic-item"><%- obj.name%></th>
+                                        <%})%>
+                                    </tr>
+                                </script>
+                            <!-- 交易总额表头设置 -->
+                            <!-- 日期弹窗 -->
+                            <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title J-date-title" id="myModalLabel"></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="pt10 pb10">
+                                                <form class="form-inline" method="post">
+                                                    <div class="form-group mr0">
+                                                        <div class="input-group">
+                                                            <input class="form-control input-sm2 radius3 J-common-startDate" type="text" placeholder="开始日期">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mr0">至</div>
+                                                    <div class="form-group mr5">
+                                                        <div class="input-group">
+                                                            <input class="form-control input-sm2 radius3 J-common-endDate" type="text" placeholder="截止日期">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer modal-btn-col2">
+                                            <button type="button" class="btn btn-primary J-common-submit">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 日期弹窗 -->
+                        </div>
+                        <!-- 交易总额 -->
+                        <!-- 利润表 -->
+                        <div class="tab-pane J-jsx-stock J-module-control" data-permission="57,92" id="profit">
+                            <div class="row mb15">
+                                <div class="col-sm-9 col-md-9">
+                                    <form class="form-inline" id="J-profit-form" method="get">
+                                        <div class="form-group mr0">
+                                            <label class="control-label">收费日期：</label>
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr0">-</div>
+                                        <div class="form-group mr5">
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-default btn-sm J-profit-submit mr10"><i class="fa fa-search"></i></button>
+                                        <div class="form-group mr5">
+                                            <label class="control-label" for="J-profit-shop">诊所:</label>
+                                            <select class="form-control input-xs2" name="shopId" id="J-profit-shop">
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-sm-3 col-md-3 text-right">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-profit"><i class="fa fa-download"></i> 导出</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="h480" id="J-report-profit-histogram"></div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="h480" id="J-report-profit-pie"></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-gray background-white">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="5" class="font20 black text-center">
+                                                <span class="J-date"></span>
+                                                <!-- <span class="tooltips pull-right" data-toggle="tooltip" data-placement="left" data-html="true" 
+                                                data-original-title="<h4>收入</h4>各收费分类折后金额的和（扣减退费）<h4>优惠后分摊金额</h4>各收费分类优惠后分摊金额的和；实收=折后金额-减免分摊金额-积分抵扣分摊金额-卡券分摊金额 <h4>成本</h4>药品出库时记入成本 <h4>利润</h4>实收-成本">
+                                                    <i class="fa fa-exclamation-triangle"></i>
+                                                </span> -->
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="J-profit-list-wrap">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- 利润表 -->
+                        <!-- 患者分析 -->
+                        <div class="tab-pane J-jsx-stock J-module-control" data-permission="46" id="patientAnalysis">
+                            <div class="row mb15">
+                                <div class="col-sm-9 col-md-9">
+                                    <form class="form-inline" id="J-reportJxc-form" method="post">
+                                        <div class="form-group mr10 mt10">
+                                            <div class="rdio">
+                                                <input type="radio" name="patientType" class="J-patient-type" id="patient_sex" value="1" checked="checked">
+                                                <label for="patient_sex">性别</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr10 mt10">
+                                            <div class="rdio">
+                                                <input type="radio" name="patientType" class="J-patient-type" id="patient_age" value="2">
+                                                <label for="patient_age">年龄</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr10 mt10">
+                                            <div class="rdio">
+                                                <input type="radio" name="patientType" class="J-patient-type" id="patient_marriage" value="3">
+                                                <label for="patient_marriage">婚姻状况</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr10 mt10 J-module-control" data-modules="33">
+                                            <div class="rdio">
+                                                <input type="radio" name="patientType" class="J-patient-type" id="patient_member" value="4">
+                                                <label for="patient_member">会员类型</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr10 mt10">
+                                            <div class="rdio">
+                                                <input type="radio" name="patientType" class="J-patient-type" id="patient_source" value="5">
+                                                <label for="patient_source">患者来源</label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-sm-3 col-md-3 text-right">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-patient"><i class="fa fa-download"></i> 导出</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 h480" id="J-report-patient-chart">
+                                    <!-- 图表 -->
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-gray background-white">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="3" class="font20 black text-center">患者分析 - <span class="J-patient-text">性别</span>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th class="vertical-middle font-wb font13"><span class="J-patient-text">性别</span></th>
+                                            <th class="vertical-middle font-wb font13">数量</th>
+                                            <th class="vertical-middle font-wb font13">比例</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="J-patient-list-wrap">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- 患者分析 -->
+                        <!-- 诊断分析 -->
+                        <div class="tab-pane J-jsx-stock J-module-control" data-permission="45,93" id="diagnoseAnalysis">
+                            <div class="row mb15">
+                                <div class="col-sm-9 col-md-9">
+                                    <form class="form-inline" id="J-diagnose-form" method="post">
+                                        <div class="form-group mr0">
+                                            <label class="control-label">就诊日期：</label>
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 appDate J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr0">-</div>
+                                        <div class="form-group mr5">
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 appDate J-end-date" name="endDate" type="text" placeholder="结束日期" size="10">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-default btn-sm mr10 J-diagnose-submit"><i class="fa fa-search"></i></button>
+                                        <div class="form-group mr5">
+                                            <label class="control-label">诊所:</label>
+                                            <select class="form-control input-xs2" name="shopId" id="J-shop-list-wrap">
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-sm-3 col-md-3 text-right">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-diagnose"><i class="fa fa-download"></i> 导出</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 h480" id="J-report-diagnose-chart">
+                                    <!-- 图表 -->
+                                </div>
+                            </div>
+                            <div class="operate">
+                                <div class="table-responsive">
+                                    <table width="100%">
+                                        <tbody>
+                                            <tr id="J-header-width">
+                                                <td width="20%"></td>
+                                                <td width="60%" align="center">
+                                                    <h4 class="pb5 font20 black"><span class="J-date"></span> 诊断分析</h4>
+                                                </td>
+                                                <td width="20%" align="right">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <form class="form-inline table-responsive">
+                                        <table class="table table-bordered table-hover table-gray background-white table-fixed-header fixed-header-setting pos-relative J-setting-list">
+                                            <thead class="header" id="J-diagnose-header-wrap">
+                                            </thead>
+                                            <tbody id="J-diagnose-list-wrap">
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                    <!-- 诊断分析表头设置 -->
+                                    <script type="text/template" id="J-diagnose-header-tpl">
+                                        <tr class="font12">
+                                                <th class="font-wb vertical-middle J-clinic-date">诊断名称</th>
+                                                <%$.each(title, function(i, obj) {%>
+                                                <th class="font-wb vertical-middle"><%- obj.name%></th>
+                                                <%})%>
+                                                <th class="font-wb vertical-middle">所占比例</th>
+                                            </tr>
+                                        </script>
+                                    <!-- 诊断分析表头设置 -->
+                                </div>
+                            </div>
+                            <!-- 日期弹窗 -->
+                            <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h4 class="modal-title J-date-title" id="myModalLabel"></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="pt10 pb10">
+                                                <form class="form-inline" method="post">
+                                                    <div class="form-group mr0">
+                                                        <div class="input-group">
+                                                            <input class="form-control input-sm2 radius3 J-common-startDate" type="text" placeholder="开始日期">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mr0">至</div>
+                                                    <div class="form-group mr5">
+                                                        <div class="input-group">
+                                                            <input class="form-control input-sm2 radius3 J-common-endDate" type="text" placeholder="截止日期">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer modal-btn-col2">
+                                            <button type="button" class="btn btn-primary J-common-submit">确定</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 日期弹窗 -->
+                        </div>
+                        <!-- 诊断分析 -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </section>
+    <!-- 交易总额 -->
+    <script type="text/template" id="J-transactions-list-tpl">
+        <% var type = $('.J-transactions-type[checked=checked]').val(); %>
+        <%$.each(menu, function(i, key) {%>
+        <td><% if(type == 1){ %>
+            <%- data[key]%>
+            <% }else if(type == 2){ %>
+                <%if((key == 'date' && data[key] == '合计') || (key != 'date')){%>
+                    <%- data[key]%>
+                <% }else if(key == 'date' && data[key] != '合计'){ %>
+                    <%- new Date(data[key]).getFullYear() %>年第<%- week%>周
+                <% } %>
+            <% }else if(type == 3){ %>
+                <%if((key == 'date' && data[key] == '合计') || (key != 'date')){%>
+                    <%- data[key]%>
+                <% }else if(key == 'date' && data[key] != '合计'){ %>
+                    <%- new Date(data[key]).getFullYear() %>年<%- new Date(data[key]).getMonth() +1%>月
+                <% } %>
+            <% } %>
+        </td>
+        <%});%>
+    </script>
+    <!-- 交易总额 -->
+    <!-- 利润表 -->
+    <script type="text/template" id="J-profit-list-tpl">
+        <td><%- chargeType%></td>
+        <td><%- realPrice%></td>
+        <td><%- costPrice%></td>
+        <td><%- profit%></td>
+    </script>
+    <!-- 利润表 -->
+    <!-- 诊所列表 -->
+    <script type="text/template" id="J-shop-list-tpl">
+        <option value="0" selected="selected">全部</option>
+        <%$.each(items, function(i, key){%>
+        <option value="<%-key.id%>"><%-key.name%></option>
+        <%});%>
+    </script>
+    <!-- 诊所列表 -->
+    <!-- 患者分析 -->
+    <script type="text/template" id="J-patient-list-tpl">
+        <td><%-name%></td>
+        <td><%-num%></td>
+        <td><%-percent%></td>
+    </script>
+    <!-- 患者分析 -->
+    <!-- 诊断分析 -->
+    <script type="text/template" id="J-diagnose-list-tpl">
+        <%$.each(menu, function(i, key) {%>
+            <td><%- data[key]%></td>
+        <%});%>
+    </script>
+    <!-- 诊断分析 -->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+        require(['operate_statistics']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

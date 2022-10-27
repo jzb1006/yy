@@ -1,0 +1,157 @@
+{template './common/mainHeader'}
+<style>
+  .df{
+    display:flex;
+    align-items: center;
+  }
+  .tab_cg{
+    border:1px solid #eaeaea;
+    margin-left:20px;
+  }
+  .tab_text,.tab_btn{
+    padding: 5px 10px;
+  }
+  .tab_btn{
+    border-left:1px solid #eaeaea;
+  }
+  button{
+    outline: none;
+  }
+  .tabBox{
+    margin-top:20px;
+  }
+  label{
+    margin:0;
+  }
+  .tab_box{
+    height:200px;
+    overflow:hidden;
+    overflow-y:auto;
+    margin-top:20px;
+  }
+  .tab{
+    display:inline-block;
+    padding:5px;
+    border:1px solid #eaeaea;
+    margin-right:10px;
+    cursor: pointer;
+  }
+  
+  .tabBox label{
+    white-space: nowrap;
+  }
+  #tabBox_xz{
+    flex-wrap:wrap;
+    max-height:200px;
+    overflow:hidden;
+    overflow-y:auto;
+  }
+    #tabBox_xz .tab_cg{
+    margin-bottom:10px;
+  }
+  .tab:hover{
+    background:#2aabd2;
+    color:#fff;
+  }
+  #myModal{
+    background: rgba(0,0,0,0.5)
+  }
+  .we7-modal-dialog, .modal-dialog{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /*账户充值样式*/
+   .recharge_info{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;justify-content: space-around;margin-bottom: 10px;}
+.recharge_info>div{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;border:1px solid #efefef;padding:10px 22px;line-height: 25px;color: #333;}
+.recharge_info>div:first-child{margin-right: 10px;}
+.recharge_info>div:last-child{margin-left: 10px;}
+.zhe{background: rgba(0,0,0,0.6);position: fixed;display: flex;align-items: center;justify-content: center;width: 100%;height: 100%;top: 0;left: 0;}
+.modal-dialog{position: initial;}
+  /*账户充值end*/
+  .text-warning {
+    color: #f8ac59;
+    white-space: nowrap;
+    width: 180px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
+<div class="app-container-right">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#">患者列表</a>
+        </li>
+    </ul>
+    <div class="app-content">
+        
+        <div class="app-table-list">
+            <div class="table-responsive">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th style="width: 250px;">用户昵称</th>
+                            <th style="">用户头像</th>
+                            <th style="">分组名</th>
+                            <th style="width: 350px;text-align: right;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {loop $fenzuwei $item}
+                        <tr>
+                            <td style="overflow: visible"><!-- <span>总消费：</span>6000元<br/>-->
+                                {$item['u_name']}
+                            </td>
+                            <td style="position: relative;">
+                                <img class="img-40" src="{$item['u_thumb']}" style='border-radius:50%;border:1px solid #efefef;' onerror="this.src='{$item['u_thumb']}'" height="40" width="40" />
+                            </td>
+                            <td style="overflow: visible"><!-- <span>总消费：</span>6000元<br/>-->
+                                {$item['label']}
+                            </td>
+                            <td style="position: relative;text-align: right;">
+                                <a class="btn btn-default btn-sm" href="{php echo $this->createWeburl('team',array('op'=>'setuser','zid'=>$zid,'u_name'=>$item['u_name'],'openid'=>$item['openid'],'fzid'=>$item['id']))}" title="设置分组">设置分组</a>
+                            </td>
+                        </tr>
+                    {/loop}
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>
+  {template './common/mainfooter'}
+
+<script>
+    require(['bootstrap'], function ($) {
+        $('[data-toggle="tooltip"]').tooltip({
+            container: $(document.body)
+        });
+        $('[data-toggle="popover"]').popover({
+            container: $(document.body)
+        });
+        $('[data-toggle="dropdown"]').dropdown({
+            container: $(document.body)
+        });
+    });
+    myrequire(['js/init']);
+        $('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+      $('.app-login-info-sel').show();
+    });
+    $('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+      $('.app-login-info-sel').hide();
+    });
+    $('.app-login-info-sel .login-out').hover(function(){
+      $('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+    },function(){
+      $('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+    });
+</script>
+
+
+

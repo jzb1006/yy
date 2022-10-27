@@ -1,0 +1,180 @@
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+{template './common/mainHeader'}
+      </div>
+      <style type="text/css">
+          .text-muted{
+            width: 70%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+
+          }
+          .active{
+            background-color: #41B2A6;
+          }
+      </style>        
+        <div class="contentpanel panel-email J-follow-lst" style="width: 97%;" id="app">
+                <div class="row" style="margin: 0px; background: #fff;">
+                    <div class="col-sm-12 col-md-2 mb20">
+<!--                         <div class="row">
+                            <div class="col-sm-12">
+                                <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}&type_id={$type_id}" class="btn btn-white btn-block black" id="J-da-add-follow"><i class="fa fa-plus"></i> 添加医生</a>
+                            </div>
+                        </div> -->
+                        <div class="mb30"></div>
+                        <div class="form-horizontal" >
+                         <h5 class="subtitle font16">团队负责人</h5>
+                            <ul class="nav nav-follow nav-stacked nav-email" id="J-follow-groups-wrap"  >
+                                <li class="J-follow-group" v-for="(item, index) in doctor" :key="index" :class="{'active':currentSort==index}" @click="active(index,item.zid)" style="color: #fff;border-radius: 3px" >
+                                                    
+                                        <div class="form-group list-category m-nomargin" >
+                                            <label class="col-sm-1 control-label"><i class="fa fa-folder-o"></i></label>
+                                            <div class="col-sm-9">
+                                               {{item.z_name}}
+                                            </div>
+                                       </div>
+                                  
+                                </li>
+                            
+                          </ul>
+                       </div>
+                    </div>
+                    <!-- left -->
+                    <!-- right -->
+                    <div class="col-sm-12 col-md-10">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-3">
+                                        <h4 class="panel-title">团队列表</h4>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 mt10 pl0 pr0">
+                                        <form class="form-inline pull-right" id="J-follow-form" method="GET">
+                                            <div class="form-group mr5">
+                                                <div class="input-group col-custom-xs-12">
+                                                    <input class="form-control input-sm2 radius3 J-patient-name" type="text" placeholder="患者姓名" size="8" name="name" value="">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm col-custom-xs-12 J-search-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body pt0">
+                                <div class="people-list">
+                                    <div class="row mb10" >
+                                       
+                                        <div class="col-sm-12" v-for="(n,index) in sites" :key="index">
+                                            <div class="people-item radius0">
+                                                <div class="media">
+                                                    <a href="" class="pull-left">
+                                                        <img v-bind:src="n.teampic"  class="thumbnail media-object">
+                                                    </a>
+                                                    <div class="media-body">
+                                                      
+                                                        <span v-if="n.ifsh==0" class="widget-label badge badge-danger room-tag">待审核</span>
+                                                  
+                                                        <span v-if="n.ifsh==1" class="widget-label badge badge-danger room-tag">已审核</span>
+                                                
+                                                        <h4 class="person-name"><a href="/Clinic/Patient/profile?patient_id=00020120715" target="_blank">{{n.teamname}}</a> 
+                                                        <div class="text-muted">注册时间：{{ n.cltime }} </div>
+                                                        <div class="text-muted">
+                                                        团队介绍：{{n.teamtext}}
+                                                        </div>
+                                                        <div class="text-muted text-nowrap">
+                                                            <div style="display: flex;">
+                                                                <div>团队类型：</div>
+                                                                <div>
+                                                                    <div v-if="n.teamtype==0">线上科室</div>
+                                                                    <div v-if="n.teamtype==1">自由团体</div>
+                                                                </div>
+                                                            </div>
+                                                        <!-- 团队类型：
+                                                        <div v-if="n.teamtype==0">线上科室</div>
+                                                        <div v-if="n.teamtype==1">自由团体</div> -->
+                                                        团队人数：{{ n.doctorCount }} 人</div>
+                                                        <div class="mt10 clear-left">
+                                                          
+                                                            <a v-if="n.ifsh==0" href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}&type_id={$type_id}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="follow" target="_blank"><i class="fa fa-asterisk"></i>审核</a>
+                                                          
+                                                            <a v-if="n.ifsh==1" href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}&type_id={$type_id}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="follow" target="_blank"><i class="fa fa-asterisk"></i>已审核</a>
+                                                          
+                                                            <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}&type_id={$type_id}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="edit"><i class="fa fa-pencil"></i>修改</a>
+                                                            <a href="javascript:void(0);" class="btn btn-default btn-sm mr5 J-cancel" data-action="a"><i class="fa fa-times"></i>删除</a>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+            
+                                    </div>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4">
+                                               {$pager}
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </div>
+                                <div class="people-list hidden">
+                                    <div class="row mb10" id="follow-list-type-wrap">
+                                        <!-- 随访类型列表 -->
+                                    </div>
+                                    <div class="J-pager-wrap-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- right -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript">
+var url=window.location.href;
+var ap=new Vue({
+  el: '#app',
+  data: {
+      currentSort:0,
+      sites:[],
+      doctor:[]
+    },
+    created: function () {
+　　　　//为了在内部函数能使用外部函数的this对象，要给它赋值了一个名叫self的变量。
+        var self = this;
+        $.ajax({
+            url: url,
+            type: 'get',
+            data: {op:'doctor_room'},
+            dataType: 'json'
+        }).then(function (res) {
+            console.log(res);
+            self.sites = res.room;
+            self.doctor = res.doctor;
+        }).fail(function () {
+            console.log('失败');
+        })
+    },
+    methods: {
+        active(index,zid) {
+               this.currentSort  =  index;
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    data: {type:'1',zid:zid},
+                    dataType: 'json',
+                    success: function(res){        
+                    this.sites = res.room;
+                    this.doctor = res.doctor;
+                    }.bind(this)
+                })
+            }
+        }
+
+  });
+</script>
+
+</html>

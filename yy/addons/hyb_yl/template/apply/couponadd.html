@@ -1,0 +1,189 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs" id="myTab">
+	<li class="active"><a href="#">添加卡券</a></li>
+</ul>
+
+<div class="app-content">
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal form" id="form">
+			<div class="panel panel-default" >
+				<div class="panel-heading">卡券信息</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">卡券排序</label>
+						<div class="col-md-9">
+							<input type="tel" class="form-control" name="sortorder" value="{$item['sortorder']}"/>
+							<span class="help-block">请输入整数数字，序号越大，排序靠前</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">卡券标题<span class="must-fill">*</span></label>
+						<div class="col-md-9 col-sm-9">
+							<input type="text" name="title" class="form-control"  required autocomplete="off" value="{$item['title']}" placeholder="填写卡券标题" id="storetitle" />
+						</div>
+					</div>
+					<div class="form-group laiyuan_box0" >
+			                    <label class="col-sm-2 control-label">所属机构<span class="must-fill">*</span></label>
+			                    <div class="col-sm-9">
+			                        <input type='hidden' id='hid' name="hid" value="{$item['hid']}" />
+			                        <div class='input-group'>
+			                            <input type="text" name="name" maxlength="30"  class="form-control" id="saler"  value="{$item['hname']}" readonly />
+			                            <span class="btn input-group-addon" onclick="popwin = $('#modal-module-menus').modal();">选择机构</span>
+			                        </div>
+			                        <div id="modal-module-menus"  class="modal fade" tabindex="-1">
+			                            <div class="modal-dialog" style='width: 660px;'>
+			                                <div class="modal-content">
+			                                    <div class="modal-header"><button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3>选择机构</h3></div>
+			                                    <div class="modal-body" >
+			                                        <div class="row">
+			                                            <div class="input-group">
+			                                                <input type="text" class="form-control" name="keyword" value="" id="search-kwd" placeholder="输入机构名称" />
+			                                                <span class='input-group-btn'><button type="button" class="btn btn-default" onclick="search_jigou();">搜索</button></span>
+			                                            </div>
+			                                        </div>
+			                                        <div id="module-menus" style="padding-top:5px;">
+			                                        </div>
+			                                    </div>
+			                                        <div class="modal-footer"><a href="#" class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</a>
+			                                        </div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="form-group">
+								<label class="col-sm-2 control-label">抵扣金额<span class="must-fill">*</span></label>
+								<div class="col-md-10">
+									<div class="input-group form-group col-sm-10" style="margin: 0px;padding-left: 0;float: left;">
+										<span class="input-group-addon">￥</span>
+										<input type="number" name="deductible_amount" class="form-control" value="{$item['deductible_amount']}" required autocomplete="off">
+										<span class="input-group-addon">元</span>
+									</div>
+								</div>
+							</div>
+					        <!-- <div class="form-group">
+								<label class="col-sm-2 control-label">满减<span class="must-fill">*</span></label>
+								<div class="col-md-9">
+									<div class="input-group form-group col-sm-6" style="margin: 0px;padding-left: 0;float: left;">
+										<span class="input-group-addon">满</span>
+										<input type="number" name="daily" class="form-control" value="{$item['daily']}" required autocomplete="off">
+										<span class="input-group-addon">元</span>
+									</div>
+									<div class="input-group form-group col-sm-6" style="margin: 0px;padding-right: 0;float: left;">
+										<span class="input-group-addon">减</span>
+										<input type="number" name="first" class="form-control valid" value="{$item['first']}" required autocomplete="off">
+										<span class="input-group-addon">元</span>
+									</div>
+								</div>
+							</div> -->
+							<!-- <div class="form-group">
+								<label class="col-sm-2 control-label">优惠券类型</label>
+								<div class="col-sm-9">
+									<select class="form-control valid" name="usagetype" aria-invalid="false">
+										<option value="" >--请选择--</option>
+										<option value="0" {if $item['usagetype']=='0'} selected {/if}>代金券</option>
+									</select>
+								</div>
+							</div> -->
+							<div class="form-group">
+								<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">使用说明<span class="must-fill">*</span></label>
+								<div class="col-md-9 col-sm-9">
+									<input type="text" name="sub_title" class="form-control" required autocomplete="off" value="{$item['sub_title']}"  id="use_limit" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">适用服务<span class="must-fill">*</span></label>
+								<div class="col-md-9">
+									<div class="layui-input-block">
+										{loop $shiyongfuwu $fuwu}
+										<label class="checkbox-inline">
+											<input type="checkbox" value="{$fuwu['id']}"  name="applicableservices[]" {if in_array($fuwu['id'],$item['applicableservices'])} checked {/if} />{$fuwu['titlme']}						
+										</label>
+										{/loop}
+									</div>
+									<span class="help-block">如果全都不勾选则默认全服务可用</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label">有效时间<span class="must-fill">*</span></label>
+								<div class="col-md-6">
+									{php echo tpl_form_field_daterange('time',array('start' =>$item['starttime'], 'end' =>$item['endtime']));}
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-xs-12 col-sm-3 col-md-2 col-lg-2 control-label layui-form-label">状态<span class="must-fill">*</span></label>
+								<div class="layui-input-block" style="position: relative;left: 10px;">
+									<label class="radio-inline">
+		                                <input type="radio" value="0" name="state"  checked >启用
+		                            </label>
+									<label class="radio-inline">
+		                                <input type="radio" value="1" name="state" >禁用
+		                            </label>
+								</div>
+							</div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+                            <input type="hidden" name="token" value="{$_W['token']}" />
+                            <input type="hidden" name="CategoryID" value="{$_GPC['CategoryID']}" />
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	/*选择用户*/
+    function search_jigou() {
+        $("#module-menus").html("正在搜索....")
+        $.ajax({
+            'url':"{php echo $this->createWebUrl('selectquery',array('op'=>'jigousearch'))}",
+            data:{
+                keyword: $.trim($('#search-kwd').val())
+            },
+            type:"get",
+            dataType:"json",
+            success:function(res){
+                var html ="<div style='max-height:500px;overflow:auto;min-width:580px;'>";
+                html +="<table class='table table-hover' style='min-width:580px;'>";
+                html +="<thead>";
+                html +="<th></th>";
+                html +="</thead>";
+                html +="<tbody>";    
+                if(res.length == 0)
+                {
+                    html +="<tr>"; 
+                    html +="<td colspan='4' align='center'>未找到</td>";
+                    html +="</tr>";
+                    html +="</tbody>";
+                    html +="</table>";
+                    html +="</div>";
+                }else{
+                    for(var i=0;i<res.length;i++)
+                    {
+                        html +="<tr>";
+                        html +="<td><img src='"+res[i]['logo']+"' style='width:30px;height:30px;padding1px;border:1px solid #ccc' /> "+res[i]['agentname']+"</td>";
+                        html +="<td style='width:80px;'><a href='javascript:;' onclick='select_jigou(`"+res[i]['agentname']+"`,`"+res[i]['logo']+"`,`"+res[i]['hid']+"`)'>选择</a></td>";
+                        html +="</tr>";
+                    }   
+                }
+                $('#module-menus').html(html); 
+
+            }
+        })
+    }
+    function select_jigou(name,thumb,hid) {
+        console.log(name,thumb,hid);
+        $("#hid").val(hid);
+        $('#saler').val(name);
+        $('#search-kwd').val(name);
+        
+        
+        $('#module-menus').html('');
+        $("#modal-module-menus").modal("hide");
+    }
+</script>
+{template './common/mainfooter'}

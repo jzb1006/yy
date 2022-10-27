@@ -1,0 +1,675 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+                </div>
+                <!-- headerbar -->
+                <div class="pageheader">
+                    <h2><i class="fa fa-archive fa-sm"></i> 药房</h2>
+                    <div class="breadcrumb-wrapper">
+                        <a href="https:///Clinic/Pharmacy/manage.html" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+                    </div>
+                </div>
+                <div class="contentpanel">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">入库详情</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline" method="post" id="J-pharmacyCheck-wrap">
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">入库单号：</label>
+                    4353
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">发货日期：</label>
+                    
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">入库日期：</label>
+                    2019-06-15
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">入库方式：</label>
+                    采购入库
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">供应商：</label>
+                    
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">备注：</label>
+                    
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">制单时间：</label>
+                    2019-06-15 18:16:22
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">制单人：</label>
+                    姚俊
+                </div>
+            </div>
+        </div>
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">审核日期：</label>
+                    2019-06-15
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">审核人员：</label>
+                    姚俊
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive border-top mlrf20">
+            <table class="table table-hover shadow-none mb0">
+                <thead>
+                    <tr>
+                        <th width="6%" class="pl20">序号</th>
+                        <th>商品名称</th>
+                        <th width="5%">单位</th>
+                        <th width="10%">生产厂商</th>
+                        <th width="8%">数量</th>
+                        <th width="8%">零售价(￥)</th>
+                        <th width="10%">成本价(￥)</th>
+                        <th width="10%">成本合计(￥)</th>
+                        <th width="10%">批号</th>
+                        <th width="9%">有效期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td class="pl20">1</td>
+                        <td>
+                            灭菌注射用水<br>
+                            5ml×1支
+                        </td>
+                        <td>
+                            
+                                盒
+                            
+                        </td>
+                        <td></td>
+                        <td>20</td>
+                        <td>
+                            
+                                4.5000
+                            
+                        </td>
+                        <td>
+                            4.5000<br>
+                            <span class="blue font12 display-none">(拆零成本)</span>
+                        </td>
+                        <td>90.00</td>
+                        <td>1111</td>
+                        <td>2019-06-30</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="pl20">2</td>
+                        <td>
+                            灭菌注射用水<br>
+                            5ml×1支
+                        </td>
+                        <td>
+                            
+                                支
+                            
+                        </td>
+                        <td></td>
+                        <td>5</td>
+                        <td>
+                            
+                                0.10
+                            
+                        </td>
+                        <td>
+                            0.0900<br>
+                            <span class="blue font12 ">(拆零成本)</span>
+                        </td>
+                        <td>0.45</td>
+                        <td>1111</td>
+                        <td>2019-06-30</td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="7" class="pl20">合计</td>
+                        <td class="J-total-price">90.45</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+                        </div>
+                        <div class="panel-footer panel-btn-col2">
+                            <button class="btn btn-default" onclick="window.history.go(-1);">返回</button>
+                            <a href="javascript:window.print();" class="btn btn-white pull-right"><i class="fa fa-file-text"></i> 打印</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- mainpanel -->
+        </section>
+    </div>
+
+    <!-- 页面模板 -->
+    <script type="text/template" id="J-pharmacyCheck-tpl">
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">入库单号：</label>
+                    <%-id%>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">发货日期：</label>
+                    <%-delivery_date%>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">入库日期：</label>
+                    <%-warehouse_time%>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">入库方式：</label>
+                    <%if(method==1){%>采购入库<%}else{%>其他入库<%}%>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">供应商：</label>
+                    <%-factory%>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">备注：</label>
+                    <%-bio%>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">制单时间：</label>
+                    <%-create_time%>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">制单人：</label>
+                    <%-creator%>
+                </div>
+            </div>
+        </div>
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">审核日期：</label>
+                    <%-check_time%>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">审核人员：</label>
+                    <%-checker%>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive border-top mlrf20">
+            <table class="table table-hover shadow-none mb0">
+                <thead>
+                    <tr>
+                        <th width="6%" class="pl20">序号</th>
+                        <th>商品名称</th>
+                        <th width="5%">单位</th>
+                        <th width="10%">生产厂商</th>
+                        <th width="8%">数量</th>
+                        <th width="8%">零售价(￥)</th>
+                        <th width="10%">成本价(￥)</th>
+                        <th width="10%">成本合计(￥)</th>
+                        <th width="10%">批号</th>
+                        <th width="9%">有效期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%$.each(pharmacy, function(i, obj) {%>
+                    <tr>
+                        <td class="pl20"><%- ++i%></td>
+                        <td>
+                            <%-obj.medicinename%><br/>
+                            <%-obj.medicinespec%>
+                        </td>
+                        <td>
+                            <% if (obj.unit) {%>
+                                <%- obj.unit%>
+                            <% } else { %>
+                                <% if (obj.warehouseType && obj.warehouseType == 2) {%>
+                                    <%- obj.minMedicineunit%>
+                                <%} else {%>
+                                    <%-obj.medicineunit%>
+                                <%}%>
+                            <%}%>
+                        </td>
+                        <td><%-obj.manufacturer%></td>
+                        <td><%-obj.count%></td>
+                        <td>
+                            <% if (obj.warehouseType && obj.warehouseType == 2) {%>
+                                <%- obj.minMedicineprice%>
+                            <%} else {%>
+                                <%-obj.medicineprice%>
+                            <%}%>
+                        </td>
+                        <td>
+                            <%-obj.cost_price%><br/>
+                            <span class="blue font12 <% if (obj.warehouseType && obj.warehouseType != 2) {%>display-none<%}%>">(拆零成本)</span>
+                        </td>
+                        <td><%-obj.total_cost_price%></td>
+                        <td><%-obj.batch_number%></td>
+                        <td><%-obj.validity%></td>
+                    </tr>
+                    <%});%>
+                    <tr>
+                        <td colspan="7" class="pl20">合计</td>
+                        <td class="J-total-price"><%-obj.total_price%></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+    <!-- 页面模板 -->
+
+    <!-- 打印入库单模板 -->
+    <script type="text/template" id="J-pharmacyView-print-tpl">
+        <div class="print-page p-pharmacy">
+            <div class="print-subpage">
+                <div class="print-header">
+                    <h1>入库单</h1>
+                    <div class="print-logo">
+                        <input type="hidden" value="https://img1.dxycdn.com/2017/1113/734/3243884881940874667-38.png">
+                            <img src="https://img1.dxycdn.com/2017/1113/734/3243884881940874667-38.png" />
+                                            </div>
+                </div>
+                <div class="print-body">
+                    <div class="p-patient-info p-info-small clearfix">
+                        <div class="p-row">
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>入库日期</span></div>
+                                    <div class="p-item"><%-warehouse_time%></div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>入库方式</span></div>
+                                    <div class="p-item">
+                                        <%if(method==1){%>采购入库<%}else{%>其他入库<%}%>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>制单人</span></div>
+                                    <div class="p-item"><%-creator%>&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>审核日期</span></div>
+                                    <div class="p-item"><%-check_time%></div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>审核人员</span></div>
+                                    <div class="p-item"><%-checker%></div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>发货日期</span></div>
+                                    <div class="p-item"><%-delivery_date%>&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col6">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>供应商</span></div>
+                                    <div class="p-item"><%-factory%></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col6">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>备注</span></div>
+                                    <div class="p-item"><%-bio%></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-table clearfix">
+                        <table class="p-table-body mt10">
+                            <thead>
+                                <tr>
+                                    <th width="6%">序号</th>
+                                    <th width="19%">商品名称</th>
+                                    <th width="8%">单位</th>
+                                    <th width="19%">生产厂商</th>
+                                    <th width="8%">数量</th>
+                                    <th width="9%">零售价(￥)</th>
+                                    <th width="9%">成本价(￥)</th>
+                                    <th width="12%">批号</th>
+                                    <th>有效期</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--  -->
+                                <%$.each(pharmacy, function(i, obj) {%>
+                                <tr>
+                                    <td><%- ++i%></td>
+                                    <td><%-obj.medicinename%> <%-obj.medicinespec%></td>
+                                    <td>
+                                        <% if (obj.unit) {%>
+                                            <%- obj.unit%>
+                                        <% } else { %>
+                                            <% if (obj.warehouseType && obj.warehouseType == 2) {%>
+                                                <%- obj.minMedicineunit%>
+                                            <%} else {%>
+                                                <%-obj.medicineunit%>
+                                            <%}%>
+                                        <%}%>
+                                    </td>
+                                    <td><%-obj.manufacturer%></td>
+                                    <td><%-obj.count%></td>
+                                    <td>
+                                        <% if (obj.warehouseType && obj.warehouseType == 2) {%>
+                                            <%- obj.minMedicineprice%>
+                                        <%} else {%>
+                                            <%-obj.medicineprice%>
+                                        <%}%>
+                                    </td>
+                                    <td><%-obj.cost_price%></td>
+                                    <td><%-obj.batch_number%></td>
+                                    <td><%-obj.validity%></td>
+                                </tr>
+                                <%});%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="print-signature position-relative">
+                    成本合计（￥）：<%-total_price%>
+                    <div class="print-signature-row2 mt0 clearfix">
+                        <div class="p-row">
+                            <div class="p-col4">
+                                <div class="p-signature pull-right">经办人<span></span></div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-signature pull-right">复核人<span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="print-footer position-relative">
+                    <span>演示诊所</span>
+                    <span>13012345678</span>
+                    <span>https://dxy.com</span>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 打印入库单 -->
+    <div id="print">
+        <div class="print-page p-pharmacy">
+            <div class="print-subpage">
+                <div class="print-header">
+                    <h1>入库单</h1>
+                    <div class="print-logo">
+                        <input type="hidden" value="https://img1.dxycdn.com/2017/1113/734/3243884881940874667-38.png">
+                            <img src="https://img1.dxycdn.com/2017/1113/734/3243884881940874667-38.png">
+                                            </div>
+                </div>
+                <div class="print-body">
+                    <div class="p-patient-info p-info-small clearfix">
+                        <div class="p-row">
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>入库日期</span></div>
+                                    <div class="p-item">2019-06-15</div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>入库方式</span></div>
+                                    <div class="p-item">
+                                        采购入库
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>制单人</span></div>
+                                    <div class="p-item">姚俊&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>审核日期</span></div>
+                                    <div class="p-item">2019-06-15</div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>审核人员</span></div>
+                                    <div class="p-item">姚俊</div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>发货日期</span></div>
+                                    <div class="p-item">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col6">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>供应商</span></div>
+                                    <div class="p-item"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col6">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>备注</span></div>
+                                    <div class="p-item"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-table clearfix">
+                        <table class="p-table-body mt10">
+                            <thead>
+                                <tr>
+                                    <th width="6%">序号</th>
+                                    <th width="19%">商品名称</th>
+                                    <th width="8%">单位</th>
+                                    <th width="19%">生产厂商</th>
+                                    <th width="8%">数量</th>
+                                    <th width="9%">零售价(￥)</th>
+                                    <th width="9%">成本价(￥)</th>
+                                    <th width="12%">批号</th>
+                                    <th>有效期</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--  -->
+                                
+                                <tr>
+                                    <td>1</td>
+                                    <td>灭菌注射用水 5ml×1支</td>
+                                    <td>
+                                        
+                                            盒
+                                        
+                                    </td>
+                                    <td></td>
+                                    <td>20</td>
+                                    <td>
+                                        
+                                            4.5000
+                                        
+                                    </td>
+                                    <td>4.5000</td>
+                                    <td>1111</td>
+                                    <td>2019-06-30</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>2</td>
+                                    <td>灭菌注射用水 5ml×1支</td>
+                                    <td>
+                                        
+                                            支
+                                        
+                                    </td>
+                                    <td></td>
+                                    <td>5</td>
+                                    <td>
+                                        
+                                            0.10
+                                        
+                                    </td>
+                                    <td>0.0900</td>
+                                    <td>1111</td>
+                                    <td>2019-06-30</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="print-signature position-relative">
+                    成本合计（￥）：90.45
+                    <div class="print-signature-row2 mt0 clearfix">
+                        <div class="p-row">
+                            <div class="p-col4">
+                                <div class="p-signature pull-right">经办人<span></span></div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-signature pull-right">复核人<span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="print-footer position-relative">
+                    <span>演示诊所</span>
+                    <span>13012345678</span>
+                    <span>https://dxy.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['pharmacy_check']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

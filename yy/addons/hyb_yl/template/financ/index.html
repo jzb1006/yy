@@ -1,0 +1,201 @@
+{template '/common/mainHeader'}
+			<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li class="active"><a href="">账单明细</a></li>
+</ul>
+<div class="app-content">
+    <div class="app-filter">
+        <div class="filter-list">
+            <form action="" method="post" class="form-horizontal" role="form" id="form1">
+                <input type="hidden" name="c" value="site" />
+	            <input type="hidden" name="a" value="entry" />
+	            <input type="hidden" name="m" value="hyb_yl" />
+	            <input type="hidden" name="op" value="index" />
+				<input type="hidden" name="ac" value="cashrecord" />
+				<input type="hidden" name="do" value="financ" />
+                <input type="hidden" name="hid" value="$_SESSION['hid']" />
+                <div class="form-group max-with-all">
+                    <label class="col-sm-2 control-label">结算类型</label>
+                    <div class="col-sm-9">
+                        <div class="btn-group">
+                            {loop $type_arr $typs}
+							<a href="{php echo $this->createWebUrl('financ',array('op'=>'index','ac'=>'cashrecord','key_words'=>$typs['key_words'],'title'=>$typs['ftitle'],'keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid']))}" class="btn {if $key_words == $typs['key_words']} btn-primary {else} btn-default{/if}">{$typs['ftitle']}</a>
+                            {/loop}
+						</div>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-sm-2 control-label">搜索内容</label>
+                    <div class="col-sm-9">
+                    	<select name="keywordtype" class="form-control">
+                            <option value="">关键字类型</option>
+                            <option value="1" {if $keywordtype == '1'} selected="" {/if}>专家(商品)名称</option>
+                            <option value="2" {if $keywordtype == '2'} selected="" {/if}>订单编号</option>
+                            
+                        </select>
+                        <input type="text" name="keyword" class="form-control" value="{$keyword}"  placeholder="请输入关键字"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">时间段</label>
+                    <div class="col-sm-9">
+                        
+<script type="text/javascript">
+	require(["daterangepicker"], function(){
+		$(function(){
+			$(".daterange.daterange-date").each(function(){
+				var elm = this;
+				$(this).daterangepicker({
+					startDate: $(elm).prev().prev().val(),
+					endDate: $(elm).prev().val(),
+					format: "YYYY-MM-DD"
+				}, function(start, end){
+					$(elm).find(".date-title").html(start.toDateStr() + " 至 " + end.toDateStr());
+					$(elm).prev().prev().val(start.toDateStr());
+					$(elm).prev().val(end.toDateStr());
+				});
+			});
+		});
+	});
+</script>
+
+	<input name="start" type="hidden" value="{$start}" />
+	<input name="end" type="hidden" value="{$end}" />
+	<button class="btn btn-default daterange daterange-date" type="button"><span class="date-title">{$start} 至 {$end}</span> <i class="fa fa-calendar"></i></button>
+	                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-md-9">
+                            <button class="btn btn-primary btn-sml J-submit-btn" type="submit" name="shaixuan">筛选</button>
+                            <input name="token" type="hidden" value="{$_W['token']}" />
+                            <input name="hid" type="hidden" value="{$_SESSION['hid']}" />
+                            <input type="file" id="excelUpload" class="hide" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="app-table-list">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                    	<th>订单编号</th>
+                        <th>订单类型</th>
+                        <!-- <th>费用信息</th> -->
+                        <th>订单总金额</th>
+                        <th>专家名称</th>
+                        <th>订单状态</th>
+                        <!-- <th>机构收入</th> -->
+                        <th>结算时间</th>
+                        <!-- <th>操作</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                {loop $list $item}
+                                            <tr>
+                        	<td>
+	                            {$item['back_orser']}                           </td>
+                            <td>
+	                            <span class="label label-info">{$ftitle}</span>
+                            </td>
+                            
+                            <td>
+	                         ￥{$item['money']}	{$item['totals']}
+                             </td>
+                             <td>
+                                <p>{$item['z_name']}</p>
+                              </td>
+                              <td>
+                                  {if $item['ifpay'] =='0'}
+                                    <span class="label label-warning">待支付</span>
+                                    {/if}
+                                    {if $item['ifpay'] =='1'}
+                                    <span class="label label-warning">已支付待接诊</span>
+                                    {/if}
+                                    {if $item['ifpay'] =='2'}
+                                    <span class="label label-warning">已接诊</span>
+                                    {/if}
+                                    {if $item['ifpay'] =='3'}
+                                    <span class="label label-warning">已完成待评价</span>
+                                    {/if}
+                                    {if $item['ifpay'] =='4'}
+                                    <span class="label label-warning">已评价</span>
+                                    {/if}
+                                    {if $item['ifpay'] =='5'}
+                                    <span class="label label-warning">申请退款</span>
+                                    {/if}
+                                    {if $item['ifpay'] =='6'}
+                                    <span class="label label-warning">已退款</span>
+                                    {/if}
+                                    {if $item['ifpay'] =='7'}
+                                    <span class="label label-warning">订单关闭</span>
+                                    {/if}
+                                    {if $item['ispay'] =='0'}
+                                    <span class="label label-warning">待支付</span>
+                                    {/if}
+                                    {if $item['ispay'] =='1'}
+                                    <span class="label label-warning">已支付待接诊</span>
+                                    {/if}
+                                    {if $item['ispay'] =='2'}
+                                    <span class="label label-warning">已接诊</span>
+                                    {/if}
+                                    {if $item['ispay'] =='3'}
+                                    <span class="label label-warning">已完成待评价</span>
+                                    {/if}
+                                    {if $item['ispay'] =='4'}
+                                    <span class="label label-warning">已评价</span>
+                                    {/if}
+                                    {if $item['ispay'] =='5'}
+                                    <span class="label label-warning">申请退款</span>
+                                    {/if}
+                                    {if $item['ispay'] =='6'}
+                                    <span class="label label-warning">已退款</span>
+                                    {/if}
+                                    {if $item['ispay'] =='7'}
+                                    <span class="label label-warning">订单关闭</span>
+                                    {/if}
+
+                              </td>
+                            <!-- <td>
+                                0.00	                                                        </td>
+                            <td>
+	                            +0.00<br/>
+	                            +0.00                            </td>
+                            <td>
+	                            <span style="color: orangered ;"> +2.00</span><br />
+	                            <span style="color: goldenrod;">(0.00)</span>
+                            </td> -->
+                            <td>
+                            	{$item['time']}                            </td>
+                            <!-- <td>
+                            	<a href="{php echo $this->createWebUrl('financ',array('op'=>'order_detail','ac'=>'cashrecord','id'=>$item['id']))}" class="btn btn-default btn-sm">查看订单</a>
+                            </td> -->
+                        </tr>
+                        {/loop}                
+                    </tbody>
+            </table>
+            {$pager}
+        </div>
+        <div class="app-table-foot clearfix">
+            <div class="pull-left">
+
+            </div>
+            <div class="pull-right">
+                            </div>
+        </div>
+    </div>
+</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	</body>
+</html>
+

@@ -1,0 +1,141 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			              <div class="app-container-right">
+			
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-list">
+			<form action="./index.php" method="get" class="form-horizontal" role="form">
+				<input type="hidden" name="c" value="site" />
+	            <input type="hidden" name="a" value="entry" />
+	            <input type="hidden" name="m" value="hyb_yl" />
+	            <input type="hidden" name="op" value="drug_tixian" />
+				<input type="hidden" name="ac" value="drugstorelist" />
+				<input type="hidden" name="do" value="medicine" />
+				<input type="hidden" name="status" value="" />
+				<input type="hidden" name="hid" value="{$_SESSION['hid']}" />
+				<input type="hidden" name="h_id" value="{$h_id}">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">时间筛选</label>
+					
+					<div class="col-md-2">
+						<script type="text/javascript">
+							require(["daterangepicker"], function(){
+								$(function(){
+									$(".daterange.daterange-date").each(function(){
+										var elm = this;
+										$(this).daterangepicker({
+											startDate: $(elm).prev().prev().val(),
+											endDate: $(elm).prev().val(),
+											format: "YYYY-MM-DD"
+										}, function(start, end){
+											$(elm).find(".date-title").html(start.toDateStr() + " 至 " + end.toDateStr());
+											$(elm).prev().prev().val(start.toDateStr());
+											$(elm).prev().val(end.toDateStr());
+										});
+									});
+								});
+							});
+						</script>
+						<input name="start" type="hidden" value="{$start}" />
+						<input name="end" type="hidden" value="{$end}" />
+						<button class="btn btn-default daterange daterange-date" type="button"><span class="date-title">{$start} 至 {$end}</span> <i class="fa fa-calendar"></i></button>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">关键字筛选</label>
+					<div class="col-sm-9">
+						<input type="text" name="keyword" class="form-control" value="{$keyword}" placeholder="输入关键字筛选"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-md-9">
+						<button class="btn btn-primary">筛选</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th style="width:100px;text-align:center;">id</th>
+						<th style="width:100px;text-align:center;">提现金额</th>
+                        <th style="width:100px;text-align:center;">提现手续费</th>
+						<th style="width:60px; text-align:center">实际到账金额</th>
+						<th style="width:200px; text-align:center">提现方式</th>
+						<th style="width:60px; text-align:center">提现信息</th>
+						<th style="width:60px; text-align:center">提现状态</th>
+						<th style="width:200px; text-align:center">申请时间</th>
+						<th style="width:200px; text-align:center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				{loop $list $item}
+					<tr>
+						<td class="text-center">
+							{$item['id']}					
+						</td>
+						<td class="text-center">
+							{$item['old_money']}				
+						</td>
+                        <td class="text-center">
+							{$item['fee']}			
+						</td>
+						<td class="text-center">
+							{$item['money']}			
+						</td>
+						<td class="text-center">
+							{if $item['cash_type'] == '0'}
+							微信
+							{else if $item['cash_type'] == '1'}
+							支付宝
+							{else if $item['cash_type'] == '2'}
+							银行卡
+							{/if}			
+						</td>
+						<td class="text-center">
+							{if $item['cash_type'] == '0'}
+							微信号：{$item['nickname']}
+							{else if $item['cash_type'] == '1'}
+							支付宝姓名：{$item['zfb_name']}<br>
+							支付宝账号：{$item['zfb_number']}	
+							{else if $item['cash_type'] == '2'}
+							银行卡卡号：{$item['bank_card']}
+							银行卡开户行：{$item['bank_address']}
+							银行卡持有人姓名：{$item['bank_user']}
+							{/if}
+						</td>
+						<td class="text-center">
+							{php echo date("Y-m-d H:i:s",$item['created'])}			
+						</td>
+						<td class="text-center" style="text-align: center;">
+                   		 	{if $item['status'] == '0'}
+                   		 	<a class="btn btn-danger btn-sm" href="{php echo $this->createWeburl('medicine',array('op'=>'agree','id'=>$item['id'],'ac'=>'drugstorelist','cash_type'=>$item['cash_type'],'hid'=>$_SESSION['hid'],'h_id'=>$h_id,'status'=>'1'))}" data-toggle="ajaxRemove" title="通过">通过</a> 
+                   		 	<a class="btn btn-danger btn-sm" href="{php echo $this->createWeburl('medicine',array('op'=>'disagree','id'=>$item['id'],'ac'=>'drugstorelist','cash_type'=>$item['cash_type'],'hid'=>$_SESSION['hid'],'h_id'=>$h_id,'status'=>'2'))}" data-toggle="ajaxRemove" title="拒绝">拒绝</a> 
+                   		 	{/if}
+                    		<a class="btn btn-danger btn-sm" href="{php echo $this->createWeburl('medicine',array('op'=>'del_drugtixian','id'=>$item['id'],'ac'=>'drugstorelist','cash_type'=>$item['cash_type'],'hid'=>$_SESSION['hid']))}" data-toggle="ajaxRemove" data-confirm="确定要删除吗？" title="删除">删除</a> 
+						</td>
+					</tr>
+					{/loop}
+									</tbody>
+			</table>
+		</div>
+		{$pager}
+	</div>
+</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>系统</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	</body>
+</html>
+

@@ -1,0 +1,159 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+</div>
+<div class="basics">
+  <ul class="nav nav-tabs patient-tabs">
+    <li >
+      <a href="<?php echo  $this->copysiteUrl('family.fwlist');?>&type_id={$type_id}">
+        <strong>服务包列表</strong></a>
+    </li>
+    <li class="active">
+      <a href="<?php echo  $this->copysiteUrl('family.addfw');?>&type_id={$type_id}">
+        <strong>添加服务包</strong></a>
+    </li>
+  </ul>
+        <div class="main-content">
+            <div class="panel panel-default">
+                <div class="panel-body collapse in">
+            <form  action="" method="post" novalidate="novalidate">
+                <div class="row">
+                    <div class="col-sm-12 col-md-10">
+                         <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务标题 <span class="asterisk">*</span></label>
+                                    <input  type="text" class="form-control max128 J-isDisable" value="{$get_one['fw_name']}" required="" name="fw_name">
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务金额</label>
+                                    <input type="number" class="form-control max128 J-isDisable" value="{$get_one['fw_money']}" required="" name="fw_money">
+                                </div>
+                            </div>
+                        </div>
+
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务人群</label>
+                                    <select class="form-control input-sm mt0 J-listener" id="j_selectNation" data-placeholder="请选择" name="pid">
+                                        <option value="">请选择</option>
+                                         {loop $fllist $item}
+                                        <option value="{$item['id']}" {if $item['id']==$get_one['pid']} selected="selected" {/if}>{$item['crowd_name']}</option>
+                                         {/loop}
+                                     </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务缩略图<span class="gai_tishi">商品其他图片（建议尺寸 172*172）</span></label>
+                                     {php echo tpl_form_field_image('fw_pic', $get_one['fw_pic'])}
+                                </div>
+                            </div>
+                        </div>
+                         <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务起止</label>
+                                    {php echo tpl_form_field_daterange('time', array('starttime'=>date('Y-m-d', $get_one['fw_startime']),'endtime'=>date('Y-m-d', $get_one['fw_endtime'])),false);}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务项目</label>
+                                    {if !$ff_id}
+                                    <div class="inpotBox">
+                                        <div class="col-sm-9"  style="padding: 0;">
+                                            <div class="form-group inputBox2">
+                                                <input type="text" name="fw_neirong[]" class="form-control max2000 J-content" value="" required="">
+                                            </div>
+                                        </div>
+                                            <div class="col-sm-2">
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item hidden"><i class="fa fa-minus"></i></a>
+                                                <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+                                            </div>
+                                        </div> 
+                                        {else}
+
+                                       {loop $get_one['fw_neirong'] $item}
+                                        <div class="inpotBox">
+                                            <div class="col-sm-9"  style="padding: 0;">
+                                                <div class="form-group inputBox2">
+                                                    <input type="text" name="fw_neirong[]" class="form-control max2000 J-content" value="{$item}" required="">
+                                                </div>
+                                            </div>
+                                               <div class="col-sm-2">
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item"><i class="fa fa-minus"></i></a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+                                                </div>
+                                            </div>
+                                       {/loop}
+                                        {/if}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">服务包详情</label>
+                              <!--       {php echo tpl_ueditor('fw_xy', $get_one['fw_xy']);} -->
+                                    <textarea class="form-control max5000" rows="9" name="fw_xy">{$get_one['fw_xy']}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <input name="token" type="hidden" value="{$_W['token']}" />
+                <input type="hidden" name="type_id" value="{$type_id}">
+                <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+            </form>
+             </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+        $(document).on('click','.J-add-content-item',function(){
+            var conts=$(this).parents('.inpotBox').find('.J-content').val()
+        $(this).parents('.inpotBox').after(`<div class="inpotBox">
+            <div class="col-sm-9"  style="padding: 0;">
+                <div class="form-group inputBox2">
+                    <input type="text" name="fw_neirong[]" class="form-control max2000 J-content" value="${conts}" required="">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item hidden"><i class="fa fa-minus"></i></a>
+                <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>`)
+            if($('.inpotBox').length>0){
+                // $(this).addClass('hidden')
+                $('.J-del-content-item').removeClass('hidden')
+            }
+
+    })
+        $(document).on('click','.J-del-content-item',function(){
+                $(this).parents('.inpotBox').remove()
+                console.log($('.inpotBox').length)
+                $('.inpotBox').last().find('.J-add-content-item').removeClass('hidden')
+                    if($('.inpotBox').length-1<=0){
+                        $('.J-del-content-item').addClass('hidden')
+                        $('.J-add-content-item').removeClass('hidden')
+              } 
+
+          })
+
+</script> 
+</html>

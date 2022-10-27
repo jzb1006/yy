@@ -1,0 +1,77 @@
+<div class="el-dialog__wrapper" >
+    <div role="dialog" aria-modal="true" aria-label="dialog" class="el-dialog" style="margin-top: 15vh;">
+        <div class="el-dialog__header">
+            <span class="el-dialog__title"></span>
+            <!---->
+        </div>
+        <div class="el-dialog__body">
+            <div class="boxPresMain">
+                <p class="presId">
+            
+                    <span class="sub floatR">
+                        普通
+                    </span>
+                </p>
+                <div class="cardHead">
+                    <p class="title">
+                        {$user['names']}的报告单
+                    </p>
+                    <p class="presType">
+                        
+                    </p>
+                    <p class="row1 flex justyBetween">
+                        <span>姓名：{$user['names']}</span>
+                        <span>性别：{$user['sex']}</span>
+                        <span>年龄：<span>{$user['age']}岁</span>
+                        </span>
+                     <!--    <span>科室：{$res['docdetail']['name']}</span> -->
+                        <span>费用：自费</span>
+                    </p>
+                    <p class="row1 flex justyBetween">
+                        <span>身份证号：{$user['numcard']}</span>
+                        <span>住址：{$user['region']}</span>
+                        <span>电话：{$user['tel']}</span>
+                    </p>
+                    <p class="row1 flex justyBetween">
+                        <span>下单时间：{$res['time']}</span>
+                    </p>
+                </div>
+                <div class="cardBody chinese">
+                    <p class="rp">
+                       检查项
+                    </p>
+                    {loop $list $item}
+                    <br>
+                    <div class="itemMed read "> 
+                       {$item['title']} - {$item['price']}元   - 结果：-  <?php echo $item['shuju']==NULL?'未检查':$item['shuju'];?>
+                    </div>
+                    {/loop}
+
+                    <p class="boxSign flex justyBetween" style="margin-bottom: 60px;">
+                        <span>操作员：<span class="area">{$jcyuan['z_name']}</span>
+                        </span>
+                    </p>
+                    <p class="boxSign flex justyBetween">
+
+                        <span>金额：<span class="area">{$res['money']}元</span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="el-dialog__footer">
+            <div class="dialog-footer">
+                <button type="button" class="el-button el-button--primary close2">
+                    <span>
+                        关闭
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+                  $('.close2').click(function(){
+                $('.el-dialog__wrapper').hide()
+              })
+</script>

@@ -1,0 +1,1401 @@
+{
+    "data": {
+        "items": [
+            {
+                "index_name": "热门",
+                "tag_list": [
+                    {
+                        "tag_id": 1405,
+                        "tag_name": "幼儿急疹",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 234,
+                        "tag_name": "痱子",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7194,
+                        "tag_name": "小儿感冒",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2455,
+                        "tag_name": "贫血",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7189,
+                        "tag_name": "小儿腹泻",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6653,
+                        "tag_name": "新生儿黄疸",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "B",
+                "tag_list": [
+                    {
+                        "tag_id": 1794,
+                        "tag_name": "Bartter 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6390,
+                        "tag_name": "苯丙酮尿症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24652,
+                        "tag_name": "不明原因发热（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 8204,
+                        "tag_name": "百日咳",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6553,
+                        "tag_name": "半乳糖血症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6957,
+                        "tag_name": "丙酸血症",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "C",
+                "tag_list": [
+                    {
+                        "tag_id": 9856,
+                        "tag_name": "攒肚",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 2444,
+                        "tag_name": "蚕豆病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3683,
+                        "tag_name": "抽动症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6998,
+                        "tag_name": "成骨不全",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 674,
+                        "tag_name": "唇裂",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1531,
+                        "tag_name": "川崎病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1067,
+                        "tag_name": "传染性红斑",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4777,
+                        "tag_name": "肠套叠",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2392,
+                        "tag_name": "持续性胎儿循环综合征",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "D",
+                "tag_list": [
+                    {
+                        "tag_id": 20844,
+                        "tag_name": "DiGeorge 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 21776,
+                        "tag_name": "Dravet 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20874,
+                        "tag_name": "Duchenne 型肌营养不良症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7165,
+                        "tag_name": "蛋白质能量营养不良",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 776,
+                        "tag_name": "单纯疱疹病毒感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 11116,
+                        "tag_name": "低碱性磷酸酯酶症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24803,
+                        "tag_name": "电解质紊乱",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 21797,
+                        "tag_name": "大理石样皮肤",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 7049,
+                        "tag_name": "低磷性佝偻病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5671,
+                        "tag_name": "动脉导管未闭",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1083,
+                        "tag_name": "地图舌",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 20759,
+                        "tag_name": "大于胎龄儿",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "E",
+                "tag_list": [
+                    {
+                        "tag_id": 2012,
+                        "tag_name": "鹅口疮",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7458,
+                        "tag_name": "儿科疾病",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "F",
+                "tag_list": [
+                    {
+                        "tag_id": 11004,
+                        "tag_name": "Forbes 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1845,
+                        "tag_name": "非典型溶血性尿毒症综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4897,
+                        "tag_name": "腹股沟斜疝（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5670,
+                        "tag_name": "房间隔缺损",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7470,
+                        "tag_name": "范可尼贫血",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5653,
+                        "tag_name": "法洛四联症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1463,
+                        "tag_name": "风湿热",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20720,
+                        "tag_name": "枫糖尿病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7175,
+                        "tag_name": "发育迟缓（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2265,
+                        "tag_name": "肺炎支原体肺炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 234,
+                        "tag_name": "痱子",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "G",
+                "tag_list": [
+                    {
+                        "tag_id": 20866,
+                        "tag_name": "G6PD 缺乏症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1113,
+                        "tag_name": "高 IgE 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20843,
+                        "tag_name": "高 IgM 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3356,
+                        "tag_name": "肝豆状核变性",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24722,
+                        "tag_name": "谷固醇血症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10935,
+                        "tag_name": "疳积",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 24777,
+                        "tag_name": "感觉统合失调",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6793,
+                        "tag_name": "佝偻病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2897,
+                        "tag_name": "过期产儿",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10470,
+                        "tag_name": "高热",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 6932,
+                        "tag_name": "骨软化症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2475,
+                        "tag_name": "戈谢病",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "H",
+                "tag_list": [
+                    {
+                        "tag_id": 21737,
+                        "tag_name": "HHH 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24730,
+                        "tag_name": "喉软骨软化症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 11085,
+                        "tag_name": "亨廷顿舞蹈病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24688,
+                        "tag_name": "呼吸",
+                        "tag_category_id": 6
+                    }
+                ]
+            },
+            {
+                "index_name": "J",
+                "tag_list": [
+                    {
+                        "tag_id": 10517,
+                        "tag_name": "颈部淋巴结炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7228,
+                        "tag_name": "接触性皮炎（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 23863,
+                        "tag_name": "间擦疹",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7465,
+                        "tag_name": "甲基丙二酸血症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7235,
+                        "tag_name": "惊厥（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24630,
+                        "tag_name": "甲母痣",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3368,
+                        "tag_name": "精神发育迟滞",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20916,
+                        "tag_name": "脊髓性肌萎缩",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 8569,
+                        "tag_name": "急性化脓性扁桃体炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 9367,
+                        "tag_name": "假性脑膜炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2185,
+                        "tag_name": "急性气管支气管炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20744,
+                        "tag_name": "急性外阴阴道炎（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2184,
+                        "tag_name": "急性支气管炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6554,
+                        "tag_name": "家族性地中海热",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6144,
+                        "tag_name": "家族性高胆固醇血症",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "K",
+                "tag_list": [
+                    {
+                        "tag_id": 2196,
+                        "tag_name": "咳嗽变异型哮喘",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "L",
+                "tag_list": [
+                    {
+                        "tag_id": 763,
+                        "tag_name": "朗格汉斯细胞组织细胞增生症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4664,
+                        "tag_name": "颅咽管瘤",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "M",
+                "tag_list": [
+                    {
+                        "tag_id": 11040,
+                        "tag_name": "马方综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24650,
+                        "tag_name": "母乳喂养性黄疸",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24636,
+                        "tag_name": "母乳性黄疸",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7247,
+                        "tag_name": "慢性腹泻（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7105,
+                        "tag_name": "慢性肉芽肿病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2260,
+                        "tag_name": "毛细支气管炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24596,
+                        "tag_name": "马牙",
+                        "tag_category_id": 2
+                    }
+                ]
+            },
+            {
+                "index_name": "N",
+                "tag_list": [
+                    {
+                        "tag_id": 843,
+                        "tag_name": "尿布疹",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6418,
+                        "tag_name": "尿道下裂",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1840,
+                        "tag_name": "尿路感染（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1251,
+                        "tag_name": "脓疱疮",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5959,
+                        "tag_name": "奶瓶龋",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7461,
+                        "tag_name": "脑室周围白质软化",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3453,
+                        "tag_name": "脑性瘫痪",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "P",
+                "tag_list": [
+                    {
+                        "tag_id": 20909,
+                        "tag_name": "Prader-Willi 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6425,
+                        "tag_name": "膀胱外翻",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2455,
+                        "tag_name": "贫血",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "Q",
+                "tag_list": [
+                    {
+                        "tag_id": 7284,
+                        "tag_name": "气道异物（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 23786,
+                        "tag_name": "秋季腹泻",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6405,
+                        "tag_name": "鞘膜积液",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4771,
+                        "tag_name": "脐疝",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4962,
+                        "tag_name": "脐炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24727,
+                        "tag_name": "迁延性细菌性支气管炎",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "R",
+                "tag_list": [
+                    {
+                        "tag_id": 7292,
+                        "tag_name": "Rett 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 21764,
+                        "tag_name": "热纳综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4020,
+                        "tag_name": "弱视",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6782,
+                        "tag_name": "乳糖不耐受",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10505,
+                        "tag_name": "热性惊厥",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20723,
+                        "tag_name": "乳牙萌出",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "S",
+                "tag_list": [
+                    {
+                        "tag_id": 20924,
+                        "tag_name": "Silver-Russell 综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 777,
+                        "tag_name": "水痘",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5669,
+                        "tag_name": "室间隔缺损",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4666,
+                        "tag_name": "神经母细胞瘤",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4056,
+                        "tag_name": "视网膜母细胞瘤",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5864,
+                        "tag_name": "舌系带过短",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5981,
+                        "tag_name": "腮腺炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6816,
+                        "tag_name": "生长激素缺乏症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 8363,
+                        "tag_name": "手足口病",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "T",
+                "tag_list": [
+                    {
+                        "tag_id": 24590,
+                        "tag_name": "胎儿染色体非整倍体异常的中孕期母体血清学筛查",
+                        "tag_category_id": 6
+                    },
+                    {
+                        "tag_id": 10600,
+                        "tag_name": "脱水",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7001,
+                        "tag_name": "唐氏综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 21753,
+                        "tag_name": "天使综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 23101,
+                        "tag_name": "体温",
+                        "tag_category_id": 6
+                    },
+                    {
+                        "tag_id": 21770,
+                        "tag_name": "体位性扁头",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6843,
+                        "tag_name": "糖原贮积病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 345,
+                        "tag_name": "体质指数 BMI",
+                        "tag_category_id": 6
+                    }
+                ]
+            },
+            {
+                "index_name": "W",
+                "tag_list": [
+                    {
+                        "tag_id": 7463,
+                        "tag_name": "戊二酸血症 I 型",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7125,
+                        "tag_name": "维生素 D 缺乏性佝偻病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7003,
+                        "tag_name": "维生素 D 缺乏性手足搐搦症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5428,
+                        "tag_name": "维生素 D 缺乏症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20721,
+                        "tag_name": "喂养过度和喂养不足",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "X",
+                "tag_list": [
+                    {
+                        "tag_id": 2147,
+                        "tag_name": "腺病毒感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7370,
+                        "tag_name": "哮喘（小儿）",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24599,
+                        "tag_name": "血电解质检查",
+                        "tag_category_id": 6
+                    },
+                    {
+                        "tag_id": 7051,
+                        "tag_name": "小儿鼻窦炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10683,
+                        "tag_name": "小儿便秘",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 9803,
+                        "tag_name": "小儿肠绞痛",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 7167,
+                        "tag_name": "小儿低白蛋白血症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6962,
+                        "tag_name": "小儿肺动脉狭窄",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6347,
+                        "tag_name": "小儿肥厚型心肌病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7178,
+                        "tag_name": "小儿肥胖症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7174,
+                        "tag_name": "小儿发热",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 7189,
+                        "tag_name": "小儿腹泻",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7194,
+                        "tag_name": "小儿感冒",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5088,
+                        "tag_name": "小儿肝母细胞瘤",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24769,
+                        "tag_name": "小儿肛周皮炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7216,
+                        "tag_name": "小儿急腹症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2386,
+                        "tag_name": "小儿急性喉炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7226,
+                        "tag_name": "小儿甲状腺功能减退症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6934,
+                        "tag_name": "小儿甲状腺功能亢进症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10983,
+                        "tag_name": "小儿咳嗽",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 10282,
+                        "tag_name": "小儿流感",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7265,
+                        "tag_name": "小儿牛奶蛋白过敏",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10480,
+                        "tag_name": "小儿脑性瘫痪",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24614,
+                        "tag_name": "小儿缺锌",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24645,
+                        "tag_name": "小儿丘疹性肢端皮炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10947,
+                        "tag_name": "小儿水肿",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 9793,
+                        "tag_name": "小儿吐奶",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 7311,
+                        "tag_name": "小儿糖尿病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20722,
+                        "tag_name": "小儿脱水",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 21757,
+                        "tag_name": "小儿心肌炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6191,
+                        "tag_name": "小儿心内膜弹力纤维增生症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7351,
+                        "tag_name": "小儿遗尿症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3879,
+                        "tag_name": "小儿自闭症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7369,
+                        "tag_name": "小儿支气管肺炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7077,
+                        "tag_name": "小儿阻塞性睡眠呼吸暂停综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7066,
+                        "tag_name": "小儿重症肌无力",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3448,
+                        "tag_name": "线粒体肌病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3449,
+                        "tag_name": "线粒体脑肌病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24700,
+                        "tag_name": "吸入治疗",
+                        "tag_category_id": 6
+                    },
+                    {
+                        "tag_id": 2487,
+                        "tag_name": "新生儿败血症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2764,
+                        "tag_name": "新生儿出血症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7391,
+                        "tag_name": "新生儿单纯疱疹病毒感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 11042,
+                        "tag_name": "新生儿大动脉转位",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6979,
+                        "tag_name": "新生儿低血糖症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6971,
+                        "tag_name": "新生儿肺炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10386,
+                        "tag_name": "新生儿高胆红素血症脑病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7392,
+                        "tag_name": "新生儿感染性疾病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6653,
+                        "tag_name": "新生儿黄疸",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7396,
+                        "tag_name": "新生儿寒冷损伤综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3372,
+                        "tag_name": "新生儿化脓性脑膜炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6655,
+                        "tag_name": "新生儿坏死性小肠结肠炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 11041,
+                        "tag_name": "新生儿红细胞增多症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7398,
+                        "tag_name": "新生儿疾病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24799,
+                        "tag_name": "新生儿戒断综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6976,
+                        "tag_name": "新生儿结膜炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3761,
+                        "tag_name": "新生儿巨细胞病毒感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7400,
+                        "tag_name": "新生儿李斯特菌感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6949,
+                        "tag_name": "新生儿破伤风",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6975,
+                        "tag_name": "新生儿脐炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7408,
+                        "tag_name": "新生儿期重症肌无力",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2765,
+                        "tag_name": "新生儿溶血病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 21763,
+                        "tag_name": "新生儿室管膜下囊肿",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20808,
+                        "tag_name": "新生儿头部脓疱病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10385,
+                        "tag_name": "新生儿胎粪吸入综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24717,
+                        "tag_name": "新生儿糖尿病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 11034,
+                        "tag_name": "新生儿先天性膈疝",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 21788,
+                        "tag_name": "新生儿乙肝病毒感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 21731,
+                        "tag_name": "新生儿医院获得性感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2389,
+                        "tag_name": "新生儿衣原体感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2235,
+                        "tag_name": "新生儿窒息",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7129,
+                        "tag_name": "先天性肠闭锁",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6995,
+                        "tag_name": "先天性肠旋转不良",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4882,
+                        "tag_name": "先天性肥厚性幽门狭窄",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 8588,
+                        "tag_name": "先天性风疹病毒感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6974,
+                        "tag_name": "先天性弓形虫感染",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20896,
+                        "tag_name": "先天性高胰岛素性低血糖血症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20906,
+                        "tag_name": "先天性结核",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 4884,
+                        "tag_name": "先天性巨结肠",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3446,
+                        "tag_name": "先天性肌强直",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7022,
+                        "tag_name": "先天性肌性斜颈",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1673,
+                        "tag_name": "先天性及婴儿肾病综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24644,
+                        "tag_name": "先天性甲状旁腺功能减退症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6933,
+                        "tag_name": "先天性甲状腺功能减退症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6955,
+                        "tag_name": "先天性甲状腺肿",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3317,
+                        "tag_name": "先天性卵巢发育不全综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20769,
+                        "tag_name": "先天性泪囊突出",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 8242,
+                        "tag_name": "先天性梅毒",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 5187,
+                        "tag_name": "先天性脑积水",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7468,
+                        "tag_name": "先天性肾上腺发育不良",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6275,
+                        "tag_name": "先天性心脏病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 22572,
+                        "tag_name": "血维生素 D",
+                        "tag_category_id": 6
+                    },
+                    {
+                        "tag_id": 2427,
+                        "tag_name": "血友病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1909,
+                        "tag_name": "腺样体肥大",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20760,
+                        "tag_name": "小于胎龄儿",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6827,
+                        "tag_name": "性早熟",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "Y",
+                "tag_list": [
+                    {
+                        "tag_id": 7428,
+                        "tag_name": "遗传性大疱性表皮松解症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20712,
+                        "tag_name": "遗传性代谢病",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 21791,
+                        "tag_name": "遗传性果糖不耐受症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 2447,
+                        "tag_name": "遗传性球形红细胞增多症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1383,
+                        "tag_name": "遗传性血管性水肿",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7432,
+                        "tag_name": "婴儿肠绞痛",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7005,
+                        "tag_name": "婴儿猝死综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6652,
+                        "tag_name": "婴儿肝炎综合征",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 21783,
+                        "tag_name": "婴儿肛周锥状突起",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 3764,
+                        "tag_name": "婴儿痉挛",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1405,
+                        "tag_name": "幼儿急疹",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 839,
+                        "tag_name": "婴儿湿疹",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20833,
+                        "tag_name": "婴儿喂养问题",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 10484,
+                        "tag_name": "婴儿枕秃",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 9142,
+                        "tag_name": "原发性肉碱缺乏症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6437,
+                        "tag_name": "隐睾症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24786,
+                        "tag_name": "夜间咳嗽",
+                        "tag_category_id": 2
+                    },
+                    {
+                        "tag_id": 11043,
+                        "tag_name": "亚急性硬化性全脑炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 1522,
+                        "tag_name": "幼年特发性关节炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6968,
+                        "tag_name": "幼年型皮肌炎",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7464,
+                        "tag_name": "异戊酸血症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7360,
+                        "tag_name": "营养性缺铁性贫血（小儿）",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "Z",
+                "tag_list": [
+                    {
+                        "tag_id": 666,
+                        "tag_name": "早产儿",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20719,
+                        "tag_name": "支链氨基酸代谢紊乱",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 20741,
+                        "tag_name": "支气管肺发育不良",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 24807,
+                        "tag_name": "支气管肺隔离症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 6936,
+                        "tag_name": "侏儒症",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7020,
+                        "tag_name": "注意缺陷多动障碍",
+                        "tag_category_id": 1
+                    },
+                    {
+                        "tag_id": 7479,
+                        "tag_name": "重症先天性中性粒细胞减少症",
+                        "tag_category_id": 1
+                    }
+                ]
+            },
+            {
+                "index_name": "#",
+                "tag_list": [
+                    {
+                        "tag_id": 20871,
+                        "tag_name": "21-羟化酶缺乏症",
+                        "tag_category_id": 1
+                    }
+                ]
+            }
+        ]
+    }
+}

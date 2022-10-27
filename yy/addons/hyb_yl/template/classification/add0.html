@@ -1,0 +1,63 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+</div>
+
+  <div class="basics">
+     <div class="gai_huanzhe">
+        <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control {if $op=='site'} active {/if}" data-permission="8">
+                <a  href="{php echo $this->createWeburl('classification',array('op'=>'list','type_id'=>$type_id))}" ><strong>咨询分类</strong></a>
+            </li>
+            <li class="J-module-control {if $op=='add'} active {/if}" data-permission="10">
+                <a href="{php echo $this->createWeburl('classification',array('op'=>'list','type_id'=>$type_id))}" ><strong>添加分类</strong></a>
+            </li>
+        </ul>
+            <div class="panel-body collapse in">
+                <form  action="" method="post" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-10">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <label class="control-label">资讯分类名称 <span class="gai_tishi">资讯分类名称</span></label>
+                                        <input type="text" class="form-control max128 J-isDisable" value="{$res['zx_name']}" required="" name="zx_name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <label class="control-label">推荐 <span class="gai_tishi">推荐后会在首页显示</span></label>
+                                        <div class="pianshen_kaiqi">
+                                            <input type="text" name="zx_type" value="{$res['zx_type']}" style="display: none;" class="zt"> 
+                                        <div class="pianshen_kaiqi_xuanze {if $res['zx_type'] =='1'} pianshen_kaiqi_xuanzes {/if}" data-val='1'>
+                                            <div class="pianshen_kaiqi_xuanze_title  {if $res['zx_type'] =='1'} pianshen_kaiqi_xuanze_titles {/if}">推荐</div>
+                                            <div class="pianshen_kaiqi_xuanze_img {if $res['zx_type'] =='1'} pianshen_kaiqi_xuanze_imgs {/if} "><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                        </div>
+                                        <div class="pianshen_kaiqi_xuanze  {if $res['zx_type'] =='0'} pianshen_kaiqi_xuanzes {/if}" data-val='0'>
+                                            <div class="pianshen_kaiqi_xuanze_title {if $res['zx_type'] =='0'} pianshen_kaiqi_xuanze_titles {/if}">不推荐</div>
+                                            <div class="pianshen_kaiqi_xuanze_img {if $res['zx_type'] =='0'} pianshen_kaiqi_xuanze_imgs {/if}"><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <label class="control-label">分类图标<span class="gai_tishi">（建议尺寸 172*172）</span></label>
+                                         {php echo tpl_form_field_image('zx_thumb', $res['zx_thumb'])}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+                    <input name="token" type="hidden" value="{$_W['token']}" />
+                </form>
+            </div>
+        </div>
+    </div> 
+    <script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list.js"></script>

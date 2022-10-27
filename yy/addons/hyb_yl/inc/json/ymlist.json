@@ -1,0 +1,216 @@
+{
+    "data": {
+        "items": [
+            {
+                "special_topic": {
+                    "id": 1261,
+                    "title": "查疫苗",
+                    "text": "",
+                    "pic_url": "https://img1.dxycdn.com/2020/0107/318/3389579608705072381-22.jpg",
+                    "thumbnail_url": "",
+                    "weapp_qrcode": "https://img1.dxycdn.com/2019/1231/698/3388274756838417613-15.jpg",
+                    "support_weapp_bottom_share": false,
+                    "share_text": "",
+                    "share_wx_converse_pic_url": "",
+                    "share_wx_moments_pic_url": "",
+                    "buy_type": 0,
+                    "price": 0,
+                    "origin_price": 0,
+                    "buy_goods": []
+                },
+                "special_topic_modules": [
+                    {
+                        "title": "一类疫苗",
+                        "text": "免费接种",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "卡介苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10908"
+                            },
+                            {
+                                "title": "乙肝疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10932"
+                            },
+                            {
+                                "title": "脊髓灰质炎疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10930"
+                            },
+                            {
+                                "title": "百白破疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10937"
+                            },
+                            {
+                                "title": "流脑疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11000"
+                            },
+                            {
+                                "title": "乙脑疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10931"
+                            },
+                            {
+                                "title": "麻腮风疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10938"
+                            },
+                            {
+                                "title": "甲肝疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10934"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "二类疫苗",
+                        "text": "自费、自愿接种",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "肺炎疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10939"
+                            },
+                            {
+                                "title": "五联疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11019"
+                            },
+                            {
+                                "title": "四联疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11002"
+                            },
+                            {
+                                "title": "B 型流感嗜血杆菌疫苗（Hib 疫苗）",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10936"
+                            },
+                            {
+                                "title": "AC 流脑-Hib 联合疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11029"
+                            },
+                            {
+                                "title": "流脑疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11000"
+                            },
+                            {
+                                "title": "轮状病毒疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11003"
+                            },
+                            {
+                                "title": "EV71 型手足口病疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10941"
+                            },
+                            {
+                                "title": "水痘疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11018"
+                            },
+                            {
+                                "title": "流感疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10926"
+                            },
+                            {
+                                "title": "HPV 疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10391"
+                            },
+                            {
+                                "title": "狂犬病疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=10933"
+                            },
+                            {
+                                "title": "甲型 H1N1 流感疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11036"
+                            },
+                            {
+                                "title": "霍乱疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11017"
+                            },
+                            {
+                                "title": "腮腺炎疫苗",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11028"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "被动免疫制剂",
+                        "text": "使机体获得立即、短暂的免疫力",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "破伤风针",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=drugItem&id=11038"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "",
+                        "text": "",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 0,
+                        "pic_iterms": [
+                            {
+                                "pic_url": "https://img1.dxycdn.com/2020/0103/509/3388797437178432884-22.png",
+                                "href_url": "",
+                                "width": 0,
+                                "height": 0
+                            }
+                        ],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": []
+                    }
+                ]
+            }
+        ]
+    }
+}

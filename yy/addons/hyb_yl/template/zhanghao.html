@@ -1,0 +1,716 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            <!-- headerbar -->
+            <div class="pageheader hidden">
+                <h2><i class="fa fa-user"></i> 我的帐号</h2>
+            </div>
+            <div class="contentpanel">
+                <!-- 预约 -->
+                <form id="basicForm" method="post" action="{php echo $this->createWeburl('list', array('op' => 'zhanghao'))}}" class="J-account-panel-warp">
+                <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-btns">
+                    <a href="" class="minimize">−</a>
+                </div>
+                <h4 class="panel-title">我的帐号</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-9 col-md-10">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">姓名 <span class="asterisk">*</span></label>
+                                    <input type="text" name="name" class="form-control" value="<%- data.name%>" required="" placeholder="" disabled>
+                                </div>
+                            </div>
+                            <!-- col-sm-5 -->
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">出生年月 <span class="asterisk">*</span></label>
+                                    <input class="form-control required" value="<%- new Date(data.birthday).Format('yyyy-MM-dd')%>" readonly="" name="birthday" id="appDate" type="text" disabled>
+                                </div>
+                            </div>
+                            <!-- col-sm-4 -->
+                            <div class="col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">性别 <span class="asterisk">*</span></label>
+                                    <div class="row mt10">
+                                        <div class="col-xs-4 col-sm-4 col-pad-sm">
+                                            <div class="rdio rdio-default">
+                                                <input type="radio" name="sex" id="radioDefault1" value="1">
+                                                <label for="radioDefault1">男</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-pad-sm">
+                                            <div class="rdio rdio-default">
+                                                <input type="radio" name="sex" id="radioDefault2" value="2">
+                                                <label for="radioDefault2">女</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- col-sm-2 -->
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">手机号</label>
+                                    <input type="text" name="phone" value="<%- data.phone%>" class="form-control cellphone J-phone" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">电子邮箱</label>
+                                    <input type="text" name="email" value="<%- data.email%>" class="form-control email" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 module-hide J-module-control" data-modules="32">
+                                <div class="form-group">
+                                    <label class="control-label">微信号</label>
+                                    <div class="input-group">
+                                        <input type="text" name="wechatid" value="<%- data.wechatId%>" class="form-control">
+                                        <span class="input-group-addon J-wechat-bind">绑定</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">身份证号</label>
+                                    <input type="text" name="id_no" value="<% if (data.idNo && data.idNo != 0) {%><%- data.idNo%><%}%>" class="form-control isPid mt3" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">岗位 <span class="asterisk">*</span></label>
+                                    <input type="text" name="job" value="<%- data.jobName%>" class="form-control input-sm mt3" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">职位性质</label>
+                                    <input type="text" name="workProperty" value="<%- data.workProperty%>" class="form-control input-sm mt3" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">职称</label>
+                                    <input type="text" name="technicalTitle" value="<%- data.technicaltitle%>" class="form-control input-sm mt3" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">状态</label>
+                                    <select class="form-control input-sm" data-placeholder="请选择" name="status" disabled>
+                                        <option value="1">正常</option>
+                                        <option value="2">停用</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">角色</label>
+                                    <input type="text" name="role_ids" value="" class="form-control hidden" disabled>
+                                    <input type="text" value="<%- data.roles%>" class="form-control mt3" disabled>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">绑定手环</label>
+                                    
+                                        <a class="btn btn-white btn-sm form-control" href="/japi/session/100065">绑定手环</a>
+                                    
+                                        <a class="btn btn-white btn-sm form-control" href="/japi/session/100065" disabled="">已绑定手环</a>
+                                    
+                                        <a class="btn btn-white btn-sm form-control" href="/japi/session/100065">授权已过期，请重新绑定</a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <label class="control-label">所属诊所 <span class="asterisk">*</span></label>
+                                
+                                    <div class="row">
+                                        <div class="col-sm-4 col-md-4">
+                                            <div class="form-group">
+                                                <input type="text" name="shop_id[]" value="<%- item.shop%>" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <div class="form-group">
+                                                <input type="text" name="department[]" value="<%- item.department%>" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2"></div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label">住址</label>
+                                    <select class="form-control input-sm mt0 J-location-pro" data-placeholder="请选择" name="province" disabled>
+                                        <option value="<%- data.province%>" selected="selected"><%- data.province%></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- col-sm-1 -->
+                            <div class="col-sm-2 col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label">&nbsp;</label>
+                                    <select class="form-control input-sm mt0 J-location-city" data-placeholder="请选择" name="city" disabled>
+                                        <option value="<%- data.city%>" selected="selected"><%- data.city%></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- col-sm-1 -->
+                            <div class="col-sm-8 col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label">&nbsp;</label>
+                                    <input type="text" value="<%- data.address%>" class="form-control" name="address" disabled>
+                                </div>
+                            </div>
+                            <!-- col-sm-4 -->
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label">介绍</label>
+                                    <textarea class="form-control" rows="5" name="introduction" disabled><%- data.introduction%></textarea>
+                                </div>
+                            </div>
+                            <!-- col-sm-4 -->
+                        </div>
+                        <!-- row -->
+                    </div>
+                    <!-- col-sm-10 -->
+                    <div class="col-sm-3 col-md-2">
+                        <!-- 上传图片 -->
+                        <div class="form-group" id="crop-avatar" data-url="/Index/uploadImage">
+                            <div class="J_image_upload mr0">
+                                <div class="image-select J_image_select avatar-view empty">
+                                    <div class="image-preview">
+                                        
+                                            <img src="<%- GLOBAL_ASSETS%>business/images/male-avatar.png">
+                                        
+                                            <img src="<%- GLOBAL_ASSETS%>business/images/female-avatar.png">
+                                        
+                                            <img src="<%- data.image%>">
+                                        
+                                    </div>
+                                    <div class="image-upload">
+                                        <input type="file" name="files1[]" id="f-image-upload" accept="image/*">
+                                        <input type="hidden" name="image" class="input-upload" value="<%- data.image%>">
+                                        <a class="btn btn-default btn-sm">上传头像</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 上传头像 -->
+                    </div>
+                    <!-- col-sm-2 -->
+
+                    <!-- col-sm-10 -->
+                    <div class="col-sm-3 col-md-2">
+                        <!-- 上传签名 -->
+                        <div class="form-group" id="crop-ele-signature" data-url="/Index/uploadImage">
+                            <div class="J_image_upload mr0">
+                                <div class="image-select J_image_select avatar-view empty">
+                                    <div class="image-preview">
+                                        
+                                            <img src="<%- data.signatureImg%>">
+                                        
+                                    </div>
+                                    <div class="image-upload">
+                                        <input type="file" name="files1[]" id="f-image-upload" accept="image/*">
+                                        <input type="hidden" name="ele_signature" class="input-upload" value="<%- data.signatureImg%>">
+                                        <a class="btn btn-default btn-sm">上传电子签名</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 上传头像 -->
+                    </div>
+                    <!-- col-sm-2 -->
+                </div>
+            </div>
+            <!-- panel-body -->
+            <div class="panel-footer panel-btn-col1 J-account">
+                <!-- <button class="btn btn-primary btn-sml" onclick="$('#useradd_form').submit();">保存</button>&nbsp; -->
+                <button class="btn btn-primary btn-sml J-account-sub-btn" type="submit">保存</button>&nbsp;
+            </div>
+        </div>
+                </form>
+                <!-- 预约 -->
+            </div>
+        <!-- contentpanel -->
+
+            <!-- start上传头像 modal -->
+            <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form class="avatar-form" action="" enctype="multipart/form-data" method="post">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" type="button">&times;</button>
+                                <h4 class="modal-title" id="avatar-modal-label">上传图片</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="avatar-body">
+                                    <div class="row mt10">
+                                        <div class="avatar-upload col-sm-12">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <div class="btn btn-default image-preview-input">
+                                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                                        <span class="image-preview-input-title">选择文件</span>
+                                                        <input class="avatar-src" name="avatar_src" type="hidden">
+                                                        <input class="avatar-data" name="image_data" type="hidden">
+                                                        <input name="is_protected" value="true" type="hidden">
+                                                        <input name="owner_type" value="1" type="hidden">
+                                                        <input name="type" value="1" type="hidden">
+                                                        <input name="media_type" value="image" type="hidden">
+                                                        <input class="avatar-input" id="avatarInput" name="uploadFile" type="file" accept="image/*">
+                                                        <!-- <input class="avatar-input" id="avatarInput" name="files[]" type="file" accept="image/*"> -->
+                                                    </div>
+                                                </span>
+                                                <button type="button" class="btn btn-white J-btn-camera ml10 black"><i class="fa fa-camera"></i> 拍照上传</button>
+                                                <button type="button" class="btn btn-white ml10 black" id="avatar-src-del">清除头像</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Crop and preview -->
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="avatar-wrapper J-show-pic"></div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="avatar-preview preview-lg"></div>
+                                            <div class="avatar-preview preview-md"></div>
+                                            <div class="avatar-preview preview-sm"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row avatar-btns">
+                                        <a class="btn btn-primary btn-block avatar-save" type="javascript:;">确定</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end上传头像 modal -->
+
+            <!-- Cropping modal -->
+                <div class="modal fade" id="ele-signature-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <form class="avatar-form" action="" enctype="multipart/form-data" method="post">
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                                    <h4 class="modal-title" id="avatar-modal-label">上传图片</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="avatar-body">
+                                        <div class="row mt10">
+                                            <div class="avatar-upload col-sm-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <div class="btn btn-default image-preview-input">
+                                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                                            <span class="image-preview-input-title">选择文件</span>
+                                                            <input class="avatar-src" name="avatar_src" type="hidden">
+                                                            <input class="avatar-data" name="image_data" type="hidden">
+                                                            <input name="is_protected" value="true" type="hidden">
+                                                            <input name="owner_type" value="1" type="hidden">
+                                                            <input name="type" value="1" type="hidden">
+                                                            <input name="media_type" value="image" type="hidden">
+                                                            <input class="avatar-input" id="avatarInput" name="uploadFile" type="file" accept="image/*">
+                                                            <!-- <input class="avatar-input" id="avatarInput" name="files[]" type="file" accept="image/*"> -->
+                                                        </div>
+                                                    </span>
+                                                    <button type="button" class="btn btn-white ml10 black" id="ele-signature-del">清除电子签名</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Crop and preview -->
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="avatar-wrapper J-show-pic"></div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="avatar-preview preview-lg"></div>
+                                                <div class="avatar-preview preview-md"></div>
+                                                <div class="avatar-preview preview-sm"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row avatar-btns">
+                                            <a class="btn btn-primary btn-block avatar-save" type="javascript:;">确定</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal -->
+
+        </div>
+        <!-- mainpanel -->
+    </section>
+    <!-- start我的账号模版 -->
+    <script type="text/template" id="J-account-panel-tpl">
+        
+        <input type="hidden" name="id" value="">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-btns">
+                    <a href="" class="minimize">−</a>
+                </div>
+                <h4 class="panel-title">我的帐号</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-9 col-md-10">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">姓名 <span class="asterisk">*</span></label>
+                                    <input type="text" name="name" class="form-control" value="<%- data.name%>" required="" placeholder="" disabled>
+                                </div>
+                            </div>
+                            <!-- col-sm-5 -->
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">出生年月 <span class="asterisk">*</span></label>
+                                    <input class="form-control required" value="<%- new Date(data.birthday).Format('yyyy-MM-dd')%>" readonly="" name="birthday" id="appDate" type="text" disabled>
+                                </div>
+                            </div>
+                            <!-- col-sm-4 -->
+                            <div class="col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">性别 <span class="asterisk">*</span></label>
+                                    <div class="row mt10">
+                                        <div class="col-xs-4 col-sm-4 col-pad-sm">
+                                            <div class="rdio rdio-default">
+                                                <input type="radio" name="sex" id="radioDefault1" value="1" <% if (data.sexCode && data.sexCode == 1) {%>checked="checked"<%}%> required disabled>
+                                                <label for="radioDefault1">男</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-pad-sm">
+                                            <div class="rdio rdio-default">
+                                                <input type="radio" name="sex" id="radioDefault2" value="2" <% if (data.sexCode && data.sexCode == 2) {%>checked="checked"<%}%> required disabled>
+                                                <label for="radioDefault2">女</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- col-sm-2 -->
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">手机号</label>
+                                    <input type="text" name="phone" value="<%- data.phone%>" class="form-control cellphone J-phone" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">电子邮箱</label>
+                                    <input type="text" name="email" value="<%- data.email%>" class="form-control email" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 module-hide J-module-control" data-modules="32">
+                                <div class="form-group">
+                                    <label class="control-label">微信号</label>
+                                    <div class="input-group">
+                                        <input type="text" name="wechatid" value="<%- data.wechatId%>" class="form-control">
+                                        <span class="input-group-addon J-wechat-bind">绑定</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">身份证号</label>
+                                    <input type="text" name="id_no" value="<% if (data.idNo && data.idNo != 0) {%><%- data.idNo%><%}%>" class="form-control isPid mt3" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">岗位 <span class="asterisk">*</span></label>
+                                    <input type="text" name="job" value="<%- data.jobName%>" class="form-control input-sm mt3" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">职位性质</label>
+                                    <input type="text" name="workProperty" value="<%- data.workProperty%>" class="form-control input-sm mt3" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">职称</label>
+                                    <input type="text" name="technicalTitle" value="<%- data.technicaltitle%>" class="form-control input-sm mt3" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">状态</label>
+                                    <select class="form-control input-sm" data-placeholder="请选择" name="status" disabled>
+                                        <option value="1" <% if (data.status && data.status == 1) {%>selected="selected"<%}%> >正常</option>
+                                        <option value="2" <% if (data.status && data.status == 2) {%>selected="selected"<%}%>>停用</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">角色</label>
+                                    <input type="text" name="role_ids" value="" class="form-control hidden" disabled>
+                                    <input type="text" value="<%- data.roles%>" class="form-control mt3" disabled>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">绑定手环</label>
+                                    
+                                        <a class="btn btn-white btn-sm form-control" href="/japi/session/100065">绑定手环</a>
+                                    
+                                        <a class="btn btn-white btn-sm form-control" href="/japi/session/100065" disabled="">已绑定手环</a>
+                                    
+                                        <a class="btn btn-white btn-sm form-control" href="/japi/session/100065">授权已过期，请重新绑定</a>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <label class="control-label">所属诊所 <span class="asterisk">*</span></label>
+                                
+                                    <div class="row">
+                                        <div class="col-sm-4 col-md-4">
+                                            <div class="form-group">
+                                                <input type="text" name="shop_id[]" value="<%- item.shop%>" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-md-4">
+                                            <div class="form-group">
+                                                <input type="text" name="department[]" value="<%- item.department%>" class="form-control" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 col-md-2"></div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label">住址</label>
+                                    <select class="form-control input-sm mt0 J-location-pro" data-placeholder="请选择" name="province" disabled>
+                                        <option value="<%- data.province%>" selected="selected"><%- data.province%></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- col-sm-1 -->
+                            <div class="col-sm-2 col-md-2">
+                                <div class="form-group">
+                                    <label class="control-label">&nbsp;</label>
+                                    <select class="form-control input-sm mt0 J-location-city" data-placeholder="请选择" name="city" disabled>
+                                        <option value="<%- data.city%>" selected="selected"><%- data.city%></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- col-sm-1 -->
+                            <div class="col-sm-8 col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label">&nbsp;</label>
+                                    <input type="text" value="<%- data.address%>" class="form-control" name="address" disabled>
+                                </div>
+                            </div>
+                            <!-- col-sm-4 -->
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label">介绍</label>
+                                    <textarea class="form-control" rows="5" name="introduction" disabled><%- data.introduction%></textarea>
+                                </div>
+                            </div>
+                            <!-- col-sm-4 -->
+                        </div>
+                        <!-- row -->
+                    </div>
+                    <!-- col-sm-10 -->
+                    <div class="col-sm-3 col-md-2">
+                        <!-- 上传图片 -->
+                        <div class="form-group" id="crop-avatar" data-url="/Index/uploadImage">
+                            <div class="J_image_upload mr0">
+                                <div class="image-select J_image_select avatar-view empty">
+                                    <div class="image-preview">
+                                        
+                                            <img src="<%- GLOBAL_ASSETS%>business/images/male-avatar.png">
+                                        
+                                            <img src="<%- GLOBAL_ASSETS%>business/images/female-avatar.png">
+                                        
+                                            <img src="<%- data.image%>">
+                                        
+                                    </div>
+                                    <div class="image-upload">
+                                        <input type="file" name="files1[]" id="f-image-upload" accept="image/*">
+                                        <input type="hidden" name="image" class="input-upload" value="<%- data.image%>">
+                                        <a class="btn btn-default btn-sm">上传头像</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 上传头像 -->
+                    </div>
+                    <!-- col-sm-2 -->
+
+                    <!-- col-sm-10 -->
+                    <div class="col-sm-3 col-md-2">
+                        <!-- 上传签名 -->
+                        <div class="form-group" id="crop-ele-signature" data-url="/Index/uploadImage">
+                            <div class="J_image_upload mr0">
+                                <div class="image-select J_image_select avatar-view empty">
+                                    <div class="image-preview">
+                                        
+                                            <img src="<%- data.signatureImg%>">
+                                        
+                                    </div>
+                                    <div class="image-upload">
+                                        <input type="file" name="files1[]" id="f-image-upload" accept="image/*">
+                                        <input type="hidden" name="ele_signature" class="input-upload" value="<%- data.signatureImg%>">
+                                        <a class="btn btn-default btn-sm">上传电子签名</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 上传头像 -->
+                    </div>
+                    <!-- col-sm-2 -->
+                </div>
+            </div>
+            <!-- panel-body -->
+            <div class="panel-footer panel-btn-col1 J-account">
+                <!-- <button class="btn btn-primary btn-sml" onclick="$('#useradd_form').submit();">保存</button>&nbsp; -->
+                <button class="btn btn-primary btn-sml J-account-sub-btn" type="submit">保存</button>&nbsp;
+            </div>
+        </div>
+    </script>
+    <!-- end我的账号模版 -->
+    <!-- wechat 绑定 -->
+    <div class="modal fade" id="wechatModal" tabindex="-1" role="dialog" aria-labelledby="wechatModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="wechatModalLabel">扫码二维码绑定</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="" class="wechat-qr-code center-block">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/addons/hyb_yl/public/admin/include/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="/addons/hyb_yl/public/admin/include/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['login_account']);
+    </script>
+</body>
+
+</html>

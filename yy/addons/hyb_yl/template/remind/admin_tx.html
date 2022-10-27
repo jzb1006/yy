@@ -1,0 +1,104 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+</div>
+<div class="basics">
+        <div class="main-content">
+            <div class="panel panel-default">
+                <div class="panel-body collapse in">
+            <form  action="" method="post" novalidate="novalidate">
+                <div class="row">
+                    <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">短信开关<span class="gai_tishi">关闭后将停止短信功能</span></label>
+                                <div class="pianshen_kaiqi">
+                                    <input type="text" name="stadus" value="{$res['stadus']}" style="display: none;" class="zt"> 
+                                    <div class="pianshen_kaiqi_xuanze {if $res['stadus'] =='1'} pianshen_kaiqi_xuanzes {/if}" data-val='1'>
+                                        <div class="pianshen_kaiqi_xuanze_title  {if $res['stadus'] =='1'} pianshen_kaiqi_xuanze_titles {/if}">开启</div>
+                                        <div class="pianshen_kaiqi_xuanze_img {if $res['stadus'] =='1'} pianshen_kaiqi_xuanze_imgs {/if} "><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                    </div>
+                                    <div class="pianshen_kaiqi_xuanze  {if $res['stadus'] =='0'} pianshen_kaiqi_xuanzes {/if}" data-val='0'>
+                                        <div class="pianshen_kaiqi_xuanze_title {if $res['stadus'] =='0'} pianshen_kaiqi_xuanze_titles {/if}">关闭</div>
+                                        <div class="pianshen_kaiqi_xuanze_img {if $res['stadus'] =='0'} pianshen_kaiqi_xuanze_imgs {/if}"><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">短信Appkey <span class="gai_tishi">此项填写key</span></label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['key']}" required="" name="key">
+                                </div>
+                            </div>
+                        </div>
+
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">短信secret <span class="gai_tishi">此项填写密钥</span></label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['scret']}" required="" name="scret">
+                                </div>
+                            </div>
+                        </div>
+
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">短信签名 <span class="gai_tishi">例如：某某公司</span></label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['qianming']}" required="" name="qianming">
+                                </div>
+                            </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">短信模板ID <span class="gai_tishi">例如SMS_9626548，模板DEMO（报告，在 ${time} 有新的预约，请及时处理。） ${time}=时间，${phone}=手机号</span></label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['templateid']}" required="" name="templateid">
+                                </div>
+                            </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">接收短信号码 <span class="gai_tishi">例如 13800000000</span></label>
+                                    <input type="number" class="form-control max128 J-isDisable" value="{$res['tel']}" required="" name="tel">
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+                <input type="hidden" name="type_id"  value="{$type_id}" />
+                <input name="token" type="hidden" value="{$_W['token']}" />
+                <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+            </form>
+             </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list.js"></script>
+<script type="text/javascript">
+    $(".pianshen_kaiqi_xuanze_u").click(function(){
+    for(var i = 0;i<$(".pianshen_kaiqi_xuanze_u").length;i++){
+        $(".pianshen_kaiqi_xuanze_u").eq(i).removeClass("pianshen_kaiqi_xuanzes_u").children().eq(0).removeClass("pianshen_kaiqi_xuanze_titles_u").next().removeClass("pianshen_kaiqi_xuanze_imgs_u");
+    }
+    $(this).addClass("pianshen_kaiqi_xuanzes_u").children().eq(0).addClass("pianshen_kaiqi_xuanze_titles_u").next().addClass("pianshen_kaiqi_xuanze_imgs_u");
+    if($(this).children().eq(0).html() == "开启"){
+        $(".pian_lunbu").css("display","block");
+        //1
+        $(".state").val("1");
+    }else{
+        $(".pian_lunbu").css("display","none");
+       //0
+        $(".state").val("0");
+    }
+
+})
+$(".pian_gai_lun_box_img_div").click(function(){
+    $(this).parent().remove()
+})
+</script>
+</html>

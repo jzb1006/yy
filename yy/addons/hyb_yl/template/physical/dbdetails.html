@@ -1,0 +1,321 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="">对比详情</a></li>
+    </ul>
+    <div class="app-content">
+        <div class="order-detail">
+            <div class="col-sm-4 padding-0">
+                <div class="panel panel-display">
+                    <div class="panel-heading">
+                        <h3>对比信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td width="150">对比人微信：</td>
+                                <td><img src="{$list['userinfo']['u_thumb']}" style="width: 30px;height: 30px;margin-right: 5px;">{$list['userinfo']['u_name']}</td>
+                            </tr>
+                            <tr>
+                                <td width="150">患者姓名：</td>
+                                <td>{$userinfo['names']}</td>
+                            </tr>
+                            <tr>
+                                <td width="150">患者电话：</td>
+                                <td>{$userinfo['tel']}</td>
+                            </tr>
+                            <tr>
+                                <td width="150">患者地址：</td>
+                                <td>{$userinfo['region']}</td>
+                            </tr>
+                            <tr>
+                                <td width="150">对比订单编号（原）：</td>
+                                {loop $tijian $item}
+                                <td>{$item['ordernums']}</td>
+                                {/loop}
+                            </tr>
+                            <tr>
+                                <td width="150">对比订单编号（现）：</td>
+                                <td>{$list['ordernums']}</td>
+                            </tr>
+                            <tr>
+                                <td>对比时间：</td>
+                                <td>{$list['addtime']}</td>
+                            </tr>
+                            <tr>
+                                <td>正常项：</td>
+                                <td>{$list['zhengchang']} </td>
+                            </tr>
+                            <tr>
+                                <td>异常项：</td>
+                                <td>{$list['yichang']} </td>
+                            </tr>
+                            <tr>
+                                <td>潜在疾病分析：</td>
+                                <td><span class="label label-info">{$list['userinfo']['u_label']} </span></td>
+                            </tr>
+                            <tr>
+                                <td>危险程度：</td>
+                                <td>
+                                    <span class="label label-danger">{if $list['ycount']>3}危险{else if $list['ycount']<=3} 中度{else} 一般 {/if} </span> </td> </tr> </table> </div> </div> <div class="panel panel-display">
+                                            <div class="panel-heading">
+                                                <h3>用户轨迹</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>
+                                                            <p><i class="fa fa-info-circle"></i> <strong>{$list['addtime']} 报告对比成功</strong></p>
+                                                            <p style="padding-left:15px; ">单号:{$list['ordernums']}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- 												<tr>
+							<td>
+								<p><i class="fa fa-info-circle"></i> <strong>2020-03-13 19:23:22 访问张婷专家</strong></p>
+								<p style="padding-left:15px; ">问诊并支付成功</p>
+							</td>
+							
+						</tr>
+						<tr>
+						<td>
+								<p><i class="fa fa-info-circle"></i> <strong>2020-03-14 19:23:22 在线开方</strong></p>
+								<p style="padding-left:15px; ">购买推荐产品中的莲花胶囊，支付了30元。</p>
+							</td>
+								</tr> -->
+                                                </table>
+                                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 padding-r-0">
+                    <div class="panel panel-display">
+                        <div class="panel-heading">
+                            <h3>推荐产品</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20rem;">产品名称</th>
+                                        <th>制药方</th>
+                                        <th>价格</th>
+                                        <th>服用方法</th>
+                                        <th>功效</th>
+                                        <th>处方</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                {loop $goodslist $item}
+                                <tr>
+                                    <td><img src="{php echo tomedia($item['sthumb'])}" style="width: 30px;height: 30px;margin-right: 5px;"> {$item['sname']}</td>
+                                    <td> {$item['company']} </td>
+                                    <td>{$item['retail_price']}</td>
+                                    <td>{php echo mb_substr($item['use'],0,5) }...</td>
+                                    <td>{php echo mb_substr($item['adapt'],0,5)}...</td>
+                                    <td>{if $item['ifcfy']==0}处方药{else}非处方药{/if}</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" target="_blank" href="/index.php?c=site&a=entry&op=add&sid={$item['sid']}&do=medicine&m=hyb_yl">药品信息</a>
+                                    </td>
+                                </tr>
+                                {/loop}
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel panel-display">
+                        <div class="panel-heading">
+                            <h3>推荐专家</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20rem;">专家名</th>
+                                        <th>科室</th>
+                                        <th>职称</th>
+                                        <th>所属机构</th>
+                                        <th>擅长领域</th>
+                                        <th>问诊费(元)</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                {loop $doclist $item}
+                                <tr>
+                                    <td><img src="{php echo tomedia($item['advertisement'])}" style="width: 30px;height: 30px;margin-right: 5px;"> {$item['z_name']}</td>
+                                    <td> {$item['groupid']} </td>
+                                    <td>{$item['z_name']}</td>
+                                    <td>{$item['z_name']}</td>
+                                    <td>{$item['authority']}</td>
+                                    <td>{$item['total_money']}元</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" target="_blank" href="/index.php?c=site&a=entry&op=edit&zid={$item['zid']}&ac=edit&do=team&m=hyb_yl">专家信息</a>
+                                    </td>
+                                </tr>
+                                {/loop}
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel panel-display">
+                        <div class="panel-heading">
+                            <h3>推荐文章</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20rem;">文章标题</th>
+                                        <th>文章分类</th>
+                                        <th>关键字</th>
+                                        <th>专家</th>
+                                        <th>编辑员</th>
+                                        <th>浏览量</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                {loop $articlelist $item}
+                                <tr>
+                                    <td><img src="{php echo tomedia($item['thumb'])}" style="width: 30px;height: 30px;margin-right: 5px;"> {$item['title']}</td>
+                                    <td> <span class="label label-info">{$item['zx_name']}<!-- </span><span class="label label-warning">糖尿病</span> --></td>
+                                    <td>{$item['zx_name']}</td>
+                                    <td>{$item['z_name']}</td>
+                                    <td>{$item['u_name']}</td>
+                                    <td>{$item['dz']}次</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" target="_blank" href="/index.php?c=site&a=entry&do=classification&op=add&ac=addart&m=hyb_yl&id={$item['id']}">文章信息</a>
+                                    </td>
+                                </tr>
+                                {/loop}
+                            </table>
+                        </div>
+                    </div>
+               <!--      <div class="panel panel-display">
+                        <div class="panel-heading">
+                            <h3>推荐问题</h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20rem;">问题描述</th>
+                                        <th>接诊专家</th>
+                                        <th>问题类型</th>
+                                        <th>发布时间</th>
+                                        <th>用户信息</th>
+                                        <th>浏览量</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td><img src="http://www.webstrongtech.com/attachment/images/6/2019/06/svZOv186OVL8AY7L977VlY88v8vV8l.jpg" style="width: 30px;height: 30px;margin-right: 5px;"> 医生你好我最近夜尿增多，尿不尽是糖尿病吗</td>
+                                    <td> <span class="label label-info">张婷</span><span class="label label-warning">泌尿科</span></td>
+                                    <td>泌尿，糖尿病</td>
+                                    <td>2020年4月25 15:00</td>
+                                    <td>张三</td>
+                                    <td>1565次</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" target="_blank" href="./agent.php?uniacid=6&aid=0&p=groupon&ac=active&do=createactive&id=19">问诊详情</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+
+            <div class="modal fade" id="addCateModal" aria-hidden="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button data-dismiss="modal" class="close" type="button">×</button>
+                            <h4 class="modal-title">新建分类</h4>
+                        </div>
+                        <div class="modal-body form-horizontal">
+                            <div class="form-group">
+                                <div class="col-sm-2 control-label must">分类名称</div>
+                                <div class="col-sm-10">
+                                    <input class="form-control input-sm" placeholder="请输入分类名称" id="saveTempName" value="未命名分类" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="btn btn-primary" id="saveCate">保存</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript">
+            $("#addRemark").unbind('click').click(function() {
+                $("#addCateModal").modal();
+                $("#saveCate").unbind('click').click(function() {
+                    var status = $(this).data('status');
+                    if (status) {
+                        tip.msgbox.err("正在保存，请稍候。");
+                        return;
+                    }
+                    var name = $.trim($("#saveTempName").val());
+                    if (!name) {
+                        tip.msgbox.err("请填写备注内容！");
+                        $("#saveTempName").focus();
+                        return;
+                    }
+                    $(this).data('status', 1).text('保存中')
+                    $.post("http://www.webstrongtech.com/web/index.php?c=site&a=entry&m=weliam_merchant&p=rush&ac=category&do=add&", {
+                        name: name
+                    }, function(ret) {
+                        if (ret.status == 0) {
+                            tip.msgbox.err(ret.result.message);
+                        } else {
+                            tip.msgbox.suc("保存成功！");
+                        }
+                        $("#addCateModal .close").trigger('click');
+                        setTimeout(function() {
+                            location.reload();
+                        }, 500);
+                    }, 'json');
+                });
+            });
+        </script>
+
+    </div>
+</div>
+</div>
+<div class="foot" id="footer">
+    <ul class="links ft">
+        <li class="links_item">
+            <div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div>
+        </li>
+    </ul>
+</div>
+
+
+
+<script>
+    require(['bootstrap'], function($) {
+        $('[data-toggle="tooltip"]').tooltip({
+            container: $(document.body)
+        });
+        $('[data-toggle="popover"]').popover({
+            container: $(document.body)
+        });
+        $('[data-toggle="dropdown"]').dropdown({
+            container: $(document.body)
+        });
+    });
+    myrequire(['js/init']);
+    $('.app-login-info-name, .app-login-info-sel').mouseover(function() {
+        $('.app-login-info-sel').show();
+    });
+    $('.app-login-info-name, .app-login-info-sel').mouseout(function() {
+        $('.app-login-info-sel').hide();
+    });
+    $('.app-login-info-sel .login-out').hover(function() {
+        $('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+    }, function() {
+        $('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+    });
+</script>
+</body>
+
+</html>

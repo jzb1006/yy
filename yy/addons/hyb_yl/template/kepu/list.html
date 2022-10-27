@@ -1,0 +1,195 @@
+{template './common/siteheader'}
+<head>
+<link rel="stylesheet" href="{php echo HYB_YL_ADMIN}/layui/css/layui.css">
+    <style>
+        .top-tips {
+            height: 50px;
+            width: 100%;
+            color: red;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            background-color: white;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: bold;
+            display: none;
+        }
+        .container-fluid{
+            float: right;
+            width: 89%;
+        }
+        .soft-filter .soft-filter-box:first-child{
+            margin-bottom: 0;
+        }
+        #getCheckData{
+          margin-top: 20px;
+        }
+        select{
+          width: 100px;
+          padding:0!important; 
+          margin: -5px;
+        }
+        .layui-laypage-skip,.layui-laypage-count{
+          margin-bottom: 0!important; 
+        }
+        .layui-box a,.layui-laypage-curr{
+          margin-bottom: 0!important; 
+
+        }
+    </style>
+</head>
+</div>
+<div class="basics">
+ <div class="container-fluid" style="padding-bottom:54px"> 
+   <div class="pos-box bgw mtb15"> 
+    <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control active" data-permission="8">
+                <a  href="{php echo $this->copysiteUrl('kepu.site')}&type_id={$type_id}" ><strong>患教列表</strong></a>
+            </li>
+            <li class="J-module-control " data-permission="8">
+                <a  href="{php echo $this->copysiteurl('kepu.add')}&op=video&val=video&type_id={$type_id}" ><strong>添加患教</strong></a>
+            </li>
+        </ul>
+    <div class="layui-btn-group" >
+        <button class="layui-btn layui-btn-danger" id="getCheckData" >批量删除</button>
+    </div>
+          <table id="demo" class="layui-table" lay-filter="table1"></table>
+          <div id="test1"></div>
+    </div> 
+  </div>
+</div>
+<!-- 操作列 -->
+<script type="text/html" id="oper-col">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit" >修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script src="{php echo HYB_YL_ADMIN}/layui/layui.js"></script>
+<script type="text/html" id="switchTpl">
+  <!-- 这里的 checked 的状态只是演示 -->
+  <input type="checkbox" name="h_shen" value="{{d.h_shen}}"  lay-skin="switch" lay-text="已通过|未通过" lay-filter="switchTest" switch_h_id="{{d.h_id}}" {{ d.h_shen == 1 ? 'checked' : '' }}>
+</script>
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+  var form = layui.form;
+  var imgUrl  ="https://"+window.location.host+'/attachment/'
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 312
+    ,url: "https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=kepu.ajax" //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+        {checkbox:true,align:'center',LAY_CHECKED:false,filter:'demo'}
+      ,{field: 'h_id', title: 'ID', width:80, sort: true}
+      ,{field: 'h_title', title: '患教名称', width:150}
+      ,{field: 'hj_name', title: '患教分类'}
+      ,{field: 'h_pic',width:100, title: '患教类型', align: "center",
+        templet:function (d) { 
+          console.log(d)
+             if(d.h_leixing==0){
+               var leixing = '语音患教'
+             }
+             if(d.h_leixing==1){
+               var leixing = '视频患教'
+             }
+             if(d.h_leixing==2){
+               var leixing = '文章患教'
+             }
+            return '<div >'+leixing+'</div>' }
+        }
+      ,{field: 'h_pic',width:100, title: '缩略图', align: "center",
+        templet:function (d) { 
+            return '<div ><img src='+imgUrl+d.h_pic+'></div>' }
+        }
+
+      ,{field: 'z_name', title: '讲师', width:200,align: "center"} 
+      ,{field: 'h_shen', title: '审核',templet: '#switchTpl',unresize: true,align: "center",filter: "isShow",sort: false,width:150}
+      ,{templet: '#oper-col', title: '操作'}
+    ]],
+    id: 'testReload',
+  });
+        $('#getCheckData').click(function () {
+            var checkStatus = table.checkStatus('testReload'),
+            data = checkStatus.data;
+            if(data == ""){
+               layer.msg('至少选择一个吧',{icon:2});
+               return;
+            }
+            var ids ="";
+            if(data.length>0){
+              for (var i = 0; i<data.length; i++) {
+                  ids +=data[i].h_id+",";
+              }
+            }
+            layer.confirm('确定删除吗？'+ids,function(index){
+                    layer.close(index);
+                    layer.closeAll('loading')
+                $.ajax({  
+                        type: "POST",  
+                        url: "https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=kepu.deleteall",  
+                        dataType: "json",  
+                        cache:false, 
+                        data: {h_id:ids},  
+                        success: function(json){  
+                          console.log(json)
+                          window.parent.location.reload();
+                        }
+                });
+            })
+        });
+        table.on('tool(table1)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+            var h_id =data.h_id
+            if (layEvent === 'del') {
+              layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    layer.close(index);
+                    $.ajax({  
+                        type: "POST",  
+                        url: "https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=kepu.del",  
+                        dataType: "json",  
+                        cache:false, 
+                        data: {h_id:h_id},  
+                        success: function(json){  
+                          layer.closeAll('loading')
+                        }
+                    });
+                  });
+                
+            } else if (layEvent === 'edit') {
+                 var id =data.id
+                 window.location.href="https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=kepu.add&h_id="+h_id;
+                 layer.msg('修改' + data.h_id);
+            }
+        });
+       form.on('switch(switchTest)',function (data) {
+            var checked = data.elem.checked;
+            //获取所需属性值
+            var h_id = data.elem.attributes['switch_h_id'].nodeValue;
+            if(checked==false){
+                var h_shen = 0
+            }else{
+                var h_shen = 1
+            }
+            $.ajax({  
+                type: "POST",  
+                url: "https://"+window.location.host+"/web/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=kepu.update",  
+                dataType: "json",  
+                cache:false, 
+                data: {h_id:h_id,h_shen:h_shen},  
+                success: function(json){ 
+                  layer.closeAll('loading')
+                }
+            });
+            form.render();
+        });
+});
+
+</script>
+</body>
+</html>

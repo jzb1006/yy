@@ -1,0 +1,79 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+<div class="app-container-right">
+			
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-list">
+			<form action="./index.php" method="get" class="form-horizontal" role="form">
+				<input type="hidden" name="c" value="site" />
+	            <input type="hidden" name="a" value="entry" />
+	            <input type="hidden" name="m" value="hyb_yl" />
+	            <input type="hidden" name="op" value="profit_list" />
+				<input type="hidden" name="ac" value="pharmacistlist" />
+				<input type="hidden" name="do" value="medicine" />
+				<input type="hidden" name="status" value="" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label">关键字筛选</label>
+					<div class="col-sm-9">
+						<input type="text" name="keyword" class="form-control" value="{$keyword}" placeholder="输入关键字筛选"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-md-9">
+						<button class="btn btn-primary">筛选</button>
+						<a class="btn btn-danger " href="{php echo $this->createWeburl('medicine',array('op'=>'addchufangfl'))}" data-confirm="添加模板分类">添加模板分类</a>
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th style="width:100px;text-align:center;">id</th>
+						<th style="width:100px;text-align:center;">分类名城</th>
+						<th style="width:100px;text-align:center;">分类图标</th>
+						<th style="width:100px;text-align:center;">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				{loop $list $item}
+					<tr>
+						<td class="text-center">
+							{$item['id']}					
+						</td>
+						<td class="text-center">
+							{$item['title']}				
+						</td>
+						<td class="text-center">
+							<img src="{$item['icon']}" width=50>				
+						</td>
+						<td class="text-center" style="text-align: center;">
+                   		 	
+                    		<a class="btn btn-danger btn-sm" href="{php echo $this->createWeburl('medicine',array('op'=>'addchufangfl','id'=>$item['id'],'ac'=>'chufangmuban'))}" data-toggle="ajaxRemove" data-confirm="确定要删除吗？" title="删除">删除</a> 
+						</td>
+					</tr>
+					{/loop}
+									</tbody>
+			</table>
+		</div>
+		{$pager}
+	</div>
+</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>系统</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	</body>
+</html>
+

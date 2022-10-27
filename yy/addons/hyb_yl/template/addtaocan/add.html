@@ -1,0 +1,706 @@
+{template './common/mainHeader'}
+<style type="text/css">
+    .inputBox2{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .inputBox2 input  {
+        width: 30%
+    }
+    .dataBox1{
+        padding: 0!important;
+    }
+.layui-table{
+    width: 1200px;
+    margin: 0 auto;
+}
+.tabBox{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 25px;
+    overflow: hidden;
+    flex-wrap: wrap;
+    transition: all ease 0.2s;
+}
+.tabBox div{
+    padding: 0 5px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+.down{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.content{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    height: 600px;
+    border: 1px solid #f1f1f1;
+    margin: 0 auto;
+    background: #ffff;
+}
+.left{
+    border-right: 1px solid #f1f1f1;
+    height: 100%;
+    padding: 10px;
+    flex-grow: 0.1;
+}
+.right{
+    flex-grow: 0.9;
+}
+
+.layui-tab-title{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    border: none!important;
+}
+.layui-tab-title li{
+    display: flex!important;
+    justify-content: space-between;
+    align-items: center;
+}
+.zhe{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    padding-top: 80px;
+}
+*{
+    box-sizing: border-box;
+}
+.box{
+    background: #fff;
+    width: 1200px;
+    margin: 0 auto;
+}
+.close{
+    padding: 20px;
+    text-align: right;
+}
+.btnBox{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+</style>
+    <link rel="stylesheet" href="{php echo HYB_YL_ADMIN}/layui/css/layui.css">
+    <link rel="stylesheet" href="{php echo HYB_YL_ADMIN}/index.css">
+    <link href="{php echo HYB_YL_ADMIN}/common.css?v={IMS_RELEASE_DATE}" rel="stylesheet">
+    </div>
+  <div class="basics">
+      <div class="gai_huanzhe">
+            <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+                <li class="J-module-control " data-permission="8">
+                    <a  href="{php echo $this->createWeburl('addtaocan',array('op'=>'taocan','type_id'=>$type_id,'type_id'=>$type_id))}" ><strong>套餐列表</strong></a>
+                </li>
+                <li class="J-module-control active" data-permission="10">
+                    <a href="{php echo $this->createWeburl('addtaocan',array('op'=>'add','type_id'=>$type_id))}" ><strong>添加套餐</strong></a>
+                </li>
+            </ul>
+            <div class="gai_huanzhe_jinri gai_huanzhe_jinris">
+                <div class="panel-body collapse in">
+                        <form action="" class="layui-form" method="post" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-10">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">套餐名称 <span class="asterisk">*</span></label>
+                                            <input type="text" class="form-control max128" name="t_name" value="{$rew['t_name']}" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">套餐分类 <span class="asterisk">*</span></label>
+                                            <select class="form-control input-sm mt0 J-listener" id="j_selectNation" data-placeholder="请选择" name="t_pid">
+                                                <option value="">请选择</option>
+                                                {loop $cate_list $item}
+                                                <option value="{$item['id']}" {if $rew['t_pid'] == $item['id']} selected="selected" {/if}>{$item['f_name']}</option>
+                                                {/loop}
+                                             </select>
+                                        </div>
+                                    </div>
+                                        <div class="col-sm-9">
+                                            <div class="form-group">
+                                              <label class="control-label">可用套餐城市选择</label>
+                                              
+                                                <table class="layui-table">
+                                                    <colgroup>
+                                                        <col width="150">
+                                                        <col width="200">
+                                                        <col>
+                                                    </colgroup>
+                                                    <thead>
+                                                    <tr>
+                                                        <th>地区</th>
+                                                        <th>机构</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <input type="hidden" class="cityIdArr" name="cityIdArr" value="{$rew['t_cityid']}">
+                                                    <input type="hidden" class="cityArr" name="cityArr[]">
+                                                    <input type="hidden" class="nameIdArr" name="nameIdArr" value="{$rew['t_bmid']}">
+                                                        <input type="hidden" class="nameArr" name="nameArr[]">
+                                                    {loop $city_list $item}
+                                                    <tr><!--layui-form-checked 选中-->
+                                                        
+                                                        <td><input type="checkbox" title="{$item['ct_name']}" value="{$item['ct_id']}" {if in_array($item['ct_id'],$t_cityid) }checked="checked"{/if} lay-skin="primary" lay-filter="cityId"></td>
+                                                        <td>
+                                                            <div class="tabBox">
+                                                                {loop $item['city'] $tt}
+
+                                                                <div><input type="checkbox" title="{$tt['jg_name']}" data-ctid="{$tt['j_id']}" value="{$tt['j_id']}" lay-skin="primary" lay-filter="filter" {if in_array($tt['j_id'],$t_bmid) }checked="checked"{/if} ></div>
+                                                                {/loop}
+
+                                                            </div>
+                                                            <div class="down"><i class="layui-icon layui-icon-down"></i></div>
+                                                        </td>
+                                                    </tr>
+                                                    {/loop}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-9">
+                                            <div class="form-group">
+                                                <label class="control-label">套餐描述</label>
+                                                <textarea class="form-control max2000" rows="5" name="t_desc">{$rew['t_desc']}</textarea>
+                                            </div>
+                                        </div>
+                                 <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <label class="control-label">套餐缩略图</label>
+                                         {php echo  tpl_form_field_image('t_thumb',$rew['t_thumb'])}
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">患者类型 <span class="asterisk">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="t_stype" id="radioAgeType" value="0" title="中青年"{if $rew['t_stype']=="0"} checked="checked"  {/if}>
+                                            <!-- <label for="radioAgeType">中青年</label> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="t_stype" id="radioAgeType2" value="1" title="儿童" {if $rew['t_stype']=="1"} checked="checked" {/if}>
+                                            <!-- <label for="radioAgeType2">儿童</label> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="t_stype" id="radioAgeType3" value="2" title="中老年" {if $rew['t_stype']=="2"} checked="checked" {/if}>
+                                            <!-- <label for="radioAgeType3">中老年</label> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">性别 <span class="asterisk">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="t_sex" id="radioDefault" value="1" title="男" {if $rew['t_sex']=="1"} checked="checked" {/if}>
+                                            <!-- <label for="radioDefault">男</label> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="t_sex" id="radioDefault2" value="2" title="女" {if $rew['t_sex']=="2"} checked="checked" {/if}>
+                                            <!-- <label for="radioDefault2">女</label> -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="dataBox">
+                                        <ul class="topBtn">
+                                            <button type="button" data-arr="{$json_arr}" class="btn-primary add" id="btn-img-upload">添加套餐特点</button>
+                                        </ul>
+                                        <div class="dataBox1 col-sm-9">
+                                       
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">预计金额（元） <span class="asterisk">*</span></label>
+                                            <input type="text" class="form-control number" name="t_money" value="{$rew['t_money']}" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <label class="control-label">检测内容 <span class="asterisk">*</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="J-list">
+                                    <div class="row item-list">
+                                    {if !$rew_t_msg}
+                                    <div class="inpotBox">
+                                        <div class="col-sm-9"  style="padding: 0;">
+                                            <div class="form-group inputBox2">
+                                                项目
+                                                <input type="text" name="t_msg[]" class="form-control max2000 J-content" value="" required="">
+                                                描述
+                                                <input type="text" name="t_msg1[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                提示
+                                                <input type="text" name="t_msg2[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                参考值
+                                                <input type="text" name="t_msg3[]" placeholder="参考值是判断结果的标准" class="form-control max2000 J-content" value=""> 
+                                                单位
+                                                <input type="text" name="t_msg4[]" placeholder="请输入参考值单位" class="form-control max2000 J-content" value=""> 
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item hidden"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                        </div>
+                                        {else}
+                                      
+                                        {loop  $rew_t_msg $key $item}
+                                        <div class="inpotBox">
+                                        <div class="col-sm-9" style="padding: 0;">
+                                            <div class="form-group inputBox2">
+                                                项目
+                                                <input type="text" name="t_msg[]" class="form-control max2000 J-content" value="{$item['t_msg']}" required="">
+                                                描述
+                                                <input type="text" name="t_msg1[]" placeholder="请输入" class="form-control max2000 J-content" value="{$item['t_msg1']}">
+                                                提示
+                                                <input type="text" name="t_msg2[]" placeholder="请输入" class="form-control max2000 J-content" value="{$item['t_msg2']}">
+                                                参考值
+                                                <input type="text" name="t_msg3[]" placeholder="参考值是判断结果的标准" class="form-control max2000 J-content" value="{$item['t_msg3']}"> 
+                                                单位
+                                                <input type="text" name="t_msg4[]" placeholder="请输入参考值单位" class="form-control max2000 J-content" value="{$item['t_msg4']}"> 
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                        <?php $count=count($rew_t_msg);?>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                        </div>
+                                        {/loop}
+                                        {/if} 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <label class="control-label">通用加项包 <span class="asterisk">*</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="J-list">
+                                    <div class="row item-list">
+                                    {if !$rew_y_msg}
+                                    <div class="inpotBox">
+                                        <div class="col-sm-9"  style="padding: 0;">
+                                            <div class="form-group inputBox2">
+                                                项目
+                                                <input type="text" name="y_msg[]" class="form-control max2000 J-content" value="" required="">
+                                                描述
+                                                <input type="text" name="y_msg1[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                参考值
+                                                <input type="text" name="y_msg2[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                单位
+                                                <input type="text" name="y_msg3[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                金额
+                                                <input type="text" name="salePrice[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item2 hidden"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item2"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                        </div>
+                                        {else}
+                                      
+                                        {loop  $rew_y_msg $key $item}
+                                        <div class="inpotBox">
+                                        <div class="col-sm-9" style="padding: 0;">
+                                            <div class="form-group inputBox2">
+                                                项目
+                                                <input type="text" name="y_msg[]" class="form-control max2000 J-content" value="{$item['y_msg']}" required="">
+                                                描述
+                                                <input type="text" name="y_msg1[]" placeholder="请输入" class="form-control max2000 J-content" value="{$item['y_msg1']}">
+                                                参考值
+                                                <input type="text" name="y_msg2[]" placeholder="请输入" class="form-control max2000 J-content" value="{$item['y_msg2']}">
+                                                单位
+                                                <input type="text" name="y_msg3[]" placeholder="请输入" class="form-control max2000 J-content" value="{$item['y_msg3']}">
+                                                金额
+                                                <input type="text" name="salePrice[]" placeholder="请输入" class="form-control max2000 J-content" value="{$item['salePrice']}">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                        <?php $count=count($rew_t_msg);?>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item2"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item2"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                        </div>
+                                        {/loop}
+                                        {/if} 
+                                    </div>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <label class="control-label">注意事项</label>
+                                         {php echo tpl_ueditor('t_zhuyi', $rew['t_zhuyi']);}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                           $(document).on('click','.J-add-content-item2',function(){
+                                        var conts=$(this).parents('.inpotBox').find('.J-content').val()
+                                    $(this).parents('.inpotBox').after(`<div class="inpotBox">
+                                        <div class="col-sm-9"  style="padding: 0;">
+                                            <div class="form-group inputBox2">
+                                                项目
+                                                <input type="text" name="y_msg[]" class="form-control max2000 J-content" value="${conts}" required="">
+                                                描述
+                                                <input type="text" name="y_msg1[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                参考值
+                                                <input type="text" name="y_msg2[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                单位
+                                                <input type="text" name="y_msg3[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                金额
+                                                <input type="text" name="salePrice[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item2 hidden"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item2"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </div>`)
+                                        if($('.inpotBox').length>0){
+                                            // $(this).addClass('hidden')
+                                            $('.J-del-content-item2').removeClass('hidden')
+                                        }
+
+                                })
+                                    $(document).on('click','.J-del-content-item2',function(){
+                                            $(this).parents('.inpotBox').remove()
+                                            console.log($('.inpotBox').length)
+                                            $('.inpotBox').last().find('.J-add-content-item').removeClass('hidden')
+                                                if($('.inpotBox').length-1<=0){
+                                                    $('.J-del-content-item2').addClass('hidden')
+                                                    $('.J-add-content-item2').removeClass('hidden')
+                                          } 
+
+                                      })
+
+                        </script> 
+
+
+                        <script type="text/javascript">
+                           $(document).on('click','.J-add-content-item',function(){
+                                        var conts=$(this).parents('.inpotBox').find('.J-content').val()
+                                    $(this).parents('.inpotBox').after(`<div class="inpotBox">
+                                        <div class="col-sm-9"  style="padding: 0;">
+                                            <div class="form-group inputBox2">
+                                                项目
+                                                <input type="text" name="t_msg[]" class="form-control max2000 J-content" value="${conts}" required="">
+                                                描述
+                                                <input type="text" name="t_msg1[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                提示
+                                                <input type="text" name="t_msg2[]" placeholder="请输入" class="form-control max2000 J-content" value="">
+                                                参考值
+                                                <input type="text" name="t_msg3[]" placeholder="参考值是判断结果的标准" class="form-control max2000 J-content" value=""> 
+                                                单位
+                                                <input type="text" name="t_msg4[]" placeholder="请输入参考值单位" class="form-control max2000 J-content" value=""> 
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item hidden"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </div>`)
+                                        if($('.inpotBox').length>0){
+                                            // $(this).addClass('hidden')
+                                            $('.J-del-content-item').removeClass('hidden')
+                                        }
+
+                                })
+                                    $(document).on('click','.J-del-content-item',function(){
+                                            $(this).parents('.inpotBox').remove()
+                                            console.log($('.inpotBox').length)
+                                            $('.inpotBox').last().find('.J-add-content-item').removeClass('hidden')
+                                                if($('.inpotBox').length-1<=0){
+                                                    $('.J-del-content-item').addClass('hidden')
+                                                    $('.J-add-content-item').removeClass('hidden')
+                                          } 
+
+                                      })
+
+                        </script> 
+                        <div class="panel-footer">
+                            <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body></html>
+<script src="{php echo HYB_YL_ADMIN}/layui/layui.js"></script>
+<script type="text/javascript">
+   var sub_num = 9000;
+   var arr = [];
+   var url = window.location.href;
+   var tid = "{$tid}"
+   $.ajax({  
+        url: url, 
+        type: "POST",  
+        dataType: "json",  
+        cache:false, 
+        data: {op:'jseon',tid:tid},  
+        success: function(json){ 
+            console.log(json)
+           for(var i=0;i<json.length;i++){
+                arr.push(json[i])
+           }
+          addData()
+        }})
+   
+    //全部删除
+    $('.allDel').on('click',function () {
+        arr=[]
+        addData()
+    })
+    //删除
+    $(document).on('click', '.del', function () {
+        var index = $(this).parents('.datas').attr('data-uid')
+        arr.splice(index, 1)
+        addData()
+    })
+    //置顶
+    $(document).on('click', '.zd', function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        var arr1=arr.splice(index, 1);
+        arr.unshift(arr1[0]);
+        addData()
+    });
+
+    //置地
+    $(document).on('click', '.zdi', function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        var arr1=arr.splice(index, 1);
+        arr.push(arr1[0]);
+        addData()
+    });
+    //上移
+    $(document).on('click', '.sy', function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        var arr1=arr.splice(index, 1);
+        if(index==0){
+            var index=1
+        }
+            arr.splice(index - 1, 0, arr1[0])
+            addData()
+    });
+    //下移
+    $(document).on('click', '.xy', function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        var arr2=arr.splice(index,1)
+        arr.splice(index*1+1, 0, arr2[0])
+        addData()
+    });
+    //关闭遮罩
+    $('.close').on('click',function () {
+        $('.zhezhao').hide()
+    })
+    //弹出遮罩
+    $(document).on('click','.btns',function () {
+         input=$(this).parents('.link').find('input')
+        $('.zhezhao').show()
+
+    });
+
+    //选择链接
+    $('.choice').on('click',function () {
+        var link=$(this).parents('tr').find('.linkData').text().trim()
+        input.val(link)
+        input.blur()
+        $('.zhezhao').hide()
+    });
+    //失去焦点事件
+    $(document).on('blur','.titleInput',function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        arr[index].title=$(this).val()
+    })
+    $(document).on('blur','.links',function () {
+        var index = $(this).parents('.datas').attr('data-uid');
+        arr[index].link=$(this).val()
+    })
+    function addData() {
+        console.log(arr,'11')
+        $('.dataBox1').html('');
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i].src==''){
+                var src=''
+            }else {
+                var src=arr[i].src
+            }
+            $('.dataBox1').append(`
+            <div class="datas" data-uid="${i}">
+                    <div class="left">
+                        <div class="imgBox"><img src="${src}" alt="" ></div>
+                        <input type="hidden" name="img_array[]" value="${src}">
+                        <div class="title1">
+                            <div>
+                                <div class="text">标题</div>
+                                <input type="text" placeholder="请输入标题" class="form-control titleInput" value="${arr[i].title}" name="title_array[]">
+                            </div>
+                            <div class="link">
+                                <div class="text">描述</div>
+                                <input type="text" placeholder="特点描述" class="form-control links" value="${arr[i].link}" name="desc_array[]">
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="right">
+                        <li class="btn-default zd">置顶</li>
+                        <li class="btn-default sy">上移</li>
+                        <li class="btn-default xy">下移</li>
+                        <li class="btn-default zdi">置底</li>
+                        <li class="btn-primary btn-replace-pic">替换</li>
+                        <li class="btn-danger del">删除</li>
+                    </ul>
+                </div>
+              `)
+        }
+    }
+                // 换图
+    $(document).on('click', '.btn-replace-pic', function () {
+        let $_this = $(this).closest('.photo-item');
+        console.log($(this))
+        var that=$(this)
+        var index=$('.btn-replace-pic').index(this)
+        require(["util"], function(util){
+            options = '.str_replace("\"", "\'", json_encode($options)).';
+            util.image('', function(url){
+                if(url.url){
+                    $_this.find('.input-attr').val(url.attachment);
+                    that.parents('.datas').find('img').attr('src',url.url)
+                    arr[index].src=url.url
+                }
+                if(url.media_id){
+                    $_this.find('.input-attr').val(url.media_id);
+                    that.parents('.datas').find('img').attr('src',url.url)
+                }
+            }, options);
+        });
+    });
+     //添加
+    $('.add').on('click',function () {
+        var $item_num = $('.photo-list').children('.photo-item').length;
+            require(["util"], function(util){
+                options = '.str_replace("\"", "\'", json_encode($options)).';
+                util.image('', function(url){
+                    
+                    $obj = $('.photo-clone .photo-item-common').clone(true);
+                     
+                    if(url.url){
+                        $obj.find('.imgBox img').attr('src', url.url);
+                        $('.dataBox1').append($obj);
+                        sub_num += 1;
+                         var arr1={
+                            src:url.url,
+                            title:'',
+                            link:''
+                        }
+
+                    arr.push(arr1)
+                    addData()
+                    }
+                }, options);
+            });
+
+    })
+</script>
+<script>
+    //Demo
+    var cityIdArr=$('.cityIdArr').val().split(',')
+    var cityArr=$('.cityArr').val().split(',')
+    var nameIdArr=$('.nameIdArr').val().split(',')
+    var nameArr=$('.nameArr').val().split(',')
+    layui.use('form', function () {
+        var form = layui.form;
+        //监听提交
+        form.on('checkbox(filter)', function (data) {
+            var cityIndex=$('tbody').find('tr').index($(data.othis).parents('tr'))
+            if (data.elem.checked) {
+                var name=$(data.othis).text().trim()
+                nameIdArr.push(data.value)
+                nameArr.push(name)
+            } else {
+                for (var i = 0; i < nameIdArr.length; i++) {
+                    if (nameIdArr[i] == data.value) {
+                        nameIdArr.splice(i, 1)
+                        nameArr.splice(i, 1)
+                    }
+                }
+            }
+            $(data.othis).parents('tbody').find('.nameIdArr').val(nameIdArr)
+            $(data.othis).parents('tbody').find('.nameArr').val(nameArr)
+        });
+        form.on('checkbox(cityId)',function (data) {
+            var cityIndex=$('tbody').find('tr').index($(data.othis).parents('tr'))
+            if (data.elem.checked){
+                var city=$(data.othis).text().trim()
+                cityIdArr.push(data.value)
+                cityArr.push(city)
+                $(data.othis).parents('tr').find('.tabBox').find('input').removeAttr('disabled').removeClass('.layui-checkbox-disbaled')
+                $(data.othis).parents('tr').find('.tabBox').find('.layui-form-checkbox').removeClass('layui-checkbox-disbaled')
+                $(data.othis).parents('tr').find('.tabBox').find('.layui-form-checkbox').removeClass('layui-disabled')
+            }else{
+                for (var i = 0; i < cityIdArr.length; i++) {
+                    if (cityIdArr[i] == data.value) {
+                        cityIdArr.splice(i, 1)
+                        cityArr.splice(i, 1)
+                    }
+                }
+            $(data.othis).parents('tr').find('.tabBox').find('input').attr('disabled','disabled').removeClass('.layui-checkbox-disbaled')
+                $(data.othis).parents('tr').find('.tabBox').find('.layui-form-checkbox').addClass('layui-checkbox-disbaled')
+                $(data.othis).parents('tr').find('.tabBox').find('.layui-form-checkbox').addClass('layui-disabled')
+            }
+            $(data.othis).parents('tbody').find('.cityIdArr').val(cityIdArr)
+            $(data.othis).parents('tbody').find('.cityArr').val(cityArr)
+        })
+    });
+</script>
+<script>
+    var downIndex = 0;
+    $(document).on('click', '.down', function () {
+        if (downIndex % 2 == 0) {
+            $(this).parents('tr').find('.tabBox').css({height: 'auto'})
+            $(this).css({transform: 'rotate(180deg)'})
+        } else {
+            $(this).parents('tr').find('.tabBox').css({height: '25px'})
+            $(this).css({transform: 'rotate(0deg)'})
+        }
+        downIndex++
+    })
+</script>

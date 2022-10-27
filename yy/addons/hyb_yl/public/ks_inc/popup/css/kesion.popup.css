@@ -1,0 +1,25 @@
+
+.ks-popup-box{ position:fixed; background:#fff;left:50%;top:50%; z-index:9999; box-shadow:0 1px 16px rgba(0,0,0,0.1); display:none;}
+.ks-popup-shade{ position:fixed;width:100%;height:100%;left:0;top:0; z-index:9990; background:#000; display:none;}
+.ks-popup-title{ padding-left:20px;height:44px; line-height:44px;}
+.ks-popup-title strong{ font-size:14px;color:#525252;}
+.ks-popup-title .ks-popup-close{ float:right;width:44px;height:44px; cursor:pointer; text-align:center; background:url("../images/icon-close.png")/*tpa=http://kv6.user.kesion.com/KS_inc/popup/images/icon-close.png*/ no-repeat 50% 50%; -webkit-transition:.3s; transition:.3s;}
+.ks-popup-title .ks-popup-close:hover{ background:url("../images/icon-close-on.png")/*tpa=http://kv6.user.kesion.com/KS_inc/popup/images/icon-close-on.png*/ no-repeat 50% 50%;}
+.ks-popup-title-move{ cursor:move;}
+.ks-popup-content iframe{width:100%;height:100%;border:0px;}
+
+.ks-popup-confirm,
+.ks-popup-tips{ padding:15px 20px; font-size:14px; line-height:24px;color:#666; background:url("../images/rgba40.png")/*tpa=http://kv6.user.kesion.com/KS_inc/popup/images/rgba40.png*/; position:fixed; z-index:9999;left:50%;top:50%; color:#fff;border-radius:4px;}
+
+.ks-popup-confirm{min-width:210px;background:url("../images/rgba255_97.png")/*tpa=http://kv6.user.kesion.com/KS_inc/popup/images/rgba255_97.png*/;padding:0px; box-shadow: 1px 6px 35px rgba(0, 0, 0, 0.15);border:1px solid #eee;}
+.ks-popup-confirm .ks-popup-inner{padding:25px 20px;color:#555;font-weight: bold;}
+.ks-popup-button{ text-align:center;border-top:1px solid #e6e6e6;height:40px; position: relative;}
+.ks-popup-button:before{content: '';width:1px;height:100%; position: absolute;left:50%;background:#e6e6e6;}
+.ks-popup-button button{float:left; border:0px;height:40px; line-height:40px; width:50%;background:none; font-size:14px; cursor:pointer; outline:none; text-align: center; color:#fc3d3d;}
+.ks-popup-button .ks-popup-yes{color:#21\B384;font-weight: bold;}
+
+@-webkit-keyframes zoomIn{0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes zoomIn{0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}50%{opacity:1}}
+.ks-popup-zoomIn{-webkit-animation-duration:.3s;animation-duration:.3s;-webkit-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-name:zoomIn;animation-name:zoomIn}
+
+@-webkit-keyframes zoomOut{0%{opacity:1}50%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}100%{opacity:0}}@keyframes zoomOut{0%{opacity:1}50%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}100%{opacity:0}}
+.ks-popup-zoomOut{-webkit-animation-duration:.3s;animation-duration:.3s;-webkit-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-name:zoomOut;animation-name:zoomOut}

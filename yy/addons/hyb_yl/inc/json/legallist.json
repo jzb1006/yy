@@ -1,0 +1,370 @@
+{
+    "data": {
+        "items": [
+            {
+                "special_topic": {
+                    "id": 1287,
+                    "title": "传染病",
+                    "text": "我国《传染病防治法》按照疾病流行程度和对人群的威胁程度分为甲、乙、丙三类。",
+                    "pic_url": "https://img1.dxycdn.com/2020/0109/047/3389920824529457885-22.jpg",
+                    "thumbnail_url": "",
+                    "weapp_qrcode": "https://img1.dxycdn.com/2020/0108/170/3389702996673158342-15.jpg",
+                    "support_weapp_bottom_share": false,
+                    "share_text": "",
+                    "share_wx_converse_pic_url": "",
+                    "share_wx_moments_pic_url": "",
+                    "buy_type": 0,
+                    "price": 0,
+                    "origin_price": 0,
+                    "buy_goods": []
+                },
+                "special_topic_modules": [
+                    {
+                        "title": "甲类传染病",
+                        "text": "强管制传染病",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "鼠疫",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8178"
+                            },
+                            {
+                                "title": "霍乱",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=7986"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "乙类传染病",
+                        "text": "严格管理类传染病",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "结核病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=2378"
+                            },
+                            {
+                                "title": "艾滋病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=7985"
+                            },
+                            {
+                                "title": "狂犬病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8312"
+                            },
+                            {
+                                "title": "百日咳",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8204"
+                            },
+                            {
+                                "title": "炭疽病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=10884"
+                            },
+                            {
+                                "title": "病毒性肝炎",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8394"
+                            },
+                            {
+                                "title": "登革热",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=574"
+                            },
+                            {
+                                "title": "新生儿破伤风",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=6949"
+                            },
+                            {
+                                "title": "流行性乙型脑炎",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8313"
+                            },
+                            {
+                                "title": "人感染 H7N9 禽流感",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8572"
+                            },
+                            {
+                                "title": "血吸虫病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8517"
+                            },
+                            {
+                                "title": "钩端螺旋体病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8186"
+                            },
+                            {
+                                "title": "梅毒",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=9317"
+                            },
+                            {
+                                "title": "淋病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8278"
+                            },
+                            {
+                                "title": "布鲁氏菌病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8183"
+                            },
+                            {
+                                "title": "猩红热",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8206"
+                            },
+                            {
+                                "title": "流行性脑脊髓膜炎",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8207"
+                            },
+                            {
+                                "title": "伤寒",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=7987"
+                            },
+                            {
+                                "title": "副伤寒",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=7990"
+                            },
+                            {
+                                "title": "疟疾",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=713"
+                            },
+                            {
+                                "title": "流行性出血热",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8321"
+                            },
+                            {
+                                "title": "麻疹",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8361"
+                            },
+                            {
+                                "title": "人感染高致病性禽流感",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24659"
+                            },
+                            {
+                                "title": "脊髓灰质炎",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8651"
+                            },
+                            {
+                                "title": "SARS （严重急性呼吸综合征）",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8590"
+                            },
+                            {
+                                "title": "新型冠状病毒肺炎",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24677"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "丙类传染病",
+                        "text": "监测管理传染病",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "感染性腹泻",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20900"
+                            },
+                            {
+                                "title": "丝虫病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8543"
+                            },
+                            {
+                                "title": "麻风病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=766"
+                            },
+                            {
+                                "title": "黑热病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8510"
+                            },
+                            {
+                                "title": "包虫病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=10910"
+                            },
+                            {
+                                "title": "流行性和地方性斑疹伤寒",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8309"
+                            },
+                            {
+                                "title": "急性出血性结膜炎",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=3885"
+                            },
+                            {
+                                "title": "风疹",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8362"
+                            },
+                            {
+                                "title": "流行性腮腺炎",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8404"
+                            },
+                            {
+                                "title": "流行性感冒",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=2174"
+                            },
+                            {
+                                "title": "手足口病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8363"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "其他传染病",
+                        "text": "国家卫生计生委决定列入乙类、丙类传染病管理和按照甲类管理开展应急监测报告的传染病　　",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "寨卡病毒",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8720"
+                            },
+                            {
+                                "title": "鼻疽和类鼻疽",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=6538"
+                            },
+                            {
+                                "title": "人兽共患病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24666"
+                            },
+                            {
+                                "title": "基孔肯雅热",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24667"
+                            },
+                            {
+                                "title": "广州管圆线虫病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24668"
+                            },
+                            {
+                                "title": "阿米巴痢疾",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8007"
+                            },
+                            {
+                                "title": "人猪重症链球菌感染",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24669"
+                            },
+                            {
+                                "title": "德国肠出血性大肠杆菌 O104 感染",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24670"
+                            },
+                            {
+                                "title": "美洲锥虫病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24671"
+                            },
+                            {
+                                "title": "诺如病毒急性胃肠炎",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8673"
+                            },
+                            {
+                                "title": "颚口线虫病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=3348"
+                            },
+                            {
+                                "title": "西尼罗病毒马尔堡出血热",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24672"
+                            },
+                            {
+                                "title": "拉沙热",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8319"
+                            },
+                            {
+                                "title": "黄热病",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=8318"
+                            },
+                            {
+                                "title": "裂谷热",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=9182"
+                            },
+                            {
+                                "title": "埃博拉出血热",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24673"
+                            },
+                            {
+                                "title": "中东呼吸综合征",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=22560"
+                            },
+                            {
+                                "title": "埃可病毒 11 型",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24674"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "",
+                        "text": "",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 0,
+                        "pic_iterms": [
+                            {
+                                "pic_url": "https://img1.dxycdn.com/2020/0109/515/3389895847147347165-22.png",
+                                "href_url": "",
+                                "width": 0,
+                                "height": 0
+                            }
+                        ],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": []
+                    }
+                ]
+            }
+        ]
+    }
+}

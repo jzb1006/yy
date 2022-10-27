@@ -1,0 +1,1388 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            
+            <div class="contentpanel" style="padding-left: 275px; margin-top: 85px;">
+            <div style="background: #fff;">
+                <input type="hidden" id="init_anchor" value="">
+                <ul class="nav nav-tabs patient-tabs J-report-tabs">
+                    <li class="J-module-control" data-permission="48,49,50,51,52,53,60,61,95"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'display'))}"><strong>费用统计</strong></a></li>
+                    <li class="J-module-control" data-permission="42,43,44,47,55,9004,58,59,68,69,89,90,100"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yiwu'))}"><strong>医务统计</strong></a></li>
+                    <li class="J-module-control active" data-permission="62,63,64,65,66,67"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'jinxiao'))}"><strong>进销存统计</strong></a></li>
+                    <li class="J-module-control" data-permission="45,46,56,57,91,92,93"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yunyin'))}"><strong>运营统计</strong></a></li>
+                    <li class="J-module-control J-mobile-report-tab" data-permission="73"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yidong'))}"><strong>移动报表</strong></a></li>
+                </ul>
+                <div class="tab-content pd0">
+
+                    <!-- 药品 -->
+                    <div class="panel panel-default J-jsxlist-block mb0">
+                        <a href="https://www.baidu.com/" class="J-export-excel display-none" target="_blank"></a>
+                        <div class="panel-heading bgfc pb5">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="form-group J-toggle-tabs">
+                                        <a href="#stockin" data-toggle="tab" class="btn btn-sm btn-default J-module-control active" data-permission="62"><i class="fa fa-sign-in"></i> 药品入库统计</a>
+                                        <a href="#stockout" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="63"><i class="fa fa-sign-out"></i> 药品出库统计</a>
+                                        <a href="#reportJxc" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="64"><i class="fa fa-shopping-cart"></i> 药品进销存统计</a>
+                                        <a href="#materialStockin" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="65"><i class="fa fa-sign-in"></i> 物资入库统计</a>
+                                        <a href="#materialStockout" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="66"><i class="fa fa-sign-out"></i> 物资出库统计</a>
+                                        <a href="#reportJxcMaterial" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="67"><i class="fa fa-shopping-cart"></i> 物资进销存统计</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="panel-body tab-content no-border">
+                            <!-- 入库统计 -->
+                            <div class="tab-pane J-module-control J-jsx-stock active" data-permission="62" id="stockin">
+                                <div class="row mb15">
+                                    <div class="col-sm-11 col-md-11">
+                                        <form class="form-inline" id="J-stockin-form" method="post">
+                                            <div class="form-group mr0 hidden">
+                                                <label class="control-label">入库日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-start-date mbsc-comp" name="start_date" type="text" placeholder="开始日期" size="10" id="mobiscroll1560610900477" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0 hidden">-</div>
+                                            <div class="form-group mr5 hidden">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-end-date mbsc-comp" name="end_date" type="text" placeholder="结束日期" size="10" id="mobiscroll1560610900478" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm3 radius3 appDate J-select-date date-width" type="text" placeholder="入库日期" size="21">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <label class="control-label"></label>
+                                                <select class="form-control input-xs2 J-method" name="method" data-placeholder="入库方式">
+                                                    <option value="" selected="selected">全部</option>
+                                                    <option value="1">采购入库</option>
+                                                    <option value="2">其他入库</option>
+                                                    <option value="3">导入入库</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <label class="control-label"></label>
+                                                <div class="select2-container J-factory input-xs2 w100p select-reception-model" id="s2id_autogen1" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">供应商</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen2_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2">   </ul></div></div><input type="hidden" name="factory" required="" class="J-factory input-xs2 w100p select-reception-model select2-offscreen" placeholder="供应商" tabindex="-1" title="">
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <label class="control-label"></label>
+                                                <select class="form-control input-xs2 J-medicine-type" name="medicine_type" data-placeholder="药品类型">
+                                                    <option value="0" selected="selected">全部</option>
+                                                    <option value="1">西/成药</option>
+                                                    <option value="2">中药</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-medicinename J-download-info" name="medicinename" type="text" placeholder="商品名称或条形码" size="12">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-id J-download-info" name="batch_number" type="text" placeholder="批号" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-stockin-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-1 col-md-1 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" target="_blank" href="/japi/session/704030?start_date=2019-06-01&amp;end_date=2019-06-15&amp;factory=&amp;medicinename=&amp;batch_number=&amp;method=&amp;medicine_type=0&amp;isExport=true" id="export-stockin"><i class="fa fa-download"></i> <span>导出</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                               <th colspan="16" class="font20 black text-center"><span class="J-date">2019年06月01日 - 06月15日</span> 入库统计</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="8%" class="font-wb font13">入库日期</th>
+                                                <th width="7%" class="font-wb font13">入库单号</th>
+                                                <th width="8%" class="font-wb font13">入库方式</th>
+                                                <th width="7%" class="font-wb font13">供应商</th>
+                                                <th width="5%" class="font-wb font13">入库人员</th>
+                                                <th width="6%" class="font-wb font13">商品编码</th>
+                                                <th class="font-wb font13">商品名称</th>
+                                                <th width="5%" class="font-wb font13">规格</th>
+                                                <th class="font-wb font13">生产厂商</th>
+                                                <th width="5%" class="font-wb font13">数量</th>
+                                                <th width="5%" class="font-wb font13">单位</th>
+                                                <th width="5%" class="font-wb font13">零售价</th>
+                                                <th width="5%" class="font-wb font13">成本价</th>
+                                                <th width="6%" class="font-wb font13">成本合计</th>
+                                                <th width="6%" class="font-wb font13">批号</th>
+                                                <th width="8%" class="font-wb font13">有效期</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-stockin-list-wrap"><tr>
+        
+        <td>2019-06-14</td>
+        <td>4351</td>
+        <td>采购入库</td>
+        <td>天元医药二公司</td>
+        <td>李军</td>
+        <td>17600</td>
+        <td>大布洛芬</td>
+        <td></td>
+        <td></td>
+        <td>2000</td>
+        <td>盒</td>
+        <td>20.0000</td>
+        <td>0.0000</td>
+        <td>0.00</td>
+        <td>111</td>
+        <td>2019-06-14</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-12</td>
+        <td>4348</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>吴朦佳</td>
+        <td>17600</td>
+        <td>大布洛芬</td>
+        <td></td>
+        <td></td>
+        <td>1000</td>
+        <td>盒</td>
+        <td>20.0000</td>
+        <td>1.0000</td>
+        <td>1000.00</td>
+        <td>20201009</td>
+        <td>2020-10-10</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-12</td>
+        <td>4347</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>岳静</td>
+        <td>17287</td>
+        <td>通用名</td>
+        <td></td>
+        <td></td>
+        <td>10</td>
+        <td>袋</td>
+        <td>10.0000</td>
+        <td>8.0000</td>
+        <td>80.00</td>
+        <td></td>
+        <td>2023-02-02</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-11</td>
+        <td>4344</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>吴朦佳</td>
+        <td>17287</td>
+        <td>通用名</td>
+        <td></td>
+        <td></td>
+        <td>100</td>
+        <td>袋</td>
+        <td>10.0000</td>
+        <td>5.0000</td>
+        <td>500.00</td>
+        <td></td>
+        <td>2020-10-10</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-04</td>
+        <td>4310</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>蔡女士</td>
+        <td>17205</td>
+        <td>培坤丸</td>
+        <td>每45丸重9克</td>
+        <td>陕西中医学院制药厂</td>
+        <td>14</td>
+        <td>盒</td>
+        <td>98.0000</td>
+        <td>50.0000</td>
+        <td>700.00</td>
+        <td></td>
+        <td>2020-02-02</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-05</td>
+        <td>4339</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>龚航程</td>
+        <td>17204</td>
+        <td>黑顺片</td>
+        <td></td>
+        <td>北京时珍堂药业有限公司</td>
+        <td>20</td>
+        <td>g</td>
+        <td>0.3500</td>
+        <td>0.2800</td>
+        <td>5.60</td>
+        <td>1712004</td>
+        <td>2020-12-01</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-04</td>
+        <td>4313</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>蔡女士</td>
+        <td>17201</td>
+        <td>花红片</td>
+        <td></td>
+        <td></td>
+        <td>20</td>
+        <td>盒</td>
+        <td>28.8000</td>
+        <td>0.0000</td>
+        <td>0.00</td>
+        <td></td>
+        <td>2021-06-14</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-04</td>
+        <td>4314</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>蔡女士</td>
+        <td>17200</td>
+        <td>金英胶囊</td>
+        <td></td>
+        <td></td>
+        <td>13</td>
+        <td>盒</td>
+        <td>48.0000</td>
+        <td>0.0000</td>
+        <td>0.00</td>
+        <td></td>
+        <td>2020-09-01</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-04</td>
+        <td>4325</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>蔡女士</td>
+        <td>17184</td>
+        <td>裸花紫珠胶囊</td>
+        <td></td>
+        <td></td>
+        <td>20</td>
+        <td>盒</td>
+        <td>35.0000</td>
+        <td>0.0000</td>
+        <td>0.00</td>
+        <td></td>
+        <td>2020-08-01</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-06</td>
+        <td>4340</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>龚航程</td>
+        <td>7983</td>
+        <td>薄荷</td>
+        <td></td>
+        <td></td>
+        <td>10000</td>
+        <td>g</td>
+        <td>250.0000</td>
+        <td>45.0000</td>
+        <td>450000.00</td>
+        <td>2019-10-10</td>
+        <td>2021-10-10</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-06</td>
+        <td>4341</td>
+        <td>采购入库</td>
+        <td>天元医药二公司</td>
+        <td>李先生</td>
+        <td>7893</td>
+        <td>党参</td>
+        <td></td>
+        <td></td>
+        <td>500</td>
+        <td>g</td>
+        <td>3.0000</td>
+        <td>0.0030</td>
+        <td>1.50</td>
+        <td>324567</td>
+        <td>2019-07-09</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-04</td>
+        <td>4336</td>
+        <td>采购入库</td>
+        <td>哈哈哈</td>
+        <td>尹小良</td>
+        <td>7889</td>
+        <td>人参</td>
+        <td>1g</td>
+        <td>华东制药</td>
+        <td>100</td>
+        <td>mg</td>
+        <td>1.1380</td>
+        <td>0.8888</td>
+        <td>88.88</td>
+        <td></td>
+        <td>2020-06-04</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-04</td>
+        <td>4336</td>
+        <td>采购入库</td>
+        <td>哈哈哈</td>
+        <td>尹小良</td>
+        <td>6602</td>
+        <td>阿奇霉素片</td>
+        <td>0.25gx1片</td>
+        <td>辉瑞制药有限公司</td>
+        <td>10</td>
+        <td>盒</td>
+        <td>62.3000</td>
+        <td>62.2700</td>
+        <td>622.70</td>
+        <td></td>
+        <td>2020-06-04</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-05</td>
+        <td>4338</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>张军</td>
+        <td>6567</td>
+        <td>注射用阿奇霉素</td>
+        <td>0.25</td>
+        <td></td>
+        <td>100</td>
+        <td>瓶</td>
+        <td>30.0000</td>
+        <td>20.0000</td>
+        <td>2000.00</td>
+        <td></td>
+        <td>2021-10-12</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-04</td>
+        <td>4335</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>蔡女士</td>
+        <td>6567</td>
+        <td>注射用阿奇霉素</td>
+        <td>0.25</td>
+        <td></td>
+        <td>10000</td>
+        <td>瓶</td>
+        <td>30.0000</td>
+        <td>0.0000</td>
+        <td>0.00</td>
+        <td></td>
+        <td>2020-02-02</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-13</td>
+        <td>4349</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>zhengjc</td>
+        <td>6544</td>
+        <td> 甲硝唑氯化钠注射液</td>
+        <td>100ml:0.5g</td>
+        <td></td>
+        <td>5</td>
+        <td>瓶</td>
+        <td>30.0000</td>
+        <td>1.8000</td>
+        <td>9.00</td>
+        <td></td>
+        <td>2019-12-19</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-14</td>
+        <td>4352</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>余</td>
+        <td>6531</td>
+        <td>0.9%氯化钠注射液</td>
+        <td>250ml:12.5g</td>
+        <td></td>
+        <td>10</td>
+        <td>瓶</td>
+        <td>5.0000</td>
+        <td>1.0000</td>
+        <td>10.00</td>
+        <td></td>
+        <td>2020-10-26</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-04</td>
+        <td>4333</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>尹小良</td>
+        <td>6531</td>
+        <td>0.9%氯化钠注射液</td>
+        <td>250ml:12.5g</td>
+        <td></td>
+        <td>10000</td>
+        <td>瓶</td>
+        <td>5.0000</td>
+        <td>1.0000</td>
+        <td>10000.00</td>
+        <td></td>
+        <td>2020-02-02</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-04</td>
+        <td>4336</td>
+        <td>采购入库</td>
+        <td>哈哈哈</td>
+        <td>尹小良</td>
+        <td>6531</td>
+        <td>0.9%氯化钠注射液</td>
+        <td>250ml:12.5g</td>
+        <td></td>
+        <td>10</td>
+        <td>瓶</td>
+        <td>5.0000</td>
+        <td>1.0000</td>
+        <td>10.00</td>
+        <td></td>
+        <td>2020-06-04</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-15</td>
+        <td>4353</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>姚俊</td>
+        <td>6524</td>
+        <td>灭菌注射用水</td>
+        <td>5ml×1支</td>
+        <td></td>
+        <td>5</td>
+        <td>支</td>
+        <td>0.1000</td>
+        <td>0.0900</td>
+        <td>0.45</td>
+        <td>1111</td>
+        <td>2019-06-30</td>
+        
+    </tr><tr>
+        
+        <td>2019-06-15</td>
+        <td>4353</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>姚俊</td>
+        <td>6524</td>
+        <td>灭菌注射用水</td>
+        <td>5ml×1支</td>
+        <td></td>
+        <td>20</td>
+        <td>盒</td>
+        <td>4.5000</td>
+        <td>4.5000</td>
+        <td>90.00</td>
+        <td>1111</td>
+        <td>2019-06-30</td>
+        
+    </tr><tr>
+        
+        <td colspan="16">合计：465118.13</td>
+        
+    </tr></tbody>
+                                    </table>
+                                    <div class="J-page-wrap1 pd20"><div class="base_page"><a href="#/start_date/2019-06-01/end_date/2019-06-15/method/@null/batch_number/@null/factory/@null/medicinename/@null/medicine_type/0/size/50/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/1</button><a href="#/start_date/2019-06-01/end_date/2019-06-15/method/@null/batch_number/@null/factory/@null/medicinename/@null/medicine_type/0/size/50/page/1" type="button" data-page_num="1" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                                </div>
+                                <!-- 日期弹窗 -->
+                                <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title J-date-title" id="myModalLabel">入库日期</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="pt10 pb10">
+                                                    <form class="form-inline" method="post">
+                                                        <div class="form-group mr0">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-startDate mbsc-comp" type="text" placeholder="开始日期" id="mobiscroll1560610900475" readonly="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mr0">至</div>
+                                                        <div class="form-group mr5">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-endDate mbsc-comp" type="text" placeholder="截止日期" id="mobiscroll1560610900476" readonly="">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer modal-btn-col2">
+                                                <button type="button" class="btn btn-primary J-common-submit">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 日期弹窗 -->
+                            </div>
+                            <!-- 入库统计 -->
+                            <!-- 出库统计 -->
+                            <div class="tab-pane J-jsx-stock J-module-control" data-permission="63" id="stockout">
+                                <div class="row mb15">
+                                    <div class="col-sm-11 col-md-11">
+                                        <form class="form-inline" id="J-stockout-form" method="post">
+                                            <div class="form-group mr0 hidden">
+                                                <label class="control-label">出库日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-start-date" name="start_date" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0 hidden">-</div>
+                                            <div class="form-group mr5 hidden">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-end-date" name="end_date" type="text" placeholder="结束日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-select-date date-width" type="text" placeholder="入库日期" size="19">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <select class="form-control input-xs2 J-method" name="method">
+                                                    <option value="" selected="selected">全部</option>
+                                                    <option value="1">科室出库</option>
+                                                    <option value="2">报损出库</option>
+                                                    <option value="3">退货出库</option>
+                                                    <option value="4">其他出库</option>
+                                                    <option value="5">发药</option>
+                                                    <option value="7">零售药品</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <label class="control-label"></label>
+                                                <select class="form-control input-xs2 J-medicine-type" name="medicine_type" data-placeholder="药品类型">
+                                                    <option value="0" selected="selected">全部</option>
+                                                    <option value="1">西/成药</option>
+                                                    <option value="2">中药</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-worker J-download-info" name="patient_name" type="text" placeholder="领用人员" size="6">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-medicinename J-download-info" name="medicinename" type="text" placeholder="商品名称或条形码" size="12">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-batch-number J-download-info" name="batch_number" type="text" placeholder="批号" size="6">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input type="hidden" name="factory_id" class="J-factory-ids">
+                                                    <input type="text" placeholder="供应商" size="6" class="form-control input-sm2 radius3 J-factory-names J-download-info">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-stockout-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-1 col-md-1 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" target="_blank" href="javascript:void(0);" id="export-stockout"><i class="fa fa-download"></i> <span>导出</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                               <th colspan="17" class="font20 black text-center"><span class="J-date"></span> 出库统计</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="7%" class="font-wb font13">出库日期</th>
+                                                <th width="5%" class="font-wb font13">出库方式</th>
+                                                <th width="5%" class="font-wb font13">出库人员</th>
+                                                <th width="5%" class="font-wb font13">领用人员</th>
+                                                <th width="4%" class="font-wb font13">性别</th>
+                                                <th width="6%" class="font-wb font13">商品编码</th>
+                                                <th width="9%" class="font-wb font13">商品名称</th>
+                                                <th width="5%" class="font-wb font13">规格</th>
+                                                <th width="8%" class="font-wb font13">生产厂商</th>
+                                                <th class="font-wb font13">供应商</th>
+                                                <th width="5%" class="font-wb font13">数量</th>
+                                                <!-- <th width="5%" class="font-wb font13">单位</th> -->
+                                                <th width="5%" class="font-wb font13">零售价</th>
+                                                <th width="5%" class="font-wb font13">成本价</th>
+                                                <th width="7%" class="font-wb font13">成本合计</th>
+                                                <th width="6%" class="font-wb font13">批号</th>
+                                                <th width="7%" class="font-wb font13">有效期</th>
+                                                <th width="5%" class="font-wb font13">地址</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-stockout-list-wrap">
+                                        </tbody>
+                                    </table>
+                                    <div class="J-page-wrap2 pd20">
+                                    </div>
+                                </div>
+                                <!-- 供应商 -->
+                                <div class="modal fade" id="factory-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">选择供应商</h4>
+                                            </div>
+                                            <div class="modal-body pl20">
+                                                <div class="row mt10 font16" id="J-factory-stockout">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer modal-btn-col2">
+                                                <button type="button" class="btn btn-primary J-factory-submit">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 供应商 -->
+                                <!-- 日期弹窗 -->
+                                <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title J-date-title" id="myModalLabel"></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="pt10 pb10">
+                                                    <form class="form-inline" method="post">
+                                                        <div class="form-group mr0">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-startDate" type="text" placeholder="开始日期">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mr0">至</div>
+                                                        <div class="form-group mr5">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-endDate" type="text" placeholder="截止日期">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer modal-btn-col2">
+                                                <button type="button" class="btn btn-primary J-common-submit">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 日期弹窗 -->
+                            </div>
+                            <!-- 出库统计 -->
+                            <!-- 进销存统计 -->
+                            <div class="tab-pane J-jsx-stock J-module-control" data-permission="64" id="reportJxc">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-reportJxc-form" method="post">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-start-date" name="start_date" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-end-date" name="end_date" type="text" placeholder="结束日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <label class="control-label"></label>
+                                                <select class="form-control input-xs2 J-medicine-type" name="medicine_type" data-placeholder="药品类型">
+                                                    <option value="0" selected="selected">全部</option>
+                                                    <option value="1">西/成药</option>
+                                                    <option value="2">中药</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-medicinename J-download-info" name="medicine_name" type="text" placeholder="商品名称或条形码" size="15">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-batchnumber J-download-info" name="batch_number" type="text" placeholder="批号" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-reportJxc-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" target="_blank" href="javascript:void(0);" id="export-jxc"><i class="fa fa-download"></i> <span>导出</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                               <th colspan="15" class="font20 black text-center"><span class="J-date"></span> 进销存统计</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="5%" rowspan="2" class="vertical-middle font-wb font13">商品编码</th>
+                                                <th width="10%" rowspan="2" class="vertical-middle font-wb font13">商品名称</th>
+                                                <th width="8%" rowspan="2" class="vertical-middle font-wb font13">规格</th>
+                                                <th width="10%" rowspan="2" class="vertical-middle font-wb font13">生产厂商</th>
+                                                <th width="10%" rowspan="2" class="vertical-middle font-wb font13">供应商</th>
+                                                <th width="5%" rowspan="2" class="vertical-middle font-wb font13">单位</th>
+                                                <th width="5%" rowspan="2" class="vertical-middle font-wb font13">批号</th>
+                                                <th width="10%" rowspan="2" class="vertical-middle font-wb font13">有效期</th>
+                                                <th width="5%" rowspan="2" class="vertical-middle font-wb font13">成本价</th>
+                                                <th colspan="2" class="text-center font-wb font13">本期入库</th>
+                                                <th colspan="2" class="text-center font-wb font13">本期出库</th>
+                                                <th colspan="2" class="text-center font-wb font13">库存盘点</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-center font-wb font13">数量</th>
+                                                <th class="text-center font-wb font13">合计金额</th>
+                                                <th class="text-center font-wb font13">数量</th>
+                                                <th class="text-center font-wb font13">合计金额</th>
+                                                <th class="text-center font-wb font13">数量</th>
+                                                <th class="text-center font-wb font13">合计金额</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-reportJxc-list-wrap">
+                                        </tbody>
+                                    </table>
+                                    <div class="J-page-wrap3 pd20">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 进销存统计 -->
+
+                            <!-- 入库统计 -->
+                            <div class="tab-pane J-jsx-stock J-module-control" data-permission="65" id="materialStockin">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-stockin-form" method="post">
+                                            <div class="form-group mr0 hidden">
+                                                <label class="control-label">入库日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0 hidden">-</div>
+                                            <div class="form-group mr5 hidden">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-end-date" name="endDate" type="text" placeholder="结束日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-select-date date-width" type="text" placeholder="入库日期" size="21">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <label class="control-label"></label>
+                                                <select class="form-control input-xs2 J-method" name="method" data-placeholder="入库方式">
+                                                    <option value="" selected="selected">全部</option>
+                                                    <option value="1">采购入库</option>
+                                                    <option value="2">其他入库</option>
+                                                    <option value="3">导入入库</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <label class="control-label"></label>
+                                                <input type="hidden" name="factory" required="" class="J-factory input-xs2 w100p select-reception-model" placeholder="供应商">
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-medicinename J-download-info" name="goodsName" type="text" placeholder="商品名称或条形码" size="12">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-id J-download-info" name="batchNumber" type="text" placeholder="批号" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-stockin-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" target="_blank" href="javascript:void(0);" id="material-export-stockin"><i class="fa fa-download"></i> <span>导出</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                               <th colspan="16" class="font20 black text-center"><span class="J-date"></span> 入库统计</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="8%" class="font-wb font13">入库日期</th>
+                                                <th width="7%" class="font-wb font13">入库单号</th>
+                                                <th width="6%" class="font-wb font13">入库方式</th>
+                                                <th width="7%" class="font-wb font13">供应商</th>
+                                                <th width="6%" class="font-wb font13">入库人员</th>
+                                                <th width="7%" class="font-wb font13">商品编码</th>
+                                                <th width="7%" class="font-wb font13">商品名称</th>
+                                                <th width="5%" class="font-wb font13">规格</th>
+                                                <th class="font-wb font13">生产厂商</th>
+                                                <th width="5%" class="font-wb font13">数量</th>
+                                                <th width="5%" class="font-wb font13">单位</th>
+                                                <th width="6%" class="font-wb font13">零售价</th>
+                                                <th width="6%" class="font-wb font13">成本价</th>
+                                                <th width="7%" class="font-wb font13">成本合计</th>
+                                                <th width="5%" class="font-wb font13">批号</th>
+                                                <th width="8%" class="font-wb font13">有效期</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-stockinmaterial-list-wrap">
+                                        </tbody>
+                                    </table>
+                                    <div class="J-page-wrap4 pd20">
+                                    </div>
+                                </div>
+                                <!-- 日期弹窗 -->
+                                <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title J-date-title" id="myModalLabel"></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="pt10 pb10">
+                                                    <form class="form-inline" method="post">
+                                                        <div class="form-group mr0">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-startDate" type="text" placeholder="开始日期">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mr0">至</div>
+                                                        <div class="form-group mr5">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-endDate" type="text" placeholder="截止日期">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer modal-btn-col2">
+                                                <button type="button" class="btn btn-primary J-common-submit">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 日期弹窗 -->
+                            </div>
+                            <!-- 入库统计 -->
+                            <!-- 出库统计 -->
+                            <div class="tab-pane J-jsx-stock J-module-control" data-permission="66" id="materialStockout">
+                                <div class="row mb15">
+                                    <div class="col-sm-10 col-md-10">
+                                        <form class="form-inline" id="J-stockout-form" method="post">
+                                            <div class="form-group mr0 hidden">
+                                                <label class="control-label">出库日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0 hidden">-</div>
+                                            <div class="form-group mr5 hidden">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-end-date" name="endDate" type="text" placeholder="结束日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-select-date date-width" type="text" placeholder="入库日期" size="19">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <select class="form-control input-xs2 J-method" name="method">
+                                                    <option value="" selected="selected">全部</option>
+                                                    <option value="1">科室出库</option>
+                                                    <option value="2">报损出库</option>
+                                                    <option value="3">退货出库</option>
+                                                    <option value="4">其他出库</option>
+                                                    <option value="5">发药</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-worker J-download-info" name="patientName" type="text" placeholder="领用人员" size="6">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-medicinename J-download-info" name="goodsName" type="text" placeholder="商品名称或条形码" size="12">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-batch-number J-download-info" name="batchNumber" type="text" placeholder="批号" size="6">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input type="hidden" name="factoryId" class="J-factory-ids">
+                                                    <input type="text" placeholder="供应商" size="6" class="form-control input-sm2 radius3 J-factory-names J-download-info">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-stockout-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" target="_blank" href="javascript:void(0);" id="material-export-stockout"><i class="fa fa-download"></i> <span>导出</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                               <th colspan="18" class="font20 black text-center"><span class="J-date"></span> 出库统计</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="7%" class="font-wb font13">出库日期</th>
+                                                <th width="5%" class="font-wb font13">出库方式</th>
+                                                <th width="5%" class="font-wb font13">出库人员</th>
+                                                <th width="5%" class="font-wb font13">领用人员</th>
+                                                <th width="5%" class="font-wb font13">性别</th>
+                                                <th width="7%" class="font-wb font13">商品编码</th>
+                                                <th width="7%" class="font-wb font13">商品名称</th>
+                                                <th width="6%" class="font-wb font13">规格</th>
+                                                <th width="7%" class="font-wb font13">生产厂商</th>
+                                                <th class="font-wb font13">供应商</th>
+                                                <th width="5%" class="font-wb font13">数量</th>
+                                                <th width="5%" class="font-wb font13">单位</th>
+                                                <th width="6%" class="font-wb font13">零售价</th>
+                                                <th width="6%" class="font-wb font13">成本价</th>
+                                                <th width="7%" class="font-wb font13">成本合计</th>
+                                                <th width="5%" class="font-wb font13">批号</th>
+                                                <th width="7%" class="font-wb font13">有效期</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-stockoutmaterial-list-wrap">
+                                        </tbody>
+                                    </table>
+                                    <div class="J-page-wrap5 pd20">
+                                    </div>
+                                </div>
+                                <!-- 供应商 -->
+                                <div class="modal fade" id="factory-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">选择供应商</h4>
+                                            </div>
+                                            <div class="modal-body pl20">
+                                                <div class="row mt10 font16" id="J-factory-stockout-material">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer modal-btn-col2">
+                                                <button type="button" class="btn btn-primary J-factory-submit">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 供应商 -->
+                                <!-- 日期弹窗 -->
+                                <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title J-date-title" id="myModalLabel"></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="pt10 pb10">
+                                                    <form class="form-inline" method="post">
+                                                        <div class="form-group mr0">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-startDate" type="text" placeholder="开始日期">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mr0">至</div>
+                                                        <div class="form-group mr5">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-endDate" type="text" placeholder="截止日期">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer modal-btn-col2">
+                                                <button type="button" class="btn btn-primary J-common-submit">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 日期弹窗 -->
+                            </div>
+                            <!-- 出库统计 -->
+                            <!-- 进销存统计 -->
+                            <div class="tab-pane J-jsx-stock J-module-control" data-permission="67" id="reportJxcMaterial">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-reportJxc-form" method="post">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-end-date" name="endDate" type="text" placeholder="结束日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-medicinename J-download-info" name="goodsName" type="text" placeholder="商品名称或条形码" size="15">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-batchnumber J-download-info" name="batchNumber" type="text" placeholder="批号" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-reportJxc-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" target="_blank" href="javascript:void(0);" id="material-export-jxc"><i class="fa fa-download"></i> <span>导出</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                               <th colspan="15" class="font20 black text-center"><span class="J-date"></span> 进销存统计</th>
+                                            </tr>
+                                            <tr>
+                                                <th width="5%" rowspan="2" class="vertical-middle font-wb font13">商品编码</th>
+                                                <th width="10%" rowspan="2" class="vertical-middle font-wb font13">商品名称</th>
+                                                <th width="8%" rowspan="2" class="vertical-middle font-wb font13">规格</th>
+                                                <th width="10%" rowspan="2" class="vertical-middle font-wb font13">生产厂商</th>
+                                                <th width="10%" rowspan="2" class="vertical-middle font-wb font13">供应商</th>
+                                                <th width="5%" rowspan="2" class="vertical-middle font-wb font13">单位</th>
+                                                <th width="5%" rowspan="2" class="vertical-middle font-wb font13">批号</th>
+                                                <th width="10%" rowspan="2" class="vertical-middle font-wb font13">有效期</th>
+                                                <th width="5%" rowspan="2" class="vertical-middle font-wb font13">成本价</th>
+                                                <th colspan="2" class="text-center font-wb font13">本期入库</th>
+                                                <th colspan="2" class="text-center font-wb font13">本期出库</th>
+                                                <th colspan="2" class="text-center font-wb font13">库存盘点</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-center font-wb font13">数量</th>
+                                                <th class="text-center font-wb font13">合计金额</th>
+                                                <th class="text-center font-wb font13">数量</th>
+                                                <th class="text-center font-wb font13">合计金额</th>
+                                                <th class="text-center font-wb font13">数量</th>
+                                                <th class="text-center font-wb font13">合计金额</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-reportJxcMaterial-list-wrap">
+                                        </tbody>
+                                    </table>
+                                    <div class="J-page-wrap6 pd20">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 进销存统计 -->
+                        </div>
+                    </div>
+                    <!-- 药品 -->
+                            
+                    <!-- 物资管理 -->
+                    
+
+
+                </div>
+            </div>
+        
+    </section>
+    <!-- 入库统计 -->
+    <script type="text/template" id="stockin-list-tpl">
+        <%if(method){%>
+        <td><%-warehouse_time%></td>
+        <td><%-warehouse_id%></td>
+        <td><%-method%></td>
+        <td><%-factory%></td>
+        <td><%-creater%></td>
+        <td><%-medicine_code%></td>
+        <td><%-medicinename%></td>
+        <td><%-medicinespec%></td>
+        <td><%-manufacturer%></td>
+        <td><%-count%></td>
+        <td><%-unit%></td>
+        <td><%-medicineprice%></td>
+        <td><%-cost_price%></td>
+        <td><%-total_cost%></td>
+        <td><%-batch_number%></td>
+        <td><%-validity%></td>
+        <%} else {%>
+        <td colspan="16"><%-warehouse_time%>：<%-warehouse_id%></td>
+        <%}%>
+    </script>
+    <!-- 入库统计 -->
+    <!-- 出库统计 -->
+    <script type="text/template" id="stockout-list-tpl">
+        <%if(medicinename){%>
+        <td><%-recipe_time%></td>
+        <td><%-method%></td>
+        <td><%-reportname%></td>
+        <td><%-patient_name%></td>
+        <td><%-sex_name%></td>
+        <td><%-medicine_code%></td>
+        <td><%-medicinename%></td>
+        <td><%-medicinespec%></td>
+        <td><%-manufacturer%></td>
+        <td><%-factory%></td>
+        <td><%-medicinecount%></td>
+        <!-- <td><%-countunit%></td> -->
+        <td><%-medicineprice%></td>
+        <td><%-cost_price%></td>
+        <td><%-total_cost%></td>
+        <td><%-batch_number%></td>
+        <td><%-validity%></td>
+        <td><%-address%></td>
+        <%} else {%>
+        <td colspan="16"><%-recipe_time%>：<%-method%></td>
+        <%}%>
+    </script>
+    <!-- 出库统计 -->
+    <!-- 药品进销存统计 -->
+    <script type="text/template" id="reportJxc-list-tpl">
+      <td><%-medicine_code%></td>
+      <td><%-medicine_name%></td>
+      <td><%-spec%></td>
+      <td><%-factory%></td>
+      <td><%-supplier%></td>
+      <td><%-unit%></td>
+      <td><%-batch_number%></td>
+      <td><%-validity%></td>
+      <td><%-min_cost_price%></td>
+      <td><%-in_count%></td>
+      <td><%-in_sum%></td>
+      <td><%-out_count%></td>
+      <td><%-out_sum%></td>
+      <td><%-inventoryCount%></td>
+      <td><%-inventorySum%></td>
+    </script>
+    <!-- 进销存统计 -->
+    <!-- 物资入库统计 -->
+    <script type="text/template" id="stockinmaterial-list-tpl">
+        <td><%-warehouseTime%></td>
+        <td><%-warehouseId%></td>
+        <td><%-method%></td>
+        <td><%-factory%></td>
+        <td><%-creator%></td>
+        <td><%-goodsCode%></td>
+        <td><%-goodsName%></td>
+        <td><%-goodsSpec%></td>
+        <td><%-manufacturer%></td>
+        <td><%-count%></td>
+        <td><%-goodsUnit%></td>
+        <td><%-goodsPrice%></td>
+        <td><%-costPrice%></td>
+        <td><%-totalCost%></td>
+        <td><%-batchNumber%></td>
+        <td><%-validity%></td>
+    </script>
+    <!-- 物资入库统计 -->
+    <!-- 物资出库统计 -->
+    <script type="text/template" id="stockoutmaterial-list-tpl">
+        <%if(goodsName){%>
+        <td><%-exWarehouseTime%></td>
+        <td><%-method%></td>
+        <td><%-reportname%></td>
+        <td><%-patientName%></td>
+        <td><%-sexName%></td>
+        <td><%-goodsCode%></td>
+        <td><%-goodsName%></td>
+        <td><%-goodsSpec%></td>
+        <td><%-manufacturer%></td>
+        <td><%-factory%></td>
+        <td><%-count%></td>
+        <td><%-goodsUnit%></td>
+        <td><%-goodsPrice%></td>
+        <td><%-costPrice%></td>
+        <td><%-totalCost%></td>
+        <td><%-batchNumber%></td>
+        <td><%-validity%></td>
+        <%} else {%>
+        <td colspan="17"><%-exWarehouseTime%>：<%-method%></td>
+        <%}%>
+    </script>
+    <!-- 物资出库统计 -->
+    <!-- 物资进销存统计 -->
+    <script type="text/template" id="J-reportJxcMaterial-list-tpl">
+      <td><%-goodsCode%></td>
+      <td><%-goodsName%></td>
+      <td><%-goodsSpec%></td>
+      <td><%-factory%></td>
+      <td><%-supplier%></td>
+      <td><%-goodsUnit%></td>
+      <td><%-batchNumber%></td>
+      <td><%-validity%></td>
+      <td><%-costPrice%></td>
+      <td><%-inCount%></td>
+      <td><%-inSum%></td>
+      <td><%-outCount%></td>
+      <td><%-outSum%></td>
+      <td><%-inventoryCount%></td>
+      <td><%-inventorySum%></td>
+    </script>
+    <!-- 物资进销存统计 -->
+    <!-- 供应商列表 -->
+    <script type="text/template" id="J-factory-tpl">
+        <% $.each(factorys, function(i, item){ %>
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-default">
+                    <input name="factory_id[]" class="pull-left" type="checkbox" value="<%-item.id%>" id="label<%-i%>">
+                    <label for="label<%-i%>" class="pl24 display-block"><%-item.text%></label>
+                </div>
+            </div>
+        <% }); %>
+    </script>
+    <!-- 供应商列表 -->
+    <!-- 供应商列表 -->
+    <script type="text/template" id="J-factory-material-tpl">
+        <% $.each(factorys, function(i, item){ %>
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-default">
+                    <input name="factoryId[]" class="pull-left" type="checkbox" value="<%-item.id%>" id="material-label<%-i%>">
+                    <label for="material-label<%-i%>" class="pl24 display-block"><%-item.text%></label>
+                </div>
+            </div>
+        <% }); %>
+    </script>
+    <!-- 供应商列表 -->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['jxc_statistics']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div><span role="status" aria-live="polite" class="select2-hidden-accessible"></span></body></html>

@@ -1,0 +1,75 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs" id="myTab">
+	<li class="active"><a href="#tab_basic">挂号设置</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-form">
+		<form action="" method="post" class="form-horizontal form form-validate">
+			<div class="panel panel-default">
+				<div class="panel-heading">挂号设置</div>
+				<div class="panel-body">
+					<div class="form-group"  style="display: block;">
+						<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">预约时间内未到诊</label>
+						<div class="col-md-8" style="padding-right: 0;">
+							<div class="input-group col-md-3">
+								<input type="number" name="times" class="form-control" value="{$item['times']}" />
+								<span class="input-group-addon">天</span>
+							</div>
+							<span class="help-block">超过时间的未到诊订单将会标记为已到诊,不填或填0则订单将自动退款到用户账户。</span>
+						</div>
+					</div>
+                  <div class="form-group">
+					<label class="col-sm-2 control-label">同一时间段可以接纳</label>
+					<div class="col-sm-9">
+						<div class="input-group">
+							<span class="input-group-addon">人</span>
+							<input type="text" name="people" class="form-control" value="{$item['people']}">
+						</div>
+					</div>
+					<div class="help-block col-md-10 col-lg-offset-2">超过指定人数则不可预约。</div>
+				</div>
+                    <div class="form-group">
+					<label class="col-sm-2 control-label">患者免费追问次数</label>
+					<div class="col-sm-9">
+						<div class="input-group">
+							<span class="input-group-addon">次数</span>
+							<input type="text" name="num" class="form-control" value="{$item['num']}">
+						</div>
+					</div>
+					<div class="help-block col-md-10 col-lg-offset-2">超过追问次数，则追加问诊费用。</div>
+				</div>
+                    <div class="form-group">
+					<label class="col-sm-2 control-label">超过每次追加</label>
+					<div class="col-sm-9">
+						<div class="input-group">
+							<span class="input-group-addon">元</span>
+							<input type="text" name="price" class="form-control" value="{$item['price']}">
+						</div>
+					</div>
+					<div class="help-block col-md-10 col-lg-offset-2">付费追问后，重新获得免费追问次数。</div>
+				</div>
+				
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-9">
+					<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+					<input type="hidden" name="token" value="c5514e9f" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	</body>
+</html>
+

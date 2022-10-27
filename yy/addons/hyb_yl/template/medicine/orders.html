@@ -1,0 +1,546 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+</div>
+<div class="pageheader hidden">
+    <h2><i class="fa fa-pencil"></i> 商品管理</h2>
+</div>
+<div class="basics">
+    <div class="gai_huanzhe">
+        <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control active" data-permission="8">
+                <a  href="{php echo $this->createWeburl('medicine',array('op'=>'list','type_id'=>$type_id))}" ><strong>商品订单</strong></a>
+            </li>
+        </ul>
+        <div class="gai_huanzhe_jinri gai_huanzhe_jinris">
+            <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+                <li class="J-module-control" data-permission="8">
+                    <a  href="{php echo $this->createWeburl('medicine',array('op'=>'list','type_id'=>$type_id))}" ><strong>全部订单</strong></a>
+                </li>
+                <li class="J-module-control" data-permission="8">
+                    <a  href="{php echo $this->createWeburl('medicine',array('op'=>'list','type_id'=>$type_id))}" ><strong>待发货</strong></a>
+                </li>
+                <li class="J-module-control" data-permission="8">
+                    <a  href="{php echo $this->createWeburl('medicine',array('op'=>'list','type_id'=>$type_id))}" ><strong>待收货</strong></a>
+                </li>
+                <li class="J-module-control" data-permission="8">
+                    <a  href="{php echo $this->createWeburl('medicine',array('op'=>'list','type_id'=>$type_id))}" ><strong>待付款</strong></a>
+                </li>
+                <li class="J-module-control" data-permission="8">
+                    <a  href="{php echo $this->createWeburl('medicine',array('op'=>'list','type_id'=>$type_id))}" ><strong>已完成</strong></a>
+                </li>
+                <li class="J-module-control" data-permission="8">
+                    <a  href="{php echo $this->createWeburl('medicine',array('op'=>'list','type_id'=>$type_id))}" ><strong>已关闭</strong></a>
+                </li>
+             </ul> 
+<!--多商户图片选择器删除图片没有方法解决  只能在此隐藏-->
+ 
+   <div class="wb-container">
+    <style type="text/css">
+    .trhead td {  background:#efefef;text-align: center}
+    .trbody td {  text-align: center; vertical-align:top;border-left:1px solid #f2f2f2;overflow: hidden; font-size:12px;}
+    .trorder { background:#f8f8f8;border:1px solid #f2f2f2;text-align:left;}
+    .ops { border-right:1px solid #f2f2f2; text-align: center;}
+    .ops a,.ops span{
+        margin: 3px 0;
+    }
+    .table-top .op:hover{
+        color: #000;
+    }
+    .tables{
+        border:1px solid #e5e5e5;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .tables:hover{
+        border:1px solid #b1d8f5;
+    }
+    .table-row,.table-header,.table-footer,.table-top{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        -webkit-justify-content: center;
+        -webkit-align-content: space-around;
+        align-content: space-around;
+    }
+    .tables  .table-row>div{
+        padding: 14px 0 !important;
+    }
+    .tables  .table-row.table-top>div{
+        padding: 11px 0;
+    }
+    .tables    .table-row .ops.list-inner{
+        border-right:none;
+    }
+    .tables .list-inner{
+       border-right: 1px solid #efefef;
+        vertical-align: middle;
+    }
+    .table-row .goods-des .title{
+        width:180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .table-row .goods-des{
+        width:300px;
+        border-right: 1px solid #efefef;
+        vertical-align: middle;
+    }
+    .table-row .list-inner{
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        text-align: center;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    }
+    .saler>div{
+        width:130px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .table-row .list-inner.ops,  .table-row .list-inner.paystyle{
+        -webkit-flex-direction: column;
+        flex-direction: column;
+       -webkit-justify-content: center;
+       justify-content: center;
+    }
+    .table-header .others{
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        text-align: center;
+    }
+    .table-footer{
+        border-top: 1px solid #efefef;
+    }
+    .table-footer>div, .table-top>div{
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        height:100%;
+    }
+    .fixed-header div{
+        padding:0;
+    }
+    .fixed-header.table-header{
+        display: none;
+    }
+    .fixed-header.table-header.active{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .shop{
+        display: inline-block;
+        width:48px;
+        height:18px;
+        text-align: center;
+        border:1px solid #1b86ff;
+        color: #1b86ff;
+        margin-right: 10px;
+    }
+    .min_program{
+        display: inline-block;
+        width:48px;
+        height:18px;
+        text-align: center;
+        border:1px solid #ff5555;
+        color: #ff5555;
+        margin-right: 10px;
+    }
+    .page-toolbar {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        height: 35px;
+        line-height: 1;
+        vertical-align: middle;
+        margin-bottom: 15px;
+        padding-left: 80px;
+        }
+</style>
+
+<div class="page-header">
+    当前位置：<span class="text-primary">订单管理</span>
+    <span>订单数:  <span class="text-danger">{$total}</span> 订单金额:  <span class="text-danger">{$money}</span> </span>
+</div>
+<div class="page-content">
+    <div class="fixed-header table-header" style="padding: 0 50px;">
+        <div style="border-left:1px solid #f2f2f2;width: 400px;text-align: left;">商品</div>
+        <div class="others">买家</div>
+        <div class="others">支付/配送</div>
+        <div class="others">价格</div>
+        <div class="others">操作</div>
+        <div class="others">状态</div>
+    </div>
+    <form action="" method="get" class="form-horizontal table-search" role="form" id="search">
+        <div class="page-toolbar">
+            <div class="input-group" style="display: flex;">
+                <span class="input-group-select">
+                    <select name="paytype" class="form-control" style="width:100px;padding:0 5px;">
+                        <option value="" selected="">支付方式</option>
+                        <option value="0">未支付</option>
+                        <option value="1">余额支付</option>
+                        <option value="11">后台付款</option>
+                        <option value="2">在线支付</option>
+                        <option value="21">微信支付</option>
+                        <option value="22">支付宝支付</option>
+                        <option value="23">银联支付</option>
+                        <option value="3">货到付款</option>
+                        <option value="4">收银台现金收款</option>
+                    </select>
+                </span>
+                <span class="input-group-select">
+                    <select name="searchtime" class="form-control" style="width:100px;padding:0 5px;" id="searchtime">
+                        <option value="">不按时间</option>
+                        <option value="create">下单时间</option>
+                        <option value="pay">付款时间</option>
+                        <option value="send">发货时间</option>
+                        <option value="finish">完成时间</option>
+                    </select>
+                </span>
+                <span class="input-group-btn" style="width: 300px; padding: 0px;">
+                    <button class="btn btn-default daterange daterange-time btn-sm" type="button" style="width: 100%;
+                    height: 34px;">
+                        <span class="date-title">2019-11-10 14:20 至 2019-12-10 14:20</span> 
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+                <span class="input-group-select">
+                    <select name="searchfield" class="form-control" style="width:110px;padding:0 5px;">
+                        <option value="ordersn">订单号</option>
+                        <option value="member">会员信息</option>
+                        <option value="address">收件人信息</option>
+                        <option value="location">地址信息</option>
+                        <option value="expresssn">快递单号</option>
+                        <option value="goodstitle">商品名称</option>
+                        <option value="goodssn">商品编码</option>
+                        <option value="saler">核销员</option>
+                        <option value="store">核销门店</option>
+                        <option value="selfget">自提门店</option>
+                        <option value="mid">用户id</option>
+                        <option value="merch">商户名称</option>
+                    </select>
+                </span>
+                <input type="text" class="form-control input-sm" name="keyword" id="keyword" value="" placeholder="请输入关键词" style="width: 600px;height: 34px;margin-top: 0px;">
+                <span class="input-group-btn">
+                    <button type="button" data-export="0" class="btn btn-primary btn-submit"> 搜索</button>
+                    <button type="button" data-export="1" class="btn btn-success btn-submit">导出</button>
+                </span>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <div class="table-header" style="background:#f8f8f8;height: 35px;line-height: 35px;padding: 0 20px">
+                    <div style="border-left:1px solid #f2f2f2;width: 400px;text-align: left;">商品</div>
+                    <div class="others">买家</div>
+                    <div class="others">支付/配送</div>
+                    <div class="others">价格</div>
+                    <div class="others">操作</div>
+                    <div class="others">状态</div>
+                </div>
+                <div class="table-row"><div style="height:20px;padding:0;border-top:none;">&nbsp;</div>
+            </div>
+             {loop $res $item}
+            <div class="tables">
+                <div class="table-row table-top" style="padding:0  20px;background: #f7f7f7">
+                    <div style="text-align: left;color: #8f8e8e;">
+                        <span style="font-weight: bold;margin-right: 10px;color: #2d2d31">
+                            <span class="shop">商城</span>                                                                2019-12-10&nbsp; 10:39:56
+                        </span>
+                            订单编号:  {$item['orderNo']}                                                                                
+                    </div>
+                </div>
+                <div class="table-row" style="margin:0  20px">
+                    <div class="goods-des" style="width:400px;text-align: left">
+                        <div style="display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;margin: 10px 0">
+                            <img src="{media $item['sthumb']}" style="width:70px;height:70px;border:1px solid #efefef; padding:1px;" onerror="">
+                            <div style="-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;margin-left: 10px;text-align: left;display: flex;align-items: center">
+                                <div>
+                                    <div class="title">
+                                        {$item['sname']} <br>
+                                        <span style="color: #999"> {$item['gg_name']}</span>
+                                    </div>
+                                </div>
+                                <span style="float: right;text-align: right;display: inline-block;width:130px;">
+                                    ￥{$item['totalMoney']}<br>
+                                     x{$item['num']}                                     
+                                </span>
+                            </div>
+                        </div>  
+                    </div>
+
+                    <div class="list-inner saler" style="text-align: center;">
+                        <div>
+                            <a href=""> {$item['u_name']}</a>
+                                <br>
+                                {$item['userName']}<br>{$item['userPhone']}                          
+                        </div>
+                    </div>
+                    <div class="list-inner paystyle" style="text-align:center;">
+                            <!-- 已支付 -->
+                        <span> 
+                            <i class="icow icow-yue text-warning" style="font-size: 17px;"></i>
+                            <span>微信支付</span>
+                        </span>                              
+                        <span style="margin-top:5px;display:block;">快递</span>
+                    </div>
+
+                    <div class="list-inner" style="text-align:center">
+                        <a class="op text-primary" href="{php echo $this->createWeburl('medicine',array('op'=>'detail','id'=>$item['id']))}">查看详情</a>
+                    </div>
+                    <div class="ops list-inner" style="line-height:20px;text-align:center">
+                        <span class="text-info">待发货</span>
+                        <a class="btn btn-primary btn-xs question"  id="question">确认发货</a>
+                        <script type="text/javascript">
+                           
+                                $(".question").click(function() {
+                                    $(".maskbox").show()
+                                    $(".queren").show();
+                                });
+                            
+                        </script>
+                    </div>
+                </div>
+            </div>
+            {/loop}
+            <div style="padding: 20px;text-align: right">
+            {$pager}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <div class="modal-backdrop maskbox" style="display:none" id="maskbox"></div>
+    <div class="modal queren" id="ajaxModal" style="padding-right: 4px;" >
+        <div class="modal-body "></div>
+        <style>
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 11;
+            background-color: #000;
+            opacity:0.3;
+        }
+        .we7-modal-dialog, .modal-dialog {
+            min-width: 720px !important;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top:50%;
+        margin: -200px auto;
+
+        }
+        .quren{
+            display:none;
+        }
+
+        .fui-goods-list{width:100%;border-bottom: 1px dashed #e1ecee;padding-top:5px;padding-bottom:5px;}
+        .fui-goods-list span{display: block;padding:0;}
+        </style>
+        <form class="form-horizontal form-validate" action="" method="post" enctype="multipart/form-data" novalidate="novalidate">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button">×</button>
+                        <h4 class="modal-title">订单发货</h4>
+                    </div>
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">收 货 人</label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <div class="form-control-static" style="min-height: 34px; padding-top: 7px; padding-bottom: 7px;margin-bottom: 0; text-align:left;">
+                                        联系人: 测试 / 15249196377 <br>
+                                        地    址: 北京市北京辖区东城区 反反复复 
+                                    </div>
+                                </div>
+                            </div>
+                                        
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">快递公司</label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <select class="form-control" name="express" id="express">
+                                        <option value="" data-name="">其他快递</option>
+                                        <option value="shunfeng" data-name="顺丰">顺丰</option>
+                                        <option value="shentong" data-name="申通">申通</option>
+                                        <option value="yunda" data-name="韵达快运">韵达快运</option>
+                                        <option value="tiantian" data-name="天天快递">天天快递</option>
+                                        <option value="yuantong" data-name="圆通速递">圆通速递</option>
+                                        <option value="zhongtong" data-name="中通速递">中通速递</option>
+                                        <option value="ems" data-name="ems快递">ems快递</option>
+                                        <option value="huitongkuaidi" data-name="百世快递">百世快递</option>
+                                        <option value="quanfengkuaidi" data-name="全峰快递">全峰快递</option>
+                                        <option value="zhaijisong" data-name="宅急送">宅急送</option>
+                                        <option value="aae" data-name="aae全球专递">aae全球专递</option>
+                                        <option value="anjie" data-name="安捷快递">安捷快递</option>
+                                        <option value="anxindakuaixi" data-name="安信达快递">安信达快递</option>
+                                        <option value="biaojikuaidi" data-name="彪记快递">彪记快递</option>
+                                        <option value="bht" data-name="bht">bht</option>
+                                        <option value="baifudongfang" data-name="百福东方国际物流">百福东方国际物流</option>
+                                        <option value="coe" data-name="中国东方（COE）">中国东方（COE）</option>
+                                        <option value="changyuwuliu" data-name="长宇物流">长宇物流</option>
+                                        <option value="datianwuliu" data-name="大田物流">大田物流</option>
+                                        <option value="debangwuliu" data-name="德邦物流">德邦物流</option>
+                                        <option value="dhl" data-name="dhl">dhl</option>
+                                        <option value="dpex" data-name="dpex">dpex</option>
+                                        <option value="dsukuaidi" data-name="d速快递">d速快递</option>
+                                        <option value="disifang" data-name="递四方">递四方</option>
+                                        <option value="fedex" data-name="fedex（国外）">fedex（国外）</option>
+                                        <option value="feikangda" data-name="飞康达物流">飞康达物流</option>
+                                        <option value="fenghuangkuaidi" data-name="凤凰快递">凤凰快递</option>
+                                        <option value="feikuaida" data-name="飞快达">飞快达</option>
+                                        <option value="guotongkuaidi" data-name="国通快递">国通快递</option>
+                                        <option value="ganzhongnengda" data-name="港中能达物流">港中能达物流</option>
+                                        <option value="guangdongyouzhengwuliu" data-name="广东邮政物流">广东邮政物流</option>
+                                        <option value="gongsuda" data-name="共速达">共速达</option>
+                                        <option value="hengluwuliu" data-name="恒路物流">恒路物流</option>
+                                        <option value="huaxialongwuliu" data-name="华夏龙物流">华夏龙物流</option>
+                                        <option value="haihongwangsong" data-name="海红">海红</option>
+                                        <option value="haiwaihuanqiu" data-name="海外环球">海外环球</option>
+                                        <option value="jiayiwuliu" data-name="佳怡物流">佳怡物流</option>
+                                        <option value="jinguangsudikuaijian" data-name="京广速递">京广速递</option>
+                                        <option value="jixianda" data-name="急先达">急先达</option>
+                                        <option value="jiajiwuliu" data-name="佳吉物流">佳吉物流</option>
+                                        <option value="jymwl" data-name="加运美物流">加运美物流</option>
+                                        <option value="jindawuliu" data-name="金大物流">金大物流</option>
+                                        <option value="jialidatong" data-name="嘉里大通">嘉里大通</option>
+                                        <option value="jykd" data-name="晋越快递">晋越快递</option>
+                                        <option value="kuaijiesudi" data-name="快捷速递">快捷速递</option>
+                                        <option value="lianb" data-name="联邦快递（国内）">联邦快递（国内）</option>
+                                        <option value="lianhaowuliu" data-name="联昊通物流">联昊通物流</option>
+                                        <option value="longbanwuliu" data-name="龙邦物流">龙邦物流</option>
+                                        <option value="lijisong" data-name="立即送">立即送</option>
+                                        <option value="lejiedi" data-name="乐捷递">乐捷递</option>
+                                        <option value="minghangkuaidi" data-name="民航快递">民航快递</option>
+                                        <option value="meiguokuaidi" data-name="美国快递">美国快递</option>
+                                        <option value="menduimen" data-name="门对门">门对门</option>
+                                        <option value="ocs" data-name="OCS">OCS</option>
+                                        <option value="peisihuoyunkuaidi" data-name="配思货运">配思货运</option>
+                                        <option value="quanchenkuaidi" data-name="全晨快递">全晨快递</option>
+                                        <option value="quanjitong" data-name="全际通物流">全际通物流</option>
+                                        <option value="quanritongkuaidi" data-name="全日通快递">全日通快递</option>
+                                        <option value="quanyikuaidi" data-name="全一快递">全一快递</option>
+                                        <option value="rufengda" data-name="如风达">如风达</option>
+                                        <option value="santaisudi" data-name="三态速递">三态速递</option>
+                                        <option value="shenghuiwuliu" data-name="盛辉物流">盛辉物流</option>
+                                        <option value="sue" data-name="速尔物流">速尔物流</option>
+                                        <option value="shengfeng" data-name="盛丰物流">盛丰物流</option>
+                                        <option value="saiaodi" data-name="赛澳递">赛澳递</option>
+                                        <option value="tiandihuayu" data-name="天地华宇">天地华宇</option>
+                                        <option value="tnt" data-name="tnt">tnt</option>
+                                        <option value="ups" data-name="ups">ups</option>
+                                        <option value="wanjiawuliu" data-name="万家物流">万家物流</option>
+                                        <option value="wenjiesudi" data-name="文捷航空速递">文捷航空速递</option>
+                                        <option value="wuyuan" data-name="伍圆">伍圆</option>
+                                        <option value="wxwl" data-name="万象物流">万象物流</option>
+                                        <option value="xinbangwuliu" data-name="新邦物流">新邦物流</option>
+                                        <option value="xinfengwuliu" data-name="信丰物流">信丰物流</option>
+                                        <option value="yafengsudi" data-name="亚风速递">亚风速递</option>
+                                        <option value="yibangwuliu" data-name="一邦速递">一邦速递</option>
+                                        <option value="youshuwuliu" data-name="优速物流">优速物流</option>
+                                        <option value="youzhengguonei" data-name="邮政快递包裹">邮政快递包裹</option>
+                                        <option value="youzhengguoji" data-name="邮政国际包裹挂号信">邮政国际包裹挂号信</option>
+                                        <option value="yuanchengwuliu" data-name="远成物流">远成物流</option>
+                                        <option value="yuanweifeng" data-name="源伟丰快递">源伟丰快递</option>
+                                        <option value="yuanzhijiecheng" data-name="元智捷诚快递">元智捷诚快递</option>
+                                        <option value="yuntongkuaidi" data-name="运通快递">运通快递</option>
+                                        <option value="yuefengwuliu" data-name="越丰物流">越丰物流</option>
+                                        <option value="yad" data-name="源安达">源安达</option>
+                                        <option value="yinjiesudi" data-name="银捷速递">银捷速递</option>
+                                        <option value="zhongtiekuaiyun" data-name="中铁快运">中铁快运</option>
+                                        <option value="zhongyouwuliu" data-name="中邮物流">中邮物流</option>
+                                        <option value="zhongxinda" data-name="忠信达">忠信达</option>
+                                        <option value="zhimakaimen" data-name="芝麻开门">芝麻开门</option>
+                                        <option value="annengwuliu" data-name="安能物流">安能物流</option>
+                                        <option value="jd" data-name="京东快递">京东快递</option>
+                                        <option value="weitepai" data-name="微特派">微特派</option>
+                                        <option value="jiuyescm" data-name="九曳供应链">九曳供应链</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label must">快递单号</label>
+                                <div class="col-sm-9 col-xs-12">
+                                    <input type="text" name="expresssn" class="form-control" value="" data-rule-required="true" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group sendpress" style="display: block;">
+                                <label class="col-sm-2 control-label">发货商品</label>
+                                <div class="col-sm-9 col-xs-12">
+                                     <label class="fui-goods-list checkbox-inline row">
+                                        <span class="col-sm-1">
+                                            <input type="checkbox" name="ordergoodsid[]" value="438">
+                                            <img src="" width="25" height="25" alt="">
+                                        </span>
+                                        <span class="col-sm-11" style="height:25px;line-height: 25px;display: block;overflow: hidden;">
+                                            测试商品  </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">确认发货</button>
+                        <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                    </div>
+                </div>
+                <script language="javascript">
+                    $("select[name=express]").val("");
+
+                    $("#express").change(function () {
+                        var obj = $(this);
+                        var sel = obj.find("option:selected").attr("data-name");
+                        $("#expresscom").val(sel);
+                    });
+                    $(".close").click(function() {
+                        $(".maskbox").hide()
+                        $(".queren").hide();
+                    });
+                    $(".btn-default").click(function() {
+                        $(".maskbox").hide()
+                        $(".queren").hide()
+                    });
+                </script>
+            </div>
+        </form>
+</div>
+</div>
+
+
+<div id="tip-msgbox" class="msgbox"></div>
+           <tfoot>
+                <tr>
+                    <td colspan="4">
+                        {template "pagenation"}
+                    </td>
+                </tr>
+            </tfoot>
+        </div>
+    </div>
+</body>
+</html>
+  <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" src="{php echo HYB_YL_ADMIN}/js/moment.js"></script>
+        

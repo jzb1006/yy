@@ -1,0 +1,288 @@
+{template './common/siteheader'}
+    <link href="{php echo HYB_YL_ADMIN}/bootstrap.min.css?v={IMS_RELEASE_DATE}" rel="stylesheet">
+    <link href="{php echo HYB_YL_ADMIN}/common.css?v={IMS_RELEASE_DATE}" rel="stylesheet">
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">体检套餐管理</h1>
+            <div class="stats">
+                <a href="{php echo $this->createWeburl('setting',array('op'=>'tiyan'))}" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="panel panel-default">
+                <div class="panel-heading no-collapse">
+                    新增体检套餐
+                </div>
+                <div class="panel-body collapse in">
+                        <form id="checking-warp" action="" method="post" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-10">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">套餐名称 <span class="asterisk">*</span></label>
+                                            <input type="text" class="form-control max128" name="t_name" value="{$rew['t_name']}" required="">
+                                        </div>
+                                    </div>
+                                 <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <label class="control-label">套餐缩略图</label>
+                                         {php echo  tpl_form_field_image('t_thumb',$rew['t_thumb'])}
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">患者类型 <span class="asterisk">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="t_stype" id="radioAgeType" value="0" {if $rew['t_stype']=="0"} checked="checked" {/if}>
+                                            <label for="radioAgeType">成人</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="age_type" id="radioAgeType2" value="1" {if $rew['t_stype']=="1"} checked="checked" {/if}>
+                                            <label for="radioAgeType2">儿童</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="control-label">性别 <span class="asterisk">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="t_sex" id="radioDefault" value="1" {if $rew['t_sex']=="1"} checked="checked" {/if}>
+                                            <label for="radioDefault">男</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="sex_code" id="radioDefault2" value="2" {if $rew['t_sex']=="2"} checked="checked" {/if}>
+                                            <label for="radioDefault2">女</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="rdio rdio-default">
+                                            <input type="radio" name="sex_code" id="radioDefault3" value="3" {if $rew['t_sex']=="3"} checked="checked" {/if}>
+                                            <label for="radioDefault3">不区分</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">年龄段（<span class="ageArea">岁</span>）<span class="asterisk">*</span></label>
+                                            <div class="form-inline">
+                                                <input type="text" class="form-control number" value="{$rew['t_age1']}" name="t_age1" required=""> -
+                                                <input type="text" class="form-control number" value="{$rew['t_age2']}" name="t_age2" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label class="control-label">预计金额（元） <span class="asterisk">*</span></label>
+                                            <input type="text" class="form-control number" name="t_money" value="{$rew['t_money']}" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <label class="control-label">检测内容 <span class="asterisk">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="J-list">
+                                    <div class="row item-list">
+                                        <div class="col-sm-9">
+                                            <div class="form-group">
+                                                <input type="text" name="t_msg[]" class="form-control max2000 J-content" value="" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item hidden"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                                // body...
+                                    $('.J-add-content-item').on('click',function(){
+                                    $(this).parents('.form-group').find('.control-label').after(`<div class="addBox">
+                                                    <input type="text" name="t_msg[]" class="form-control max128" value="">
+                                                        <a href="javascript:void(0);" class="btn btn-sm btn-white J-del-content-item hidden"><i class="fa fa-minus"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-white J-add-content-item hidden"><i class="fa fa-plus"></i></a>
+                                                    </div>`)
+                                        var box=$(this).parents('.form-group').find('J-del-content-item').length;
+                                        console.log(box)
+                                    $(this).parents('.form-group').find('.J-del-content-item').removeClass('hidden');
+                                        $('.J-del-content-item').on('click',function(){
+                                            $(this).parents('.addBox').remove()
+                                            $()
+                                            })
+
+                                })
+
+                        </script> 
+                        <div class="panel-footer">
+                            <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>&nbsp;
+                            <button class="btn btn-default btn-sml J-cancel-btn">取消</button>
+                            <input name="token" type="hidden" value="{$_W['token']}" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action="#">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+    <script type="text/javascript">
+    require(['physical_package']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

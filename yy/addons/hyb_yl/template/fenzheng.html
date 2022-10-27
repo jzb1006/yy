@@ -1,0 +1,1080 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+                </div>
+                <div class="pageheader hidden">
+                    <h2><i class="fa fa-sitemap"></i> 分诊</h2>
+                </div>
+                <div class="contentpanel">
+                    <ul class="nav nav-tabs" id="j_mainTab">
+                        <li class="active"><a href="#today" data-toggle="tab"><strong>待分诊</strong></a></li>
+                        <li><a href="#history" data-toggle="tab"><strong>已分诊</strong></a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- 待分诊 -->
+                        <div class="tab-pane active" id="today">
+                            <div class="row">
+                                <div class="col-sm-9 col-md-9">
+                                    <div class="panel panel-default shadow-none" id="wait-patient-panel">
+                                        <div class="panel-body pdlr0">
+                                            <div class="row" id="wait-patient-list"></div>
+                                        </div>
+                                        <div class="J-pager-wrap1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3 module-hide J-module-control" data-modules="31">
+                                    <div class="panel panel-default shadow-none">
+                                        <div class="panel-body room pdlr0" id="room-state">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 待分诊 -->
+                        <!-- 已分诊 -->
+                        <div class="tab-pane" id="history">
+                            <div id="j_treat_list_wrap">
+                                <div class="row mb10">
+                                    <form class="form-inline" onsubmit="return false;">
+                                        <div class="col-sm-12">
+                                            <div class="input-group input-group-sm pull-right mb10">
+                                                <input type="text" class="form-control w200p" placeholder="请输入姓名或手机或病案号" name="patient_name" id="j_search_input">
+                                                <span class="input-group-btn">
+                                                    <button type="button" id="j_search_submit" class="btn btn-default btn-search"><i class="fa fa-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="people-list">
+                                    <div class="row" id="treat-patient-list">
+                                        <div class="col-sm-6 col-md-4 col-lg-3">
+        
+            <div class="panel panel-end panel-alt widget-photoday img-list">
+                
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="青铜"></span>
+                    </div>
+                
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=00020121622 "><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-end room-tag">登记 09:40</span>
+                            <h3>
+                              <a href="/Clinic/Patient/profile?patient_id=00020121622" class="white name-nowrap">林炜</a>
+                              <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="36岁6月7天">（男 36岁）</small>
+                            </h3>
+                            <span class="text-nowrap">登记科室：（初诊）</span>
+                            <span>体温:  呼吸: <br>脉搏: 0次/分钟   血压:  / </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                    <ul class="photo-meta">
+                    
+                        <li><a href="#" data-toggle="modal" data-patient-id="00020121622" data-clinic-id="77710" data-sex="1">已接诊</a></li>
+                    
+                    
+                        <li class="J-module-control" data-modules="7">
+                            <a href="#" data-toggle="modal" data-patient-id="00020121622" data-clinic-id="77710" data-doctor-id="1">
+                                林炜 (接诊)</a>
+                        </li>
+                        <li class="module-hide J-module-control" data-modules="31">
+                            <a href="#" data-toggle="modal" data-patient-id="00020121622" data-clinic-id="77710" data-room-id="1">
+                                
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </div>
+            </div>
+        
+    </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="J-pager-wrap2">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 已分诊 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 叫号弹窗 -->
+        <div class="modal fade" id="J-call-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title font16 gray2">患者号码</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 font20 J-call-modal-number">
+                                张医生 3 号
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary J-print-call-code font12" style="padding: 5px 15px;">打印号码</button>
+                        <button type="button" class="btn btn-default font12" data-dismiss="modal" style="padding: 5px 15px; font-size: 12px">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 选择医生 -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">选择医生</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 pt15 pb0 mr10 pull-right">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control J-doctor-name" placeholder="请输入医生姓名">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-search"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 医生列表 -->
+                        <div class="row filemanager" id="j_doctorList">
+                        </div>
+                        <!-- 医生列表 -->
+                    </div>
+                    <div class="modal-footer modal-btn-col1">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消选择</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 选择医生 -->
+        <!-- 选择诊室 -->
+        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">选择诊室</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 诊室列表 -->
+                        <div class="row filemanager room-rdio" id="j_roomList">
+                        </div>
+                        <!-- 诊室列表 -->
+                    </div>
+                    <div class="modal-footer modal-btn-col1">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 选择诊室 -->
+        <!-- 完善信息 -->
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">个人信息</h4>
+                    </div>
+                    <div class="modal-body pd0">
+                        <div id="progressWizard" class="basic-wizard">
+                            <ul class="nav nav-pills nav-justified">
+                                <li class="border-none"><a href="#ptab5" data-toggle="tab">体征测量</a></li>
+                                <!-- <li class="border-none"><a href="#ptab2" data-toggle="tab">基本信息</a></li> -->
+                                <li class="border-none"><a href="#ptab3" data-toggle="tab">病历信息</a></li>
+                                <li class="border-none"><a href="#ptab4" data-toggle="tab">病历登记</a></li>
+                            </ul>
+                            <div class="tab-content step" id="j_supplyInfo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary" id="j_saveSupply">保存</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 个人信息 -->
+
+        <!-- 切换窗口保存信息提示 -->
+        <div class="modal fade" id="saveForm-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">系统提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>你填写的内容已修改，是否需要保存？</h4>
+                        <input type="hidden" class="J-del-patientId">
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="submit" class="btn btn-primary J-save-submit">保存</button>
+                        <button type="button" class="btn btn-default J-cancel-save">不保存</button>
+                        <button type="button" class="btn btn-default J-do-nothing" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 切换窗口保存信息提示 -->
+    </div>
+    <div id="print"></div>
+
+    <!-- 待分诊病人 list - item -->
+    <script type="text/template" id="wait-patient-list-tpl">
+        <div class="panel panel-white panel-alt widget-photoday img-list">
+            <%if(member_type && member_type_status == 1){%>
+                <div class="p-relative">
+                    <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+                </div>
+            <%} else if(member_type && member_type_status == 2){%>
+                <div class="p-relative">
+                    <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+                </div>
+            <% } %>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-2 col-md-4">
+                        <a href="<%- profileUrl %>"><img src="<%-image %>" class="img-sm img-border" alt="profile"></a>
+                    </div>
+                    <div class="col-sm-10 col-md-8 pl0">
+                        <div class="plt20">
+                            <span class="widget-label badge badge-dark room-tag">登记 <%- sign_time %></span>
+                            <h3>
+                              <a class="name-nowrap" href="<%- profileUrl %>"><%- name %></a>
+                              <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info  %>">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small>
+                            </h3>
+                            <span class="text-nowrap">登记科室：<%- order_depart %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                            <span>预约医生：<%- order_doctor %> / 等候<%- wait_time %></span>
+                            <span>预约时间：<%- reservation_date?reservation_date:'无' %></span>
+                            <span>预约详情：<%if(reservation_id){%><a href="<%- global_src_api %>/Reservation/reservation.html?patient_id=<%- patient_id %>&reservation_id=<%- reservation_id %>">查看</a><%} else {%>无<%}%></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <ul class="photo-meta">
+                <%if (show_extra) { %>
+                    <li><a href="#" data-toggle="modal" class="j-modal1" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>" data-sex="<%- sex_code %>" data-age="<%- age %>">完善信息</a></li>
+                <%}%>
+                <%if (show_choose) { %>
+                    <li class="module-hide J-module-control" data-modules="7">
+                        <a href="#" data-toggle="modal" class="j-modal2" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>">
+                            <%if(consulting_doctor){%>
+                                <%-consulting_doctor%>
+                            <%} else {%>选择医生
+                            <%}%>
+                        </a>
+                    </li>
+                    <li class="module-hide J-module-control" data-modules="31">
+                        <a href="#" data-toggle="modal" class="j-modal3" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>">
+                            <%if(consulting_room){%>
+                                <%-consulting_room%>
+                            <%} else {%>选择诊室
+                            <%}%>
+                        </a>
+                    </li>
+                <%}%>
+                </ul>
+            </div>
+        </div>
+    </script>
+
+    <!-- 已分诊 病人 list - item -->
+    <script type="text/template" id="treat-patient-list-tpl">
+        <!-- <%if(status*1>2){%> -->
+            <div class="panel panel-end panel-alt widget-photoday img-list">
+                <!-- <%if(member_type && member_type_status == 1){%> -->
+                    <div class="p-relative">
+                        <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+                    </div>
+                <!-- <%} else if(member_type && member_type_status == 2){%> -->
+                    <div class="p-relative">
+                        <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+                    </div>
+                <!-- <% } %> -->
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="<%- profileUrl %> "><img src="<%-image %>" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-end room-tag">登记 09:40</span>
+                            <h3>
+                              <a href="<%- profileUrl %>" class="white name-nowrap">林炜</a>
+                              <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info  %>">（男 36岁）</small>
+                            </h3>
+                            <span class="text-nowrap">登记科室：（初诊）</span>
+                            <span>体温:  呼吸: <br>脉搏: 0次/分钟   血压:  / </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                    <ul class="photo-meta">
+                    <!-- <%if (show_extra) { %> -->
+                        <li><a href="#" data-toggle="modal" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>" data-sex="<%- sex_code %>">已接诊</a></li>
+                    <!-- <%}%>
+                    <%if (show_choose) { %>
+                        <li class="module-hide J-module-control" data-modules="7">
+                            <a href="#" data-toggle="modal" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>" data-doctor-id="<%- consulting_doctor_id%>">
+                                <%-consulting_doctor%> (接诊)</a>
+                        </li>
+                        <li class="module-hide J-module-control" data-modules="31">
+                            <a href="#" data-toggle="modal" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>" data-room-id="<%- consulting_room_id%>">
+                                <%-consulting_room%>
+                            </a>
+                        </li>
+                    <%}else{%> -->
+                      <li class="module-hide J-module-control" data-modules="7">林炜 (接诊)</li>
+                      <!-- <li class="module-hide J-module-control" data-modules="31"><%-consulting_room%></li> -->
+                    <!-- <%}%> -->
+                    </ul>
+                </div>
+            </div>
+        <!-- <%}else{%>
+          <div class="panel panel-danger panel-alt widget-photoday img-list">
+                <%if(member_type){%>
+                <div class="p-relative">
+                    <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+                </div>
+                <%}%>
+              <div class="panel-heading">
+                  <div class="row">
+                      <div class="col-sm-4">
+                          <a href="<%- profileUrl %> "><img src="<%-image %>" class="img-sm img-border" alt="profile"></a>
+                      </div>
+                      <div class="col-sm-8 pl0">
+                          <span class="widget-label badge badge-danger room-tag">登记 <%- sign_time %></span>
+                          <h3>
+                            <a href="<%- profileUrl %>" class="white name-nowrap"><%- name %></a>
+                            <small class="media-span">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small>
+                          </h3>
+                          <span class="text-nowrap">登记科室：<%- order_depart %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                          <span>体温: <% if( !isNaN(parseFloat(temperature) )){ %><%- temperature %>&#176;C &ensp;<% }else{ %><%- temperature %>&ensp;<% } %>呼吸: <% if( !isNaN(parseFloat(breathing) )){ %><%- breathing %>次/分钟<% }else{ %><%- breathing %><% } %><br>脉搏: <%if( !isNaN(parseFloat(pulse) )){%><%- pulse %>次/分钟&ensp;<% }else{ %><%- pulse %><%}%> &ensp;血压: <%- shrinkpressure %> / <%- diastolic_pressure %></span>
+                      </div>
+                  </div>
+              </div>
+              <div class="panel-body text-center">
+                  <ul class="photo-meta">
+                    <%if (show_extra) { %>
+                      <li><a href="#" data-toggle="modal" class="j-modal1" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>" data-sex="<%- sex_code %>" data-age="<%- age %>">完善信息</a></li>
+                    <%}%>
+                    <%if (show_choose) { %>
+                      <li class="module-hide J-module-control" data-modules="7">
+                          <a href="#" data-toggle="modal" class="j-modal2" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>" data-doctor-id="<%- consulting_doctor_id%>">
+                              <%-consulting_doctor%> (接诊)</a>
+                      </li>
+                      <li class="module-hide J-module-control" data-modules="31">
+                          <a href="#" data-toggle="modal" class="j-modal3" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>" data-room-id="<%- consulting_room_id%>">
+                              <%-consulting_room%>
+                          </a>
+                      </li>
+                    <%}else{%>
+                      <li class="module-hide J-module-control" data-modules="7"><%-consulting_doctor%> (接诊)</li>
+                      <li class="module-hide J-module-control" data-modules="31"><%-consulting_room%></li>
+                    <%}%>
+                  </ul>
+              </div>
+          </div>
+        <%}%> -->
+    </script>
+
+    <!-- 完善信息模板 -->
+    <script type="text/template" id="supply-info-tpl">
+        <div class="progress active">
+            <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="width: 25%;"></div>
+        </div>
+        <!-- start 体征信息 -->
+        <div class="tab-pane mt10 active" id="ptab5" data-type="5">
+            <form class="form-horizontal" id="j_tab5Form">
+                <!-- start 第一行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">体重(KG)</label>
+                                    <input type="text" value="<% if(age >= 14 || modifyTime > new Date(new Date()-86400000).Format('yyyy-MM-dd hh:mm:ss')){ %><%-weightkg*1?weightkg:''%><% } %>" name="weightkg" class="form-control display-ilb number" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">身高(CM)</label>
+                                    <input type="text" value="<% if(age >= 14 || modifyTime > new Date(new Date()-86400000).Format('yyyy-MM-dd hh:mm:ss')){ %><%-heightcm*1?heightcm:''%><% } %>" name="heightcm" class="form-control display-ilb number" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第一行 -->
+                <!-- start 第二行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">BMI指数</label>
+                                    <%if(age < 14){%>
+                                        <input type="text" value="<%-bmi*1?bmi:''%>" name="bmi" value="20.00（体质指数：18.5-23.9）" class="form-control" readonly>
+                                        <span class="input-group-addon tooltips hidden" data-toggle="tooltip" data-placement="left" data-original-title="参考值为：体重过低：<18.5，体重正常：18.5-23.9，超重：24.0-27.9，肥胖：≥28"></span>
+                                    <%} else {%>
+                                        <div class="input-group">
+                                            <input type="text" value="<%-bmi*1?bmi:''%>" name="bmi" value="20.00（体质指数：18.5-23.9）" class="form-control" readonly>
+                                            <span class="input-group-addon tooltips" data-toggle="tooltip" data-placement="left" data-original-title="参考值为：体重过低：<18.5，体重正常：18.5-23.9，超重：24.0-27.9，肥胖：≥28"><%-bmi_name%></span>
+                                        </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">血型</label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <select class="form-control input-sm mt0" data-placeholder="ABO血型" name="bloodtype">
+                                                <option value="">ABO型</option>
+                                                <option value="A" <%- bloodtype=='A' ? selected="selected" : ""%>>A型</option>
+                                                <option value="B" <%- bloodtype=='B' ? selected="selected" : ""%>>B型</option>
+                                                <option value="O" <%- bloodtype=='O' ? selected="selected" : ""%>>O型</option>
+                                                <option value="AB" <%- bloodtype=='AB' ? selected="selected" : ""%>>AB型</option>
+                                                <option value="0" <%- bloodtype=='0' ? selected="selected" : ""%>>未查</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control input-sm mt0" data-placeholder="请选择" name="blood2type">
+                                                <option value="">RH血型</option>
+                                                <option value="F" <%- blood2type=='F' ? selected="selected" : ""%>>RH阴性</option>
+                                                <option value="M" <%- blood2type=='M' ? selected="selected" : ""%>>RH阳性</option>
+                                                <option value="0" <%- blood2type=='0' ? selected="selected" : ""%>>未查</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第二行 -->
+                <!-- start 第三行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">体温(&#176;C)</label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <select class="form-control input-sm mt0" data-placeholder="请选择" name="temperature_type">
+                                                <option value="1" <% if(temperature_type == 1 || (temperature_type == 0 && age >= 14)){ %>selected<% } %>>口温</option>
+                                                <option value="2" <% if(temperature_type == 2 || (temperature_type == 0 && age < 14)){ %>selected<% } %>>耳温</option>
+                                                <option value="3" <% if(temperature_type == 3){ %>selected<% } %>>额温</option>
+                                                <option value="4" <% if(temperature_type == 4){ %>selected<% } %>>腋温</option>
+                                                <option value="5" <% if(temperature_type == 5){ %>selected<% } %>>肛温</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-temperature%>" name="temperature" class="form-control display-ilb ah" placeholder="" maxlength="32">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">呼吸(次/分钟)</label>
+                                    <input type="text" value="<%-breathing%>" name="breathing" class="form-control display-ilb rsv" placeholder="" maxlength="32">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第三行 -->
+                <!-- start 第四行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">脉搏(次/分钟)</label>
+                                    <input type="text" value="<%-pulse%>" name="pulse" class="form-control display-ilb pwv" placeholder="" maxlength="32">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">血压(mmHg)</label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-shrinkpressure%>" name="shrinkpressure" class="form-control sbp" maxlength="32" placeholder="收缩压">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-diastolic_pressure%>" name="diastolic_pressure" class="form-control dpb" maxlength="32" placeholder="舒张压">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第四行 -->
+                <!-- start 第五行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">血糖浓度(mmol/I)</label>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <input type="text" value="<%- date || new Date().Format('yyyy-MM-dd hh:mm') %>" name="date" class="form-control display-ilb J-sugar-date-input">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="form-control input-sm mt0" name="bloodsugar_checktime">
+                                                <option value="">请选择</option>
+                                                <option value="3" <% if (checktime == 3) {%>selected<%}%>>凌晨</option>
+                                                <option value="1" <% if (checktime == 1) {%>selected<%}%>>空腹</option>
+                                                <option value="4" <% if (checktime == 4) {%>selected<%}%>>早餐前</option>
+                                                <option value="2" <% if (checktime == 2) {%>selected<%}%>>早餐后</option>
+                                                <option value="5" <% if (checktime == 5) {%>selected<%}%>>午餐前</option>
+                                                <option value="6" <% if (checktime == 6) {%>selected<%}%>>午餐后</option>
+                                                <option value="7" <% if (checktime == 7) {%>selected<%}%>>晚餐前</option>
+                                                <option value="8" <% if (checktime == 8) {%>selected<%}%>>晚餐后</option>
+                                                <option value="0" <% if (checktime == 0) {%>selected<%}%>>睡前</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" value="<%-bloodsugar%>" name="bloodsugar_value" class="form-control display-ilb J-sugar-input" placeholder="血糖浓度" maxlength="32">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">视力</label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-leftEyesight%>" name="leftEyesight" class="form-control display-ilb" placeholder="左眼" maxlength="32">  
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-rightEyesight%>" name="rightEyesight" class="form-control display-ilb" placeholder="右眼" maxlength="32">  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第五行 -->
+                <!-- start 第六行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">氧饱和度(%)</label>
+                                    <input type="text" value="<%-oxygen_saturation%>" name="oxygen_saturation" class="form-control display-ilb pwv" placeholder="" maxlength="32">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">疼痛评分(0-10)</label>
+                                    <select class="form-control input-sm mt0" data-placeholder="请选择" name="pain_score">
+                                        <option value="0" <%- pain_score=='0' ? selected="selected" : ""%>>0</option>
+                                        <option value="1" <%- pain_score=='1' ? selected="selected" : ""%>>1</option>
+                                        <option value="2" <%- pain_score=='2' ? selected="selected" : ""%>>2</option>
+                                        <option value="3" <%- pain_score=='3' ? selected="selected" : ""%>>3</option>
+                                        <option value="4" <%- pain_score=='4' ? selected="selected" : ""%>>4</option>
+                                        <option value="5" <%- pain_score=='5' ? selected="selected" : ""%>>5</option>
+                                        <option value="6" <%- pain_score=='6' ? selected="selected" : ""%>>6</option>
+                                        <option value="7" <%- pain_score=='7' ? selected="selected" : ""%>>7</option>
+                                        <option value="8" <%- pain_score=='8' ? selected="selected" : ""%>>8</option>
+                                        <option value="9" <%- pain_score=='9' ? selected="selected" : ""%>>9</option>
+                                        <option value="10" <%- pain_score=='10' ? selected="selected" : ""%>>10</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第六行 -->
+            </form>
+        </div>
+        <!-- end体征信息 -->
+        <!-- 病历信息 -->
+        <div class="tab-pane" id="ptab3" data-type="3">
+            <form class="form-horizontal">
+                <div class="J-allergy-box">
+                    <div class="form-group mb0">
+                        <div class="col-xs-2 col-sm-2 w10"><strong>过敏史：</strong></div>
+                        <div class="col-xs-3 col-sm-3 w10 rdio rdio-default mr20">
+                            <input type="radio" class="J-has-allergy1 J-check-wrap" name="has_allergy" id="radioDefault5" value="1">
+                            <label for="radioDefault5">有</label>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 rdio rdio-default mr20">
+                            <input type="radio" class="J-has-allergy0 J-check-wrap" name="has_allergy" id="radioDefault6" value="0">
+                            <label for="radioDefault6">否认</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12"><strong>个人史：</strong></label>
+                    <div class="col-sm-12">
+                        <textarea class="form-control display-ilb J-textarea-limit" name="personalhistory" maxlength="500" placeholder="" style="height: 100px;"><%- personalhistory%></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12"><strong>家族史：</strong></label>
+                    <div class="col-sm-12">
+                        <textarea class="form-control display-ilb J-ipt-genetichistory J-textarea-limit" maxlength="500" placeholder="" style="height: 100px;" name="genetichistory"><%- genetichistory%></textarea>
+                    </div>
+                </div>
+                <% if(age < 14){ %>
+                  <div class="form-group">
+                      <label class="col-sm-12"><strong>疫苗接种史：</strong></label>
+                      <div class="col-sm-12">
+                          <input type="text" class="form-control display-ilb J-vaccination_history" maxlength="255" placeholder="" name="vaccination_history" value="<%- vaccination_history%>">
+                      </div>
+                  </div>
+                <% } %>
+                <% if(sex != 1){ %>
+                    <div class="form-group">
+                        <label class="col-sm-12"><strong>月经史：</strong></label>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">初潮</span>
+                                <input type="text" placeholder="xx岁" id="age" class="form-control" name="menarche" value="<%- menarche%>">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">经期</span>
+                                <input type="text" placeholder="xxx天-xxx天" id="date" value="<%-taketime%>" class="form-control" name="taketime">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">周期</span>
+                                <input type="text" placeholder="xxx天-xxx天" id="day" class="form-control" name="cycle" value="<%-cycle%>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">末次月经</span>
+                                <input type="text" class="form-control display-ilb J-ipt-last_menarche" placeholder="" maxlength="128" name="last_menarche" value="<%- last_menarche%>">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">孕周</span>
+                                <input type="text" placeholder="xx周" class="form-control J-pregnancy-week" name="pregnancy_week" value="<%- pregnancy_week %>">
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                <% if(sex != 1){ %>
+                    <div class="form-group">
+                        <label class="col-sm-12"><strong>生育史：</strong></label>
+                        <div class="col-sm-12">
+                            <input type="text" placeholder="足月产<%- term_production%>-早产<%- pretermbirth%>-流产<%- abortion%>-现存子女数<%- childern%>" id="numb" maxlength="255" class="form-control display-ilb" name="historychildbearing">
+                        </div>
+                    </div>
+                <% } %>
+            </form>
+        </div>
+        <!-- 病历信息 -->
+        <!-- 病历登记 -->
+        <div class="tab-pane" id="ptab4" data-type="4">
+            <form class="form-horizontal" id="j_tab4Form">
+                <div class="form-group">
+                    <label class="col-sm-12"><strong>主诉</strong> <span class="asterisk">*</span></label>
+                    <div class="col-sm-12">
+                        <div>
+                            <textarea required name="chiefcomplaint" maxlength="500" placeholder="填写主诉..." class="form-control J-textarea-limit" rows="5" required><%-chiefcomplaint%></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12"><strong>现病史</strong></label>
+                    <div class="col-sm-12">
+                        <div>
+                            <textarea name="historypresent" maxlength="500" placeholder="填写现病史..." class="form-control J-textarea-limit" rows="5" ><%-historypresent%></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- 上传文件 -->
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div id="file-upload-module">
+                            <%_.each(imgurl,function(item, i){%>
+                                <div class="J_image_upload mt10 col-sm-3">
+                                    <div class="image-select J-image-select empty">
+                                        <%if(item.type.toLowerCase() == 'docx' || item.type.toLowerCase() == 'doc'){%>
+                                            <div class="image-preview">
+                                                <a href="<%-item.url%>" class="display-block">
+                                                    <i class="fa font48 dropdown-menu-head lh3 fa-file-word-o"></i>
+                                                </a>
+                                                <span class="upload-progress upload-doc-style" percent="100" style="width: 100%;"><%-item.name%></span>
+                                            </div>
+                                        <%} else if(item.type.toLowerCase() == 'pdf'){%>
+                                            <div class="image-preview">
+                                                <a href="<%-item.url%>" class="display-block">
+                                                    <i class="fa font48 dropdown-menu-head lh3 fa-file-pdf-o"></i>
+                                                </a>
+                                                <span class="upload-progress upload-doc-style" percent="100" style="width: 100%;"><%-item.name%></span>
+                                            </div>
+                                        <%} else if(item.type.toLowerCase() == 'xls' || item.type.toLowerCase() == 'xlsx'){%>
+                                            <div class="image-preview">
+                                                <a href="<%-item.url%>" class="display-block">
+                                                    <i class="fa font48 dropdown-menu-head lh3 fa-file-excel-o"></i>
+                                                </a>
+                                                <span class="upload-progress upload-doc-style" percent="100" style="width: 100%;"><%-item.name%></span>
+                                            </div>
+                                        <%} else {%>
+                                            <div class="image-preview">
+                                                <a data-rel="prettyPhoto" href="<%-item.url%>"><img src="<%-item.url%>&pattern=200"></a>
+                                            </div>
+                                        <%}%>
+                                        <div class="image-upload">
+                                            <input type="file" class="J-image-upload" name="files[]" accept="image/*" style="display: none;">
+                                            <input type="hidden" name="imgurl[]" class="J-ipt-hidden" value="<%-item.url%>">
+                                            <a class="btn btn-default btn-sm J-image-btn" data-type="delete">删除文件</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%})%>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12"><strong>既往病史</strong></label>
+                    <div class="col-sm-12">
+                        <div>
+                            <textarea name="pasthistory" maxlength="500" placeholder="填写既往病史..." class="form-control J-textarea-limit" rows="5"><%-pasthistory%></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- 上传文件 -->
+                <div class="form-group">
+                    <label class="col-sm-12"><strong>体格检查</strong></label>
+                    <div class="col-sm-12">
+                        <div>
+                            <textarea name="physical_examination" placeholder="填写体格检查..." maxlength="2000" class="form-control J-textarea-limit" rows="5"><%-physical_examination%></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12"><strong>备注</strong></label>
+                    <div class="col-sm-12">
+                        <div>
+                            <textarea name="remark" placeholder="" class="form-control max256" rows="5"><%-remark%></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 病历登记 -->
+    </script>
+
+    <!-- 个人体征获取数据模版 -->
+    <script type="text/template" id="sign-info-tpl">
+        <div class="carousel-inner">
+            <% for(var i = 0, length = iHeatlth.length;i < length;i++) {%>
+                <div class="item <%if(i==length-1){%>active<%}%> text-center">
+                    <table class="table table-bordered table-data">
+                        <thead>
+                            <tr>
+                                <th colspan="2" align="center">
+                                    <%-iHeatlth[i].LastTime%>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>脉搏：</td>
+                                <td><span class="hr"><%-iHeatlth[i].HR%></span> 次/分钟</td>
+                            </tr>
+                            <tr>
+                                <td>收缩压：</td>
+                                <td><span class="hp"><%-iHeatlth[i].HP%></span> mmHg</td>
+                            </tr>
+                            <tr>
+                                <td>舒张压：</td>
+                                <td><span class="lp"><%-iHeatlth[i].LP%></span> mmHg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button type="button" class="btn btn-sm btn-block btn-white J_get_health">获取</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+        </div>
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+    </script>
+
+    <!--选择医生模板 -->
+    <script type="text/template" id="doctor-list-tpl">
+        <div class="thmb">
+            <label for="doct_radio<%-doctor_id%>" class="J-chooseDoct">
+                <% if(is_check){%>
+                    <input type="radio" name="doctor_id" id="doct_radio<%-doctor_id%>" value="<%-doctor_id%>" checked="checked" class="hidden">
+                <%}else{%>
+                    <input type="radio" name="doctor_id" id="doct_radio<%-doctor_id%>" value="<%-doctor_id%>" class="hidden">
+                <%}%>
+                <div class="thmb-prev">
+                    <img src="<%- doctor_image %>" class="img-responsive" alt="">
+                </div>
+                <h5 class="fm-title text-nowrap"><%-name %>（<%- doctor_depart %>）</h5>
+                <span class="font12">待接诊：<small class="red"><%- WaittingPatient %></small>人</span>
+                <span class="font12">已接诊：<%- CountsPatient %>人</span>
+            </label>
+        </div>
+    </script>
+
+    <!--选择诊室模板 -->
+    <script type="text/template" id="room-list-tpl">
+        <label for="clinic_radio<%-room_id%>" class="J-chooseRoom">
+            <% if(is_check){%>
+                <input type="radio" name="clinic_id" id="clinic_radio<%-room_id%>" value="<%-room_id%>" checked="checked" class="hidden">
+            <%}else{%>
+                <input type="radio" name="clinic_id" id="clinic_radio<%-room_id%>" value="<%-room_id%>" <%- status==1 ? '' : 'disabled="disabled"' %> class="hidden">
+            <%}%>
+            <div class="room">
+                <div class="panel panel-success panel-alt widget-time">
+                    <div class="panel-heading text-center">
+                        <span class="widget-label badge badge-success"><%-status_name%></span>
+                        <%if(status!=1){%>
+                            <span>医生：<%-doctor_name%></span>
+                            <span>病人：<%-patient_name%></span>
+                            <%}%>
+                    </div>
+                    <div class="panel-body text-center">
+                        <h3 class="today text-nowrap"><%-clinicname%></h3>
+                    </div>
+                </div>
+            </div>
+        </label>
+    </script>
+
+    <!-- 过敏史模版 -->
+    <script type="text/template" id="allergy-row-tpl">
+        <div class="form-group allergy-list">
+            <div class="col-sm-4">
+                <input type="hidden" data-placeholder="过敏源" name="allergy1[]" class="mt0 J-sel-allergy1" />
+            </div>
+            <div class="col-sm-4">
+                <input type="hidden" data-placeholder="过敏反应" name="allergy2[]" class="mt0 J-sel-allergy2" />
+            </div>
+            <div class="col-sm-2">
+                <input type="hidden" data-placeholder="过敏程度" name="allergy3[]" class="mt0 J-sel-allergy3" />
+            </div>
+            <div class="col-sm-2">
+                <a class="btn input-sm mt0 btn-white J-btn-delete-allergy"><i class="fa fa-minus"></i></a>
+                <a class="btn input-sm mt0 btn-white J-btn-add-allergy"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+    </script>
+
+    <!-- 右侧诊室列表 -->
+    <script type="text/template" id="room-status-tpl">
+        <% _.each(items, function(item, i){ %>
+            <% if(i%2 == 0){ %>
+                <div class="row">
+            <% } %>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="panel panel-<%- item.className %> panel-alt widget-time">
+                            <div class="panel-heading text-center">
+                                <span class="widget-label badge badge-<%- item.className %>"><%- item.clinicstatus %></span>
+                                <% if( item.status != 3 ){ %>
+                                    <span class="text-nowrap">医生: <%- item.doctorname %></span>
+                                    <span class="text-nowrap">病人: <%- item.patientname %></span>
+                                <% } %>
+                            </div>
+                            <div class="panel-body text-center">
+                                <h3 class="today"><%- item.clinicname %></h3>
+                            </div>
+                        </div>
+                    </div>
+            <% if(i%2 == 1){ %>
+                </div>
+            <% } %>
+            <% if( i == items.length && items.length%2 == 1){ %>
+                </div>
+            <% } %>
+        <% }) %>
+    </script>
+    <!-- 打印挂号条 -->
+<script type="text/template" id="J-call-print-tpl">
+      <!-- 通用挂号条 -->
+    <div class="content-body m-auto print--customize position-relative call">
+        <div class="call-title text-center"><%- clinicName%></div>
+        <div class="text-center">
+          <div class="call-number">
+            <%- numberName%><span class="call-subtitle"> 号</span>
+          </div>
+        </div>
+        <div class="call-content">
+            <!-- 就诊人 -->
+            <div class="call-content-item">
+                <div class="call-content-item-left">就诊人</div>
+                <div class="call-content-item-middle">:</div>
+                <div class="call-content-item-right"><%- patientName%></div>
+            </div>
+            <!-- 病案号 -->
+            <div class="call-content-item">
+                <div class="call-content-item-left">病案号</div>
+                <div class="call-content-item-middle">:</div>
+                <div class="call-content-item-right"><%- patientNo%></div>
+            </div>
+            <!-- 性别 -->
+            <div class="call-content-item">
+                <div class="call-content-item-left">性别</div>
+                <div class="call-content-item-middle">:</div>
+                <div class="call-content-item-right"><%- sexName%></div>
+            </div>
+            <!-- 科室 -->
+            <div class="call-content-item">
+                <div class="call-content-item-left">科室</div>
+                <div class="call-content-item-middle">:</div>
+                <div class="call-content-item-right"><%- departName%></div>
+            </div>
+            <!-- 就诊类型 -->
+            <div class="call-content-item">
+                <div class="call-content-item-left">就诊类型</div>
+                <div class="call-content-item-middle">:</div>
+                <div class="call-content-item-right"><%- receptionTypeName%></div>
+            </div>
+            <!-- 医生 -->
+            <div class="call-content-item">
+                <div class="call-content-item-left">医生</div>
+                <div class="call-content-item-middle">:</div>
+                <div class="call-content-item-right"><%- doctorName%></div>
+            </div>
+            <% if (registrationFee) { %>
+            <!-- 挂号费 -->
+            <div class="call-content-item">
+                <div class="call-content-item-left">挂号费</div>
+                <div class="call-content-item-middle">:</div>
+                <div class="call-content-item-right">￥ <%- registrationFee%></div>
+            </div>
+            <% } %>
+            <% if (cardAmount) { %>
+            <!-- 卡余额 -->
+            <div class="call-content-item">
+                <div class="call-content-item-left">卡余额</div>
+                <div class="call-content-item-middle">:</div>
+                <div class="call-content-item-right">￥ <%- cardAmount%></div>
+            </div>
+            <% } %>
+            <% if (payTypeName) { %>
+            <!-- 支付方式 -->
+            <div class="call-content-item">
+                <div class="call-content-item-left">支付方式</div>
+                <div class="call-content-item-middle">:</div>
+                <div class="call-content-item-right"><%- payTypeName%></div>
+            </div>
+            <% } %>
+        </div>
+        <% if (payee) { %>
+        <!-- 收款人 -->
+        <div class="call-content-item">
+            <div class="call-content-item-left">收款人</div>
+            <div class="call-content-item-middle">:</div>
+            <div class="call-content-item-right"><%- payee%></div>
+        </div>
+        <% } %>
+        <!-- 登记时间 -->
+        <div class="call-content-item">
+            <div class="call-content-item-left">登记时间</div>
+            <div class="call-content-item-middle">:</div>
+            <div class="call-content-item-right"><%= new Date(receptionTime).Format('yyyy-MM-dd hh:mm:ss')%></div>
+        </div>
+        <div class="call-desc">
+            号码仅当天有效，请注意叫号，有序就诊
+        </div>
+    </div></script>
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['triage']);
+    </script>
+</body>
+
+</html>

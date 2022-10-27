@@ -1,0 +1,631 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            <div class="pageheader hidden">
+                <h2><i class="fa fa-asterisk"></i> 随访管理</h2>
+            </div>
+            <div class="contentpanel panel-email J-follow-lst">
+                <div class="row">
+                    <!-- left -->
+                    <div class="col-sm-12 col-md-2 mb20">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}" class="btn btn-white btn-block black" id="J-da-add-follow"><i class="fa fa-plus"></i> 新增随访</a>
+                            </div>
+                        </div>
+                        <div class="mb30"></div>
+                        <div class="form-horizontal">
+                         <h5 class="subtitle font16">联盟医院</h5>
+                            <ul class="nav nav-follow nav-stacked nav-email" id="J-follow-groups-wrap">
+
+                               <li class="J-follow-group " data-status="">
+                                    <a href="javascript:void(0);">
+                                        <div class="form-group list-category m-nomargin">
+                                            <label class="col-sm-1 control-label"><i class="fa fa-folder-o"></i></label>
+                                            <div class="col-sm-9">
+                                               山西大医院
+                                            </div>
+                                        </div>
+                                    </a>
+                               </li>
+
+
+                         </ul>
+                   </div>
+               </div>
+                    <!-- left -->
+                    <!-- right -->
+                    <div class="col-sm-12 col-md-10">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-3">
+                                        <h4 class="panel-title">全部随访</h4>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 mt10 pl0 pr0">
+                                        <form class="form-inline pull-right" id="J-follow-form" method="GET">
+                                            <input class="form-control input-sm2 radius3 J-status hidden" name="status" type="text" value="0">
+                                            <input class="form-control input-sm2 radius3 J-followTypeId hidden" name="followType" type="text" value="">
+
+                                            <div class="form-group mr0 hidden">
+                                                <label class="control-label">创建时间：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 date J-createTimeStart mbsc-comp" size="10" name="createTimeStart" type="text" placeholder="创建开始日期" id="mobiscroll1560596642031" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0 hidden"> - </div>
+                                            <div class="form-group mr5 hidden">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 date J-createTimeEnd mbsc-comp" size="10" name="createTimeEnd" type="text" placeholder="创建结束日期" id="mobiscroll1560596642032" readonly="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr5" id="J-followupExcuteId-wrap">
+                                                <div class="input-group col-custom-xs-12">
+                                                    <div class="select2-container mtf3 select-sm3 J-followupExcute" id="s2id_J-followupExcuteId" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-3">随访人员</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen3" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-3" id="s2id_autogen3"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen3_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-3" id="s2id_autogen3_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-3">   </ul></div></div><input type="hidden" name="followupExcuteId" class="mtf3 select-sm3 J-followupExcute select2-offscreen" id="J-followupExcuteId" data-init="" data-initlist="" data-placeholder="随访人员" tabindex="-1" title="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr5">
+                                                <div class="input-group col-custom-xs-12">
+                                                    <input class="form-control input-sm2 radius3 appDate J-select-createDate" type="text" placeholder="创建日期" size="21">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr5">
+                                                <div class="input-group col-custom-xs-12">
+                                                    <div class="select2-container mtf3 select-sm3 J-creatorName" id="s2id_J-creatorId" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">创建人员</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-1">   </ul></div></div><input type="hidden" name="creatorId" class="mtf3 select-sm3 J-creatorName select2-offscreen" id="J-creatorId" data-init="" data-initlist="" data-placeholder="创建人员" tabindex="-1" title="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr0 hidden">
+                                                <label class="control-label">随访时间：</label>
+                                                <div class="input-group col-custom-xs-12">
+                                                    <input class="form-control input-sm2 radius3 date J-followupDateStart mbsc-comp" size="10" name="followupDateStart" type="text" placeholder="随访开始日期" id="mobiscroll1560596642033" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0 hidden"> - </div>
+                                            <div class="form-group mr5 hidden">
+                                                <div class="input-group col-custom-xs-12">
+                                                    <input class="form-control input-sm2 radius3 date J-followupDateEnd mbsc-comp" size="10" name="followupDateEnd" type="text" placeholder="随访结束日期" id="mobiscroll1560596642034" readonly="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr5">
+                                                <div class="input-group col-custom-xs-12">
+                                                    <input class="form-control input-sm2 radius3 appDate J-select-followDate" type="text" placeholder="随访日期" size="21">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr5">
+                                                <div class="input-group col-custom-xs-12">
+                                                    <div class="select2-container mtf3 select-sm3 J-followVisitorName" id="s2id_J-followVisitorId" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">计划随访人员</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen2_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2">   </ul></div></div><input type="hidden" name="vistorId" class="mtf3 select-sm3 J-followVisitorName select2-offscreen" id="J-followVisitorId" data-init="" data-initlist="" data-placeholder="计划随访人员" tabindex="-1" title="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr5">
+                                                <div class="input-group col-custom-xs-12">
+                                                    <input class="form-control input-sm2 radius3 J-patient-name" type="text" placeholder="患者姓名" size="8" name="name" value="">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm col-custom-xs-12 J-search-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                        <!-- 创建日期弹窗 -->
+                                        <div class="modal fade" id="createDateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">创建日期</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="pt10 pb10">
+                                                            <form class="form-inline" method="post">
+                                                                <div class="form-group mr0">
+                                                                    <div class="input-group">
+                                                                        <input class="form-control input-sm2 radius3 date J-common-startDate mbsc-comp" type="text" placeholder="开始日期" id="mobiscroll1560596642035" readonly="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group mr0">至</div>
+                                                                <div class="form-group mr5">
+                                                                    <div class="input-group">
+                                                                        <input class="form-control input-sm2 radius3 date J-common-endDate mbsc-comp" type="text" placeholder="结束日期" id="mobiscroll1560596642036" readonly="">
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer modal-btn-col2">
+                                                        <button type="button" class="btn btn-primary J-create-submit">确定</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 创建日期弹窗 -->
+                                        <!-- 随访日期弹窗 -->
+                                        <div class="modal fade" id="followDateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h4 class="modal-title">随访日期</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="pt10 pb10">
+                                                            <form class="form-inline" method="post">
+                                                                <div class="form-group mr0">
+                                                                    <div class="input-group">
+                                                                        <input class="form-control input-sm2 radius3 date J-common-startDate mbsc-comp" type="text" placeholder="开始日期" id="mobiscroll1560596642037" readonly="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group mr0">至</div>
+                                                                <div class="form-group mr5">
+                                                                    <div class="input-group">
+                                                                        <input class="form-control input-sm2 radius3 date J-common-endDate mbsc-comp" type="text" placeholder="结束日期" id="mobiscroll1560596642038" readonly="">
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer modal-btn-col2">
+                                                        <button type="button" class="btn btn-primary J-follow-submit">确定</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 随访日期弹窗 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body pt0">
+                                <div class="people-list">
+                                    <div class="row mb10" id="follow-list-wrap"><div class="col-sm-12">
+        <div class="people-item radius0">
+            <div class="media">
+                <a href="/Clinic/Patient/profile?patient_id=00020120715" class="pull-left">
+                    <img alt="" src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                    
+                    <span class="widget-label badge badge-danger room-tag">待随访</span>
+                    
+
+                    <h4 class="person-name"><a href="/Clinic/Patient/profile?patient_id=00020120715" target="_blank">庞丁轩</a> <small class="media-span">（男 18岁）</small></h4>
+                    <div class="text-muted">创建时间：2019-06-15 09:40:09 / 创建人员：邹小姐 </div>
+                    <div class="text-muted">
+                        计划随访日期：2019-06-15 00:00:00 / 计划执行人员：
+                        
+                    </div>
+                    
+                    <div class="text-muted text-nowrap">随访内容：随访记录。。。。</div>
+                    
+                    
+                    <div class="mt10 clear-left">
+                        
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="follow" target="_blank"><i class="fa fa-asterisk"></i>随访</a>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="edit"><i class="fa fa-pencil"></i>修改</a>
+                        <a href="javascript:void(0);" class="btn btn-default btn-sm mr5 J-cancel" data-action="a"><i class="fa fa-times"></i>取消</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-sm-12">
+        <div class="people-item radius0">
+            <div class="media">
+                <a href="/Clinic/Patient/profile?patient_id=00020120446" class="pull-left">
+                    <img alt="" src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                    
+                    <span class="widget-label badge badge-danger room-tag">待随访</span>
+                    
+
+                    <h4 class="person-name"><a href="/Clinic/Patient/profile?patient_id=00020120446" target="_blank">这些</a> <small class="media-span">（女 78岁）</small></h4>
+                    <div class="text-muted">创建时间：2019-06-11 16:51:57 / 创建人员：sinty </div>
+                    <div class="text-muted">
+                        计划随访日期：2019-06-11 00:00:00 / 计划执行人员：李浩
+                        
+                    </div>
+                    
+                    <div class="text-muted text-nowrap">随访内容：test</div>
+                    
+                    
+                    <div class="mt10 clear-left">
+                        
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="follow"><i class="fa fa-asterisk"></i>随访</a>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="edit"><i class="fa fa-pencil"></i>修改</a>
+                        <a href="javascript:void(0);" class="btn btn-default btn-sm mr5 J-cancel" data-action="a"><i class="fa fa-times"></i>取消</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-sm-12">
+        <div class="people-item radius0">
+            <div class="media">
+                <a href="/Clinic/Patient/profile?patient_id=00020122945" class="pull-left">
+                    <img alt="" src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                    
+                    <span class="widget-label badge badge-danger room-tag">待随访</span>
+                    
+
+                    <h4 class="person-name"><a href="/Clinic/Patient/profile?patient_id=00020122945" target="_blank">龚万灵</a> <small class="media-span">（男 23岁）</small></h4>
+                    <div class="text-muted">创建时间：2019-06-06 15:17:06 / 创建人员：胡婧怡 </div>
+                    <div class="text-muted">
+                        计划随访日期：2019-06-06 00:00:00 / 计划执行人员：张琳涛
+                        
+                    </div>
+                    
+                    <div class="text-muted text-nowrap">随访内容：test</div>
+                    
+                    
+                    <div class="mt10 clear-left">
+                        
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="follow"><i class="fa fa-asterisk"></i>随访</a>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="edit"><i class="fa fa-pencil"></i>修改</a>
+                        <a href="javascript:void(0);" class="btn btn-default btn-sm mr5 J-cancel" data-action="a"><i class="fa fa-times"></i>取消</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-sm-12">
+        <div class="people-item radius0">
+            <div class="media">
+                <a href="/Clinic/Patient/profile?patient_id=00020122798" class="pull-left">
+                    <img alt="" src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                    
+                    <span class="widget-label badge badge-danger room-tag">待随访</span>
+                    
+
+                    <h4 class="person-name"><a href="/Clinic/Patient/profile?patient_id=00020122798" target="_blank">小红</a> <small class="media-span">（女 31岁）</small></h4>
+                    <div class="text-muted">创建时间：2019-06-06 14:25:58 / 创建人员：宏宇 </div>
+                    <div class="text-muted">
+                        计划随访日期：2019-06-06 00:00:00 / 计划执行人员：陈鹏翔
+                        
+                    </div>
+                    
+                    <div class="text-muted text-nowrap">随访内容： 茶疗期间请多关注身体反应
+&nbsp;
+ 大小便情况（颜色、气味、次数、量）
+ 出汗情况（尤其是泡脚和泡澡后，请关注出汗部位和出汗时间）
+ 身体酸痛情况（肌肉 还是 关节，有无关节屈伸不利情况）
+ 是否有怕冷、流鼻涕、打喷嚏等现象
+ 是否出疹子、长痘
+ 睡眠情况（睡觉时间，起床时间，失眠还是容易入睡等）
+ 精神状态（昏沉、困倦还是精神十足）
+ 女生月经情况（颜色、是否有血块、月经周期，每次持续时间，例假期间是否有腰酸背痛等身体反应等）
+&nbsp;
+需要详细记录即时反馈，
+好关注咱们的身体健康哦！</div>
+                    
+                    
+                    <div class="mt10 clear-left">
+                        
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="follow"><i class="fa fa-asterisk"></i>随访</a>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="edit"><i class="fa fa-pencil"></i>修改</a>
+                        <a href="javascript:void(0);" class="btn btn-default btn-sm mr5 J-cancel" data-action="a"><i class="fa fa-times"></i>取消</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-sm-12">
+        <div class="people-item radius0">
+            <div class="media">
+                <a href="/Clinic/Patient/profile?patient_id=00020122931" class="pull-left">
+                    <img alt="" src="https:///japi/session/102010?id=8920&amp;pattern=200" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                    
+                    <span class="widget-label badge badge-danger room-tag">待随访</span>
+                    
+
+                    <h4 class="person-name"><a href="/Clinic/Patient/profile?patient_id=00020122931" target="_blank">毛世缪</a> <small class="media-span">（男 23岁）</small></h4>
+                    <div class="text-muted">创建时间：2019-06-05 22:11:22 / 创建人员：毛世缪 </div>
+                    <div class="text-muted">
+                        计划随访日期：2019-06-05 00:00:00 / 计划执行人员：
+                        
+                    </div>
+                    
+                    <div class="text-muted text-nowrap">随访内容：
+&nbsp;
+ 大小便情况肠道传染病感染（颜色、气味、次数、量）
+ 出汗情况（尤其是泡脚和泡澡后，请关注出汗部位和出汗时间）
+ 身体酸痛情况（肌肉 还是 关节，有无关节屈伸不利情况）
+ 是否有怕冷、流鼻涕、打喷嚏等现象
+ 是否出疹子、长痘
+ 睡眠情况（睡觉时间，起床时间，失眠还是容易入睡等）
+ 精神状态（昏沉、困倦还是精神十足）
+ 
+&nbsp;
+</div>
+                    
+                    
+                    <div class="mt10 clear-left">
+                        
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="follow"><i class="fa fa-asterisk"></i>随访</a>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="edit"><i class="fa fa-pencil"></i>修改</a>
+                        <a href="javascript:void(0);" class="btn btn-default btn-sm mr5 J-cancel" data-action="a"><i class="fa fa-times"></i>取消</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="col-sm-12">
+        <div class="people-item radius0">
+            <div class="media">
+                <a href="/Clinic/Patient/profile?patient_id=00020122931" class="pull-left">
+                    <img alt="" src="https:///japi/session/102010?id=8920&amp;pattern=200" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                    
+                    <span class="widget-label badge badge-danger room-tag">待随访</span>
+                    
+
+                    <h4 class="person-name"><a href="/Clinic/Patient/profile?patient_id=00020122931" target="_blank">毛世缪</a> <small class="media-span">（男 23岁）</small></h4>
+                    <div class="text-muted">创建时间：2019-06-05 22:04:29 / 创建人员：毛世缪 </div>
+                    <div class="text-muted">
+                        计划随访日期：2019-06-05 00:00:00 / 计划执行人员：
+                        
+                    </div>
+                    
+                    <div class="text-muted text-nowrap">随访内容： 茶疗期间请多关注身体反应
+&nbsp;
+ 大小便情况（颜色、气味、次数、量）
+ 出汗情况（尤其是泡脚和泡澡后，请关注出汗部位和出汗时间）
+ 身体酸痛情况（肌肉 还是 关节，有无关节屈伸不利情况）
+ 是否有怕冷、流鼻涕、打喷嚏等现象
+ 是否出疹子、长痘
+ 睡眠情况（睡觉时间，起床时间，失眠还是容易入睡等）
+ 精神状态（昏沉、困倦还是精神十足）
+ 女生月经情况（颜色、是否有血块、月经周期，每次持续时间，例假期间是否有腰酸背痛等身体反应等）
+&nbsp;
+需要详细记录即时反馈，
+好关注咱们的身体健康哦！</div>
+                    
+                    
+                    <div class="mt10 clear-left">
+                        
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="follow"><i class="fa fa-asterisk"></i>随访</a>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="edit"><i class="fa fa-pencil"></i>修改</a>
+                        <a href="javascript:void(0);" class="btn btn-default btn-sm mr5 J-cancel" data-action="a"><i class="fa fa-times"></i>取消</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div>
+                                    <div class="J-pager-wrap"><div class="base_page"><a href="#/name/@null/creatorId/@null/vistorId/@null/status/0/followupDateStart/@null/followupDateEnd/@null/createTimeStart/@null/createTimeEnd/@null/size/6/followType/@null/followupExcuteId/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/164</button><a href="#/name/@null/creatorId/@null/vistorId/@null/status/0/followupDateStart/@null/followupDateEnd/@null/createTimeStart/@null/createTimeEnd/@null/size/6/followType/@null/followupExcuteId/@null/page/2" type="button" data-page_num="2" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                                </div>
+                                <div class="people-list hidden">
+                                    <div class="row mb10" id="follow-list-type-wrap">
+                                        <!-- 随访类型列表 -->
+                                    </div>
+                                    <div class="J-pager-wrap-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- right -->
+                </div>
+
+                <!-- 取消随访 -->
+                <div class="modal fade" id="cancelFollow-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">取消随访</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="control-label">取消随访原因 <span class="asterisk">*</span></label>
+                                                <textarea class="form-control J-cancel-reason" name="cancelReason" rows="5" required=""></textarea>
+                                                <input type="hidden" class="J-followup-id" name="followupId" value="">
+                                                <input type="hidden" name="operaType" value="2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer panel-btn-col2">
+                                <button type="button" class="btn btn-primary J-cancel-submit">确定</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 取消随访 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 随访分组模板 -->
+    <script type="text/template" id="J-follow-groups-tpl">
+        <li class="J-follow-group <%if(status === ''){%>active<%}%>" data-status="">
+            <a href="javascript:void(0);">
+                <div class="form-group list-category m-nomargin">
+                    <label class="col-sm-1 control-label"><i class="fa fa-folder-o"></i></label>
+                    <div class="col-sm-9">
+                        全部随访（<%- (data[0]||0) + (data[1]||0) + (data[2]||0) %>）
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li class="J-follow-group <%if(status === '1'){%>active<%}%>" data-status="1">
+            <a href="javascript:void(0);">
+                <div class="form-group list-category m-nomargin">
+                    <label class="col-sm-1 control-label"><i class="fa fa-folder-o"></i></label>
+                    <div class="col-sm-9">
+                        已随访（<%- data[1] || 0 %>）
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li class="J-follow-group <%if(status === '0'){%>active<%}%>" data-status="0">
+            <a href="javascript:void(0);">
+                <div class="form-group list-category m-nomargin">
+                    <label class="col-sm-1 control-label"><i class="fa fa-folder-o"></i></label>
+                    <div class="col-sm-9">
+                        待随访（<%- data[0] || 0 %>）
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li class="J-follow-group <%if(status === '2'){%>active<%}%>" data-status="2">
+            <a href="javascript:void(0);">
+                <div class="form-group list-category m-nomargin">
+                    <label class="col-sm-1 control-label"><i class="fa fa-folder-o"></i></label>
+                    <div class="col-sm-9">
+                        已取消（<%- data[2] || 0 %>）
+                    </div>
+                </div>
+            </a>
+        </li>
+    </script>
+    <!-- 随访分组模板 -->
+
+    <!-- 随访类型模板 -->
+    <script type="text/template" id="J-follow-types-tpl">
+        <% $.each(followTypeData || [], function(i, item){ %>
+            <li class="J-follow-type" data-id="<%-item.id%>" >
+                <a href="javascript:void(0);">
+                    <div class="form-group list-category m-nomargin">
+                        <label class="col-sm-1 control-label"><i class="fa fa-folder-o"></i></label>
+                        <div class="col-sm-9">
+                            <%-item.name%>( <%-item.count%> )
+                        </div>
+                    </div>
+                </a>
+            </li>
+        <% }) %>
+    </script>
+    <!-- 随访类型模板 -->
+
+    <!-- 随访分组列表 -->
+    <script type="text/template" id="follow-list-wrap-tpl">
+        <div class="people-item radius0">
+            <div class="media">
+                <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patientId %>" class="pull-left">
+                    <img alt="" src="<%-image%>" class="thumbnail media-object">
+                </a>
+                <div class="media-body">
+                    <%if(status == 0){%>
+                    <span class="widget-label badge badge-danger room-tag">待随访</span>
+                    <%} else if(status == 1){%>
+                    <span class="widget-label badge badge-success room-tag">已随访</span>
+                    <%} else {%>
+                    <span class="widget-label badge badge-gray room-tag">已取消</span>
+                    <%}%>
+
+                    <h4 class="person-name"><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patientId %>" target="_blank"><%- name %></a> <small class="media-span">（<%- sexName %> <%-ageInfo%>）</small></h4>
+                    <div class="text-muted">创建时间：<%-createTime%> / 创建人员：<%-creatorName%> <%if( isFollowType ){%> / 主管医生：<%-doctor || '无'%><%}%></div>
+                    <div class="text-muted">
+                        <%if(status==2){%>取消日期<%}else if(status == 0){%>计划随访日期<%} else {%>随访时间<%}%>：<%-followupDate%> / <%if(status==0){%>计划执行人员<%} else {%>随访人员<%}%>：<%-followVistorName%>
+                        <%if(isFollowType){%> / 随访类型：<%-followType%><%}%>
+                    </div>
+                    <%if(status==2){%>
+                    <div class="text-muted">取消原因：<%-cancelReason%></div>
+                    <%}else{%>
+                    <div class="text-muted text-nowrap">随访内容：<%-followupContent%></div>
+                    <%}%>
+                    <%if(status == 1){%><div class="text-muted text-nowrap text-result">结论：<%-followupResult%></div><%}%>
+                    <div class="mt10 clear-left">
+                        <%if(status == 0){%>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="follow"><i class="fa fa-asterisk"></i>随访</a>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'update'))}" class="btn btn-default btn-sm mr5 J-jump-blank" data-action="edit"><i class="fa fa-pencil"></i>修改</a>
+                        <a href="javascript:void(0);" class="btn btn-default btn-sm mr5 J-cancel" data-action="a"><i class="fa fa-times"></i>取消</a>
+                        <%} else if(status == 1) {%>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}" class="btn btn-default btn-sm mr5 J-jump-blank"><i class="fa fa-eye"></i>查看</a>
+                        <%} else if(status == 2) {%>
+                        <a href="{php echo $this->createWeburl('suifan',array('op'=>'detail'))}" class="btn btn-default btn-sm mr5 J-jump-blank"><i class="fa fa-eye"></i>查看</a>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 随访分组列表 -->
+
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['follow_list']);
+    </script>
+</body>
+
+</html>

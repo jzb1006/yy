@@ -1,0 +1,344 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li class="active"><a href="">体检订单详情</a></li>
+</ul>
+<div class="app-content">
+	<div class="order-detail">
+		<div class="col-sm-4 padding-0">
+			<div class="panel panel-display">
+				<div class="panel-heading"><h3>订单信息</h3></div>
+				<div class="panel-body">
+					<table class="table">
+						<tr>
+							<td width="150">下单人微信：</td>
+							<td><img src="{$item['u_thumb']}" style="width: 30px;height: 30px;margin-right: 5px;" >{$item['u_name']}</td>
+						</tr>
+																		<tr>
+							<td width="150">用户姓名：</td>
+							<td>{$item['u_name']}</td>
+						</tr>
+																		<tr>
+							<td width="150">用户电话：</td>
+							<td>{$user['tel']}</td>
+						</tr>
+																		<tr>
+							<td width="150">用户地址：</td>
+							<td>{$user['region']}</td>
+						</tr>
+												<tr>
+							<td width="150">订单编号：</td>
+							<td>{$item['ordernums']}</td>
+						</tr>
+												<tr>
+							<td>下单时间：</td>
+							<td>{$item['time']}</td>
+						</tr>
+                      	<!-- <tr>
+							<td>预约时间：</td>
+							<td>2020-03-13 19:23:22</td>
+						</tr>
+                      	<tr>
+							<td>支付时间：</td>
+							<td>2020-03-13 19:23:22</td>
+						</tr> -->
+						<tr>
+							<td>订单状态：</td>
+							
+							<td><span class="label label-info">
+							{if $item['ifpay'] == '0'}
+							待支付
+							{else if $item['ifpay'] == '1'}
+							待体检
+							{else if $item['ifpay'] == '2'}
+							体检中
+							{else if $item['ifpay'] == '3'}
+							已完成
+							{else if $item['ifpay'] == '4'}
+							待评价
+							{else if $item['ifpay'] == '5'}
+							已评价
+							{/if}
+							</span></td>
+						</tr>
+						<!-- <tr>
+							<td>付款方式：</td>
+							<td>
+																	<span class="label label-info">微信支付</span>
+															</td>
+						</tr> -->
+												<tr>
+							<td>检验类型</td>
+							<td>
+								
+									<span class="label label-warning">体检</span>							
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="panel panel-display">
+				<div class="panel-heading"><h3>订单日志</h3></div>
+				<div class="panel-body">
+					<table class="table">
+												<tr>
+							<td>
+								<p><i class="fa fa-info-circle"></i> <strong>{$item['time']} 订单提交成功</strong></p>
+								<p style="padding-left:15px; ">单号:{$item['ordernums']}，等待用户付款</p>
+							</td>
+						</tr>
+						
+						{if $item['ifpay'] == '1'}
+						<tr>
+							<td>
+								<p><i class="fa fa-info-circle"></i> <strong>{$item['time']} 订单支付成功</strong></p>
+								<p style="padding-left:15px; ">支付成功，等待专家体检</p>
+							</td>
+						</tr>
+						{/if}
+						{if $item['ifpay'] == '2'}
+						<tr>
+							<td>
+								<p><i class="fa fa-info-circle"></i> <strong>{$item['time']} 体检中</strong></p>
+								<p style="padding-left:15px; ">体检中</p>
+							</td>
+						</tr>
+						{/if}
+						{if $item['ifpay'] == '3'}
+						<tr>
+							<td>
+								<p><i class="fa fa-info-circle"></i> <strong>{$item['time']} 已完成</strong></p>
+								<p style="padding-left:15px; ">已完成</p>
+							</td>
+						</tr>
+						{/if}
+						{if $item['ifpay'] == '4'}
+						<tr>
+							<td>
+								<p><i class="fa fa-info-circle"></i> <strong>{$item['time']} 待评价</strong></p>
+								<p style="padding-left:15px; ">待评价</p>
+							</td>
+						</tr>
+						{/if}
+						{if $item['ifpay'] == '5'}
+						<tr>
+							<td>
+								<p><i class="fa fa-info-circle"></i> <strong>{$item['time']} 已评价</strong></p>
+								<p style="padding-left:15px; ">已评价</p>
+							</td>
+						</tr>
+						{/if}
+											</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8 padding-r-0">
+			<div class="panel panel-display">
+				<div class="panel-heading"><h3>订单费用</h3></div>
+				<div class="panel-body">
+					<table class="table">
+						<tr>
+							<td width="150">机构实际收入：</td>
+							<td>+￥ {$item['moneys']} </td>
+						</tr>
+							<tr>
+						<td width="150">分销推广支出：</td>
+							<td>-￥ {php echo $item['tk_one']+$item['tk_two']} </td> 
+
+						</tr>
+						<tr>
+						<td width="150">推荐人：</td>
+							<td>{php echo empty($item['tk']) ? '暂无' : $item['tk']}</td> 
+
+						</tr>
+						<tr>
+						<td width="150">会员折扣：</td>
+							<td>-￥ {$item['card_dk']} </td> 
+
+						</tr>
+						<tr>
+						<!-- <td width="150">优惠券抵扣：</td>
+							<td>-￥ 10.00 </td> 
+
+						</tr> -->
+						<tr>
+						<td width="150">平台抽成：</td>
+							<td>-￥ {$item['ptmoney']} </td> 
+
+						</tr>
+						<tr>
+							<td width="150">用户：</td>
+							<td>{$item['u_name']} </td>
+							
+						</tr>
+						
+	 				</table>
+	 			</div>
+			</div>
+			{if $item['ifpay'] > 1}
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>核销员</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th style="width: 20rem;">专家名</th>
+									<th>科室</th>
+									<th>职称</th>
+									<th>所属机构</th>
+									<th>问诊费(元)</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tr>
+								<td>
+									<img src="{$hexiaouser['advertisement']}" style="width: 30px;height: 30px;margin-right: 5px;"> {$hexiaouser['z_name']}</td>
+								<td> {$hexiaouser['name']} </td>
+								<td>{$hexiaouser['job_name']}</td>
+								<td>{$hexiaouser['agentname']}</td>
+								<td>{$hexiaouser['money']}元</td>
+								<td class="text-right">
+									<a class="btn btn-primary btn-sm" target="_blank" href="./index.php?c=site&a=entry&op=edit&zid={$hexiaouser['zid']}&do=team&m=hyb_yl">专家信息</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				{/if}
+					<div class="panel panel-display">
+						<div class="panel-heading"><h3>检查项</h3></div>
+						<div class="panel-body">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th style="width: 20rem;">检查项名称</th>
+										<th>检查模板</th>
+										<th>模板类型</th>
+		                                <th>所属机构</th>
+		                                <th>核销人员</th>
+										<th>费用(元)</th>
+										<th>状态</th>
+									</tr>
+								</thead>
+								 {loop $content $item}
+									<tr>
+										<td>{$item['title']}</td>
+										<td>{$item['moban']['title']}</td>
+										<td>{$item['moban']['type']}</td>
+										<td>{$jigou['agentname']}</td>
+										<td>{$hexiaouser['z_name']}</td>
+		                                <td>{php echo $item['price']} 元</td>
+										<td>
+										{if $item['shuju']==""}
+											<a class="btn btn-warning btn-sm">未完成</a>
+										{else}
+											<a class="btn btn-primary btn-sm">已完成</a>
+										{/if}
+										</td>
+									</tr>
+									{/loop}
+							</table>
+						</div>
+					</div>
+					
+					</div>	
+	</div>
+	
+	<div class="modal fade" id="addCateModal" aria-hidden="false">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button data-dismiss="modal" class="close" type="button">×</button>
+					<h4 class="modal-title">新建分类</h4>
+				</div>
+				<div class="modal-body form-horizontal">
+					<div class="form-group">
+						<div class="col-sm-2 control-label must">分类名称</div>
+						<div class="col-sm-10">
+							<input class="form-control input-sm" placeholder="请输入分类名称" id="saveTempName" value="未命名分类" />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="btn btn-primary" id="saveCate">保存</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+    $("#addRemark").unbind('click').click(function () {
+        $("#addCateModal").modal();
+        $("#saveCate").unbind('click').click(function () {
+            var status = $(this).data('status');
+            if(status) {
+                tip.msgbox.err("正在保存，请稍候。");
+                return;
+            }
+            var name = $.trim($("#saveTempName").val());
+            if(!name) {
+                tip.msgbox.err("请填写备注内容！");
+                $("#saveTempName").focus();
+                return;
+            }
+            $(this).data('status',1).text('保存中')
+            $.post("http://www.webstrongtech.com/web/index.php?c=site&a=entry&m=weliam_merchant&p=rush&ac=category&do=add&", {
+                name: name
+            }, function (ret) {
+                if(ret.status==0){
+                    tip.msgbox.err(ret.result.message);
+                }else{
+                    tip.msgbox.suc("保存成功！");
+                }
+                $("#addCateModal .close").trigger('click');
+                setTimeout(function () {
+                    location.reload();
+                }, 500);
+            }, 'json');
+        });
+    });
+</script>
+
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+	
+    
+    <script>
+		require(['bootstrap'], function ($) {
+		    $('[data-toggle="tooltip"]').tooltip({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="popover"]').popover({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="dropdown"]').dropdown({
+	            container: $(document.body)
+	        });
+	    });
+		myrequire(['js/init']);
+				$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+			$('.app-login-info-sel').show();
+		});
+		$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+			$('.app-login-info-sel').hide();
+		});
+		$('.app-login-info-sel .login-out').hover(function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+		},function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+		});
+		
+			</script>
+	</body>
+</html>

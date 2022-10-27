@@ -1,0 +1,274 @@
+{template '/common/header'}
+<div class="pages-dashboard">
+	<div class="dashb-h">{if $name}{$name}{else}{php echo $_W['wlsetting']['base']['name']?$_W['wlsetting']['base']['name']:$_W['account']['name']}{/if}</div>
+	<div class="dashb-c">
+		<div class="dashb-c-d">
+			<div class="dashb-c-t1 dashb-c-top">
+				<div class="dashb-c-p-title">
+					<span>实时概况</span><i>更新时间：{php echo date('Y-m-d H:i:s', time())}</i>
+				</div>
+				<div class="dashb-c-t1-c">
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-l">
+							<div class="icon p-l-icon1"><i class="icon iconfont icon-moneybagfill"></i></div>
+						</div>
+						<div class="dashb-c-p-r">
+							<div class="h2">支付金额(元)</div>
+							<div class="h1" id="html-allmoney-today">{$today['pay_money']}</div>
+							<div class="p" id="html-allmoney-yestoday">昨日：{$yes['pay_money']}</div>
+						</div>
+					</div>
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-r">
+							<div class="h2">退款金额(元)</div>
+							<div class="h1" id="html-refund-today">{$today_round_money}</div>
+							<div class="p" id="html-refund-yestoday">昨日：{$yes_round_money}</div>
+						</div>
+					</div>
+					<!-- <div class="dashb-c-p">
+						<div class="dashb-c-p-l">
+							<div class="icon p-l-icon2"><i class="icon iconfont icon-shopfill"></i></div>
+						</div>
+						<div class="dashb-c-p-r">
+							<div class="h2">新增商户数</div>
+							<div class="h1" id="html-store-today">--</div>
+							<div class="p" id="html-store-yestoday">昨日：--</div>
+						</div>
+					</div> -->
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-r">
+							<div class="h2">在线付费入驻数</div>
+							<div class="h1" id="html-newcharge-today">{$today_zhuanjia}</div>
+							<div class="p" id="html-newcharge-yestoday">昨日：{$yes_zhuanjia}</div>
+						</div>
+					</div>
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-l">
+							<div class="icon p-l-icon3"><i class="icon iconfont icon-peoplefill"></i></div>
+						</div>
+						<div class="dashb-c-p-r">
+							<div class="h2">新增客户数</div>
+							<div class="h1" id="html-newmember-today">{$today_num}</div>
+							<div class="p" id="html-newmember-yestoday">昨日：{$yes_num}</div>
+						</div>
+					</div>
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-r">
+							<div class="h2">支付客户数</div>
+							<div class="h1" id="html-newmember-today">{$today_num}</div>
+							<div class="p" id="html-newmember-yestoday">昨日：{$yes_num}</div>
+						</div>
+					</div>
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-l">
+							<div class="icon p-l-icon4"><i class="icon iconfont icon-caifub"></i></div>
+						</div>
+						<div class="dashb-c-p-r">
+							<div class="h2">新增订单数</div>
+							<div class="h1" id="html-newmember-today">{$today_num}</div>
+							<div class="p" id="html-newmember-yestoday">昨日：{$yes_num}</div>
+						</div>
+					</div>
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-r">
+							<div class="h2">支付订单数</div>
+							<div class="h1" id="html-newmember-today">{$today_num}</div>
+							<div class="p" id="html-newmember-yestoday">昨日：{$yes_num}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="dashb-c-t1 dashb-c-top">
+			    <div class="dashb-c-p-title">
+                    <span>重要提醒</span>
+                </div>
+                <div class="dashb-c-t1-c">
+                    <div class="item">
+                        <div class="item_tit">订单相关</div>
+                        <div class="item_body">
+                            <a href=""><div class="item_info">问诊订单：<span id="order-dfh"><?php echo $today_tw_num + $today_wz_num?></span></div></a>
+                            <a href=""><div class="item_info">挂号订单：<span id="order-dtk">{$today_gh_num}</span></div></a>
+							
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="dashb-c-t2 dashb-c-top">
+				<div class="dashb-c-p-title">
+					<span>交易金额</span>
+				</div>
+				<div class="dashb-c-t2-c">
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-r">
+							<div class="h2">今日支付金额(元)</div>
+							<div class="h1" id="html-allmoney">{$today['pay_money']}</div>
+						</div>
+					</div>
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-r">
+							<div class="h2">昨日支付金额(元)</div>
+							<div class="h1" id="html-yesmoney">{$yes['pay_money']}</div>
+						</div>
+					</div>
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-r">
+							<div class="h2">近七日支付金额(元)</div>
+							<div class="h1" id="html-sevenmoney">{$seven['pay_money']}</div>
+						</div>
+					</div>
+					<div class="dashb-c-p">
+						<div class="dashb-c-p-r">
+							<div class="h2">近三十日支付金额(元)</div>
+							<div class="h1" id="html-threemoney">{$monthss['pay_money']}</div>
+						</div>
+					</div>
+				</div>
+				<div class="page-content">
+			        <form action=""  class="form-horizontal" onsubmit='return checkform()'>
+			           <input type="hidden" name="c" value="entry" />
+			           <input type="hidden" name="m" value="hyb_yl" />
+			           <input type="hidden" name="do" value="index" />
+			           <input type="hidden" name="op"  value="ispost" />
+			           <input type="hidden" name="i"  value="{$uniacid}" />
+			           <input type="hidden" name="act" value="index" />
+			           <input type="hidden" name="hid" value="{$hid}" />
+			           <input type="hidden" name="search" value="1" />
+			           <div class="page-toolbar">
+			               <div class="pull-right" style="padding: 50px 15px;">
+			                   <div class="input-group">
+			                       <span class="input-group-select">
+			                           <select id='days' name="days" >
+			                               <option value="7"  {if $days==7}selected{/if}>最近</option>
+			                               <option value="7"  {if $days==7}selected{/if}>7天</option>
+			                               <option value="14"  {if $days==14}selected{/if}>14天</option>
+			                               <option value="30"  {if $days==30}selected{/if}>30天</option>
+			                               <option value=""  {if $days==''}selected{/if}>按日期</option>
+			                           </select>
+			                       </span>
+			                        <span class="input-group-select">
+			                            <select id='year' name="year" >
+			                                <option value=''>年份</option>
+			                                {loop $years $y}
+			                                <option value="{$y['data']}"  {if $y['selected']}selected="selected"{/if}>{$y['data']}年</option>
+			                                {/loop}
+			                            </select>
+			                        </span>
+			                       <span class="input-group-select">
+			                            <select id='month' name="month" >
+			                                <option value=''>月份</option>
+			                                {loop $months $m}
+			                                <option value="{$m['data']}"  {if $m['selected']}selected="selected"{/if}>{$m['data']}月</option>
+			                                {/loop}
+			                            </select>
+			                       </span>
+			                       <div class="input-group-btn">
+			                           <button class="btn  btn-primary" type="submit"> 搜索</button>
+			                       </div>
+			                   </div>
+			               </div>
+			           </div>
+			       </form>
+			       	<div class="panel panel-default">
+			         	<div class="panel-heading">订单走势图</div>
+			           	<div class="panel-body">
+			               <div id="container" style="min-width: 800px; height: 400px; margin: 0 auto"></div>
+			           	</div>
+			       	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script language="javascript" src="{$_W['siteroot']}addons/hyb_yl/public/js/highcharts/highcharts.js"></script>
+<script type="text/javascript">
+   
+   	function checkform(){
+       if($('#days').val()==''){    
+           	if($('#year').val()==''){    
+               	alert('请选择年份!');
+               	return false;
+           	}
+       }
+       return true;
+   	}
+      $('#days').change(function(){
+            if($(this).val()!=''){ 
+                $('#year').val('');
+                $('#month').val('').attr('disabled',true);;
+            }
+          
+        })
+       $('#year').change(function(){
+            if($(this).val()==''){ 
+                $('#month').val('').attr('disabled',true);
+            }
+            else{
+                $('#days').val('');
+                $('#month').removeAttr('disabled');
+            }
+        })
+        
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                 text: '{$charttitle}',
+            },
+            subtitle: {
+                text: ''
+            },
+            
+            xAxis: {
+                categories: [    {loop $datas $key $row}
+                       {if $key>0},{/if}"{$row['date']}"
+                       {/loop}]
+            },
+            yAxis: {
+                title: {
+                    text: '金额'
+                },allowDecimals:false
+            },
+            tooltip: {
+                enabled: false,
+                formatter: function() {
+                    return '<b>'+ this.series.name +'</b><br>'+this.x +': '+ this.y +'°C';
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+	            name: '图文订单',
+	            data: [
+	                {loop $datas $key $row}
+	                {if $key>0},{/if}{$row['tuwenorder']}
+	                {/loop}
+	            ]
+	        }, {
+	            name: '挂号订单',
+	            data: [
+	                {loop $datas $key $row}
+	                {if $key>0},{/if}{$row['guahaoorder']}
+	                {/loop}
+	            ]
+	        }, {
+	            name: '问诊订单',
+	            data: [
+	                {loop $datas $key $row}
+	                {if $key>0},{/if}{$row['wenzorder']}
+	                {/loop}
+	            ]
+	        }],
+    	});
+	});
+</script>
+{template '/common/footer'}

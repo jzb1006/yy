@@ -1,0 +1,406 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+                </div>
+                <div class="pageheader">
+                    <h2><i class="fa fa-credit-card fa-sm"></i> 收费</h2>
+                    <div class="breadcrumb-wrapper">
+                        <a href="javascript:window.history.go(-1);" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+                    </div>
+                </div>
+                <div class="contentpanel">
+                    <!-- 收费信息 -->
+                    <div class="panel panel-cascade panel-invoice">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">收费信息</h3>
+                        </div>
+                        <div class="panel-body">
+                            <!-- 患者信息 -->
+                            <div class="row" id="J-patient-info-wrap"> 
+        
+        <div class="col-xs-3 col-sm-2">
+            <img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="thumbnail img-responsive" alt="">
+        </div>
+        <div class="col-xs-9 col-sm-10">
+            <h5 class="font18"><a href="https:///Clinic/Patient/profile.html?patient_id=00020119267" class="black font18">按时发莫斯科</a></h5>
+            <ul class="ul-profile m0">
+                <li class="l">性别：女</li>
+                <li class="r">年龄：21岁</li>
+                <li class="l">身份证号：</li>
+                <li class="r">手机号：</li>
+                
+                <li class="l">微信号：
+                    
+                </li>
+                
+                <li class="r">地址：</li>
+                
+                <li class="l">
+                    剩余挂账：<span class="red font-wb">￥120.00</span>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+                            <!-- 患者信息 -->
+                            <!-- 收费项目 -->
+                            <div class="row">
+                                <div class="col-md-12" id="J-mecicine-list-wrap">
+        <h5>收费项目</h5>
+        <div class="table-responsive mt20">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th class="hide J-is-charged">
+                            <label>
+                                <input type="checkbox" class="J-bkbox-item">
+                            </label>
+                        </th>
+                        <th width="20%">名称</th>
+                        <th width="50">单位</th>
+                        <th>单价</th>
+                        <th width="50">数量</th>
+                        <th>金额</th>
+                        <th>折扣</th>
+                        <th>折后金额</th>
+                        <th>接诊医生</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td class="J-is-charged hide">
+                            
+                            <label>
+                                <input type="checkbox" data-bill="266" data-type="admission" data-money="120.00" data-totalmoney="120.00" class="J-bkbox-item">
+                            </label>
+                            
+                        </td>
+                        <td>诊疗费(副主任医生 初诊)</td>
+                        <td>次</td>
+                        <td>￥120.00</td>
+                        <td>1</td>
+                        <td>￥120.00</td>
+                        <td>100%</td>
+                        <td>￥120.00</td>
+                        <td>李松</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        <table align="left" class="table w30 shadow-none">
+            <tbody>
+                <tr>
+                    <td class="border-none lht28">
+                        
+                        
+                        
+                        
+                        
+                        
+                        诊疗费：￥<span class="J-clinic">120.00</span><br>
+                        
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table align="right" class="table table-total font16 w70">
+            <tbody>
+                
+                <tr>
+                    <td class="black"><b>费用合计：</b></td>
+                    <td class="red">￥<span class="J-total-pay">120.00</span></td>
+                </tr>
+                <tr>
+                    <td class="black"><b>折扣金额：</b></td>
+                    <td class="red">
+                        ￥<span class="J-discount-pay">-0.00</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="black"><b>应收费用：</b></td>
+                    <td class="red">￥<span class="J-real-pay">120.00</span></td>
+                </tr>
+                
+                
+                
+                
+                
+                    <tr>
+                        <td class="black"><b>挂账金额：</b></td>
+                        <td class="red">￥<span>120.00</span><input type="hidden" class="J-back-all" value="1"></td>
+                    </tr>
+                
+                
+                
+                
+                
+            </tbody>
+        </table>
+    </div>
+                            </div>
+                            <!-- 收费项目 -->
+                        </div>
+                        <div class="panel-footer">
+                            <div class="btn-invoice">
+                                <a href="javascript:void(0);" class="btn btn-block btn-lg btn-white J-print"><i class="fa fa-print mr5"></i> 打印票据</a>
+                            </div>
+                            <div class="btn-invoice">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 收费 -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 打印票据 -->
+    <div id="print">
+            </div>
+
+    <!-- 收费清单打印 -->
+        <!-- 收费清单打印 -->
+
+    <!-- 患者个人信息模板 -->
+    <script type="text/template" id="J-patient-info-tpl"> 
+        <% var patientInfo = patientInfo || {}; %>
+        <div class="col-xs-3 col-sm-2">
+            <img src="<%- patientInfo.image%>" class="thumbnail img-responsive" alt="" />
+        </div>
+        <div class="col-xs-9 col-sm-10">
+            <h5 class="font18"><a href="https:///Clinic/Patient/profile.html?patient_id=<%- patientInfo.patientId%>" class="black font18"><%- patientInfo.name%></a></h5>
+            <ul class="ul-profile m0">
+                <li class="l">性别：<%- patientInfo.sexName%></li>
+                <li class="r">年龄：<%- patientInfo.age%></li>
+                <li class="l">身份证号：<%- patientInfo.idNo%></li>
+                <li class="r">手机号：<%- patientInfo.mobileNumber%></li>
+                <% if (PERMISSIONANDMODULES.modules.indexOf(32) > -1) { %>
+                <li class="l">微信号：
+                    <% if (parseFloat(patientInfo.wechatId)) {%><%- patientInfo.wechatId%><% } %>
+                </li>
+                <% } %>
+                <li class="r">地址：<%- patientInfo.address%></li>
+                <%if(patientInfo.loanSum && patientInfo.loanSum * 1 > 0){%>
+                <li class="l">
+                    剩余挂账：<span class="red font-wb">￥<%-patientInfo.loanSum%></span>
+                </li>
+                <%}%>
+            </ul>
+        </div>
+    </script>
+    <!-- 患者个人信息模板 -->
+    
+    <!-- 药品项目 -->
+    <script type="text/template" id="J-medicine-list-tpl">
+        <h5>收费项目</h5>
+        <div class="table-responsive mt20">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th class="hide J-is-charged">
+                            <label>
+                                <input type="checkbox" class="J-bkbox-item">
+                            </label>
+                        </th>
+                        <th width="20%">名称</th>
+                        <th width="50">单位</th>
+                        <th>单价</th>
+                        <th width="50">数量</th>
+                        <th>金额</th>
+                        <th>折扣</th>
+                        <th>折后金额</th>
+                        <th>接诊医生</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%$.each(items, function(i, obj) {%>
+                    <tr>
+                        <td class="J-is-charged hide">
+                            <%if(obj.refundable){%>
+                            <label>
+                                <input type="checkbox" data-bill="<%- obj.bill%>" data-type="<%- obj.type%>" data-money="<%- obj.realPrice%>" data-totalMoney="<%- obj.totalPrice%>" class="J-bkbox-item">
+                            </label>
+                            <%}%>
+                        </td>
+                        <td><%- obj.name%></td>
+                        <td><%- obj.unit%></td>
+                        <td>￥<%- obj.unitPrice%></td>
+                        <td><%- obj.count%></td>
+                        <td>￥<%- obj.totalPrice%></td>
+                        <td><%- obj.discount + '%' %></td>
+                        <td>￥<%- obj.realPrice%></td>
+                        <td><%- doctor_name%></td>
+                    </tr>
+                    <%});%>
+                </tbody>
+            </table>
+        </div>
+        <table align="left" class="table w30 shadow-none">
+            <tbody>
+                <tr>
+                    <td class="border-none lht28">
+                        <%if(insurance_remark){%><b>备注：<span><%- insurance_remark%></span></b><br/><%}%>
+                        <%if(inspectRealPrice){%>实验室检查费：￥<span class="J-inspect"><%- inspectRealPriceLabel%></span><br/><%}%>
+                        <%if(checkRealPrice){%>辅助检查费：￥<span class="J-check"><%- checkRealPriceLabel%></span><br/><%}%>
+                        <%if(recipeRealMedicinePrice){%>西/成药费：￥<span class="J-medicine"><%- recipeRealMedicinePriceLabel%></span><br/><%}%>
+                        <%if(recipeRealChinesePrice){%>中药费：￥<span class="J-medicine"><%- recipeRealChinesePriceLabel%></span><br/><%}%>
+                        <%if(cureRealPrice){%>治疗费：￥<span class="J-cure"><%- cureRealPriceLabel%></span><br/><%}%>
+                        <%if(admissionRealPrice){%>诊疗费：￥<span class="J-clinic"><%- admissionRealPriceLabel%></span><br/><%}%>
+                        <%if(goodsRealPrice){%>材料费：￥<span class="J-goods"><%- goodsRealPriceLabel%></span><br/><%}%>
+                        <%if(customRealPrice){%>其他收费：￥<span class="J-custom"><%- customRealPriceLabel%></span><%}%>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table align="right" class="table table-total font16 w70">
+            <tbody>
+                <%if(insurance_remark){%>
+                    <tr><td col="2" class="brnone visihide">费用</td></tr>
+                <%}%>
+                <tr>
+                    <td class="black"><b>费用合计：</b></td>
+                    <td class="red">￥<span class="J-total-pay"><%- totalPriceLabel%></span></td>
+                </tr>
+                <tr>
+                    <td class="black"><b>折扣金额：</b></td>
+                    <td class="red">
+                        ￥<span class="J-discount-pay">-<%- (parseFloat(totalPriceLabel) - parseFloat(discountPriceLabel)).toFixed(2) %></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="black"><b>应收费用：</b></td>
+                    <td class="red">￥<span class="J-real-pay"><%- discountPriceLabel%></span></td>
+                </tr>
+                <%if(membercardPayLabel*1 > 0){%>
+                    <tr>
+                        <td class="black"><b>余额支付：</b></td>
+                        <td class="red">￥<span><%- membercardPayLabel%></span><input type="hidden" class="J-back-all" value="1"></td>
+                    </tr>
+                <%}%>
+                <%if(commercialReduce*1 > 0){%>
+                    <tr>
+                        <td class="black"><b>商保金额：</b></td>
+                        <td class="red">￥<span><%- commercialReduceLabel%></span><input type="hidden" class="J-back-all" value="1"></td>
+                    </tr>
+                <%}%>
+                <%if(medicareReduce*1 > 0 && PERMISSIONANDMODULES.modules.indexOf(44) > -1){%>
+                    <tr>
+                        <td class="black"><b>医保金额：</b></td>
+                        <td class="red">￥<span><%- medicareReduceLabel%></span><input type="hidden" class="J-back-all" value="1"></td>
+                    </tr>
+                <%}%>
+                <%if(chargeReduce*1 > 0){%>
+                    <tr>
+                        <td class="black"><b>减免金额：</b></td>
+                        <td class="red">￥<span><%- chargeReduceLabel%></span>
+                        <input type="hidden" class="J-back-all" value="1"><input type="hidden" class="J-charge-reduce" value="<%- chargeReduceLabel%>"></td>
+                    </tr>
+                <%}%>
+                <%if(loanReduce*1 > 0){%>
+                    <tr>
+                        <td class="black"><b>挂账金额：</b></td>
+                        <td class="red">￥<span><%- loanReduceLabel%></span><input type="hidden" class="J-back-all" value="1"></td>
+                    </tr>
+                <%}%>
+                <%if(cardReduce*1 > 0){%>
+                    <tr>
+                        <td class="black"><b>卡券金额：</b></td>
+                        <td class="red">￥<span><%- cardReduceLabel%></span><input type="hidden" class="J-back-all" value="1"></td>
+                    </tr>
+                <%}%>
+                <%if(pointsReduceLabel*1 > 0){%>
+                    <tr>
+                        <td class="black"><b>积分抵扣：</b></td>
+                        <td class="red">￥<span class="J-pay-price"><%- pointsReduceLabel%></span></td>
+                    </tr>
+                <%}%>
+                <%if(realPrice*1 > 0){%>
+                    <tr>
+                        <td class="black"><b><%- type%>：</b></td>
+                        <td class="red">￥<span class="J-pay-price"><%- realPriceLabel%></span></td>
+                    </tr>
+                <%}%>
+                <%if(secondChannelPay*1 > 0){%>
+                    <tr>
+                        <td class="black"><b><%- secondType%>：</b></td>
+                        <td class="red">￥<span class="J-pay-price"><%- secondChannelPayLabel%></span></td>
+                    </tr>
+                <%}%>
+            </tbody>
+        </table>
+    </script>
+    <!-- 药品项目 -->
+
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['charged_view']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

@@ -1,0 +1,424 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="">绿通订单详情</a>
+		</li>
+	</ul>
+	<div class="app-content">
+		<div class="order-detail">
+			<div class="col-sm-4 padding-0">
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td width="150">下单人微信：</td>
+								<td>
+									<img src="{$user['u_thumb']}" style="width: 30px;height: 30px;margin-right: 5px;">{$user['u_name']}</td>
+							</tr>
+							<tr>
+								<td width="150">患者姓名：</td>
+								<td>{$user['u_name']}</td>
+							</tr>
+							<tr>
+								<td width="150">患者电话：</td>
+								<td>{$user['tel']}</td>
+							</tr>
+							<tr>
+								<td width="150">患者地址：</td>
+								<td>{$user['region']}</td>
+							</tr>
+							<tr>
+								<td width="150">订单编号：</td>
+								<td>{$order['orders']}</td>
+							</tr>
+							<tr>
+								<td>下单时间：</td>
+								<td>{$order['created']}</td>
+							</tr>
+							{if $order['ifpay'] == '1'}
+							<tr>
+								<td>支付时间：</td>
+								<td>{$order['paytime']}</td>
+							</tr>
+							{/if}
+							<tr>
+								<td>订单状态：</td>
+								<td>
+									<span class="label label-info">{if $order['ifpay']=='0'} 待支付 {/if}</span>
+									<span class="label label-info">{if $order['ifpay']=='1'} 待接诊 {/if}</span>
+									<span class="label label-info">{if $order['ifpay']=='2'} 已接诊 {/if}</span>
+									<span class="label label-info">{if $order['ifpay']=='3'} 待评价 {/if}</span>
+									<span class="label label-info">{if $order['ifpay']=='4'} 已评价 {/if}</span>
+									<span class="label label-info">{if $order['ifpay']=='5'} 申请退款 {/if}</span>
+									<span class="label label-info">{if $order['ifpay']=='6'} 退款成功 {/if}</span>
+									<span class="label label-info">{if $order['ifpay']=='7'} 订单关闭 {/if}</span>
+									<span class="label label-info">{if $order['ifpay']=='8'} 已取消 {/if}</span>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>服务类型</td>
+								<td>
+
+									<span class="label label-warning">{$order['typs']}</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单日志</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+						{if $order['ifpay'] =='0'}
+							<tr >
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$order['created']} 订单提交成功</strong>
+									</p>
+									<p style="padding-left:15px; ">单号:{$order['orders']}，等待用户付款</p>
+								</td>
+							</tr>
+							{/if}
+							{if $order['ifpay'] =='1'}
+							<tr >
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$order['paytime']} 订单支付成功</strong>
+									</p>
+									<p style="padding-left:15px; ">支付成功，等待接诊</p>
+								</td>
+							</tr>
+							{/if}
+							{if $order['ifpay'] =='2'}
+							<tr >
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$order['accept_time']} 已接诊</strong>
+									</p>
+									<p style="padding-left:15px; ">接诊中</p>
+								</td>
+							</tr>
+							{/if}
+							{if $order['ifpay'] =='3'}
+							<tr >
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$order['paytime']} 订单已完成</strong>
+									</p>
+									<p style="padding-left:15px; ">等待用户评价</p>
+								</td>
+							</tr>
+							{/if}
+							{if $order['ifpay'] =='4'}
+							<tr >
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$order['paytime']} 已完成评价</strong>
+									</p>
+									<p style="padding-left:15px; ">用户已完成评价</p>
+								</td>
+							</tr>
+							{/if}
+							{if $order['ifpay'] =='5'}
+							<tr >
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$order['apply_time']} 申请退款</strong>
+									</p>
+									<p style="padding-left:15px; ">用户申请退款</p>
+								</td>
+							</tr>
+							{/if}
+							{if $order['ifpay'] =='6'}
+							<tr >
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$order['refund_time']} 退款成功</strong>
+									</p>
+									<p style="padding-left:15px; ">退款成功</p>
+								</td>
+							</tr>
+							{/if}
+							{if $order['ifpay'] =='7'}
+							<tr >
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$order['created']} 订单关闭</strong>
+									</p>
+									<p style="padding-left:15px; ">订单关闭</p>
+								</td>
+							</tr>
+							{/if}
+							{if $order['ifpay'] =='8'}
+							<tr >
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$order['cancel_time']} 订单取消</strong>
+									</p>
+									<p style="padding-left:15px; ">订单取消</p>
+								</td>
+							</tr>
+							{/if}
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8 padding-r-0">
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单费用</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td width="150">总费用：</td>
+								<td>+￥ {$order['money']} </td>
+							</tr>
+							<tr>
+								<td width="150">分销推广支出：</td>
+								<td>-￥ {php echo($order['tk_one'] + $order['tk_two'])} </td>
+
+							</tr>
+							<tr>
+								<td width="150">推荐人：</td>
+								<td>{php echo empty($order['tk']) ? '暂无' : $order['tk']}</td>
+
+							</tr>
+							<tr>
+								<td width="150">平台抽成：</td>
+								<td>-￥ {$order['ptmoney']} </td>
+
+							</tr>
+							<tr>
+								<td width="150">机构抽成：</td>
+								<td>-￥ {$order['hosmoney']} </td>
+
+							</tr>
+							<tr>
+								<td width="150">会员折扣：</td>
+								<td>-￥ {$order['vip_dk']} </td>
+
+							</tr>
+							<tr>
+								<td width="150">优惠券抵扣：</td>
+								<td>-￥ {$order['card_dk']} </td>
+
+							</tr>
+							<td width="150">导诊实际收入：</td>
+							<td>
+								(本单用户实际支付:￥{$order['moneyss']})</td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>问诊信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th style="width: 20rem;">专家名/导诊名</th>
+									<th>科室</th>
+									<th>职称</th>
+									<th>所属机构</th>
+									<th>问诊费(元)</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tr>
+								<td>
+									<img src="{$doc['thumb']}" style="width: 30px;height: 30px;margin-right: 5px;"> {$doc['title']}</td>
+								<td> {$doc['name']} </td>
+								<td>{$doc['job_name']}</td>
+								<td>{$doc['agentname']}</td>
+								<td>{$order['money']}元</td>
+								<td class="text-right">
+								{if $order['did'] != '' && $order['did'] != '0'}
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWebUrl('green',array('id'=>$doc['id'],'ac'=>'list','op'=>'edit'))}">客服信息</a>
+								{else if $order['z_id'] != '' && $order['z_id'] != '0'}
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWebUrl('team',array('id'=>$doc['zid'],'ac'=>'edit','op'=>'edit'))}">专家信息</a>
+								{/if}
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>问诊信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<table class="table">
+								<tr>
+									<td width="150">用户：</td>
+									<td>
+										<a href="{php echo $this->createWebUrl('copysite',array('u_id'=>$user['u_id'],'act'=>'profile.adduser','op'=>'edit','openid'=>$user['openid']))}" target='_blank'> </a>&nbsp;&nbsp;<a data-toggle='popover' data-trigger="hover" data-html='true' data-placement='right'
+										   data-content="<table tyle='width:100%;">
+                <tr>
+                    <td  style='border:none;text-align:right;' colspan='2'><img src="{$user['u_thumb']}" style='width:100px;height:100px;padding:1px;border:1px solid #ccc' /></td>
+                </tr>
+                <tr>
+                    <td  style='border:none;text-align:right;'>ID：</td>
+                    <td  style='border:none;text-align:right;'>{$user['u_id']}</td>
+                </tr>
+                <tr>
+                    <td  style='border:none;text-align:right;'>昵称：</td>
+                    <td  style='border:none;text-align:right;'>{$user['u_name']}</td>
+                </tr>
+                <tr>
+                    <td  style='border:none;text-align:right;'>姓名：</td>
+                    <td  style='border:none;text-align:right;'>{$user['names']}</td>
+                </tr>
+                <tr>
+                    <td  style='border:none;text-align:right;'>手机号：</td>
+                    <td  style='border:none;text-align:right;'>{if $user['tel'] != ''}{$user['tel']}{else}未填写{/if}</td>
+                </tr>
+                </table>
+
+											<i class='fa fa-question-circle'></i>
+										</a>
+									</td>
+
+								<tr>
+									<td width="150">病情描述：</td>
+									<td>{$order['content']['text']}<a href="/index.php?c=site&a=entry&do=green&op=askchat&ac=asklist&m=hyb_yl&back_orser={$order['orders']}">问诊详情</a>
+									</td>
+								</tr>
+								<tr>
+									<td width="150">问题类型：</td>
+									<td class="text-left">
+										<label class="label label-success">{$order['typs']}</label>
+									</td>
+								</tr>
+<!-- 								<tr>
+									<td width="150"></td>
+									<td>
+										<a class="btn btn-primary btn-xs"  href="{php echo $this->createWebUrl('ask',array('id'=>$res['id'],'op'=>'make'))}">确认接诊</a>
+									</td>
+								</tr> -->
+							</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="addCateModal" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button data-dismiss="modal" class="close" type="button">×</button>
+						<h4 class="modal-title">新建分类</h4>
+					</div>
+					<div class="modal-body form-horizontal">
+						<div class="form-group">
+							<div class="col-sm-2 control-label must">分类名称</div>
+							<div class="col-sm-10">
+								<input class="form-control input-sm" placeholder="请输入分类名称" id="saveTempName" value="未命名分类" />
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="btn btn-primary" id="saveCate">保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		$("#addRemark").unbind('click').click(function () {
+		        $("#addCateModal").modal();
+		        $("#saveCate").unbind('click').click(function () {
+		            var status = $(this).data('status');
+		            if(status) {
+		                tip.msgbox.err("正在保存，请稍候。");
+		                return;
+		            }
+		            var name = $.trim($("#saveTempName").val());
+		            if(!name) {
+		                tip.msgbox.err("请填写备注内容！");
+		                $("#saveTempName").focus();
+		                return;
+		            }
+		            $(this).data('status',1).text('保存中')
+		            $.post("http://www.webstrongtech.com/web/index.php?c=site&a=entry&m=weliam_merchant&p=rush&ac=category&do=add&", {
+		                name: name
+		            }, function (ret) {
+		                if(ret.status==0){
+		                    tip.msgbox.err(ret.result.message);
+		                }else{
+		                    tip.msgbox.suc("保存成功！");
+		                }
+		                $("#addCateModal .close").trigger('click');
+		                setTimeout(function () {
+		                    location.reload();
+		                }, 500);
+		            }, 'json');
+		        });
+		    });
+	</script>
+
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+
+
+<script>
+	require(['bootstrap'], function ($) {
+			    $('[data-toggle="tooltip"]').tooltip({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="popover"]').popover({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="dropdown"]').dropdown({
+		            container: $(document.body)
+		        });
+		    });
+			myrequire(['js/init']);
+					$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+				$('.app-login-info-sel').show();
+			});
+			$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+				$('.app-login-info-sel').hide();
+			});
+			$('.app-login-info-sel .login-out').hover(function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+			},function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+			});
+</script>
+</body>
+</html>

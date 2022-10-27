@@ -1,0 +1,213 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+            </div>
+            <div class="pageheader hidden">
+                <h2><i class="fa fa-pencil"></i> 提现设置</h2>
+            </div>
+<div class="basics">
+    <div class="gai_huanzhe">
+        <div class="gai_huanzhe_title">
+            <div class="gai_huanzhe_title_left">
+                <div class="gai_huanzhe_true gai_huanzhe_title_leftlis">
+                    <div>今日病人(1)</div>
+                </div>
+                <div class="gai_huanzhe_false gai_huanzhe_title_leftlis">
+                    <div>历史记录</div>
+                </div>
+            </div>
+            <div class="gai_huanzhe_title_right">
+                <button class="gai_huanzhe_title_next"><a href="">呼叫下一位</a></button>
+                <button class="gai_huanzhe_title_jiezhen"><a href="">快速接诊</a></button>
+            </div>
+        </div>
+        <div class="gai_huanzhe_jinri gai_huanzhe_jinris">
+            <div class="gai_huanzhe_caozuo">
+                <div class="form-group J-module-control" data-permission="31">
+                    <a href="{php echo $this->createWeburl('medicine',array('op'=>'add','type_id'=>$type_id))}" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> 选择患者</a>
+                </div>
+                <div class="gai_huanzhe_caozuo_input">
+                    
+                    <input type="" name="" placeholder="请输入姓名或手机或病历号">
+                    <button><i class="fa fa-search"></i></button>
+                    <select class="gai_huanzhe_caozuo_input_select" name="status" data-placeholder="预约状态" id="J-status">
+                        <option value="">预约状态</option>
+                        <option value="1">已预约</option>
+                        <option value="2">已就诊</option>
+                        <option value="3">失约</option>
+                        <option value="4">已取消</option>
+                    </select>
+                    <button class="btn btn-sm btn-default J-download gai_huanzhe_caozuo_daochu" href=""><i class="fa fa-download"></i> 导出</button>
+                </div>
+            </div>
+            <div class="gai_huanzhe_box">
+                <div class="gai_huanzhe_box_lis">
+                    <div class="gai_huanzhe_box_lis_top">
+                        <div class="gai_huanzhe_box_lis_img">
+                            <a href=""><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3542734873,2795228478&fm=26&gp=0.jpg"></a>
+                        </div>
+                        <div class="gai_huanzhe_box_lis_ziliao">
+                            <div class="gai_huanzhe_box_lis_name">
+                                <a href="#">地方阿萨德</a>
+                                <span>（男32岁）</span>
+                            </div>
+                            <div class="gai_huanzhe_box_lis_time">登记时间：07-30 15:00</div>
+                            <div class="gai_huanzhe_box_lis_time">登记科室：</div>
+                            <div class="gai_huanzhe_box_lis_time">接诊中 / 等候2小时26分钟（初诊）</div>
+                        </div>
+                    </div>
+                    <div class="gai_huanzhe_box_lis_buttom">
+                        <div class="gai_huanzhe_box_lis_buttom_lis"><a href="">接诊</a></div>
+                        <div class="gai_huanzhe_box_lis_buttom_lis"><a href="">查看报告(<span class="color_gray">0/0</span>)</a></div>
+                        <div style="border: none;" class="gai_huanzhe_box_lis_buttom_lis gai_huanzhe_box_lis_buttom_baogao">
+                            更多操作
+                            <div class="gai_huanzhe_box_lis_yin" style="border: none;">
+                                <p><a href=""><i class="fa fa-clock-o"></i>预约</a></p>
+                                <p class="gai_jiezhne"><i class="fa fa-pencil"></i>修改接诊类型</p>
+                                <p class="gai_dengji"><i class="fa fa-medkit"></i>修改登记科室</p>
+                                <p><a href=""><i class="fa fa-asterisk"></i> 新增随访</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gai_huanzhe_jinri gai_huanzhe_lishi gai_huanzhe_guanbi">
+            <div class="gai_huanzhe_caozuo">
+                <div class="form-group J-module-control" data-permission="31">
+                    <a href="{php echo $this->createWeburl('medicine',array('op'=>'add','type_id'=>$type_id))}" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> 选择患者</a>
+                </div>
+                <div class="gai_huanzhe_title_time">
+                    填写时间
+                </div>
+                <div class="gai_huanzhe_caozuo_input">
+                    <select class="gai_huanzhe_caozuo_input_select" name="status" data-placeholder="预约状态" id="J-status">
+                        <option value="">预约状态</option>
+                        <option value="1">已预约</option>
+                        <option value="2">已就诊</option>
+                        <option value="3">失约</option>
+                        <option value="4">已取消</option>
+                    </select>
+                    <input type="" name="" placeholder="请输入姓名或手机或病历号">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <div class="gai_huanzhe_box">
+                <div class="gai_huanzhe_box_lis">
+                    <div class="gai_huanzhe_box_lis_top">
+                        <div class="gai_huanzhe_box_lis_img">
+                            <a href=""><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3542734873,2795228478&fm=26&gp=0.jpg"></a>
+                        </div>
+                        <div class="gai_huanzhe_box_lis_ziliao">
+                            <div class="gai_huanzhe_box_lis_name">
+                                <a href="#">地方阿萨德</a>
+                                <span>（男32岁）</span>
+                            </div>
+                            <div class="gai_huanzhe_box_lis_time">登记时间：07-30 15:00</div>
+                            <div class="gai_huanzhe_box_lis_time">登记科室：</div>
+                            <div class="gai_huanzhe_box_lis_time">接诊中 / 等候2小时26分钟（初诊）</div>
+                        </div>
+                    </div>
+                    <div class="gai_huanzhe_box_lis_buttom">
+                        <div class="gai_huanzhe_box_lis_buttom_lis"><a href="">接诊</a></div>
+                        <div class="gai_huanzhe_box_lis_buttom_lis"><a href="">预约</a></div>
+                        <div style="border: none;" class="gai_huanzhe_box_lis_buttom_lis">
+                            <a href="">新增随访</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gai_tc"></div>
+    <div class="gai_tanchuang gai_jiezhen_tc">
+        <div class="gai_tanchuang_title">修改接诊类型 <span class="gai_gianbi">×</span> </div>
+        <form>
+            <div class="form-group mb30 mt10 mlr0">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb30 mt10 mlr0">
+                            <label class="control-label">选择接诊类型 <span class="asterisk">*</span></label>
+                            <input type="hidden" name="clinic_id" value="78442">
+                            <select class="form-control input-sm J-firstvisit-list" name="visit_type" data-placeholder="请选择" required="" style="line-height: 23px">
+                                <option value="1" selected="selected">初诊</option>
+                                <option value="2">复诊</option>
+                                <option value="3">儿童体检</option>
+                                <option value="4">成人体检</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer modal-btn-col2">
+                <button type="button" class="btn btn-primary J-change-department-sub gai_baocun">保存</button>
+                <button type="button" class="btn btn-default gai_gianbi" data-dismiss="modal">取消</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div class="gai_tanchuang gai_dengji_tc">
+        <div class="gai_tanchuang_title">修改登记科室 <span class="gai_gianbi">×</span> </div>
+        <form>
+            <div class="form-group mb30 mt10 mlr0">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group mb30 mt10 mlr0">
+                            <label class="control-label">修改登记科室 <span class="asterisk">*</span></label>
+                            <input type="hidden" name="clinic_id" value="78442">
+                            <select class="form-control input-sm J-firstvisit-list" name="visit_type" data-placeholder="请选择" required="" style="line-height: 23px">
+                                <option value="1" selected="selected">初诊</option>
+                                <option value="2">复诊</option>
+                                <option value="3">儿童体检</option>
+                                <option value="4">成人体检</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer modal-btn-col2">
+                <button type="button" class="btn btn-primary J-change-department-sub gai_baocun">保存</button>
+                <button type="button" class="btn btn-default gai_gianbi" data-dismiss="modal">取消</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    $(".gai_huanzhe_box_lis_buttom_baogao").click(function(){
+        $(this).children().eq(0).toggleClass("gai_huanzhe_box_lis_yins");
+    })
+    $(".gai_jiezhne").click(function(){
+        $(".gai_tc").addClass("gai_tcs");
+        $(".gai_jiezhen_tc").addClass("gai_tanchuangs");
+    })
+    $(".gai_dengji").click(function(){
+        $(".gai_tc").addClass("gai_tcs");
+        $(".gai_dengji_tc").addClass("gai_tanchuangs");
+    })
+    
+    $(".gai_tc").click(function(){
+        gai_tanchuang();
+    })
+    $(".gai_gianbi").click(function(){
+        gai_tanchuang();
+    })
+    $(".gai_baocun").click(function(){
+        gai_tanchuang();
+    })
+    function gai_tanchuang(){
+        $(".gai_tc").removeClass("gai_tcs");
+        $(".gai_jiezhen_tc").removeClass("gai_tanchuangs");
+        $(".gai_dengji_tc").removeClass("gai_tanchuangs");
+    }
+    $(".gai_huanzhe_title_leftlis").click(function(){
+        $(this).removeClass("gai_huanzhe_false").addClass("gai_huanzhe_true").siblings().removeClass("gai_huanzhe_true").addClass("gai_huanzhe_false");
+        if($(this).children().eq(0).html() == "历史记录"){
+            $(".gai_huanzhe_lishi").removeClass("gai_huanzhe_guanbi").prev().addClass("gai_huanzhe_guanbi");
+        }else{
+            $(".gai_huanzhe_jinris").removeClass("gai_huanzhe_guanbi").next().addClass("gai_huanzhe_guanbi");
+        }
+    })
+</script>

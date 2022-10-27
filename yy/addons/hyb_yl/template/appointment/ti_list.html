@@ -1,0 +1,1171 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            
+            <div class="contentpanel">
+                <a href="https://www.baidu.com/" class="J-export-excel display-none" target="_blank"></a>
+                <input type="hidden" id="init_anchor" value="">
+                <ul class="nav nav-tabs patient-tabs J-report-tabs">
+                    <li class="J-module-control" data-permission="48,49,50,51,52,53,60,61,95"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'display','type_id'=>$type_id))}"><strong>费用统计</strong></a></li>
+                    <li class="J-module-control active" data-permission="42,43,44,47,55,9004,58,59,68,69,89,90,100"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yiwu','type_id'=>$type_id))}"><strong>医务统计</strong></a></li>
+                    <li class="J-module-control" data-permission="62,63,64,65,66,67"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'jinxiao'),'type_id'=>$type_id)}"><strong>进销存统计</strong></a></li>
+                    <li class="J-module-control" data-permission="45,46,56,57,91,92,93"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yunyin','type_id'=>$type_id))}"><strong>运营统计</strong></a></li>
+                    <li class="J-module-control J-mobile-report-tab" data-permission="73"><a href="{php echo $this->createWeburl('baobiao',array('op'=>'yidong','type_id'=>$type_id))}"><strong>移动报表</strong></a></li>
+                </ul>
+                <div class="tab-content pd0">
+                    <!-- 费用统计 -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading bgfc pb5">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="form-group J-toggle-tabs">
+                                        <a href="#medical" data-toggle="tab" class="btn btn-sm btn-default J-module-control active" data-permission="42"><i class="fa fa-file-text-o"></i> 门诊日志</a>
+                                        <a href="#department" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="43"><i class="fa fa-codepen"></i> 科室统计</a>
+                                        <a href="#reportType" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="44"><i class="fa fa-list"></i> 接诊类型统计</a>
+                                        <a href="#reportDoctor" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="55"><i class="fa fa-user-md"></i> 医生接诊</a>
+                                        <a href="#reportPerformance" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="9004"><i class="fa fa-user-md"></i> 医生业绩统计</a>
+                                        <a href="#reportInspect" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="100"><i class="fa fa-tint"></i> 实验室检查统计</a>
+                                        <a href="#reportChecking" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="89"><i class="fa fa-stethoscope"></i> 辅助检查统计</a>
+                                        <a href="#reportCure" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="90"><i class="fa fa-medkit"></i> 治疗统计</a>
+                                        <a href="#reportReservation" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="58"><i class="fa fa-table"></i> 预约统计</a>
+                                        <a href="#reportCheck" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="59"><i class="fa fa-pencil-square-o"></i> 登记分类</a>
+                                        <a href="#reportClinic" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="47"><i class="fa fa-bar-chart-o"></i> 门诊效率</a>
+                                        <a href="#patient" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="68"><i class="fa fa-users"></i> 患者来源统计</a>
+                                        <a href="#reportAsci" data-toggle="tab" class="btn btn-sm btn-default J-module-control" data-permission="69"><i class="fa fa-tasks"></i> 满意度调查</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body tab-content no-border">
+                            <!-- 门诊日志 -->
+                            <div class="tab-pane J-module-control active" data-permission="42" id="medical">
+                                <div class="row mb15">
+                                    <div class="col-sm-10 col-md-10">
+                                        <form class="form-inline" id="J-medical-form" method="post">
+                                            <div class="form-group mr0 hidden">
+                                                <label class="control-label">就诊日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-start-date mbsc-comp" name="start_date" type="text" placeholder="就诊日期" size="10" id="mobiscroll1560610835013" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0 hidden">-</div>
+                                            <div class="form-group mr5 hidden">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-end-date mbsc-comp" name="end_date" type="text" placeholder="就诊日期" size="10" id="mobiscroll1560610835014" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 appDate J-select-date" type="text" placeholder="就诊日期" size="21">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-patient-name J-download-info" type="text" name="patient_name" placeholder="患者姓名" size="7">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-mobile-number J-download-info" type="text" name="mobile_number" placeholder="手机号码" size="7">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <div class="select2-container mtf3 select-sm3 J-doctor" id="s2id_J-doctor" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">医生</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-1">   </ul></div></div><input type="hidden" name="doctor" class="mtf3 select-sm3 J-doctor select2-offscreen" id="J-doctor" data-init="" data-initlist="" data-placeholder="医生" tabindex="-1" title="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <div class="select2-container mtf3 select-sm3 J-nurse" id="s2id_J-nurse" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-2">护士</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen2" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-2" id="s2id_autogen2"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen2_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-2" id="s2id_autogen2_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-2">   </ul></div></div><input type="hidden" name="nurse" class="mtf3 select-sm3 J-nurse select2-offscreen" id="J-nurse" data-init="" data-initlist="" data-placeholder="护士" tabindex="-1" title="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <div class="select2-container mtf3 select-sm3 J-register" id="s2id_J-register" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-3">登记人员</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen3" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-3" id="s2id_autogen3"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen3_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-3" id="s2id_autogen3_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-3">   </ul></div></div><input type="hidden" name="register" class="mtf3 select-sm3 J-register select2-offscreen" id="J-register" data-init="" data-initlist="" data-placeholder="登记人员" tabindex="-1" title="">
+                                                </div>
+                                            </div>
+
+                                            <button type="button" class="btn btn-default btn-sm J-medical-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-medical"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%"></td>
+                                                <td width="60%" align="center">
+                                                    <h4 class="pb5 font20 black"><span class="J-date">2019年06月15日 - 06月15日 门诊日志统计报表</span></h4>
+                                                </td>
+                                                <td width="20%" align="right">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <form class="form-inline table-responsive">
+                                        <table class="table table-bordered table-hover table-gray background-white fixed-header-setting pos-relative J-setting-list" style="width: 1602px;">
+                                            <thead class="header">
+                                                <tr class="J-setting-header">
+                                                    <th width="8%" class="font-wb font13" style="width: 79px;">就诊日期</th>
+                                                    <th width="5%" class="font-wb font13" style="width: 78px;">门诊号</th>
+                                                    <th width="8%" class="font-wb font13" style="width: 78px;">患者姓名</th>
+                                                    <th width="5%" class="font-wb font13" style="width: 78px;">性别</th>
+                                                    <th width="5%" class="font-wb font13" style="width: 78px;">年龄</th>
+                                                    <th width="6%" class="font-wb font13" style="width: 78px;">手机号</th>
+                                                    <th width="5%" class="font-wb font13" style="width: 78px;">职业</th>
+                                                    <th width="8%" class="font-wb font13" style="width: 78px;">住址</th>
+                                                    <th width="8%" class="font-wb font13" style="width: 78px;">工作单位</th>
+                                                    <th width="8%" class="font-wb font13" style="width: 78px;">发病日期</th>
+                                                    <th width="8%" class="font-wb font13" style="width: 78px;">初步诊断</th>
+                                                    <th width="5%" class="font-wb font13" style="width: 78px;">接诊类型</th>
+                                                    <th width="5%" class="font-wb font13" style="width: 78px;">登记科室</th>
+                                                    <th width="6%" class="font-wb font13" style="width: 78px;">登记人员</th>
+                                                    <th width="6%" class="font-wb font13" style="width: 78px;">护士姓名</th>
+                                                    <th width="6%" class="font-wb font13" style="width: 79px;">接诊医生</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="J-medical-list-wrap"></tbody>
+                                        <thead class="header-copy hide header-fixed-copys" style="margin: 50px auto 0px; width: 1600px; background-color: rgb(238, 238, 238);">
+                                                <tr class="J-setting-header">
+                                                    <th width="8%" class="font-wb font13" style="width:101px!important;height:40px!important;">就诊日期</th>
+                                                    <th width="5%" class="font-wb font13" style="width:99px!important;height:40px!important;">门诊号</th>
+                                                    <th width="8%" class="font-wb font13" style="width:99px!important;height:40px!important;">患者姓名</th>
+                                                    <th width="5%" class="font-wb font13" style="width:100px!important;height:40px!important;">性别</th>
+                                                    <th width="5%" class="font-wb font13" style="width:100px!important;height:40px!important;">年龄</th>
+                                                    <th width="6%" class="font-wb font13" style="width:100px!important;height:40px!important;">手机号</th>
+                                                    <th width="5%" class="font-wb font13" style="width:100px!important;height:40px!important;">职业</th>
+                                                    <th width="8%" class="font-wb font13" style="width:100px!important;height:40px!important;">住址</th>
+                                                    <th width="8%" class="font-wb font13" style="width:100px!important;height:40px!important;">工作单位</th>
+                                                    <th width="8%" class="font-wb font13" style="width:100px!important;height:40px!important;">发病日期</th>
+                                                    <th width="8%" class="font-wb font13" style="width:100px!important;height:40px!important;">初步诊断</th>
+                                                    <th width="5%" class="font-wb font13" style="width:100px!important;height:40px!important;">接诊类型</th>
+                                                    <th width="5%" class="font-wb font13" style="width:100px!important;height:40px!important;">登记科室</th>
+                                                    <th width="6%" class="font-wb font13" style="width:100px!important;height:40px!important;">登记人员</th>
+                                                    <th width="6%" class="font-wb font13" style="width:100px!important;height:40px!important;">护士姓名</th>
+                                                    <th width="6%" class="font-wb font13" style="width:102px!important;height:40px!important;">接诊医生</th>
+                                                </tr>
+                                            </thead></table>
+                                    </form>
+                                </div>
+                                <!-- 日期弹窗 -->
+                                <div class="modal fade" id="dateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title J-date-title" id="myModalLabel">就诊日期</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="pt10 pb10">
+                                                    <form class="form-inline" method="post">
+                                                        <div class="form-group mr0">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-startDate mbsc-comp" type="text" placeholder="开始日期" id="mobiscroll1560610835011" readonly="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group mr0">至</div>
+                                                        <div class="form-group mr5">
+                                                            <div class="input-group">
+                                                                <input class="form-control input-sm2 radius3 J-common-endDate mbsc-comp" type="text" placeholder="截止日期" id="mobiscroll1560610835012" readonly="">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer modal-btn-col2">
+                                                <button type="button" class="btn btn-primary J-common-submit">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 日期弹窗 -->
+                            </div>
+                            <!-- 门诊日志 -->
+                            <!-- 科室统计 -->
+                            <div class="tab-pane J-module-control" data-permission="43" id="department">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-department-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">接诊日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-department-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-department"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <h5 class="pl20">人次</h5>
+                                        <div class="h480" id="report-department-pv"></div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <h5 class="pl20">金额</h5>
+                                        <div class="h480" id="report-department-money"></div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%"></td>
+                                                <td width="60%" align="center">
+                                                    <h4 class="pb5 font20 black"><span class="J-date"></span></h4>
+                                                </td>
+                                                <td width="20%" align="right">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <form class="form-inline table-responsive">
+                                        <table class="table table-bordered table-hover table-gray background-white table-fixed-header fixed-header-setting pos-relative J-setting-list">
+                                            <thead class="header" id="J-department-header-wrap">
+                                                <!-- 科室统计表头 -->
+                                            </thead>
+                                            <tbody id="J-department-list-wrap">
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                <!-- 科室统计表头设置 -->
+                                <script type="text/template" id="department-header-tpl">
+                                    <tr class="font12">
+                                        <th rowspan="2" class="font-wb vertical-middle J-clinic-date">接诊日期</th>
+                                        <%$.each(title, function(i, obj) {%>
+                                            <th colspan="2" class="font-wb vertical-middle J-clinic-item"><%- obj.name%></th>
+                                        <%})%>
+                                    </tr>
+                                    <tr class="font12 J-department-title">
+                                        <%$.each(title, function(i, obj) {%>
+                                            <th>人次</th>
+                                            <th>金额</th>
+                                        <%})%>
+                                    </tr>
+                                </script>
+                                <!-- 科室统计表头设置 -->
+                            </div>
+                            <!-- 科室统计 -->
+                            <!-- 接诊类型 -->
+                            <div class="tab-pane J-module-control" data-permission="44" id="reportType">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-type-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">接诊日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-type-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-type"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 h480" id="report-type-chart">
+                                        <!-- 图表 -->
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="6" class="font20 black text-center"><span class="J-date"></span></th>
+                                            </tr>
+                                            <tr class="font12">
+                                                <th class="font-wb">接诊日期</th>
+                                                <th class="font-wb">初诊</th>
+                                                <th class="font-wb">复诊</th>
+                                                <th class="font-wb">成人体检</th>
+                                                <th class="font-wb">儿童体检</th>
+                                                <th class="font-wb J-module-control" data-modules="11">方便门诊</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-type-list-wrap">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- 接诊类型 -->
+                            <!-- 医生接诊 -->
+                            <div class="tab-pane J-module-control" data-permission="55" id="reportDoctor">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-doctor-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">接诊日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-doctor-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-doctor"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="11" class="font20 black text-center"><span class="J-date"></span></th>
+                                            </tr>
+                                            <tr class="font12">
+                                                <th class="font-wb">接诊医生</th>
+                                                <th class="font-wb">接诊人次</th>
+                                                <th class="font-wb">总金额</th>
+                                                <th class="font-wb J-module-control" data-modules="13">实验室检查</th>
+                                                <th class="font-wb J-module-control" data-modules="14">辅助检查</th>
+                                                <th class="font-wb J-module-control" data-modules="15">治疗</th>
+                                                <th class="font-wb">处方</th>
+                                                <th class="font-wb J-module-control" data-modules="20">材料</th>
+                                                <th class="font-wb J-module-control" data-modules="10">其他</th>
+                                                <th class="font-wb">诊金</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-doctor-list-wrap">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- 医生接诊 -->
+                            <!-- 医生业绩统计 -->
+                            <div class="tab-pane J-module-control" data-permission="9004" id="reportPerformance">
+                                <div class="row mb15">
+                                    <div class="col-sm-10 col-md-10">
+                                        <form class="form-inline" id="J-performance-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label for="" class="control-labe l">日期：</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control input-sm2 radio3 J-start-date" name="start_date" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control input-sm2 radio3 J-end-date" name="end_date" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <label class="control-label">收费分类</label>
+                                                <select class="form-control input-xs2 J-charge" name="charge_type">
+                                                    <option value="0" selected="selected">全部</option>
+                                                    <option value="1">诊疗费</option>
+                                                    <option value="2">实验室检查</option>
+                                                    <option value="3">辅助检查</option>
+                                                    <option value="4">西/成药处方</option>
+                                                    <option value="5">治疗</option>
+                                                    <option value="6">其他收费</option>
+                                                    <option value="11">材料</option>
+                                                    <option value="15">中药处方</option>
+                                                </select>
+                                            </div>
+                                            <button class="btn btn-default btn-sm J-performance-submit" type="button"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-performance"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%"></td>
+                                                <td width="60%" align="center">
+                                                    <h4 class="pb5 font20 black">
+                                                        <span class="J-date"></span>
+                                                        <span class="tooltips pull-right" data-toggle="tooltip" data-placement="left" data-html="true" data-original-title="<h4>报表计算逻辑</h4>根据门诊日志找到对应的收费明细，按收费项目统计优惠分摊后金额的和及利润 <h4>优惠分摊后金额</h4>优惠分摊后金额=项目折后金额-减免分摊金额-积分抵扣分摊-卡券分摊金额 <h4>利润</h4>优惠分摊后金额-成本">
+                                                            <i class="fa fa-exclamation-triangle"></i>
+                                                        </span>
+                                                    </h4>
+                                                </td>
+                                                <td width="20%" align="right"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <form class="form-inline table-responsive">
+                                        <table class="table table-bordered table-hover table-gray background-white J-setting-list fix-table">
+                                            <thead class="header" id="J-performance-header-wrap">
+                                            </thead>
+                                            <tbody id="J-performance-list-wrap">
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                    <!-- <div class="J-performance-page-wrap"></div> -->
+                                </div>
+                            </div>
+                            <!-- 医生业绩统计 -->
+                            <!-- 实验室检查统计 -->
+                            <div class="tab-pane J-module-control" data-permission="100" id="reportInspect">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-inspect-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-inspect-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-inspect"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="11" class="font20 black text-center"><span class="J-date"></span></th>
+                                            </tr>
+                                            <tr class="font12">
+                                                <th class="font-wb">日期</th>
+                                                <th class="font-wb">门诊号</th>
+                                                <th class="font-wb">患者姓名</th>
+                                                <th class="font-wb">性别</th>
+                                                <th class="font-wb">年龄</th>
+                                                <th class="font-wb">手机号</th>
+                                                <th class="font-wb">操作人员</th>
+                                                <th class="font-wb">收费项目</th>
+                                                <th class="font-wb">单位</th>
+                                                <th class="font-wb">数量</th>
+                                                <th class="font-wb">单价</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-inspect-list-wrap">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- 实验室检查统计 -->
+                            <!-- 辅助检查统计 -->
+                            <div class="tab-pane J-module-control" data-permission="89" id="reportChecking">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-checking-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-checking-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-checking"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="11" class="font20 black text-center"><span class="J-date"></span></th>
+                                            </tr>
+                                            <tr class="font12">
+                                                <th class="font-wb">日期</th>
+                                                <th class="font-wb">门诊号</th>
+                                                <th class="font-wb">患者姓名</th>
+                                                <th class="font-wb">性别</th>
+                                                <th class="font-wb">年龄</th>
+                                                <th class="font-wb">手机号</th>
+                                                <th class="font-wb">操作人员</th>
+                                                <th class="font-wb">收费项目</th>
+                                                <th class="font-wb">单位</th>
+                                                <th class="font-wb">数量</th>
+                                                <th class="font-wb">单价</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-checking-list-wrap">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- 辅助检查统计 -->
+                            <!-- 治疗统计 -->
+                            <div class="tab-pane J-module-control" data-permission="90" id="reportCure">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-cure-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-cure-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-cure"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="11" class="font20 black text-center"><span class="J-date"></span></th>
+                                            </tr>
+                                            <tr class="font12">
+                                                <th class="font-wb">日期</th>
+                                                <th class="font-wb">门诊号</th>
+                                                <th class="font-wb">患者姓名</th>
+                                                <th class="font-wb">性别</th>
+                                                <th class="font-wb">年龄</th>
+                                                <th class="font-wb">手机号</th>
+                                                <th class="font-wb">治疗人员</th>
+                                                <th class="font-wb">收费项目</th>
+                                                <th class="font-wb">单位</th>
+                                                <th class="font-wb">数量</th>
+                                                <th class="font-wb">单价</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-cure-list-wrap">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- 治疗统计 -->
+                            <!-- 预约就诊 -->
+                            <div class="tab-pane J-module-control" data-permission="58" id="reportReservation">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-reservation-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">新增日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-reservation-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-reservation"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="h480" id="report-reservation-pie"></div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="h480" id="report-reservation-line"></div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="5" class="font20 black text-center"><span class="J-date"></span></th>
+                                            </tr>
+                                            <tr class="font12">
+                                                <th class="font-wb">预约时间</th>
+                                                <th class="font-wb">总数</th>
+                                                <th class="font-wb">已就诊</th>
+                                                <th class="font-wb">失约</th>
+                                                <th class="font-wb">已取消</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-reservation-list-wrap">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- 预约就诊 -->
+                            <!-- 登记分类 -->
+                            <div class="tab-pane J-module-control" data-permission="59" id="reportCheck">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-check-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">新增日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-check-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-check"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="h480" id="report-check-pie"></div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="h480" id="report-check-line"></div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="4" class="font20 black text-center"><span class="J-date"></span></th>
+                                            </tr>
+                                            <tr class="font12">
+                                                <th class="font-wb">接诊日期</th>
+                                                <th class="font-wb">登记总数</th>
+                                                <th class="font-wb">预约就诊</th>
+                                                <th class="font-wb">直接登记</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-check-list-wrap">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- 登记分类 -->
+                            <!-- 门诊效率 -->
+                            <div class="tab-pane J-module-control" data-permission="47" id="reportClinic">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-clinic-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">接诊日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="clinicDateStart" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="clinicDateEnd" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">
+                                                <label class="control-label">登记科室：</label>
+                                                <div class="input-group report_medical_select">
+                                                    <input type="hidden" name="departmentIds" class="J-department-input reservation-groups" id="J-departmentId" data-init="" data-initlist="" data-placeholder="请选择" style="min-width: 200px">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-clinic-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-clinic"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-gray background-white">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="13" class="font20 black text-center"><span class="J-date"></span></th>
+                                            </tr>
+                                            <tr class="font12">
+                                                <th class="font-wb">接诊日期</th>
+                                                <th class="font-wb">患者</th>
+                                                <th class="font-wb">门诊号</th>
+                                                <th class="font-wb">登记科室</th>
+                                                <th class="font-wb">登记完成时间</th>
+                                                <th class="font-wb">分诊完成时间</th>
+                                                <th class="font-wb">分诊用时(分钟)</th>
+                                                <th class="font-wb">接诊开始时间</th>
+                                                <th class="font-wb">安排接诊用时(分钟)</th>
+                                                <th class="font-wb">接诊结束时间</th>
+                                                <th class="font-wb">接诊用时(分钟)</th>
+                                                <th class="font-wb">收费完成时间</th>
+                                                <th class="font-wb">收费用时(分钟)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-clinic-list-wrap">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- 门诊效率 -->
+                            <!-- 患者统计 -->
+                            <div class="tab-pane J-module-control" data-permission="68" id="patient">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-patient-form" method="get">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">新增日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="startDate" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="endDate" type="text" placeholder="截止日期" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-patient-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="/japi/session/707018?isExport=1" id="J-export-patient"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="h480" id="report-patient-pie"></div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="h480" id="report-patient-line"></div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%"></td>
+                                                <td width="60%" align="center">
+                                                    <h4 class="pb5 font20 black"><span class="J-date"></span></h4>
+                                                </td>
+                                                <td width="20%" align="right">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <form class="form-inline table-responsive">
+                                        <table class="table table-bordered table-hover table-gray background-white table-fixed-header fixed-header-setting pos-relative J-setting-list">
+                                            <thead class="header">
+                                                <tr id="J-patient-header-wrap">
+                                                    <!-- 患者来源设置头 -->
+                                                </tr>
+                                            </thead>
+                                            <tbody id="J-patient-list-wrap">
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                <!-- 患者来源表头设置 -->
+                                <script type="text/template" id="patient-header-tpl">
+                                    <%$.each(menu, function(i, key) {%>
+                                    <%if(key != 0){%>
+                                    <th class="font-wb font13"><%- title[key]%></th>
+                                    <%}%>
+                                <%})%>
+                                <th class="font-wb font13"><%- title[0]%></th>
+                                </script>
+                                <!-- 患者来源表头设置 -->
+                                <!-- 患者来源统计 -->
+                                <script type="text/template" id="patient-list-tpl">
+                                    <%$.each(menu, function(i, key) {%>
+                                    <%if(key != 0){%>
+                                    <td>
+                                        <%- data[key]%>
+                                    </td>
+                                    <%}%>
+                                <%});%>
+                                <td>
+                                    <%- data[0]%>
+                                </td>
+                                </script>
+                                <!-- 患者来源统计 -->
+                            </div>
+                            <!-- 患者统计 -->
+                            <!-- 满意度调查 -->
+                            <div class="tab-pane J-module-control" data-permission="69" id="reportAsci">
+                                <div class="row mb15">
+                                    <div class="col-sm-9 col-md-9">
+                                        <form class="form-inline" id="J-reportAsci-form" method="post">
+                                            <div class="form-group mr0">
+                                                <label class="control-label">调查日期：</label>
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-start-date" name="start_date" type="text" placeholder="开始日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr0">-</div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-end-date" name="end_date" type="text" placeholder="结束日期" size="10">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mr5">
+                                                <div class="input-group">
+                                                    <input class="form-control input-sm2 radius3 J-patientname J-download-info" name="patient_name" type="text" placeholder="患者姓名" size="10">
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-default btn-sm J-reportAsci-submit"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3 text-right">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default J-download" href="javascript:void(0);" id="export-asci"><i class="fa fa-download"></i> 导出</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td width="20%"></td>
+                                                <td width="60%" align="center">
+                                                    <h4 class="pb5 font20 black"><span class="J-date"></span> 满意度调查统计报表</h4>
+                                                </td>
+                                                <td width="20%" align="right">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <form class="form-inline table-responsive">
+                                        <table class="table table-bordered table-hover table-gray background-white table-fixed-header fixed-header-setting pos-relative J-setting-list">
+                                            <thead class="header">
+                                                <tr id="J-reportAsci-header-wrap">
+                                                    <!-- 满意度调查设置头 -->
+                                                </tr>
+                                            </thead>
+                                            <tbody id="J-reportAsci-list-wrap">
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                <!-- 满意度调查表头设置 -->
+                                <script type="text/template" id="reportAsci-header-tpl">
+                                    <%$.each(menu, function(i, key) {%>
+                                    <th class="font-wb font13"><%- title[0][key]%></th>
+                                <%})%>
+                                </script>
+                                <!-- 满意度调查表头设置 -->
+                                <!-- 满意度调查统计 -->
+                                <script type="text/template" id="reportAsci-list-tpl">
+                                    <%$.each(menu, function(i, key) {%>
+                                    <td>
+                                        <%- ('' + data[key]).replace(/&lt;/g, '<').replace(/&gt;/g, '>') %>
+                                    </td>
+                                <%});%>
+                                </script>
+                                <!-- 满意度调查统计 -->
+                            </div>
+                            <!-- 满意度调查 -->
+                        </div>
+                    </div>
+                </div>
+                <!-- 费用统计 -->
+            </div>
+        </div>
+    </section>
+    <!-- 门诊日志统计 -->
+    <script type="text/templdate" id="medical-list-tpl">
+        <%
+            var phoneNumber = ((mobilenumber || '') + '').replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+        %>
+        <td><%-clinic_time%></td>
+        <td><%-clinic_id%></td>
+        <td><a href="<%-global_src_api%>/Patient/profile?patient_id=<%-patient_id%>" target="_blank"><%-name%></a></td>
+        <td><%-sex_name%></td>
+        <td><%-age%></td>
+        <td><%-phoneNumber%></td>
+        <td><%-job%></td>
+        <td><%-address%></td>
+        <td><%-company%></td>
+        <td><%-onset_date%></td>
+        <td><%-clinic_result%></td>
+        <td><%-is_first%></td>
+        <td><%-department_name%></td>
+        <td><%-creator%></td>
+        <td><%-nurse%></td>
+        <td><%-doctor%></td>
+    </script>
+    <!-- 门诊日志统计 -->
+    <!-- 科室统计 -->
+    <script type="text/templdate" id="department-list-tpl">
+        <%$.each(menu, function(i, key) {%>
+            <td>
+                <%- data[key]%>
+            </td>
+        <%});%>
+    </script>
+    <!-- 科室统计 -->
+    <!-- 接诊类型 -->
+    <script type="text/templdate" id="type-list-tpl">
+        <td><%-date%></td>
+        <td><%-first||0%></td>
+        <td><%-review||0%></td>
+        <td><%-adultExam||0%></td>
+        <td><%-childExam||0%></td>
+        <td class="module-hide J-module-control" data-modules="11"><%-shortcut||0%></td>
+    </script>
+    <!-- 接诊类型 -->
+    <!-- 医生接诊 -->
+    <script type="text/templdate" id="doctor-list-tpl">
+        <td><%-staff_name%></td>
+        <td><%-pv%></td>
+        <td><%-total%></td>
+        <td class="module-hide J-module-control" data-modules="13"><%-inspect%></td>
+        <td class="module-hide J-module-control" data-modules="14"><%-check%></td>
+        <td class="module-hide J-module-control" data-modules="15"><%-cure%></td>
+        <td><%-recipe%></td>
+        <td class="module-hide J-module-control" data-modules="20"><%-goods%></td>
+        <td class="module-hide J-module-control" data-modules="10"><%-other%></td>
+        <td><%-admission%></td>
+    </script>
+    <!-- 医生接诊 -->
+    <!-- 医生业绩统计表头 -->
+    <script type="text/templdate" id="J-performance-header-tpl">
+        <tr class="J-setting-header">
+            <th width="160" rowspan="2" class="font-wb font13 td-middle">项目</th>
+            <th width="160" rowspan="2" class="font-wb font13 td-middle">收费分类</th>
+            <% _.each(cashers, function(item, i) {  %>
+                <th width="160" colspan="2" class="font-wb font13 text-center"><%- item.casherName%></th>
+            <% }) %>
+        </tr>
+        <tr>
+            <% _.each(cashers, function(item, i) {  %>
+                <th class="font-wb font13">优惠分摊后金额</th>
+                <th class="font-wb font13">利润</th>
+            <% }) %>
+        </tr>
+    </script>
+    <!-- 医生业绩统计列表内容 -->
+    <script type="text/templdate" id="performance-list-tpl">
+        <td><%- itemBaseName%></td>
+        <td><%- chargeName%></td>
+        <% _.each(cashers, function(item, i) {  %>
+            <td><%- item.realAmount%></td>
+            <td><%- item.benifit%></td>
+        <% }) %>
+    </script>
+    <!-- start 辅助检查模板 -->
+    <script type="text/templdate" id="inspect-list-tpl">
+        <%
+            var phoneNumber = ((phone || '') + '').replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+        %>
+        <td><%- time%></td>
+        <td><%- clinicId%></td>
+        <td><%- patientName%></td>
+        <td><%- patientSex%></td>
+        <td><%- patientAge%></td>
+        <td><%- phoneNumber%></td>
+        <td><%- operator%></td>
+        <td><%- itemName%></td>
+        <td><%- unit%></td>
+        <td><%- count%></td>
+        <td><%- price%></td>
+    </script>
+    <!-- end   辅助检查模板 -->
+    <!-- start 辅助检查模板 -->
+    <script type="text/templdate" id="checking-list-tpl">
+        <%
+            var phoneNumber = ((phone || '') + '').replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+        %>
+        <td><%- time%></td>
+        <td><%- clinicId%></td>
+        <td><%- patientName%></td>
+        <td><%- patientSex%></td>
+        <td><%- patientAge%></td>
+        <td><%- phoneNumber%></td>
+        <td><%- operator%></td>
+        <td><%- itemName%></td>
+        <td><%- unit%></td>
+        <td><%- count%></td>
+        <td><%- price%></td>
+    </script>
+    <!-- end   辅助检查模板 -->
+    <!-- start 治疗统计模板 -->
+    <script type="text/templdate" id="cure-list-tpl">
+        <%
+            var phoneNumber = ((phone || '') + '').replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+        %>
+        <td><%- time%></td>
+        <td><%- clinicId%></td>
+        <td><%- patientName%></td>
+        <td><%- patientSex%></td>
+        <td><%- patientAge%></td>
+        <td><%- phoneNumber%></td>
+        <td><%- operator%></td>
+        <td><%- itemName%></td>
+        <td><%- unit%></td>
+        <td><%- count%></td>
+        <td><%- price%></td>
+    </script>
+    <!-- end   治疗统计模板 -->
+    <!-- 预约统计 -->
+    <script type="text/templdate" id="reservation-list-tpl">
+        <td><%-date%></td>
+        <td><%-all||0%></td>
+        <td><%-cliniced||0%></td>
+        <td><%-breaks||0%></td>
+        <td><%-cancel||0%></td>
+    </script>
+    <!-- 预约统计 -->
+    <!-- 登记分类 -->
+    <script type="text/templdate" id="check-list-tpl">
+        <td><%-date%></td>
+        <td><%-all||0%></td>
+        <td><%-reservation||0%></td>
+        <td><%-direct||0%></td>
+    </script>
+    <!-- 登记分类 -->
+    <!-- 门诊效率 -->
+    <script type="text/templdate" id="clinic-list-tpl">
+        <td><%-clinicDate%></td>
+        <td><%-name%></td>
+        <td><%-clinicId%></td>
+        <td><%-clinicDepartment%></td>
+        <td><%-checkInTime%></td>
+        <td><%-triageTime%></td>
+        <td><%-check2Triage%></td>
+        <td><%-clinicTime%></td>
+        <td><%-triage2Clinic%></td>
+        <td><%-clinicEndTime%></td>
+        <td><%-clinic2ClinicEnd%></td>
+        <td><%-chargeTime%></td>
+        <td><%-clinicEnd2Charge%></td>
+    </script>
+    <!-- 门诊效率 -->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/msgbox.js?t=1560312126" type="text/javascript"></script>
+    <script type="text/javascript">
+        require(['medical_statistics']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite" class="select2-hidden-accessible"></span></body></html>

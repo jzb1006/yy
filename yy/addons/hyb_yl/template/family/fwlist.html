@@ -1,0 +1,162 @@
+{template './common/mainHeader'}
+</div>
+<style type="text/css">
+  .c_link:hover{
+    color: #20a0ff!important;
+  }
+  .edit-tag:hover{
+    color: red;
+  }
+</style>
+<div class="pageheader hidden">
+  <h2>
+    <i class="fa fa-wechat fa-sm"></i>家庭服务包中心</h2>
+</div>
+<div class="contentpanel">
+  <ul class="nav nav-tabs patient-tabs">
+    <li class="active">
+      <a href="<?php echo  $this->copysiteUrl('family.fwlist');?>&type_id={$type_id}">
+        <strong>服务包列表</strong></a>
+    </li>
+    <li>
+      <a href="<?php echo  $this->copysiteUrl('family.addfw');?>&type_id={$type_id}">
+        <strong>添加服务包</strong></a>
+    </li>
+  </ul>
+  <div class="tab-content pd0">
+    <div class="tab-pane active" id="tab1">
+      <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-2 tree-none" id="j_sidenav">
+          <!-- <h4 class="subtitle font14 cat-title">标记</h4> -->
+          <ul id="tree1" class="nav-tag tree">
+            {loop $res $item}
+            <?php $id = $item['id'];?>
+            <li class="tag-item msg-type {if $item['id'] == $pid }acitve{/if}">
+              <i class="indicator glyphicon glyphicon-tag"></i>
+              <a href='{php echo  $this->copysiteUrl('family.selectinfo')."&id=$id"}'  class="c_link a-tag  ">{$item['crowd_name']}</a>
+              <span class="gray dropdown-toggle dropdown-setting" data-toggle="dropdown">
+                <i class="fa fa-cog"></i>
+              </span>
+            </li>
+            {/loop}
+          </ul>
+          <ul class="nav-tag tree hide" id="J-add-tags">
+            <li class="input-tag">
+              <div class="input-group input-group-sm">
+                <input type="text" id="j_addform_token" placeholder="请输入标记名称" class="form-control">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-white btn-search pd-check">
+                    <i class="fa fa-check"></i>
+                  </button>
+                </span>
+              </div>
+            </li>
+          </ul>
+          <!-- 修改标记 -->
+          <div class="modal fade" id="J-tag-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form class="form-horizontal">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">修改标记</h4></div>
+                  <div class="modal-body">
+                    <div class="form-group mt20">
+                      <label class="col-sm-2 control-label">标记名称：</label>
+                      <div class="col-sm-9">
+                        <input type="text" value="" name="token" placeholder="" id="j_form_token" class="form-control" required=""></div>
+                    </div>
+                  </div>
+                  <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-save-btn" data-loading-text="保存中...">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button></div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- 修改标记 -->
+          <!-- 删除标记 -->
+          <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title" id="myModalLabel">删除标记</h4></div>
+                <div class="modal-body">
+                  <h4>确定删除该标记？</h4>
+                  <input type="hidden" name="id" class="J-tag-id"></div>
+                <div class="modal-footer modal-btn-col2">
+                  <button type="submit" class="btn btn-primary J-deltag-btn">确定</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button></div>
+              </div>
+            </div>
+          </div>
+          <!-- 删除标记 --></div>
+        <div class="col-sm-9 col-md-9 col-lg-10 pl0 border-left" id="main">
+          <!-- 消息列表 -->
+          <div class="panel panel-default shadow-none mb0">
+            <div class="panel-heading pb10">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="panel-title">所有服务包</h4></div>
+              </div>
+            </div>
+            <!-- panel-heading -->
+            <div class="panel-body prl0 pt0">
+              <div class="table-responsive mb20">
+                <table class="table table-hover mbf10">
+                  <thead>
+                    <tr>
+                      <th width="80">ID</th>
+                      <th width="100">服务缩略图</th>
+                      <th width="55">服务包标题</th>
+                      <th width="55">服务包人群</th>
+                      <th width="55">金额</th>
+                      <th width="55">时间</th>
+                      <th width="160">操作</th></tr>
+                  </thead>
+                  <tbody id="j_lst_tbody">
+                  {loop $fwlist $item}
+                  <?php $ff_id = $item['ff_id']; ?>
+                    <tr>
+                      <td>
+                        <span class="small ">{$item['ff_id']}</span>
+                      </td>
+                      <td>
+                        <img class="user" src="{media $item['fw_pic']}"></td>
+                      <td>
+                        <span class="small">{$item['fw_name']}</span>
+                     </td>
+                      <td>
+                        <span class="small">{$item['crowd_name']}</span>
+                      </td>
+                      <td>
+                        <span class="small">{$item['fw_money']}</span>
+                      </td>
+
+                      <td>
+                        <span class="small">{$item['fw_startime']}至{$item['fw_endtime']}</span>
+                      </td>
+
+                      <td>
+                        <a href='{php echo  $this->copysiteUrl('family.addfw')."&ff_id=$ff_id&type_id=$type_id"}' class="c_link">
+                          修改</a>  -  
+                        <a href='{php echo  $this->copysiteUrl('family.deletefw')."&ff_id=$ff_id&type_id=$type_id"}' class="edit-tag">
+                          删除</a>
+                     </td>
+                    </tr>
+                    {/loop}
+                  </tbody>
+                </table>
+              </div>
+              <div class="j_page_wrap pd20 page_wrap fr">
+              {$pager}
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

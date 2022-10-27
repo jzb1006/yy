@@ -1,0 +1,32 @@
+{template '/common/mainHeader'}
+
+
+<div class="bigbox">
+
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data">
+        <div class="panel panel-default ygdefault">
+            <div class="panel-heading wyheader">
+                添加地区
+            </div>
+             <div class="form-group">
+                    <div class="col-sm-5 goodsname"  style="padding-right:0; " >
+                        <input type="file" name="file" class="form-control" style="height: 38px;" />
+                    </div>
+                </div>
+            <div class="form-group mt20" style="margin-left: 264px;">
+                <input type="submit" name="submit" value="提交" class="btn tijiao" />
+                <a href="{php echo $this->createWebUrl('jiancha',array("op"=>"hotareaIndex","ac"=>"hotareaIndex"))}" class="btn fanhui" >返回</a>
+                <input type="hidden" name="token" value="{$_W['token']}" />
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+<script type="text/javascript">
+    $(function(){
+            $("#frame-13").show();
+            $("#yframe-13").addClass("wyactive").children("icon").children("img").replaceWith("<img class='fa' src=''></img>");
+        });
+</script>
+{template "common/mainfooter"}

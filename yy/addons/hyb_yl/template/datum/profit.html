@@ -1,0 +1,233 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li class="active"><a href="#">盈亏统计</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-list">
+			<form action="" method="get" class="form-horizontal" id="form1">
+				<input type="hidden" name="c" value="site" />
+				<input type="hidden" name="a" value="entry" />
+				<input type="hidden" name="m" value="hyb_yl" />
+				<input type="hidden" name="op" value="profit" />
+				<input type="hidden" name="ac" value="profit" />
+				<input type="hidden" name="do" value="datum" />
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">时间</label>
+					<div class="col-sm-9 js-daterange" data-form="#form1">
+						<div class="btn-group">
+							<a href="javascript:;" class="btn js-btn-custom {if $times == '1'} btn-primary {else} btn-default {/if}" onclick="changes()">自定义</a>
+							<input type="hidden" name="times" value="{$times}" id="times">
+							<script type="text/javascript">
+								function changes(){
+									var times = $("#times").val();
+									if(times == '')
+									{
+										$("#times").val('1');
+									}else{
+										$("#times").val();
+									}
+								}
+							</script>
+						</div>
+						<span class="btn-daterange js-btn-daterange">
+
+							<script type="text/javascript">
+								require(["daterangepicker"], function(){
+										$(function(){
+											$(".daterange.daterange-date").each(function(){
+												var elm = this;
+												$(this).daterangepicker({
+													startDate: $(elm).prev().prev().val(),
+													endDate: $(elm).prev().val(),
+													format: "YYYY-MM-DD"
+												}, function(start, end){
+													$(elm).find(".date-title").html(start.toDateStr() + " 至 " + end.toDateStr());
+													$(elm).prev().prev().val(start.toDateStr());
+													$(elm).prev().val(end.toDateStr());
+													var times = $("#times").val();
+													if(times == '')
+													{
+														$("#times").val('1');
+													}else{
+														$("#times").val();
+													}
+												});
+											});
+										});
+									});
+							</script>
+
+							<input name="start" type="hidden" value="{$starts}" />
+							<input name="end" type="hidden" value="{$ends}" />
+							<button class="btn btn-default daterange daterange-date" type="button">
+								<span class="date-title">{$starts} 至 {$ends}</span>
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-md-9">
+						<button class="btn btn-primary" id="search">筛选</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+	require(['bootstrap'], function ($) {
+			    $('[data-toggle="tooltip"]').tooltip({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="popover"]').popover({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="dropdown"]').dropdown({
+		            container: $(document.body)
+		        });
+		    });
+			myrequire(['js/init']);
+					$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+				$('.app-login-info-sel').show();
+			});
+			$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+				$('.app-login-info-sel').hide();
+			});
+			$('.app-login-info-sel .login-out').hover(function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+			},function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+			});
+</script>
+	<div class="panel panel-trend">
+		<div class="panel-heading">
+			<h3>柱状图</h3>
+		</div>
+		<div class="panel-body">
+           <div id="container" style="min-width: 800px; height: 400px; margin: 0 auto"></div>
+       	</div>
+	</div>
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover">
+				<thead class="navbar-inner">
+					<tr>
+						<th>日期</th>
+						<th>支出</th>
+						<th>收入</th>
+						<th>盈亏</th>
+					</tr>
+				</thead>
+				<tbody>
+				{loop $date $item}
+					<tr>
+						<td>{$item['time']}</td>
+						<td><strong>￥{$item['pay']}</strong></td>
+						<td><strong>￥{$item['income']}</strong></td>
+						<td><strong>￥{$item['profit']}</strong></td>
+					</tr>
+				{/loop}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+<div>
+	 		
+
+</div>
+	<script language="javascript" src="{$_W['siteroot']}addons/hyb_yl/public/js/highcharts/highcharts.js"></script>
+<script type="text/javascript"> 
+    $(function () {
+    	
+
+    	var data=[
+    	
+    		
+    		{
+    			name:'支出',
+    			data: [	
+    			{loop $date $key $row}
+	                {$row['pay']},
+	            {/loop}
+	               ]
+    		},
+    		{
+    			name:'收入',
+    			data: [	
+    				{loop $date $keys $rows}
+	                {$rows['income']},
+	                {/loop}
+	               ]
+    		},
+    		{
+    			name:'盈亏',
+    			data: [	
+    				{loop $date $keyss $rowss}
+	                {$rowss['profit']},
+	                {/loop}
+	               ]
+    		},
+    		
+    		
+    		 ]
+    	
+    		
+    	 console.log(data);
+    	 var time=[
+				{loop $time $key $row}
+                      "{$row}",
+            	{/loop}
+    	 ]
+    	 console.log(time);
+        $('#container').highcharts({
+        	chart: {
+        type: 'column'
+    },
+    title: {
+        text: '平台盈亏统计图'
+    },
+    xAxis: {
+        categories: time,
+        crosshair: true
+    },
+    yAxis: {
+        title: {
+            text: '金额 (元)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y:.2f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true,
+        
+
+    },
+    plotOptions: {
+        column: {
+            borderWidth: 0
+        }
+    },
+    series: data
+         
+    	});
+	});
+</script>
+	</body>
+</html>

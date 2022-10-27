@@ -1,0 +1,65 @@
+{template './common/mainHeader'}
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#">搜索设置</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-action">
+			<a class="btn btn-primary" href="/index.php?c=site&a=entry&do=base&m=hyb_yl&op=add_search&ac=search">添加搜索设置</a>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th class="text-center">图片</th>
+						<th class="text-center">显示顺序</th>
+						<th class="text-center">标题</th>
+						<th class="text-center">所搜内容</th>
+						<th class="text-center">状态</th>
+						<th class="text-center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{loop $list $adv}
+						<tr  class="text-center">
+							<td><img class="scrollLoading" src="{php echo tomedia($adv['thumb'])}" data-url="{php echo tomedia($adv['thumb'])}" onerror="this.src='{php echo tomedia($adv['thumb'])}'" height="50" width="100"/></td>
+							<td>{$adv['sort']}</td>
+							<td>{$adv['title']}</td>
+							<td>
+								{if $adv['keyword'] == 1}
+								医生
+								{else if $adv['keyword'] == 2}
+								医院
+								{else if $adv['keyword'] == 3}
+								药房
+								{/if}
+							</td>
+							<td>{if $adv['status'] == 0}<span class="label label-default">隐藏</span>{/if}
+								{if $adv['status'] == 1}<span class="label label-success">显示</span>{/if}
+							</td>
+							<td>
+								<a href="/index.php?c=site&a=entry&do=base&m=hyb_yl&op=add_search&ac=search&id={$adv['id']}" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="修改"><i class="fa fa-edit"></i>修改</a>
+								<a href="/index.php?c=site&a=entry&do=base&m=hyb_yl&op=del_search&ac=search&id={$adv['id']}" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="删除"><i class="fa fa-times">删除</i></a>
+							</td>
+						</tr>
+					{/loop}
+				</tbody>
+			</table>
+		</div>
+		<div class="app-table-foot clearfix">
+			<div class="pull-left">
+
+			</div>
+			<div class="pull-right">
+				{$pager}
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$("#search").click(function(){
+		$('#form1')[0].submit();
+	});
+</script>

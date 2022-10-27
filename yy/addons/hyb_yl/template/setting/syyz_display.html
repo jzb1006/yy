@@ -1,0 +1,737 @@
+{template './common/siteheader'}
+
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">检验医嘱</h1>
+            <input type="hidden" class="J-isAdmin" value="1"/>
+        </div>
+        <div class="main-content pr">
+            <div class="row mb5">
+                <div class="col-sm-2 col-md-2">
+                    <form class="form-inline" action="/japi/session/190090" method="post">
+                        <div class="btn-toolbar list-toolbar">
+                            <a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}" class="btn btn-primary"><i class="fa fa-plus"></i> 新增</a>
+                            <input type="hidden" name="define" value="">
+                            <button type="submit" class="btn btn-default">导出</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-10 col-md-10">
+                    <div class="p-right">
+                        <form class="form-inline J-search-form" method="get" action="#">
+                            <div class="form-group">
+                                <label class="control-label">筛选：</label>
+                                <input type="text" placeholder="检验医嘱名称" class="form-control J-search-name" name="define" value="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <select class="form-control J-search-status" data-placeholder="选择状态" name="status">
+                                   <option value="">选择状态</option>
+                                   <option value="1"  selected="true">正常</option>
+                                   <option value="2" >停用</option>
+                                </select>
+                            </div>
+                            <input type="hidden" name="form" value="index_form">
+                            <button type="button" class="btn btn-default">查找</button>
+                            <button type="button" class="btn btn-default J-select"><i class="fa fa-plus"> 导入</i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl20" width="25%">检验医嘱名称</th>
+                                <th width="8%">单位</th>
+                                <th width="10%">零售价</th>
+                                <th width="10%">拼音码</th>
+                                <th width="8%">允许折扣</th>
+                                <th width="12%">备注</th>
+                                <th>状态</th>
+                                <th width="220">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="J-inspect-list"><tr>
+        <td class="pl20 text-ellipsis">血清丙氨酸氨基转移酶测定123</td>
+        <td class="text-ellipsis">uq</td>
+        <td class="text-ellipsis">99.0000</td>
+        <td class="text-ellipsis">xqbasajzymcd123</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="16608"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="16608" data-title="血清丙氨酸氨基转移酶测定123" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">血清丙氨酸氨基转移酶测定</td>
+        <td class="text-ellipsis">U/L</td>
+        <td class="text-ellipsis">88.0000</td>
+        <td class="text-ellipsis">xqbasajzymcd</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis">啦啦啦啦啦啦</td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="16607"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="16607" data-title="血清丙氨酸氨基转移酶测定" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">微量元素</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">300.0000</td>
+        <td class="text-ellipsis"></td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13688"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13688" data-title="微量元素" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">性激素六项</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">260.0000</td>
+        <td class="text-ellipsis">xjslx</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13682"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13682" data-title="性激素六项" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">HPV16-18型</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">100.0000</td>
+        <td class="text-ellipsis">hpv16-18x</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13681"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13681" data-title="HPV16-18型" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">TCT</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">170.0000</td>
+        <td class="text-ellipsis">tct</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13679"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13679" data-title="TCT" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">白带常规+BV</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">40.0000</td>
+        <td class="text-ellipsis">bdcg+bv</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13678"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13678" data-title="白带常规+BV" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">血脂</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">35.0000</td>
+        <td class="text-ellipsis">xz</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13677"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13677" data-title="血脂" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">饭后血糖</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">8.0000</td>
+        <td class="text-ellipsis">fhxt</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13676"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13676" data-title="饭后血糖" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">血糖</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">10.0000</td>
+        <td class="text-ellipsis">xt</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13675"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13675" data-title="血糖" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">肾功能</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">25.0000</td>
+        <td class="text-ellipsis">sgn</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13674"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13674" data-title="肾功能" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">肝功能</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">60.0000</td>
+        <td class="text-ellipsis">ggn</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13673"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13673" data-title="肝功能" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">白带常规</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">10.0000</td>
+        <td class="text-ellipsis">bdcg</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13669"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13669" data-title="白带常规" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">大便常规</td>
+        <td class="text-ellipsis">次</td>
+        <td class="text-ellipsis">10.0000</td>
+        <td class="text-ellipsis">dbcg</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13668"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13668" data-title="大便常规" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">CRP</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">20.0000</td>
+        <td class="text-ellipsis">crp</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="13667"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="13667" data-title="CRP" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">胃幽门螺杆菌碳14呼气试验</td>
+        <td class="text-ellipsis">次</td>
+        <td class="text-ellipsis">80.0000</td>
+        <td class="text-ellipsis">ymlxgj</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="12964"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="12964" data-title="胃幽门螺杆菌碳14呼气试验" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">垂直眼位（近）</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">1.0000</td>
+        <td class="text-ellipsis">czyw（j）</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="12957"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="12957" data-title="垂直眼位（近）" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">水平眼位（远）</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">1.0000</td>
+        <td class="text-ellipsis">spyw（y）</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="12956"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="12956" data-title="水平眼位（远）" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">水平眼位（近）</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">1.0000</td>
+        <td class="text-ellipsis">spyw（j）</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="12955"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="12955" data-title="水平眼位（近）" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr><tr>
+        <td class="pl20 text-ellipsis">测试试管颜色</td>
+        <td class="text-ellipsis"></td>
+        <td class="text-ellipsis">12.0000</td>
+        <td class="text-ellipsis">cssgys</td>
+        <td>否
+        </td>
+        <td class="text-ellipsis"></td>
+        <td>正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}"" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            
+                <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="12954"><i class="fa fa-trash-o "></i> 停用</a> -
+            
+            <a href="javascript:;" data-id="12954" data-title="测试试管颜色" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </tr></tbody>
+                    </table>
+                    <div class="J-page-wrap pd20 mb45">
+                        <!-- 分页 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 标准数据列表 -->
+        <div class="J-select-panel select-panel" id="J-data-panel">
+            <div class="right-tips J-select-hide"><i class="fa fa-angle-right"></i></div>
+            <div class="row header pl0 pr0">
+                <form action="" class="form-inline J-select-data-form" method="get">
+                    <input type="hidden">
+                    <div class="col-sm-3">
+                        <h4 class="page-title">标准数据</h4>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="pull-right">
+                            <div class="form-group">
+                                <label class="control-label">外送单位：</label>
+                                <select class="form-control input-sm J-deliver-company" data-placeholder="请选择" name="deliver_company">
+                                    <option value="0">请选择</option>
+                                    <option value="1">迪安诊断</option>
+                                    <option value="2">金域检验</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label"> 筛选：</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="j_search_input" name="keyword" placeholder="检验医嘱名称" class="form-control">
+                            </div>
+                            <button type="button" id="j_search_submit" class="btn btn-default">查找</button>
+                            <button type="button" data-loading-text="导入中..." data-complete-text="导入完成" class="btn btn-default J-import-data">导入</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl20">
+                                    <input type="checkbox" class="J-check-all" value="true">
+                                </th>
+                                <th>检验医嘱名称</th>
+                                <th width="15%">单位</th>
+                                <th width="15%">零售价</th>
+                                <th>拼音码</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-wrap-list">
+                            <!-- 标准数据列表 -->
+                        </tbody>
+                    </table>
+                    <div class="J-page-wrap1 pd20">
+                        <!-- 分页 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+	<hr>
+	<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+	<p class="pull-right"> <a href="http://www.DXY.cn" target="_blank">DXY</a> by <a href="http://www.dxy.cn" target="_blank">DXY.CN</a>
+	</p>
+	<p>© 2015 <a href="http://www.dxy.cn" target="_blank">DXY</a></p>
+</footer>
+    </div>
+    <!-- 关联项目 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">关联项目</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row mlf10 pd20">
+                        <div class="col-sm-6">
+                            <div class="btn-toolbar">
+                                <h4 class="J-title"></h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6" style="display: none;">
+                            <form class="form-inline pull-right" method="post" action="https:///Admin/Inspect/index.html">
+                                <div class="form-group">
+                                    <input type="text" placeholder="请输入项目名称" class="form-control" name="checkitemname">
+                                </div>
+                                <button type="submit" class="btn btn-default">搜索</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel panel-default mlrb20">
+                        <div class="table-responsive">
+                            <form class="J-form">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width="10%">排序号</th>
+                                            <th width="35%">项目名称</th>
+                                            <th>英文缩写</th>
+                                            <th>单位</th>
+                                            <th>参考值</th>
+                                            <th>默认结果</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="relation-list-tbody">
+                                    </tbody>
+                                </table>
+                                <div class="j_page_wrap pd20"></div>
+                            </form>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-primary btn-sml J-btn-relation-submit">保存</button>&nbsp;
+                            <button class="btn btn-default btn-sml J-btn-relation-cancel">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 关联项目 -->
+    <!-- JS模板 -->
+    <script type="text/template" id="relation-list-tpl">
+        <tr>
+            <td>
+                <input type="text" class="form-control J-sort-number digits required" value="<%- sortnumber %>">
+            </td>
+            <td class="J-select-items">
+                <% if( checkitemname !== '' ){ %>
+                    <%- checkitemname %>
+                    <input type="hidden" class="J-checkitemid" value="<%- readid %>">
+                <% }else{ %>
+                    <input type="hidden" class="J-checkitemid" value="<%- readid %>">
+                    <input type="hidden" class="select2 J-select2 select-common" name="define">
+                <% } %>
+            </td>
+            <td class="J-item-spec">
+                <%- checkitemspec %>
+            </td>
+            <td class="J-item-unit">
+                <%- checkitemunit %>
+            </td>
+            <td class="J-item-ref">
+                <%= reference.replace(/\n/g, '<br/>') %>
+            </td>
+            <td>
+                <input type="text" class="form-control J-def" value="<%- def %>">
+            </td>
+            <td class="J-item-opt">
+                <a href="#" class="btn btn-sm btn-white J-btn-delete-relation"><i class="fa fa-minus"></i></a>
+                <a href="#" class="btn btn-sm btn-white J-btn-add-relation"><i class="fa fa-plus"></i></a>
+            </td>
+        </tr>
+    </script>
+    <script type="text/template" id="data-wrap-list-tpl">
+    <td class="pl20">
+        <input type="checkbox" <%if(is_check){%>checked<%}%> value="<%- id%>" />
+    </td>
+    <td><%- define%></td>
+    <td><%- checkUnit%></td>
+    <td><%- costPrice%></td>
+    <td><%- pinyin%></td>
+    </script>
+    <!-- JS模板 -->
+
+    <!-- 检验医嘱列表模版 -->
+    <script type="text/template" id="J-inspect-list-tpl">
+        <td class="pl20 text-ellipsis"><%- define%></td>
+        <td class="text-ellipsis"><%- checkunit%></td>
+        <td class="text-ellipsis"><%- checkprice%></td>
+        <td class="text-ellipsis"><%- metaid%></td>
+        <td><%if(is_discount == 1){%>
+            <i class="fa fa-check"></i>
+            <%}else{%>否<%}%>
+        </td>
+        <td class="text-ellipsis"><%- description%></td>
+        <td><%if(status == 2){%>
+            <span style="color:#a94442">停用</span>
+            <%}else{%>正常<%}%>
+        </td>
+        <td><a href="{php echo $this->createWeburl('setting',array('op'=>'syyz_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <% if(status == 2){ %>
+                <a href='#' class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="1" data-id="<%- id%>"><i class="fa fa-trash-o "></i> 恢复</a> -
+            <% } else if(status == 1){ %>
+                <a href='#' class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="<%- id%>"><i class="fa fa-trash-o "></i> 停用</a> -
+            <% } %>
+            <a href='javascript:;' data-id='<%- id%>' data-title="<%- define%>" data-toggle1="modal" data-target1="#myModal" class="J-modal-relation">
+                <i class="fa fa-link"></i> 关联项目</a>
+        </td>
+    </script>
+    <!-- 检验医嘱列表模版 -->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action='#'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+    <script type="text/javascript">
+    require(['inspect']);
+    </script>
+</body>
+
+</html>

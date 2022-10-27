@@ -1,0 +1,195 @@
+body,html,form{
+    height: 100%;
+}
+
+.conts{
+    width: 100%;
+    height: 100%;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    border-right:1px solid #eaeaea;
+    background: #ffffff;
+    cursor: pointer;
+}
+.left div{
+    font-size: 18px;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.active{
+    background: #5FB878;
+    color: #fff;
+}
+
+.right{
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    overflow: hidden;
+    /*overflow-y: auto;*/
+}
+
+.title{
+    font-size: 18px;
+}
+.layui-form-switc{
+    margin-top: 0 ;
+}
+.layui-table td, .layui-table th{
+    text-align: center!important;
+}
+
+.btnBox{
+    display: flex;
+    align-items: center;
+}
+.btnBox .btn{
+    border: 1px solid #eaeaea;
+    padding: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+i{
+    font-size: 20px!important;
+}
+
+.left-nav{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+}
+
+.xcimg{
+    padding: 10px;
+    background: #f1f1f1;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.xcimg img{
+    width: 100%;
+}
+
+.layui-form-switch{
+    margin-top: 0!important;
+    zoom: 1.2;
+    height: auto;
+    white-space: nowrap;
+}
+.layui-form-checkbox[lay-skin=primary] i{
+    font-size: 12px!important;
+}
+
+.btnBox1{
+    width: 200px;
+    height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.czBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.gdBtn{
+    white-space: nowrap;
+    position: relative;
+}
+.gdBtn:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.gdbtnBox .layui-btn{
+    margin-left: 0;
+}
+.gdbtnBox{
+    width: 160px;
+    position: absolute;
+    top: 30px;
+    left: -95px;
+    padding-top: 10px;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    background: #fff;
+    border: 1px solid #eaeaea;
+    white-space: normal;
+    display: none;
+    z-index: 9;
+}
+.ssinput{
+    width: 40%;
+}
+.timeBox{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 10px;
+}
+.mg20{
+    margin:0 20px;
+}
+#qstime,#jstime{
+    width: 31%;
+}
+.layui-form-select{
+    margin-right: 10px;
+}
+.df{
+    display: flex;
+    align-items: center;
+}
+.layui-table img {
+    max-width: 50px;
+    border-radius: 50%;
+}
+
+.layui-form{
+    padding: 20px;
+}
+
+.layui-table-box, .layui-table-view{
+    padding: 0;
+}
+
+.ml20{
+    margin-left: 20px;
+}
+.wsnp{
+    white-space: nowrap;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+
+.layui-tab-title li{
+    position: relative;
+}
+.mark{
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background: red;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+    line-height: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
+    z-index: 9;
+}

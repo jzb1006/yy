@@ -1,0 +1,65 @@
+{template './common/siteheader'}
+ <div class="content">
+        <div class="header">
+            <h1 class="page-title">体检套餐管理</h1>
+        </div>
+        <!-- main-content -->
+        <div class="main-content">
+            <div class="row mb5">
+                <div class="col-sm-2 col-md-2">
+                    <div class="btn-toolbar list-toolbar">
+                        <a href="{php echo $this->createWeburl('setting',array('op'=>'tiyan_add'))}" class="btn btn-primary"><i class="fa fa-plus"></i> 新增</a>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-10">
+                    <div class="p-right">
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="pl20">序号</th>
+                        <th>套餐名称</th>
+                        <th width="8%">患者类型</th>
+                        <th width="8%">性别</th>
+                        <th>年龄段</th>
+                        <th>预计金额</th>
+                        <th width="30%">检测内容</th>
+                        <th width="140">操作</th>
+                    </tr>
+                </thead>
+        <tbody id="J-physical-list">
+        {loop $rew $item}
+          <tr>
+            <td class="pl20">{$item['tid']}</td>
+            <td>{$item['t_name']}</td>
+            <td>
+                {if $item['t_stype'] =="0"} 成人{else}儿童 {/if}
+            </td>
+            <td>{if $item['t_sex'] =="1"} 男{elseif $item['t_sex'] =="2"}女 {else}不区分 {/if}
+                
+            </td>
+            <td>{$item['t_age1']}-{$item['t_age2']}
+                
+            </td>
+            <td>{$item['t_money']}</td>
+            <td>血常规,肝功能</td>
+            <td><a href="{php echo $this->createWeburl('setting',array('op'=>'tiyan_add','tid'=>$item['tid']))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+                <a href="{php echo $this->createWeburl('setting',array('op'=>'delete','tid'=>$item['tid']))}" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="104"><i class="fa fa-trash-o "></i> 删除</a>
+            </td>
+          </tr>
+          {/loop}
+        </tbody>
+        </table>
+            <div class="J-page-wrap pd20 mb45"><div class="base_page">{$pager}</div></div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

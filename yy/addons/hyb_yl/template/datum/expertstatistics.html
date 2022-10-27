@@ -1,0 +1,427 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li class="active"><a href="#">专家统计</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-list">
+			<form action="" method="get" class="form-horizontal" id="form1">
+				<input type="hidden" name="c" value="site" />
+				<input type="hidden" name="a" value="entry" />
+				<input type="hidden" name="m" value="hyb_yl" />
+				<input type="hidden" name="op" value="expertstatistics" />
+				<input type="hidden" name="ac" value="expertstatistics" />
+				<input type="hidden" name="do" value="datum" />
+				<!-- <input type="hidden" name="days" value="1" /> -->
+				<div class="form-group form-inline">
+					<label class="col-sm-2 control-label">选择专家</label>
+					<div class="col-sm-9">
+						<select name="zid" class="form-control">
+							<option value="" {if $zid=='' } selected="" {/if}>全部 </option>
+							{loop $zhuanjia $zj}
+							<option value="{$zj['zid']}" {if $zid==$zj['zid']} selected="" {/if}>{$zj['z_name']} </option>
+							{/loop}
+							
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">时间</label>
+					<div class="col-sm-9 js-daterange" data-form="#form1">
+						<div class="btn-group">
+							<!-- <a href="{php echo $this->createWebUrl('datum',array('op'=>'index','ac'=>'operationstatistics','timetype'=>'1'))}" class="btn {if $days == '1'} btn-primary {else} btn-default {/if}">今天</a>
+							<a href="{php echo $this->createWebUrl('datum',array('op'=>'index','ac'=>'operationstatistics','timetype'=>'2'))}" class="btn {if $days == '7'} btn-primary {else} btn-default {/if}">最近7天</a>
+							<a href="{php echo $this->createWebUrl('datum',array('op'=>'index','ac'=>'operationstatistics','timetype'=>'3'))}" class="btn {if $days == '30'} btn-primary {else} btn-default {/if}">最近30天</a> -->
+							<a href="javascript:;" class="btn js-btn-custom btn-primary">自定义</a>
+						</div>
+						<span class="btn-daterange js-btn-daterange">
+
+							<script type="text/javascript">
+								require(["daterangepicker"], function(){
+										$(function(){
+											$(".daterange.daterange-date").each(function(){
+												var elm = this;
+												$(this).daterangepicker({
+													startDate: $(elm).prev().prev().val(),
+													endDate: $(elm).prev().val(),
+													format: "YYYY-MM-DD"
+												}, function(start, end){
+													$(elm).find(".date-title").html(start.toDateStr() + " 至 " + end.toDateStr());
+													$(elm).prev().prev().val(start.toDateStr());
+													$(elm).prev().val(end.toDateStr());
+												});
+											});
+										});
+									});
+							</script>
+
+							<input name="start" type="hidden" value="{$starts}" />
+							<input name="end" type="hidden" value="{$ends}" />
+							<button class="btn btn-default daterange daterange-date" type="button">
+								<span class="date-title">{$starts} 至 {$ends}</span>
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-md-9">
+						<button class="btn btn-primary" id="search">筛选</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+	require(['bootstrap'], function ($) {
+			    $('[data-toggle="tooltip"]').tooltip({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="popover"]').popover({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="dropdown"]').dropdown({
+		            container: $(document.body)
+		        });
+		    });
+			myrequire(['js/init']);
+					$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+				$('.app-login-info-sel').show();
+			});
+			$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+				$('.app-login-info-sel').hide();
+			});
+			$('.app-login-info-sel .login-out').hover(function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+			},function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+			});
+</script>
+	<div class="panel panel-stat">
+		<div class="panel-heading">
+			<h3>总览</h3>
+		</div>
+		<div class="panel-body">
+			<div class="col-md-3">
+				<div class="title">
+					收益金总额(元)
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-all-fee">￥{$money}</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="title">
+					订单总数
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-all-order">{$count}</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="title">
+					订单总额(元)
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-all-money">{$money}</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="title">
+					专家总人数
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-all-num"><?php echo count($zhuanjia);?></span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<div class="col-md-2">
+				<div class="title">
+					图文问诊金额
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-rush-fee">￥{$tuwen}</span>
+					</a>
+					<!-- <span class="info" id="html-total-rush-order">--</span> -->
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="title">
+					视频问诊金额
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-fight-fee">￥{$shipin}</span>
+					</a>
+					<!-- <span class="info" id="html-total-fight-order">--</span> -->
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="title">
+					电话问诊金额
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-coupon-fee">￥{$tel}</span>
+					</a>
+					<!-- <span class="info" id="html-total-coupon-order">--</span> -->
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="title">
+					报告解读金额
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-groupon-fee">￥{$baogao}</span>
+					</a>
+					<!-- <span class="info" id="html-total-groupon-order">--</span> -->
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="title">
+					远程开方金额
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-pocket-fee">￥{$chufang}</span>
+					</a>
+					<!-- <span class="info" id="html-total-pocket-order">--</span> -->
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="title">
+					手术安排金额
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-half-fee">￥{$shoushu}</span>
+					</a>
+					<!-- <span class="info" id="html-total-half-order">--</span> -->
+				</div>
+			</div>
+			<!-- <div class="col-md-2">
+				<div class="title">
+					付费入驻金额
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-charge-fee">￥--</span>
+					</a>
+					<span class="info" id="html-total-charge-order">--</span>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="title">
+					团队签约金额
+				</div>
+				<div class="num-wrapper">
+					<a class="num" href="javascript:;">
+						<span id="html-total-distri-fee">￥--</span>
+					</a>
+					<span class="info" id="html-total-distri-order">--</span>
+				</div>
+			</div> -->
+		</div>
+	</div>
+	
+	<div class="panel panel-trend">
+		<div class="panel-heading">
+			<h3>柱状图</h3>
+		</div>
+		<div class="panel-body">
+           <div id="container" style="min-width: 800px; height: 400px; margin: 0 auto"></div>
+       	</div>
+	</div>
+	
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover">
+				<thead class="navbar-inner">
+					<tr>
+						<th>日期</th>
+						<!-- <th>专家订单数</th> -->
+						<th>专家名称</th>
+						<th>总收益额</th>
+
+						<th>图文</th>
+						<th>视频</th>
+						<th>电话</th>
+						<th>挂号</th>
+						<th>手术</th>
+						<th>远程开方</th>
+						<th>报告解读</th>
+						<th>体检</th>
+						<!-- <th>付费入驻</th>
+						<th>签约</th> -->
+					</tr>
+				</thead>
+				<tbody>
+				{loop $date $item}
+						<td rowspan="<?php echo count($item['zhuanjia']) + 1;?>"><strong>{$item['time']}</strong></td>
+				{loop $item['zhuanjia'] $zj}
+					<tr>
+						<!-- <td><strong>0</strong></td> -->
+						<td>{$zj['z_name']}</td>
+						<td><strong>￥{$zj['moneys']}</strong></td>
+						<td><span class="text-success">￥{$zj['tuwens']}</span></td>
+						<td><span class="text-success">￥{$zj['shipins']}</span></td>
+						<td><span class="text-success">￥{$zj['tels']}</span></td>
+						<td><span class="text-success">￥{$zj['guahaos']}</span></td>
+						<td><span class="text-info">￥{$zj['shoushus']}</span></td>
+						<td><span class="text-info">￥{$zj['chufangs']}</span></td>
+						<td><span class="text-info">￥{$zj['baogaos']}</span></td>
+						<td><span class="text-info">￥{$zj['tijians']}</span></td>
+						<!-- <td><span class="text-info">￥0</span></td>
+						<td><span class="text-info">￥0</span></td> -->
+					</tr>
+					{/loop}
+					{/loop}
+								</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+<div>
+	 		
+
+</div>
+	<script language="javascript" src="{$_W['siteroot']}addons/hyb_yl/public/js/highcharts/highcharts.js"></script>
+<script type="text/javascript"> 
+    $(function () {
+    	
+
+    	var data=[
+    	{loop $zhuanjias $key $row}
+    		
+    		{
+    			name:'{$row['z_name']}',
+    			data: [
+	                
+    					{loop $row['money'] $kk $rr}
+	                {$rr},
+	                		{/loop}
+    	 			
+	               ]
+    		},
+    		
+    		{/loop}
+    		 ]
+    	
+    		
+    	 console.log(data);
+    	 var time=[
+				{loop $time $key $row}
+                      "{$row}",
+            	{/loop}
+    	 ]
+    	 console.log(time);
+        $('#container').highcharts({
+        	chart: {
+        type: 'column'
+    },
+    title: {
+        text: '专家收入统计图'
+    },
+    // subtitle: {
+    //     text: '数据来源: WorldClimate.com'
+    // },
+    xAxis: {
+        categories: time,
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '金额 (元)'
+        }
+    },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y:.2f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            borderWidth: 0
+        }
+    },
+    series: data
+         //    chart: {
+         //        type: 'line'
+         //    },
+         //    title: {
+         //         text: '{$charttitle}',
+         //    },
+         //    subtitle: {
+         //        text: ''
+         //    },
+            
+         //    xAxis: {
+         //        categories: [    {loop $date $key $row}
+         //               {if $key>0},{/if}"{$row['time']}"
+         //               {/loop}]
+         //    },
+         //    yAxis: {
+         //        title: {
+         //            text: '金额'
+         //        },allowDecimals:false
+         //    },
+         //    tooltip: {
+         //        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+		       //  pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		       //  '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+		       //  footerFormat: '</table>',
+		       //  shared: true,
+		       //  useHTML: true
+         //    },
+         //    plotOptions: {
+         //        column: {
+		       //      borderWidth: 0
+		       //  }
+         //    },
+         //    series: [{
+	        //     name: '新增团队',
+	        //     data: [
+	        //         {loop $date[0]['zhuanjia'] $key $row}
+	        //         {if $key>0},{/if}
+	        //         {$row['money']}
+	                
+	        //         {/loop}
+	        //     ]
+	        // }, {
+	        //     name: '签约订单',
+	        //     data: [
+	        //         {loop $date $key $row}
+	        //         {if $key>0},{/if}{$row['order']}
+	        //         {/loop}
+	        //     ]
+	        // }],
+    	});
+	});
+</script>
+	</body>
+</html>

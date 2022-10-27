@@ -1,0 +1,1242 @@
+{template '/common/mainHeader'}
+<style>
+	.container{
+		width: 100%;
+	}
+</style>
+ <link rel="stylesheet" type="text/css" href="/addons/hyb_yl/public/newcss/chunk-1fcdc2e4.503f9629.css"/>
+ <link rel="stylesheet" type="text/css" href="/addons/hyb_yl/public/newcss/chunk-89ca0adc.0fbcbc1d.css"/>
+<link rel="stylesheet" type="text/css" href="/addons/hyb_yl/public/newcss/app.css"/>
+<div class="app-container-right">
+			
+<ul class="nav nav-tabs">
+	<li class="active"><a href="javascript:;">预约详情</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+        
+ <div id="noprint">
+ <div>
+<div class="layout menuCollapse" basepath="/patient-egis">
+<div class="layout_right">
+ <div class="container">
+<div element-loading-text="页面加载中" class="loading-container pos-r_i">
+<div class="page-container clearfix">
+ <div class="singleRender">
+<div class="el-tabs el-tabs--top el-tabs--border-card">
+<div data-v-0ba75ed4="" class="el-tabs__header is-top">
+ <div data-v-0ba75ed4="" class="el-tabs__nav-wrap is-top right-scrollable left-scrollable">
+<!---->
+<!---->
+<div data-v-0ba75ed4="" class="el-tabs__nav-scroll">
+<div data-v-0ba75ed4="" role="tablist" class="el-tabs__nav" style="transform: translateX(0px);">
+ <div data-v-0ba75ed4="" role="tab" class="el-tabs__item is-top">
+公众号管理
+ </div>
+</div>
+</div>
+ </div>
+</div>
+<div class="el-tabs__content">
+ <div class="el-tab-pane">
+<!---->
+<div data-v-77cb822c="" class="chat-page" basepath="/patient-egis/communication/wechat">
+<div data-v-77cb822c="" class="chat">
+ <div data-v-77cb822c="" class="chat-header">
+<div data-v-77cb822c="" class="title">
+与
+<b data-v-77cb822c="">{$user['u_name']}</b> 的聊天
+</div>
+ </div>
+ <div data-v-77cb822c="" class="chat-main">
+<div data-v-77cb822c="" class="chat-body">
+<div data-v-b6aab098="" data-v-77cb822c="" class="message-container message-list pos-r_i">
+ <div data-v-b6aab098="" class="chat-message-list">
+<!---->
+<div data-v-b6aab098="" role="group" aria-label="checkbox-group" class="el-checkbox-group">
+{loop $list $item}
+<div data-v-b6aab098="" class="message">
+ <p data-v-b6aab098="" class="message-time">
+{$item['time']} </p>
+{if $item['state'] == '0'}
+ <label data-v-b6aab098="" class="message-row"><label data-v-b6aab098="" class="el-checkbox checkbox" style="display: none;"><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="671979534"></span><span class="el-checkbox__label"><span data-v-b6aab098=""></span>
+<!----></span></label>
+<div data-v-b6aab098="" class="message-box">
+<img data-v-b6aab098="" class="avatar-img avatar" data-src="" src="resource/images/nopic-107.png" lazy="loaded" style="width: 36px; height: 36px;">
+<div data-v-b6aab098="" class="message-wrapper">
+ <div data-v-b6aab098="" class="name text_overflow" >
+<span data-v-b6aab098="">{$user['u_name']}</span>
+ </div>
+ <div data-v-b6aab098="" class="message-body" style="max-width: 535px;">
+<span data-v-ecf8bf20="" data-v-b6aab098="" class="text message-content">{$item['text']}</span>
+ </div>
+</div>
+<div data-v-b6aab098="" class="icon-box">
+ <!---->
+ <!---->
+</div>
+</div>
+ </label>
+ {else if $item['state'] == '1'}
+  <div data-v-b6aab098="" class="message-row">
+<label data-v-b6aab098="" class="el-checkbox checkbox" style="display: none;"><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="672579449"></span><span class="el-checkbox__label"><span data-v-b6aab098=""></span>
+<!----></span></label>
+<div data-v-b6aab098="" class="message-box reverse"><img data-v-b6aab098="" class="avatar-img avatar" data-src="" lazy="loaded" style="width: 36px; height: 36px;">
+<div data-v-b6aab098="" class="message-wrapper">
+ <div data-v-b6aab098="" class="message-body" style="max-width: 535px;">
+<span data-v-ecf8bf20="" data-v-b6aab098="" class="text message-content">{$item['text']}</span>
+ </div>
+</div>
+<div data-v-b6aab098="" class="icon-box"><!---->
+ <!----></div>
+</div>
+</div>
+{/if}
+</div>
+{/loop}
+
+</div>
+ </div>
+ <!---->
+ <div data-v-0588ee66="" data-v-b6aab098="">
+<!---->
+<!---->
+ </div>
+ <!---->
+</div>
+<div data-v-77cb822c="" class="chat-footer">
+ <div data-v-77cb822c="" role="alert" class="el-alert alert el-alert--warning is-light">
+<!---->
+<div class="el-alert__content">
+<span class="el-alert__title">由于该用户 48 小时未与你互动，或者最近 20 条消息都非用户发送，你需要通过模板消息进行交流。</span>
+<!---->
+<!---->
+<i class="el-alert__closebtn el-icon-close" style="display: none;"></i>
+</div>
+ </div>
+ <div data-v-77cb822c="" class="chat-input-box editor" includes="template" autofocus="autofocus" byte-length-mode="">
+<div data-v-02276aae="" class="editor-container">
+<div data-v-02276aae="" class="input-header wrap">
+ <div data-v-239bde1a="" class="pos_r message-type-picker" data-v-02276aae="">
+<ul data-v-239bde1a="" class="clearfix">
+<li data-v-239bde1a="" class="message-type">
+ <i data-v-239bde1a="" class="iconfont icon-duihuakuang-tupian"></i>
+ <div data-v-239bde1a="">
+图片
+ </div>
+</li>
+<li data-v-239bde1a="" class="message-type">
+ <i data-v-239bde1a="" class="iconfont icon-duihuakuang-shipin"></i>
+ <div data-v-239bde1a="">
+视频
+ </div>
+</li>
+<li data-v-239bde1a="" class="message-type">
+ <i data-v-239bde1a="" class="iconfont icon-duihuakuang-wenjian"></i>
+ <div data-v-239bde1a="">
+文件
+ </div>
+</li>
+</ul>
+<div data-v-62945107="" data-v-239bde1a="" lass="el-dialog__wrapper dialog-wrapper" append-to-body="true" style="display: none;">
+<div role="dialog" aria-modal="true" aria-label="超链接" class="el-dialog small-dialog common-dialog" style="margin-top: 0px;">
+ <div class="el-dialog__header">
+<span class="el-dialog__title">超链接</span>
+<button type="button" aria-label="Close" class="el-dialog__headerbtn ">
+<i class="el-dialog__close el-icon el-icon-close"></i>
+</button>
+ </div><!---->
+ <div class="el-dialog__footer"><span data-v-62945107="" class="dialog-footer"><button data-v-62945107="" type="button" class="el-button el-button--default el-button--medium"><!---->
+<!----><span>取 消</span></button><button data-v-6013d768="" data-v-62945107="" type="button" class="el-button el-button--primary el-button--medium" style="min-width: 0px;"><!---->
+<!----><span><span data-v-6013d768="" class="button-loading white" style="display: none;"></span>确 定</span></button></span>
+ </div>
+</div>
+</div>
+<div data-v-3de7f78e="" data-v-239bde1a="" class="emoji-container face-picker" append-to-body="true" style="display: none;">
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7610" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3855" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-957" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3317" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-6063" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3072" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4305" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4016" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-6985" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8761" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3951" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2328" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4556" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2676" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2070" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7632" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-6723" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2809" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-1799" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8921" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-570" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4217" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8238" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5283" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7794" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-1731" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8872" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7996" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5645" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-1859" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2826" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8575" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7964" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5081" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-1958" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5266" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5026" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-6422" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4154" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7538" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-9257" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4509" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3644" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7105" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3359" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7717" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5220" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4456" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7294" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7595" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-48" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-6368" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-6492" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3421" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2083" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-703" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5992" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-1636" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2348" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3213" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8371" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3639" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5404" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2033" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-948" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8719" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4399" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8696" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-1384" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4650" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-397" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3318" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-650" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3932" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2233" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-6748" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-9014" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-1830" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2500" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5897" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8007" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2447" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-1644" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-4256" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3541" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-6106" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2043" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5020" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3150" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-8846" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2033" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3804" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-936" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7817" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-5825" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3919" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-3577" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-9890" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-601" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-6582" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-692" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-9279" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-7835" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-2858" tabindex="0">
+</div>
+<div data-v-3de7f78e="" class="emoji-box">
+ <img data-v-3de7f78e="" src="resource/images/nopic-107.png" class="el-tooltip" aria-describedby="el-tooltip-1421" tabindex="0">
+</div>
+</div>
+<div data-v-4fb6fead="" data-v-239bde1a="" class="el-dialog__wrapper dialog-wrapper" append-to-body="true" style="display: none;">
+<div role="dialog" aria-modal="true" aria-label="文本" class="el-dialog medium-dialog common-dialog" style="margin-top: 0px;">
+ <div class="el-dialog__header">
+<span class="el-dialog__title">文本</span>
+<button type="button" aria-label="Close" class="el-dialog__headerbtn">
+<i class="el-dialog__close el-icon el-icon-close"></i>
+</button>
+ </div>
+ <!---->
+ <!---->
+</div>
+</div>
+<div data-v-ce54aa02="" data-v-239bde1a="" class="el-dialog__wrapper dialog-wrapper" append-to-body="true" style="display: none;">
+<div role="dialog" aria-modal="true" aria-label="图片" class="el-dialog medium-dialog common-dialog" style="margin-top: 0px;">
+ <div class="el-dialog__header">
+<span class="el-dialog__title">图片</span>
+<button type="button" aria-label="Close" class="el-dialog__headerbtn">
+<i class="el-dialog__close el-icon el-icon-close"></i>
+</button>
+ </div>
+ <!---->
+ <div class="el-dialog__footer">
+ <span data-v-ce54aa02="" class="dialog-footer"><button data-v-ce54aa02="" type="button" class="el-button el-button--default el-button--medium ">
+<!---->
+<!----><span>取 消</span></button><button data-v-6013d768="" data-v-ce54aa02="" type="button" class="el-button el-button--primary el-button--medium" style="min-width: 0px;">
+<!---->
+<!----><span><span data-v-6013d768="" class="button-loading white" style="display: none;"></span>发 送</span></button></span>
+ </div>
+</div>
+</div>
+<div data-v-25f51dc8="" data-v-239bde1a="" class="el-dialog__wrapper dialog-wrapper" append-to-body="true" style="display: none;">
+<div role="dialog" aria-modal="true" aria-label="视频" class="el-dialog medium-dialog common-dialog" style="margin-top: 0px;">
+ <div class="el-dialog__header">
+<span class="el-dialog__title">视频</span>
+<button type="button" aria-label="Close" class="el-dialog__headerbtn">
+<i class="el-dialog__close el-icon el-icon-close"></i>
+</button>
+ </div>
+ <!---->
+ <div class="el-dialog__footer">
+ <span data-v-25f51dc8="" class="dialog-footer"><button data-v-25f51dc8="" type="button" class="el-button el-button--default el-button--medium">
+<!---->
+<!----><span>取 消</span></button><button data-v-6013d768="" data-v-25f51dc8="" type="button" class="el-button el-button--primary el-button--medium" style="min-width: 0px;">
+<!---->
+<!----><span><span data-v-6013d768="" class="button-loading white" style="display: none;"></span>保 存</span></button></span>
+ </div>
+</div>
+</div>
+<div data-v-505a82cd="" data-v-239bde1a="" class="el-dialog__wrapper dialog-wrapper" append-to-body="true" style="display: none;">
+<div role="dialog" aria-modal="true" aria-label="图文" class="el-dialog medium-dialog common-dialog" style="margin-top: 0px;">
+ <div class="el-dialog__header">
+<span class="el-dialog__title">图文</span>
+<button type="button" aria-label="Close" class="el-dialog__headerbtn">
+<i class="el-dialog__close el-icon el-icon-close"></i>
+</button>
+ </div>
+ <!---->
+ <!---->
+</div>
+</div>
+<div data-v-262b98db="" data-v-239bde1a="" class="el-dialog__wrapper dialog-wrapper" append-to-body="true" style="display: none;">
+<div role="dialog" aria-modal="true" aria-label="文件" class="el-dialog medium-dialog common-dialog" style="margin-top: 0px;">
+ <div class="el-dialog__header">
+<span class="el-dialog__title">文件</span>
+<button type="button" aria-label="Close" class="el-dialog__headerbtn">
+x
+</button>
+ </div>
+ <!---->
+ <div class="el-dialog__footer">
+ <span data-v-262b98db="" class="dialog-footer"><button data-v-262b98db="" type="button" class="el-button el-button--default el-button--medium">
+<!----><span>取 消</span></button><button data-v-6013d768="" data-v-262b98db="" type="button" class="el-button el-button--primary el-button--medium" style="min-width: 0px;">
+<!----><!----><span><span data-v-6013d768="" class="button-loading white" style="display: none;"></span>发 送</span></button></span></div>
+</div>
+</div>
+<div data-v-c056a290="" data-v-239bde1a="" append-to-body="true">
+<div data-v-c056a290="" class="el-dialog__wrapper dialog-wrapper" style="display: none;">
+ <div role="dialog" aria-modal="true" aria-label="模板消息" class="el-dialog small-dialog common-dialog" style="margin-top: 0px;">
+<div class="el-dialog__header">
+<span class="el-dialog__title">模板消息</span>
+<button type="button" aria-label="Close" class="el-dialog__headerbtn">
+ <i class="el-dialog__close el-icon el-icon-close"></i>
+</button>
+</div><!----></div>
+</div><!----></div>
+ </div>
+</div>
+<div data-v-02276aae="" class="toolbar ql-toolbar ql-snow" style="display: none;"></div>
+<div data-v-02276aae="" class="editor-warpper" style="height: 75px;">
+ <div data-v-02276aae="" class="editor ql-container ql-snow">
+<div class="ql-editor ql-blank" data-gramm="false" contenteditable="true"></div>
+<div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
+<div class="ql-tooltip ql-hidden">
+<a class="ql-preview" rel="noopener noreferrer" target="_blank" href="about:blank"></a>
+<input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL">
+<a class="ql-action"></a>
+<a class="ql-remove"></a>
+</div>
+ </div>
+</div>
+<div data-v-02276aae="" class="length-limit">
+ <span data-v-02276aae="" class="textNum">0</span>/2000
+</div>
+<!---->
+<!---->
+</div>
+<div class="input-footer">
+<div data-v-77cb822c="" class="editor-footer">
+ <div data-v-77cb822c="" class="shortkey-tip">
+按下 Ctrl + Enter 键发送
+ </div>
+ <button data-v-77cb822c="" disabled="disabled" type="button" class="el-button el-button--primary el-button--medium is-disabled" id="send"><span> 发送 </span></button>
+</div>
+</div>
+ </div>
+ <div data-v-77cb822c="" class="mul-selection-area" style="display: none;">
+<div data-v-77cb822c="" class="btn">
+<i data-v-77cb822c="" class="iconfont icon-jiludaosuifangzhong"></i>
+<div data-v-77cb822c="">
+ 记录到随访中
+</div>
+</div>
+<div data-v-77cb822c="" class="btn">
+<i data-v-77cb822c="" class="iconfont icon-guanbi"></i>
+<div data-v-77cb822c="">
+ 取消多选
+</div>
+</div>
+ </div>
+</div>
+</div>
+<div data-v-77cb822c="" class="chat-aside">
+<div data-v-27289194="" data-v-77cb822c="" class="patient-side">
+ <div data-v-20ddc63e="" data-v-27289194="" class="wrapper">
+<!---->
+<!---->
+<div data-v-20ddc63e="" class="main right" style="">
+<div data-v-27289194="" class="patient-side-main pos-r_i">
+ <div data-v-27289194="" class="patient-info clearfix">
+<div data-v-27289194="" class="patient-info-avatar">
+<img data-v-27289194="" class="avatar-img" data-src="{$user['u_thumb']}" lazy="loaded" style="width: 56px; height: 56px;">
+</div>
+<div data-v-27289194="" class="patient-info-other">
+<div data-v-27289194="" class="info-name">
+ <a data-v-27289194="" href="/clinic/patient-egis/patient-management/patient-details?id=732494" target="_blank">
+<div data-v-27289194="" class="el-tooltip name text_overflow" aria-describedby="el-tooltip-6645" tabindex="0">
+<span data-v-27289194="">{$user['u_name']}</span>
+</div>
+ </a>
+ <!---->
+</div>
+<div data-v-27289194="" class="info-gender">
+ {if $user['u_sex'] == '0'}女{else if $user['u_sex'] == '1'} 男 {else} 不详 {/if} / {$user['u_age']}岁
+</div>
+<div data-v-27289194="" class="info-mobile">{$user['u_phone']}</div>
+</div>
+<div data-v-27289194="" class="patient-info-actions">
+<!---->
+</div>
+ </div>
+ <div data-v-27289194="" class="patient-disease">
+<div data-v-172f66c2="" data-v-27289194="" class="tag-list">
+<span data-v-172f66c2="" class="tag-item tag-more el-tag el-tag--danger el-tag--medium el-tag--light" style="margin-bottom: 8px;"><i data-v-172f66c2="" class="el-icon-more"></i></span>
+<span data-v-172f66c2="" class="tag-item tag-plus el-tag el-tag--danger el-tag--medium el-tag--light" style="margin-bottom: 8px;"><i data-v-172f66c2="" class="el-icon-plus"></i></span>
+</div>
+<!---->
+ </div>
+ <!---->
+ <!---->
+ <div data-v-27289194="" class="seg-line"></div>
+ <div data-v-27289194="">
+<div data-v-27289194="">
+<div data-v-27289194="">
+ <div data-v-10803746="" data-v-155af19b="" data-v-27289194="" class="patient-history" patient-id="732494">
+<div data-v-10803746="">
+<span data-v-10803746="" class="head-title">基础信息</span>
+</div>
+<div data-v-155af19b="" data-v-10803746="" class="content-panel">
+<div data-v-155af19b="" data-v-10803746="" class="content-item">
+ <span data-v-155af19b="" data-v-10803746="" class="content-item_label text_overflow yhlab">
+  用户标签：<span data-v-155af19b="" data-v-10803746="">李志林,糖尿病</span>
+ </span>
+ <i data-v-155af19b="" data-v-10803746="" class="icon-xiugai iconfont labelBtn"></i>
+</div>
+<div data-v-155af19b="" data-v-10803746="" class="content-item">
+ <span data-v-155af19b="" data-v-10803746="" class="content-item_label text_overflow">微信分组：<span class="wxfzbox1" data-v-155af19b="" data-v-10803746=""></span></span>
+ <i data-v-155af19b="" data-v-10803746="" class="icon-xiugai iconfont wxfz"></i>
+</div>
+<div data-v-155af19b="" data-v-10803746="" class="content-item">
+ <span data-v-155af19b="" data-v-10803746="" class="content-item_label text_overflow">
+  <span data-v-155af19b="" data-v-10803746="" class="bzTextBox">备注：</span></span>
+ <i data-v-155af19b="" data-v-10803746="" class="icon-xiugai iconfont bzxg"></i>
+</div>
+<div data-v-155af19b="" data-v-10803746="" class="content-item">
+ <span data-v-155af19b="" data-v-10803746="" class="content-item_label text_overflow"><span data-v-155af19b="" data-v-10803746="">关注时间：2020-02-08 16:54:28</span></span>
+ <!---->
+</div>
+<div data-v-155af19b="" data-v-10803746="" class="content-item">
+ <span data-v-155af19b="" data-v-10803746="" class="content-item_label text_overflow"><span data-v-155af19b="" data-v-10803746="">是否关注：是</span></span>
+ <!---->
+</div>
+<div data-v-155af19b="" data-v-10803746="" class="content-item">
+ <span data-v-155af19b="" data-v-10803746="" class="content-item_label text_overflow"><span data-v-155af19b="" data-v-10803746="">住址：陕西西安</span></span>
+ <!---->
+</div>
+</div>
+
+ </div>
+ <div data-v-27289194="" class="seg-line"></div>
+</div>
+</div>
+ </div>
+ <div data-v-27289194="">
+<div data-v-27289194="">
+<div data-v-27289194="">
+ <div data-v-10803746="" data-v-84bb341c="" data-v-27289194="" class="patient-history">
+<div data-v-10803746="">
+<span data-v-10803746="" class="head-title">病历信息</span>
+</div>
+<div data-v-84bb341c="" data-v-10803746="" class="content-panel">
+<!---->
+<!---->
+<!---->
+<!---->
+<div data-v-84bb341c="" data-v-10803746="" class="content-item text_overflow">
+ <span data-v-84bb341c="" data-v-10803746="">过敏史：未明确</span>
+</div>
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+</div>
+ </div>
+ <div data-v-27289194="" class="seg-line"></div>
+</div>
+</div>
+ </div>
+ <div data-v-27289194="">
+<div data-v-27289194="">
+<div data-v-27289194="">
+ <div data-v-7b6ddbe4="" data-v-27289194="">
+<div data-v-10803746="" data-v-7b6ddbe4="" class="patient-history">
+<div data-v-10803746="">
+ <span data-v-10803746="" class="head-title">历史就诊</span>
+ <div data-v-7b6ddbe4="" data-v-10803746="">
+<!---->
+ </div>
+</div>
+<div data-v-7b6ddbe4="" data-v-10803746="" style="padding: 0px 8px;">
+ <div data-v-7b6ddbe4="" data-v-10803746="" class="dxy-empty-info">
+暂无信息
+ </div>
+</div>
+</div>
+<!---->
+ </div>
+ <div data-v-27289194="" class="seg-line"></div>
+</div>
+</div>
+ </div>
+ <div data-v-27289194="">
+<div data-v-27289194="">
+<div data-v-27289194="">
+ <div data-v-10803746="" data-v-0ebdd861="" data-v-27289194="" class="patient-history">
+<div data-v-10803746="">
+<span data-v-10803746="" class="head-title">家庭成员</span>
+</div>
+<div data-v-0ebdd861="" data-v-10803746="" class="content-panel">
+<div data-v-0ebdd861="" data-v-10803746="" class="dxy-empty-info">
+ 暂无信息
+</div>
+</div>
+ </div>
+ <div data-v-27289194="" class="seg-line"></div>
+</div>
+</div>
+ </div>
+ <div data-v-27289194="">
+<div data-v-27289194="">
+<div data-v-27289194="">
+ <div data-v-10803746="" data-v-067c1edf="" data-v-27289194="" class="patient-history">
+<div data-v-10803746="">
+<span data-v-10803746="" class="head-title">随访计划</span>
+</div>
+<div data-v-067c1edf="" data-v-10803746="" class="content-panel">
+<div data-v-067c1edf="" data-v-10803746="" class="dxy-empty-info">
+ 暂无信息
+</div>
+</div>
+ </div>
+ <div data-v-27289194="" class="seg-line"></div>
+</div>
+</div>
+ </div>
+ <div data-v-27289194="">
+<div data-v-27289194="">
+<div data-v-27289194="">
+ <div data-v-10803746="" data-v-0a5ec5c9="" data-v-27289194="" class="patient-history">
+<div data-v-10803746="">
+<span data-v-10803746="" class="head-title">健康管理计划</span>
+</div>
+<div data-v-0a5ec5c9="" data-v-10803746="" class="content-panel">
+<div data-v-0a5ec5c9="" data-v-10803746="" class="dxy-empty-info">
+ 暂无信息
+</div>
+</div>
+ </div>
+ <!---->
+</div>
+</div>
+ </div>
+ <!---->
+</div>
+</div>
+ </div>
+ <div data-v-094ddc0b="" data-v-27289194="" class="el-dialog__wrapper" style="display: none;">
+<div role="dialog" aria-modal="true" aria-label="转诊" class="el-dialog small-dialog common-dialog" style="margin-top: 0px;">
+<div class="el-dialog__header">
+ <span class="el-dialog__title">转诊</span>
+ <button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i>
+ </button>
+</div>
+<!---->
+<div class="el-dialog__footer">
+<span data-v-094ddc0b=""><button data-v-094ddc0b="" type="button" class="el-button el-button--default el-button--medium">
+<!---->
+ <!----><span>查看转诊记录</span></button><button data-v-094ddc0b="" type="button" class="el-button el-button--default el-button--medium">
+<!---->
+ <!----><span>取 消</span></button><button data-v-6013d768="" data-v-094ddc0b="" type="button" class="el-button el-button--primary el-button--medium" style="min-width: 0px;">
+<!---->
+ <!----><span><span data-v-6013d768="" class="button-loading white" style="display: none;"></span>确 定</span></button></span>
+</div>
+</div>
+ </div>
+</div>
+</div>
+ </div>
+</div>
+<!---->
+<!---->
+<!---->
+<div data-v-4d405aed="" data-v-77cb822c="" class="el-dialog__wrapper" simuid="6790996426496139517" style="display: none;">
+ <div role="dialog" aria-modal="true" aria-label="随访计划" class="el-dialog small-dialog common-dialog dialog" style="margin-top: 0px;">
+<div class="el-dialog__header">
+<span class="el-dialog__title">随访计划</span>
+<button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i>
+</button>
+</div>
+<!---->
+<!---->
+ </div>
+</div>
+</div>
+ </div>
+</div>
+</div>
+ </div>
+</div>
+<!---->
+</div>
+ </div>
+</div>
+</div>
+ </div>
+</div>
+<div id="print"></div>
+<div class="v-modal" style="z-index:8;display: none"></div>
+<div class="el-dialog__wrapper tabBox"  style="z-index: 2082; display: none">
+ <div role="dialog" aria-modal="true" aria-label="患者标签选择" class="el-dialog small-dialog common-dialog"
+style="margin-top: 0px;">
+<div class="el-dialog__header">
+<span class="el-dialog__title">患者标签选择</span>
+<button type="button" aria-label="Close" class="el-dialog__headerbtn closetab">x</button>
+</div>
+<div class="el-dialog__body">
+<div data-v-056cb741="" class="dialog-container">
+ <div data-v-056cb741="" class="tags-view"><p data-v-056cb741="" class="title">现有标签</p>
+<div data-v-056cb741="" class="selected">
+
+</div>
+ </div>
+ <div data-v-056cb741="" class="tags-group">
+<div data-v-056cb741="" role="group" aria-label="checkbox-group" class="el-checkbox-group">
+<div data-v-056cb741="" class="el-tabs el-tabs--top" style="height: 200px;">
+ <div class="el-tabs__header is-top">
+<div class="el-tabs__nav-wrap is-top">
+<div class="el-tabs__nav-scroll">
+ <div role="tablist" class="el-tabs__nav is-top"
+style="transform: translateX(0px);">
+<div class="el-tabs__active-bar is-top"
+ style="width: 28px; transform: translateX(0px);">
+</div>
+<div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true"
+ tabindex="0" class="el-tabs__item is-top is-active">慢病
+</div>
+<div id="tab-1" aria-controls="pane-1" role="tab" tabindex="-1"
+ class="el-tabs__item is-top">慢性病
+</div>
+<div id="tab-2" aria-controls="pane-2" role="tab" tabindex="-1"
+ class="el-tabs__item is-top">常见病
+</div>
+<div id="tab-3" aria-controls="pane-3" role="tab" tabindex="-1"
+ class="el-tabs__item is-top">妇科
+</div>
+<div id="tab-4" aria-controls="pane-4" role="tab" tabindex="-1"
+ class="el-tabs__item is-top">儿童疾病
+</div>
+<div id="tab-5" aria-controls="pane-5" role="tab" tabindex="-1"
+ class="el-tabs__item is-top">信用客户
+</div>
+ </div>
+</div>
+</div>
+ </div>
+ <div class="el-tabs__content">
+<div data-v-056cb741="" role="tabpanel" id="pane-0" aria-labelledby="tab-0"
+ class="el-tab-pane" style="">
+<div data-v-056cb741="" class="checkbox-item tabbtn">
+ <label data-v-056cb741="" class="el-checkbox " closable=""><span
+class="el-checkbox__input "><span
+class="el-checkbox__inner"></span><input type="checkbox"
+aria-hidden="false"
+class="el-checkbox__original"
+value="46"></span><span
+class="el-checkbox__label">糖尿病<!----></span></label></div>
+
+</div>
+<div data-v-056cb741="" role="tabpanel" aria-hidden="true" id="pane-1"
+ aria-labelledby="tab-1" class="el-tab-pane" style="display: none;">
+ <div data-v-056cb741="" class="checkbox-item tabbtn">
+  <label data-v-056cb741="" class="el-checkbox " closable=""><span
+          class="el-checkbox__input "><span
+          class="el-checkbox__inner"></span><input type="checkbox"
+                                                   aria-hidden="false"
+                                                   class="el-checkbox__original"
+                                                   value="46"></span><span
+          class="el-checkbox__label">糖尿病<!----></span></label></div>
+</div>
+<div data-v-056cb741="" role="tabpanel" aria-hidden="true" id="pane-2"
+ aria-labelledby="tab-2" class="el-tab-pane" style="display: none;">
+<div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741=""
+class="el-checkbox"
+closable=""><span
+class="el-checkbox__input"><span class="el-checkbox__inner"></span><input
+type="checkbox" aria-hidden="false" class="el-checkbox__original"
+value="50"></span><span class="el-checkbox__label">鼻炎<!----></span></label>
+</div>
+<div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741=""
+class="el-checkbox"
+closable=""><span
+class="el-checkbox__input"><span class="el-checkbox__inner"></span><input
+type="checkbox" aria-hidden="false" class="el-checkbox__original"
+value="49"></span><span class="el-checkbox__label">发烧<!----></span></label>
+</div>
+<div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741=""
+class="el-checkbox"
+closable=""><span
+class="el-checkbox__input"><span class="el-checkbox__inner"></span><input
+type="checkbox" aria-hidden="false" class="el-checkbox__original"
+value="48"></span><span class="el-checkbox__label">咳嗽<!----></span></label>
+</div>
+<div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741=""
+class="el-checkbox"
+closable=""><span
+class="el-checkbox__input"><span class="el-checkbox__inner"></span><input
+type="checkbox" aria-hidden="false" class="el-checkbox__original"
+value="47"></span><span class="el-checkbox__label">感冒<!----></span></label>
+</div>
+</div>
+<div data-v-056cb741="" role="tabpanel" aria-hidden="true" id="pane-3"
+ aria-labelledby="tab-3" class="el-tab-pane" style="display: none;">
+<div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741=""
+class="el-checkbox"
+closable=""><span
+class="el-checkbox__input"><span class="el-checkbox__inner"></span><input
+type="checkbox" aria-hidden="false" class="el-checkbox__original"
+value="64"></span><span class="el-checkbox__label">妇科病<!----></span></label>
+</div>
+</div>
+<div data-v-056cb741="" role="tabpanel" aria-hidden="true" id="pane-4"
+ aria-labelledby="tab-4" class="el-tab-pane" style="display: none;">
+<div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741=""
+class="el-checkbox"
+closable=""><span
+class="el-checkbox__input"><span class="el-checkbox__inner"></span><input
+type="checkbox" aria-hidden="false" class="el-checkbox__original"
+value="63"></span><span class="el-checkbox__label">龚红好或或
+ <!----></span></label></div>
+<div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741=""
+class="el-checkbox"
+closable=""><span
+class="el-checkbox__input"><span class="el-checkbox__inner"></span><input
+type="checkbox" aria-hidden="false" class="el-checkbox__original"
+value="62"></span><span class="el-checkbox__label">手足口病
+ <!----></span></label></div>
+</div>
+<div data-v-056cb741="" role="tabpanel" aria-hidden="true" id="pane-5"
+ aria-labelledby="tab-5" class="el-tab-pane" style="display: none;">
+<div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741=""
+class="el-checkbox"
+closable=""><span
+class="el-checkbox__input"><span class="el-checkbox__inner"></span><input
+type="checkbox" aria-hidden="false" class="el-checkbox__original"
+value="86"></span><span class="el-checkbox__label">不好的客户
+ <!----></span></label></div>
+<div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741=""
+class="el-checkbox"
+closable=""><span
+class="el-checkbox__input"><span class="el-checkbox__inner"></span><input
+type="checkbox" aria-hidden="false" class="el-checkbox__original"
+value="85"></span><span class="el-checkbox__label">优良客户
+ <!----></span></label></div>
+</div>
+ </div>
+</div>
+</div>
+ </div>
+</div>
+</div>
+<div class="el-dialog__footer"><span data-v-056cb741="" class="dialog-footer"><button data-v-056cb741=""
+ type="button"
+ class="el-button el-button--default el-button--medium closetab"><!---->
+<!----><span>取 消</span></button><button data-v-6013d768="" data-v-056cb741="" type="button"
+ class="el-button el-button--primary el-button--medium"
+ style="min-width: 0px;" id="send1"><span><span data-v-6013d768=""
+class="button-loading white"
+style="display: none;"></span>确 定</span></button></span>
+</div>
+ </div>
+</div>
+<div data-v-65a9dd82="" data-v-155af19b="" class="el-dialog__wrapper dialog wxfzBox" data-v-10803746="" style="z-index:9;display: none">
+ <div role="dialog" aria-modal="true" aria-label="修改微信分组" class="el-dialog small-dialog common-dialog" style="margin-top: 0px;"><div class="el-dialog__header"><span class="el-dialog__title">修改微信分组</span><button type="button" aria-label="Close" class="el-dialog__headerbtn closetab"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><div class="el-dialog__body"><form data-v-65a9dd82="" class="el-form"><div data-v-65a9dd82="" class="el-form-item is-required el-form-item--medium"><label for="groupId" class="el-form-item__label" style="width: 80px;">微信分组</label><div class="el-form-item__content" style="margin-left: 80px;"><div data-v-65a9dd82="" class="el-select el-select--medium"><!----><div class="el-input el-input--medium el-input--suffix"><!----><input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner"><!----><span class="el-input__suffix"><span class="el-input__suffix-inner"><i class="el-select__caret el-input__icon el-icon-arrow-up" style=""></i><!----><!----><!----><!----><!----></span><!----></span><!----><!----></div><div class="el-select-dropdown el-popper" style="display: none; max-width: 100px; min-width: 392px;"><div class="el-scrollbar" style=""><div class="el-select-dropdown__wrap el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;"><ul class="el-scrollbar__view el-select-dropdown__list"><!----><li class="el-select-dropdown__item"><div class="text_overflow"><span>111${1+1}</span></div></li><li class="el-select-dropdown__item"><div class="text_overflow"><span>"&gt;</span></div></li></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div></div></div><p class="el-select-dropdown__empty">
+  无数据
+ </p></div></div><!----></div></div></form></div><div class="el-dialog__footer"><span data-v-65a9dd82="" class="tr"><button data-v-65a9dd82="" type="button" class="el-button el-button--default el-button--medium closetab"><!----><!----><span>取 消</span></button><button data-v-6013d768="" data-v-65a9dd82="" type="button" class="el-button el-button--primary el-button--medium fzsend" style="min-width: 0px;"><!----><!----><span><span data-v-6013d768="" class="button-loading white" style="display: none;"></span>确 定</span></button></span></div></div>
+</div>
+<div data-v-056cb741="" data-v-155af19b="" class="el-dialog__wrapper labelBox " data-v-10803746="" style="z-index: 9999; display: none;"><div role="dialog" aria-modal="true" aria-label="用户标签" class="el-dialog small-dialog common-dialog" style="margin-top: 0px;"><div class="el-dialog__header"><span class="el-dialog__title">用户标签</span><button type="button" aria-label="Close" class="el-dialog__headerbtn closetab"><i class="el-dialog__close el-icon el-icon-close closetab"></i></button></div><div class="el-dialog__body"><div data-v-056cb741="" class="dialog-container"><div data-v-056cb741="" class="tags-view"><p data-v-056cb741="" class="title">现有标签</p>
+ <div data-v-056cb741="" class="selected">
+
+ </div>
+</div>
+ <div data-v-056cb741="" class="tags-group"><div data-v-056cb741="" role="group" aria-label="checkbox-group" class="el-checkbox-group"><div data-v-056cb741="" class="el-tabs el-tabs--top" style="height: 200px;"><div class="el-tabs__header is-top"><div class="el-tabs__nav-wrap is-top"><div class="el-tabs__nav-scroll"><div role="tablist" class="el-tabs__nav is-top" style="transform: translateX(0px);"><div class="el-tabs__active-bar is-top" style="width: 56px; transform: translateX(0px);"></div><div id="tab-0" aria-controls="pane-0" role="tab" aria-selected="true" tabindex="0" class="el-tabs__item is-top is-active">新增标签</div></div></div></div></div><div class="el-tabs__content"><div data-v-056cb741="" role="tabpanel" id="pane-0" aria-labelledby="tab-0" class="el-tab-pane" style="">
+  <div data-v-056cb741="" class="checkbox-item lebbtn"><label data-v-056cb741="" class="el-checkbox " closable=""><span class="el-checkbox__input "><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="6"></span><span class="el-checkbox__label">李志林<!----></span></label></div>
+  <div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741="" class="el-checkbox" closable=""><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="29"></span><span class="el-checkbox__label">哇<!----></span></label></div><div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741="" class="el-checkbox" closable=""><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="30"></span><span class="el-checkbox__label">大顶堆<!----></span></label></div><div data-v-056cb741="" class="checkbox-item"><label data-v-056cb741="" class="el-checkbox" closable=""><span class="el-checkbox__input"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="33"></span><span class="el-checkbox__label">"&gt;&lt;script&gt;alert('')&lt;/script&gt;<!----></span></label></div></div></div></div></div></div></div></div><div class="el-dialog__footer"><span data-v-056cb741="" class="dialog-footer"><button data-v-056cb741="" type="button" class="el-button el-button--default el-button--medium closetab"><!----><!----><span>取 消</span></button><button data-v-6013d768="" data-v-056cb741="" type="button" class="el-button el-button--primary el-button--medium lebsend" style="min-width: 0px;"><!----><!----><span><span data-v-6013d768="" class="button-loading white" style="display: none;"></span>确 定</span></button></span></div></div></div>
+<div data-v-155af19b="" class="el-dialog__wrapper bzBox" title="修改备注" data-v-10803746=""style="display:none;z-index: 9;">
+ <div role="dialog" aria-modal="true" aria-label="修改备注" class="el-dialog small-dialog common-dialog" style="margin-top: 0px;"><div class="el-dialog__header"><span class="el-dialog__title">修改备注</span><button type="button" aria-label="Close" class="el-dialog__headerbtn closetab"><i class="el-dialog__close el-icon el-icon-close closetab"></i></button></div><div class="el-dialog__body"><div class="dialog-padding"><label data-v-43d97a66="" class="dxy-textarea"><div data-v-43d97a66="" class="el-textarea el-input--medium" style="resize: vertical;"><textarea autocomplete="off" maxlength="30" class="el-textarea__inner" style="min-height: 92px; height: 92px;"></textarea><!----></div><!----></label></div></div><div class="el-dialog__footer"><span><button type="button" class="el-button el-button--default el-button--medium closetab "><!----><!----><span>取 消</span></button><button data-v-6013d768="" type="button" class="el-button el-button--primary el-button--medium bzSend" style="min-width: 0px;"><!----><!----><span><span data-v-6013d768="" class="button-loading white" style="display: none;"></span>确 定</span></button></span></div></div>
+</div>
+
+
+<!--图片-->
+
+
+
+<script src="/addons/hyb_yl/public/js/jquery-3.2.1.js"></script>
+</body>
+</html>
+<script>
+    $('.ql-editor').text('')
+    $('.el-checkbox').on('click', function (e) {
+//组织冒泡
+        if ($(e.target).is("input"))
+            return;
+        if ($(this).find('.is-checked').length > 0) {
+            $(this).removeClass('is-checked')
+            $(this).find('.el-checkbox__input').removeClass('is-checked')
+
+        } else if ($(this).find('.is-checked').length == 0) {
+            $(this).addClass('is-checked')
+            $(this).find('.el-checkbox__input').addClass('is-checked')
+        }
+    })
+    $('.ql-editor').on('input', function () {
+        $('.length-limit').find('.textNum').text($(this).text().length)
+        if ($(this).text().length != 0) {
+            $('#send').removeClass('is-disabled').removeAttr('disabled')
+        } else {
+            $('#send').addClass('is-disabled').attr('disabled', 'disabled')
+
+        }
+    })
+    $('#send').on('click', function () {
+        var text = $('.ql-editor').text()
+        $('.chat-message-list').append(`
+<div data-v-b6aab098="" class="message-row">
+ <label data-v-b6aab098="" class="el-checkbox checkbox" style="display: none;">
+<span class="el-checkbox__input">
+<span class="el-checkbox__inner"></span>
+<input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="672579449"/>
+</span>
+<span class="el-checkbox__label">
+<span data-v-b6aab098=""></span>
+</span>
+ </label>
+<div data-v-b6aab098="" class="message-box reverse">
+<img data-v-b6aab098="" class="avatar-img avatar" src="image/timg.png" data-src="nopic.jpg" lazy="loaded" style="width: 36px; height: 36px;"/>
+<div data-v-b6aab098="" class="message-wrapper">
+ <div data-v-b6aab098="" class="message-body" style="max-width: 535px;">
+<span data-v-ecf8bf20="" data-v-b6aab098="" class="text message-content">${text}</span>
+ </div>
+</div>
+<div data-v-b6aab098="" class="icon-box">
+
+</div>
+</div>
+</div>
+`)
+        $('.ql-editor').text('')
+        $('.textNum').text(0)
+        $('#send').addClass('is-disabled').attr('disabled', 'disabled')
+    })
+    $(document).on('click', '.tag-plus', function () {
+        $('.v-modal').show()
+        $('.tabBox').show()
+    })
+    $('.el-tabs__item').on('click', function () {
+        $('.el-tabs__item').removeClass('is-active')
+        $(this).addClass('is-active')
+        var div1 = $(this).offset().left;
+        var div2 = $("#tab-0").offset().left;
+        var num = $('.el-tabs__item').index($(this))
+        var distances = (div1 - div2) + 20;
+        if (num == 1) {
+            var distances = 0;
+
+        }
+        $('.common-dialog').find('.el-tab-pane').hide()
+        $('.common-dialog').find('.el-tab-pane').eq(num - 1).show()
+        $('.el-tabs__active-bar').css({width: $(this).width() + 'px', transform: 'translateX(' + distances + 'px)'})
+    })
+    $(document).on('click', '.el-tag__close', function () {
+        $(this).parents('.el-tag--light').remove()
+        var text = $(this).parents('.el-tag--light').text().trim()
+        console.log(text)
+        console.log($('.checkbox-item').text().trim());
+        var len = $('.checkbox-item').length
+        for (var i = 0; i < len; i++) {
+            if (text == $('.checkbox-item').eq(i).text().trim()) {
+                $('.checkbox-item').eq(i).find('.el-checkbox').removeClass('is-checked')
+                $('.checkbox-item').eq(i).find('.el-checkbox__input').removeClass('is-checked')
+                $('.checkbox-item').eq(i).find('.el-checkbox__original').removeAttr('checked')
+            }
+        }
+        for (var i = 0; i < arr1.length; i++) {
+            if (text == arr1[i]) {
+                arr1.splice(i, 1)
+            }
+        }
+    })
+
+    var arr1 = []//描述标签
+    var arr2 = []//用户标签
+    //选择标签描述
+    $(document).on('click', '.tabbtn', function (e) {
+        if ($(e.target).is("input")) {
+            console.log($(this).find('.el-checkbox__original').is(':checked'));
+            if ($(this).find('.el-checkbox__original').is(':checked')) {
+                arr1.push($(this).text().trim())
+            } else {
+                for (var i = 0; i < arr1.length; i++) {
+                    if ($(this).text().trim() == arr1[i]) {
+                        arr1.splice(i, 1)
+                    }
+                }
+            }
+            $(this).parents('.dialog-container').find('.selected').html('')
+            for (var i = 0; i < arr1.length; i++) {
+                $(this).parents('.dialog-container').find('.selected').append(`
+                <span data-v-056cb741="" class="tag-item el-tag el-tag--danger el-tag--medium el-tag--light">
+${arr1[i]}
+<i class="el-tag__close el-icon-close"></i>
+</span>
+                `)
+            }
+        }
+    })
+    //选择用户标签
+    $(document).on('click', '.lebbtn', function (e) {
+        if ($(e.target).is("input")) {
+            console.log($(this).find('.el-checkbox__original').is(':checked'));
+            if ($(this).find('.el-checkbox__original').is(':checked')) {
+                arr2.push($(this).text().trim())
+            } else {
+                for (var i = 0; i < arr2.length; i++) {
+                    if ($(this).text().trim() == arr2[i]) {
+                        arr2.splice(i, 1)
+                    }
+                }
+            }
+            $(this).parents('.dialog-container').find('.selected').html('')
+            for (var i = 0; i < arr2.length; i++) {
+                $(this).parents('.dialog-container').find('.selected').append(`
+                <span data-v-056cb741="" class="tag-item el-tag el-tag--danger el-tag--medium el-tag--light">
+${arr2[i]}
+<i class="el-tag__close el-icon-close"></i>
+</span>
+                `)
+            }
+        }
+    })
+    //确定选择描述标签
+    $('#send1').on('click', function () {
+        $('.tag-list').html('')
+        for (var i = 0; i < arr1.length; i++) {
+            $('.tag-list').append(`
+<span data-v-172f66c2="" class="tag-item el-tag el-tag--danger el-tag--medium el-tag--light" style="margin-bottom: 8px;">
+      ${arr1[i]}
+    </span>
+        `)
+        }
+        $('.tag-list').append(`
+<span data-v-172f66c2="" class="tag-item tag-plus el-tag el-tag--danger el-tag--medium el-tag--light" style="margin-bottom: 8px;"><i data-v-172f66c2="" class="el-icon-plus"></i></span>
+        `)
+        $('.v-modal').hide()
+        $('.tabBox').hide()
+    })
+    //确定选择用户标签  lebsend
+    $('.lebsend').on('click', function () {
+        $('.yhlab').html('')
+        for (var i = 0; i < arr2.length; i++) {
+            $('.yhlab').append(`
+<span data-v-155af19b="" data-v-10803746="">用户标签：${arr2[i]}</span>
+        `)
+        }
+        $('.v-modal').hide()
+        $('.labelBox ').hide()
+    })
+    $('.closetab').on('click', function () {
+        $('.v-modal').hide()
+        $('.tabBox').hide()
+        $('.labelBox').hide()
+        $('.wxfzBox').hide()
+        $('.bzBox').hide()
+    })
+    $('.labelBtn').on('click', function () {
+        $('.v-modal').show()
+        $('.labelBox').show()
+    })
+ 
+    $('.wxfz').on('click',function () {
+        $('.v-modal').show()
+        $('.wxfzBox').show()
+    })
+    $('.el-input--suffix').on('click',function () {
+        $('.el-popper').toggleClass('actice1')
+    })
+ $(document).on('click','.el-select-dropdown__item',function () {
+     $(this).text().trim()
+     $('.el-input__inner').val($(this).text().trim())
+     $('.el-popper').removeClass('actice1')
+ })
+
+ $('.fzsend').on('click',function () {
+     var text=$(this).parents('.el-dialog').find('input').val()
+     $(this).parents('.el-dialog__wrapper').hide()
+     $('.v-modal').hide()
+     $('.wxfzbox1').text(`${text}`)
+ })
+ $('.bzxg').on('click',function(){
+     $('.v-modal').show()
+     $('.bzBox').show()
+ })
+ $('.bzSend').on('click',function () {
+     var text=$(this).parents('.el-dialog').find('textarea').val()
+     $('.bzTextBox').text(`备注：${text}`)
+     $('.v-modal').hide()
+     $('.bzBox').hide()
+ })
+ $('.message-type').on('click',function () {
+     
+ })
+</script>

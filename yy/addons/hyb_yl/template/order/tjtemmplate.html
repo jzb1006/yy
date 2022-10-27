@@ -1,0 +1,90 @@
+		
+				<div class="el-dialog__wrapper">
+					<div role="dialog" aria-modal="true" aria-label="dialog" class="el-dialog" style="margin-top: 15vh;">
+						<div class="el-dialog__header">
+							<span class="el-dialog__title"></span>
+							<!---->
+						</div>
+						<div class="el-dialog__body">
+							<div class="boxPresMain">
+								<p class="presId">
+
+									<span class="sub floatR">
+										普通
+									</span>
+								</p>
+								<div class="cardHead">
+									<p class="title">
+										{$jigou['agentname']}
+									</p>
+									<p class="presType">
+										检查报告单
+									</p>
+									<p class="row1 flex justyBetween">
+										<span>姓名：{$user['names']}</span>
+										<span>性别：{$user['sex']}</span>
+										<span>年龄：<span>{$user['age']}岁</span>
+										</span>
+										<span>科室：{$keshi_one}({$keshi_two})</span>
+										<span>费用：自费</span>
+									</p>
+									<p class="row1 flex justyBetween">
+										<span>病历号：{$user['numcard']}</span>
+										<span>住址：{$user['region']}</span>
+										<span>电话：{$user['tel']}</span>
+									</p>
+									<p class="row1 flex justyBetween">
+										<span>病情描述：{$data['text']}</span>
+										<span>开具日期：{$res['wactime']}</span>
+									</p>
+								</div>
+								<div class="cardBody">
+									<div>
+										<table class="table table-hover" style="margin: 20px 0;border: none;">
+											<thead style="font-size: 20px;color: #4a4a4a;font-size: 14px;font-weight: 400; ">
+												<tr>
+													<td>项目名称</td>
+													<td>数量</td>
+													<td>单价</td>
+													<td>备注</td>
+												</tr>
+											</thead>
+											<tbody style="border-bottom: 1px solid #eaeaea;">
+											{loop $content $item}
+												<tr>
+													<td>{$item['title']}</td>
+													<td>{$item['shuju']}/{$item['unit']}</td>
+													<td>{$item['price']}</td>
+													<td>{$item['content']}</td>
+												</tr>
+												{/loop}
+											</tbody>
+										</table>
+									</div>
+									<div class="clear"></div>
+									<p class="boxSign flex justyBetween">
+										<span>医师：<span class="area">{$doc['z_name']}</span>
+										</span>
+										<span>审核：<span class="area">{$doc['z_name']}</span>
+										</span>
+										<span>执行：<span class="area">{$doc['z_name']}</span>
+										</span>
+										<span>金额：<span class="area">{$res['money']}元</span>
+										</span>
+									</p>
+								</div>
+							</div>
+							<div class="el-dialog__footer">
+								<div class="dialog-footer">
+									<button type="button" class="el-button el-button--primary close2">
+										<span>
+											关闭
+										</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+	

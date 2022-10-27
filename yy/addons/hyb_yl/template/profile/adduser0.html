@@ -1,0 +1,667 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+<link rel="stylesheet" href="/addons/hyb_yl/public/admin/layui/css/layui.css"> 
+<link rel="stylesheet" href="/addons/hyb_yl/public/newcss/edit_fenlei.css">
+<link rel="stylesheet" href="/addons/hyb_yl/public/newcss/base.css"> 
+<script type="text/javascript" src="/addons/hyb_yl/public/admin/layui/layui.js"></script>
+      <style>
+    .right{
+        height: 600px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+</style>
+<div class="box">
+    <form action="" class="layui-form">
+        <div class="conts">
+            <div class="df">
+                <div class="left mr30">
+                    <div class="imgBox1"><img src="image/timg.png" alt=""></div>
+                    <div class="bottom_info">
+                        <div class="left_name">张飒</div>
+                        <div class="left_div">电话：1500354123</div>
+                        <div class="left_div">性别：男</div>
+                        <div class="left_div">年龄：24岁</div>
+                        <div class="left_div">身高：1.75cm</div>
+                        <div class="left_div">BMI指数：</div>
+                        <div class="left_div">血压：</div>
+                        <div class="left_div">血糖浓度：</div>
+                        <div class="left_div">视力：</div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">网站设置</li>
+                            <li>病历信息</li>
+                            <li>家庭成员</li>
+                            <li>优惠券</li>
+                            <li>关注医生</li>
+                            <li>处方单</li>
+                            <li>消费记录</li>
+                            <li>用户余额</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="title">基本信息</div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">用户名称</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" placeholder="
+请填写用户名称" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">用户头像</label>
+                                    <div class=" layui-col-lg8">
+                                        <div class="df">
+                                            <input type="text" placeholder="
+请填写描述" class="layui-input xctinput">
+                                            <button class="layui-btn pbtn">选择图片<input type="file" class="tpxz"
+                                                                                      onchange="handleFiles(this.files)">
+                                            </button>
+                                        </div>
+                                        <div class="imgBox"><img src="image/nopic.jpg" alt="">
+                                            <div class="close"><i class="layui-icon layui-icon-close"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">出生年月</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" class="layui-input" id="test1">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">身份证号</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" class="layui-input" placeholder="请填写身份证号">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">身高（cm）</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" class="layui-input" placeholder="请填写身高">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">体重（kg）</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" class="layui-input" placeholder="请填写体重">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">血型</label>
+                                    <div class=" layui-col-lg8 dfsac">
+                                        <select name="city" lay-verify="" lay-search>
+                                            <option></option>
+                                            <option value="010">O型</option>
+                                            <option value="021">A型</option>
+                                            <option value="0571">B型</option>
+                                            <option value="0571">AB型</option>
+                                            <option value="0571">未查</option>
+                                        </select>
+                                        <select name="city" lay-verify="" lay-search>
+                                            <option></option>
+                                            <option value="010">阴性</option>
+                                            <option value="021">阳性</option>
+                                            <option value="0571">未查</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">性别</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="radio" title="男" name="sex" checked>
+                                        <input type="radio" title="女" name="sex">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">手机号</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" placeholder="
+请填写手机" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">邮箱</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="email" placeholder="
+请填写邮箱" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">婚姻</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="radio" title="已婚" name="marriage" checked>
+                                        <input type="radio" title="未婚" name="marriage">
+                                        <input type="radio" title="离异" name="marriage">
+                                        <input type="radio" title="丧偶" name="marriage">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">民族</label>
+                                    <div class=" layui-col-lg8">
+                                        <select name="city" lay-verify="">
+                                            <option value="">请选择</option>
+                                            <option value="">汉族</option>
+                                            <option value="">满族</option>
+                                            <option value="">中国香港</option>
+                                            <option value="">中国澳门</option>
+                                            <option value="">少数民族</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">职业</label>
+                                    <div class=" layui-col-lg8">
+                                        <select name="city" lay-verify="">
+                                            <option value="">请选择</option>
+                                            <option value="">医护人员</option>
+                                            <option value="">农民</option>
+                                            <option value="">商人</option>
+                                            <option value="">学生</option>
+                                            <option value="">教师</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">工作单位</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" placeholder="请输入工作单位" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">患者来源</label>
+                                    <div class=" layui-col-lg8">
+                                        <select name="city" lay-verify="">
+                                            <option value="">请选择</option>
+                                            <option value="">无</option>
+                                            <option value="">亲友推荐</option>
+                                            <option value="">微信</option>
+                                            <option value="">媒体报道</option>
+                                            <option value="">微信</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">病人卡号</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" placeholder="请输入病人卡号" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">保险公司</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" placeholder="请输入保险公司" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">保险卡号</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" placeholder="请输入保险卡号" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">添加标签</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="checkbox" title="感冒" name="" lay-skin="primary">
+                                        <input type="checkbox" title="发烧" name="" lay-skin="primary">
+                                        <input type="checkbox" title="流鼻涕" name="" lay-skin="primary">
+                                        <input type="checkbox" title="冠状病" name="" lay-skin="primary">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">设置会员</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="radio" title="已开通" name="vip" checked>
+                                        <input type="radio" title="未开通" name="vip">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">设置余额</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" placeholder="请输入余额" name="" class="layui-input">
+
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">扣除余额</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" placeholder="请输入扣除余额" name="" class="layui-input">
+
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">地区</label>
+                                    <div class=" layui-col-lg8">
+                                        <div class="layui-form-item" id="area-picker">
+                                            <div class="layui-inline">
+                                                <select name="province" class="province" lay-verify="required"
+                                                        lay-search lay-filter="province">
+                                                    <option value="">省份</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-inline">
+                                                <select name="city" class="city" lay-verify="required" lay-search
+                                                        lay-filter="city">
+                                                    <option value="">地级市</option>
+                                                </select>
+                                            </div>
+                                            <div class="layui-inline">
+                                                <select name="district" class="district" lay-verify="required"
+                                                        lay-search>
+                                                    <option value="">县/区</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">住址</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="text" placeholder="
+请填写住址" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="title">病历信息</div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">过敏史</label>
+                                    <div class=" layui-col-lg8">
+                                        <input type="radio" title="有" name="allergy">
+                                        <input type="radio" title="否认" name="allergy" checked>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset ">
+                                    <label class="layui-form-label name">过敏史</label>
+                                    <div class=" layui-col-lg8 dfsac">
+                                        <select name="city" lay-verify="" lay-search>
+                                            <option></option>
+                                            <option value="010">layer</option>
+                                            <option value="021">form</option>
+                                            <option value="0571">layim</option>
+                                        </select>
+                                        <select name="city" lay-verify="" lay-search>
+                                            <option></option>
+                                            <option value="010">layer</option>
+                                            <option value="021">form</option>
+                                            <option value="0571">layim</option>
+                                        </select>
+                                        <select name="city" lay-verify="" lay-search>
+                                            <option></option>
+                                            <option value="010">layer</option>
+                                            <option value="021">form</option>
+                                            <option value="0571">layim</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="btnBox">
+                                        <div class="add"><i class="layui-icon-add-1 layui-icon"></i></div>
+                                        <div class="remove"><i class=" layui-icon layui-icon-delete"></i></div>
+                                    </div>
+
+                                </div>
+
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">个人史</label>
+                                    <div class=" layui-col-lg8">
+                                        <textarea placeholder="请输入个人史" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">家族史</label>
+                                    <div class=" layui-col-lg8">
+                                        <textarea placeholder="请输入家族史" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item layui-col-lg-offset">
+                                    <label class="layui-form-label name">疫苗接种史</label>
+                                    <div class=" layui-col-lg8">
+                                        <textarea placeholder="请输入疫苗接种史" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="title">家庭成员</div>
+                                <div class="btnBox">
+                                    <div class="btn addFamily"><i class="layui-icon layui-icon-add-1"></i>
+                                    </div>
+                                    <div class="btn"><i class="layui-icon layui-icon-delete"></i></div>
+                                </div>
+                                <table class="layui-table" lay-data="{ url:'demo/table/family.json', page: true}">
+                                    <thead class="layui-table-header">
+                                    <tr>
+                                        <th lay-data="{checkbox:true, unresize: true}"></th>
+                                        <th lay-data="{field:'name', unresize: true}">姓名</th>
+                                        <th lay-data="{field:'relationship', unresize: true}">关系</th>
+                                        <th lay-data="{field:'time', unresize: true}">出生年月</th>
+                                        <th lay-data="{field:'sex', unresize: true}">性别</th>
+                                        <th lay-data="{field:'Idcode', unresize: true}">身份证号码</th>
+                                        <th lay-data="{field:'city', unresize: true}">住址</th>
+                                        <th lay-data="{templet:'#barDemo', unresize: true,width:180}">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <div class="zhe3" style="display: none">
+                                    <div class="cont1">
+                                        <div class="title">添加家庭成员</div>
+                                        <div class="layui-form-item layui-col-lg-offset ">
+                                            <label class="layui-form-label name">关系</label>
+                                            <div class=" layui-col-lg8">
+                                                <select name="city" lay-verify="" lay-search>
+                                                    <option></option>
+                                                    <option value="010">姐妹</option>
+                                                    <option value="021">朋友</option>
+                                                    <option value="0571">其他</option>
+                                                    <option value="0571">兄弟姐妹</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-col-lg-offset ">
+                                            <label class="layui-form-label name">姓名</label>
+                                            <div class=" layui-col-lg8">
+                                                <input type="text" placeholder="请输入姓名" class="layui-input">
+
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-col-lg-offset ">
+                                            <label class="layui-form-label name">出生年月</label>
+                                            <div class=" layui-col-lg8">
+                                                <input type="text" placeholder="" class="layui-input" id="time">
+
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-col-lg-offset ">
+                                            <label class="layui-form-label name">性别</label>
+                                            <div class=" layui-col-lg8">
+                                                <input type="radio" placeholder="" title="男" name="sex[]">
+                                                <input type="radio" placeholder="" title="女" name="sex[]">
+                                                <input type="radio" placeholder="" title="不详" name="sex[]">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-col-lg-offset ">
+                                            <label class="layui-form-label name">身份证号</label>
+                                            <div class=" layui-col-lg8">
+                                                <input type="text" placeholder="请输入身份证号码" class="layui-input">
+
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-col-lg-offset">
+                                            <label class="layui-form-label name">地区</label>
+                                            <div class=" layui-col-lg8">
+                                                <div class="layui-form-item" id="area-picker">
+                                                    <div class="layui-inline">
+                                                        <select name="province" class="province"
+                                                                lay-search lay-filter="province">
+                                                            <option value="">省份</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <select name="city" class="city"  lay-search
+                                                                lay-filter="city">
+                                                            <option value="">地级市</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <select name="district" class="district"
+                                                                lay-search>
+                                                            <option value="">县/区</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item layui-col-lg-offset">
+                                            <label class="layui-form-label name">住址</label>
+                                            <div class=" layui-col-lg8">
+                                                <input type="text" placeholder="
+请填写住址" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <button class="layui-btn">立即提交</button>
+                                                <div class="layui-btn layui-btn-danger closeFamily">取消</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="title">优惠券</div>
+                                <div class="btnBox">
+                                    <div class="btn"><i class="layui-icon layui-icon-delete"></i></div>
+                                </div>
+                                <table class="layui-table" lay-data="{url:'demo/table/coupon.json'}">
+                                    <thead class="layui-table-header">
+                                    <tr>
+                                        <th lay-data="{checkbox:true,unresize:true}"></th>
+                                        <th lay-data="{field:'name', unresize: true}">优惠券名字</th>
+                                        <th  lay-data="{field:'time', unresize: true}">有效期</th>
+                                        <th lay-data="{field:'rule', unresize: true}">介绍</th>
+                                        <th lay-data="{field:'whether', unresize: true}">是否使用</th>
+                                        <th lay-data="{templet:'#btn1', unresize: true,width:180}">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="title">关注医生</div>
+                                <div class="btnBox">
+                                    <div class="btn"><i class="layui-icon layui-icon-delete"></i></div>
+                                </div>
+                                <table class="layui-table" lay-data="{url:'demo/table/doctor.json',page:true}">
+                                    <thead class="layui-table-header">
+                                    <tr>
+                                        <th lay-data="{checkbox:true,unresize:true}"></th>
+                                        <th lay-data="{field:'name', unresize: true}">医生姓名</th>
+                                        <th  lay-data="{templet:'#imgBox', unresize: true}">医生头像</th>
+                                        <th lay-data="{field:'department', unresize: true}">所在科室</th>
+                                        <th lay-data="{field:'advantage', unresize: true}">医生擅长</th>
+                                        <th lay-data="{field:'follow', unresize: true}">关注</th>
+                                        <th lay-data="{templet:'#btn1', unresize: true,width:180}">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="title">处方单</div>
+                                <div class="btnBox">
+                                    <div class="btn"><i class="layui-icon layui-icon-delete"></i></div>
+                                </div>
+                                <table class="layui-table" lay-data="{url:'demo/table/prescription.json',page:true}">
+                                    <thead class="layui-table-header">
+                                    <tr>
+                                        <th lay-data="{checkbox:true,unresize:true}"></th>
+                                        <th lay-data="{field:'diagnosis', unresize: true}">诊断</th>
+                                        <th  lay-data="{field:'proposal', unresize: true}">建议用药</th>
+                                        <th lay-data="{field:'doctor', unresize: true}">诊断医生</th>
+                                        <th lay-data="{field:'department', unresize: true}">建议科室</th>
+                                        <th lay-data="{field:'time', unresize: true}">诊断时间</th>
+                                        <th lay-data="{field:'purchase', unresize: true}">是否购买</th>
+                                        <th lay-data="{templet:'#btn2', unresize: true,width:240}">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="title">消费记录</div>
+                                <div class="btnBox">
+                                    <div class="btn"><i class="layui-icon layui-icon-delete"></i></div>
+                                </div>
+                                <table class="layui-table" lay-data="{url:'demo/table/consumption.json',page:true}">
+                                    <thead class="layui-table-header">
+                                    <tr>
+                                        <th lay-data="{checkbox:true,unresize:true}"></th>
+                                        <th lay-data="{field:'order', unresize: true}">订单编号</th>
+                                        <th  lay-data="{field:'yh_info', unresize: true}">用户信息</th>
+                                        <th lay-data="{field:'consumption_type', unresize: true}">消费类型</th>
+                                        <th lay-data="{field:'order_money', unresize: true}">订单金额</th>
+                                        <th lay-data="{field:'discount', unresize: true}">优惠金额</th>
+                                        <th lay-data="{field:'actual', unresize: true}">实付金额</th>
+
+                                        <th lay-data="{field:'time', unresize: true}">支付时间</th>
+                                        <th lay-data="{templet:'#btn1', unresize: true,width:240}">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="title">账户余额</div>
+                                <div class="btnBox">
+                                    <div class="btn"><i class="layui-icon layui-icon-delete"></i></div>
+                                </div>
+                                <table class="layui-table" lay-data="{url:'demo/table/Recharge.json',page:true}">
+                                    <thead class="layui-table-header">
+                                    <tr>
+                                        <th lay-data="{checkbox:true,unresize:true}"></th>
+                                        <th lay-data="{field:'order', unresize: true}">订单编号</th>
+                                        <th  lay-data="{field:'yh_info', unresize: true}">用户信息</th>
+                                        <th lay-data="{field:'order_money', unresize: true}">充值金额</th>
+                                        <th lay-data="{field:'balance', unresize: true}">总金额</th>
+
+                                        <th lay-data="{field:'time', unresize: true}">充值时间</th>
+                                        <th lay-data="{templet:'#btn1', unresize: true,width:240}">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+<script src="js/area.js"></script>
+<script src="js/city.js"></script>
+<script type="text/html" id="imgBox">
+    <img src="{{d.imgUrl}}" alt="">
+</script>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+    });
+</script>
+<script id="barDemo" type="text/html">
+    <div class="layui-btn layui-btn-normal">编辑</div>
+    <div class="layui-btn layui-btn-danger">删除</div>
+</script>
+<script id="btn1" type="text/html">
+    <div class="layui-btn layui-btn-danger">删除</div>
+</script>
+<script id="btn2" type="text/html">
+    <div class="layui-btn layui-btn-normal">查看处方详情</div>
+    <div class="layui-btn layui-btn-danger">删除</div>
+</script>
+<style type="text/css">
+    .layui-table-cell{
+        height:auto!important;
+        white-space:normal;
+    }
+    .laytable-cell-1-id{
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+</style>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+</script>
+<script>
+
+    function handleFiles(files) {
+        if (files.length) {
+            let file = files[0];
+            let reader = new FileReader();
+            $('.xctinput').val(file.name)
+            console.log(file)
+            let fileReader = new FileReader();
+            fileReader.onload = () => {
+                console.log(fileReader.result)
+                $('.imgBox img').attr('src', fileReader.result)
+            };
+
+            fileReader.readAsDataURL(file);
+        }
+    }
+
+    $('.close').on('click', function () {
+        $('.xctinput').val('')
+        $('.imgBox img').attr('src', 'image/nopic.jpg')
+    })
+    $('.addFamily').on('click',function () {
+        $('.zhe3').show()
+    })
+    $('.closeFamily').on('click',function () {
+        $('.zhe3').hide()
+    })
+</script>
+
+<script>
+    //配置插件目录
+    layui.config({
+        base: 'js/city.json'
+        , version: '1.0'
+    });
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form', 'layarea'], function () {
+        var layer = layui.layer
+            , form = layui.form
+            , layarea = layui.layarea;
+
+        layarea.render({
+            elem: '#area-picker',
+            change: function (res) {
+                //选择结果
+                console.log(res);
+            }
+        });
+    });
+</script>
+
+<script>
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1', //指定元素
+            type: 'date'
+        });
+        laydate.render({
+            elem: '#time', //指定元素
+            type: 'date'
+        });
+    });
+</script>

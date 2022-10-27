@@ -1,0 +1,416 @@
+
+{template './common/siteheader'}
+    <div class="content">
+                <div class="header">
+            <h1 class="page-title">处方医嘱</h1>
+            <input type="hidden" class="J-isAdmin" value="1"/>
+        </div>
+        <!-- main-content -->
+        <div class="main-content ">
+            <div class="row mb5">
+                <div class="col-sm-6 col-md-6">
+                    <form class="form-inline" action="/japi/session/190100" method="post">
+                        <div class="btn-toolbar list-toolbar">
+                            <a href="{php echo $this->createWeburl('setting',array('op'=>'zcf_add'))}" class="btn btn-primary"><i class="fa fa-plus"></i> 新增</a> 
+                            <input type="hidden" name="medicinename" value="">
+                            <input type="hidden" name="tag" value="cn">                                                        <button type="submit" class="btn btn-default">导出</button>
+                            <button type="button" class="btn btn-default J-setWarnTime-btn">批量设置效期预警</button>
+                            <button type="button" class="btn btn-default J-setDiscount-btn">允许折扣批量设置</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="p-right">
+                        <form class="form-inline J-search-form" method="get" action="#">
+                            <div class="form-group">
+                                <label class="control-label">筛选：</label>
+                                <input type="text" placeholder="处方医嘱名称或条形码" class="form-control J-search-name" name="medicinename" value="">
+                            </div>
+                            
+                            <div class="form-group">
+                                <select class="form-control J-search-status" data-placeholder="正常" name="status">
+                                   <option value="1"  >正常</option>
+                                   <option value="2"  >停用</option>
+                                   <option value="">选择状态</option>
+                                </select>
+                            </div>
+                            
+                            <input type="hidden" name="class" value="">
+                            <input type="hidden" name="type" value="2">
+                            <input type="hidden" name="form" value="recipe_form">
+                            <button type="button" class="btn btn-default">查找</button>
+                            <button type="button" class="btn btn-default J-select"><i class="fa fa-plus"> 导入</i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl20" width="25%">处方医嘱名称</th>
+                                <th width="10%">规格</th>
+                                <th width="7%">包装单位</th>
+                                <th width="10%">零售价</th>
+                                <th width="10%">拼音码</th>
+                                <th width="7%">允许折扣</th>
+                                <th>备注</th>
+                                <th width="10%">状态</th>
+                                <th width="140">操作</th>
+                            </tr>
+                        </thead>
+                 <tbody id="J-recipe-list"><tr>
+                    <td class="pl20 text-ellipsis">薄荷</td>
+                    <td class="text-ellipsis">g</td>
+                    <td class="text-ellipsis">g</td>
+                    <td class="text-ellipsis">5.0000</td>
+                    <td class="text-ellipsis">bh</td>
+                    <td>否</td>
+                    <td class="text-ellipsis"></td>
+                    <td>正常</td>
+                    <td>
+                     <a href="{php echo $this->createWeburl('setting',array('op'=>'zcf_add'))}"></i> 修改</a> -
+                     <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="17284"><i class="fa fa-trash-o "></i> 停用</a>
+                    </td>
+                </tr>
+               </tbody>
+                 </table>
+                    <div class="J-page-wrap pd20 mb45">
+                        <!-- 分页 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 批量设置有效预警 -->
+        <div class="modal fade" id="setWarnTime-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel"> 批量设置（批量设置后将修改所有中药处方的效期预警时间）</h4>
+                    </div>
+                    <div class="pdtl10">
+                        药品有效期的预警时间为：<input type="number" class="J-setWarnTime">天
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="submit" class="btn btn-primary J-save-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 批量设置有效预警 -->
+        <!-- 批量设置是否允许折扣 -->
+        <div class="modal fade" id="setDiscount-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content form-inline">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel"> 批量设置（所有中药处方的允许折扣参数）</h4>
+                    </div>
+                    <div class="pdtl10 form-group">
+                        允许折扣：
+                        <select name="" id="J-isDicount" class="form-control w250">
+                            <option value="0">否</option>
+                            <option value="1">是</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="submit" class="btn btn-primary J-discount-save-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 批量设置是否允许折扣 -->
+        <!-- 标准数据列表 -->
+        <div class="J-select-panel select-panel" id="J-data-panel">
+            <div class="right-tips J-select-hide"><i class="fa fa-angle-right"></i></div>
+            <div class="row header pl0 pr0">
+                <div action="#" class="form-inline">
+                    <div class="col-sm-3">
+                        <h4 class="page-title">标准数据</h4>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="pull-right">
+                            <div class="form-group">
+                                <label class="control-label">筛选：</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="j_search_input" name="keyword" placeholder="处方医嘱名称" class="form-control">
+                            </div>
+                            <button type="button" id="j_search_submit" class="btn btn-default">查找</button>
+                            <button type="button" data-loading-text="导入中..." data-complete-text="导入" class="btn btn-default J-import-data">导入</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl20">
+                                    <input type="checkbox" class="J-check-all" value="true">
+                                </th>
+                                <th>处方医嘱名称</th>
+                                <th width="15%">规格</th>
+                                <th width="15%">包装单位</th>
+                                <th>生产厂家</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-wrap-list">
+                            <!-- 标准数据列表 -->
+                        </tbody>
+                    </table>
+                    <div class="J-page-wrap1 pd20">
+                        <!-- 分页 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 扫码入药弹窗 -->
+        <div class="modal fade" id="J-scan-recipe-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title " id="myModalLabel"> 扫码入药</h4>
+                    </div>
+                    <div class="pdtl10 text-center font16">
+                        扫一扫在手机端输入验证码：<span class="J-scan-recipe-code"></span>
+                    </div>
+                    <div class="text-center">
+                        <img class="J-scan-recipe-img" width="50%">
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+	<hr>
+	<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+	<p class="pull-right"> <a href="http://www.DXY.cn" target="_blank">DXY</a> by <a href="http://www.dxy.cn" target="_blank">DXY.CN</a>
+	</p>
+	<p>© 2015 <a href="http://www.dxy.cn" target="_blank">DXY</a></p>
+</footer>
+    </div>
+    <!-- 标准数据模板 -->
+    <script type="text/template" id="data-wrap-list-tpl">
+    <td class="pl20">
+        <input type="checkbox" <%if(is_check){%>checked<%}%> value="<%- id%>" />
+    </td>
+    <td class="text-ellipsis"><%- medicinename%></td>
+    <td class="text-ellipsis"><%- medicinespec%></td>
+    <td><%- medicineunit%></td>
+    <td><%- manufacturer%></td>
+    </script>
+    <!-- 标准数据模板 -->
+
+    <!-- 中药处方列表模版 -->
+    <script type="text/template" id="J-recipe-list-tpl">
+        <td class="pl20 text-ellipsis"><%- medicinename%></td>
+        <td class="text-ellipsis"><%- medicinespec%></td>
+        <td class="text-ellipsis"><%- medicineunit%></td>
+        <td class="text-ellipsis"><%- medicineprice%></td>
+        <td class="text-ellipsis"><%- pn_code%></td>
+        <td><%if(discount == 1){%>
+                <i class="fa fa-check"></i>
+            <%}else{%>否
+            <%}%>
+        </td>
+        <td class="text-ellipsis"><%- remark%></td>
+        <td><%if(status == 2){%>
+            <span style="color:#a94442">停用</span>
+            <%}else{%>正常<%}%>
+        </td>
+        <td><% if(type == 1){ %>
+                <a href='{php echo $this->createWeburl('setting',array('op'=>'zcf_add'))}"></i> 修改</a> -
+            <% }else if (type == 2){ %>
+                <a href='{php echo $this->createWeburl('setting',array('op'=>'zcf_add'))}"></i> 修改</a> -
+            <% } %>
+            <%if(status == 2){%>
+                <a href='#' class="J-back-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="1" data-id="<%- medicineid%>"><i class="fa fa-trash-o "></i> 恢复</a>
+            <%}else{%>
+                <a href='#' class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-status="2" data-id="<%- medicineid%>"><i class="fa fa-trash-o "></i> 停用</a>
+            <%}%>
+        </td>
+    </script>
+    <!-- 中药处方列表模版 -->
+
+    <!--  西成药处方分类树-->
+    <script type="text/template" id="J-tree-tpl">
+        <% $.each(data || [], function(i1, item1){ %>
+            <li class="tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-item1.label%>（<%-countList[item1.key]%>）">
+                <a class="J-search-tooltips" href="javascript: void(0)" data-class="<%-item1.key%>"><%-item1.label%> <span class="tree-count">(<%-countList[item1.key]%>)</span></a>
+                <ul class="w155">
+                    <% if(item1.children){ %>
+                        <% $.each(item1.children || [], function(i2, item2){ %>
+                            <li class="tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-item2.label%>（<%-countList[item2.key]%>）">
+                                <a class="J-search-tooltips" href="javascript: void(0)" data-class="<%-item2.key%>"><%-item2.label%> <span class="tree-count">(<%-countList[item2.key]%>)</span></a>
+                                <ul class="w135">
+                                    <% if(item2.children){ %>
+                                        <% $.each(item2.children || [], function(i3, item3){ %>
+                                            <li class="tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-item3.label%>（<%-countList[item3.key]%>）">
+                                                <a class="J-search-tooltips" href="javascript: void(0)" data-class="<%-item3.key%>"><%-item3.label%> <span class="tree-count">(<%-countList[item3.key]%>)</span></a>
+                                            </li>
+                                        <% }); %>
+                                    <% } %>
+                                </ul>
+                            </li>
+                        <% }); %>
+                    <% } %>
+                </ul>
+            </li>
+        <% }); %>
+    </script>
+    <!--  西成药处方分类树-->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action='#'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+    <script type="text/javascript">
+    require(['recipe']);
+    </script>
+</body>
+
+</html>

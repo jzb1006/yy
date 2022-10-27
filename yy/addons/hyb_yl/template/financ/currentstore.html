@@ -1,0 +1,177 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="">平台结算记录</a>
+		</li>
+	</ul>
+	<div class="app-content">
+		<div class="app-filter">
+			<div class="filter-list">
+				<form action="./index.php" method="get" class="form-horizontal form" id="form1">
+					<input type="hidden" name="c" value="site" />
+					<input type="hidden" name="a" value="entry" />
+					<input type="hidden" name="m" value="hyb_yl" />
+					<input type="hidden" name="p" value="finace" />
+					<input type="hidden" name="ac" value="newCash" />
+					<input type="hidden" name="do" value="currentlist" />
+					<input type="hidden" name="type" value="agent" />
+					<input type="hidden" name="days" id="days" value="-2" />
+					<input type="hidden" name="trade_type" value="0" />
+					<div class="form-group max-with-all">
+						<label class="col-sm-2 control-label">类型</label>
+						<div class="col-sm-9">
+							<div class="btn-group">
+								<a href="#" class="btn btn-primary">全部</a>
+								<a href="#" class="btn btn-default">图文问诊</a>
+								<a href="#" class="btn btn-default">视频问诊</a>
+								<a href="#" class="btn btn-default">电话问诊</a>
+								<a href="#" class="btn btn-default">开方问诊</a>
+								<a href="#" class="btn btn-default">报告解读</a>
+								<a href="#" class="btn btn-default">远程挂号</a>
+								<a href="#" class="btn btn-default">手术安排</a>
+								<a href="#" class="btn btn-default">药房收入</a>
+								<a href="#" class="btn btn-default">实时会话</a>
+								<a href="#" class="btn btn-default">快速导诊</a>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">结算时间</label>
+						<div class="col-sm-9 js-daterange" data-form="#form1">
+							<div class="btn-group">
+								<a href="#" class="btn btn-primary">不限</a>
+								<a href="#" class="btn btn-default">近一周</a>
+								<a href="#" class="btn btn-default">近一月</a>
+								<a href="#" class="btn btn-default">近三月</a>
+								<a href="javascript:;" class="btn js-btn-custom btn-default">自定义</a>
+							</div>
+							<span class="btn-daterange js-btn-daterange hide">
+
+								<script type="text/javascript">
+									require(["daterangepicker"], function(){
+											$(function(){
+												$(".daterange.daterange-time").each(function(){
+													var elm = this;
+													$(this).daterangepicker({
+														startDate: $(elm).prev().prev().val(),
+														endDate: $(elm).prev().val(),
+														format: "YYYY-MM-DD HH:mm",
+														timePicker: true,
+														timePicker12Hour : false,
+														timePickerIncrement: 1,
+														minuteStep: 1
+													}, function(start, end){
+														$(elm).find(".date-title").html(start.toDateTimeStr() + " 至 " + end.toDateTimeStr());
+														$(elm).prev().prev().val(start.toDateTimeStr());
+														$(elm).prev().val(end.toDateTimeStr());
+													});
+												});
+											});
+										});
+								</script>
+
+								<input name="addtime[start]" type="hidden" value="2020-03-17 00:00" />
+								<input name="addtime[end]" type="hidden" value="2020-03-17 23:59" />
+								<button class="btn btn-default daterange daterange-time" type="button">
+									<span class="date-title">2020-03-17 00:00 至 2020-03-17 23:59</span>
+									<i class="fa fa-calendar"></i>
+								</button>
+							</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label"></label>
+						<div class="col-sm-9">
+							<button class="btn btn-primary">搜索</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="app-table-list">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th style="text-align:center;">时间</th>
+							<th style="text-align:center;">账户名称</th>
+							<th style="text-align:center;">类型</th>
+							<th style="text-align:center;">收入|支出(元)</th>
+							<th style="text-align:center;">账户余额</th>
+							<th style="text-align:center;">详情/备注</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<!--时间-->
+							<td class="goods-info line-feed" style="padding-left: 10px;">
+								2020-03-13 19:19:46 </td>
+							<td class="text-center" style="height:60px;font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif ;">
+							</td>
+							<!--类型-->
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								<span class="label label-info">图文问诊结算</span>
+							</td>
+							<!--代理收入|支出-->
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								<span style="color: green ;"> +2.00</span>
+								<br />
+							</td>
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								0.00 </td>
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								<a href="http://www.webstrongtech.com/web/index.php?c=site&a=entry&m=hyb_yl&p=order&ac=wlOrder&do=orderdetail&currentid=140" class="btn btn-default btn-sm">查看详情</a>
+							</td>
+						</tr>
+						<tr>
+							<!--时间-->
+							<td class="goods-info line-feed" style="padding-left: 10px;">
+								2020-03-13 19:00:19 </td>
+							<td class="text-center" style="height:60px;font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif ;">
+							</td>
+							<!--类型-->
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								<span class="label label-info">解读订单结算</span>
+							</td>
+							<!--代理收入|支出-->
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								<span style="color: green ;"> +987.00</span>
+								<br />
+							</td>
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								0.00 </td>
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								<a href="#" class="btn btn-default btn-sm">查看详情</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="app-table-foot clearfix">
+				<div class="pull-left">
+
+				</div>
+				<div class="pull-right">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+
+</body>
+</html>

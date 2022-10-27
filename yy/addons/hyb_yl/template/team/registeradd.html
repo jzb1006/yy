@@ -1,0 +1,242 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li class="active"><a href="javascript:;">评论详情</a></li>
+</ul>
+<div class="app-content">
+    <div class="app-form">
+         <div class="panel panel-default">
+            <form  method="post" class="form-horizontal form" novalidate="novalidate" id="dataform">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">评论时间</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="data[time]"  value="2020-03-13 22:59:10" placeholder="请选择日期时间" readonly="readonly" class="datetimepicker form-control" style="padding-left:12px;" />
+		<script type="text/javascript">
+			require(["datetimepicker"], function(){
+					var option = {
+						lang : "zh",
+						step : 5,
+						timepicker : true,
+						closeOnDateSelect : true,
+						format : "Y-m-d H:i"
+					};
+				$(".datetimepicker[name = 'data[time]']").datetimepicker(option);
+			});
+		</script>                    </div>
+                </div>
+                <div class="form-group" id="noleveldiv">
+                    <label class="col-sm-2 control-label must">评分等级</label>
+                    <div class="col-sm-9">
+                        <div class="star-rating rating-xs rating-active">
+                            <input type="hidden" name="data[star]" id="star" value="" />
+                            <div class="rating-container rating-gly-star">
+                                <img src="/addons/hyb_yl/web/resource/images/star-off-big.png" alt="1" title="非常差" class="star">
+                                <img src="/addons/hyb_yl/web/resource/images/star-off-big.png" alt="2" title="不太好" class="star">
+                                <img src="/addons/hyb_yl/web/resource/images/star-off-big.png" alt="3" title="一般" class="star">
+                                <img src="/addons/hyb_yl/web/resource/images/star-off-big.png" alt="4" title="很好" class="star">
+                                <img src="/addons/hyb_yl/web/resource/images/star-off-big.png" alt="5" title="非常棒" class="star">
+                            </div>
+                            <div class="caption"></div>
+                            <script type="text/javascript">
+                                $('.star').click(function(){
+                                    var _t = $(this);
+                                    var star = _t.attr('alt');
+                                    $('#star').val(star);
+                                    $('.caption').html('');
+                                    if(star==1){
+                                        $('.caption').html('<span class="label label-default">非常差</span>');
+                                    }else if(star==2){
+                                        $('.caption').html('<span class="label label-warning">不太好</span>');
+                                    }else if(star==3){
+                                        $('.caption').html('<span class="label label-info">一般</span>');
+                                    }else if(star==4){
+                                        $('.caption').html('<span class="label label-success">很好!</span>');
+                                    }else if(star==5){
+                                        $('.caption').html('<span class="label label-danger">非常棒!!</span>');
+                                    }
+                                    $(".star").each(function(){
+                                        $(".rating-container").find('img').each(function(){
+                                            var _this = $(this);
+                                            if(_this.attr('alt') <= star){
+                                                _this.attr('src','/addons/hyb_yl/web/resource/images/star-on-big.png');
+                                            }else{
+                                                _this.attr('src','/addons/hyb_yl/web/resource/images/star-off-big.png');
+                                            }
+                                        }
+                                        );
+                                    });
+
+                                });
+                            </script>
+                        </div>
+                        <span class="help-block text-danger" id="nolevel" style="display:none">请选择评分等级</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户头像</label>
+                    <div class="col-sm-9">
+                         
+		<script type="text/javascript">
+			function showImageDialog(elm, opts, options) {
+				require(["util"], function(util){
+					var btn = $(elm);
+					var ipt = btn.parent().prev();
+					var val = ipt.val();
+					var img = ipt.parent().next().children();
+					options = {'global':false,'class_extra':'','direct':true,'multiple':false,'fileSizeLimit':5120000};
+					util.image(val, function(url){
+						if(url.url){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.attachment);
+							ipt.attr("filename",url.filename);
+							ipt.attr("url",url.url);
+						}
+						if(url.media_id){
+							if(img.length > 0){
+								img.get(0).src = url.url;
+							}
+							ipt.val(url.media_id);
+						}
+					}, options);
+				});
+			}
+			function deleteImage(elm){
+				$(elm).prev().attr("src", "./resource/images/nopic.jpg");
+				$(elm).parent().prev().find("input").val("");
+			}
+		</script>
+		<div class="input-group ">
+			<input type="text" name="data[headimg]" value="https://thirdwx.qlogo.cn/mmopen/ajNVdqHZLLBPbNiaoBpsf9qBarQickXlRb9ZZ0F5U2iaorQsS2KGT57u25YbewibLHSYtgsO7kSmhiaaEgK5EvV2Gxw/132" class="form-control" autocomplete="off">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" onclick="showImageDialog(this);">选择图片</button>
+			</span>
+		</div>
+		<div class="input-group " style="margin-top:.5em;">
+			<img src="https://thirdwx.qlogo.cn/mmopen/ajNVdqHZLLBPbNiaoBpsf9qBarQickXlRb9ZZ0F5U2iaorQsS2KGT57u25YbewibLHSYtgsO7kSmhiaaEgK5EvV2Gxw/132" onerror="this.src='./resource/images/nopic.jpg'; this.title='图片未找到.'" class="img-responsive img-thumbnail"  width="150" />
+			<em class="close" style="position:absolute; top: 0px; right: -14px;" title="删除这张图片" onclick="deleteImage(this)">×</em>
+		</div>                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户昵称</label>
+                    <div class="col-sm-9">
+                         <input type="text" class="form-control" name="data[nickname]" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                      <label class="col-sm-2 control-label must">首次评价</label>
+                    <div class="col-sm-9">
+                        <textarea name="data[text]" class="form-control" data-rule-required="true" aria-required="true"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-9">
+                        
+<script type="text/javascript">
+	function uploadMultiImage(elm) {
+		var name = $(elm).next().val();
+		util.image( "", function(urls){
+			$.each(urls, function(idx, url){
+				$(elm).parent().parent().next().append('<div class="multi-item"><img onerror="this.src=\'./resource/images/nopic.jpg\'; this.title=\'图片未找到.\'" src="'+url.url+'" class="img-responsive img-thumbnail"><input type="hidden" name="'+name+'[]" value="'+url.attachment+'"><em class="close" title="删除这张图片" onclick="deleteMultiImage(this)">×</em></div>');
+			});
+		}, {"multiple":true,"direct":false,"fileSizeLimit":5120000});
+	}
+	function deleteMultiImage(elm){
+		$(elm).parent().remove();
+	}
+</script><div class="input-group">
+	<input type="text" class="form-control" readonly="readonly" value="" placeholder="批量上传图片" autocomplete="off">
+	<span class="input-group-btn">
+		<button class="btn btn-default" type="button" onclick="uploadMultiImage(this);">选择图片</button>
+		<input type="hidden" value="pic" />
+	</span>
+</div>
+<div class="input-group multi-img-details"></div>                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">首次回复</label>
+                    <div class="col-sm-9">
+                        <textarea name="data[replytextone]" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+	<input type="text" class="form-control" readonly="readonly" value="" placeholder="批量上传图片" autocomplete="off">
+	<span class="input-group-btn">
+		<button class="btn btn-default" type="button" onclick="uploadMultiImage(this);">选择图片</button>
+		<input type="hidden" value="replypicone" />
+	</span>
+</div>
+<div class="input-group multi-img-details"></div>                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-9">
+                        <input type="submit" value="提交" class="btn btn-primary min-width">
+                        <input type="hidden" name="token" value="c5514e9f">
+                        <input type="hidden" name="id" value="10">
+                        <input type="hidden" name="page" value='1' />
+                        <input type="button" name="back" onclick="history.back()" style="margin-left:10px;" value="返回列表" class="btn btn-default min-width">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$('#dataform').submit(function(){
+		
+		var  star = $('#star').val();
+		var  headimg = $('input[name="data[headimg]"]').val();
+		var  nickname = $('input[name="data[nickname]"]').val();
+		var  text = $('textarea[name="data[text]"]').val();
+		var  replytextone = $('textarea[name="data[replytextone]"]').val();
+		if(star==''||!$.trim(headimg)||!$.trim(nickname)||!$.trim(text)||!$.trim(replytextone)) {
+			util.tips("未完善！");	
+			return false;
+		}
+	});
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+
+    
+    <script>
+		require(['bootstrap'], function ($) {
+		    $('[data-toggle="tooltip"]').tooltip({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="popover"]').popover({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="dropdown"]').dropdown({
+	            container: $(document.body)
+	        });
+	    });
+		myrequire(['js/init']);
+				$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+			$('.app-login-info-sel').show();
+		});
+		$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+			$('.app-login-info-sel').hide();
+		});
+		$('.app-login-info-sel .login-out').hover(function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+		},function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+		});
+		
+			</script>
+	</body>
+</html>

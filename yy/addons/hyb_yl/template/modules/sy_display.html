@@ -1,0 +1,529 @@
+{template './common/siteheader'}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">
+                检验模板
+                            </h1>
+        </div>
+
+        
+        <!-- main-content -->
+        <div class="main-content pr">
+            <div class="row mb5">
+                <div class="col-sm-2 col-md-2">
+                    <div class="btn-toolbar list-toolbar">
+                        <a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="btn btn-primary"><i class="fa fa-plus"></i> 新增</a>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-10">
+                    <div class="p-right">
+                        <form action="" class="form-inline J-search-form">
+                            <div class="form-group">
+                                <label class="control-label">筛选：</label>
+                                <input type="text" placeholder="模版名称" class="form-control J-search-name" name="name" value="">
+                            </div>
+                            <div class="form-group">
+                                <div class="select2-container mtf3" id="s2id_J-creator-name" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">选择创建人</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1" tabindex="-1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-1">   </ul></div></div><input type="hidden" class="mtf3 select2-offscreen" name="creator_id" id="J-creator-name" data-placeholder="选择创建人" tabindex="-1" data-type="select" title="">
+                            </div>
+                                                        <button type="button" class="btn btn-default J-search-btn">查找</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                                <th width="150" class="pl20">模板名称</th>
+                                <th width="300">模板项目</th>
+                                <th width="150">创建时间</th>
+                                <th width="120">创建人员</th>
+                                <th width="100">状态</th>
+                                <th width="140">操作</th>
+                            </tr>
+                                                </thead>
+                        <tbody id="J-group-list"><tr>
+        <td class="pl20">12132132132</td>
+        <td>血脂四项;肝功能;血脂四项</td>
+        <td>2019-05-03 01:04:05</td>
+        <td>陈贵</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4353"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">骨密度</td>
+        <td>肝功12项;血清高密度脂蛋白胆固醇测定(HDL-CH);脑利钠肽(NT-pro-BNP);血脂四项</td>
+        <td>2018-08-10 16:52:54</td>
+        <td>杨倩倩</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="3650"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">血糖检测</td>
+        <td>尿常规;血红蛋白测定</td>
+        <td>2019-04-20 22:38:22</td>
+        <td>曹云</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4340"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">贾爱华</td>
+        <td>血清高密度脂蛋白胆固醇测定(HDL-CH);TORCH定性全套10项 CMV-IgM+CMV-IgG+HSV-Ⅰ-IgM+HSV-Ⅰ-IgG+HSV-Ⅱ-IgM+HSV-Ⅱ-IgG+RV-IgM+RV-IgG+TOXO-IgM+TOXO-IgG</td>
+        <td>2019-04-16 17:43:49</td>
+        <td>曹云</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4337"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">111111111</td>
+        <td>肝功12项;肝功12项</td>
+        <td>2019-04-15 19:37:56</td>
+        <td>李先生</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4335"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">1111</td>
+        <td>血脂四项;肝功12项</td>
+        <td>2019-04-11 21:37:15</td>
+        <td>陈贵</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4329"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">陈贵模板</td>
+        <td>肝功12项;血脂四项;mmm的</td>
+        <td>2019-04-11 20:37:14</td>
+        <td>陈贵</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4327"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">qq</td>
+        <td>抗核抗体20项 抗核抗体10项+抗线粒体抗体亚型分型2型、抗组蛋白抗体 、抗肌动蛋白抗体、核糖体P蛋白抗体（ARPA）、抗波形蛋白抗体、抗PM-SCL抗体、抗增殖性细胞核抗原抗体（抗PCNA）、抗核小体抗体、抗纺锤体抗体、抗高尔基抗体;脑利钠肽(NT-pro-BNP)</td>
+        <td>2019-03-27 14:31:20</td>
+        <td>&lt;strong&gt;&lt;img src=x onerror=alert(1);&gt;&lt;/strong&gt;</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4317"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">妇科专用检查</td>
+        <td>血脂四项;肝功12项;甲功三项;听力检查套餐;aaa</td>
+        <td>2018-10-15 18:06:15</td>
+        <td>系统测试</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4186"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">test</td>
+        <td>血脂四项;听力检查套餐;脑利钠肽(NT-pro-BNP)</td>
+        <td>2019-03-05 22:47:13</td>
+        <td>jojo</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4302"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">精液常规</td>
+        <td>aaa</td>
+        <td>2019-03-04 15:38:12</td>
+        <td>王峰</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4301"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">月月</td>
+        <td>脑利钠肽(NT-pro-BNP);脑利钠肽(NT-pro-BNP);听力检查套餐</td>
+        <td>2019-01-18 15:12:16</td>
+        <td>车老师</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4277"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">项目1</td>
+        <td>A超;生物测量</td>
+        <td>2019-01-18 11:29:37</td>
+        <td>车老师</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4276"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">发展乡第二卫生院</td>
+        <td>肝功12项</td>
+        <td>2018-11-10 10:10:26</td>
+        <td>司旭</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4206"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">尿HCG</td>
+        <td>尿HCG</td>
+        <td>2018-10-12 12:12:51</td>
+        <td>徐学范</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4184"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">333</td>
+        <td>脑利钠肽(NT-pro-BNP);肝功12项;血清高密度脂蛋白胆固醇测定(HDL-CH)</td>
+        <td>2018-09-05 11:39:13</td>
+        <td>王新</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4147"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">111</td>
+        <td>脑利钠肽(NT-pro-BNP);血脂四项;听力检查套餐</td>
+        <td>2018-09-05 08:57:22</td>
+        <td>王新</td>
+        <td>
+            正常
+        </td>
+        <td><a href="{php echo $this->createWeburl('moban',array('op'=>'sy_add'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="4145"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr></tbody>
+                    </table>
+                    <div class="J-page-wrap pd20 mb45"><div class="base_page"><a href="#/suite_type/0/name/@null/category_id/@null/kb/@null/lb1/@null/lb2/@null/template_type/@null/creator_id/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/1</button><a href="#/suite_type/0/name/@null/category_id/@null/kb/@null/lb1/@null/lb2/@null/template_type/@null/creator_id/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                </div>
+            </div>
+        </div>
+        <!-- 标准数据列表 -->
+        <div class="J-select-panel select-panel" id="J-data-panel">
+            <div class="right-tips J-select-hide"><i class="fa fa-angle-right"></i></div>
+            <div class="row header pl0 pr0">
+                <form action="" class="form-inline" method="get">
+                    <div class="col-sm-3">
+                        <h4 class="page-title">标准数据</h4>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="pull-right">
+                            <div class="form-group">
+                                <label class="control-label">筛选：</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="j_search_input" name="keyword" placeholder="中药模板名称" class="form-control">
+                            </div>
+                            <button type="button" id="j_search_submit" class="btn btn-default">查找</button>
+                            <button type="button" data-loading-text="导入中..." data-complete-text="导入完成" class="btn btn-default J-import-data">导入</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="pl20">
+                                    <input type="checkbox" class="J-check-all" value="true">
+                                </th>
+                                <th width="25%">模板名称</th>
+                                <th>模板项目</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-wrap-list"></tbody>
+                    </table>
+                    <div class="J-page-wrap1 pd20" style="display: none;">
+                        <!-- 分页 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+	<hr>
+	<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+	<p class="pull-right"> <a href="http://www.DXY.cn" target="_blank">DXY</a> by <a href="http://www.dxy.cn" target="_blank">DXY.CN</a>
+	</p>
+	<p>© 2015 <a href="http://www.dxy.cn" target="_blank">DXY</a></p>
+</footer>
+    </div>
+    <!-- JS模板 -->
+    <script type="text/template" id="data-wrap-list-tpl">
+        <td class="pl20">
+            <input type="checkbox" <%if(is_check){%>checked<%}%> value="<%- id%>" />
+        </td>
+        <td><%- name%></td>
+        <td><%- item%></td>
+    </script>
+    <!-- JS模板 -->
+
+    <!-- 各种模版列表模版 -->
+    <script type="text/template" id="J-group-list-tpl">
+        <td class="pl20"><%- name%></td>
+        <td><%- suiteInfo%></td>
+        <td><%- createTime%></td>
+        <td><%- creatorName%></td>
+        <td><%if(status == 1){%>
+            正常<%}else{%>
+            <span style="color:#a94442">停用</span>
+            <%}%>
+        </td>
+        <td><a href='/Admin/Group/groupedit?id=<%- id%>&p=<%- p%>&type=<%- type%>' class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href='#' class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="<%- id%>"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </script>
+    <!-- 各种模版列表模版 -->
+
+    <!-- 西/成药、中药处方列表模版 -->
+    <script type="text/template" id="J-medicine-list-tpl">
+        <td class="pl20"><%- name%></td>
+        <td><%- templateType%></td>
+        <td><%- suiteInfo%></td>
+        <td><%- createTime%></td>
+        <td><%- creatorName%></td>
+        <td><%if(status == 0){%>
+            <span style="color:#a94442">停用</span>
+            <%}else{%>正常<%}%>
+        </td>
+        <td><a href='/Admin/Group/groupedit?id=<%- id%>&p=<%- p%>&type=<%- type%>' class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href='#' class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="<%- id%>"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </script>
+    <!-- 西/成药、中药处方列表模版 -->
+
+    <!-- 中药处方模板分类树 -->
+    <script type="text/template" id="J-cn-type-tree">
+        <ul id="tree2">
+            <% $.each(data, function(i1, item1){ %>
+                <li class="tooltips J-tooltips J-top-level" data-name="<%-item1.parent%>">
+                    <a href="javascript:void(0)" class="J-search-tooltips" data-level="1" data-kb="<%-item1.parent%>" data-id="<%-item1.id%>">
+                        <%-item1.parent%><span class="tree-count">（<% if(item1.count){ %><%-item1.count%><% }else{ %>0<% } %>）</span>
+                    </a>
+
+                    <ul class="w205">
+                        <% if(item1.child){ %>
+                            <% $.each(item1.child, function(i2, item2){ %>
+                            <li class="tooltips">
+                                <a href="javascript:void(0)" class="J-search-tooltips" data-level="2" data-kb="<%-item1.parent%>" data-lb1="<%-item2.lb1%>" data-id="<%-item2.id%>">
+                                    <%-item2.parent%><span class="tree-count">（<% if(item2.count){ %><%-item2.count%><% }else{ %>0<% } %>）</span>
+                                </a>
+
+                                <ul class="w185">
+                                    <% if(item2.child){ %>
+                                        <% $.each(item2.child, function(i3, item3){ %>
+                                        <li class="tooltips">
+                                            <a href="javascript:void(0)" class="J-search-tooltips" data-level="3" data-kb="<%-item1.parent%>" data-lb1="<%-item2.lb1%>" data-lb2="<%-item3.lb2%>" data-id="<%-item3.id%>">
+                                                <%-item3.parent%><span class="tree-count">（<% if(item3.count){ %><%-item3.count%><% }else{ %>0<% } %>）</span>
+                                            </a>
+
+                                            <ul class="w165">
+                                                <% if(item3.child){ %>
+                                                    <% $.each(item3.child, function(i4, item4){ %>
+                                                    <li class="tooltips item-height">
+                                                        <a href="javascript:void(0)" class="J-search-tooltips" data-id="<%-item4.id%>">
+                                                            <%-item4.parent%><span class="tree-count">（<% if(item4.count){ %><%-item4.count%><% }else{ %>0<% } %>）</span>
+                                                        </a>
+                                                    </li>
+                                                    <% }); %>
+                                                <% } %>
+                                            </ul>
+
+                                        <% }); %>
+                                    <% } %>
+                                    </li>
+                                </ul>
+                            </li>
+                            <% }); %>
+                        <% } %>
+                    </ul>
+                </li>
+            <% }); %>
+        </ul>
+    </script>
+    <!-- 中药处方模板分类树 -->
+
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action="#">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+    <script type="text/javascript">
+    require(['cn_medicine','group_list']);
+    </script>
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div><span role="status" aria-live="polite" class="select2-hidden-accessible"></span></body></html>

@@ -1,0 +1,134 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+</div>
+<style type="text/css">
+   /* .wei_shenhe a:hover{
+        color: #3296fa !important;
+    }
+    .gai_delete:hover{
+        color:red;
+    }*/
+</style>
+<div class="basics">
+    <div class="gai_huanzhe">
+        <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control active" data-permission="8">
+                <a  href="{php echo $this->createWeburl('addtaocan',array('op'=>'taocan','type_id'=>$type_id))}" ><strong>套餐列表</strong></a>
+            </li>
+            <li class="J-module-control " data-permission="10">
+                <a href="{php echo $this->createWeburl('addtaocan',array('op'=>'add','type_id'=>$type_id))}" ><strong>添加套餐</strong></a>
+            </li>
+        </ul>
+        <div class="gai_huanzhe_jinri gai_huanzhe_jinris">
+            <div class="panel-heading bgfc pt20" style="border-left: 1px solid #ddd;">
+                <div class="row form-inline">
+                    <div class="col-sm-2 col-md-2">
+                        <div class="form-group mt5">
+                            <h4 class="panel-title">套餐管理</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-10 pull-right text-right">
+                        <div class="input-group input-group-sm pull-right">
+                            <input type="text" class="form-control J-patient-no w200p" placeholder="请输入套餐名称">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-sm J-search2patientno" type="button"><i class="fa fa-search"></i> </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="" method="post" class="form1">
+                <div class="panel panel-default" >
+                    <div class="panel-body collapse in">
+                        <div class="gai_yaopin_uls" style="margin-top: 0;border: none;">
+                            <div class="gai_yaopin_lis_header" style="margin-top: 0;">
+                                <!-- 选择 -->
+                                <div class="gai_yaopin_lis_select">
+                                    选择
+                                </div>
+                                <!-- 入库单号 -->
+                                <div class="gai_yaopin_lis_odd">
+                                    ID
+                                </div>
+                                <!-- 药品名称 -->
+                                <div class="gai_yaopin_lis_name">
+                                    套餐名称
+                                </div>
+                                <!-- 缩略图 -->
+                                <div class="gai_yaopin_lis_img">
+                                    缩略图
+                                </div>
+                                <div class="gai_yaopin_lis_name">
+                                    适检人群/性别
+                                </div>
+                                <div class="gai_yaopin_lis_name" style="width: 30%">
+                                    检查项目
+                                </div>
+                                <!-- 操作 -->
+                                <div class="gai_yaopin_lis_operation">
+                                    操作
+                                </div>
+                            </div>
+                            {loop $list $item}
+
+                            <div class="gai_yaopin_lis_lis" style="height: auto;padding: 20px 0;" id="stuName">
+                                <!-- 选择 -->
+                                <input type="button" class="btn btn-danger" value="{$item['tid']}"   style="display: none;">
+                                <div class="gai_yaopin_lis_select">
+                                    <span data-zt="0"  class="gai_yaopin_lis_select_xuanze"></span>
+                                </div>
+                                <!-- 入库单号 -->
+                                <div class="gai_yaopin_lis_odd" style="display: flex;">
+                                    {$item['tid']}<div style="opacity: 0">,</div>
+                                </div>
+                                <!-- 药品名称 -->
+                                <div class="gai_yaopin_lis_name">
+                                    {$item['t_name']}
+                                </div>
+                                <div class="gai_yaopin_lis_img">
+                                    <img src="{media $item['t_thumb']}">
+                                </div>
+                                <div class="gai_yaopin_lis_time">
+                                    {if $item['t_stype'] =='0'}中青年{else if $item['t_stype'] =='1'}儿童{else}中老年{/if}/
+                                    {if $item['t_sex'] =='1'}男{else if $item['t_sex'] =='2'}女{else}不区分{/if}
+                                </div>
+                                 <div class="gai_yaopin_lis_time" style="width: 30%">
+                                    {$item['t_msg']}
+                                </div>
+
+                                <!-- 操作 -->
+                                <div class="gai_yaopin_lis_operation">  
+                                   <div class="wei_shenhe">
+                                        <a href="{php echo $this->createWeburl('addtaocan',array('op'=>'add','tid'=>$item['tid'],'type_id'=>$type_id));}">
+                                            <i class="fa fa-pencil"></i>
+                                            <span>修改</span>
+                                        </a>
+                                        <span>-</span>
+                                            <i class="fa fa-trash-o"></i>
+                                            <span class="gai_delete" id="{$item['tid']}">删除</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {/loop}
+
+                        </div>
+                        <div class="gai_yaopin_delete">
+                            <button class="gai_yaopin_delete_quanxuan gau_btn_yangshi1" id="checkAll">全选</button>
+                            <button class="gai_yaopin_delete_quxiao gau_btn_yangshi1">取消</button>
+                            <button class="gai_yaopin_delete_delete gau_btn_yangshi2">删除</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+           <tfoot>
+                <tr>
+                    <td colspan="4">
+                        {template "pagenation"}
+                    </td>
+                </tr>
+            </tfoot>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list_all.js"></script>

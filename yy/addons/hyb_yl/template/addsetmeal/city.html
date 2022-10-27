@@ -1,0 +1,424 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+<style type="text/css">
+   /* body{
+    background: #fff;
+}*/
+.content{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    height: 800px;
+    border: 1px solid #f1f1f1;
+    /*margin: 0 auto;*/
+    margin:80px 0px 0px 270px;
+    background: #FFFFFF;
+    /*background: #fff;*/
+}
+.left{
+    border-right: 1px solid #f1f1f1;
+    height: 100%;
+    padding: 10px;
+}
+.right{
+    flex-grow: 1;
+    width: 80%;
+    padding-left: 20px;
+    /*margin-top: 85px;*/
+
+}
+.layui-tab-title{
+    display: flex;
+    flex-direction: column;
+    border: none!important;
+    height: auto!important;
+}
+.layui-tab-title li i{
+    margin-right: 10px;
+}
+.layui-tab-title li{
+    display: flex!important;
+    justify-content: space-between;
+    align-items: center;
+}
+.addBox{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.addName{
+    display: flex;
+    /*justify-content: start;*/
+    align-items: center;
+    width: 80%;
+    justify-content: center;
+    margin: 10px auto;
+}
+.addName input{
+    width: 400px;
+}
+
+.addBox1{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.nameCity{
+    width: 100%;
+    border-bottom: 2px solid #f1f1f1;
+    padding-top: 20px;
+}
+.nameCity{
+    display: flex;
+    justify-content: space-between;
+}
+.btnBox{
+    display: flex;
+}
+.name,.city{
+    font-size: 13px;
+    color: #666;
+}
+.btnBox1{
+    position: absolute;
+    background: #fff;
+    top: 38px;
+    right: 0;
+    box-shadow: 0 0 10px 0 rgba(231,231,231,0.5);
+    z-index: 99;
+    padding: 10px 0;
+    display: none;
+}
+.btnBox1 div{
+    padding: 0 20px;
+    border-bottom: 1px solid #f1f1f1;
+}
+.btnBox1 div:nth-last-child(1){
+    border-bottom: 0;
+}
+.contsText{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.top{
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+.sousuo{
+    width: 100%;
+}
+.rightRemove{
+    cursor: pointer;
+}
+.rightRemove:hover{
+    color: red;
+}
+.rightUpdate{
+    cursor: pointer;
+}
+.rightUpdate:hover{
+    color: red;
+}
+.rightModify:hover{
+    color: #009688;
+    cursor: pointer;
+}
+.btnBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+</style>
+<link rel="stylesheet" href="{php echo HYB_YL_ADMIN}/layui/css/layui.css">
+</div>
+<div>
+    <div class="content">
+        <div class="left layui-tab-brief">
+            <div class="addBox"><input type="text" clas="layui-input" placeholder="请输入城市">
+                <div class="layui-btn addCity">添加</div>
+            </div>
+            <ul class="layui-tab-title">
+                {$o}
+            </ul>
+        </div>
+
+        <div class="right" style="height: 100%;">
+            <div class="layui-tab-item layui-show">
+                <div class="addName">
+                    <input type="text" class="layui-input" id="cityName" placeholder="请输入机构名字">
+                    <input type="text" class="layui-input" id="cityPositon" placeholder="请输入机构位置">
+                    <div class="layui-btn addName1">添加</div>
+                </div>
+                <table class="layui-table">
+                  <colgroup>
+                     <col width="300">
+                     <col>
+                     <col width="200">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>机构名称</th>
+                      <th>详细地址</th>
+                      <th>选择操作</th>
+                    </tr> 
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .layui-table{
+        width: 80%;
+        margin: 10px auto;
+    }
+    .layui-table td, .layui-table th{
+         position: relative;
+         padding: 9px 0px;
+         min-height: 20px;
+         line-height: 20px;
+         font-size: 14px;
+    }
+    .city{
+        width:500px;
+    }
+</style>
+<script src="{php echo HYB_YL_ADMIN}/layui/layui.js"></script>
+<script>
+    var url = window.location.href;
+    layui.use('element', function () {
+        var $ = layui.jquery
+            , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+    });
+    $(document).on('click', '.layui-tab-title li', function () {
+        var jg_pid=$(this).attr('data-ct_id')
+        firstCont(jg_pid)
+    })
+    // 加载第一条
+    function firstCont(jg_pid){
+        $.ajax({
+            url:url,
+            type: "POST",  
+            dataType: "json",  
+            cache:false, 
+            data: {type:'jg_list',jg_pid:jg_pid},  
+            success:function(res){
+               console.log(res)
+               $('.layui-tab-item').find('tbody').html('')
+               for(var i=0;i<res.length;i++){
+                        $('.layui-tab-item').find('tbody').append(`<tr>
+                      <td><div class="name"><div class="input">${res[i].jg_name}</div></div></td>
+                      <td class="city">${res[i].jg_address}</td>
+                      <td class="btnBox">
+                      <div class="rightModify" data-j_id="${res[i].j_id}"><i class="layui-icon layui-icon-edit"></i>修改</div>
+                      <div class="rightRemove" data-j_id="${res[i].j_id}"><i class="layui-icon layui-icon-delete"></i>删除</div>
+                      <div class="rightUpdate" id="timearr" data-j_id="${res[i].j_id}"><i class="layui-icon layui-icon-delete"></i>预约时间段</div>
+                      </td>
+                    </tr>`)
+               }
+            }
+        })
+    }
+
+    //    添加
+    $('.addCity').on('click', function () {
+        var cityName = $(this).parents('.addBox').find('input').val()
+
+        if (cityName == '') {
+            return
+        } else if ($('.layui-tab-title').text().indexOf(cityName) != -1) {
+            alert('已有当前城市')
+            return
+        }else{
+            //添加
+            $.ajax({
+                url:url,
+                type: "POST",  
+                dataType: "json",  
+                cache:false, 
+                data: {type:'add',ct_name:cityName},  
+                success:function(res){
+                  console.log(res)
+                  $('.layui-tab-title').append(`<li data-ct_id="${res.ct_id}">
+                    <div class="city1"><i class="layui-icon layui-icon-location"></i>${res.ct_name}</div>
+                    <div class="cityModify"><i class="layui-icon layui-icon-set-fill"></i>
+                        <div class="btnBox1">
+                            <div class="modify" data-ct_id="${res.ct_id}"><i class="layui-icon layui-icon-edit"></i>修改</div>
+                            <div class="remove" data-ct_id="${res.ct_id}"><i class="layui-icon layui-icon-delete"></i>删除</div>
+                        </div>
+                    </div>
+                </li>`)    
+                }
+            })
+        }
+        $(this).parents('.addBox').find('input').val('')
+    })
+    //添加机构
+    $(document).on('click','.addName1', function () {
+        var that=$(this)
+        var jg_pid=$('.layui-this').attr('data-ct_id')
+
+        var cityName = $(this).parent().find('#cityName').val();
+        var cityPositon = $(this).parent().find('#cityPositon').val();
+        if (cityName == '') {
+            alert('请填写机构名字')
+            return
+        }else  if( cityPositon == ''){
+            alert('请填写机构详细地址')
+            return
+        }else{
+            //添加
+            $.ajax({
+                url:url,
+                type: "POST",  
+                dataType: "json",  
+                cache:false, 
+                data: {type:'addjg',jg_name:cityName,jg_address:cityPositon,jg_pid:jg_pid},  
+                success:function(res){
+                    console.log(res)
+        that.parents('.layui-tab-item').find('tbody').append(`<tr>
+                      <td><div class="name"><div class="input">${res.jg_name}</div></div></td>
+                      <td class="city">${res.jg_address}</td>
+                      <td class="btnBox">
+                      <div class="rightModify" data-j_id="${res.j_id}"><i class="layui-icon layui-icon-edit"></i>修改</div>
+                      <div class="rightRemove" data-j_id="${res.j_id}"><i class="layui-icon layui-icon-delete"></i>删除</div></td>
+                      <div class="rightUpdate" id="timearr" data-j_id="${res.j_id}"><i class="layui-icon layui-icon-delete"></i>预约时间段</div>
+                    </tr>`)
+                }
+            }) 
+        }
+
+    })
+    $('body').on('click',function () {
+        $('li').find('.btnBox1').hide()
+    })
+//    城市操作
+    $(document).on('click','.cityModify',function () {
+        $('li').find('.btnBox1').hide()
+        $(this).parents('li').find('.btnBox1').show()
+    })
+//修改城市
+    $(document).on('click','.modify',function () {
+        var cityName=$(this).parents('li').find('.city1').text().trim()||$(this).parents('li').find('.modifyInput').val().trim()
+        $(this).parents('li').find('.city1').html(`<input class="layui-input modifyInput" type="text" value="${cityName}" autofocus="autofocus" onblur="modifyInput(this)">`)
+        $(this).parents('li').find('.city1').find('input').focus()
+    })
+
+    function modifyInput(a) {
+        var ct_id=$(a).parents('li').attr('data-ct_id')
+        var ct_name = $(a).val();
+        $(a).parent().html(`<i class="layui-icon layui-icon-location"></i>${$(a).val()}`)
+          $.ajax({
+            url:url,
+            type: "POST",  
+            dataType: "json",  
+            cache:false, 
+            data: {type:'update',ct_id:ct_id,ct_name:ct_name},  
+            success:function(res){
+              console.log(res)
+            }
+        })
+    }
+
+    function modifyInput1(a) {
+        var j_id=$(a).parents('tr').find('.rightModify').attr('data-j_id')
+            var jg_name=$(a).val()
+            $(a).parents('tr').find('.city>.modifyInput').focus()
+            console.log(j_id)
+            console.log(jg_name)
+            $(a).parent().html($(a).val())
+              $.ajax({
+                url:url,
+                type: "POST",  
+                dataType: "json",  
+                cache:false, 
+                data: {type:'up_name',j_id:j_id,jg_name:jg_name},  
+                success:function(res){
+                  console.log(res)
+                }
+            })
+    }
+    function modifyInput2(a) {
+        var j_id=$(a).parents('tr').find('.rightModify').attr('data-j_id')
+            var jg_address=$(a).val()
+            console.log(j_id)
+            console.log(jg_address)
+            $(a).parent().html($(a).val())  
+              $.ajax({
+                url:url,
+                type: "POST",  
+                dataType: "json",  
+                cache:false, 
+                data: {type:'up_address',j_id:j_id,jg_address:jg_address},  
+                success:function(res){
+                  console.log(res)
+                }
+            })          
+    }
+//    删除城市
+    $(document).on('click','.remove',function (a) {
+        var ct_id=a.currentTarget.getAttribute("data-ct_id")
+        $('.layui-tab-item').eq($('.remove').parents('li').index($('.remove').parents('li'))).remove()
+          $.ajax({
+            url:url,
+            type: "POST",  
+            dataType: "json",  
+            cache:false, 
+            data: {type:'delete',ct_id:ct_id},  
+            success:function(res){
+              console.log(res)
+            }
+        })
+        $(this).parents('li').remove()
+
+    })
+
+    // 机构修改
+    $(document).on('click','.rightModify',function(){
+        var name=$(this).parents('tr').find('.name').text().trim()||$(this).parents('td').find('.name>input').val().trim()
+        var city=$(this).parents('tr').find('.city').text().trim()||$(this).parents('td').find('.city>input').val().trim()
+        // console.log(city)
+        // console.log(name)
+        $(this).parents('tr').find('.name').html(`<input class="layui-input modifyInput" type="text" value="${name}" onblur="modifyInput1(this)">`)
+        $(this).parents('tr').find('.city').html(`<input class="layui-input modifyInput" type="text" value="${city}" onblur="modifyInput2(this)">`)
+        $(this).parents('tr').find('.name').find('input').focus()
+        
+    })//    删除机构
+    $(document).on('click','.rightRemove',function (a) {
+        var j_id=a.currentTarget.getAttribute("data-j_id")
+           $.ajax({
+            url:url,
+            type: "POST",  
+            dataType: "json",  
+            cache:false, 
+            data: {type:'delete_jg',j_id:j_id},  
+            success:function(res){
+              console.log(res)
+            }
+        }) 
+        $(this).parents('tr').remove()
+
+
+    })
+    //默认显示第一条
+    $('.layui-tab-title').find('li').eq(0).addClass('layui-this')
+    var j_pid=$('.layui-tab-title').find('li').eq(0).attr('data-ct_id')
+    console.log(j_pid)
+    firstCont(j_pid)
+        //添加预约时间
+    $(document).on('click','#timearr',function(a){
+       var z_pid=a.currentTarget.getAttribute("data-j_id")
+       window.location.href="{php echo $this->createWeburl('addsetmeal',array('op'=>'guhaosite','type_id'=>$type_id));}&z_pid="+z_pid
+    })
+</script>

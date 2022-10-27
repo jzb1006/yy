@@ -1,0 +1,934 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+</div>
+<div class="contentpanel" style="width: 97%;">
+                    <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+                        <li class="J-module-control active" data-permission="6,29,7,74,75,76">
+                            <a href="#health_records" data-toggle="tab"><strong>患者档案</strong></a>
+                        </li>
+                        <li class="J-module-control" data-permission="99">
+                            <a href="#member_management" data-toggle="tab"><strong>会员管理</strong></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content pd0">
+                        <!-- start  健康档案-->
+                    <div class="tab-pane active" id="health_records">
+                    <div class="panel panel-default" id="today">
+                        <input type="hidden" class="J-patientId">
+                        <div class="panel-heading bgfc pb5">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <a href="https:///Clinic/Patient/addPatient.html" class="btn btn-sm btn-default" id="J-da-add-patient"><i class="fa fa-plus"></i> 新增患者</a>
+                                        <button type="button" class="btn btn-sm btn-default J-export-patients module-hide J-module-control" data-permission="29">导出患者</button>                                                                            
+                                        <button type="button" class="btn btn-sm btn-default J-da-export J-module-control" data-permission="28" data-toggle="modal" data-target="#J-export-case">导出病历</button>
+                                        <a href="/japi/session/190130" class="btn btn-sm btn-default hidden"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        <div class="panel-heading">
+            <!-- 查找 -->
+            <div class="row">
+                <form id="J-search-form" method="post" class="form-inline" action="/japi/session/190110">
+                    <div class="col-sm-3 col-md-4">
+                        <div class="form-group mr10">
+                            <div class="rdio rdio-default mt5">
+                                <input type="radio" class="J-search-type" name="search_type" id="radioDefault5" value="1" checked="checked"><label for="radioDefault5">按患者信息查找</label>
+                            </div>
+                        </div>
+                        <div class="form-group mr10">
+                            <div class="rdio rdio-default mt5">
+                                <input type="radio" class="J-search-type" name="search_type" id="radioDefault6" value="2"><label for="radioDefault6">按就诊信息查找</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 col-md-8 pull-right text-right" id="J-type-patient">
+                        <div class="form-group mr5 mb5_i">
+                            <label class="control-label display-none">患者姓名或手机号：</label>
+                            <input type="text" size="24" class="form-control input-sm2 col-custom-xs-12 J-patient-name" id="J-patient-name" placeholder="输入患者姓名/手机号后4位" name="patient_name_mobile">
+                        </div>
+                        <div class="form-group mr5 mb5_i">
+                            <label class="control-label display-none">病案号或病人卡号：</label>
+                            <input type="text" size="10" class="form-control input-sm2 w180 col-custom-xs-12 J-card-no" placeholder="输入病案号/病人卡号" name="patient_id_card">
+                        </div>
+                        <div class="form-group mr5 mb5_i J-module-control" data-modules="33">
+                            <label class="control-label display-none">会员类型：</label>
+                            <select class="form-control input-xs2 J-member-type col-custom-xs-12" data-placeholder="会员类型" name="member_type">
+                            <option value="">会员类型</option>
+                            
+                            <option value="1">一级会员</option>
+                            
+                            <option value="2">二级会员</option>
+                            
+                            <option value="4">三级会员</option>
+                            
+                            <option value="5">金卡会员</option>
+                            
+                            <option value="6">银卡会员</option>
+                            
+                            <option value="7">钻石卡会员</option>
+                            
+                            <option value="9">免费券</option>
+                            
+                            <option value="15">学生</option>
+                            
+                            <option value="16">居民</option>
+                            
+                            <option value="17">高级会员</option>
+                            
+                            <option value="18">药品折扣会员</option>
+                            
+                            <option value="19">再消费会员</option>
+                            
+                            <option value="32">特权会员</option>
+                            
+                            <option value="36">9折会员</option>
+                            
+                            <option value="37">VIP会员</option>
+                            
+                            <option value="38">十次客户</option>
+                            
+                            <option value="39">参保学生</option>
+                            
+                            <option value="43">钻石VIP高级内部总统级优惠铂金价</option>
+                            
+                            <option value="46">存善会员</option>
+                            
+                            <option value="47">体验用户</option>
+                            
+                            <option value="48">中国银行</option>
+                            
+                            <option value="51">金卡会员打折版</option>
+                            
+                            <option value="52">7天内复诊会员</option>
+                            
+                            <option value="53">VVIP M01</option>
+                            
+                            <option value="54">普通会员</option>
+                            
+                            <option value="56">初级会员</option>
+                            
+                            <option value="57">金卡卡会员</option>
+                            
+                            <option value="59">VIP6</option>
+                            
+                            <option value="61">推拿卡会员</option>
+                            
+                            <option value="63">健康会员卡</option>
+                            
+                            <option value="64">小草笑嘻嘻会员类型管理</option>
+                            
+                            <option value="68">至尊专属黑卡</option>
+                            
+                            <option value="69">至尊会员卡</option>
+                            
+                            <option value="70">至尊超级专享会员PLUS</option>
+                            
+                            <option value="74">王小二会员等级</option>
+                            
+                            <option value="75">青铜</option>
+                            
+                            <option value="76">黄金</option>
+                            
+                            <option value="77">钻石</option>
+                            
+                            <option value="78">vvip</option>
+                            
+                            <option value="79">删除</option>
+                            
+                            <option value="81">WIP</option>
+                            
+                            <option value="82">综合卡10000</option>
+                            
+                            <option value="83">黑钻会员</option>
+                            
+                            <option value="84">庞锋测试</option>
+                            
+                            <option value="85">高级会员 VIP 1</option>
+                            
+                            <option value="88">御园规范化</option>
+                            
+                            <option value="90">金卡会员007</option>
+                            
+                            <option value="91">白金卡会员008</option>
+                            
+                            <option value="92">普通会员VIP55</option>
+                            
+                            <option value="96">CT</option>
+                            
+                            <option value="97">测试123</option>
+                            
+                            <option value="98">测试会员 lily</option>
+                            
+                            <option value="99">八卦kaxing</option>
+                            
+                            <option value="100">普通会员a</option>
+                            
+                            <option value="101">大江</option>
+                            
+                            <option value="102">黑白金卡</option>
+                            
+                            <option value="103">小儿推拿2</option>
+                            
+                            <option value="104">银卡</option>
+                            
+                            <option value="106">普V卡1</option>
+                            
+                            <option value="108">&amp;lt;/option&amp;gt;&amp;lt;img src=x onclick=alert(1)&amp;gt;&amp;lt;option&amp;gt;</option>
+                            
+                            <option value="109">85折 </option>
+                            
+                            <option value="110">5折</option>
+                            
+                            <option value="111">VIP100</option>
+                            
+                            <option value="112">充5W享受95折</option>
+                            
+                            <option value="118">test1&amp;quot;&amp;gt;&amp;lt;img src=x&amp;gt;</option>
+                            
+                            <option value="119">12323212312</option>
+                            
+                            <option value="123">普卡3</option>
+                            
+                            <option value="124">测试一下下</option>
+                            
+                            <option value="128">12</option>
+                            
+                            <option value="129">无条件会员2</option>
+                            
+                            <option value="130">无条件会员1</option>
+                            
+                            <option value="135">a会员</option>
+                            
+                            <option value="136">a会员1</option>
+                            
+                            <option value="138">武林一号</option>
+                            
+                            <option value="139">高老大</option>
+                            
+                            <option value="141">撒大大</option>
+                            
+                            <option value="142">岁数大</option>
+                            
+                            <option value="143">测试数据</option>
+                            
+                       </select>
+                        </div>
+                        <div class="form-group mr5 mb5_i J-module-control" data-modules="35">
+                            <label class="control-label display-none">患者标签：</label>
+                            <input type="hidden" class="J-patient-tagIds" placeholder="患者标签" name="tagIds" value="">
+                            <input type="text" size="10" class="form-control input-sm2 col-custom-xs-12 J-patient-tags" placeholder="患者标签">
+                        </div>
+                        <div class="form-group mr5 mb5_i">
+                            <label class="control-label mt7">患者生日：</label>
+                            <input type="text" class="form-control input-sm2 col-custom-xs-12 J-patient-birth" placeholder="__月__日" name="queryDate">
+                        </div>
+                        <button class="btn btn-default btn-sm col-custom-xs-12 j_search_submit mb5_i" type="submit" onclick="return false;"><i class="fa fa-search"></i> </button>
+                    </div>
+                    <div class="col-sm-9 col-md-8 pull-right text-right hidden" id="J-type-clinic">
+                        <div class="form-group mr0">
+                            <label class="control-label display-none">查找患者：</label>
+                            <input type="text" size="10" placeholder="就诊时间" id="appDate" name="start_date" class="form-control input-sm2 radius3 mbsc-comp" readonly="">
+                        </div>
+                        <div class="form-group mr0"> - </div>
+                        <div class="form-group mr5">
+                            <div class="input-group">
+                                <input type="text" size="10" placeholder="就诊时间" id="appDate2" name="end_date" class="form-control input-sm2 radius3 mbsc-comp" readonly="">
+                            </div>
+                        </div>
+                        <div class="form-group mr5">
+                            <label class="control-label display-none">初步诊断：</label>
+                            <div class="select2-container mtf3 select-sm3 w180" id="s2id_J-diagnose" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-1">初步诊断</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen1" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-1" id="s2id_autogen1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen1_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-1" id="s2id_autogen1_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-1">   </ul></div></div><input type="hidden" size="10" class="mtf3 select-sm3 w180 select2-offscreen" id="J-diagnose" data-init="" data-initlist="" data-placeholder="初步诊断" name="diagnose" tabindex="-1" title="">
+                        </div>
+                        <button class="btn btn-default btn-sm col-custom-xs-12 j_search_submit" type="submit" onclick="return false;"><i class="fa fa-search"></i> </button>
+                    </div>
+                </form>
+            </div>
+            <!-- 查找 -->
+        </div>
+        <div class="panel-body">
+            <!-- 病人列表 -->
+            <div class="bloglist row" id="J-today-list-wrap" style="display: none;">
+            </div>
+            <div class="bloglist row" id="J-today-list-2-wrap">
+                <table class="table table-bordered table-hover table-gray background-white fixed-header-setting pos-relative J-patient-list-table">
+                    <thead>
+                        <tr class="font12">
+                            <td class="font-wb table-action" width="10%">姓名</td>
+                      <!--       <td class="font-wb table-action" width="7%">病案号</td> -->
+                            <td class="font-wb table-action" width="10%">手机号</td>
+                            <td class="font-wb table-action" width="7%">性别</td>
+                            <td class="font-wb table-action" width="10%">住址</td>
+                            <td class="font-wb table-action" width="10%">出生日期</td>
+                            <td class="font-wb table-action" width="17%">操作</td>
+                        </tr>
+                    </thead>
+                    <tbody id="J-today-list-wrap-2">
+                    {loop $list $item}
+                    <tr class="bg-white">
+                    <td class="pos-relative text-align" width="10%">
+                        
+                      <!--   <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="一级会员"></span> -->
+                        
+                        <a class="mt5" href="<?php echo $this->copysiteUrl('profile.detail');?>&id={$item['j_id']}&type_id={$type_id}">{$item['names']}</a>
+                    </td>
+                    <!-- <td width="7%" class="text-align">{$item['randnum']}</td> -->
+                    <td width="10%" class="text-align">{$item['tel']}</td>
+                    <td class="text-align" width="7%">{$item['sex']} </td>
+                    <td width="10%" class="text-center">{$item['region']}</td>
+                    <td width="10%" class="text-align">{$item['datetime']}</td>
+                    <td width="17%" class="text-align">
+                        
+                        <span class="J-da-add-reservation J-module-control mr5" data-permission="13"><a href="/Clinic/Reservation/reservation?patient_id=00020123317">预约</a></span>
+                        
+                        <span class="J-module-control pos-relative" >
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">更多<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu dropdown-tl-list" role="menu">
+                                <li class="J-da-add-follow J-module-control" data-permission="77"><a href="/Clinic/Follow/follow_add.html?patient_id=00020123317"><i class="fa fa-asterisk"></i> 新增随访</a></li>
+<!--                                 <li class="J-module-control" data-permission="74"><a href="javascript:void(0);" data-id="00020123317" data-memberid="1" class="J-set-member"><i class="fa fa-user"></i> 设置会员</a></li>
+                                <li class="J-module-control" data-permission="78"><a href="javascript:void(0);" class="J-set-tags"><i class="fa fa-tag"></i> 设置标签</a></li>
+                                <li class="J-module-control" data-permission="75"><a href="javascript:void(0);" data-id="00020123317" class="J-member-recharge"><i class="fa fa-credit-card"></i> 充值</a><span class="hidden J-recharge-btn"></span></li> -->
+                                <!-- <li class="J-module-control" data-permission="76"><a href="javascript:void(0);" data-id="00020123317" class="J-member-refund"><i class="fa fa-reply"></i> 退款</a></li> -->
+                                <li><a href="javascript:void(0);"  class="J-del-patient"><i class="fa fa-trash-o"></i> 删除</a></li>
+                            </ul>
+                        </span>
+                    </td>
+                    </tr>
+                    {/loop}
+                   </tbody>
+                </table>
+            </div>
+            <div class="j_page_wrap"><div class="base_page">
+                
+            </div></div>
+        </div>
+        <!-- start 会员设置 -->
+        <div class="modal fade" id="member-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">设置会员</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" id="J-member-form">
+                            <div class="form-group pt10">
+                                <label class="col-sm-3 control-label">选择会员类型：</label>
+                                <div class="col-sm-8">
+                                    <input type="hidden" name="patient_id">
+                                    <input type="hidden" name="member_id">
+                                    <select class="form-control input-sm mt0 J-member-list" name="id" data-placeholder="请选择">
+                                        <option value="请选择">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group pt10 J-time-setting">
+                                <label class="col-sm-3 control-label">到期日期:</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control input-sm mt0" name="expire_time" type="text" id="expire_time_db">
+                                    <p class="pt10">不填写表示永久有效</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary J-member-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end 会员设置 -->
+
+        <!-- start 充值弹窗 -->
+        <div class="modal fade" id="member-recharge-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="form-horizontal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">充值</h4>
+                        </div>
+                        <input type="hidden" name="orderNo" class="J-recharge-orderNo" value="">
+                        <input type="hidden" class="J-recharge-force" value="false">
+                        <div class="modal-body" id="J-recharge-panel-wrap">
+                            <!-- 充值面板 -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary disabled J-recharge-submit">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end 充值弹窗 -->
+
+        <!-- start 退款弹窗 -->
+        <div class="modal fade" id="member-refund-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="form-horizontal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">退款</h4>
+                        </div>
+                        <div class="modal-body" id="J-refund-panel-wrap">
+                            <!-- 退款面板 -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-refund-submit">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end 退款弹窗 -->
+        <!-- 方便门诊 -->
+        <div class="modal fade" id="instructions-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">方便门诊</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>新增部分医嘱需要医生资质，是否确定新增？</h4>
+                        <input type="hidden" class="J-instruction-patient-id" value="">
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary J-instructions-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 方便门诊 -->
+
+        <!-- start 删除患者 -->
+        <div class="modal fade" id="delPatient-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">删除患者信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>删除患者将永久删除该患者资料且无法恢复，是否确定删除该患者信息？</h4>
+                        <input type="hidden" class="J-del-patientId">
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="submit" class="btn btn-primary J-del-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end 删除患者 -->
+
+        <!-- 查看记录 -->
+        <div class="modal fade" id="member-record-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <form class="form-horizontal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">查看记录</h4>
+                        </div>
+                        <div class="modal-body pd0">
+                            <div class="table-responsive">
+                                <table class="table table-hover shadow-none mb0">
+                                    <thead>
+                                        <tr class="font12">
+                                            <th class="pl20" width="9%">操作类型</th>
+                                            <th width="11%">操作时间</th>
+                                            <th width="8%">收费方式</th>
+                                            <th>本金金额</th>
+                                            <th width="10%">赠送金金额</th>
+                                            <th>总金额</th>
+                                            <th>本金余额</th>
+                                            <th width="10%">赠送金余额</th>
+                                            <th>总余额</th>
+                                            <th>备注</th>
+                                            <th>操作人员</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="J-oprator-record-wrap">
+                                        <!-- 操作记录 -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 查看记录 -->
+
+        <!-- 判断是否覆盖订单 -->
+        <div class="modal fade" id="warrningPay-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h4>该充值卡已被<span class="J-name"></span>正在充值，是否重新充值？</h4>
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary J-reorder-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 判断是否覆盖订单 -->
+
+        <!-- 导出病历日期 -->
+        <div class="modal fade" id="J-export-case" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/japi/session/190130" method="get">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">导出病历</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row pt10 pb10">
+                                <label class="col-sm-2 control-label mt10">选择年月<span class="asterisk">*</span></label>
+                                <div class="col-sm-8 pr0">
+                                    <input type="text" placeholder="选择年月" name="date" class="form-control input-sm J-export-case-date mbsc-comp" required="" id="mobiscroll1566034667486" readonly="">
+                                    <input type="hidden" name="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer modal-btn-col2">
+                            <button type="button" class="btn btn-primary J-export-case-sub">确定</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 导出病历日期 -->
+
+        <!-- 患者搜索标签 -->
+        <div class="modal fade" id="J-tags-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">选择标签</h4>
+                    </div>
+                    <div class="modal-body pl20">
+                        <div class="row mt10 font16" id="J-tags-wrap">
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="104" id="tag104">
+                    <label for="tag104">城镇医保0</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="107" id="tag107">
+                    <label for="tag107">乡村医保</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="108" id="tag108">
+                    <label for="tag108">大病医保</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="109" id="tag109">
+                    <label for="tag109">住院病人</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="110" id="tag110">
+                    <label for="tag110">慢性病</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="111" id="tag111">
+                    <label for="tag111">慢性病121</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="114" id="tag114">
+                    <label for="tag114">慢性病人群</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="115" id="tag115">
+                    <label for="tag115">糖尿病</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="117" id="tag117">
+                    <label for="tag117">aaa</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="118" id="tag118">
+                    <label for="tag118">公费医疗</label>
+                </div>
+            </div>
+        
+    </div>
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary J-tags-search">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 患者搜索标签 -->
+
+        <!-- 患者详情标签 -->
+        <div class="modal fade" id="J-detail-tags-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">选择标签</h4>
+                    </div>
+                    <div class="modal-body pl20">
+                        <input type="hidden" class="J-detail-patient-id" value="">
+                        <div class="row mt10 font16" id="J-detail-tags-wrap">
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="104" id="detail104">
+                    <label for="detail104">城镇医保0</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="107" id="detail107">
+                    <label for="detail107">乡村医保</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="108" id="detail108">
+                    <label for="detail108">大病医保</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="109" id="detail109">
+                    <label for="detail109">住院病人</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="110" id="detail110">
+                    <label for="detail110">慢性病</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="111" id="detail111">
+                    <label for="detail111">慢性病121</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="114" id="detail114">
+                    <label for="detail114">慢性病人群</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="115" id="detail115">
+                    <label for="detail115">糖尿病</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="117" id="detail117">
+                    <label for="detail117">aaa</label>
+                </div>
+            </div>
+        
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-primary">
+                    <input type="checkbox" value="118" id="detail118">
+                    <label for="detail118">公费医疗</label>
+                </div>
+            </div>
+        
+    </div>
+                    </div>
+                    <div class="modal-footer modal-btn-col2">
+                        <button type="button" class="btn btn-primary J-tags-sub">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 患者详情标签 -->
+    </div>
+</div>
+                        <!-- end   健康档案 -->
+                        <!-- start 会员管理 -->
+                        <div class="tab-pane" id="member_management">
+  <div class="panel panel-default" id="tomorrow">
+    <input type="hidden" class="J-patientId">
+    <div class="panel-heading">
+      <!-- start 查找 -->
+      <div class="row">
+        <form id="J-search-member-form" method="post" class="form-inline" action="/japi/session/190110">
+          <div class="col-sm-2 col-md-4">
+              <div calss="form-group">
+                <a class="btn btn-sm btn-default J-export-member" href="/japi/session/200095?is_export=true">导出会员</a>
+              </div>
+          </div>
+          <div class="col-sm-9 col-md-8 pull-right text-right" id="J-type-patient">
+            <div class="form-group mr5 J-module-control" data-modules="33">
+              <label class="control-label display-none">请选择会员的状态：</label>
+              <select class="form-control input-xs2 J-patient-member-status col-custom-xs-12" data-placeholder="请选择会员的状态" name="member_expired">
+                <option value="">请选择会员的状态</option>
+                <option value="0">正常</option>
+                <option value="1">到期</option>
+              </select>
+            </div>
+            <div class="form-group mr5 J-module-control" data-modules="33">
+              <label class="control-label display-none">会员类型：</label>
+              <select class="form-control input-xs2 J-patient-member-type col-custom-xs-12" data-placeholder="会员类型" name="member_type">
+              </select>
+            </div>
+            <div class="form-group mr5">
+              <label class="control-label display-none">患者姓名或手机号：</label>
+              <input type="text" size="24" class="form-control input-sm2 col-custom-xs-12 J-patient-member-name" id="J-patient-member-name" placeholder="输入患者姓名/手机号后4位" name="patient_name_mobile">
+            </div>
+            <button class="btn btn-default btn-sm col-custom-xs-12 j_member_search_submit" type="submit" onclick="return false;">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- end 查找 -->
+    </div>
+    <div class="panel-body">
+      <!-- 会员管理列表 -->
+      <div class="bloglist row">
+        <table class="table table-bordered table-hover table-gray background-white fixed-header-setting pos-relative J-patient-list-table">
+          <thead>
+            <tr class="font12">
+              <th class="font-wb table-action" width="10%">姓名</th>
+              <th class="font-wb table-action" width="10%">手机号</th>
+              <th class="font-wb table-action" width="10%">会员类型</th>
+              <th class="font-wb table-action" width="10%">累计消费
+                <span class="tooltips pull-right" data-toggle="tooltip" data-placement="top" data-original-title="扣减退费金额">
+                  <i class="fa fa-exclamation-triangle"></i>
+                </span>
+              </th>
+              <th class="font-wb table-action" width="10%">储值余额</th>
+              <th class="font-wb table-action" width="10%">累计储值
+                <span class="tooltips pull-right" data-toggle="tooltip" data-placement="top" data-original-title="扣减退费金额">
+                  <i class="fa fa-exclamation-triangle"></i>
+                </span>
+              </th>
+              <th class="font-wb table-action" width="10%">到期日期</th>
+              <th class="font-wb table-action" width="10%">积分</th>
+              <th class="font-wb table-action" width="8%">状态</th>
+              <th class="font-wb table-action" width="12%">操作</th>
+            </tr>
+          </thead>
+          <tbody id="J-member-list-wrap">
+          </tbody>
+        </table>
+      </div>
+      <div class="j_page_wrap2"></div>
+    </div>
+    <!-- start 充值弹窗 -->
+    <div class="modal fade" id="member-recharge-modal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">充值</h4>
+                    </div>
+                    <input type="hidden" name="orderNo" class="J-recharge-orderNo" value="">
+                    <input type="hidden" class="J-recharge-force" value="false">
+                    <div class="modal-body" id="J-recharge-panel-wrap-2">
+                        <!-- 充值面板 -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary disabled J-recharge-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end 充值弹窗 -->
+
+    <!-- start 退款弹窗 -->
+    <div class="modal fade" id="member-refund-modal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">退款</h4>
+                    </div>
+                    <div class="modal-body" id="J-refund-panel-wrap-2">
+                        <!-- 退款面板 -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary J-refund-submit">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end 退款弹窗 -->
+
+    <!-- start 会员设置 -->
+    <div class="modal fade" id="member-modal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel-2">设置会员</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="J-member-form-2">
+                        <div class="form-group pt10">
+                            <label class="col-sm-3 control-label">选择会员类型:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="patient_id">
+                                <input type="hidden" name="member_id">
+                                <select class="form-control input-sm mt0 J-member-list-2" name="id" data-placeholder="请选择">
+                                    <option value="0">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group pt10 J-time-setting">
+                            <label class="col-sm-3 control-label">到期日期:</label>
+                            <div class="col-sm-8">
+                                <input class="form-control input-sm mt0" name="expire_time" type="text" id="expire_time">
+                                <p class="pt10">不填写表示永久有效</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-member-submit-2">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end 会员设置 -->
+    <!-- 判断是否覆盖订单 -->
+    <div class="modal fade" id="warrningPay-modal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">提示</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>该充值卡已被<span class="J-name"></span>正在充值，是否重新充值？</h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-reorder-submit">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 判断是否覆盖订单 -->
+  </div>
+</div>
+
+<!-- start 会员管理-会员列表模板 -->
+<script type="text/template" id="J-patient-member-tpl">
+  <td class="table-action">
+    <%- name%>
+  </td>
+  <td class="table-action">
+    <%- mobile%>
+  </td>
+  <td class="table-action">
+    <%- member_type%>
+  </td>
+  <td class="table-action">
+    <%- consumption_accumulate%>
+  </td>
+  <td class="table-action">
+    <%- member_card_balance%>
+  </td>
+  <td class="table-action">
+    <%- recharge_accumulate%>
+  </td>
+  <td class="table-action">
+    <%- expire_time%>
+  </td>
+  <td class="table-action">
+    <%- patient_point%>
+  </td>
+  <td class="table-action">
+    <%- is_expire%>
+  </td>
+  <td>
+    <span>
+      <a href="javascript:void(0);" class="J-member-list-recharge" data-id="<%- patient_id %>">充值</a>
+      <span class="hidden J-recharge-btn-2"></span>
+    </span>
+    <span>
+      <a href="javascript:void(0);" class="J-member-list-refund" data-id="<%- patient_id %>">退款</a>
+    </span>
+    <span class="pos-relative">
+      <a href="javascript:void(0);" class="J-member-list-more dropdown-toggle" data-toggle="dropdown">更多</a>
+      <ul class="dropdown-menu dropdown-member" role="menu">
+        <li class="module-hide J-module-control" data-permission="">
+          <a href="javascript:void(0);" class="J-set-member-type" data-id="<%- patient_id %>" data-memberId="<%- member_type_id%>" data-memberLevel="<%-member_level%>" data-expireTime="<%-expire_time%>"><i class="fa fa-user"></i> 设置会员</a>
+        </li>
+      </ul>
+    </span>
+  </td>
+</script>
+<!-- end 会员管理-会员列表模板 -->
+                        <!-- end   会员管理 -->
+                    </div>
+                </div>

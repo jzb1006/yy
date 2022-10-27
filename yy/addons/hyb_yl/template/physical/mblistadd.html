@@ -1,0 +1,72 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			<script type="text/javascript" src="https://www.webstrongtech.com/addons/weliam_merchant/web/resource/js/diyarea.js"></script>
+<ul class="nav nav-tabs" id="myTab">
+	<li class="active" ><a href="#tab_1">基本信息</a></li>
+</ul>
+<div class="app-content">
+<div class="app-form">
+	<form action="" method="post" class="form-horizontal form form-validate">
+		<input type="hidden" name="id" value="" />
+		<div class="tab-content">
+            <!--代理商基本信息-->
+			<div class="tab-pane  active" id="tab_1">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						模板名称
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+				    		<label class="col-sm-2 control-label">模板名称<span class="must-fill">*</span></label>
+				    		<div class="col-sm-9">
+				      			<input type="text" name="moban[title]" required placeholder="请输入模板名称" class="form-control" value="{$item['title']}">
+				    		</div>
+				  		</div>
+				 	<input type="hidden" name="moban[id]" class="form-control" value="{$item['id']}">
+				  		<div class="form-group">
+				    		<label class="col-sm-2 control-label">所属类别<span class="must-fill">*</span></label>
+				    		<div class="col-sm-9">
+				      			<select name="moban[type]" class="form-control">
+		        				  <option {if $item['type'] == '体检'} selected="selected" {/if} value="体检" >体检</option>
+                                  <option {if $item['type'] == '检验'} selected="selected" {/if} value="检验" >检验</option>
+                                  <option {if $item['type'] == '基因'} selected="selected" {/if} value="基因" >基因</option>
+		        				</select>
+				    		</div>
+				  		</div>
+                   
+				  		<div class="form-group">
+				    		<label class="col-sm-2 control-label">是否启用</label>
+				    		<div class="col-sm-9">
+				    			<label class="radio-inline">
+                                    <input type="radio" value="1" name="moban[status]" {if $item['status'] == '1'} checked="checked" {/if}>是
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" value="0" name="moban[status]"  {if $item['status'] == '0'} checked="checked" {/if}>否
+                                </label>
+				    		</div>
+				  		</div>
+					</div>
+				</div>
+			</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label"></label>
+			<div class="col-sm-9">
+				<input type="submit" name="submit" value="提交" class="btn btn-primary min-width" />
+				<input type="hidden" name="token" value="{$_W['token']}" />
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	</body>
+</html>

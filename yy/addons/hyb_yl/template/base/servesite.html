@@ -1,0 +1,59 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            <div class="pageheader hidden">
+                <h2><i class="fa fa-pencil"></i> 服务设置</h2>
+            </div>
+<div class="basics">
+        <div class="main-content">
+            <div class="panel panel-default">
+                <div class="panel-heading no-collapse">
+                    服务设置
+                </div>
+                <div class="panel-body collapse in">
+          <form  action="" method="post" novalidate="novalidate">
+            <input type="hidden" name="id" value="32921">
+            <input type="hidden" name="p" value="1">
+            <input type="hidden" value="0" class="J-stdid">
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">医生服务须知设置</label>
+                                <textarea class="form-control max5000" rows="9" name="fwsite">{$res['fwsite']}</textarea>
+                            </div>
+                        </div>
+                    </div>         
+              
+                        <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+                        <input name="token" type="hidden" value="{$_W['token']}" />
+         
+                </form>
+             </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script type="text/javascript">
+    $(".pianshen_kaiqi_xuanze").click(function(){
+        for(var i = 0;i<$(".pianshen_kaiqi_xuanze").length;i++){
+            $(".pianshen_kaiqi_xuanze").eq(i).removeClass("pianshen_kaiqi_xuanzes").children().eq(0).removeClass("pianshen_kaiqi_xuanze_titles").next().removeClass("pianshen_kaiqi_xuanze_imgs");
+        }
+        $(this).addClass("pianshen_kaiqi_xuanzes").children().eq(0).addClass("pianshen_kaiqi_xuanze_titles").next().addClass("pianshen_kaiqi_xuanze_imgs");
+        console.log($(this).children().eq(0).html());
+        if($(this).children().eq(0).html() == "开启"){
+            $(".pian_lunbu").css("display","block");
+        }else{
+            $(".pian_lunbu").css("display","none");
+        }
+
+    })
+    $(".pian_gai_lun_box_img_div").click(function(){
+        $(this).parent().remove()
+    })
+</script>

@@ -1,0 +1,1695 @@
+/*通用样式*/
+*{margin:0;padding:0;word-wrap:break-word;}
+div,ul,li,p,form,table,dt,dl,dd,tr,i,em,b,a,s{padding: 0px; margin: 0px;list-style-type: none;}
+@font-face {
+    font-family: 'HelveticaLT55Roman';
+    src: url("fonts/HelveticaLT55Roman.eot")/*tpa=http://kv6.user.kesion.com/admin/images/fonts/HelveticaLT55Roman.eot*/;
+    src: url("fonts/HelveticaLT55Roman.eot")/*tpa=http://kv6.user.kesion.com/admin/images/fonts/HelveticaLT55Roman.eot*/ format('embedded-opentype'),
+         url("fonts/HelveticaLT55Roman.woff")/*tpa=http://kv6.user.kesion.com/admin/images/fonts/HelveticaLT55Roman.woff*/ format('woff'),
+         url("fonts/HelveticaLT55Roman.ttf")/*tpa=http://kv6.user.kesion.com/admin/images/fonts/HelveticaLT55Roman.ttf*/ format('truetype'),
+         url("fonts/HelveticaLT55Roman.svg#HelveticaLT55Roman")/*tpa=http://kv6.user.kesion.com/admin/images/fonts/HelveticaLT55Roman.svg#HelveticaLT55Roman*/ format('svg');
+}
+body{width:100%; font-family:'HelveticaLT55Roman',microsoft yahei;color:#6a6f73; font-size:14px;}
+.prebody{ background:#ebeff7;}
+
+textarea, select, input{font-family:'HelveticaLT55Roman',microsoft yahei !important;}
+a{color:#6a6f73;text-decoration:none; cursor:pointer; outline:none}
+a:hover{text-decoration:none; color:#35a7ba;}
+body.s2 a:hover{color: #00a5ce;}
+body.s3 a:hover{color: #0aa46a;}
+body.s4 a:hover{color: #8f5146;}
+body.s5 a:hover{color: #eb613e;}
+body.s6 a:hover{color: #da3535;}
+a:focus{outline:none;}
+img{border:none; } 
+em,i{font-style: normal;font-weight: normal;}
+h3,h4{padding:0px; font-size:14px; font-weight:bold;}
+.clearfix:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.clear{ height:0px; clear:both; overflow:hidden;}
+.blank10{ height:10px; overflow:hidden;}
+.blank20{ height:20px; overflow:hidden;}
+.blank30{ height:30px; overflow:hidden;}
+.left{float:left; display:inline;}
+.right{float:right; display:inline;}
+.a-left{ text-align:left !important;}
+.f12{font-size:12px;}
+.f14{font-size:14px;}
+.f16{font-size:16px;}
+.co_red{color:#FD9EA4;}
+.co_blue{color:#27a9e3;}
+.co_666{color:#666;}
+.mr0{margin-right:0px;}
+.mt5{ margin-top:5px;}
+.mt20{ margin-top:20px;}
+.md20{ margin-bottom:20px;}
+.md10{ margin-bottom:10px;}
+.ml30{ margin-left:30px;}
+
+.fr{ float:right !important}
+.fl{ float:left !important}
+.pd2{ padding:0px 2px;}
+.pd20{ padding-bottom:20px !important;}
+.noBorderTop{border-top:0px !important;}
+.l_height36{ line-height:36px;}
+@font-face {font-family: "iconfont";
+  src: url("font/iconfont.eot-t=1463112213")/*tpa=http://kv6.user.kesion.com/admin/images/font/iconfont.eot?t=1463112213*/; /* IE9*/
+  src: url("font/iconfont.eot-t=1463112213#iefix")/*tpa=http://kv6.user.kesion.com/admin/images/font/iconfont.eot?t=1463112213#iefix*/ format('embedded-opentype'), /* IE6-IE8 */
+  url("font/iconfont.woff-t=1463112213")/*tpa=http://kv6.user.kesion.com/admin/images/font/iconfont.woff?t=1463112213*/ format('woff'), /* chrome, firefox */
+  url("font/iconfont.ttf-t=1463112213")/*tpa=http://kv6.user.kesion.com/admin/images/font/iconfont.ttf?t=1463112213*/ format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url("font/iconfont.svg-t=1463112213#iconfont")/*tpa=http://kv6.user.kesion.com/admin/images/font/iconfont.svg?t=1463112213#iconfont*/ format('svg'); /* iOS 4.1- */
+}
+.red{color:#fa431b !important;}
+.green{color:#47a162 !important;}
+.pLeft20{ padding-left:20px !important;}
+.pLeft10{ padding-left:10px;}
+.size24{ font-size:24px;}
+.hide{ display:none !important;}
+.ml20{ margin-left:20px;}
+.ml15{ margin-left:15px;}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0px;
+  -moz-osx-font-smoothing: grayscale;
+  padding-right:3px;
+}
+.h20{ height:20px;}
+.font1{ color:#8C8C8C;}
+.font2{ color:#525252;}
+.price-color{color:#f46344 !important;}
+.gray{color:#90969c;}
+.gray2{color:#62686A;}
+.textLeft{ text-align:left;}
+.size14{ font-size:14px;}
+.starImg{height:14px; display:block;margin:0 auto; overflow:hidden;}
+.floatLeft{float:left;}
+.noPadRight{ padding-right:0px;}
+.pl_pr2{ padding:0px 2px;}
+
+
+::-webkit-scrollbar {/*滚动条整体样式*/
+	width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+	height: 8px;
+}
+::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	border-radius: 10px;
+	background: rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-track {/*滚动条里面轨道*/
+   background: none;
+}
+/**header**/
+.mainHeader{height:50px; line-height:50px; background:#35a7ba; background-size:cover; position:relative; z-index:9000; padding:0px 360px 0px 0px;}
+.mainHeader .logo{float:left; padding:15px 0px 0px 15px;width:186px;}
+.mainHeader #ShowAnnounce{ padding-left:20px;margin-top:-5px; }
+.mainHeader .logo img{max-height:23px;float:left;}
+.mainHeader .logo .version{color:#f7e4a2; line-height:16px;padding-left:10px;float:left; display:none;}
+.mainHeader .navBar{float:left; padding-left:25px;}
+.mainHeader .navBar li{float:left; font-size:16px;padding: 0px 35px 0 35px;cursor:pointer;color:#fff;filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5;  opacity: 0.5;}
+.mainHeader .navBar li.on{ filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity:1;  opacity: 1;}
+
+.mainHeader .navBar li.course-icon{ background:url("topnav1.png")/*tpa=http://kv6.user.kesion.com/admin/images/topnav1.png*/ no-repeat left center;}
+.mainHeader .navBar li.order-icon{ background:url("topnav2.png")/*tpa=http://kv6.user.kesion.com/admin/images/topnav2.png*/ no-repeat left center;}
+.mainHeader .navBar li.fx-icon{ background:url("topnav3.png")/*tpa=http://kv6.user.kesion.com/admin/images/topnav3.png*/ no-repeat left center;}
+.mainHeader .navBar li.exam-icon{ background:url("topnav4.png")/*tpa=http://kv6.user.kesion.com/admin/images/topnav4.png*/ no-repeat left center;}
+.mainHeader .navBar li.user-icon { background:url("topnav5.png")/*tpa=http://kv6.user.kesion.com/admin/images/topnav5.png*/ no-repeat left center;}
+.mainHeader .navBar li.setup-icon { background:url("topnav6.png")/*tpa=http://kv6.user.kesion.com/admin/images/topnav6.png*/ no-repeat left center;}
+.mainHeader .navBar li.yun-icon { background:url("topnav7.png")/*tpa=http://kv6.user.kesion.com/admin/images/topnav7.png*/ no-repeat left center;}
+
+.mainHeader .navAuto li{ padding:0px 12px;}
+.mainHeader .r-button{ position:absolute;right:20px;top:0; font-size:14px;}
+.mainHeader .r-button a{color:#fff !important;filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;}
+.mainHeader .r-button a:hover{filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity:1;  opacity: 1;}
+.mainHeader .r-button li{float:left; padding:0px 10px; position:relative;}
+.mainHeader .r-button .icon{float:left;width:21px;height:24px; display:block;margin-top:11px;background:url("headicon.png")/*tpa=http://kv6.user.kesion.com/admin/images/headicon.png*/ no-repeat;filter:alpha(opacity=70); -moz-opacity:0.7; -khtml-opacity: 1;  opacity: 1; -webkit-transition:0.3s; transition:0.3s;}
+.mainHeader .r-button .home-icon{background-position:0px 2px; }
+.mainHeader .r-button .pc-icon{ background-position:-44px 1px;}
+.mainHeader .r-button .phone-icon{ background-position:-88px 1px;}
+.mainHeader .r-button .refresh-icon{width:24px; background-position:-136px 2px;}
+.mainHeader .r-button .icon:hover{filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity:1;  opacity: 1;}
+.mainHeader .r-button .userinfo span{color:#fff;filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1; background:url("arrow.png")/*tpa=http://kv6.user.kesion.com/admin/images/arrow.png*/ no-repeat 100% 50%; padding-right:15px; cursor:pointer; -webkit-transition:0.3s; transition:0.3s;}
+.mainHeader .r-button .userinfo:hover span{filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity:1;  opacity: 1;}
+.mainHeader .operating{ position:absolute;width:300px; top:44px;left:-200px;border:1px solid #e9eced; box-shadow:0 1px 6px rgba(0,0,0,0.12);border-radius:4px; background:#fff; padding:15px 20px;color:#999; display:none;}
+.mainHeader .operating .arrow{width:11px;height:8px; background:url("arrow-up.png")/*tpa=http://kv6.user.kesion.com/admin/images/arrow-up.png*/ no-repeat; position:absolute;right:95px;top:-6px; display:none;}
+.mainHeader .operating .name{ font-size:16px; line-height:26px;height:26px; overflow:hidden;}
+.mainHeader .operating .name .mainColor{ font-size:12px; padding-left:15px;}	
+.mainHeader .operating .info{ line-height:22px;font-size:12px;}
+.mainHeader .operating .info em{ padding-right:20px;}
+.mainHeader .operating .btn a{filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity:1;  opacity: 1;color:#999; font-size:12px;float:left; margin:0 20px; line-height:26px;}
+.mainHeader .operating .btn .myicon{width:21px;height:21px; display:block;margin:0 auto;margin-top:20px; background-image:url("user-operating.png")/*tpa=http://kv6.user.kesion.com/admin/images/user-operating.png*/; background-repeat:no-repeat;}
+.mainHeader .operating .btn .icon-password{ background-position:1px 0;}
+.mainHeader .operating .btn .icon-out{ background-position:-94px 0;}
+.mainHeader .operating .btn a:hover{color:#15bdad;}
+.mainHeader .operating .btn a:hover .myicon{ background-image:url("user-operating-on1.png")/*tpa=http://kv6.user.kesion.com/admin/images/user-operating-on1.png*/;}
+
+/*分隔块*/
+.moduleblock{background:#fff;height:52px;line-height:52px; padding-left:20px; box-sizing:border-box;font-size: 16px; position:relative;}
+.moduleblock:before{ position:absolute; width:2px; height:26px; background:#35a7ba; border-radius:2px; left:0; top:50%; margin-top:-13px; content:'';}
+/**风格**/
+.stencil .border{position:relative;  overflow:hidden; margin:0 15px 30px;border: 1px solid #dce4e5;padding: 15px;border-radius: 8px;}
+.stencil .border .s_name{ display:block; font-weight:normal;font-size:18px;padding:5px 0px 0px;}
+.stencil .border .s_name .Tid{font-size:14px; font-weight:normal; color:#90969B; margin-top:5px;}
+.stencil .border .s_name .Tid em{ padding-right:15px;}
+.stencil .border .s_name .Tid span{ line-height:22px; height:22px;}
+.stencil .border .s_name .Tid .systemColor{ color:#35a7ba;}
+.stencil .border .s_name .systemColor .redFont{ color:#ec4a46; margin-left:5px;}
+.stencil .border .s_name .price em{ font-size:16px; padding:0; color:#F46344}
+.stencil .border .s_name .price font{ color:#30b96a}
+.stencil .border .s_name .guan{ font-size:16px; color:#F90; display:none;}
+.stencil ul li{ width:33.33%; float:left; overflow:hidden;}
+.stencil ul li span{ display:block; height:35px; line-height:35px; }
+.stencil ul li span a{ float:right; display:inline-block; background:#3498DB; border-radius:5px; width:60px; text-align:center; color:#fff; height:26px; line-height:26px;text-decoration:none; font-size:12px; margin:5px; letter-spacing:1px;}
+.stencil .border.curr{}
+.stencil .s_img{ height:90px; width:90px;overflow:hidden; margin-right:20px; float:left}
+.stencil .s_img img{ width:100%; height:auto; min-height:100%}
+.stencil .s_txt{ overflow:hidden; line-height:1; float:left}
+.stencil .s_txt .icon{ height:26px; background-image:url("ico/template-icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/ico/template-icon.png*/; background-repeat: no-repeat;margin:0 auto; width:30px; margin-bottom:8px; display:block;}
+
+.icon-Tfile{ background-position:0 0;}
+.icon-Tlable{ background-position:-126px 0;}
+.icon-Tlable-js{ background-position:-263px 0;}
+.icon-Texported{ background-position:-387px 0;}
+
+.stencil .s_txt a{ border:#E8ECED solid 1px; float:left; border-radius:5px; margin-right:15px; text-align:center; width:110px; padding:10px 0; color:#90969C; -webkit-transition:0.3s; transition:0.3s;}
+.stencil .s_txt a:hover{ border-color:#0FB4DC; color:#0FB4DC}
+
+.stencil .s_txt a:hover .icon{ background-image:url("ico/template-icon-on.png")/*tpa=http://kv6.user.kesion.com/admin/images/ico/template-icon-on.png*/; background-repeat: no-repeat;}
+
+.stencil .s_rbox{float:right}
+
+.stencil .s_txt2{ background:url("green.png")/*tpa=http://kv6.user.kesion.com/admin/images/green.png*/; width:100%; height:85px; position:absolute; bottom:-85px; left:0; font-size:0 }
+.stencil .s_txt2 .icon{ font-size:26px; text-align:center; padding-top:10px; padding-right:0;}
+.stencil .s_txt2 .suc{ color:#3498DB;}
+.stencil .s_txt2 a{ width:50%; color:#fff; display:inline-block;text-align:center; height:85px; text-decoration:none; font-size:13px; float:left; }
+
+.stencil .border .check{ position:absolute;top:-50px; left:30%;}
+.stencil .border .check a{ display:inline-block; width:50px; height:50px; line-height:40px; border-radius:50%; background:#fff; text-align:center;}
+
+ /*filterbox*/
+.filterbox{position:relative;border:1px solid #ebebeb;border-radius:4px;margin-bottom:20px;}
+.filterbox ul{ background-color:white; text-indent:20px;border-radius:3px;}
+.filterbox li{ position: relative;border-top:1px dashed #ebebeb;padding:5px 0 15px 100px;}
+.filterbox li:first-child{border-top:0px;}
+.filterbox li span{width: 100px;font-size: 14px;line-height:30px;position: absolute;left:0px;top: 15px; color:#6b6b6b;}
+.filterbox li a{float: left;margin:5px 30px 5px 0;font-size: 14px;color: #828282;line-height: 24px; }
+.filterbox li a.curr,
+.filterbox li a:hover{color:#3ab57f;}
+.filterbox li:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.filterbox .path-now{font-size: 16px;color: #333;margin-bottom:20px;}
+
+.filterTips{padding-left:100px;font-weight:bold;color:#ff0000}
+.filterTips .num{color:#3ab57f;}
+.filtermore{position:absolute;right:0px;top:30px;padding-right:8px;font-weight:bold;display:none;cursor:pointer;z-index:9;}
+
+
+/**表单**/
+input[type="text"],
+input[type="password"]{height:36px; outline:0; border:#dce4e6 solid 1px;background-color:#fff; padding:0 5px; box-sizing:border-box;}
+input[type="checkbox"], input[type="radio"]{ background-image:url("check.png")/*tpa=http://kv6.user.kesion.com/admin/images/check.png*/; background-position:0 0; width: 17px; height: 17px; outline: none; -webkit-appearance: none;vertical-align: middle; margin-right:5px; cursor:pointer;}
+input[type="checkbox"]{ background-position:-209px 0;}
+input[type="checkbox"]:checked{ background-position:-156px 0;}
+input[type="radio"]{ background-position:-76px 0}
+input[type="radio"]:checked{ background-position:0 0;}
+label{ padding-right:16px;}
+.CTable input[type="text"],
+.CTable input[type="password"]{ width:312px;background-image:url("linebg.png")/*tpa=http://kv6.user.kesion.com/admin/images/linebg.png*/; background-repeat:repeat-x;border-radius:0;}
+.CTable input[type="password"]{padding:0 10px; }
+input[type="checkbox"]:disabled:checked{background:url("checkbox-disabled.png")/*tpa=http://kv6.user.kesion.com/admin/images/checkbox-disabled.png*/ no-repeat;}
+input[type="checkbox"]:disabled{background-image: url("check.png")/*tpa=http://kv6.user.kesion.com/admin/images/check.png*/;background-position: -209px 0;}
+input[type="radio"]:disabled:checked{ background:url("radio-disabled.png")/*tpa=http://kv6.user.kesion.com/admin/images/radio-disabled.png*/ no-repeat;}
+input[type="radio"]:disabled{background-image: url("check.png")/*tpa=http://kv6.user.kesion.com/admin/images/check.png*/;background-position: -76px 0;}
+input:disabled+label{ color:#B0B9BF}
+
+.CTable .schedule{ overflow:hidden;width:260px;margin:0 auto;}
+.CTable .schedule .linetop{width:200px;height:10px;border-radius:30px;margin-top:6px; background:#d1d9df; text-indent:-9999px;float:left; position:relative;}
+.CTable .schedule .linebg{width:0%;height:100%; position:absolute;border-radius:30px; }
+.CTable .schedule span{color:#90969c;}
+
+body.s2 input[type="checkbox"], body.s2 input[type="radio"]{ background-image: url("check2.png")/*tpa=http://kv6.user.kesion.com/admin/images/check2.png*/;}
+body.s3 input[type="checkbox"], body.s3 input[type="radio"]{ background-image: url("check3.png")/*tpa=http://kv6.user.kesion.com/admin/images/check3.png*/;}
+body.s4 input[type="checkbox"], body.s4 input[type="radio"]{ background-image: url("check4.png")/*tpa=http://kv6.user.kesion.com/admin/images/check4.png*/;}
+body.s5 input[type="checkbox"], body.s5 input[type="radio"]{ background-image: url("check5.png")/*tpa=http://kv6.user.kesion.com/admin/images/check5.png*/;}
+body.s6 input[type="checkbox"], body.s6 input[type="radio"]{ background-image: url("check6.png")/*tpa=http://kv6.user.kesion.com/admin/images/check6.png*/;}
+
+.mainBgColor{background:#15bdad;}
+
+
+
+.navbox { background:#fff; width: 320px; position:fixed;right:-320px;top:0px;height:100%; overflow-x:hidden; overflow-y:auto;}
+.navbox .close{width:13px;height:13px; background:url("close.png")/*tpa=http://kv6.user.kesion.com/admin/images/close.png*/ no-repeat; position:absolute;right:15px;top:15px; -webkit-transition:0.3s; transition:0.3s; cursor:pointer;}
+.navbox .close:hover{ background:url("close-on.png")/*tpa=http://kv6.user.kesion.com/admin/images/close-on.png*/ no-repeat;}
+.navbox #demo .name{ padding-left:20px;margin-top:20px;}
+.navbox .navbox-tiles{margin-top:20px; font-size:12px; line-height:22px; padding:0px 20px;color:#63686b; overflow:hidden;}
+.navbox .navbox-tiles .name{ margin-bottom:-27px;}
+.navbox .navbox-tiles img{height:30px;width:auto; display:none;}
+.navbox .navbox-tiles .tips{color:#8c9499; padding-bottom:5px; display:block;}
+.navbox .navbox-tiles div{ text-align:left !important;}
+.navbox .changecolor .colorbutton{ display:block;}
+.navbox .changecolor .colorbutton a{ background:#6f7c83; display:block;width:100px;float:left;height:30px; line-height:30px; text-align:center;border-radius:3px;margin:10px 0px 0px 20px;border:1px solid #6f7c83; -webkit-transition:0.3s; transition:0.3s;filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;} 
+.navbox .changecolor .colorbutton a:hover{ background:#647077;border:1px solid #647077; color:#fff;}
+.navbox .changecolor .colorbutton .shut{ border:1px solid #d0d7d9; background:#fff;color:#63686b !important;}
+.navbox .changecolor .colorbutton .shut:hover{ background:#f3f5f6; border:1px solid #d0d7d9;}
+.navbox .button{margin-top:10px; margin-bottom:20px; display:block;}
+.navbox .detail{color:#8c9499; font-size:12px !important;}
+.navbox .menuSetup{ padding:0px 20px 0px 5px; font-size:12px;}
+.navbox .menuSetup label{ cursor:pointer; padding-right:0px; padding-left:15px;}
+
+.top-bar {  height: 43px;  position: relative;  z-index: 1000;}
+.top-bar .bar { width: 100%;  z-index: 2;}
+.top-bar .navbox {}
+#wrapbg{width:100%;height:100%; background:url("rgba0-12.png")/*tpa=http://kv6.user.kesion.com/admin/images/rgba0-12.png*/; position:fixed;top:0;left:0; display:none;}
+
+.top-bar.navbox-open {}
+.top-bar.navbox-open .navbox-trigger {  background-color: #484747;}
+.top-bar.navbox-open .navbox { visibility: visible; opacity: 1; overflow-y:auto}
+
+
+
+.detail{ margin-bottom:10px;}
+.pane{ margin-top:10px;}
+.top .right .t8 .changecolor{margin-bottom:20px;}
+.top .right .t8 .changecolor .icons a{ color:#000; width: 80px; display: inline-block;line-height: 20px;}
+.top .right .t8 .changecolor .colorbutton{margin-top: 10px;}
+.top .right .t8 .changecolor .colorbutton a{ width:100px; background:#A0A0A0; display:inline-block; margin:0 10px; border-radius:5px; height:30px; line-height:30px; font-size:13px; }
+.name{ height:34px; line-height:34px;color:#303234; font-size:14px; text-align:left !important; }
+.icons{ padding:0px 10px 0px 20px;}
+.icons em{width:30px; height:30px; border-radius:50%; float:left; margin-right:10px;}
+.icons .c1{ background:#0fc7b8; }
+.icons .c2{ background:#00b0d5;}
+.icons .c3{ background:#2abd6a;}
+.icons .c4{ background:#534240; }
+.icons .c5{ background:#e77f0e;}
+.icons .c6{ background:#e53838;}
+.icons .curr .c1{background:#0fc7b8 url("yesicon.png")/*tpa=http://kv6.user.kesion.com/admin/images/yesicon.png*/ no-repeat 50% 50%; }
+.icons .curr .c2{background:#00b0d5 url("yesicon.png")/*tpa=http://kv6.user.kesion.com/admin/images/yesicon.png*/ no-repeat 50% 50%; }
+.icons .curr .c3{background:#2abd6a url("yesicon.png")/*tpa=http://kv6.user.kesion.com/admin/images/yesicon.png*/ no-repeat 50% 50%; }
+.icons .curr .c4{background:#534240 url("yesicon.png")/*tpa=http://kv6.user.kesion.com/admin/images/yesicon.png*/ no-repeat 50% 50%; }
+.icons .curr .c5{background:#e77f0e url("yesicon.png")/*tpa=http://kv6.user.kesion.com/admin/images/yesicon.png*/ no-repeat 50% 50%;}
+.icons .curr .c6{background:#e53838 url("yesicon.png")/*tpa=http://kv6.user.kesion.com/admin/images/yesicon.png*/ no-repeat 50% 50%; }
+
+body.s1 .mainHeader{background:#35a7ba;}
+body.s2 .mainHeader{background:#0fc4b5 url("navbg1.png")/*tpa=http://kv6.user.kesion.com/admin/images/navbg1.png*/ repeat-y; background-size:cover;}
+body.s3 .mainHeader{background:#1ec260 url("navbg3.png")/*tpa=http://kv6.user.kesion.com/admin/images/navbg3.png*/ repeat-y; background-size:cover;}
+body.s4 .mainHeader{background:#5f4c44 url("navbg4.png")/*tpa=http://kv6.user.kesion.com/admin/images/navbg4.png*/ repeat-y; background-size:cover;}
+body.s5 .mainHeader{background:#eb7e3e url("navbg5.png")/*tpa=http://kv6.user.kesion.com/admin/images/navbg5.png*/ repeat-y; background-size:cover;}
+body.s6 .mainHeader{background:#e02c56 url("navbg6.png")/*tpa=http://kv6.user.kesion.com/admin/images/navbg6.png*/ repeat-y; background-size:cover;}
+
+
+.mainColor{color:#15bdad;}
+body.s2 .mainColor{color:#00a5ce;}
+body.s3 .mainColor{color:#0aa46a;}
+body.s4 .mainColor{color:#8f5146;}
+body.s5 .mainColor{color:#eb613e;}
+body.s6 .mainColor{color:#da3535;}
+
+body.s2 .moduleblock:before{ background:#00a5ce;}
+body.s3 .moduleblock:before{ background:#0aa46a;}
+body.s4 .moduleblock:before{ background:#8f5146;}
+body.s5 .moduleblock:before{ background:#eb613e;}
+body.s6 .moduleblock:before{ background:#da3535;}
+
+
+/*分页样式*/
+
+.fenye{ margin-top:20px; }
+i.all_icon{ display:inline-block; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat; display:inline-block; width:22px; height:32px; position:absolute; left:2px; top:0px}
+/*头部*/
+.top{ position:fixed;height:52px;z-index:103;left:0px;top:0; width:100%;_position:absolute;_top:0; box-shadow:#666 0px 0px 10px;}
+.rightnav{ position:relative; height:100%;}
+
+.scroll_Rcontent{ padding-right:20px; width:auto; padding-bottom:20px;}
+.content-area{ background:#fff; padding:20px;border-radius:10px; margin-left:20px;}
+.pageBlank{ margin-bottom:55px;}
+.footBlank{ margin-bottom:59px;}
+
+
+.top .ro{ position:absolute; top:20px; left:20%; width:400px }
+.top .logo{ float:left; width:220px; height:50px;overflow:hidden;}
+.top .logo img{ margin:3px 0 0 10px;}
+
+.top .right{ float:right;  position:relative; right:0; }
+.top .right li{  float:left;margin-top:12px; text-align:center;_display:inline;}
+.top .right li a{ display:block;font-size:12px; color:#fff; width:35px; height:35px; line-height:35px;-webkit-transition: 500ms;-moz-transition: 500ms;-ms-transition: 500ms;-o-transition: 500ms;transition: 500ms; }
+.top .right li  i{background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat; display:inline-block;height:24px; width:24px; cursor:pointer;}
+.top .right li a:hover{ opacity:1; filter:alpha(opacity=100); text-decoration:none}
+.top .right li.t1  i{ background-position:1px -624px; }
+.top .right li.t2 i{background-position:-27px -624px;}
+.top .right li.t3 i{background-position:-55px -624px;}
+.top .right li.t4 i{background-position:-82px -624px;}
+.top .right li.t5 i{background-position:-112px -624px;}
+.top .right li.t6 i{background-position:-144px -624px;}
+.top .right li.t8 i{background-position:-201px -624px; float:left; margin-top:2px;}
+
+
+.top .right li.t8{ margin:9px 10px 0 10px;}
+.top .right li.t7 i{background-position:-172px -624px;  }
+.right ul li{position:relative;}
+.right .cornerTL{position:absolute;left:0;top:0;width:0;height:0;background:#A0A0A0; border-radius:3px;overflow:hidden;_zoom:1;}
+#navbox-trigger{ width:60px; line-height:30px;}
+
+.new_date{ color: #fff;filter:alpha(opacity=65); -moz-opacity:0.65; -khtml-opacity: 0.65;  opacity: 0.65;}
+
+
+#closeBtn{ position:absolute; top:50%; z-index:999; height:27px; width:15px; display:none;}
+.left_frame_close{background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -271px -114px;left:66px; }
+.left_frame_open{background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -290px -114px;left:220px; }
+
+#manage_top {height:51px;border-bottom:1px solid #e8eced;line-height:51px;background:#fff; left:0;  position:fixed; width:100%; font-size:14px; z-index:99999;text-indent:20px;}
+.menu_top_fixed{z-index:100;top:0px;position:fixed;_position:relative;}
+.menu_top_fixed_height{height:71px; overflow:hidden;}
+.menu_top_fixed_height2{height:44px;}
+#manage_top strong,#manage_top b{ font-weight:normal}
+.menu_top_fixed .tabButton{margin:8px 15px 0px 0px;}
+.menu_top_fixed .quickSearch{margin:2px 15px 0px 0px;}
+.menu_top_fixed .quickSearch select{height:32px;min-height:32px;margin:4px 5px 0px 0px;}
+.menu_top_fixed .quickSearch input[type="text"]{height:30px;min-height:30px;}
+.menu_top_fixed .quickSearch .button,.menu_top_fixed .quickSearch .button_on{height:32px; line-height:32px;}
+
+.fixed-search{float:right;margin:6px 15px 0px 0px;}
+.fixed-search input[type="text"]{ padding:0px 10px;height:30px; line-height:30px;float:left; }
+.fixed-search select{height:32px;min-height:32px; margin-left:5px;float:left; }
+.fixed-search .sc-button{ background:#f5f8f9 url("icon-sc.png")/*tpa=http://kv6.user.kesion.com/admin/images/icon-sc.png*/ no-repeat 50% 50%;height: 32px; margin-left:5px; width:44px;cursor: pointer;border:none; border-radius: 3px; outline:none; font-size:12px;border:1px solid #e6e9ea;color:#62686a;-webkit-transition:0.3s; transition:0.3s; display:inline-block;}
+.fixed-search .sc-button:hover{background: #f3f5f6 url("icon-sc.png")/*tpa=http://kv6.user.kesion.com/admin/images/icon-sc.png*/ no-repeat 50% 50%;}
+
+.linkSpacing{ padding:0px 10px;} 
+.linkSpacing a{float:left; width:50%; margin:0px !important; padding:0px !important; text-align:center;}
+.linkSpacing i{ padding:0px 1px;}
+
+#manage_top .liwrap{ float:left; height:43px; position:relative}
+#manage_top .topcd{ position:absolute; top:34px; background:#fff; line-height:27px; width:100%; box-shadow: 0 1px 6px rgba(0,0,0,0.15);color: #62686A; padding:5px 0}
+#manage_top .topcd a{ text-align:center; display:block; left:0; padding:0 10px;font-size: 14px;}
+
+
+#manage_top ul{ padding:9px 0px 0px 10px; font-size:12px; text-indent:0}
+#manage_top li{height:33px; display:block;  float:left; text-align:center; line-height:33px;_display:inline;padding:0px 15px 0px 5px;margin: 0px 0px 0 30px;font-size:14px; text-indent:0}
+#manage_top li a{ height:33px; line-height:33px;zoom:1;text-decoration:none;}
+#manage_top li a:hover{text-decoration:none;color:#303234; }
+#manage_top li.curr a,
+#manage_top li.curr a:hover{ color:#fff !important;display: block;border-radius: 25px; background:#35a7ba;}
+
+#manage_top .titleTab{ padding-left:20px;}
+#manage_top .titleTab li{padding:0;}
+#manage_top .titleTab li a{ font-size:16px;padding:0 18px;}
+
+
+/*操作按钮*/
+#manage_top li b  { display:block; float:left; background: url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat;height:24px;width:24px;overflow:hidden; padding-right:4px;margin-top: 4px;}
+*+html #manage_top li a {}/* IE7 hack */
+
+#manage_top li#p1 b {background-position: 4px -74px;  }/*添加*/
+#manage_top li#p2 b { background-position:2px -23px;}/*右箭头*/
+#manage_top li#p3 b {background-position:-28px -74px;}/*删除*/
+#manage_top li#p4 b {background-position:-122px -23px;}/*编辑*/
+#manage_top li#p5 b { background-position:-85px -164px;}/*设置*/
+#manage_top li#p6 b { background-position:-27px -23px;}/*左箭头*/
+#manage_top li#p7 b {background-position:-144px -76px;}/*排序*/
+#manage_top li#p8 b {background-position:-146px -106px;}/*添加文章*/
+#manage_top li#p9 b {background-position:-92px -23px;}/*上箭头*/
+#manage_top li#p10 b {background-position:-112px 3px;}/*更新*/
+#manage_top li#p11 b {background-position:-60px -23px;}/*下箭头*/
+#manage_top li#p12 b {background-position:-58px 3px;}/*克隆*/
+#manage_top li#p13 b {background-position:-85px -75px;}/*取消*/
+#manage_top li#p14 b {background-position:-145px -75px;}/*批量*/
+#manage_top li#p15 b {background-position:-23px -47px;}/*生成*/
+#manage_top li#p16 b {background-position:-23px -164px;}/*锁*/
+#manage_top li#p17 b {background-position:-55px -164px;}/*解锁*/
+#manage_top li#p18 b {background-position:-152px -138px;}/*导出*/
+#manage_top li#p19 b {background-position:-118px -106px;}/*评论*/
+#manage_top li#p20 b {background-position:0px -137px;}/*会员*/
+#manage_top li#p21 b {background-position:-28px -105px;}/*爱心*/
+
+#manage_top #go{ float:right;}
+.menu_top_fixed .li-tit{ font-size:14px !important; margin-right:13px;}
+.allCheck{ line-height:32px;}
+.toptitle{text-align:left; font-size:14px; text-indent:20px;}
+.toptitle span{ margin-right:10px;}
+
+.message{ border: 1px solid #f2ece3; border-radius: 5px; margin:10px 0 0px 0px; padding:12px 15px; text-align: left; font-size: 12px; word-break: break-all; overflow:hidden; background:#fffcef; line-height:22px;}
+
+
+.colmn{ margin:5px 0;}
+.state{ background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -406px -185px; padding:5px 0px 5px 20px;}
+
+
+.textbox{width:245px; min-height:32px; padding:0 6px; background-color:#fff; color:#333; outline:none;resize: none; border:#D1D6D9 solid 1px;margin-right:10px; -webkit-transition:0.3s; transition:0.3s;}
+
+.operationNotice{ margin:0px 0px 20px 20px;}
+
+
+.mtext{width:478px; min-height:88px;float:left; padding:7px 10px; line-height:22px; background-color:#fff; color:#333; outline:none;resize: none; border:#D1D6D9 solid 1px;margin-right:10px; -webkit-transition:0.3s; transition:0.3s;}
+.mtext-tips{ line-height:102px;}
+
+
+.textbox2{width:210px; height:150px; line-height:25px;  padding-left:2px; border:1px solid ;  border-color:#D1D6D9; background:#F9F9F9; color:#333; resize: none;}
+
+
+.textbox:hover, .textbox:focus, textarea:hover, textarea:focus{ border-color:#35a7ba;}
+.select{border:1px solid #ccc; height:30px;line-height:30px;color:#666;margin:-1px;*margin:0px;_margin:0px; padding:4px 3px;font-size:14px;}
+textarea, select{ padding:6px; border:1px solid; border-color:#ddd; background:#fff;resize: none; line-height:22px;}
+.textarea{ line-height:24px;}
+select{ background:#fff;border:1px solid #dce4e6;min-height:36px;color:#62686A;outline:none;}
+select:focus{ border-color:#35a7ba;}
+/*command*/
+.messagetext {zoom:1; border-left:1px solid #000; border-right:1px solid #000; padding:0 10px;  text-align:left; background:#ffffe1; word-break : break-all; letter-break:break-all;margin:0px; }
+.messagetext img {float:left;margin:0 3px 3px 3px;_display:inline;}
+
+select:disabled,
+.textbox:disabled{ color:#B0B9BF}
+
+.textbox:disabled:hover,
+.textbox:disabled:focus{ box-shadow:none;border-color:#D1D6D9; }
+
+/*command*/
+
+/****/
+#ctl00_KSContent_classArea .button1,.ctl00_KSContent_classArea .button1{ margin:5px 0; display:block;}
+#ctl00_KSContent_Attribute{display: inline-block; line-height: 30px; margin-bottom:10px;}
+#ctl00_KSContent_Attribute label{ margin-right:8px;font-size:13px;vertical-align: middle;}
+
+.checklist ul{ overflow:hidden}
+.checklist ul li{ padding:8px 0;}
+.checklist ul li label input{ float:left}
+
+
+/*新增操作图标*/
+.Ctd 
+a.edit, 
+a.delete,
+a.del,
+a.copy,
+a.apply,
+a.ok,a.no,
+a.money,
+a.preview,
+a.backBtn,
+a.showBtn,
+a.backgj,
+a.verify,
+a.create,
+a.print,
+a.rename,
+a.export,
+a.report
+{display:inline-block;width:18px;height:0;padding-top:18px;overflow:hidden;background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat 0 0;vertical-align:middle; margin:0 4px}
+
+.Ctd a.edit{ /*background-position:-268px -170px;*/ background:url("common_btn_edit.png")/*tpa=http://kv6.user.kesion.com/admin/images/common_btn_edit.png*/ no-repeat center;background-size: 18px 18px;}
+.Ctd a.report{ /*background-position:-268px -170px;*/ background:url("icon-edit.png")/*tpa=http://kv6.user.kesion.com/admin/images/icon-edit.png*/ no-repeat center;background-size: 18px 18px;}
+.Ctd a.del{/*background-position:-297px -170px;*/ background:url("common_btn_clear.png")/*tpa=http://kv6.user.kesion.com/admin/images/common_btn_clear.png*/ no-repeat center;background-size: 18px 18px;}
+.Ctd a.delete,.oTableCenter a.delete{background:url("common_btn_delet.png")/*tpa=http://kv6.user.kesion.com/admin/images/common_btn_delet.png*/ no-repeat center;background-size: 18px 18px;}
+.Ctd a.export{background:url("common_btn_download.png")/*tpa=http://kv6.user.kesion.com/admin/images/common_btn_download.png*/ no-repeat center;background-size: 18px 18px;}
+.Ctd a.copy{background-position:-328px -170px;}
+.Ctd a.apply{ background:url("common_btn_apply.png")/*tpa=http://kv6.user.kesion.com/admin/images/common_btn_apply.png*/ no-repeat center;background-size: 18px 18px;}
+.Ctd a.ok{ background-position:-354px -170px;}
+.Ctd a.no{background-position:-378px -170px;}
+.Ctd a.money{background-position:-405px -170px;}
+.Ctd a.preview{/*background-position:-380px -190px;*/ background:url("common_btn_view.png")/*tpa=http://kv6.user.kesion.com/admin/images/common_btn_view.png*/ no-repeat center;}
+.Ctd a.backBtn{background-position:-353px -190px;}
+.Ctd a.showBtn{/*background-position:-328px -190px;*/background:url("common_btn_view.png")/*tpa=http://kv6.user.kesion.com/admin/images/common_btn_view.png*/ no-repeat center;}
+.Ctd a.backgj{background-position:-296px -213px;}
+.Ctd a.verify{background-position:-327px -213px;}
+.Ctd a.create{background-position:-380px -213px;}
+.Ctd a.print{background-position:-353px -213px;}
+.Ctd a.rename{background-position:-406px -213px;}
+
+.doc_1{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -380px -190px; display:inline-block; height:19px; width:24px;}
+.PicDoc_1{vertical-align: middle; background:url("article_icon_pic.png")/*tpa=http://kv6.user.kesion.com/admin/images/article_icon_pic.png*/ no-repeat center; background-size:18px 15px; display:inline-block; height:19px; width:24px;}
+.PicDoc_2{ vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -265px -190px; display:inline-block; height:19px; width:24px;}
+.PicDoc_3{ vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -238px -190px; display:inline-block; height:19px; width:24px;}
+.PicDoc_4{ vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -265px -190px; display:inline-block; height:19px; width:24px;}
+.special{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -211px -190px; display:inline-block; height:19px; width:24px;}
+.folder{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -211px -190px; display:inline-block; height:19px; width:24px;}
+.Recyc{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -380px -190px; display:inline-block; height:19px; width:24px;}
+.plicon{vertical-align: middle; background:url("common_btn_view.png")/*tpa=http://kv6.user.kesion.com/admin/images/common_btn_view.png*/ no-repeat center; display:inline-block; height:20px; width:24px;}
+.tree_Close{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -269px -213px; display:inline-block; height:19px; width:24px;}
+.tree_Open{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -240px -213px; display:inline-block; height:19px; width:24px;}
+.bullet{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -211px -232px; display:inline-block; height:16px; width:18px;}
+.down_server{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -211px -213px; display:inline-block; height:19px; width:18px;}
+
+.label_folder{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -295px -232px; display:inline-block; height:19px; width:18px;}
+.label_1{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -354px -232px; display:inline-block; height:19px; width:18px;}
+.label_2{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -213px -249px; display:inline-block; height:19px; width:18px;}
+.label_3{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -266px -232px; display:inline-block; height:19px; width:18px;}
+.label_4{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -406px -232px; display:inline-block; height:19px; width:18px;}
+.label_5{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -380px -232px; display:inline-block; height:19px; width:18px;}
+.label_6{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -380px -232px; display:inline-block; height:19px; width:18px;}
+
+.success{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -286px -306px; display:inline-block; height:72px; width:72px;}
+.error{vertical-align: middle; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -368px -306px; display:inline-block; height:72px; width:72px;}
+
+.textarea_min{ display:inline-block; height:20px; width:20px; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ -315px -124px no-repeat;}
+.textarea_max{ display:inline-block; height:20px; width:20px; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ -341px -124px no-repeat}
+
+
+.rule{ background:url("rule.gif")/*tpa=http://kv6.user.kesion.com/admin/images/rule.gif*/ repeat-x 0 5px !important;border:1px solid #999999;height:22px;color:#333;}
+.defaultpic{width:50px;border:1px solid #ccc;padding:1px;cursor:pointer}
+.mainarea{}
+.mainarea label{ padding:0; margin:0}
+.mainarea span img{ width:30px; height:30px;/* border-radius:50%; */display:inline-block; float:left;/* margin-top:5px;*/ margin-right:10px;}
+.mainarea h4{ color:#999; font-weight:500; font-size:12px;}
+
+.index-main{ padding:0 20px 0 20px; overflow:hidden}
+.concent .left{ float:left;}
+
+.quickly{overflow:hidden; height:100%;}
+.quickly h3{height: 44px; padding-left:5px;line-height: 44px;font-size: 16px; font-weight:normal} 
+.quickly ul{ padding:0 20px; overflow:hidden;background:#fff;border:1px solid #E8ECED;}
+.quickly li{ float:left; margin-right:20px; margin-top:20px; margin-bottom:20px; position:relative;border-radius:5px; width:125px;_display:inline;border: 1px solid #E8ECED;}
+.quickly li  a{text-align:center;  display:block;height:75px; width:125px; }
+.quickly li img{ margin-top:18px;  height:45px;}
+.quickly li span{ display:block; color:#666;height:30px;line-height:30px; text-align:center; clear:both;border-radius:0 0 4px 4px;}
+.quickly li span i{ right:0; top:0px;padding:4px 2px 0 0; display:none; }
+.quickly li span i a{ display:inline-block;width:16px; height:16px; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -315px -271px;}
+.quickly li:hover i{ display:inline-block; position:absolute; }
+.quickly li.quickly_add{width:125px; }
+.quickly li.quickly_add  a{ color:#D6D6D6; height:105px;line-height:85px; font-size:100px; font-family:"微软雅黑";}
+.quickly li.quickly_add a:hover{ text-decoration:none}
+
+.datatj{ clear:both; margin-top:20px;overflow:hidden; height:100%; width:100%}
+.float_today{ float:left;width:31.50%;margin-right:1.6%;padding-top:0; min-height:447px;_display:inline;border:1px solid #E8ECED;border-radius: 5px 5px 0 0;  background:#fff;}
+.float_today .tit{ padding:0 20px; line-height:44px; height:44px;font-size: 16px;}
+.float_today .tit i{display: block;   float: left;  height: 20px;  width: 15px;  border-left: 3px solid #3BA452;  margin: 11px 0 0 0; }
+.float_today ul{ margin-bottom:-1px; }
+.float_today ul li{ padding: 1px 20px; color:#62686A; position: relative;  font-size: 12px; line-height: 26px;}
+.float_today ul li span{margin-right: 15px;   position: absolute;  right: 0;   top: 8px; color: #f46344;  padding: 0 7px;   line-height: 20px;}
+.float_today ul li .has{color:#50869f;}
+
+.concent .right{ float:right;width:240px;}
+.concent .right .rili{ background:#FFF; padding:15px; border-radius:5px;border:1px solid #E8ECED; border-bottom:0;}
+.concent .right .rizhi{ margin-top:15px; margin-bottom:10px; border-radius:5px;background:#fff;border:1px solid #E8ECED; padding:15px; padding-top:0}
+.concent .right .rizhi .tit{font-size:16px; padding-left:5px; height:44px; line-height:44px;font-family:"微软雅黑"; }
+.concent .right .rizhi ul li{ line-height:32px; height:32px; }
+.rizhi li i{ display:inline-block; height:20px; width:20px; background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat; float:left; margin:8px 5px 0 0;}
+.rizhi li.i_today i{ background-position:-239px -269px}
+.rizhi li.i_week i{ background-position:-264px -269px}
+.rizhi li.i_month i{ background-position:-215px -269px}
+.rizhi li.i_no i{ background-position:-314px -269px}
+.rizhi li.i_yes i{ background-position:-289px -269px}
+
+.concent .right .rizhi ul li a{ color:#555;}
+.concent .right .rizhi ul li span{ float:right; color:#999}
+.concent .right .btn{ border:none; background:#0E7BCE; width:60px; height:25px; float:right; color:#FFF; cursor:pointer; font-size:14px; margin-top:10px;_display:inline;}
+.CalendarStatus{ background:#fff; border-top:#F4F6F7 solid 1px;}
+
+.ltxx{ clear:both; width:250px; padding:10px; margin-top:20px; background:#FFF; border:#E2E2E2 solid 1px;}
+.ltxx .tit h3{ font-size:16px; font-family:"微软雅黑"}
+.concent  .ltxx ul{ margin-bottom:20px;}
+.concent  .ltxx ul li{ line-height:30px; }
+.concent  .ltxx ul li a{ color:#666}
+.concent  .ltxx ul li span{ float:right; color:#999}
+
+.entry_list{ clear:both; margin-top:10px; text-align:right;}
+.entry_list h4{ font-size:14px; font-weight:500; color:#999}
+/*分页样式*/
+.footer_page{height:55px; line-height:55px;bottom:0px; left:0; background:#fff; border-top:#e8eced solid 1px;   position:fixed; width:100%; margin:0 -5px;z-index:999; }
+.footer_page td{font-size:14px !important; line-height:55px;}
+.footer_page a{ border: #ccc 1px solid;  padding: 6px 10px;  margin: 0 3px;  color: #5C5C5C; background-color: #fff; border-radius: 2px;}
+.footer_page a.curr{color: #35a7ba;border:1px solid #35a7ba;}
+.footer_page .disabled{ color:#DDD; border:#DDD solid 1px;}
+.footer_page input[type="text"]{ height:27px;}
+
+.footer_page .button,.footer_page .button:hover{ border:0; background:#35a7ba; color:#fff;}
+/*分页样式end*/
+
+.CtrMouseOut {background: #fff;font-size: 12px;height: 22px;}
+.CtrMouseOver {background: #f8f9fa;font-size: 12px;height: 22px;}
+
+.coverimg img{width:150px;}
+
+.labels ul{margin:0px;}
+.labels li{float:left;border:1px solid #FFccCC;margin:5px;padding-left:5px;padding-right:5px;background:#FFFFEC;font-weight:bold;_display:inline;}
+
+.main{ position:relative; padding-left:212px;}
+.content-area .main{ padding-left:0}
+.noTopnav{ padding-left:157px;}
+.noTopnav .leftmain{ padding-left:0px !important;}
+
+/*左侧菜单*/
+.topnav{ width:55px; position:absolute;left:0;top:-1px;height:100%; background:#213540;}
+.topnav li{ height:55px; cursor:pointer; position:relative;color:#fff;}
+.topnav li em{height:22px; line-height:22px; text-align:center; overflow:hidden; display:block;filter:alpha(opacity=40); -moz-opacity:0.4; -khtml-opacity: 0.4;  opacity: 0.4;}
+
+.topnav li span{width:32px;height:28px; display:block;margin:0 auto; background-image:url("lefticon-white.png")/*tpa=http://kv6.user.kesion.com/admin/images/lefticon-white.png*/; background-repeat:no-repeat;filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5;  opacity: 0.5;}
+
+.topnav li.curr{background:#fff; position:relative;color:#35a7ba;}
+.topnav li.curr:after{ content:"";width:0px;height:100%; background-color:#13c0b1; position:absolute;top:0;left:0;}
+
+.topnav li.curr span{background-image:url("lefticon-on2.png")/*tpa=http://kv6.user.kesion.com/admin/images/lefticon-on2.png*/; background-repeat:no-repeat;filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;}
+.topnav li.curr em{filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;}
+
+.topnav li .course-icon{ background-position:5px 9px;}
+.topnav li .ep-icon{ background-position:5px -42px;}
+.topnav li .cont-icon{ background-position:5px -88px;}
+.topnav li .shop-icon{ background-position:4px -411px;}
+.topnav li .exam-icon{ background-position:5px -136px;}
+.topnav li .ask-icon{ background-position:6px -188px;}
+.topnav li .mx-icon{ background-position:3px -275px;}
+.topnav li .app-icon{ background-position:6px -313px;}
+.topnav li .user-icon{ background-position:6px -224px;}
+.topnav li .setup-icon{ background-position:3px -359px;}
+.topnav li .job-icon{ background-position:4px -464px;}
+.topnav li .page-icon{ background-position:5px -562px;}
+.topnav li .wechat-icon{ background-position:4px -509px;}
+.topnav li .yun-icon{ background-position:4px -612px;}
+.topnav li .fx-icon{ background-position:5px -665px;}
+.topnav li .order-icon{ background-position:5px -727px;}
+
+
+body.s2 .topnav{ background:#f4f6f7;}
+body.s2 .topnav li{color:#a1acb3;}
+body.s2 .topnav li em{filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;}
+body.s2 .topnav li span{background-image:url("lefticon.png")/*tpa=http://kv6.user.kesion.com/admin/images/lefticon.png*/;filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;}
+body.s2 .topnav li.curr span{background-image:url("lefticon-on.png")/*tpa=http://kv6.user.kesion.com/admin/images/lefticon-on.png*/;}
+body.s2 .topnav li.curr:after{ background-color:#00b0d6;}
+body.s2 .topnav li.curr em{color:#00a5ce;}
+
+body.s2 .leftmain .content .menu-two li a.curr{color:#00a5ce;}
+body.s2 .leftmain .content .menu-two li a:hover{color:#00a5ce}
+body.s2 .footer_page a.curr{ color:#00b0d6;border:1px solid #00b0d6;}
+body.s2 .main-button .button{background:#00b0d6;}
+body.s2 #manage_top li.curr a,
+body.s2 #manage_top li.curr a:hover{ color:#00a5ce}
+
+body.s3 .topnav li.curr{color:#0aa46a;}
+body.s3 .topnav li.curr:after{ background-color:#10b175;}
+body.s3 .topnav li.curr span{background-image:url("lefticon-on3.png")/*tpa=http://kv6.user.kesion.com/admin/images/lefticon-on3.png*/;}
+body.s3 .leftmain .content .menu-two li a.curr{color:#0aa46a;}
+body.s3 .leftmain .content .menu-two li a:hover{color:#0aa46a;}
+body.s3 .footer_page a.curr{ color:#11b175;border:1px solid #11b175;}
+body.s3 .main-button .button{background:#19b478;}
+body.s3 #manage_top li.curr a,
+body.s3 #manage_top li.curr a:hover{ color:#0aa46a}
+
+body.s4 .topnav{ background:#2b2727;}
+body.s4 .topnav li.curr{color:#544340;}
+body.s4 .topnav li.curr:after{ background-color:#544340;}
+body.s4 .topnav li.curr span{background-image:url("lefticon-on4.png")/*tpa=http://kv6.user.kesion.com/admin/images/lefticon-on4.png*/;}
+body.s4 .leftmain .content .menu-two li a.curr{color:#544340;}
+body.s4 .leftmain .content .menu-two li a:hover{color:#544340;}
+body.s4 .footer_page a.curr{ color:#574d4b;border:1px solid #574d4b;}
+body.s4 .main-button .button{background:#574d4b;}
+body.s4 #manage_top li.curr a,
+body.s4 #manage_top li.curr a:hover{ color:#544340}
+
+body.s5 .topnav li.curr{color:#eb613e;}
+body.s5 .topnav li.curr:after{ background-color:#eb613e;}
+body.s5 .topnav li.curr span{background-image:url("lefticon-on5.png")/*tpa=http://kv6.user.kesion.com/admin/images/lefticon-on5.png*/;}
+body.s5 .leftmain .content .menu-two li a.curr{color:#eb613e;}
+body.s5 .leftmain .content .menu-two li a:hover{color:#eb613e;}
+body.s5 .footer_page a.curr{ color:#e25c3a;border:1px solid #e25c3a;}
+body.s5 .main-button .button{background:#eb613e;}
+body.s5 #manage_top li.curr a,
+body.s5 #manage_top li.curr a:hover{ color:#eb613e}
+
+body.s6 .topnav li.curr{color:#da3535;}
+body.s6 .topnav li.curr:after{ background-color:#da3535;}
+body.s6 .topnav li.curr span{background-image:url("lefticon-on6.png")/*tpa=http://kv6.user.kesion.com/admin/images/lefticon-on6.png*/;}
+body.s6 .leftmain .content .menu-two li a.curr{color:#da3535;}
+body.s6 .leftmain .content .menu-two li a:hover{color:#da3535;}
+body.s6 .footer_page a.curr{ color:#da3535;border:1px solid #da3535;}
+body.s6 .main-button .button{background:#de4040;}
+body.s6 #manage_top li.curr a,
+body.s6 #manage_top li.curr a:hover{ color:#da3535}
+
+body.s2 .button_on{background: #00a5ce;border: 1px solid #00a5ce;}
+body.s3 .button_on{background: #0aa46a;border: 1px solid #0aa46a;}
+body.s4 .button_on{background: #8f5146;border: 1px solid #8f5146;}
+body.s5 .button_on{background: #eb613e;border: 1px solid #eb613e;}
+body.s6 .button_on{background: #da3535;border: 1px solid #da3535;}
+
+body.s2 .button:hover{background: #e5f6fa;border: 1px solid #00a5ce;color: #00a5ce;}
+body.s3 .button:hover{background: #e6f6f0;border: 1px solid #0aa46a;color: #0aa46a;}
+body.s4 .button:hover{background: #f4edec;border: 1px solid #8f5146;color: #8f5146;}
+body.s5 .button:hover{background: #fdefeb;border: 1px solid #eb613e;color: #eb613e;}
+body.s6 .button:hover{background: #fbeaea;border: 1px solid #da3535;color: #da3535;}
+
+body.s2 .tabs_header li.active,body.s2 .tabs_header li.active a{color: #00a5ce;}
+body.s3 .tabs_header li.active,body.s3 .tabs_header li.active a{color: #0aa46a;}
+body.s4 .tabs_header li.active,body.s4 .tabs_header li.active a{color: #8f5146;}
+body.s5 .tabs_header li.active,body.s5 .tabs_header li.active a{color: #eb613e;}
+body.s6 .tabs_header li.active,body.s6 .tabs_header li.active a{color: #da3535;}
+
+body.s2 .tabs_header li.active:after {background: #00a5ce;}
+body.s3 .tabs_header li.active:after {background: #0aa46a;}
+body.s4 .tabs_header li.active:after {background: #8f5146;}
+body.s5 .tabs_header li.active:after {background: #eb613e;}
+body.s6 .tabs_header li.active:after {background: #da3535;}
+
+
+.leftmain{width:156px;height:100%; padding-left:55px; position:absolute;top:0px; left:0px; background:#f3f7ff;}
+
+.leftmain .content {position:relative;}
+.leftmain .content:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.leftmain .content  ul {list-style: none;}
+.leftmain .content .menu-one li {width: 100%; height: auto; overflow: hidden; float:left; }
+.leftmain .content .menu-one  li.firstChild {border: 0;}
+
+
+.leftmain .content .all_icon{ left:10px; top:6px; }
+
+.leftmain .content .menu-one .m1{ background-position: 0px -397px;}/*基本设置*/
+.leftmain .content .menu-one .m2{ background-position: -30px -238px;}/*其他设置*/
+.leftmain .content .menu-one .m3{ background-position: -30px -277px;}/*数据库操作*/
+.leftmain .content .menu-one .m4{ background-position: -30px -475px;}/*其他操作*/
+.leftmain .content .menu-one .m5{ background-position: 0px -313px;}/*功能选项*/
+.leftmain .content .menu-one .m6{ background-position: -56px -275px;}/*订单管理*/
+.leftmain .content .menu-one .m7{ background-position: 0px -473px;}/*营销*/
+.leftmain .content .menu-one .m8{}/**/
+.leftmain .content .menu-one .m9{ background-position: -56px -313px;}/*模拟考试*/
+.leftmain .content .menu-one .m10{ background-position: 0px -433px;}/*正规考试*/
+.leftmain .content .menu-one .m11{}/**/
+.leftmain .content .menu-one .m12{ background-position: -56px -354px;}/*问答系统*/
+.leftmain .content .menu-one .m13{ background-position: -56px -396px;}/*微社区*/
+.leftmain .content .menu-one .m14{ background-position: -56px -430px;}/*门户*/
+.leftmain .content .menu-one .m15{ background-position: -56px -473px;}/*模型管理*/
+.leftmain .content .menu-one .m16{}
+.leftmain .content .menu-one .m17{ background-position: -81px -204px;}/*标签管理*/
+.leftmain .content .menu-one .m18{ background-position: -81px -314px;}/*js管理*/
+.leftmain .content .menu-one .m19{ background-position: -81px -235px;}/*标签管理*/
+.leftmain .content .menu-one .m20{ background-position: -81px -276px;}/*html生成*/
+
+.leftmain .content .menu-one .m21{ background-position: -81px -397px;}/*友情链接*/
+.leftmain .content .menu-one .m22{ background-position: -81px -430px;}/*公告管理*/
+.leftmain .content .menu-one .m23{ background-position: -81px -475px;}/*投票管理*/
+.leftmain .content .menu-one .m24{ background-position: -109px -205px;}/*pk管理*/
+.leftmain .content .menu-one .m25{ background-position: -109px -236px;}/*自定义菜单*/
+.leftmain .content .menu-one .m26{ background-position: -109px -277px;}/*广告管理*/
+.leftmain .content .menu-one .m27{ background-position: -109px -315px;}/*采集管理*/
+.leftmain .content .menu-one .m28{ background-position: 0px -353px;}/*会员管理*/
+.leftmain .content .menu-one .m29{ background-position: -109px -355px;}/*财务管理*/
+.leftmain .content .menu-one .m30{ background-position: -109px -398px;}/*消息管理*/
+
+
+
+/*内容模型图标*/
+.leftmain .content .menu-one .c1{ background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -0px -238px;}/*文章系统*/
+.leftmain .content .menu-one .c2{ background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -30px -313px;}/*图片系统*/
+.leftmain .content .menu-one .c3{ background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -30px -354px;}/*下载系统*/
+.leftmain .content .menu-one .c4{ background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat 0px -202px;}/*商城系统*/
+
+
+
+.leftmain .content .menu-one .header:hover,
+.leftmain .content .menu-one .menuOne-current {}
+.leftmain .content .menu-one .header{height:40px; line-height:40px;cursor:pointer; background:url("arrowright.png")/*tpa=http://kv6.user.kesion.com/admin/images/arrowright.png*/ no-repeat 135px center;}
+.leftmain .content .menu-one .header.curr{ background:url("arrowdown.png")/*tpa=http://kv6.user.kesion.com/admin/images/arrowdown.png*/ no-repeat 135px center;}
+.leftmain .content .menu-one .header .txt{width:inherit; padding-left:30px; font-size:14px;}
+.leftmain .content .menu-one .header .txt i{ display:none;}
+.leftmain .content .menu-one .header .arrow{ display:none;}
+
+.leftmain .content .menu-two {display:none}
+.leftmain .content .menu-two li {height: 40px;line-height: 40px;padding-left: 40px;box-sizing: border-box;}
+.leftmain .content .menu-two li.firstChild {border: 0;}
+.leftmain .content .menu-two li a{display:inline-block; color: #9a9fa4; font-size:14px;}
+.leftmain .content .menu-two .additem{ width:17px; height:16px; padding-left:0; background:url("add.png")/*tpa=http://kv6.user.kesion.com/admin/images/add.png*/ no-repeat;vertical-align: middle;margin: 0 3px; margin-left:23px;opacity:0.6; display:none;}
+.leftmain .content .menu-two .verifyitem{width:16px; height:16px; padding-left:0;vertical-align: middle; background:url("he.png")/*tpa=http://kv6.user.kesion.com/admin/images/he.png*/ no-repeat;opacity:0.6; display:none;}
+.leftmain .content .menu-two li a.curr{ color:#35a7ba;}
+.leftmain .content .menu-two li a:hover{text-decoration:none;color:#35a7ba;}
+.leftmain .content .menu-two li:hover,
+.leftmain .content .menu-two li.menuTwo-current {background: #;}
+
+
+.leftmain .content .menu-show .menu-two{ display:none;}
+.leftmain .content .menu-show .header .arrow {background:url("all_icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/all_icon.png*/ no-repeat -190px -107px;width: 25px; height: 35px;}
+
+/*.subbox li{height: 28px;line-height: 28px;padding-left:10px;box-sizing: border-box; color:#666; background:url(doticon.png) no-repeat center 10px;}*/
+/*右边内容*/
+.rightmain{ background:#ebeff7;height:100%; overflow-x:auto;overflow-y: hidden;}
+.rightpadd{ *margin:0px;  background: #fff;}
+#main{min-width:1123px;}
+.rightmain .top img{ margin-top:25px; margin-left:20px;}
+.rightmain .content{ margin-left:1px; }
+
+
+.rightmain .content .box{ padding:15px 30px; border:# solid 1px;}
+.rightmain .content .ts{color: #999;text-align: left; font-size:14px;border-bottom:#ddd solid 1px; padding:10px 0}
+.rightmain .content .tips{ color: #999;text-align: left; font-size:12px; }
+.rightmain .content .co_red{padding-left:10px; color:#FF0000;}
+.rightmain .content .txt{font-size:14px; color:#333; font-weight:bold; text-shadow:1px 1px 1px #fff;}
+
+.content .content01{padding:0 10px; padding-left:15px; padding-top:41px; }
+
+.content .content01 li{clear: both;border-bottom:#ddd solid 1px;  border-top:#fff solid 1px; padding:12px 0; padding-left:10px;}
+.content .content01 li:hover{ background:url("bg04.png")/*tpa=http://kv6.user.kesion.com/admin/images/bg04.png*/;}
+
+.butt{background: #6FB3E0;color: #fff;padding: 0 10px;height: 26px; line-height:26px;cursor: pointer; border:none;}
+.button,.button_on{padding: 0 20px;height: 36px; line-height:36px;cursor: pointer;border:none; border-radius:2px; outline:none;border:1px solid #dce4e6;color:#62686a; -webkit-transition:0.3s; transition:0.3s; display:inline-block; font-size:14px; background:#fff; box-sizing:border-box;}
+.button:hover{background: #dfeff2; border:1px solid #35a7ba; color:#35a7ba;}
+.button_on{background: #35a7ba; color:#fff; border:1px solid #35a7ba;}
+.button2,.button2:hover{ background:#13BB9C; height:28px; line-height:28px; margin-right:10px;color:#fff; border:0}
+td div.button,
+td div.button:hover{ height:32px; background:#B0B9BF; border:0;}
+
+#ajaxmsg{position:fixed !important; left:50% !important; border-radius:3px; background-color:rgba(0,0,0,0.3) !important;top:50% !important; width:auto !important; height:34px !important; text-align:center;border:0px !important; line-height:34px !important; padding:0 10px; color:#f9f9f9; margin-left:-50px; margin-top:-20px; }
+.main-button{ text-align:center; padding:8px 0; position:fixed;width:100%;left:0;bottom:0; background:#fff;border-top:1px solid #e9eced;z-index:99999;height:38px;}
+.main-button .button{ background:#35a7ba;height:38px; font-size:14px;color:#fff;border:0px;border-radius:4px; margin:0px 6px;}
+.main-button .button_on{ background:#35a7ba;height:38px; font-size:14px;color:#fff;border:0px;border-radius:4px; margin:0px 6px;}
+
+
+
+.ipuc{ font-size:14px; color:#333;}
+.inp355 { width:355px; height:25px; line-height:25px; padding-left:5px; border: 1px solid #DCDCDC}
+.inp245{ width:180px;height:25px; line-height:25px; padding-left:5px;border: 1px solid #DCDCDC; color:#666}
+
+.select{ height:28px; padding:5px;border: 1px solid #DCDCDC; color:#666}
+.select option{ padding:2px 0 3px 8px;}
+
+.content .tj{ margin:20px 0px 0px 105px; clear:both;}
+.content .butt178{ width:178px; height:40px; line-height:40px; text-align:center; font-size:18px; background:#FA8039;  color:#FFFFFF;font-family:"微软雅黑"; border:none; cursor:pointer; } 
+.content .butt78{ width:78px; height:28px;  font-size:18px; background:#FA8039;  color:#FFFFFF;font-family:"微软雅黑"; border:none; cursor:pointer;} 
+.content .butt178:hover{ background:#FF9C00; text-decoration:none;}
+
+/*表格全局样式*/
+dd span{ position:relative;height:100%;}
+dd span a.acz{ float:left;display:block;  height:30px;font-size:12px; position:absolute; padding-left:20px; color:#666} 
+.operate { padding-top:10px;}
+
+
+/*tabs*/
+.opnav{margin-bottom: 10px;}
+.opnav ul li{display: block; float: left; margin-right: 8px;}
+.opnav ul li a{text-decoration: none;  background:#3498DB;height: 30px; padding:0 10px; line-height: 30px; position: relative;display:block; color:#fff; border-radius: 3px;}
+
+
+.tabs_header{border-bottom:#dce4e5 solid 1px; margin-bottom:20px;}
+
+.property{float:left; position:relative;}
+.property .propertyBox{ position:absolute;right:0;top:0; z-index:9; background:#fff;width:450px;top:34px;padding:18px 20px 20px 20px;border-radius:4px; box-shadow:0 5px 20px rgba(0,0,0,0.1);color:#62686A; display:none; z-index:100;}
+
+.property .propertyBox{animation:propertyBox .3s;-moz-animation:propertyBox .3s; /* Firefox */
+-webkit-animation:propertyBox .3s; /* Safari and Chrome */
+-o-animation:propertyBox .3s; /* Opera */
+}
+.property .propertyBox ul{ line-height:35px; font-size:14px; position:relative; padding-left:70px;}
+.property .propertyBox ul li{ float:left; margin:0 15px 0 5px;}
+.property .propertyBox .screen{ position:absolute; width:70px; left:0;}
+.property .propertyBox li.active a{ color:#35a7ba;}
+@keyframes propertyBox
+{
+0%   {filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0;  opacity: 0;top:24px;}
+100% {filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;top:34px; }
+}
+
+@-moz-keyframes propertyBox /* Firefox */
+{
+0%   {filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0;  opacity: 0;top:24px;}
+100% {filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;top:34px; }
+}
+
+@-webkit-keyframes propertyBox /* Safari and Chrome */
+{
+0%   {filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0;  opacity: 0;top:24px;}
+100% {filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;top:34px; }
+}
+
+@-o-keyframes propertyBox /* Opera */
+{
+0%   {filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0;  opacity: 0;top:24px;}
+100% {filter:alpha(opacity=100); -moz-opacity:1; -khtml-opacity: 1;  opacity: 1;top:34px; }
+}
+
+.tabs_header:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.tabs_header li{float:left;margin-right:10px;height: 34px;line-height: 34px;color: gray;display: block;text-align:center;text-align: center;cursor:pointer; margin:0 34px; padding:0 0px 10px;}
+.tabs_header li a{font-size:16px;font-weight:normal;/*color: #62686A;*/text-decoration: none;cursor:pointer;line-height:34px;display:block;}
+
+.tabs_header li.active{height:34px;*background:#fff;color:#35a7ba; position:relative;}
+.tabs_header li.active:after{ content:''; position:absolute; width:60px; height:2px; background:#35a7ba;bottom:-1px; left:50%; margin-left:-30px;}
+.tabs_header li.active a{color:#35a7ba;}
+.tabs_header span.right{float:right;}
+.headOperation li{ margin:0px 20px 0px 0px;}
+.headOperation li .button{ font-size:14px;height: 34px;line-height: 32px;padding: 0 15px;}
+
+
+#ctl00_KSContent_Panel1,#ctl00_KSContent_Panel2,#ctl00_KSContent_Panel3{ height:auto !important;}
+
+#addvote tr td{ padding:5px 0;}
+.mytable{table-layout:auto;}
+.topbar{background:#f4f6f7; text-align:left !important; font-size:16px; text-align:left;padding-top:0; padding-bottom:0; font-size:16px !important; padding-left:10px !important;height:20px;line-height:20px;}
+.CTable{ width:100% !important; margin-left:0px; background:#FFF;clear:both; border-spacing:0; border-collapse:collapse/* padding: 15px 0;*/}
+#Calendar1 td{ padding:4px 5px;}
+.PriceCTable td{padding: 10px 5px !important;}
+.PriceCTable td strong{ font-weight:normal;}
+.CTable .CTitle{height:40px; line-height:40px; clear:both; background:#f2f4f7;font-size: 14px;}
+.CTable .CTitle td{text-align:center; padding:0 5px;color:#62686A;/*white-space:nowrap;*/border-top:0px; position:relative;}
+.CTable .CTitle td b{font-weight:normal;}
+.CTable .CTitle td:after{ content:"";width:100%;height:1px; background:#fff; position:absolute;left:0;bottom:-1px; z-index:99;}
+.CTable .CTitle th{ position:relative;color:#62686A;}
+.CTable .CTitle th:after{ content:"";width:100%;height:1px; background:#fff; position:absolute;left:0;bottom:-1px; z-index:99;}
+.link-color{color:#50869F !important; cursor:pointer; padding:0}
+.CTable .Ctd .link-color{ padding:0 2px;}
+.link-operate a{color:#35a7ba !important; display:inline-block; margin:0 4px;cursor:pointer}
+.CTable .CTitle th{text-align:center; padding:0 10px; white-space:nowrap;font-weight:normal;font-size: 14px;}
+.CTable .CTitle th.a-left{ text-align:left;}
+.CTable .CTitle-fixed{ position:fixed;width:100%;top:44px;left:0; z-index:9999;}
+.CTable tr:first-child td{border-top:0px;}
+.CTable td{ padding:17px 5px; line-height:22px; border-top:#dce4e6 solid 1px; color:#6a6f73;font-size: 14px;}
+.CTable .p-l-td{ text-align:right;}
+.setUp span{ margin:0 10px;}
+.CTable td td{ padding:0 0; border:0;}
+.CTable td.lefttd{text-align:right; /*width:150px;*/ padding-right:6px; width:258px;}
+.CTable td.lefttd strong,.CTable td.lefttd b{ font-weight:normal}
+.CTable td.righttd{text-align:left;color:#666;}
+#DefaultFile{ margin-bottom:20px;}
+.table-border{ border:#D1D6D9 solid 1px}
+
+.yuyueMain{ padding:0 !important;}
+.s_title h4{ font-weight:normal; font-size:16px; line-height:36px;}
+.yuyueBtn{ float:right;}
+.yuyueBtn li{ float:left; margin-left:15px;}
+.yuyueBtn li a{padding: 0 20px;height: 36px;line-height: 36px;cursor: pointer;border: none;border-radius: 2px;outline: none;font-size: 12px;border: 1px solid #dce4e6;color: #62686a;-webkit-transition: 0.3s;transition: 0.3s;display: inline-block;font-size: 14px;background: #fff;box-sizing: border-box;}
+
+.itemColor font{color:#555 !important;}
+.greenFont{ color:#35a7ba !important;}
+.redFont{ color:#ec4a46 !important;}
+.orangeFont{ color:#ed9a47 !important;}
+.grayFont{ color:#969a9d !important;}
+.lightgreenFont{color:#28ab28 !important;}
+
+.listedit{ padding:0 20px; overflow:hidden; position:fixed; left:0; z-index:1000;bottom:11px;}
+.listedit .button{ height:32px; line-height:32px; margin:0 8px;}
+.righttd .message {background-color: #fff;border: #E9EDED solid 1px;word-break: normal; font-size:14px;}
+
+.myTitle{height:34px; line-height:34px; font-size:16px;margin:0px 0px 20px 0px; border-bottom:1px solid #dce4e6; padding-bottom:10px;padding-left: 18px;}
+.myTitle .rButton{float:right; position:relative;}
+.myTitle .rButton .button{text-align:left; font-size:14px; padding:0px 20px;}
+.myTitle .rButton .button span{float:left;margin:11px 8px 0px 0px; width:12px;height:12px; cursor: pointer; background: url("icon-add.png")/*tpa=http://kv6.user.kesion.com/admin/images/icon-add.png*/ no-repeat;}
+.myTitle .rButton .box{ position:absolute;border:1px solid #e8eced;top:44px;right:0; background:#fff;width:110px; padding:5px 0px; z-index:9;border-radius:5px; box-shadow:0 3px 9px rgba(0,0,0,0.15); display:none;}
+.myTitle .rButton .box a{ display:block; padding:0px 15px;height:34px; font-size:14px;color:#62686A; line-height:34px; -webkit-transition:0.3s; transition:0.3s;}
+.myTitle .rButton .box a:hover{ background:#15bdad;color:#fff;}
+
+.myTitle .titleTips{ font-size:12px; padding-left:20px;color:#62686A;}
+
+.noBorder-noP{ border-bottom:0 !important; padding-bottom:0 !important; padding-left:0px !important;}
+
+.tabButton{float:right;height:25px;border:1px solid #6f7c83;border-radius:3px; overflow:hidden;}
+.tabButton a{float:left; font-size:14px; padding:0 8px;border-left:1px solid #6f7c83;height:25px;color:#6f7c83; line-height:25px; text-align:center; cursor:pointer;}
+.tabButton a:first-child{ border-left:0;}
+.tabButton .on{ background:#6f7c83;color:#fff;}
+.noLeftBorder{border-left:0px !important;}
+
+.quickSearch{color:#62686A;padding: 0 20px 20px;border-bottom: 1px solid #dce4e6;}
+.SearchBox{ height:36px;}
+.quickSelect{ float:left;margin:0px 12px 0px 0px;}
+.quickSearch b,
+.quickSearch strong{ font-weight:normal}
+.quickSearch.notitle{ float:left}
+.quickSearch input,.quickSearch select{ /*vertical-align:middle;*/ font-size:14px;}
+.Lheight36{ line-height:36px !important;}
+.upbutton{ background:#B0B9BF; margin-right:10px;border-radius:3px; padding:0px 7px;}
+.upbutton:hover{ background:#13c0b1;}
+
+#BarShowArea{ text-align:center; margin:0 auto}
+.systemBox a{ vertical-align:middle; margin:0 0 0 20px;}
+.downloadSystem{ background:#35a7ba; color:#fff;font-size: 14px;padding: 0 20px;border: 1px solid #35a7ba;}
+
+.nopadTop{ padding-top:0px;}
+.page tr td a {border: #ccc 1px solid; padding: 6px 10px;  margin: 0 3px;  color: #5C5C5C; border-radius: 3px;display: inline-block}
+.page .Ctd a{ border:0;}
+.page tr td span{ padding: 6px 10px;margin: 0 3px; border-radius: 3px; }
+.tips,.tip1,.msgtips{color:#b0b9bf; font-size:12px;}
+.topBtn .tips{ line-height:34px;}
+.CTable tr:last-child td{}
+.BTable  tr:last-child td{ border-bottom:#EEE solid 1px; }
+#ctl00_KSContent_ctl00_OrderItemList{ border:0 !important;}
+#ctl00_KSContent_RadioButtonList1{ display:block; /*margin-bottom:10px;*/}
+.hr_line{ height:1px; overflow:hidden; background:#E9EDED; margin:10px 0}
+.br{ overflow:hidden; height:10px; clear:both;}
+
+.exam-question{margin-bottom:10px;}
+.exam-question { line-height:30px;}
+.exam-question img{ max-height:300px;}
+.exam-question .q-select{ padding:10px 10px 0 15px; font-size:14px;}
+
+tr.stbar{ border-top:#E9EDED solid 1px;}
+.mytable .showArea td{ border-top:#e4e4e4 dashed 1px}
+.exam-wtbox{ line-height:28px;}
+.exam-wttitle{ font-size:15px; line-height:35px; padding:5px 0}
+.exam-wttitle p{}
+
+.exam-dnbox{ margin-top:15px; display:block; line-height:28px; border:#E8ECED solid 1px; padding:0 15px; background:#F8F9FA}
+.exam-dnbox img{max-height:300px;}
+.exam-dnbox .dabt{ font-size:15px; line-height:35px; color:#303234}
+
+/*关键字*/
+.Exlbos dl{ border:#E4E4E4 solid 1px; border-bottom:none; border-left:none;font-size:14px;font-family:"微软雅黑";}
+.Exlbos dl .dl{ border:#E4E4E4 solid 1px; border-bottom:none; border-left:none;font-size:14px;font-family:"微软雅黑";}
+.Exlbos dt{height:40px; line-height:40px; background:#F5F5F5; font-weight:bold;border-bottom:1px solid #E4E4E4; clear:both; }
+.Exlbos dt span{width:14%; display:block; float:left; text-align:center;border-left:1px solid #E4E4E4; }
+.Exlbos dd{ background:#fff;height:45px; border-bottom:1px solid #E4E4E4; clear:both;}
+.Exlbos dd span{ width:14%; display:block; float:left; text-align:center;border-left:1px solid #E4E4E4; margin-top:2px;_display:inline;}
+.Exlbos dd tbody{ width:14%; display:block; float:left; text-align:center;border-left:1px solid #E4E4E4;}
+.Exlbos dd span a.revise{background:url("icon5.png")/*tpa=http://kv6.user.kesion.com/admin/images/icon5.png*/ no-repeat  0 -117px; left:20%;}
+.Exlbos dd span a.delete{  background:url("icon5.png")/*tpa=http://kv6.user.kesion.com/admin/images/icon5.png*/ no-repeat 0 13px; left:56%;}
+.Exlbos dd span a.revise:hover{background:url("icon5.png")/*tpa=http://kv6.user.kesion.com/admin/images/icon5.png*/ no-repeat  0 -146px; color:#D80C18}
+.Exlbos dd span a.delete:hover{  background:url("icon5.png")/*tpa=http://kv6.user.kesion.com/admin/images/icon5.png*/ no-repeat 0 -19px;color:#D80C18}
+
+/*标签*/
+.field{margin:1px;border:1px solid #FFccCC;padding-left:5px;padding-right:5px;background:#FFFFEC;font-weight:bold}
+
+.emptycss{background:none;border:0px;}
+.emptycss td{border:0px!important; font-size:14px;color:#b0b9bf; background:url("empty.png")/*tpa=http://kv6.user.kesion.com/admin/images/empty.png*/ no-repeat 50% 40px; padding-top:90px !important;text-align:center;}
+.empty{ font-size:14px;color:#b0b9bf !important; background:url("empty.png")/*tpa=http://kv6.user.kesion.com/admin/images/empty.png*/ no-repeat 50% 30px; padding:80px 0px 20px 0px !important;text-align:center;}
+
+.noborder{border:0px;border-bottom:1px solid #000;width:60px;background:transparent
+}
+.anstext{border:0px;border-bottom:1px solid #000;}
+
+/*表格*/
+table.gridtable {font-family: verdana,arial,sans-serif;font-size:14px;color:#333333;border-width: 1px;border-color: #ccc;border-collapse: collapse;}
+table.gridtable tr.CTitle td{border-width: 1px;padding: 2px;border-style: solid;border-color: #ccc;background-color: #f1f1f1;height:22px;}
+table.gridtable td.Ctd {border-width: 1px;padding: 8px;border-style: solid;border-color: #ccc;background-color: #ffffff;}
+.heae_tabs span{display: inline-block;background:#FAFAFA;;padding: 5px 10px;border-radius: 5px;border:1px solid #CCC;}
+.heae_tabs span.active{ background:#fff}
+.tipsleft {font-size:14px;font-weight:bold;}
+.tipsright a{font-size:14px;color:red;}
+
+/*图片上传*/
+#thumbnails{background:url("../../plus/swfupload/images/albviewbg.gif")/*tpa=http://kv6.user.kesion.com/plus/swfupload/images/albviewbg.gif*/ no-repeat;min-height:200px;_height:expression(document.body.clientHeight > 200? "200px": "auto" );}
+#thumbnails div.thumbshow{text-align:center;margin:2px;padding:2px;width:162px;height:196px;border: dashed 1px #B8B808; background:#FFFFF6;float:left;_display:inline;}
+#thumbnails div.thumbshow img{width:130px;height:92px;border:1px solid #CCCC00;padding:1px; margin:5px;}
+#thumbnails div.thumbshow div span{ padding-left:20px; line-height:20px; height:20px;}
+#thumbnails div.thumbshow div span a{ color:#006699}
+
+
+.footer{ height:30px; background:#F2F2F2 url("rrr2.gif")/*tpa=http://kv6.user.kesion.com/admin/images/rrr2.gif*/; position:fixed; bottom:0; width:100%; z-index:101;text-align:right; border-top:#E5E5E5 solid 1px}
+.footer .copyright{ height:100%; overflow:hidden;line-height:30px; color:#333;  width:980px; margin:0 auto;  }
+
+
+
+#manage_top.toptitle ul{ float:left}
+
+.nTable td{ padding:10px 5px !important; border-bottom:#dce4e6 solid 1px!important}
+.sTable td{ padding:5px 0 !important;}
+
+
+.yunList{ width:99%;}
+.yunList .item{ width:100%; float:left; overflow:hidden; border-bottom:#dce4e6 solid 1px; padding-bottom:30px; margin-bottom:30px; position:relative; padding-left:10px;}
+.yunList .border{position:relative;  overflow:hidden; }
+.yunList .item .bt{font-weight:normal; color:#969a9d;}
+.yunList .item .s_name {display:block; font-weight:normal;font-size:18px;padding:15px 0px; line-height:22px;}
+.yunList .item .s_name .bt{ font-size:90%;}
+.yunList .item .price{ padding-top:10px; display:block}
+.yunList .item .price em{ font-size:20px; color:#ec4a46}
+.yunList .item .price font{color:#ec4a46;}
+
+.yunList .item { padding-bottom:35px; margin-bottom:20px;}
+.yunList .item .s_intro{ font-size:14px; color:#62686A; line-height:22px; padding-right:15px;}
+.yunList .item .s_attr span{ line-height:20px; height:auto;float: left;border-radius: 5px;margin-right:50px;padding: 10px 0;color: #6a6f73;-webkit-transition: 0.3s;transition: 0.3s;}
+.yunList .item .s_attr span.a-intro{ float:none; clear:both; display:block; margin-right:0; color:#969a9d;}
+.yunList .item .s_txt{ width:70%; float:left; overflow:hidden}
+.yunList .item .s_attr span em{font-size:16px; color:#35a7ba;}
+.yunList .s_rbox{ margin-top:-17px; overflow:hidden; position:absolute; right:10px;top:50%;}
+.stencil .s_rbox a{ color:#6a6f73; display:block;font-size: 14px;width: 100px;text-align: center;height: 34px;line-height: 34px;border: 1px solid #dce4e5;   margin-bottom: 10px;}
+.s_titleBox{ position:relative;}
+.stencil .s_rbox .s_priceBox{ text-align:center; font-size:16px; color:#ec4a46;}
+.stencil ul li .vip_priceBox{display: inline-block;font-size: 12px;color: #f5a229;line-height: normal;height: auto;position:relative;animation: float 2s ease-in-out infinite; letter-spacing:1px;}
+.stencil li .vip_priceBox i{font-style: italic;}
+.yunList .item .button{ background:#35a7ba; line-height:34px; height:34px; padding:0 30px;font-size:14px;color:#fff;border:0px;border-radius:2px; margin:0px 6px;}
+.yunList .item .yl-button{border: 1px solid #dce4e5;color: #62686a; background:#fff;}
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+
+  50% {
+    transform: translatey(-6px);
+  }
+
+  100% {
+    transform: translatey(0px);
+  }
+}
+.pop-button{ text-align:center; padding-top:15px;}
+.pop-button .button,
+.pop-button .button:hover,
+.pop-button .button_on{ background:#35a7ba;height:40px; font-size:14px;color:#fff;border:0px;border-radius:4px; margin:0px 6px;}
+
+#mytable .tdlist{ border-right:#E8ECED solid 1px}
+.refreshbody .ref-list{ padding-top:20px; line-height:30px; color:#555;}
+.refreshbody .ref-list li{ line-height:30px;}
+.mr20{ margin-right:20px;}
+.mr15{ margin-right:15px;}
+
+/*课程列表*/
+
+
+
+/*列表切换*/
+.listIcon{float:right;margin-top:3px;margin-right:18px;width:50px; background:url("listicon.png")/*tpa=http://kv6.user.kesion.com/admin/images/listicon.png*/ no-repeat;}
+.listIcon a{width:24px;height:24px;margin-right:1px;float:left; }
+.listIcon.noPictures{ background:url("listicon2.png")/*tpa=http://kv6.user.kesion.com/admin/images/listicon2.png*/ no-repeat;}
+
+.courseList li{ position:relative; padding:20px 0px 20px 57px;min-height:120px; /*overflow:hidden;*/border-top:1px solid #dce4e6;}
+
+.courseList li .courseImg{width:150px; height:120px; position:absolute;left:57px;top:20px; overflow:hidden;}
+.courseList li .courseImg img{width:100%;height:100%;}
+.courseList li .teacherImg{width:147px;}
+.courseList .teacherLi{min-height:112px;}
+.courseList .teacherLi .courseImg{width:112px;height:112px;}
+.courseList .teacherLi .courseInfo{ padding-left:132px;}
+.courseList .teacherLi .buttonBox .btn{margin-top:15px;}
+.courseList .teacherLi2{ margin:0px 20px; padding-left:0px;}
+.courseList .teacherLi2 .courseImg{left:0px;}
+.courseList .teacherLi2 .input{ display:none;}
+
+.courseList li .input{ position:absolute;top:50%;left:20px;margin-top:-8px;}
+.courseList li .courseInfo{ padding-left:170px;}
+.courseList li .courseInfo .courseTitle{ line-height:36px;}
+.courseList li .courseInfo .title{ font-size:16px;margin-bottom: 18px;}
+.courseList li .courseInfo .title a{ float:left;}
+.courseList li .courseInfo .title .courseProperty{ margin-top:8px; margin-left:10px;}
+.courseList li .courseInfo .title span{ font-size:12px;line-height:20px;}
+
+.courseList li .noticeBox .button{ margin-left:10px;}
+.courseList li .operating{float:right; line-height:20px;}
+.courseList li .operating a{margin-left:10px;}
+.operatBoxBtn .iMore{ background:url("operat-more.png")/*tpa=http://kv6.user.kesion.com/admin/images/operat-more.png*/ no-repeat center; background-size:70%; display:inline;display: inline;padding: 10px 15px;position: relative;top: -1px;}
+.operatBoxBtn{ display:inline-block; position:relative;}
+.operatBoxBtn .operatBoxMore{ position:absolute; background:#fff;right:0;top:34px; display:none;width:136px;animation: propertyBox .3s;-moz-animation: propertyBox .3s;-webkit-animation: propertyBox .3s;-o-animation: propertyBox .3s;box-shadow: 0 5px 20px rgba(0,0,0,0.1); padding:0 10px; border-radius:5px; z-index:10;}
+.operatBoxBtn .operatBoxMore a{ float:left;text-align: center; line-height:40px; margin-left:0 !important; width:100%;border-bottom: 1px solid #f5f5f5;}
+.operatBoxBtn .operatBoxMore a:last-child{ border-bottom:0;}
+.operatBoxBtn:hover .operatBoxMore{ display:block;}
+.courseList li .operating a.yestext{ color:#35a7ba;}
+.courseList li .operating a.notext{color:#ec4a46;}
+
+.courseList li .courseInfo .info{ line-height:18px;color:#62686A;}
+.courseList li .courseInfo .info span{ padding-right:40px;color:#969a9d; font-size:12px;}
+.courseList li .courseInfo .info a{color:#969a9d;}
+.courseList li .courseInfo .info .tips{ color:#cccecf; padding-right:0;}
+.courseList li .courseInfo .price{ font-size:18px;color:#f46344;line-height:28px;text-align:center; margin-top:10px;width: 150px;text-align: center;}
+
+.courseList li .courseInfo .price em{color:#b0b9bf; padding-left:5px; font-size:14px;}
+.courseList li .courseInfo .price em.zhe0,.courseList li .courseInfo .price em.zhe10,.courseList li .courseInfo .price em.zhe{ display:none;}
+.courseList li .courseInfo .price .vip font{color:#b0b9bf !important;}
+.courseList li .courseInfo .price .vip .tips{ display:none;}
+
+.courseList li .buttonBox .btn{/*width:103px;*/float:left;margin:22px 15px 0px 0px;line-height:18px;-webkit-transition:0.3s; transition:0.3s;color:#90969c;}
+.courseList li .buttonBox .btn span{font-size:14px;margin-top:7px;}
+.courseList li .buttonBox .btn:hover{color:#06b6a7;}
+
+.courseList li .courseProperty{float:left;}
+.courseList li .courseProperty span{width:18px;height:18px; border:1px solid #4fa9f5;float:left; text-align:center; text-align:center;color:#4fa9f5;margin-left:5px;overflow:hidden;}
+.courseList li .courseProperty .bg1{ border-color:#ff6d73; color:#ff6d73;}
+.courseList li .courseProperty .bg2{border:1px solid #ca7bff;color:#ca7bff;}
+.courseList li .courseProperty .bg3{border:1px solid #ff74ce;color:#ff74ce;}
+.courseList li .courseProperty .bg4{border:1px solid #35a7ba;color:#35a7ba;}
+.courseList li .courseProperty .bg5{border:1px solid #f5824f;color:#f5824f;}
+.courseList li .courseProperty .bg6{ text-indent:-99px; background:url("phone.png")/*tpa=http://kv6.user.kesion.com/admin/images/phone.png*/ no-repeat 50% 50%;}
+
+
+.courseInfoTop{ background:#fff;width:100%; padding:20px 0px 20px 20px;height:90px; overflow:hidden;border-bottom:1px solid #e8eced; position:relative;}
+.courseInfoTop .courseImg{width:145px; height:90px; position:absolute;left:20px;top:0;top:20px; overflow:hidden;}
+.courseInfoTop .courseImg img{width:100%;height:100%;}
+.courseInfoTop .courseInfo{ padding-left:165px;}
+.courseInfoTop .courseInfo .title{ font-size:16px;height:20px; overflow:hidden; line-height:20px;}
+.courseInfoTop .courseInfo .title span{ font-size:12px; padding-left:15px;color:#90969c;}
+.courseInfoTop .courseInfo .info{ line-height:18px;color:#62686A;margin-top:5px;}
+.courseInfoTop .courseInfo .info span{ padding-right:20px;}
+.courseInfoTop .courseInfo .price{ font-size:18px;color:#f46344;line-height:28px;margin-top:12px;}
+.courseInfoTop .courseInfo .price em{color:#b0b9bf; padding-left:15px; font-size:12px;}
+.courseInfoTop .courseInfo .price em.zhe0{ display:none;}
+.courseInfoTop .courseInfo .price .vip font{color:#b0b9bf !important;}
+.courseInfoTop .courseInfo .price .vip .tips{ display:none;}
+
+.teacherInfoTop .courseImg{width:70px;height:70px;border-radius:50%;border:1px solid #e8eced; padding:2px;}
+.teacherInfoTop .courseImg img{border-radius:50%;}
+.teacherInfoTop .courseInfo{ padding-left:91px;}
+.teacherInfoTop .courseInfo .starImg{margin-top:8px;height:22px;}
+.teacherInfoTop .courseInfo .starImg img{height:12px; display:block; overflow:hidden;}
+
+.nopicList .courseInfo{ padding-left:0 !important}
+.courseInfoTop .courseInfo .list-main{ font-size:18px;color:#04B1D6;line-height:28px;margin-top:12px;}
+.courseInfoTop .courseInfo .list-main em{color:#b0b9bf; padding-right:2px;font-size:14px;}
+.courseInfoTop .courseInfo .list-main span{color:#b0b9bf;font-size:14px;}
+
+.courseList .nopicList {min-height:110px;}
+
+
+
+.manageList li{ position:relative; padding:20px 0px 20px 57px; min-height:102px; border-top:1px solid #e9eded;}
+
+.manageList li .listImg{width:100px; height:100px;border:1px solid #eee; position:absolute;left:57px; top:20px; overflow:hidden;}
+.manageList li .listImg img{width:100%;height:100%;}
+
+.manageList li .input{ position:absolute;top:50%;left:20px;margin-top:-8px;}
+.manageList li .listInfo{ padding-left:120px;}
+.manageList li .listTitle{ line-height:20px;}
+.manageList li .listTitle .title{ font-size:16px;}
+
+.manageList li .operating{float:right; line-height:20px; }
+.manageList li .operating a{color:#50869f; margin-left:15px;}
+.manageList li .operating a.notext{color:#fa431b;}
+
+
+.manageList li .listInfo .info{ line-height:18px;color:#62686A;margin-top:10px;}
+.manageList li .listInfo .info span{ padding-right:20px;}
+.manageList li .listInfo .info .vipButton{ display:block;height:30px; line-height:30px; text-align:center;border-radius:3px;margin-top:17px;border:1px solid #e5eaeb;width:90px;color:#90969c; -webkit-transition:0.3s; transition:0.3s;}
+.manageList li .listInfo .info .vipButton:hover{border:1px solid #35a7ba;color:#35a7ba;}
+
+.manageList .rinfo{ float:right; color:#90969c; text-align:center; padding-right:30px;}
+.manageList .rinfo .num{ font-size:30px; color:#303234; line-height:40px; font-weight:normal;}
+.manageList .rinfo em{ display:block; line-height:22px;}
+
+.manageList .rinfo .imgitem{ float:left; margin-left:20px; text-align:center; position:relative;height:60px; overflow:hidden;}
+.manageList .rinfo .imgitem img{ height:70px;height:60px; display:block; overflow:hidden;}
+.manageList .rinfo .imgitem p{ width:100%;height:20px;line-height:20px; overflow:hidden; position:absolute;left:0;bottom:0; background:url("rgba0-40.png")/*tpa=http://kv6.user.kesion.com/admin/images/rgba0-40.png*/; font-size:12px; color:#fff;}
+
+.manageList .withdraw .primary{line-height:32px; overflow:hidden;color:#62686A;margin-top:5px;}
+.manageList .withdraw .primary span{float:left; padding-right:20px;}
+.manageList .withdraw .primary .icon{float:left;height:12px;margin:10px 6px 0px 0px;}
+.manageList .withdraw .primary .icon-user{width:18px; background:url("withdraw-icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/withdraw-icon.png*/ no-repeat;}
+.manageList .withdraw .primary .icon-tel{width:12px; background:url("withdraw-icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/withdraw-icon.png*/ no-repeat -38px 0px;}
+.manageList .withdraw .r{float:right;margin-top:5px;}
+.manageList .withdraw .status{ width:96px; text-align:center; margin-left:30px; float:right;}
+.manageList .withdraw .status .icon{width:27px;height:40px; display:block; margin:0 auto;}
+.manageList .withdraw .status em{ display:block; line-height:22px;}
+
+.manageList .withdraw .ok{color:#35a7ba;}
+.manageList .withdraw .ok .icon{ background:url("status2.png")/*tpa=http://kv6.user.kesion.com/admin/images/status2.png*/ no-repeat -50px 50%;}
+.manageList .withdraw .no{color:#ec4a46;}
+.manageList .withdraw .no .icon{ background:url("status2.png")/*tpa=http://kv6.user.kesion.com/admin/images/status2.png*/ no-repeat 0 50%;}
+
+.manageList .withdraw .money{float:right;}
+.manageList .withdraw .money b{ font-size:30px; display:block; line-height:40px;font-weight:normal;}
+.manageList .withdraw .money em{ display:block; line-height:22px;color:#90969c;}
+.manageList .withdraw .basic{line-height:22px;color:#90969c;margin-top:10px;}
+.manageList .withdraw .basic span{ padding-right:20px;font-size: 12px;}
+
+/*机构实名审核*/
+
+.manageList .rzInfo .rinfo{ padding-right:0px;}
+.manageList .rzInfo{margin-top:10px;color:#62686A;}
+.manageList .rzInfo .info-state{ line-height:22px;}
+.manageList .rzInfo .info-state span{ padding-right:20px;}
+.manageList .rzInfo .statel{ line-height:22px;margin-top:15px;color:#90969c;}
+.manageList .rzInfo .statel .icon{float:left;width:14px;height:14px; margin:4px 6px 0px 0px;}
+.manageList .rzInfo .statel span{ padding-left:20px;}
+.manageList .rzInfo .statel .ok{color:#06b6a7;}
+.manageList .rzInfo .statel .ok .icon{ background:url("status3.png")/*tpa=http://kv6.user.kesion.com/admin/images/status3.png*/ no-repeat -26px 0;}
+.manageList .rzInfo .statel .no{color:#fa431b;}
+.manageList .rzInfo .statel .no .icon{ background:url("status3.png")/*tpa=http://kv6.user.kesion.com/admin/images/status3.png*/ no-repeat 0 0;}
+.manageList .statePanel{ height:32px; line-height:32px; display:none;color:#90969c;}
+
+
+
+
+.Ctd .gife-info img{ width:50px; vertical-align:middle; margin:2px 5px;}
+.Ctd .atbg,
+.Ctd .bg1,
+.Ctd .bg2,
+.Ctd .bg3,
+.Ctd .bg4,
+.Ctd .bg5,
+.Ctd .bg6{height:16px; line-height:16px; border:1px solid #ff6d73; display:inline-block;text-align:center; padding:0 2px;text-align:center;color:#ff6d73;margin-left:3px;overflow:hidden; vertical-align:middle; font-size:12px;}
+
+
+.Ctd .bg2{border-color:#f7b541;color:#f7b541;}
+.Ctd .bg3{border-color:#35a7ba;color:#35a7ba;}
+.Ctd .bg4{border-color:#5db1eb;color:#5db1eb;}
+.Ctd .bg5{border-color:#7b95f5;color:#7b95f5;}
+.Ctd .bg6{ text-indent:-99px; background:url("phone.png")/*tpa=http://kv6.user.kesion.com/admin/images/phone.png*/ no-repeat 50% 50%;}
+.cz_subbox{ position: absolute; margin:0;background: #fff;line-height: 27px;box-shadow: 0 1px 6px rgba(0,0,0,0.15);color: #62686A;left:0;top:36px;text-align:left;width:150px;padding: 5px 10px; z-index:12}
+
+
+
+/*课时管理*/
+
+
+.courseTips{}
+
+.courseKeshi{ margin:0px 10%; position:relative;}
+.courseKeshi .lineY{width:2px;height:100%; background:#d1d8da; position:absolute;left:40px;top:0; }
+.courseKeshi ul{ position:relative; z-index:9;}
+.courseKeshi li{ margin-bottom:15px; padding:10px 230px 10px 15px; font-size:14px; line-height:20px;border:1px solid #d1d6d9; -webkit-transition:0.3s; transition:0.3s; background:#fff; position:relative;}
+.courseKeshi li .menubtn{width:16px;height:16px;background:url("zk.png")/*tpa=http://kv6.user.kesion.com/admin/images/zk.png*/ no-repeat 0 -18px; position:absolute;top:12px;left:-8px;border-radius:50%; cursor:pointer;}
+.courseKeshi li .menubtn2{background:url("zk.png")/*tpa=http://kv6.user.kesion.com/admin/images/zk.png*/ no-repeat; }
+.courseKeshi li img{float:left;margin:1px 10px 0px 0px;}
+.courseKeshi li:hover{ background:#f8f9fa;}
+.courseKeshi li .lineX{width:20px;height:2px; background:#d1d8da; position:absolute;left:-21px;top:19px; }
+.courseKeshi li .rButton{ position:absolute;right:0;top:10px; display:none;}
+.courseKeshi li .rButton input[type="button"]{ background:none;border:0px;height:20px; cursor:pointer; line-height:20px;float:left; margin:0px 15px;color:#50869f;}
+.courseKeshi li .rButton .link-color{float:left; margin:0px 15px; line-height:20px;}
+
+.courseKeshi .section{ margin-left:20px;}
+.courseKeshi .keshi{ margin-left:62px;}
+.courseKeshi .icon{float:left;margin:0px 15px;width:20px;height:20px; position:relative;}
+.courseKeshi .icon span{width:40px;height:26px; background:url("tbg.png")/*tpa=http://kv6.user.kesion.com/admin/images/tbg.png*/ no-repeat;color:#fff; text-align:center; line-height:20px; font-size:12px;position:absolute;top:-32px;left:-11px; display:none;}
+.courseKeshi .icon-edit{background:url("ks-icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/ks-icon.png*/ no-repeat 1px 0px;}
+.courseKeshi .icon-delete{background:url("ks-icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/ks-icon.png*/ no-repeat -87px 0px;}
+.courseKeshi .icon-edit:hover{background:url("ks-icon-on.png")/*tpa=http://kv6.user.kesion.com/admin/images/ks-icon-on.png*/ no-repeat 1px 0px;}
+.courseKeshi .icon-delete:hover{background:url("ks-icon-on.png")/*tpa=http://kv6.user.kesion.com/admin/images/ks-icon-on.png*/ no-repeat -87px 0px;}
+
+
+.courseKeshi .addButton{ position:relative;width:20px;float:left; margin:0px 15px;}
+.courseKeshi .addButton .icon-add{background:url("ks-icon.png")/*tpa=http://kv6.user.kesion.com/admin/images/ks-icon.png*/ no-repeat -44px 0px; margin:0px; cursor:pointer;}
+.courseKeshi .addButton .icon-add:hover{background:url("ks-icon-on.png")/*tpa=http://kv6.user.kesion.com/admin/images/ks-icon-on.png*/ no-repeat -44px 0px;}
+.courseKeshi .addButton .box{ position:absolute;border:1px solid #e8eced;top:28px;left:-30px; background:#fff;width:110px; padding:5px 0px; z-index:9;border-radius:5px; box-shadow:0 3px 9px rgba(0,0,0,0.15); display:none; display:none;}
+.courseKeshi .addButton .box a{ display:block; padding:0px 15px;height:34px;color:#62686A; line-height:34px; -webkit-transition:0.3s; transition:0.3s;}
+.courseKeshi .addButton .box a:hover{ background:#15bdad;color:#fff;}
+.courseKeshi .addOn .icon-add{background:url("ks-icon-on.png")/*tpa=http://kv6.user.kesion.com/admin/images/ks-icon-on.png*/ no-repeat -44px 0px;}
+.courseKeshi .addOn .box{ display:block;}
+
+.mainButton{ background:#35a7ba;border:1px solid #35a7ba;color:#fff;}
+/*.mainButton:hover{background: #0db9aa;border:1px solid #0db9aa;}*/
+
+.p-relative{ position:relative;}
+.formatbox{width:20%;float:left;}
+
+/*开关*/
+.drag-checkbox-style{width:46px;height:28px; background:#d2d2d2;border-radius:50px; position:relative; cursor:pointer; -webkit-transition:0.3s; transition:0.3s;}
+.drag-checkbox-style i{width:24px;height:24px; background:#fff;border-radius:50%; box-shadow: 0 0 6px rgba(0,0,0,0.2); position:absolute;top:2px;right:20px; -webkit-transition:0.3s; transition:0.3s;}
+
+.drag-checked{ background:#35a7ba;}
+.drag-checked i{right:2px;}
+
+.frame-format{ height:280px; overflow:hidden;}
+.frame-format .f-img{border:1px solid #ebebeb; position:relative; cursor:pointer;}
+.frame-format .f-img img{width:100%; display:block; overflow:hidden;}
+.frame-format .check{width:20px;height:20px; background-image:url("../drag/images/check-bg.png")/*tpa=http://kv6.user.kesion.com/admin/drag/images/check-bg.png*/; background-repeat:no-repeat; position:absolute;bottom:15px;right:15px;}
+.frame-format .active .check{ background-position:-20px 0;}
+.frame-format .carousel-dots{ position:absolute;bottom:15px;width:100%; text-align:center;height:8px; line-height:8px; overflow:hidden;}
+.frame-format .carousel-dots span{ display:inline-block;}
+.frame-format .carousel-dots i{width:8px;height:8px;float:left; background:#bbb;margin:0px 4px; border-radius:50%; cursor:pointer;filter:alpha(opacity=30);  -moz-opacity:0.3;  -khtml-opacity: 0.3;  opacity: 0.3;}
+.frame-format .carousel-dots .on{ filter:alpha(opacity=100);  -moz-opacity:1;  -khtml-opacity: 1;  opacity: 1;}
+.frame-format .carousel-prev,
+.frame-format .carousel-next{ width:30px;height:40px; line-height:40px;position:absolute;top:50%;margin-top:-41px; cursor:pointer; text-align:center; background:rgba(0,0,0,0.3);color:#fff;}
+.frame-format .carousel-prev{left:1px;}
+.frame-format .carousel-prev:before{ content:'';width:9px;height:15px; background:url("../drag/images/arrow-btn.png")/*tpa=http://kv6.user.kesion.com/admin/drag/images/arrow-btn.png*/ no-repeat; position:absolute;left:50%;top:50%;margin-left:-4px;margin-top:-7px;}
+.frame-format .carousel-next{right:1px;}
+
+
+
+
+/*10.24补充文件上传按钮样式*/
+.file-special{position: relative;display: inline-block;background: #f5f8f9;border: 1px solid #e6e9ea;border-radius: 3px;padding: 0px 15px;overflow: hidden;color: #62686a;text-decoration: none;text-indent: 0;line-height: 32px;height: 32px;float: left;margin-right:120px;}
+.file-special input{position: absolute;right: 0;top: 0;opacity: 0;filter:Alpha(opacity=0);}
+.file-special:hover{background: #f3f5f6;border-color: #78C3F3;color: #004974;text-decoration: none;}
+
+.mb{margin-bottom: 15px;}
+/*10.25帮助中心导航栏*/
+.help_nav{clear:both;overflow: hidden;text-align: center;width: 100%;margin-bottom: 20px;}
+.help_nav ul{margin-left: 1%;overflow: hidden;}
+.help_nav ul li{width: 25%;float: left;cursor: pointer;height: 280px;}
+.help_nav ul li.current p{color: #fe5858;}
+.help_nav ul li.current .help_icon img{transform: scale(1.2);}
+.help_nav ul li.current .inner{box-shadow: 0 0 5px 10px #ccc;}
+.help_nav ul li .inner{margin-right: 5%;box-sizing: border-box;}
+.help_nav ul li .help_icon{width: 100%;height: 200px;text-align: center;line-height: 200px;}
+.help_nav ul li .help_icon img{display: inline-block;vertical-align: middle;transition: all 0.3s linear;}
+.help_nav ul li:hover .help_icon img{transform: scale(1.2);}
+.help_nav ul li .help_icon1{background: #f6f393;}
+.help_nav ul li .help_icon2{background: #A0C586;}
+.help_nav ul li .help_icon3{background: #EEBB77;}
+.help_nav ul li .help_icon4{background: #7BCDE8;}
+.help_nav ul li p{height: 70px;width: 100%;text-align: center;font-size: 18px;line-height: 70px;background: #f1f8fb;color: #444;}
+.help_nav ul li:hover p{color: #ee3b3b;}
+/*10-27修改帮助中心列表*/
+.help_list ul{padding: 20px; border:1px solid #dce4e5; border-top:0; margin-bottom:20px;}
+.help_list li span{height: 35px;line-height: 35px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: inline-block;width: 90%;font-size: 14px;padding-left:10%;background: url("dot.png")/*tpa=http://kv6.user.kesion.com/admin/images/dot.png*/no-repeat left center;}
+.help_list #help span{margin-top:10px;color:#333;font-size:14px;display: inline-block;}
+.help_list #help a{margin-top:10px;color:#333;font-size:14px;display: inline-block;}
+.help_list1{width:75%;padding-right:20px; box-sizing:border-box;}
+.help_list1 h3{font-size: 16px; font-weight:normal;}
+.help_list1 ul{padding: 10px 0;overflow: hidden}
+.help_list1 .wrap-ul > li h4{font-size: 16px;font-weight: normal;padding-left: 34px;background: url("sub-title.png")/*tpa=http://kv6.user.kesion.com/admin/images/sub-title.png*/no-repeat left center;color: #35a7ba;margin: 10px 0;	}
+.inner-ul{padding-left:30px !important;}
+.inner-ul li{width:25%;height: 40px;line-height: 40px;box-sizing: border-box; padding-right:20px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display: inline-block;font-size: 13px;float: left;padding-left:1.5%;background: url("dot.png")/*tpa=http://kv6.user.kesion.com/admin/images/dot.png*/no-repeat left center;position: relative;}
+.title_blue{height: 50px;line-height: 50px;font-size: 16px;color: #fff;display: block;background: #35a7ba; text-align:center;}
+.frame-format .carousel-next:before{ content:'';width:9px;height:15px; background:url("../drag/images/arrow-btn.png")/*tpa=http://kv6.user.kesion.com/admin/drag/images/arrow-btn.png*/ no-repeat -16px 0; position:absolute;left:50%;top:50%;margin-left:-4px;margin-top:-7px;}
+.help_banner{width: 100%;padding: 40px 0;background: url("bluebg.jpg")/*tpa=http://kv6.user.kesion.com/admin/images/bluebg.jpg*/ no-repeat center center;position: relative;overflow: hidden;margin-bottom: 20px;}
+.help_banner_content{padding:0 3%;}
+.shadow{height: 55px;position: absolute;top: 0;z-index: 999;width: 100%;background: url("shadow.jpg")/*tpa=http://kv6.user.kesion.com/admin/images/shadow.jpg*/no-repeat center top;}
+.help_l{width: 400px;color: #fff;}
+.help_l h2{font-size: 36px;margin-bottom: 15px;font-weight: normal}
+.help_l p{font-size: 15px;line-height: 28px;}
+.help_r{margin-top: 85px;}
+.help_r .search{padding: 5px;height: 39px;border-radius: 3px;background: url("sea-mbg.png")/*tpa=http://kv6.user.kesion.com/admin/images/sea-mbg.png*/;}
+.help_r .search .text{width: 330px;height: 37px;line-height: 37px;border: 0;float: left;padding-left: 10px}
+.help_r .search .btn{width: 90px;float: left;height: 39px;line-height: 39px;background: #007FF9;border: 0;color: #fff;font-size: 16px;cursor: pointe}
+.jiaocheng{width: 48%;float: left;}
+.jiaocheng span{margin-bottom:10px;display:inline-block;color:#333;font-size:22px;}
+.jiaocheng li{height: 40px;line-height: 40px;background: url("dot.png")/*tpa=http://kv6.user.kesion.com/admin/images/dot.png*/no-repeat left center;padding-left: 28px;}
+.jiaocheng li a{font-size: 16px;}
+.questionL{width: 48%;float: right;}
+.questionL span{margin-bottom:10px;display:inline-block;color:#333;font-size:22px;}
+.questionL li{height: 40px;line-height: 40px;background: url("dot.png")/*tpa=http://kv6.user.kesion.com/admin/images/dot.png*/no-repeat left center;padding-left: 28px;}
+.questionL li a{font-size: 16px;}
+.data-null{font-size: 16px;padding-left: 34px;background: url("run.png")/*tpa=http://kv6.user.kesion.com/admin/images/run.png*/no-repeat -3px center;margin: 10px 0;color: #555;}
+
+#kjfl .textbox{ margin-top:10px;}
+
+/*云服务*/
+.yun-bind tr td{ padding:15px 0;}
+.yun-bindBox{ width:100%;margin:20px 0;}
+.yun-bindBox tr td{ padding:15px 0;}
+.yun-btndBox a{ margin:0 30px 0 0;}
+
+.yun-Interface{ margin-top:20px;}
+.yun-Interface li{ float:left; width:33.33%;}
+.yun-Interface li .yinterface-inner{ margin:0 40px;}
+.yinterface-imgBox img{ width:100%;}
+.yinterface-tit{ text-align:center; font-size:18px; font-weight:normal;margin: 20px 0;}
+.yinterface-intro{ color:#969a9d; line-height:30px;letter-spacing: 1px;}
+.yun-Interface .yinterface-inner .moreBox{ display:inline-block;}
+.y-tips{ margin:50px 0 50px 40px;}
+
+.yun-bindBox3{ width:50%; margin:20px auto;}
+.V-Code input{ vertical-align:middle; margin-right:10px;}
+.yun-bindBox2 .yun-btndBox,.yun-bindBox3 .yun-btndBox  {padding-top:40px;}
+
+/*云账户*/
+.yun-open-info,.yun-open-account{ width:50%; box-sizing:border-box; }
+.yun-open-info{ position:relative;padding-left:40px;}
+.yun-open-info:after{ content:""; display:block; position:absolute; width:1px; background:#dfeff2; height:80%; right:0;top: 10%;}
+.yun-open-info h3,.yun-open-account h3{ font-weight:normal; color:#6a6f73; font-size:16px; line-height:40px;}
+.yun-open-info ul li{ line-height:40px; color:#969a9d;}
+.yun-open-info .moreBox{ display:inline-block; line-height:40px;}
+
+.yun-open-account{ padding-left:100px;}
+.balance,.integral{ width:50%;}
+.account-data{color:#6a6f73; margin:10px 0 25px; letter-spacing:1px;}
+.account-data span{ font-size:28px; margin-right:5px;}
+
+.Access{ position:relative;cursor:pointer;}
+.yun-code{ position:absolute; display:none;transition: .2s; left:50%; margin-left:-90px; bottom:18px; width:180px; background:#fff; z-index:1000;padding: 10px 0 15px;border-radius: 10px;box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.08); }
+.yun-code img{ width:117px; height:117px; display:block;}
+.yun-code em{ display:block; text-align:center; color:#6a6f73;margin: 5px 0 10px;}
+.Access:hover .yun-code{ display:block;}
+
+.yun-Choice span{ margin-right:15px;}
+
+/*应用详情*/
+.Appdetails{ padding-left:20px;}
+.applicationBox .AppImgBox{ width:134px; height:134px; margin-right:30px;}
+.applicationBox .AppImgBox img{ width:100%; height:100%; display:block;}
+.AppIntro h3{font-weight: normal;font-size: 18px;font-weight:normal;}
+.appPrice { margin-left:50px;}
+.systemColor{line-height: 22px;height: 22px;display: block; margin:10px 0;}
+.systemintro{display: block;color: #969a9d; margin:10px 0;}
+.AppBtnBox{ margin-top:15px;}
+.AppBtnBox a{ margin-right:20px;}
+.livingState{ position:absolute;left: 4px;top: 4px;background: rgba(0, 0, 0, 0.5);border-radius: 3px;color: #fff;font-size: 12px;padding: 2px 3px;}
+.liwrap{ position:relative;}
+.topcd{position: absolute;background: #fff;right: 0;top: 36px;display: none;width:100%;animation: propertyBox .3s;-moz-animation: propertyBox .3s;-webkit-animation: propertyBox .3s;-o-animation: propertyBox .3s;box-shadow: 0 5px 20px rgba(0,0,0,0.1);border-radius: 5px; z-index:99;}
+.topcd a{ display:block; line-height:34px; text-align:center;font-size: 12px;}
+.no-borderTable tr td{ border-top:0;}
+
+/*考试*/
+.Answertips{ display:none;}
+.anstextBox p{ max-width:70%; line-height:40px; display:inline-block;}
+.orderOperation .greenFont{ background:none; border:0; margin:0 3px;}
+.courseProperty span{width: auto;padding: 0 1px;}
+.fTable{ border-top:1px solid #333; border-left:1px solid #333;}
+.fTable tr td{ padding:10px; text-align:center; border-right:1px solid #333;border-bottom:1px solid #333;}
+
+.openUp{ padding:0 20px;}
+#showcxfa{ line-height:56px;}
+#showcxfa input{ margin-left:15px;}
+#showcxfa strong{ font-weight:normal;}
+
+#PrintBox .PrintBox,#PrintBox2 .PrintBox2{ width:33.33%; float:left; box-sizing:border-box; padding:15px;}
+#PrintBox .PrintBox .innerPrintBox,#PrintBox2 .PrintBox2 .innerPrintBox{ border:#dce4e5 solid 1px;padding:30px 25px; border-radius:3px;}
+.PrintBox .innerPrintBox .blackTipsBox,.PrintBox2 .innerPrintBox .blackTipsBox{ position:relative;}
+.innerPrintBox .blackTipsBox i{ display:inline-block; width:20px; height:20px; background:url("tipsicon.png")/*tpa=http://kv6.user.kesion.com/admin/images/tipsicon.png*/ no-repeat center; vertical-align:middle;}
+#PrintBox .PrintBox .CTable{ display:none;}
+.PrintBox .blackTips,.PrintBox2 .blackTips{ display:none;background:#444;padding: 5px;color: #fff;font-size: 12px;position: absolute;left: 50%;margin-left: -80px;top:25px;transition: .3s;width: 150px;border-radius: 3px;z-index: 1000; text-align:center;}
+.PrintBox .blackTips:after,.PrintBox2 .blackTips:after{ content:'';width:0;height:0;border-right:6px solid transparent;border-left:6px solid transparent;border-bottom:6px solid #444; position:absolute; top:-4px; left:50%; margin-left:-6px;}
+.PrintBox2 .LeftBox{ width:50%;}
+.PrintBox2 .LeftBox .circleTit{ text-align:center; line-height:40px;color:#666; letter-spacing:1px;}
+
+.innerPrintBox .blackTipsBox:hover .blackTips{ display:block;}
+.highcharts-credits{ display:none;}
+.highcharts-axis-title{ display:none;}
+
+.TabTitle{height: 36px;line-height: 34px;}
+.TabTitle span{ float:left;padding: 0 15px;font-size: 14px;cursor: pointer;border: 1px solid #dce4e5;margin-left: -1px; position:relative; z-index:1;}
+.TabTitle span.active{border: 1px solid #35a7ba; z-index:2; color:#35a7ba;}
+.TabTitle span.active a{color:#35a7ba;}
+
+/*设置的模板*/
+.templateBox ul li{ width:auto; float:none;}
+.templateBox li:last-child .border{ margin-bottom:0;border-bottom:0;}
+.templateBox .border{ border-radius:0; border:0; border-bottom:1px solid #dce4e5;padding: 0px 0px 30px;}
+.templateBox .s_img{height: 150px;width: 200px;border: #ECEFEF solid 1px;overflow: hidden;margin-right: 20px;float: left;}
+.templateBox .border .s_name{display: block;font-weight: normal;font-size: 18px;padding: 15px 0px;}
+.templateBox .border .s_name .Tid {font-size: 14px;font-weight: normal;color: #90969B;margin-top: 10px;}
+.templateBox .s_rbox a{color:#35a7ba; display:inline-block; margin:0 10px; width:auto;border:0; font-size:12px;}
+
+/*订单*/
+.orderDataTable{ width:50%; float:left; box-sizing:border-box; padding:0 15px 15px;}
+.innerorderDataTable{border:#dce4e5 solid 1px;padding:20px 0; border-radius:3px;}
+#main_map{ padding-top:40px; border-top:#dce4e5 solid 1px;}
+#showdate .Wdate{ width:160px !important;}
+.contentArea{background: #f5fbfb;padding: 10px;border: 1px solid hsl(186, 46%, 92%);border-radius: 5px;}
+.contentArea .titleTips{border-bottom: 1px solid #e1f2f4;display: block;line-height: 36px;margin-bottom: 20px;padding-left: 15px;color: #8fced9;}
+
+.oTable{ border:1px solid #dce4e6; margin-bottom:10px;}
+.oTrDate{ border-bottom:1px solid #dce4e6;}
+.oTbody .oTrDate:last-child{ border-bottom:0;}
+.oTrfooter {background: #f3f7ff;}
+.oTable li{ padding:10px 0px; float:left; text-align:center;}
+.oTrDate li{ min-height:70px;}
+.oTable .oTr{ background:#f3f7ff;}
+.oTrfooter li{ padding:10px;}
+.oTableCenter{display: flex;justify-content:center;align-items: center;}
+.oTrTitle{ border:0;background: #f2f4f7;}
+.oTrDate .orderOperation .greenFont{font-size: 14px;}
+.stateBox font{ margin:0 5px;}
+/*拼团统计*/
+.CollageBox .PrintBox{ width:50%;float: left;box-sizing: border-box;padding: 15px;}
+.CollageBox .PrintBox .innerPrintBox {border: #dce4e5 solid 1px;padding: 30px;border-radius: 3px;}
+.OrderAmount{box-sizing: border-box;padding: 15px;}
+.OrderAmount .OrderA{border: #dce4e5 solid 1px;padding: 30px;border-radius: 3px;min-height: 459px;}
+.OrderAmount .m-TabTitle{height: 37px;line-height: 35px;}
+.OrderAmount .m-TabTitle span{ float:left;padding: 0 21px;font-size: 16px;cursor: pointer;border: 1px solid #eee;margin-left: -1px; position:relative; z-index:1;}
+.OrderAmount .m-TabTitle span.curr{border: 1px solid #35a7ba; z-index:2; color:#35a7ba;}
+.CollageForm{ width:40%;/*overflow:hidden;*/height: 260px;}
+.CollageRightInfo{ width:40%;margin-top: 80px;}
+.CollageTit{ font-size:12px;}
+.Percentage{ color:#b4b7b9; padding-left:15px; border-left:1px solid #dce4e5; margin-left:15px;}
+.Collagehide{ display:none;}
+.Collagenum,.PrintBox2 .rightBox li{ position:relative; padding-left:15px;line-height: 33px;}
+.Collagenum b{ position:absolute; display:block; width:6px; height:6px; border-radius:6px;left:0; top:50%; margin-top:-3px;}
+.Collagenum b.no1{ background:#34ba34;}
+.Collagenum b.no2{ background:#ec9b49;}
+.Collagenum b.no3{ background:#ec4a46;}
+.Collagenum b.no4{ background:#b4b7b9;}
+.Collagenum b.no5{ background:#35ba35;}
+.Collagenum b.no6{ background:#35a7ba;}
+
+
+.highcharts-series-group{ width:200px;}
+
+#Annular1,#Annular2{ margin-top:-20%; margin-left:-20%;}
+#Annular1 .orderAll,#Annular2 .orderAll,#Annular3 .orderAll{ font-size:14px; color:#999; display:block;}
+#Annular1 .orderData,#Annular2 .orderData,#Annular3 .orderData{ fill: #35a7ba;font-size: 20px;} 
+.PrintBox2 .rightBox{ width:45%; padding-top:15%;}
+.PrintBox2 .rightBox li b {position:absolute; display:block; width:6px; height:6px; border-radius:6px;left:0; top:13px;}
+.PrintBox2 .rightBox li{font-size: 12px;}
+.PrintBox2 .rightBox li b.circleIcon0{background:#35a7ba;}
+.PrintBox2 .rightBox li b.circleIcon1{background:#4299e2;}
+.PrintBox2 .rightBox li b.circleIcon2{background:#35a7ba;}
+.PrintBox2 .rightBox li b.circleIcon3{background:#5ac55a;}
+.PrintBox2 .rightBox li b.circleIcon4{background:#ed9a47;}
+.PrintBox2 .rightBox li b.circleIcon5{background:#ec4a46;}
+
+.CaptionName{padding-left: 105px; display:block;}
+.Caption{padding-left: 100px; display:block;}
+.oTableCenter .Caption,.oTableCenter .CaptionName{ padding-left:10px;}
+.Caption{ margin-top:5px;}
+.Caption .kb_box{text-align: left;line-height:20px;font-size: 12px; color:#9a9a9a; letter-spacing:1px;}
+.Caption .kb_box a{ color:#9e9e9e;}
+#ShowAnnounce{ width:300px;}
+.periodlist{ margin-top:5px;}
+.periodlist li{ font-size:12px; color:#9e9e9e;line-height: 16px;text-align: left;}
+.periodmoney{ color:#ec4a46; margin-left:15px;}
+
+
+body.s2 .m-TabTitle span.curr,body.s2 .TabTitle span.active{ border:1px solid #00b0d5;color: #00b0d5;}
+body.s3 .m-TabTitle span.curr,body.s3 .TabTitle span.active{ border:1px solid #2abd6a;color: #2abd6a;}
+body.s4 .m-TabTitle span.curr,body.s4 .TabTitle span.active{ border:1px solid #534240;color: #534240;}
+body.s5 .m-TabTitle span.curr,body.s5 .TabTitle span.active{ border:1px solid #e77f0e;color: #e77f0e;}
+body.s6 .m-TabTitle span.curr,body.s6 .TabTitle span.active{ border:1px solid #e53838;color: #e53838;}
+
+body.s2 .TabTitle span.active a{color: #00b0d5;}
+body.s3 .TabTitle span.active a{color: #2abd6a;}
+body.s4 .TabTitle span.active a{color: #534240;}
+body.s5 .TabTitle span.active a{color: #e77f0e;}
+body.s6 .TabTitle span.active a{color: #e53838;}
+
+body.s2 #manage_top li.curr a,body.s2 #manage_top li.curr a:hover{ background:#00b0d5;}
+body.s3 #manage_top li.curr a,body.s3 #manage_top li.curr a:hover{ background:#2abd6a;}
+body.s4 #manage_top li.curr a,body.s4 #manage_top li.curr a:hover{ background:#534240;}
+body.s5 #manage_top li.curr a,body.s5 #manage_top li.curr a:hover{ background:#e77f0e;}
+body.s6 #manage_top li.curr a,body.s6 #manage_top li.curr a:hover{ background:#e53838;}
+
+.style-inner .style-inner-item.current{border: 1px solid #35a7ba;background: #f5fbfb;}
+body.s2 .style-inner .style-inner-item.current{border: 1px solid #00b0d5;background: #f2fbfd;}
+body.s3 .style-inner .style-inner-item.current{border: 1px solid #2abd6a;background: #f4fcf7;}
+body.s4 .style-inner .style-inner-item.current{border: 1px solid #534240;background: #f6f5f5;}
+body.s5 .style-inner .style-inner-item.current{border: 1px solid #e77f0e;background: #fef8f3;}
+body.s6 .style-inner .style-inner-item.current{border: 1px solid #e53838;background: #fef5f5;}
+
+.btns .wu-example{ margin-top:10px;}
+.overflowx{overflow-x: auto;}
+.overflowx .CTable td{ white-space:nowrap;}
+#letv iframe#upframe {margin-top: 15px}
+
+.btn-default{color: #6a6f73 !important;background-color: #fff;border: 1px solid #e6e9ea !important;font-size: 12px !important;padding: 0 12px !important;height: 34px !important;line-height: 34px !important;}
+.btn-default:hover{ background:#f5f8f9 !important;border: 1px solid #e6e9ea !important;}
+
+#DefaultUrl{ margin-top:0;}
+.Communicate hr:last{ display:none;}
+@media all and (max-width: 1640px) {
+	.mainHeader .navBar{padding-left: 0px;}
+	.mainHeader .navBar li{padding-right: 20px;}
+	.longHeadOperat2{ float:none !important;padding: 0px;margin-top: 20px;}
+}
+@media all and (max-width: 1440px) {
+	.mainHeader .navBar li{ padding-right:15px;}
+	.dynamic-tab-pane-control .tab-row .tab{ margin:0 20px !important;}
+	.new_date{display:none;}
+	.CollageForm{ width:70%;height: 250px;float:none !important; margin:auto;}
+	#Annular1,#Annular2{ margin-top:-25%; margin-right:auto; margin-left:auto;}
+	.CollageRightInfo{ width:100%;}
+	
+	.stencil .border{margin: 0 5px 10px;padding: 10px;}
+	.stencil .s_img{ margin-right:10px;}
+}
+@media all and (max-width: 1280px) {
+	.longHeadOperat{ float:none !important;padding: 0px;margin-top: 20px;}
+	.quickSearch{ padding-left:0;padding-right:0;}
+	.longHeadOperat li{ margin-right:10px;}
+	.longTabs>ul.tabs{border-bottom: #dce4e5 solid 1px;}
+	.longTabs{ border-bottom:0; margin-bottom:0;}
+	.loneHeadOperat:after,.tabs_header ul:after{ content:''; clear:both; display:block;}
+	.courseList li .courseInfo>.fl{ width:80%}
+	.courseList li .buttonBox .btn{ width:14%; margin-right:0;}
+	.courseList li .courseInfo .info span{ line-height:25px; padding-right:30px !important;}
+	#manage_top li{margin-left:15px;}
+	.listedit .button{ margin:0 2px;}
+	.longquickSearch:after{ content:''; clear:both; display:block;}
+	.longliwrap{ float:none !important; margin-top:20px;}
+	.longliwrap:after{ content:''; display:block; clear:both;}
+	.tabs_header .tabs li{margin: 0 25px;}
+}
+@media all and (max-width: 1150px) {
+	.mainHeader .navBar li{padding-left: 10px;padding-right:10px;background: none !important;}	
+	.CollageForm{ width:85%;}
+	.quickSearch{padding: 0 0px 20px;}
+	
+	.stencil .border{margin: 0px 15px 30px;padding: 15px;}
+	.stencil .s_img{margin-right: 20px;}
+}
+@media all and (max-width: 1123px) {
+	/*.main-button{bottom:8px;}*/
+	#manage_top .titleTab li a{ font-size:15px;}
+	.oTrDate li,.oTrDate .orderOperation .greenFont{font-size: 12px;}
+	.cosOrderTable{ width:100%;}
+	
+	
+}
+@media all and (max-width: 950px) {
+	.mainHeader .navBar{ display:none;}
+}

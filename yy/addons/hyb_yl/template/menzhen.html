@@ -1,0 +1,1250 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            <!-- headerbar -->
+            <div class="pageheader hidden">
+                <h2><i class="fa fa-user-md"></i> 医生门诊</h2>
+            </div>
+            <div class="contentpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs patient-tabs">
+                    <li class="active"><a href="#today" data-toggle="tab"><strong>今日病人 (<span id="J-today-count">0</span>)</strong></a></li>
+                    <li class=""><a href="#history" data-toggle="tab"><strong>历史记录</strong></a></li>
+                </ul>
+                <a class="btn btn-primary pull-right mtf44 mr115 pl20 pr20 border-none J-module-control" data-permission="9005" data-toggle="modal" data-target="#callModal">呼叫下一位</a>
+                <a class="btn btn-primary pull-right mtf44 mr10 pl20 pr20 border-none J-quick-btn J-module-control" data-permission="17" data-toggle="modal" data-target="#myModal2">快速接诊</a>
+                <!-- Tab panes -->
+                <div class="tab-content" id="clinic-wrap">
+                    <!-- 今日病人 -->
+                    <div class="tab-pane active" id="today">
+                        <div class="row mb10">
+                            <form class="form-inline" method="post">
+                                <div class="col-sm-6">
+                                    <a href="javascript:void(0);" class="btn-group btn btn-default btn-sm font14 J-select-patient"><i class="fa fa-plus"></i> 选择患者</a>
+                                </div>
+                                <div class="col-sm-6 pull-right">
+                                    <div class="input-group input-group-sm pull-right mb10 mr5">
+                                        <input type="text" class="form-control w200p" placeholder="请输入姓名或手机或病案号" id="j_search_input">
+                                        <span class="input-group-btn">
+                                        <button id="j_search_submit" type="button" class="btn btn-default btn-search"><i class="fa fa-search"></i></button>
+                                      </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- 病人列表 -->
+                        <div class="people-list">
+                            <div class="row" id="clinic-wrap-list">
+                            </div>
+                        </div>
+                        <!-- 病人列表 -->
+                        <div class="J-pager-wrap">
+                        </div>
+                        <!-- 待分诊患者 -->
+                                                    <div class="modal fade" id="patient-list-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">快速接诊</h4>
+                </div>
+                <div class="modal-body pd0">
+                    <div class="tab-content">
+                        <form id="quickForm" novalidate="novalidate">
+        
+        <input type="hidden" name="patient_id" value="">
+        <input type="hidden" name="hide" value="false">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <div class="form-group pos-relative">
+                        <label class="control-label">患者姓名 <span class="asterisk">*</span></label>
+                        <div class="form-group input-group">
+                            <input type="text" class="form-control J-patient-name" name="name" id="patient_name" value="" required="" autocomplete="off">
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-default btn-find J-btn-search" data-toggle="modal"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                        <div class="search-block hidden J-search-name">
+                            <div class="tips">请选择患者或继续新增</div>
+                            <ul class="J-search-list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">性别 <span class="asterisk">*</span></label>
+                        <div class="row mt10">
+                            <div class="col-sm-4">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" value="1" class="J-listerner" id="radio_sex1" name="sex_code" required="">
+                                    <label for="radio_sex1">男</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" value="2" class="J-listerner" id="radio_sex2" name="sex_code" required="">
+                                    <label for="radio_sex2">女</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" value="3" class="J-listerner" id="radio_sex3" name="sex_code" required="">
+                                    <label for="radio_sex3">不详</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-3 col-md-3 pr0">
+                    <div class="form-group">
+                        <label class="control-label">出生年月 <span class="asterisk">*</span></label>
+                        <input class="form-control realbirth J-listerner J-checkin-birthday J-birthday-only" placeholder="____年__月__日" name="birth_date" id="appDate" type="text" value="" required="">
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">年龄 <span class="asterisk">*</span></label>
+                        <input class="form-control realage J-checkin-age" placeholder="__岁" name="age" id="J-checkin-age" type="text" value="" required="">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">手机号</label>
+                        
+                        <input type="text" class="form-control cellphone J-phone ime-mode" value="" name="mobilenumber">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">接诊科室 <span class="asterisk">*</span></label>
+                        <div class="select2-container mtf3 J-department-input" id="s2id_autogen5" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-6">请选择</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen6" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-6" id="s2id_autogen6"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen6_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-6" id="s2id_autogen6_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-6">   </ul></div></div><input type="hidden" name="department" required="" class="mtf3 J-department-input select2-offscreen" value="" tabindex="-1" title="">
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">接诊类型 <span class="asterisk">*</span></label>
+                        <select class="form-control input-sm mt0" data-placeholder="请选择" required="" name="firstvisit">
+                            <option selected="selected" value="1">初诊</option>
+                            <option value="2">复诊</option>
+                            <option value="3">儿童体检</option>
+                            <option value="4">成人体检</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">住址</label>
+                        <select class="form-control input-sm mt0 J-location-pro J-listerner" data-placeholder="请选择" name="province"><option value="">请选择</option><option value="110000">北京</option><option value="120000">天津</option><option value="130000">河北</option><option value="140000">山西</option><option value="150000">内蒙古</option><option value="210000">辽宁</option><option value="220000">吉林</option><option value="230000">黑龙江</option><option value="310000">上海</option><option value="320000">江苏</option><option value="330000">浙江</option><option value="340000">安徽</option><option value="350000">福建</option><option value="360000">江西</option><option value="370000">山东</option><option value="410000">河南</option><option value="420000">湖北</option><option value="430000">湖南</option><option value="440000">广东</option><option value="450000">广西</option><option value="460000">海南</option><option value="500000">重庆</option><option value="510000">四川</option><option value="520000">贵州</option><option value="530000">云南</option><option value="540000">西藏</option><option value="610000">陕西</option><option value="620000">甘肃</option><option value="630000">青海</option><option value="640000">宁夏</option><option value="650000">新疆</option><option value="710000">台湾</option><option value="810000">香港</option><option value="820000">澳门</option><option value="900000">国外</option></select>
+                        <input type="hidden" class="J-location-pro-name" name="province_name" value="">
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">&nbsp;</label>
+                        <select class="form-control input-sm mt0 J-location-city J-listerner" data-placeholder="请选择" name="city">
+                            <option value="" selected="selected">
+                                
+                            </option>
+                        </select>
+                        <input type="hidden" class="J-location-city-name" name="city_name" value="
+                                
+                            ">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">&nbsp;</label>
+                        <input type="text" name="address" value="" placeholder="详细地址" class="form-control J-listerner">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+                    </div>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary mr15" id="J-quick-submit">接诊</button>
+                </div>
+            </div>
+                                </div>
+                            </div>                        <!-- 待分诊患者 -->
+                        <!-- 修改接诊类型 -->
+                        <div class="modal fade" id="firstvisit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">修改接诊类型</h4>
+                                    </div>
+                                    <form>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group mb30 mt10 mlr0">
+                                                        <label class="control-label">选择接诊类型 <span class="asterisk">*</span></label>
+                                                        <input type="hidden" name="clinic_id" value="">
+                                                        <select class="form-control input-sm J-firstvisit-list" name="visit_type" data-placeholder="请选择" required="">
+                                                            <option value="1" selected="selected">初诊</option>
+                                                            <option value="2">复诊</option>
+                                                            <option value="3">儿童体检</option>
+                                                                <option value="4">成人体检</option>                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer modal-btn-col2">
+                                            <button type="button" class="btn btn-primary J-change-firstvisit-sub">保存</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 修改接诊类型 -->
+                        <!-- 修改登记科室 -->
+                        <div class="modal fade" id="department-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">修改登记科室</h4>
+                                    </div>
+                                    <form>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group mb30 mt10 mlr0">
+                                                        <label class="control-label">选择登记科室 <span class="asterisk">*</span></label>
+                                                        <input type="hidden" name="clinicId" value="">
+                                                        <select class="form-control input-sm J-department-list" name="departmentId" data-placeholder="请选择" required="">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer modal-btn-col2">
+                                            <button type="button" class="btn btn-primary J-change-department-sub">保存</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 修改登记科室 -->
+                    </div>
+                    <!-- 今日病人 -->
+                    <!-- 历史记录 -->
+                    <div class="tab-pane" id="history">
+                        <div class="row mb10">
+                            <form id="J-search-form-history" method="post" class="form-inline pull-right col-custom-xs-12">
+                                <div class="col-xs-12 col-sm-12 pull-right mb10">
+                                    <div class="form-group mr0">
+                                        <label class="control-label">查找患者：</label>
+                                        <div class="input-group col-custom-xs-12">
+                                            <input type="text" size="10" placeholder="开始时间" name="start_time" class="form-control input-sm2 radius3 J-start-date J-date" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mr0"> - </div>
+                                    <div class="form-group mr5">
+                                        <div class="input-group col-custom-xs-12">
+                                            <input type="text" size="10" placeholder="结束时间" name="end_time" class="form-control input-sm2 radius3 J-end-date J-date" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mr5">
+                                        <input type="text" class="form-control input-sm2 J-patient-name w200p" id="J-patient-name" placeholder="请输入姓名或手机或病案号" name="patient_name">
+                                    </div>
+                                    <button class="btn btn-default btn-sm col-custom-xs-12" type="button" id="J-search-submit-history"><i class="fa fa-search"></i> </button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- 病人列表 -->
+                        <div class="people-list">
+                            <div class="row" id="clinic-wrap-history-list">
+                            </div>
+                        </div>
+                        <!-- 病人列表 -->
+                        <div class="J-pager-wrap1">
+                        </div>
+                    </div>
+                    <!-- 历史记录 -->
+                </div>
+            </div>
+        </div>
+        <!-- mainpanel -->
+    </section>
+    <!-- 完善信息 -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">个人信息</h4>
+                </div>
+                <div class="modal-body pd0">
+                    <div id="progressWizard" class="basic-wizard">
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="border-none"><a href="#ptab5" data-toggle="tab">体征信息</a></li>
+                            <!-- <li class="border-none"><a href="#ptab2" data-toggle="tab">基本信息</a></li> -->
+                            <li class="border-none"><a href="#ptab3" data-toggle="tab">病历信息</a></li>
+                        </ul>
+                        <div class="tab-content step" id="j_supplyInfo"></div>
+                    </div>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary" id="j_saveSupply">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 完善信息 -->
+    <!-- 完善信息 -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">快速接诊</h4>
+                </div>
+                <div class="modal-body pd0">
+                    <div class="tab-content">
+                        <form id="quickForm" novalidate="novalidate">
+        
+        <input type="hidden" name="patient_id" value="">
+        <input type="hidden" name="hide" value="false">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <div class="form-group pos-relative">
+                        <label class="control-label">患者姓名 <span class="asterisk">*</span></label>
+                        <div class="form-group input-group">
+                            <input type="text" class="form-control J-patient-name" name="name" id="patient_name" value="" required="" autocomplete="off">
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-default btn-find J-btn-search" data-toggle="modal"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                        <div class="search-block hidden J-search-name">
+                            <div class="tips">请选择患者或继续新增</div>
+                            <ul class="J-search-list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">性别 <span class="asterisk">*</span></label>
+                        <div class="row mt10">
+                            <div class="col-sm-4">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" value="1" class="J-listerner" id="radio_sex1" name="sex_code" required="">
+                                    <label for="radio_sex1">男</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" value="2" class="J-listerner" id="radio_sex2" name="sex_code" required="">
+                                    <label for="radio_sex2">女</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" value="3" class="J-listerner" id="radio_sex3" name="sex_code" required="">
+                                    <label for="radio_sex3">不详</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-3 col-md-3 pr0">
+                    <div class="form-group">
+                        <label class="control-label">出生年月 <span class="asterisk">*</span></label>
+                        <input class="form-control realbirth J-listerner J-checkin-birthday J-birthday-only" placeholder="____年__月__日" name="birth_date" id="appDate" type="text" value="" required="">
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">年龄 <span class="asterisk">*</span></label>
+                        <input class="form-control realage J-checkin-age" placeholder="__岁" name="age" id="J-checkin-age" type="text" value="" required="">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">手机号</label>
+                        
+                        <input type="text" class="form-control cellphone J-phone ime-mode" value="" name="mobilenumber">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">接诊科室 <span class="asterisk">*</span></label>
+                        <div class="select2-container mtf3 J-department-input" id="s2id_autogen7" style="width: 100%;"><a href="javascript:void(0)" class="select2-choice select2-default" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-8">请选择</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen8" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-8" id="s2id_autogen8"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <label for="s2id_autogen8_search" class="select2-offscreen"></label>       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-owns="select2-results-8" id="s2id_autogen8_search" placeholder="">   </div>   <ul class="select2-results" role="listbox" id="select2-results-8">   </ul></div></div><input type="hidden" name="department" required="" class="mtf3 J-department-input select2-offscreen" value="" tabindex="-1" title="">
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">接诊类型 <span class="asterisk">*</span></label>
+                        <select class="form-control input-sm mt0" data-placeholder="请选择" required="" name="firstvisit">
+                            <option selected="selected" value="1">初诊</option>
+                            <option value="2">复诊</option>
+                            <option value="3">儿童体检</option>
+                            <option value="4">成人体检</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">住址</label>
+                        <select class="form-control input-sm mt0 J-location-pro J-listerner" data-placeholder="请选择" name="province"><option value="">请选择</option><option value="110000">北京</option><option value="120000">天津</option><option value="130000">河北</option><option value="140000">山西</option><option value="150000">内蒙古</option><option value="210000">辽宁</option><option value="220000">吉林</option><option value="230000">黑龙江</option><option value="310000">上海</option><option value="320000">江苏</option><option value="330000">浙江</option><option value="340000">安徽</option><option value="350000">福建</option><option value="360000">江西</option><option value="370000">山东</option><option value="410000">河南</option><option value="420000">湖北</option><option value="430000">湖南</option><option value="440000">广东</option><option value="450000">广西</option><option value="460000">海南</option><option value="500000">重庆</option><option value="510000">四川</option><option value="520000">贵州</option><option value="530000">云南</option><option value="540000">西藏</option><option value="610000">陕西</option><option value="620000">甘肃</option><option value="630000">青海</option><option value="640000">宁夏</option><option value="650000">新疆</option><option value="710000">台湾</option><option value="810000">香港</option><option value="820000">澳门</option><option value="900000">国外</option></select>
+                        <input type="hidden" class="J-location-pro-name" name="province_name" value="">
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">&nbsp;</label>
+                        <select class="form-control input-sm mt0 J-location-city J-listerner" data-placeholder="请选择" name="city">
+                            <option value="" selected="selected">
+                                
+                            </option>
+                        </select>
+                        <input type="hidden" class="J-location-city-name" name="city_name" value="
+                                
+                            ">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">&nbsp;</label>
+                        <input type="text" name="address" value="" placeholder="详细地址" class="form-control J-listerner">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+                    </div>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary mr15" id="J-quick-submit">接诊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 完善信息 -->
+
+    <!-- 叫号 -->
+    <div class="modal fade" id="callModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-normal">
+            <div class="modal-content">
+                <!-- 标题 -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">排号列表</h4>
+                </div>
+                <!-- 内容 -->
+                <div class="modal-body">
+                    <table id="waiting" class="table table-bordered tab-pane active">
+                        <thead class="header">
+                            <tr>
+                                <th width="20%">号码</th>
+                                <th width="50%">姓名</th>
+                                <th width="30%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="J-call-list-warp"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 排号列表模板 -->
+    <script type="text/template" id="J-call-list-tpl">
+        <% for(var i =0; i < callList.length; i++) { %>
+            <% var item = callList[i]; %>
+            <tr <%- item.targetId && 'id = ' + item.targetId %> class="<%- item.hadCall ? 'active' : ''%> <%- item.numStatus === 2 ? 'pass-row' : ''%>">
+                <td><%- item.numberName %></td>
+                <td><%- item.patientName %></td>
+                <td class="waiting-operate">
+                    <% if (item.numStatus == 1) { %>
+                        <a class="J-call-btn" data-index="<%- i%>" data-loading-text="Loading...">再次叫号</a>
+                    <% } else { %>
+                        <a class="J-call-btn" data-index="<%- i%>" data-loading-text="Loading...">叫号</a>
+                    <% } %>
+
+                    <% if (item.numStatus === 2) { %>
+                        <a class="J-call-resort-btn" data-index="<%- i%>" data-loading-text="Loading...">重新排队</a>
+                    <% } else { %>
+                        <a class="J-call-pass-btn" data-index="<%- i%>" data-loading-text="Loading...">过号</a>
+                    <% } %>
+                    <% if (item.roomId) { %>
+                        <a class="J-call-clinic-btn" data-index="<%- i%>" data-loading-text="Loading...">接诊</a>
+                    <% } %>
+                </td>
+            </tr>
+        <% } %>
+    </script>
+
+    <!-- 诊室模板 -->
+    <script type="text/template" id="J-room-tpl">
+        <% $.each(roomList || [], function(i, item){ %>
+        <option value="<%-item.room_id%>"><%-item.clinicname%></option>
+        <% }); %>
+    </script>
+    <!-- 诊室模板 -->
+
+    <!-- 快速接诊 -->
+    <script type="text/template" id="J-quick-tpl">
+        <%
+            var basic_info = patient.basic_info || {};
+            var family_relation = patient.family_relation || [];
+            var reservation = reservation || {};
+        %>
+        <input type="hidden" name="patient_id" value="<%- basic_info.patient_id%>">
+        <input type="hidden" name="hide" value="<%- !!basic_info.patient_id%>">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <div class="form-group pos-relative">
+                        <label class="control-label">患者姓名 <span class="asterisk">*</span></label>
+                        <div class="form-group input-group">
+                            <input type="text" class="form-control J-patient-name" name="name" id="patient_name" value="<%- basic_info.name || reservation.name%>" required autocomplete="off">
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-default btn-find J-btn-search" data-toggle="modal"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                        <div class="search-block hidden J-search-name">
+                            <div class="tips">请选择患者或继续新增</div>
+                            <ul class="J-search-list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">性别 <span class="asterisk">*</span></label>
+                        <div class="row mt10">
+                            <div class="col-sm-4">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" value="1" class="J-listerner" id="radio_sex1" name="sex_code" required <% if ((basic_info.sex_code && basic_info.sex_code == 1) || (reservation.sexCode && reservation.sexCode == 1)) {%>checked="checked"<%}%>>
+                                    <label for="radio_sex1">男</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" value="2" class="J-listerner" id="radio_sex2" name="sex_code" required <% if ((basic_info.sex_code && basic_info.sex_code == 2) || (reservation.sexCode && reservation.sexCode == 2)) {%>checked="checked"<%}%>>
+                                    <label for="radio_sex2">女</label>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="rdio rdio-default">
+                                    <input type="radio" value="3" class="J-listerner" id="radio_sex3" name="sex_code" required <% if ((basic_info.sex_code && basic_info.sex_code == 3) || (reservation.sexCode && reservation.sexCode == 3)) {%>checked="checked"<%}%>>
+                                    <label for="radio_sex3">不详</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-3 col-md-3 pr0">
+                    <div class="form-group">
+                        <label class="control-label">出生年月 <span class="asterisk">*</span></label>
+                        <input class="form-control realbirth J-listerner J-checkin-birthday J-birthday-only" placeholder="____年__月__日" name="birth_date" id="appDate" type="text" value="<%- basic_info.birth_date || reservation.birthday%>" required="">
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">年龄 <span class="asterisk">*</span></label>
+                        <input class="form-control realage J-checkin-age" placeholder="__岁" name="age" id="J-checkin-age" type="text" value="" required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">手机号</label>
+                        <%
+                        var mobilenumber = '';
+                        if (basic_info.mobilenumber) {
+                        mobilenumber = ('' + basic_info.mobilenumber).replace(/(\d{3})\d{4}(\d{4})/, "$1****$2");
+                        } else if (reservation.patient_id) {
+                        mobilenumber = reservation.mobile ? ('' + reservation.mobile).replace(/(\d{3})\d{4}(\d{4})/, "$1****$2") : '';
+                        } else {
+                        mobilenumber = reservation.mobile || '';
+                        }
+                        %>
+                        <input type="text" class="form-control cellphone J-phone ime-mode" value="<% if (mobilenumber) {%><%- mobilenumber%><%}%>"  name="mobilenumber">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <% if(PERMISSIONANDMODULES.modules.indexOf(31) > -1) { %>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">接诊科室 <span class="asterisk">*</span></label>
+                        <input type="hidden" name="department" required class="mtf3 J-department-input" value="">
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">诊室 <span class="asterisk">*</span></label>
+                        <select name="room" class="form-control input-sm mt0" id="J-room-select"></select>
+                    </div>
+                </div>
+                <% }else{ %>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">接诊科室 <span class="asterisk">*</span></label>
+                        <input type="hidden" name="department" required class="mtf3 J-department-input" value="">
+                    </div>
+                </div>
+                <% } %>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">接诊类型 <span class="asterisk">*</span></label>
+                        <select class="form-control input-sm mt0" data-placeholder="请选择" required="" name="firstvisit">
+                            <option selected="selected" value="1" <% if ((reservation.reservation_type_id && reservation.reservation_type_id == 1) || !reservation.reservation_type_id) {%> selected="selected" <%}%>>初诊</option>
+                            <option value="2" <% if (reservation.reservation_type_id && reservation.reservation_type_id == 2) {%> selected="selected" <%}%>>复诊</option>
+                            <option value="3" <% if (reservation.reservation_type_id && reservation.reservation_type_id == 3) {%> selected="selected" <%}%>>儿童体检</option>
+                            <option value="4" <% if (reservation.reservation_type_id && reservation.reservation_type_id == 4) {%> selected="selected" <%}%>>成人体检</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">住址</label>
+                        <select class="form-control input-sm mt0 J-location-pro J-listerner" data-placeholder="请选择" name="province">
+                            <option value="<%- basic_info.province%>" selected="selected">
+                                <% if (basic_info.province) {%>
+                                <%- basic_info.province%>
+                                <%}%>
+                            </option>
+                        </select>
+                        <input type="hidden" class="J-location-pro-name" name="province_name" value="<% if (basic_info.province_name) {%><%- basic_info.province_name%><%}%>" />
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">&nbsp;</label>
+                        <select class="form-control input-sm mt0 J-location-city J-listerner" data-placeholder="请选择" name="city">
+                            <option value="<%- basic_info.city%>" selected="selected">
+                                <% if (basic_info.city) {%>
+                                <%- basic_info.city%>
+                                <%}%>
+                            </option>
+                        </select>
+                        <input type="hidden" class="J-location-city-name" name="city_name" value="<% if (basic_info.city_name) {%><%- basic_info.city_name%><%}%>" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label">&nbsp;</label>
+                        <input type="text" name="address" value="<%- basic_info.address%>" placeholder="详细地址" class="form-control J-listerner">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 快速接诊 -->
+
+    <!-- 完善信息模板 -->
+    <script type="text/template" id="supply-info-tpl">
+        <div class="progress active">
+            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" role="progressbar" style="width: 25%;"></div>
+        </div>
+        <!-- start 体征信息 -->
+        <div class="tab-pane mt10 active" id="ptab5" data-type="5">
+            <form class="form-horizontal" id="j_tab5Form">
+                <!-- start 第一行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">体重(KG)</label>
+                                    <input type="text" value="<% if(age >= 14 || modifyTime > new Date(new Date()-86400000).Format('yyyy-MM-dd hh:mm:ss')){ %><%-weightkg*1?weightkg:''%><% } %>" name="weightkg" class="form-control display-ilb number" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">身高(CM)</label>
+                                    <input type="text" value="<% if(age >= 14 || modifyTime > new Date(new Date()-86400000).Format('yyyy-MM-dd hh:mm:ss')){ %><%-heightcm*1?heightcm:''%><% } %>" name="heightcm" class="form-control display-ilb number" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第一行 -->
+                <!-- start 第二行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">BMI指数</label>
+                                    <%if(age < 14){%>
+                                        <input type="text" value="<%-bmi*1?bmi:''%>" name="bmi" value="20.00（体质指数：18.5-23.9）" class="form-control" readonly>
+                                        <span class="input-group-addon tooltips hidden" data-toggle="tooltip" data-placement="left" data-original-title="参考值为：体重过低：<18.5，体重正常：18.5-23.9，超重：24.0-27.9，肥胖：≥28"></span>
+                                    <%} else {%>
+                                        <div class="input-group">
+                                            <input type="text" value="<%-bmi*1?bmi:''%>" name="bmi" value="20.00（体质指数：18.5-23.9）" class="form-control" readonly>
+                                            <span class="input-group-addon tooltips" data-toggle="tooltip" data-placement="left" data-original-title="参考值为：体重过低：<18.5，体重正常：18.5-23.9，超重：24.0-27.9，肥胖：≥28"><%-bmi_name%></span>
+                                        </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">血型</label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <select class="form-control input-sm mt0" data-placeholder="ABO血型" name="bloodtype">
+                                                <option value="">ABO型</option>
+                                                <option value="A" <%- bloodtype=='A' ? selected="selected" : ""%>>A型</option>
+                                                <option value="B" <%- bloodtype=='B' ? selected="selected" : ""%>>B型</option>
+                                                <option value="O" <%- bloodtype=='O' ? selected="selected" : ""%>>O型</option>
+                                                <option value="AB" <%- bloodtype=='AB' ? selected="selected" : ""%>>AB型</option>
+                                                <option value="0" <%- bloodtype=='0' ? selected="selected" : ""%>>未查</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control input-sm mt0" data-placeholder="请选择" name="blood2type">
+                                                <option value="">RH血型</option>
+                                                <option value="F" <%- blood2type=='F' ? selected="selected" : ""%>>RH阴性</option>
+                                                <option value="M" <%- blood2type=='M' ? selected="selected" : ""%>>RH阳性</option>
+                                                <option value="0" <%- blood2type=='0' ? selected="selected" : ""%>>未查</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第二行 -->
+                <!-- start 第三行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">体温(&#176;C)</label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <select class="form-control input-sm mt0" data-placeholder="请选择" name="temperature_type">
+                                                <option value="1" <% if(temperature_type == 1 || (temperature_type == 0 && age >= 14)){ %>selected<% } %>>口温</option>
+                                                <option value="2" <% if(temperature_type == 2 || (temperature_type == 0 && age < 14)){ %>selected<% } %>>耳温</option>
+                                                <option value="3" <% if(temperature_type == 3){ %>selected<% } %>>额温</option>
+                                                <option value="4" <% if(temperature_type == 4){ %>selected<% } %>>腋温</option>
+                                                <option value="5" <% if(temperature_type == 5){ %>selected<% } %>>肛温</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-temperature%>" name="temperature" class="form-control display-ilb ah" placeholder="" maxlength="32">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">呼吸(次/分钟)</label>
+                                    <input type="text" value="<%-breathing%>" name="breathing" class="form-control display-ilb rsv" placeholder="" maxlength="32">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第三行 -->
+                <!-- start 第四行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">脉搏(次/分钟)</label>
+                                    <input type="text" value="<%-pulse%>" name="pulse" class="form-control display-ilb pwv" placeholder="" maxlength="32">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">血压(mmHg)</label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-shrinkpressure%>" name="shrinkpressure" class="form-control sbp" maxlength="32" placeholder="收缩压">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-diastolic_pressure%>" name="diastolic_pressure" class="form-control dpb" maxlength="32" placeholder="舒张压">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第四行 -->
+                <!-- start 第五行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">血糖浓度(mmol/I)</label>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <input type="text" value="<%- date || new Date().Format('yyyy-MM-dd hh:mm')%>" name="date" class="form-control display-ilb">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select class="form-control input-sm mt0" name="bloodsugar_checktime">
+                                                <option value="0">请选择</option>
+                                                <option value="1" <% if (checktime == 1) {%>selected<%}%>>空腹</option>
+                                                <option value="2" <% if (checktime == 2) {%>selected<%}%>>饭后</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" value="<%-bloodsugar%>" name="bloodsugar_value" class="form-control display-ilb J-sugar-input" placeholder="血糖浓度" maxlength="32">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">视力</label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-leftEyesight%>" name="leftEyesight" class="form-control display-ilb" placeholder="左眼" maxlength="32">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" value="<%-rightEyesight%>" name="rightEyesight" class="form-control display-ilb" placeholder="右眼" maxlength="32">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第五行 -->
+                <!-- start 第六行 -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">氧饱和度(%)</label>
+                                    <input type="text" value="<%-oxygen_saturation%>" name="oxygen_saturation" class="form-control display-ilb pwv" placeholder="" maxlength="32">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="form-group reset-margin">
+                                    <label class="control-label">疼痛评分(0-10)</label>
+                                    <select class="form-control input-sm mt0" data-placeholder="请选择" name="pain_score">
+                                        <option value="0" <%- pain_score=='0' ? selected="selected" : ""%>>0</option>
+                                        <option value="1" <%- pain_score=='1' ? selected="selected" : ""%>>1</option>
+                                        <option value="2" <%- pain_score=='2' ? selected="selected" : ""%>>2</option>
+                                        <option value="3" <%- pain_score=='3' ? selected="selected" : ""%>>3</option>
+                                        <option value="4" <%- pain_score=='4' ? selected="selected" : ""%>>4</option>
+                                        <option value="5" <%- pain_score=='5' ? selected="selected" : ""%>>5</option>
+                                        <option value="6" <%- pain_score=='6' ? selected="selected" : ""%>>6</option>
+                                        <option value="7" <%- pain_score=='7' ? selected="selected" : ""%>>7</option>
+                                        <option value="8" <%- pain_score=='8' ? selected="selected" : ""%>>8</option>
+                                        <option value="9" <%- pain_score=='9' ? selected="selected" : ""%>>9</option>
+                                        <option value="10" <%- pain_score=='10' ? selected="selected" : ""%>>10</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 第六行 -->
+            </form>
+        </div>
+        <!-- end体征信息 -->
+        <!-- 病历信息 -->
+        <div class="tab-pane" id="ptab3" data-type="3">
+            <form class="form-horizontal" id="j_tab3Form">
+                <div class="J-allergy-box">
+                    <div class="form-group mb0">
+                        <div class="col-xs-2 col-sm-2 w10"><strong>过敏史：</strong></div>
+                        <div class="col-xs-3 col-sm-3 w10 rdio rdio-default mr20">
+                            <input type="radio" class="J-has-allergy1 J-check-wrap" name="has_allergy" id="radioDefault5" value="1">
+                            <label for="radioDefault5">有</label>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 rdio rdio-default mr20">
+                            <input type="radio" class="J-has-allergy0 J-check-wrap" name="has_allergy" id="radioDefault6" value="0">
+                            <label for="radioDefault6">否认</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12"><strong>个人史：</strong></label>
+                    <div class="col-sm-12">
+                        <textarea class="form-control display-ilb" name="personalhistory" maxlength="500" rows="5" placeholder=""><%- personalhistory%></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12"><strong>家族史：</strong></label>
+                    <div class="col-sm-12">
+                        <textarea class="form-control display-ilb J-ipt-genetichistory" maxlength="500" rows="5" placeholder="" name="genetichistory"><%- genetichistory%></textarea>
+                    </div>
+                </div>
+                <% if(age < 14){ %>
+                    <div class="form-group">
+                        <label class="col-sm-12"><strong>疫苗接种史：</strong></label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control display-ilb J-vaccination_history" placeholder="" name="vaccination_history" value="<%- vaccination_history%>">
+                        </div>
+                    </div>
+                    <% } %>
+                        <% if(sex != 1){ %>
+                            <div class="form-group">
+                                <label class="col-sm-12"><strong>月经史：</strong></label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">初潮</span>
+                                        <input type="text" placeholder="xx岁" id="age" class="form-control" name="menarche" value="<%- menarche%>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">经期</span>
+                                        <input type="text" placeholder="xxx天-xxx天" id="date" value="<%-taketime%>" class="form-control" name="taketime">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">周期</span>
+                                        <input type="text" placeholder="xxx天-xxx天" id="day" class="form-control" name="cycle" value="<%-cycle%>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">末次月经</span>
+                                        <input type="text" class="form-control display-ilb J-ipt-last_menarche" placeholder="" name="last_menarche" value="<%- last_menarche%>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">孕周</span>
+                                        <input type="text" placeholder="xx周" class="form-control J-pregnancy-week" name="pregnancy_week" value="<%- pregnancy_week %>">
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                                <% if(sex != 1){ %>
+                                    <div class="form-group">
+                                        <label class="col-sm-12"><strong>生育史：</strong></label>
+                                        <div class="col-sm-12">
+                                            <input type="text" placeholder="足月产<%- term_production%>-早产<%- pretermbirth%>-流产<%- abortion%>-现存子女数<%- childern%>" id="numb" class="form-control display-ilb" name="historychildbearing">
+                                        </div>
+                                    </div>
+                                    <% } %>
+            </form>
+        </div>
+        <!-- 病历信息 -->
+    </script>
+    <!-- 完善信息模板 -->
+    <!-- 个人体征获取数据模版 -->
+    <script type="text/template" id="sign-info-tpl">
+        <div class="carousel-inner">
+            <% for(var i = 0, length = iHeatlth.length;i < length;i++) {%>
+                <div class="item <%if(i==length-1){%>active<%}%> text-center">
+                    <table class="table table-bordered table-data">
+                        <thead>
+                            <tr>
+                                <th colspan="2" align="center">
+                                    <%-iHeatlth[i].LastTime%>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>脉搏：</td>
+                                <td><span class="hr"><%-iHeatlth[i].HR%></span> 次/分钟</td>
+                            </tr>
+                            <tr>
+                                <td>收缩压：</td>
+                                <td><span class="hp"><%-iHeatlth[i].HP%></span> mmHg</td>
+                            </tr>
+                            <tr>
+                                <td>舒张压：</td>
+                                <td><span class="lp"><%-iHeatlth[i].LP%></span> mmHg</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button type="button" class="btn btn-sm btn-block btn-white J_get_health">获取</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <% } %>
+        </div>
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+    </script>
+    <!-- 个人体征获取数据模版 -->
+    <!-- 过敏史模版 -->
+    <script type="text/template" id="allergy-row-tpl">
+        <div class="form-group allergy-list">
+            <div class="col-sm-4">
+                <input type="hidden" data-placeholder="过敏源" name="allergy1[]" class="mt0 J-sel-allergy1" />
+            </div>
+            <div class="col-sm-4">
+                <input type="hidden" data-placeholder="过敏反应" name="allergy2[]" class="mt0 J-sel-allergy2" />
+            </div>
+            <div class="col-sm-2">
+                <input type="hidden" data-placeholder="过敏程度" name="allergy3[]" class="mt0 J-sel-allergy3" />
+            </div>
+            <div class="col-sm-2">
+                <a class="btn input-sm mt0 btn-white J-btn-delete-allergy"><i class="fa fa-minus"></i></a>
+                <a class="btn input-sm mt0 btn-white J-btn-add-allergy"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+    </script>
+    <!-- 过敏史模版 -->
+    <!-- 待分诊患者 -->
+    <script type="text/template" id="patient-wrap-list-tpl">
+                    <div class="thmb">
+                <label for="radio<%-patient_id%>" class="J-sure-select" data-id="<%-clinic_id%>">
+                    <div class="thmb-prev">
+                        <img src="<%- image %>" class="img-responsive" alt="">
+                    </div>
+                    <h5 class="fm-title text-nowrap"><%- name %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></h5>
+                    <span class="font12"><%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%></span>
+                    <span class="font12"><%- department%></span>
+                </label>
+            </div>    </script>
+    <!-- 今日病人 -->
+    <script type="text/template" id="clinic-wrap-list-tpl">
+        <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+            <%if(member_type && member_type_status == 1){%>
+            <div class="p-relative">
+                <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+            </div>
+            <% } else if(member_type && member_type_status == 2){ %>
+            <div class="p-relative">
+                <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+            </div>
+            <% } %>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><img src="<%- image %>" class="img-sm img-border" alt="profile"></a>
+                    </div>
+                    <div class="col-sm-8 pl0">
+                        <span class="widget-label badge badge-<%- className %> room-tag"><%- room_name %></span>
+                        <h3><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>" class="white name-nowrap"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info  %>">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small></h3>
+                        <span>登记时间：<%- checkin_time %></span>
+                        <span class="text-nowrap">登记科室：<%- departmentName %></span>
+                        <span class="text-nowrap"><%- status %> <%if(status_code<2){%>/ 等候<%- wait_time %><%}%><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <ul class="photo-meta">
+                <%if (reception) { %>
+                    <li><a href="javascript:void(0);" data-href="<%- global_src_api %>/Clinic/reception2/clinic_id/<%- clinic_id %>/patient_id/<%- patient_id %>/isFirst/<%-firstvisit_code%>.html" class="J-post-reception2" data-id="<%- patient_id %>" data-cid="<%- clinic_id %>" data-status="<%- status_code %>">接诊</a></li>
+                <%}%>
+                <%if (report) { %>
+                    <li class="module-hide J-module-control" data-permission="19,21">
+                        <%
+                            var cp = obj.count.split('/');
+                            if(cp[0] == cp[1]){
+                        %>
+                            <a href="<%- global_src_api %>/Clinic/reception2/clinic_id/<%- clinic_id %>/patient_id/<%- patient_id%>/isFirst/<%-firstvisit_code%>.html#report" class="J-da-view-report">查看报告（<em class="text-success"><%- count %></em>）</a>
+                        <% } else { %>
+                            <a href="<%- global_src_api %>/Clinic/reception2/clinic_id/<%- clinic_id %>/patient_id/<%- patient_id%>/isFirst/<%-firstvisit_code%>.html#report" class="J-da-view-report">查看报告（<%- count %>）</a>
+                        <% } %>
+                    </li>
+                <%}%>
+                <%if (show_extra || show_reservation) { %>
+                    <li>
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">更多操作</a>
+                        <ul class="dropdown-menu dropdown-tl" role="menu">
+                            <%if(status_code==0 && show_extra) {%>
+                                <li><a href="#" data-toggle="modal" class="j-modal1" data-patient-id="<%- patient_id%>" data-clinic-id="<%- clinic_id %>" data-sex="<%- sex_code %>" data-age="<%- age %>"><i class="fa fa-eye"></i> 查看个人信息</a></li>
+                            <% } %>
+                            <%if (show_reservation) { %>
+                                <li class="module-hide J-module-control" data-permission="13"><a href="<%- global_src_api %>/Reservation/reservation?patient_id=<%- patient_id %>&doctor_id=<%- doctor_id %>" class="J-da-add-reservation"><i class="fa fa-clock-o"></i> 预约</a></li>
+                            <%}%>
+                            <li><a href="javascript:void(0);" class="J-change-firstvisit"><i class="fa fa-pencil"></i> 修改接诊类型</a></li>
+                            <%if(status_code<2){%>
+                            <li><a href="javascript:void(0);" class="J-change-department"><i class="fa fa-medkit"></i> 修改登记科室</a></li>
+                            <%}%>
+                            <%if (show_follow) { %>
+                            <li class="module-hide J-module-control" data-permission="77"><a href="<%- global_src_api %>/Follow/follow_add.html?patient_id=<%- patient_id %>" class="J-da-add-follow"><i class="fa fa-asterisk"></i> 新增随访</a></li>
+                            <%}%>
+                        </ul>
+                    </li>
+                <%}%>
+                </ul>
+            </div>
+        </div>
+    </script>
+    <!-- 今日病人 -->
+    <!-- 历史记录 -->
+    <script type="text/template" id="clinic-wrap-history-list-tpl">
+        <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+            <%if(member_type && member_type_status == 1){%>
+            <div class="p-relative">
+                <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+            </div>
+            <% } else if(member_type && member_type_status == 2){ %>
+            <div class="p-relative">
+                <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+            </div>
+            <% } %>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>"><img src="<%- image %>" class="img-sm img-border" alt="profile"></a>
+                    </div>
+                    <div class="col-sm-8 pl0">
+                        <h3><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>" class="white name-nowrap"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age_info  %>">（<%- sex_name %><%if(age_number*1){%><%if(age_number*1 < 14){%> <%- age_info %><%} else {%> <%-age%><%}%><%}%>）</small></h3>
+                        <span class="text-nowrap">手机号：<%- mobilenumber %><%if(firstvisit){%>（<%- firstvisit %>）<%}%></span>
+                        <span>就诊时间：<%- clinic_time %></span>
+                        <span class="text-nowrap" title="<%- result %>">诊断：<%- result %></span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <ul class="photo-meta">
+                    <%if((firstvisit_id == 3 || firstvisit_id == 4) && is_this_shop && reception){%>
+                        <li><a href="<%- global_src_api %>/Clinic/reception2/clinic_id/<%- clinic_id %>/patient_id/<%- patient_id%>/isFirst/<%-firstvisit_id%>.html"> 完善报告</a></li>
+                    <%}else if((status == '待接诊' || status == '接诊中') && is_this_shop && reception){%>
+                       <li><a href="javascript:void (0)" data-href="<%- global_src_api %>/Clinic/reception2/clinic_id/<%- clinic_id %>/patient_id/<%- patient_id %>/isFirst/<%-firstvisit_id%>.html" class="J-history-post-reception2" data-id="<%- patient_id %>" data-cid="<%- clinic_id %>" data-status="<%- status_code %>"> 接诊</a></li>
+                    <%}else if(!show_reservation && !show_follow){%>
+                       <li class="module-hide J-module-control" data-permission="6"><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>&clinic_id=<%- clinic_id %>#tab2"> 查看</a></li>
+                    <%}%>
+                    <%if (show_reservation) { %>
+                    <li class="module-hide J-module-control" data-permission="13"><a href="<%- global_src_api %>/Reservation/reservation?patient_id=<%- patient_id %>&doctor_id=<%- doctor_id %>"> 预约</a></li>
+                    <%}%>
+                    <%if (show_follow) { %>
+                    <li class="module-hide J-module-control" data-permission="77"><a href="<%- global_src_api %>/Follow/follow_add.html?patient_id=<%- patient_id %>"> 新增随访</a></li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+    </script>
+    <!-- 历史记录 -->
+    <script type="text/template" id="J-select-item-tpl">
+        <span class="btn btn-sm btn-white active" data-status="">全部</span>
+        <span class="btn btn-sm btn-white" data-status="2"><i class="fa fa-circle red"></i> 待接诊<%- status_count[2] %>人</span>
+        <span class="btn btn-sm btn-white" data-status="3"><i class="fa fa-circle green"></i> 接诊中<%- status_count[3] %>人</span>
+        <span class="btn btn-sm btn-white" data-status="4"><i class="fa fa-circle end"></i> 已完成<%- status_count[4] %>人</span>
+    </script>
+    <!-- 登记科室列表模板 -->
+    <script type="text/template" id="J-department-list-tpl">
+        <%$.each(data, function(i, item) {%>
+        <option value="<%-item.id%>"><%-item.text%></option>
+        <%});%>
+    </script>
+    <!-- 登记科室列表模板 -->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/msgbox.js?t=1560312126" type="text/javascript"></script>
+    <script type="text/javascript">
+    require(['clinic']);
+    </script>
+</body>
+
+</html>

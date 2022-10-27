@@ -1,0 +1,251 @@
+{template './common/siteheader'}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">会员类型管理</h1>
+        </div>
+
+        <div class="main-content">
+
+            <div class="row mb5">
+                <div class="col-sm-12">
+                    <div class="btn-toolbar list-toolbar">
+                        <a href="{php echo $this->createWeburl('type',array('op'=>'memberadd'))}" class="btn btn-primary"><i class="fa fa-plus"></i>
+                            新增会员类型</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th class="pl20" width="10%">会员等级</th>
+                            <th width="11%">会员类型名称</th>
+                            <th width="">折扣</th>
+                            <th width="15%">会员条件</th>
+                            <th width="5%">状态</th>
+                            <th width="140">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="J-member-type-list"><tr>
+        <td class="pl20">101</td>
+        <td>武林一号</td>
+        <td>实验室检查100%,辅助检查100%,治疗100%,处方100%,诊疗80%,其他收费80%,材料费80%</td>
+        <td>一次性充值&gt;=5000.00</td>
+        <td>正常
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('type',array('op'=>'memberadd'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="138"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">16</td>
+        <td>a会员1</td>
+        <td>实验室检查90%,辅助检查90%,治疗90%,处方90%,诊疗90%,其他收费90%,材料费90%</td>
+        <td>累计充值&gt;=110000.00</td>
+        <td>正常
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('type',array('op'=>'memberadd'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="136"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20">15</td>
+        <td>a会员</td>
+        <td>实验室检查100%,辅助检查100%,治疗100%,处方100%,诊疗100%,其他收费100%,材料费100%</td>
+        <td>累计充值&gt;=100000.00</td>
+        <td>正常
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('type',array('op'=>'memberadd'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="135"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr><tr>
+        <td class="pl20"></td>
+        <td>无条件会员1</td>
+        <td>实验室检查10%,辅助检查10%,治疗10%,处方10%,诊疗10%,其他收费10%,材料费10%</td>
+        <td>无</td>
+        <td>正常
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('type',array('op'=>'memberadd'))}" class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href="#" class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="130"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </tr></tbody>
+                    </table>
+                    <div class="J-page-wrap pd20 mb45"><div class="base_page"><a href="#/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/4</button><a href="#/page/2" type="button" data-page_num="2" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                </div>
+            </div>
+
+            <footer>
+	<hr>
+	<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+	<p class="pull-right"> <a href="http://www.DXY.cn" target="_blank">DXY</a> by <a href="http://www.dxy.cn" target="_blank">DXY.CN</a>
+	</p>
+	<p>© 2015 <a href="http://www.dxy.cn" target="_blank">DXY</a></p>
+</footer>
+        </div>
+    </div>
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/select2.min.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/system/dist/common/redirect.js?t=1560312126"></script>
+
+<div class="modal fade" id="confirmModal2" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">
+    <form method="post" action="#">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="confirmModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<input name="id" class="hidden" value="">-->
+                    <h4 class="pl15 J-modal-text"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i>
+                        你确定要删除吗? </h4>
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>
+                    <button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // 删除弹窗填充
+    function Gconfirm(text, url, confirmFn, cancelFn) {
+        var id = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.html'));
+        var tpl =
+            '<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="false">' +
+            '<form method="post" action=' + url + '>' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' +
+            '<h4 class="modal-title" id="confirmModalLabel">系统提示</h4>' +
+            '</div>' +
+            '<div class="modal-body">' +
+            '<input name="id" class="hidden" value="' + id + '">' +
+            '<h4 class="pl15"><i class="fa fa-question-circle font28 mr5 yellow vertical-middle"></i> ' + text +
+            '</h4>' +
+            '</div>' +
+            '<div class="modal-footer modal-btn-col2">' +
+            '<button type="submit" class="btn btn-primary J-cnf-confirm">确定</button>' +
+            '<button type="button" class="btn btn-default J-cnf-cancel" data-dismiss="modal">取消</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</form>' +
+            '</div>';
+
+        if (!$('#confirmModal').length) {
+            $('body').append(tpl);
+        }
+
+        var el = $('#confirmModal');
+        el.modal('show');
+        el.off('click', '.J-cnf-confirm');
+        el.off('click', '.J-cnf-cancel');
+        el.on('click', '.J-cnf-confirm', function () {
+            if (typeof confirmFn === 'function') {
+                var data = confirmFn();
+            }
+            if (!data) {
+                el.modal('hide');
+                $('#confirmModal').remove();
+                $('.modal-backdrop').remove();
+            }
+        }).on('click', '.J-cnf-cancel', function () {
+            if (typeof cancelFn === 'function') {
+                var data = cancelFn();
+            }
+            el.modal('hide');
+            $('#confirmModal').remove();
+            $('.modal-backdrop').remove();
+        });
+    }
+
+    // 删除弹窗
+    function dodel(url) {
+        Gconfirm('你确定要删除吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function resetPassWd(url) {
+        Gconfirm('你确定要重置密码吗？', url, function () {});
+    }
+
+    // 重置密码弹窗
+    function reset(url) {
+        Gconfirm('你确定要重置吗？', url, function () {});
+    }
+
+    // 停用弹窗
+    function disable(url) {
+        Gconfirm('你确定要停用吗？', url, function () {});
+    }
+</script>
+
+    <!-- 会员类型管理列表模版 -->
+    <script type="text/template" id="J-member-type-list-tpl">
+        <td class="pl20"><%- level%></td>
+        <td><%- name%></td>
+        <td><%- discount%></td>
+        <td><%- condition%></td>
+        <td><%if(status == 1){%>正常
+            <%}else{%><span style="color:#a94442">停用</span><%}%>
+        </td>
+        <td><a href='/Admin/Membertype/memberedit?id=<%- id%>&p=<%-p%>' class="J-edit-button"><i class="fa fa-pencil "></i> 修改</a> -
+            <a href='#' class="J-delete-button" data-toggle="modal" data-target="#confirmModal2" data-id="<%- id%>"><i class="fa fa-trash-o "></i> 删除</a>
+        </td>
+    </script>
+    <!-- 会员类型管理列表模版 -->
+
+    <script type="text/javascript">
+        require(['member_type_list']);
+    </script>
+
+    
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

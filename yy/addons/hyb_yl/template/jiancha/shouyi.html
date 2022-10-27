@@ -1,0 +1,139 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="">收入记录</a>
+		</li>
+	</ul>
+	<div class="app-content">
+		<div class="app-filter">
+			<div class="filter-list">
+				<form action="./index.php" method="get" class="form-horizontal form" id="form1">
+					<input type="hidden" name="c" value="site" />
+					<input type="hidden" name="a" value="entry" />
+					<input type="hidden" name="m" value="hyb_yl" />
+					<input type="hidden" name="op" value="shouyi" />
+					<input type="hidden" name="ac" value="shouyi" />
+					<input type="hidden" name="do" value="jiancha" />
+					<div class="form-group max-with-all">
+						<label class="col-sm-2 control-label">类型</label>
+						<div class="col-sm-9">
+							<div class="btn-group">
+							
+								<!-- <a href="{php echo $this->createWebUrl('jiancha',array('op'=>'shouyi','start'=>$starts,'end'=>$ends))}" class="btn {if $key_words == $type['key_words']} btn-primary {else} btn-default{/if}"></a> -->
+							
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+					<label class="col-sm-2 control-label">时间</label>
+					<div class="col-sm-9 js-daterange" data-form="#form1">
+						
+						<span class="btn-daterange js-btn-daterange">
+
+							<script type="text/javascript">
+								require(["daterangepicker"], function(){
+										$(function(){
+											$(".daterange.daterange-date").each(function(){
+												var elm = this;
+												$(this).daterangepicker({
+													startDate: $(elm).prev().prev().val(),
+													endDate: $(elm).prev().val(),
+													format: "YYYY-MM-DD"
+												}, function(start, end){
+													$(elm).find(".date-title").html(start.toDateStr() + " 至 " + end.toDateStr());
+													$(elm).prev().prev().val(start.toDateStr());
+													$(elm).prev().val(end.toDateStr());
+												});
+											});
+										});
+									});
+							</script>
+
+							<input name="start" type="hidden" value="{$start}" />
+							<input name="end" type="hidden" value="{$end}" />
+							<button class="btn btn-default daterange daterange-date" type="button">
+								<span class="date-title">{$start} 至 {$end}</span>
+								<i class="fa fa-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label"></label>
+						<div class="col-sm-9">
+							<button class="btn btn-primary">搜索</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="app-table-list">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th style="text-align:center;">时间</th>
+							<th style="text-align:center;">账户名称</th>
+							<th style="text-align:center;">类型</th>
+							<th style="text-align:center;">收入|支出(元)</th>
+							<th style="text-align:center;">账户余额</th>
+							<th style="text-align:center;">时间</th>
+						</tr>
+					</thead>
+					<tbody>
+					{loop $list $item}
+						<tr>
+							<!--时间-->
+							<td class="goods-info line-feed" style="padding-left: 10px;">
+								{$item['back_orser']} </td>
+							<td class="text-center" style="height:60px;font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif ;">
+							{$item['u_name']}
+							</td>
+							<!--类型-->
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								<span class="label label-info">{$item['typs']}</span>
+							</td>
+							<!--代理收入|支出-->
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								<span style="color: green ;"> +{$item['money']}</span>
+								<br />
+							</td>
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+								{$item['moneys']} </td>
+							<td class="text-center" style="font-family: " Arial","Microsoft YaHei","黑体","宋体",sans-serif;">
+							{$item['created']}
+								<!-- <a href="http://www.webstrongtech.com/web/index.php?c=site&a=entry&m=hyb_yl&p=order&ac=wlOrder&do=orderdetail&currentid=140" class="btn btn-default btn-sm">查看详情</a> -->
+							
+							</td>
+						</tr>
+						{/loop}
+					</tbody>
+				</table>
+			</div>
+			<div class="app-table-foot clearfix">
+				<div class="pull-left">
+
+				</div>
+				<div class="pull-right">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,584 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+                </div>
+                <div class="pageheader">
+                    <h2><i class="fa fa-archive fa-sm"></i> 药房</h2>
+                    <div class="breadcrumb-wrapper">
+                        <a href="https:///Clinic/Pharmacy/manage.html#delivery" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+                    </div>
+                </div>
+                <div class="contentpanel">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">出库详情</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline" id="J-pharmacy-view-delivery-wrap">
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">出库单号：</label>
+                    758
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">出库日期：</label>
+                    2019-06-13
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">出库方式：</label>
+                     科室出库
+                    
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">领用科室：</label>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">领用人员：</label>
+                    
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">备注：</label>
+                    
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">制单时间：</label>
+                    2019-06-13 13:50:42
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">制单人：</label>
+                    姚俊
+                </div>
+            </div>
+        </div>
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">审核日期：</label>
+                    2019-06-13
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">审核人员：</label>
+                    姚俊
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive border-top mlrf20">
+            <table class="table table-hover shadow-none mb0">
+                <thead>
+                    <tr>
+                        <th width="6%" class="pl20">序号</th>
+                        <th>商品名称</th>
+                        <th width="13%">生产厂商</th>
+                        <th width="8%">零售价(￥)</th>
+                        <th width="8%">成本价(￥)</th>
+                        <th width="10%">批次</th>
+                        <th width="10%">有效期</th>
+                        <th width="8%">库存数量</th>
+                        <th width="8%">出库数量</th>
+                        <th width="9%">出库单位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr>
+                            <td class="pl20">1</td>
+                            <td>
+                                5％葡萄糖氯化钠注射液<br>
+                                250ml
+                            </td>
+                            <td>天地药业有限公司</td>
+                            <td>4.0000</td>
+                            <td>1.0000</td>
+                            <td>100100</td>
+                            <td>2018-10-11</td>
+                            <td>0瓶</td>
+                            <td>426</td>
+                            <td>瓶</td>
+                        </tr>
+                    
+                    <tr>
+                        <td class="pl20">合计</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="J-total-price">426.00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+                        </div>
+                        <div class="panel-footer panel-btn-col2">
+                            <button class="btn btn-default" onclick="window.history.go(-1);">返回</button>
+                            <a href="javascript:window.print();" class="btn btn-white pull-right"><i class="fa fa-file-text"></i> 打印</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 打印出库单 -->
+    <div id="print">
+        <div class="print-page p-pharmacy">
+            <div class="print-subpage">
+                <div class="print-header">
+                    <h1>出库单</h1>
+                    <div class="print-logo">
+                        <input type="hidden" value="https://img1.dxycdn.com/2017/1113/734/3243884881940874667-38.png">
+                            <img src="https://img1.dxycdn.com/2017/1113/734/3243884881940874667-38.png">
+                                            </div>
+                </div>
+                <div class="print-body">
+                    <div class="p-patient-info p-info-small clearfix">
+                        <div class="p-row">
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>出库日期</span></div>
+                                    <div class="p-item">2019-06-13</div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>出库方式</span></div>
+                                    <div class="p-item">
+                                         科室出库
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>领用科室</span></div>
+                                    <div class="p-item">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>审核日期</span></div>
+                                    <div class="p-item">2019-06-13</div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>审核人员</span></div>
+                                    <div class="p-item">姚俊</div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>领用人员</span></div>
+                                    <div class="p-item">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col6">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>备注</span></div>
+                                    <div class="p-item"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-table clearfix">
+                        <table class="p-table-body mt10">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th width="17%">商品名称</th>
+                                    <th width="17%">生产厂商</th>
+                                    <th width="10%">零售价(￥)</th>
+                                    <th width="10%">成本价(￥)</th>
+                                    <th width="12%">批号</th>
+                                    <th>有效期</th>
+                                    <th width="10%">出库量</th>
+                                    <th width="6%">单位</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td>1</td>
+                                        <td>5％葡萄糖氯化钠注射液 250ml</td>
+                                        <td>天地药业有限公司</td>
+                                        <td>4.0000</td>
+                                        <td>1.0000</td>
+                                        <td>100100</td>
+                                        <td>2018-10-11</td>
+                                        <td>426</td>
+                                        <td>瓶</td>
+                                    </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="print-signature position-relative">
+                    成本合计（￥）：426.00
+                    <div class="print-signature-row2 mt0 clearfix">
+                        <div class="p-row">
+                            <div class="p-col4">
+                                <div class="p-signature pull-right">经办人<span></span></div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-signature pull-right">复核人<span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="print-footer position-relative">
+                    <span>演示诊所</span>
+                    <span>13012345678</span>
+                    <span>https://dxy.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+
+    <!-- 详情模板 -->
+    <script type="text/template" id="J-pharmacy-view-delivery-tpl">
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">出库单号：</label>
+                    <%- id %>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">出库日期：</label>
+                    <%- exwarehouse_time %>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">出库方式：</label>
+                    <% if(method == 1) {%> 科室出库
+                    <% } else if(method == 2) {%> 报损出库
+                    <% } else if(method == 3) {%> 退货出库
+                    <% } else if(method == 4) {%> 其他出库
+                    <% } %>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">领用科室：</label>
+                    <%- departmentName %>
+                </div>
+            </div>
+        </div>
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group mb0">
+                    <label class="control-label">领用人员：</label>
+                    <%- worker %>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">备注：</label>
+                    <%- bio %>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">制单时间：</label>
+                    <%-create_time%>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">制单人：</label>
+                    <%-creater%>
+                </div>
+            </div>
+        </div>
+        <div class="row mb0">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">审核日期：</label>
+                    <%- check_time %>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="control-label">审核人员：</label>
+                    <%- checker %>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive border-top mlrf20">
+            <table class="table table-hover shadow-none mb0">
+                <thead>
+                    <tr>
+                        <th width="6%" class="pl20">序号</th>
+                        <th>商品名称</th>
+                        <th width="13%">生产厂商</th>
+                        <th width="8%">零售价(￥)</th>
+                        <th width="8%">成本价(￥)</th>
+                        <th width="10%">批次</th>
+                        <th width="10%">有效期</th>
+                        <th width="8%">库存数量</th>
+                        <th width="8%">出库数量</th>
+                        <th width="9%">出库单位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% $.each(pharmacy || [], function(i, obj) { %>
+                        <tr>
+                            <td class="pl20"><%- ++i%></td>
+                            <td>
+                                <%- obj.medicinename %><br/>
+                                <%- obj.medicinespec %><%if(obj.status != 1){%><span class="text-danger font12">（被停用）</span><% } %>
+                            </td>
+                            <td><%- obj.manufacturer %></td>
+                            <td><%- obj.medicineprice %></td>
+                            <td><%- obj.cost_price %></td>
+                            <td><%- obj.batch_number %></td>
+                            <td><%- obj.validity %></td>
+                            <td><%- obj.real_count %></td>
+                            <td><%- obj.excount %></td>
+                            <td><%- obj.exunit %></td>
+                        </tr>
+                    <% }); %>
+                    <tr>
+                        <td class="pl20">合计</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="J-total-price"><%-obj.totalPrice%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+    <!-- 详情模板 -->
+
+    <!-- 打印模板 -->
+    <script type="text/template" id="J-pharmacy-view-print-tpl">
+        <div class="print-page p-pharmacy">
+            <div class="print-subpage">
+                <div class="print-header">
+                    <h1>出库单</h1>
+                    <div class="print-logo">
+                        <input type="hidden" value="https://img1.dxycdn.com/2017/1113/734/3243884881940874667-38.png">
+                            <img src="https://img1.dxycdn.com/2017/1113/734/3243884881940874667-38.png" />
+                                            </div>
+                </div>
+                <div class="print-body">
+                    <div class="p-patient-info p-info-small clearfix">
+                        <div class="p-row">
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>出库日期</span></div>
+                                    <div class="p-item"><%- exwarehouse_time %></div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>出库方式</span></div>
+                                    <div class="p-item">
+                                        <% if(method == 1) {%> 科室出库
+                                        <% } else if(method == 2) {%> 报损出库
+                                        <% } else if(method == 3) {%> 退货出库
+                                        <% } else if(method == 4) {%> 其他出库
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>领用科室</span></div>
+                                    <div class="p-item"><%- departmentName %>&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>审核日期</span></div>
+                                    <div class="p-item"><%- check_time %></div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group">
+                                    <div class="p-label"><span>审核人员</span></div>
+                                    <div class="p-item"><%- checker %></div>
+                                </div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>领用人员</span></div>
+                                    <div class="p-item"><%- worker %>&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-row">
+                            <div class="p-col6">
+                                <div class="p-group mr0">
+                                    <div class="p-label"><span>备注</span></div>
+                                    <div class="p-item"><%- bio %></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-table clearfix">
+                        <table class="p-table-body mt10">
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th width="17%">商品名称</th>
+                                    <th width="17%">生产厂商</th>
+                                    <th width="10%">零售价(￥)</th>
+                                    <th width="10%">成本价(￥)</th>
+                                    <th width="12%">批号</th>
+                                    <th>有效期</th>
+                                    <th width="10%">出库量</th>
+                                    <th width="6%">单位</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% $.each(pharmacy || [], function(i, obj) { %>
+                                    <tr>
+                                        <td><%- ++i%></td>
+                                        <td><%- obj.medicinename %> <%- obj.medicinespec %></td>
+                                        <td><%- obj.manufacturer %></td>
+                                        <td><%- obj.medicineprice %></td>
+                                        <td><%- obj.cost_price %></td>
+                                        <td><%- obj.batch_number %></td>
+                                        <td><%- obj.validity %></td>
+                                        <td><%- obj.excount %></td>
+                                        <td><%- obj.exunit %></td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="print-signature position-relative">
+                    成本合计（￥）：<%-totalPrice%>
+                    <div class="print-signature-row2 mt0 clearfix">
+                        <div class="p-row">
+                            <div class="p-col4">
+                                <div class="p-signature pull-right">经办人<span></span></div>
+                            </div>
+                            <div class="p-col2">
+                                <div class="p-signature pull-right">复核人<span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="print-footer position-relative">
+                    <span>演示诊所</span>
+                    <span>13012345678</span>
+                    <span>https://dxy.com</span>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 打印模板 -->
+
+    <script type="text/javascript">
+        require(['pharmacy_view_delivery']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

@@ -1,0 +1,147 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+<style type="text/css">
+.zhenshuBox{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.inputFill{
+    width: 72px;
+    height: 25px;
+    margin-right:10px; 
+}
+    #zhenshu,#zhenshu1{
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 100%;
+    }
+</style>
+</div>
+<div class="basics">
+   
+        <div class="main-content">
+            <div class="panel panel-default">
+                <div class="panel-body collapse in">
+            <form  action="" method="post"  enctype="multipart/form-data" method="post" name="uploadfile" >
+                <div class="row">
+                    <div class="col-sm-12 col-md-10">
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">小程序AppId </label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['appid']}" required="" name="appid">
+                                </div>
+                            </div>
+                        </div>
+
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">小程序AppSecret </label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['appsecret']}" required="" name="appsecret">
+                                </div>
+                            </div>
+                        </div>
+
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">微信支付商户号mch_id </label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['mch_id']}" required="" name="mch_id">
+                                </div>
+                            </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">公众号AppId </label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['pub_appid']}" required="" name="pub_appid">
+                                </div>
+                            </div>
+                        </div>
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">公众号AppSecret </label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['appkey']}" required="" name="appkey">
+                                </div>
+                            </div>
+                        </div>     
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">公众号api密钥 </label>
+                                    <input type="text" class="form-control max128 J-isDisable" value="{$res['pub_api']}" required="" name="pub_api">
+                                </div>
+                            </div>
+                        </div> 
+
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">微信商户支付证书apiclient_cert.pem</label>
+                                        <div class="zhenshuBox">
+                                    <input id="zhenshu1" name="upfile" type="file" value="{$res['upfile']}" onchange="showInfo('#zhenshu1')"> 
+                                        <button class="inputFill">选择文件</button>
+                                        <div class="Inputvalue">{$res['upfile']}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                          <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">微信商户支付证书apiclient_key.pem</label>
+                                    <div class="zhenshuBox">
+                                        <input id="zhenshu" name="keypem" type="file" value="{$res['keypem']}" onchange="showInfo('#zhenshu')">
+                                        <button class="inputFill">选择文件</button>
+                                        <div class="Inputvalue">{$res['keypem']}</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>                   
+                    </div>
+                </div>
+                <input name="token" type="hidden" value="{$_W['token']}" />
+                <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+            </form>
+             </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list.js"></script>
+<script type="text/javascript">
+function showInfo(name){
+    console.log(name)
+    var name1=name
+    var fill=$(name1)[0].files[0]
+    console.log(fill)
+    $(name1).parents('.zhenshuBox').find('.Inputvalue').text(fill.name)
+}
+    $(".pianshen_kaiqi_xuanze_u").click(function(){
+    for(var i = 0;i<$(".pianshen_kaiqi_xuanze_u").length;i++){
+        $(".pianshen_kaiqi_xuanze_u").eq(i).removeClass("pianshen_kaiqi_xuanzes_u").children().eq(0).removeClass("pianshen_kaiqi_xuanze_titles_u").next().removeClass("pianshen_kaiqi_xuanze_imgs_u");
+    }
+    $(this).addClass("pianshen_kaiqi_xuanzes_u").children().eq(0).addClass("pianshen_kaiqi_xuanze_titles_u").next().addClass("pianshen_kaiqi_xuanze_imgs_u");
+    if($(this).children().eq(0).html() == "开启"){
+        $(".pian_lunbu").css("display","block");
+        //1
+        $(".state").val("1");
+    }else{
+        $(".pian_lunbu").css("display","none");
+       //0
+        $(".state").val("0");
+    }
+
+})
+$(".pian_gai_lun_box_img_div").click(function(){
+    $(this).parent().remove()
+})
+</script>
+</html>

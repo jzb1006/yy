@@ -1,0 +1,211 @@
+{template '/common/mainHeader'}
+<div class="app-container-right">
+			<ul class="nav nav-tabs">
+	<li class="active"><a href="#">提现列表</a></li>
+</ul>
+<div class="app-content">
+	<div class="app-filter">
+		<div class="filter-list">
+			<form action="" method="post" class="form-horizontal" role="form">
+				<input type="hidden" name="type" value="" />
+				<input type="hidden" name="tid" value="{$tid}" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label">提现状态</label>
+					<div class="col-sm-9">
+						<div class="btn-group">
+							<a href="{php echo $this->createWebUrl('sign',array('op'=>'withdrawal','tid'=>$tid))}" class="btn {if $status == ''} btn-primary {else} btn-default {/if}">不限</a>
+							<a href="{php echo $this->createWebUrl('sign',array('op'=>'withdrawal','tid'=>$tid,'status'=>'1'))}" class="btn {if $status == '1'} btn-primary {else} btn-default {/if}">待审核</a>
+							<a href="{php echo $this->createWebUrl('sign',array('op'=>'withdrawal','tid'=>$tid,'status'=>'2'))}" class="btn {if $status == '2'} btn-primary {else} btn-default {/if}">待打款</a>
+							<a href="{php echo $this->createWebUrl('sign',array('op'=>'withdrawal','tid'=>$tid,'status'=>'3'))}" class="btn {if $status == '3'} btn-primary {else} btn-default {/if}">已完成</a>
+							<a href="{php echo $this->createWebUrl('sign',array('op'=>'withdrawal','tid'=>$tid,'status'=>'4'))}" class="btn {if $status == '4'} btn-primary {else} btn-default {/if}">未通过</a>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="form-group">
+					<label class="col-sm-2 control-label">提现类型</label>
+					<div class="col-sm-9">
+						<div class="btn-group">
+							<a href="" class="btn btn-primary">不限</a>
+							<a href="" class="btn btn-primary">团队提现</a>
+						</div>
+					</div>
+				</div> -->
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">申请时间段</label>
+                    <div class="col-sm-9">
+                        <div class="btn-group">
+							
+<script type="text/javascript">
+	require(["daterangepicker"], function(){
+		$(function(){
+			$(".daterange.daterange-date").each(function(){
+				var elm = this;
+				$(this).daterangepicker({
+					startDate: $(elm).prev().prev().val(),
+					endDate: $(elm).prev().val(),
+					format: "YYYY-MM-DD"
+				}, function(start, end){
+					$(elm).find(".date-title").html(start.toDateStr() + " 至 " + end.toDateStr());
+					$(elm).prev().prev().val(start.toDateStr());
+					$(elm).prev().val(end.toDateStr());
+				});
+			});
+		});
+	});
+</script>
+
+	<input name="start" type="hidden" value="{$start}" />
+	<input name="end" type="hidden" value="{$end}" />
+	<button class="btn btn-default daterange daterange-date" type="button"><span class="date-title">{$start} 至 {$end}</span> <i class="fa fa-calendar"></i></button>
+							</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-9">
+                        <div class="btn-group">
+							<button class="btn btn-primary" type="submit">筛选</button>
+							<!-- <a href="javascript:;" id="getExport" class="btn btn-default min-width" ><i class="fa fa-download"></i>  导出记录</a> -->
+                        </div>
+                    </div>
+                </div>
+			</form>
+		</div>
+	</div>
+	<div class="app-table-list">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead class="navbar-inner">
+					<tr>
+						<th>提现人信息</th>
+						<th>提现类型</th>
+						<th>提现金额</th>
+                        <th>提现方式</th>
+						<th>手续费</th>
+						<th>到账金额</th>
+						<th>到账类型</th>
+						<th>申请时间</th>
+						<th>操作时间</th>
+						<th>状态</th>
+						<th class="text-center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+				{loop $list $item}
+				<td>{$item['z_name']}</td>
+				<td>{if $item['type'] == 0} 团队提现{/if}</td>
+				<td>{$item['money']}</td>
+				<td>{if $item['style'] == '0'}微信提现{else if $item['style'] == '1'}支付宝提现{/if}</td>
+				<td>{$item['shouxufei']}</td>
+				<td>{$item['dz_money']}</td>
+				<td>
+				{if $item['dz_type'] == '0'}
+				微信
+				{else if $item['dz_type'] == '1'}
+				支付宝
+				{else if $item['dz_type'] == '2'}
+				现金
+				{/if}
+				</td>
+				<td>{$item['created']}</td>
+				<td>{$item['s_time']}</td>
+				<td>
+				{if $item['status'] == '0'}
+				待审核
+				{else if $item['status'] == '1'}
+				待打款
+				{else if $item['status'] == '2'}
+				已完成
+				{/if}
+				</td>
+				<td>
+				{if $item['status'] == '0'}
+				<a class="btn btn-info btn-sm" href="{php echo $this->createWebUrl('sign',array('op'=>'change_withdrawal','id'=>$item['id'],'tid'=>$tid,'status'=>'1'))}">通过</a>
+                <a class="btn btn-info btn-sm" href="{php echo $this->createWebUrl('sign',array('op'=>'change_withdrawal','id'=>$item['id'],'tid'=>$tid,'status'=>'3'))}">拒绝</a>                        
+				{else if $item['status'] == '1'}
+				<a class="btn btn-info btn-sm" href="{php echo $this->createWebUrl('sign',array('op'=>'change_withdrawal','id'=>$item['id'],'tid'=>$tid,'status'=>'2'))}">确认打款</a>
+				{else if $item['status'] == '2'}
+				已完成
+				{/if}
+				<a class="btn btn-danger btn-sm" data-toggle="ajaxRemove" href="{php echo $this->createWebUrl('sign',array('op'=>'withdrawaldel','id'=>$item['id'],'tid'=>$tid))}" data-confirm="确定要踢除该成员吗？">踢除</a>
+				</td>
+				{/loop}
+				</tbody>
+			</table>
+			{if count($list) == 0}
+							<div class="panel-body" style="text-align: center;padding:30px;">
+					暂时没有任何数据!
+				</div>
+				{/if}
+					</div>
+				
+		<div class="app-table-foot clearfix">
+			<div class="pull-left">
+
+			</div>
+			<div class="pull-right">
+							</div>
+		</div>
+	</div>
+</div>
+<script>
+    $(function () {
+        //初始化信息内容
+        var url = "./index.php?c=site&a=entry&m=weliam_merchant&p=finace&ac=wlCash&do=cashApply&status=1&page=1&export=export";//导出请求地址
+        //申请导出记录信息
+        $("#getExport").on('click',function () {
+            //开始时间
+            var startDate = $("[name='time[start]']").val();
+            var startTime = Date.parse(new Date(startDate +" 00:00:00"));
+            startTime = startTime / 1000;
+            //结束时间
+            var endDate = $("[name='time[end]']").val();
+            var endTime = Date.parse(new Date(endDate +" 23:59:59"));
+            endTime = endTime / 1000;
+            //url拼接
+            url = url+"&startTime="+startTime+"&endTime="+endTime;
+            //请求导出内容
+            window.location.href = url;
+        });
+    });
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="foot" id="footer">
+		<ul class="links ft">
+            <li class="links_item"><div class="copyright">Powered by <a href="http://www.we7.cc"><b>微擎</b></a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a></div></li>
+		</ul>
+	</div>
+	
+
+    
+    <script>
+		require(['bootstrap'], function ($) {
+		    $('[data-toggle="tooltip"]').tooltip({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="popover"]').popover({
+	            container: $(document.body)
+	        });
+	        $('[data-toggle="dropdown"]').dropdown({
+	            container: $(document.body)
+	        });
+	    });
+		myrequire(['js/init']);
+				$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+			$('.app-login-info-sel').show();
+		});
+		$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+			$('.app-login-info-sel').hide();
+		});
+		$('.app-login-info-sel .login-out').hover(function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+		},function(){
+			$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+		});
+		
+			</script>
+	</body>
+</html>
+

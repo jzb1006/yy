@@ -1,0 +1,159 @@
+{template '/common/mainHeader'}
+
+<div class="app-content">
+
+    <div class="app-filter">
+        <div class="filter-list">
+            <form action="" method="get" class="form-horizontal" role="form" id="form1">
+
+                <input type="hidden" name="c" value="site" />
+                <input type="hidden" name="a" value="entry" />
+                <input type="hidden" name="m" value="hyb_yl" />
+                <input type="hidden" name="op" value="signup" />
+                <input type="hidden" name="ac" value="signup" />
+                <input type="hidden" name="do" value="team" />
+                <input type="hidden" name="zid" id="zid" value="{$zid}" />
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">按状态</label>
+                    <div class="col-sm-4">
+                    <!-- 1签约中；2已同意；3已解约；4已取消;5拒绝 -->
+                        <select name="ifqianyue" style="width: 100%;">
+                            <option value="" {if $ifqianyue == ''} selected="" {/if}>状态</option>
+                            <option value="1" {if $ifqianyue == '1'} selected="" {/if}>待审核</option>
+                            <option value="2" {if $ifqianyue == '2'} selected="" {/if}>已同意</option>
+                            <option value="3" {if $ifqianyue == '3'} selected="" {/if}>已解约</option>
+                            <option value="4" {if $ifqianyue == '4'} selected="" {/if}>已取消</option>
+                            <option value="5" {if $ifqianyue == '5'} selected="" {/if}>已拒绝</option>
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" name="keyword" class="form-control" value="{$keyword}" placeholder="请输入关键字" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-md-9">
+                        <button class="btn btn-primary" id="search">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="app-table-list">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 30px;">
+                            <input type="checkbox" onclick="var ck = this.checked;$(':checkbox').each(function(){this.checked = ck});" />
+                        </th>
+                        <th>ID</th>
+                        <th style="width: 150px;">签约用户</th>
+                        <th>签约时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {loop $list $item}
+                    <tr>
+                        <td>
+                            <center>
+                                <input type="checkbox" name="checkbox[]" class="checkbox" value="{$item['id']}" />
+                            </center>
+                        </td>
+                        <td>{$item['id']}</td>
+                        <td class="text-left">
+                            <img class="scrollLoading" src="{php echo tomedia($item['u_thumb']) }" height="50" width="50" />
+                            {$item['u_name']}
+                        </td>
+                        <td>
+                            {$item['cerated_time']}
+                        </td>
+                        <td class="text-left">
+                            {if $item['ifqianyue'] =='1'}
+                            <label class="label label-error">待审核</label>
+                            {else if $item['ifqianyue'] =='2'}
+                            <label class="label label-success">已同意</label>
+                            {else if $item['ifqianyue'] =='3'}
+                            <label class="label label-success">已解约</label>
+                            {else if $item['ifqianyue'] =='4'}
+                            <label class="label label-success">已取消</label>
+                            {else if $item['ifqianyue'] =='5'}
+                            <label class="label label-success">已拒绝</label>
+                            {/if}
+                        </td>
+                        <td style="position: relative;">
+                        {if $item['ifqianyue'] == '1'}
+                            <a class="btn btn-default btn-sm" href="{php echo $this->createWebUrl('team',array('op'=>'sign_change','id'=>$item['id'],'zid'=>$zid,'ifqianyue'=>'2'))}" title="同意">同意</a>
+                            <a class="btn btn-default btn-sm" href="{php echo $this->createWebUrl('team',array('op'=>'sign_change','id'=>$item['id'],'zid'=>$zid,'ifqianyue'=>'5'))}" title="拒绝">拒绝</a>
+                        {/if}
+                            <a class="btn btn-danger btn-sm" href="{php echo $this->createWebUrl('team',array('op'=>'sign_del','id'=>$item['id'],'zid'=>$zid))}" data-toggle="ajaxRemove" data-confirm="确定要删除吗？" title="删除">删除</a>
+                        
+                        </td>
+                    </tr>
+                    {/loop}
+                </tbody>
+            </table>
+            {$pager}
+        </div>
+        <div class="app-table-foot clearfix">
+            <div class="pull-left">
+                <div id="de1" class="pull-left">
+                    <a href="javascript:;" class="btn btn-default min-width js-batch js-delete pass">删除选中记录</a>
+                </div>
+            </div>
+            <div class="pull-right">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var enabled = "1";
+    var zid = $("#zid").val();
+    $('#de1').delegate('.pass','click',function(e){
+        e.stopPropagation();
+        var order_ids = [];
+        var $checks=$('.checkbox:checkbox:checked');
+        $checks.each(function() {
+            if (this.checked) {
+                order_ids.push(this.value);
+            };
+        });
+        var $this = $(this);
+        var ids = order_ids;
+        util.nailConfirm(this, function(state) {
+        if(!state) return;
+            if(enabled == 4){
+                var type = 2;
+            }else{
+                var type = 1;
+            }
+            $.post("{php echo $this->createWebUrl('team',array('op'=>'sign_dels'))}", { ids : ids ,type:type,zid:zid}, function(data){
+                if(!data.errno){
+                util.tips("删除成功！");
+                location.reload();
+                }else{
+                util.tips(data.message);    
+                };
+            }, 'json');
+        }, {html: '确认删除所选记录?'});
+    });
+</script>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+    <ul class="links ft">
+        <li class="links_item">
+            <div class="copyright">Powered by <a href="http://www.we7.cc">
+                    <b>微擎</b>
+                </a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+</body>
+</html>

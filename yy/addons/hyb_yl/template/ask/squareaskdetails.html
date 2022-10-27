@@ -1,0 +1,705 @@
+<script language="javascript" type="text/javascript">
+        function doPrint() { 
+            bdhtml=window.document.body.innerHTML; //获取当前页的html代码
+            sprnstr="<!--startprint-->"; //设置打印开始区域
+            eprnstr="<!--endprint-->";//设置打印结束区域
+            prnhtml=bdhtml.substr(bdhtml.indexOf(sprnstr)+17);//从开始代码向后取html
+            prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html
+            window.document.body.innerHTML=prnhtml;
+			window.print();
+			//window.close();
+			//window.document.body.innerHTML=prnhtml;
+
+        }
+</script>
+{template './common/mainHeader'}
+
+<div class="app-container-right">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="">开方问诊详情</a>
+		</li>
+	</ul>
+	<div class="app-content">
+		<div class="order-detail">
+			<div class="col-sm-4 padding-0">
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td width="150">下单人微信：</td>
+								<td>
+									<img src="{$res['u_thumb']}" style="width: 30px;height: 30px;margin-right: 5px;">{$res['u_name']}</td>
+							</tr>
+							<tr>
+								<td width="150">患者姓名：</td>
+								<td>{$res['u_name']}</td>
+							</tr>
+							<tr>
+								<td width="150">患者电话：</td>
+								<td>{$res['tel']}</td>
+							</tr>
+							<tr>
+								<td width="150">患者地址：</td>
+								<td>{$res['region']}</td>
+							</tr>
+							<tr>
+								<td width="150">订单编号：</td>
+								<td>{$res['orders']}</td>
+							</tr>
+							<tr>
+								<td>下单时间：</td>
+								<td>{$res['time']}</td>
+							</tr>
+							<tr>
+								<td>支付时间：</td>
+								<td>{$res['time']}</td>
+							</tr>
+							<tr>
+								<td>订单状态：</td>
+								<td>
+									{if $res['ispay'] =='0'}
+									<span class="label label-info">待支付</span>
+									{/if}
+									{if $res['ispay'] =='1'}
+									<span class="label label-info">已支付待发货</span>
+									{/if}
+									{if $res['ispay'] =='2'}
+									<span class="label label-info">已发货配送中</span>
+									{/if}
+									{if $res['ispay'] =='3'}
+									<span class="label label-info">已送达</span>
+									{/if}
+									{if $res['ispay'] =='4'}
+									<span class="label label-info">确认收货</span>
+									{/if}
+									{if $res['ispay'] =='5'}
+									<span class="label label-info">已完成待评价</span>
+									{/if}
+									{if $res['ispay'] =='6'}
+									<span class="label label-info">已评价</span>
+									{/if}
+									{if $res['ispay'] =='7'}
+									<span class="label label-info">已关闭</span>
+									{/if}
+									{if $res['ispay'] =='8'}
+									<span class="label label-info">已取消</span>
+									{/if}
+								</td>
+							</tr>
+							<!-- 							<tr>
+								<td>付款方式：</td>
+								<td>
+									<span class="label label-info">微信支付</span>
+								</td>
+							</tr> -->
+							<tr>
+								<td>问诊类型</td>
+								<td>
+									<span class="label label-warning">处方问诊</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单日志</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							{if $res['ispay'] =='0'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$res['time']} 订单提交成功</strong>
+									</p>
+									<p style="padding-left:15px; ">单号:{$res['orders']}，等待用户付款</p>
+								</td>
+							</tr>
+							{/if}
+							{if $res['ispay'] =='1' || $res['ispay'] =='2'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$res['paytime']} 订单支付成功</strong>
+									</p>
+									<p style="padding-left:15px; ">支付成功，等待专家接诊</p>
+								</td>
+							</tr>
+							{/if}
+							{if $res['ispay'] =='2' || $res['ispay'] =='3' || $res['ispay'] =='4'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$res['time']} 专家已接诊</strong>
+									</p>
+									<p style="padding-left:15px; ">专家接诊中</p>
+								</td>
+							</tr>
+							{/if}
+							{if $res['ispay'] =='3' || $res['ispay'] =='4'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$res['time']} 订单已完成</strong>
+									</p>
+									<p style="padding-left:15px; ">等待用户评价</p>
+								</td>
+							</tr>
+							{/if}
+							{if $res['ispay'] =='4' ||$res['ispay'] =='5' || $res['ispay'] =='6'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$res['time']} 已完成评价</strong>
+									</p>
+									<p style="padding-left:15px; ">用户已完成评价</p>
+								</td>
+							</tr>
+							{/if}
+							{if $res['ispay'] =='5'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$res['time']} 申请退款中</strong>
+									</p>
+									<p style="padding-left:15px; ">用户申请退款中</p>
+								</td>
+							</tr>
+							{/if}
+							{if $res['ispay'] =='6'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$res['time']} 已完成退款</strong>
+									</p>
+									<p style="padding-left:15px; ">已完成退款</p>
+								</td>
+							</tr>
+							{/if}
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8 padding-r-0">
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单费用</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td width="150">实际到账：</td>
+								<td>+￥ {$res['moneyss']} </td>
+							</tr>
+							 <tr>
+								<td width="150">分销推广支出：</td>
+								<td>-￥ {php echo $res['tk_one'] + $res['tk_two']} </td>
+
+							</tr>
+							<tr>
+								<td width="150">推荐人：</td>
+								<td>{php echo empty($res['tk']) ? '暂无' : $res['tk']}</td>
+
+							</tr>
+							<tr>
+								<td width="150">会员折扣：</td>
+								<td>-￥ {$res['card_dk']} </td>
+
+							</tr>
+							<tr>
+								<td width="150">年卡折扣：</td>
+								<td>-￥ {$res['year_dk']} </td>
+
+							</tr>
+							<tr>
+								<td width="150">优惠券抵扣：</td>
+								<td>-￥ {$res['coupon_dk']} </td>
+
+							</tr>
+							<tr>
+								<td width="150">平台抽成：</td>
+								<td>-￥ {$res['ptmoney']} </td>
+
+							</tr>
+							<td width="150">机构抽成：{$res['hosmoney']}</td>
+							<td>
+								暂未结算 (本单用户实际支付:￥{$res['moneyss']})</td>
+							</tr>
+							
+
+						</table>
+					</div>
+				</div>
+				{if count($content) > 0}
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>处方信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th style="width: 20rem;">药品名称</th>
+									<th>制药方</th>
+									<th>药品价格</th>
+									<th>药品数量</th>
+									<th>医嘱</th>
+									<th>状态</th>
+									<th>处方类型</th>
+								</tr>
+							</thead>
+							{loop $content $item}
+							<tbody>
+								{loop $item['cartlist'] $data}
+								<tr>
+									<td>
+										<img src="{$data['sthumb']}" style="width: 30px;height: 30px;margin-right: 5px;"> {$data['sname']}</td>
+									<td> {$data['zhiyaochang']} </td>
+									<td>{$data['smoney']}元/盒</td>
+									<td>{$data['num']}/盒</td>
+									<td>{$yizhu['text2']}</td>
+									<td>
+										{if $item['status'] =='0'}待药师审核{/if}
+										{if $item['status'] =='1'}审核通过{/if}
+										{if $item['status'] =='2'}审核不通过{/if}
+									</td>
+									<td>{if $data['ifcfy'] =='0'}非处方药{/if}{if $data['ifcfy'] =='1'}处方药{/if}</td>
+									<td>
+									</td>
+								</tr>
+								{/loop}
+								<a class="btn btn-primary btn-sm chakanchufang" href="javascript:;">处方详情</a>
+							</tbody>
+							{/loop}
+						</table>
+					</div>
+				</div>
+				{/if}
+				<div class="panel panel-display">
+
+					<div class="panel-heading">
+						<h3>问诊信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th style="width: 20rem;">专家名</th>
+									<th>科室</th>
+									<th>职称</th>
+									<th>所属机构</th>
+									<th>问诊费(元)</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tr>
+								<td>
+									<img src="{$docinfo['advertisement']}" style="width: 30px;height: 30px;margin-right: 5px;"> {$docinfo['z_name']}</td>
+								<td> {$docinfo['name']} </td>
+								<td>{$docinfo['job_name']}</td>
+								<td>{$docinfo['agentname']}</td>
+								<td>{$docinfo['money']}元</td>
+								<td class="text-right">
+									<a class="btn btn-primary btn-sm" target="_blank" href="./index.php?c=site&a=entry&op=edit&zid={$docinfo['zid']}&do=team&m=hyb_yl">专家信息</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>问诊信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<table class="table">
+								<td width="150">病情描述：</td>
+								<td>{$res['content']['text']}<a href="/index.php?c=site&a=entry&do=ask&op=askchat&ac=squareask&m=hyb_yl&back_orser={$res['back_orser']}&keyword=yuanchengkaifang">问诊详情</a>
+								</td>
+								</tr>
+								<tr>
+									<td width="150">问题类型：</td>
+									<td class="text-left">
+										<label class="label label-success">{$docinfo['ctname']}</label>
+										<label class="label label-danger">{$docinfo['name']}</label>
+									</td>
+								</tr>
+								<!-- 								<tr>
+									<td width="150"></td>
+									<td>
+				
+										<a class="btn btn-primary btn-xs"  href="{php echo $this->createWebUrl('ask',array('id'=>$res['id'],'op'=>'make','ac'=>'telask'))}">确认接诊</a>
+									</td>
+								</tr> -->
+							</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="addCateModal" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button data-dismiss="modal" class="close" type="button">×</button>
+						<h4 class="modal-title">新建分类</h4>
+					</div>
+					<div class="modal-body form-horizontal">
+						<div class="form-group">
+							<div class="col-sm-2 control-label must">分类名称</div>
+							<div class="col-sm-10">
+								<input class="form-control input-sm" placeholder="请输入分类名称" id="saveTempName" value="未命名分类" />
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="btn btn-primary" id="saveCate">保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		$("#addRemark").unbind('click').click(function () {
+				        $("#addCateModal").modal();
+				        $("#saveCate").unbind('click').click(function () {
+				            var status = $(this).data('status');
+				            if(status) {
+				                tip.msgbox.err("正在保存，请稍候。");
+				                return;
+				            }
+				            var name = $.trim($("#saveTempName").val());
+				            if(!name) {
+				                tip.msgbox.err("请填写备注内容！");
+				                $("#saveTempName").focus();
+				                return;
+				            }
+				            $(this).data('status',1).text('保存中')
+				            $.post("http://www.webstrongtech.com/web/index.php?c=site&a=entry&m=weliam_merchant&p=rush&ac=category&do=add&", {
+				                name: name
+				            }, function (ret) {
+				                if(ret.status==0){
+				                    tip.msgbox.err(ret.result.message);
+				                }else{
+				                    tip.msgbox.suc("保存成功！");
+				                }
+				                $("#addCateModal .close").trigger('click');
+				                setTimeout(function () {
+				                    location.reload();
+				                }, 500);
+				            }, 'json');
+				        });
+				    });
+	</script>
+
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+
+<!-- 处方单详情 -->
+     <div>
+        <!--startprint-->
+        <!--打印内容开始-->
+		<div class="el-dialog__wrapper" style="z-index: 2052;display: none;">
+			<div role="dialog" aria-modal="true" aria-label="dialog" class="el-dialog" style="margin-top: 15vh;">
+				<div class="el-dialog__header">
+					<span class="el-dialog__title"></span>
+					<!---->
+				</div>
+				<div class="el-dialog__body">
+					<div class="boxPresMain">
+						<p class="presId">
+					
+							<span class="sub floatR">
+								普通 
+							</span>
+						</p>
+						<div class="cardHead">
+							<p class="title">
+								{$res['doc_detail']['z_name']}医生
+							</p>
+							<p class="presType">
+								处方单
+							</p>
+							<p class="row1 flex justyBetween">
+								<span>姓名：{$res['names']}</span>
+								<span>性别：{$res['sex']}</span>
+								<span>年龄：<span>{$res['age']}岁</span>
+								</span>
+								<span>科室：{$res['doc_detail']['name']}</span>
+								<span>费用：自费</span>
+							</p>
+							<p class="row1 flex justyBetween">
+								<span>病历号：{$res['randnum']}</span>
+								<span>住址：{$res['region']}</span>
+								<span>电话：{$res['tel']}</span>
+							</p>
+							<p class="row1 flex justyBetween">
+								<span>诊断信息：{$yizhu['text']}</span>
+								<span>开具日期：{$res['createTime']}</span>
+							</p>
+						</div>
+						<div class="cardBody chinese">
+							<p class="rp">
+								Rp：<span class="sub"></span>
+							</p>
+							
+
+							<div class="itemMed read chinese">
+							    {loop $namesgoods  $item}
+							    {loop $item $i}
+								&nbsp;&nbsp;{$i}&nbsp;&nbsp;
+								{/loop}
+								{/loop}
+							</div>
+							
+							
+							<!---->
+							<p class="boxSign flex justyBetween" style="margin-bottom: 60px;">
+								<span>药师：<span class="area"></span>
+								</span>
+								<span>审核：<span class="area"></span>
+								</span>
+								<span>调配：<span class="area"></span>
+								</span>
+							</p>
+							<p class="boxSign flex justyBetween">
+								<span>发药：<span class="area"></span>
+								</span>
+								<span>核对：<span class="area"></span>
+								</span>
+								<span>金额：<span class="area">{$res['amoney']}元</span>
+								</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				 <!--endprint-->
+				<div class="el-dialog__footer">
+
+					<div class="dialog-footer">
+					    <input  class="el-button el-button--primary close2" type="button" id="bt" onclick="javascript:doPrint()"   value="打印" />
+						<button type="button" class="el-button el-button--primary close2">
+							<span>
+								关闭
+							</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+        <!--打印内容结束-->
+       
+    </div>
+
+
+
+<style type="text/css">
+	.el-dialog__wrapper {
+	     position:fixed;
+	     top:0;
+	     right:0;
+	     bottom:0;
+	     left:0;
+	     overflow:auto;
+	     margin:0;
+	     background: rgba(0,0,0,0.5);
+	    }
+	    .el-dialog {
+	     position:relative;
+	     margin:0 auto 50px;
+	     border-radius:2px;
+	     -webkit-box-shadow:0 1px 3px rgba(0,0,0,.3);
+	     box-shadow:0 1px 3px rgba(0,0,0,.3);
+	     -webkit-box-sizing:border-box;
+	     box-sizing:border-box;
+	     width:50%;
+	     background: #fff;
+	
+	    }
+	    .el-dialog__body {
+	     padding:30px 20px;
+	     color:#606266;
+	     font-size:14px;
+	     word-break:break-all;
+	    }
+	     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain {
+	     margin:0;
+	     width:calc(100% - 26px);
+	     position:relative;
+	     border-radius:4px;
+	     background-color:#fff;
+	     padding:24px 13px 30px 13px
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain p {
+	     margin:0
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead {
+	     color:#b9b9b9;
+	     font-size:14px;
+	     line-height:14px;
+	     border-bottom:1px dashed rgba(0,0,0,.15)
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead .title {
+	     color:#4a4a4a;
+	     font-size:16px;
+	     line-height:16px;
+	     text-align:center;
+	     margin-top:33px
+	    }
+	     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead .presType {
+	     color:#4a4a4a;
+	     font-size:20px;
+	     line-height:20px;
+	     text-align:center;
+	     margin-top:17px;
+	     margin-bottom:44px
+	    }
+	     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead .row1 {
+	     margin-bottom:22px;
+	     padding:0 25px 0 12px
+	    }
+	    .floatR {
+	     float:right;
+	    }
+	    .flex{
+	      display: flex;
+	    }
+	    .justyBetween{
+	      justify-content: space-between;
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody.chinese {
+	        padding: 30px 25px 100px 12px;
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody {
+	        color: #6b6b6b;
+	        font-size: 14px;
+	    }
+	    .rp {
+	        color: #4a4a4a;
+	        font-size: 16px;
+	        margin-bottom: 8px;
+	    }
+	     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .itemMed.read.chinese {
+	        display: inline-block;
+	        width: 33%;
+	        border-bottom: none;
+	        padding: 0;
+	        margin-top: 22px;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        white-space: nowrap;
+	    }
+	    .yellow {
+	        color: #ffa726;
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .chineseTotalRead {
+	        color: #6b6b6b;
+	        font-size: 14px;
+	    }
+	     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .chineseTotalRead p:first-child {
+	        margin: 20px 0 25px;
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .chineseTotalRead p {
+	        margin-top: 12px;
+	    }
+	    .area {
+	        display: inline-block;
+	        min-width: 60px;
+	        border-bottom: 1px solid #6b6b6b;
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__footer .el-button.el-button--primary:hover {
+	        background-color: #2f6eb4;
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__footer .el-button {
+	        padding: 0;
+	        height: 32px;
+	        line-height: 32px;
+	        width: 100px;
+	    }
+	    .el-button {
+	        display: inline-block;
+	        line-height: 1;
+	        white-space: nowrap;
+	        cursor: pointer;
+	        background: #fff;
+	        border: 1px solid #dcdfe6;
+	        color: #606266;
+	        -webkit-appearance: none;
+	        text-align: center;
+	        -webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	        outline: 0;
+	        margin: 0;
+	        -webkit-transition: .1s;
+	        transition: .1s;
+	        font-weight: 500;
+	        padding: 12px 20px;
+	        font-size: 14px;
+	        border-radius: 4px;
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__footer .el-button {
+	        padding: 0;
+	        height: 32px;
+	        line-height: 32px;
+	        width: 100px;
+	        background: 
+	    }
+	    .el-dialog__footer {
+	        padding: 10px 35px 25px;
+	    }
+	    .el-dialog__footer {
+	        text-align: right;
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__footer .el-button.el-button--primary {
+	        background-color: #4381c6;
+	    }
+	    .el-button--primary {
+	        color: #fff;
+	        background-color: #409eff;
+	        border-color: #409eff;
+	    }
+	    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .boxSign {
+	        position: absolute;
+	        bottom: 20px;
+	        left: 34px;
+	        right: 34px;
+	    }
+</style>
+<!--处方单详情结束  -->
+
+<script>
+	$(document).on('click','.chakanchufang',function(){
+			$('.el-dialog__wrapper').show()
+		})
+		$('.close2').on('click',function(){
+			$('.el-dialog__wrapper').hide()
+		})
+</script>
+</body>
+</html>

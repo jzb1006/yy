@@ -1,0 +1,68 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            <div class="pageheader hidden">
+                <h2><i class="fa fa-pencil"></i> 骗审设置</h2>
+            </div>
+<div class="basics">
+        <div class="main-content">
+            <div class="panel panel-default">
+                <div class="panel-heading no-collapse">
+                    骗审设置
+                </div>
+                <div class="panel-body collapse in">
+          <form id="items_form" action="" method="post" novalidate="novalidate">
+
+            <div class="row">
+                <div class="col-sm-12 col-md-10">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">骗审是否开启 <span class="asterisk">*</span></label>
+                                <div class="pianshen_kaiqi">
+                                    <input type="text" name="pstatus" value="1" style="display: none;" class="zt"> 
+                                    <div class="pianshen_kaiqi_xuanze {if $res['pstatus'] =='1'} pianshen_kaiqi_xuanzes {/if}">
+                                        <div class="pianshen_kaiqi_xuanze_title  {if $res['pstatus'] =='1'} pianshen_kaiqi_xuanze_titles {/if}">开启</div>
+                                        <div class="pianshen_kaiqi_xuanze_img {if $res['pstatus'] =='1'} pianshen_kaiqi_xuanze_imgs {/if} "><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                    </div>
+                                    <div class="pianshen_kaiqi_xuanze  {if $res['pstatus'] =='0'} pianshen_kaiqi_xuanzes {/if}">
+                                        <div class="pianshen_kaiqi_xuanze_title {if $res['pstatus'] =='0'} pianshen_kaiqi_xuanze_titles {/if}">不开启</div>
+                                        <div class="pianshen_kaiqi_xuanze_img {if $res['pstatus'] =='0'} pianshen_kaiqi_xuanze_imgs {/if}"><img src="/addons/hyb_yl/public/images/gai_duigou.png"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <label class="control-label">首页轮播图</label>
+                                 {php echo tpl_form_field_multi_image('slide',unserialize($res['slide']));}
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <button class="btn btn-primary btn-sml J-submit-btn" type="submit">保存</button>
+                        <input name="token" type="hidden" value="{$_W['token']}" />
+                    
+                </form>
+             </div>
+            </div>
+        </div>
+    </div>
+
+    
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+
+
+</body>
+
+</html>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list.js"></script>

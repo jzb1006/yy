@@ -1,0 +1,81 @@
+{template './common/siteheader'}
+    <link href="{php echo HYB_YL_ADMIN}/bootstrap.min.css?v={IMS_RELEASE_DATE}" rel="stylesheet">
+    <link href="{php echo HYB_YL_ADMIN}/common.css?v={IMS_RELEASE_DATE}" rel="stylesheet">
+<div class="content">
+    <div class="header">
+        <h1 class="page-title">服务项目维护</h1>
+        <div class="stats">
+            <a href="{php echo $this->createWeburl('setting',array('op'=>'jiancha'))}" class="btn btn-sm btn-white"><i class="fa fa-angle-left"></i> 返回</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="panel panel-default">
+            <div class="panel-heading no-collapse">
+                服务项目
+            </div>
+            <div class="panel-body collapse in">
+      <form id="items_form" action="{php echo $this->createWeburl('setting',array('op'=>'jiancha'))}" method="post" novalidate="novalidate">
+        <input type="hidden" name="id" value="32921">
+        <input type="hidden" name="p" value="1">
+        <input type="hidden" value="0" class="J-stdid">
+        <div class="row">
+            <div class="col-sm-12 col-md-10">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">服务项目名称 <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control max128 J-isDisable" value="血尿" required="" name="checkitemname">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">服务缩略图</label>
+                             {php echo  WebCommon::tpl_form_field_image('img',$info['img'])}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">价格</label>
+                            <input type="text" class="form-control max256" value="xn" name="checkitemspec">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">服务介绍</label>
+                            <textarea class="form-control max2000" rows="5" name="clinical_significance"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group">
+                            <label class="control-label">状态</label>
+                            <select class="form-control input-sm" data-placeholder="请选择" name="status">
+                                <option value="1" selected="selected">正常</option>
+                                <option value="2">停用</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-primary btn-sml J-submit-btn">保存</button>&nbsp;
+            <button class="btn btn-default btn-sml" onclick="window.history.back(-1);">取消</button>
+        </div>
+    </form>
+ </div>
+        </div>
+    </div>
+</div>

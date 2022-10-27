@@ -1,0 +1,294 @@
+{
+    "data": {
+        "items": [
+            {
+                "special_topic": {
+                    "id": 1276,
+                    "title": "体检报告解读",
+                    "text": "",
+                    "pic_url": "https://img1.dxycdn.com/2020/0107/682/3389579505626139065-22.jpg",
+                    "thumbnail_url": "",
+                    "weapp_qrcode": "https://img1.dxycdn.com/2020/0103/323/3388832194201200343-15.jpg",
+                    "support_weapp_bottom_share": false,
+                    "share_text": "",
+                    "share_wx_converse_pic_url": "",
+                    "share_wx_moments_pic_url": "",
+                    "buy_type": 0,
+                    "price": 0,
+                    "origin_price": 0,
+                    "buy_goods": []
+                },
+                "special_topic_modules": [
+                    {
+                        "title": "实验室检查",
+                        "text": "",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "血常规",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20809"
+                            },
+                            {
+                                "title": "空腹血糖",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=21729"
+                            },
+                            {
+                                "title": "尿酸",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=21771"
+                            },
+                            {
+                                "title": "血脂",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=21785"
+                            },
+                            {
+                                "title": "肾功能",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=21786"
+                            },
+                            {
+                                "title": "肝功能",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24639"
+                            },
+                            {
+                                "title": "血胆红素",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24568"
+                            },
+                            {
+                                "title": "尿常规",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20938"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "影像学检查",
+                        "text": "",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "肝脏超声检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24546"
+                            },
+                            {
+                                "title": "胆囊超声检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24547"
+                            },
+                            {
+                                "title": "胰腺超声检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24545"
+                            },
+                            {
+                                "title": "脾脏超声检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24544"
+                            },
+                            {
+                                "title": "肾脏超声检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=21796"
+                            },
+                            {
+                                "title": "心电图",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20884"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "扩展项目",
+                        "text": "",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "血钙",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24599"
+                            },
+                            {
+                                "title": "血维生素 D",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=22572"
+                            },
+                            {
+                                "title": "骨密度",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=23656"
+                            },
+                            {
+                                "title": "幽门螺杆菌检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20928"
+                            },
+                            {
+                                "title": "胃镜检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20901"
+                            },
+                            {
+                                "title": "大便隐血",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24663"
+                            },
+                            {
+                                "title": "肠镜检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20891"
+                            },
+                            {
+                                "title": "糖化血红蛋白",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24664"
+                            },
+                            {
+                                "title": "乙肝两对半",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=21793"
+                            },
+                            {
+                                "title": "甲状腺功能",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=21730"
+                            },
+                            {
+                                "title": "甲状腺超声",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20816"
+                            },
+                            {
+                                "title": "胸部 CT",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20903"
+                            },
+                            {
+                                "title": "肺功能检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=20926"
+                            },
+                            {
+                                "title": "乳腺超声",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24665"
+                            },
+                            {
+                                "title": "乳腺钼靶 X 线摄影",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24555"
+                            },
+                            {
+                                "title": "TCT",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=21715"
+                            },
+                            {
+                                "title": "HPV 检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=708"
+                            },
+                            {
+                                "title": "PSA",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=22788"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "体格检查",
+                        "text": "",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 12,
+                        "pic_iterms": [],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": [
+                            {
+                                "title": "体质指数 BMI",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=345"
+                            },
+                            {
+                                "title": "色觉检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24572"
+                            },
+                            {
+                                "title": "视力检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24557"
+                            },
+                            {
+                                "title": "视野检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24571"
+                            },
+                            {
+                                "title": "眼底检查",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=22508"
+                            },
+                            {
+                                "title": "直肠指检",
+                                "href_url": "https://app.dxy.cn/aspirin/nativejump?type=disease&id=24499"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "",
+                        "text": "",
+                        "pic_url": "",
+                        "download_pic_url": "",
+                        "href_url": "",
+                        "one_line_item_num": 1,
+                        "iterm_type": 0,
+                        "pic_iterms": [
+                            {
+                                "pic_url": "https://img1.dxycdn.com/2020/0103/086/3388832114744303455-22.png",
+                                "href_url": "",
+                                "width": 0,
+                                "height": 0
+                            }
+                        ],
+                        "question_iterms": [],
+                        "doctor_iterms": [],
+                        "section_group_iterms": [],
+                        "course_iterms": [],
+                        "article_iterms": [],
+                        "vipcard_iterms": [],
+                        "text_iterms": [],
+                        "video_iterms": [],
+                        "audio_iterms": [],
+                        "column_items": [],
+                        "text_entry_items": []
+                    }
+                ]
+            }
+        ]
+    }
+}

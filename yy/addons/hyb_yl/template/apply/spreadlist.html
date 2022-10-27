@@ -1,0 +1,250 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs" id="myTab">
+		<li class="active">
+			<a href="javascript:;">分销商列表</a>
+		</li>
+	</ul>
+
+	<div class="app-content">
+		<div class="app-filter">
+			<div class="filter-action">
+				<a href="/index.php?c=site&a=entry&m=hyb_yl&p=distribution&ac=dissysbase&op=dissysbase&do=apply" class="btn btn-primary">添加分销商</a>
+			</div>
+			<div class="filter-list">
+				<form action="" method="post" class="form-horizontal" role="form" id="form">
+					<div class="form-group form-inline">
+						<label class="col-md-2 control-label">关键字</label>
+						<div class="col-md-9">
+							<select name="type" class="form-control">
+								<option value="2">手机号</option>
+								<option value="3">昵称</option>
+								<option value="4">真实姓名</option>
+								<option value="5">MID</option>
+							</select>
+							<input type="text" class="form-control" name="keyword" id="keyword" value="" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">创建时间</label>
+						<div class="col-md-2">
+							<select name="timetype" class="form-control">
+								<option value="">关闭</option>
+								<option value="1">开启</option>
+							</select>
+						</div>
+						<div class="col-md-2">
+
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label"></label>
+						<div class="col-md-9">
+							<button class="btn btn-primary">
+								<i class="fa fa-search"></i> 搜索
+							</button>
+<!-- 							<button class="btn btn-default" name="export" type="submit" value="export">
+								<i class="fa fa-download"></i> 导出
+							</button> -->
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="app-table-list">
+			<div class="table-responsive order-list">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th style="width:50px;">头像</th>
+							<th style="width:50px;">昵称</th>
+							<th class="text-center" style="width:50px;">姓名
+								<br />电话</th>
+							<th class="text-center" style="width:100px;">创建时间</th>
+							<th class="text-center" style="width:100px;">佣金明细</th>
+							<th class="text-center" style="width:120px;">累计佣金
+								<br />余额</th>
+							<th class="text-center" style="width:100px;">上级</th>
+							<th class="text-center" style="width:40px;">下级数量</th>
+							<th class="text-center" style="width:40px;">推广用户</th>
+							<th class="text-center" style="width:40px;">推广医生</th>
+                            <th class="text-center" style="width:40px;">推广机构</th>
+							<th class="text-center" style="width:80px;">分销商等级</th>
+							<th class="text-center" style="width:150px;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+					{loop $res $item}
+						<tr data-toggle="popover" data-trigger="hover" data-placement="left" class="js-goods-img">
+							<td>
+								<img class="scrollLoading" src="{$item['u_thumb']}" onerror="this.src='{$item['u_thumb']}'" height="50" width="50" />
+							</td>
+							<td class="line-feed">
+								{$item['u_name']}
+								<br>
+								MID:{$item['id']} </td>
+							<td class="text-center">
+								<span class="">{$item['username']}</span>
+								<br />
+								<span class="">{$item['tel']}</span>
+							</td>
+							<td class="text-center">
+								{$item['addtime']} </td>
+								<td class="text-center">
+								<span><a href="{php echo $this->createWebUrl('apply',array('op'=>'commission','id'=>$item['id'],'ac'=>'commission'))}">查看明细</a></span></td>
+<!-- 							<td class="text-center" style="position: relative;">
+								<a href="javascript:;" data-url="http://www.webstrongtech.com/app/index.php?i=6&c=entry&m=hyb_yl&p=distribution&ac=disappbase&do=index&invitid=5923" class="js-clip">复制分销链接</a>
+								<br />
+								<a href="javascript:void(0);" onclick="javascript:layer.open({type: 2,title: '微信二维码',shadeClose: true,shade: 0.8,area: ['440px', '475px'],content: 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQE-8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAyZ3hadXNtT0tmU2sxMDAwMDAwNzMAAgSsbmteAwQAAAAA'});">微信关注二维码</a>
+							</td> -->
+							<td class="text-center" style="line-height:25px;">
+								<span class="label label-success">余额：￥{$item['countmoney']}</span>
+								<br>
+								<span class="label label-info">佣金：￥{php echo $item['yongjin']['sum']?$item['yongjin']['sum']:'0.00'}</span>
+							</td>
+							<td class="text-center">
+							{if $item['tkid'] == 0}
+								<span class="label label-danger">平台</span>
+							{else}
+								<span class="label label-danger">{$item['leve_o']['username']}</span>
+							{/if}
+						
+							</td>
+							<td class="text-center">
+								<span><a href="{php echo $this->createWebUrl('apply',array('op'=>'next','id'=>$item['id'],'ac'=>'spreadlist'))}">(成员{$item['fenxiao']}人)</a></span>
+							</td>
+							<td class="text-center">
+								<span><a href="{php echo $this->createWebUrl('apply',array('op'=>'next','id'=>$item['id'],'ac'=>'spreadlist'))}">(成员{$item['fenxiao']}人)</a></span>
+							</td>
+							<td class="text-center">
+								<span><a href="{php echo $this->createWebUrl('apply',array('op'=>'next','id'=>$item['id'],'ac'=>'spreadlist'))}">(成员{$item['fenxiao']}人)</a></span>
+							</td>
+							<td class="text-center">
+								<span><a href="{php echo $this->createWebUrl('apply',array('op'=>'next','id'=>$item['id'],'ac'=>'spreadlist'))}">(成员{$item['fenxiao']}人)</a></span>
+							</td>
+							<td class="text-center">
+							{if $item['leve'] == '0'}
+								<span class="label label-success">默认</span>
+							{elseif $item['leve'] == '1'}
+                                <span class="label label-success">一级</span>
+							{esle}
+							    <span class="label label-success">二级</span>
+							{/if}
+							</td>
+							<td style="position:relative;text-align: center;">
+								<a href="/index.php?c=site&a=entry&m=hyb_yl&p=distribution&ac=dissysbase&do=apply&id={$item['id']}&op=edittuike&openid={$item['openid']}" onclick="setTimeout(de,1500);" data-toggle="ajaxModal">编辑 </a> -
+								<!-- <a href="/index.php?c=site&a=entry&m=hyb_yl&p=distribution&ac=dissysbase&do=distributordetail&todo=base&memid={$item['id']}" class="">详情</a> - -->
+								<a href="javascript:;" class="canceldis" disid="{$item['id']}">删除</a>
+							</td>
+						</tr>
+                    {/loop}
+					</tbody>
+				</table>
+			</div>
+			<div class="app-table-foot clearfix">
+				<div class="pull-left">
+
+				</div>
+				<div class="pull-right">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$('.order-list').delegate('.canceldis', 'click', function(e){
+				e.stopPropagation();
+				var $this = $(this);
+				var id = $this.attr('disid');
+                
+				util.nailConfirm(this, function(state) {
+                
+					
+					if(state){
+
+						$.post("/index.php?c=site&a=entry&m=hyb_yl&p=distribution&ac=dissysbase&op=delete&do=apply&id="+id, { id : id }, function(data){
+
+							$this.parent().parent().remove();
+							util.tips("取消资格成功！");
+						}, 'json');
+					}
+
+				}, {html: "删除分销商，<span style='color:red;'>该分销商所有分销资料将会被清除，所有下线将会成为无上线状态</span>，确认?"});
+			});
+			
+			function search_members(){
+				if( $.trim($('#search-kwd2').val())==''){
+		        	Tip.focus('#search-kwd2','请输入关键词');
+		        	return;
+		     	}
+				$("#module-menus2").html("正在搜索....")
+				$.get("http://www.webstrongtech.com/web/index.php?c=site&a=entry&m=hyb_yl&p=distribution&ac=dissysbase&do=searchmember&", {
+					keyword: $.trim($('#search-kwd2').val())
+				}, function(dat){
+					$('#module-menus2').html(dat);
+				});
+			}
+			
+			function select_member(o,type) {
+				$("#memberid").val(o.id);
+				$("#messagesaler").val(o.nickname);
+				$("#imgmerchant").attr('src', o.avatar);
+				$(".two").click();
+			}
+			
+			function remove_merchant(obj){
+		        $('#messageopenid').val('');
+		        $('#messagesaler').val('');
+		        $('#imgmerchant').attr("src",'');
+		    }
+			
+			function de(){
+				myrequire(['select2'], function() {
+					$('.select2').select2();
+				});
+			}
+	</script>
+</div>
+</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+
+
+<script>
+
+	require(['bootstrap'], function ($) {
+			    $('[data-toggle="tooltip"]').tooltip({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="popover"]').popover({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="dropdown"]').dropdown({
+		            container: $(document.body)
+		        });
+		    });
+			myrequire(['js/init']);
+					$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+				$('.app-login-info-sel').show();
+			});
+			$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+				$('.app-login-info-sel').hide();
+			});
+			$('.app-login-info-sel .login-out').hover(function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+			},function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+			});
+</script>
+</body>
+</html>

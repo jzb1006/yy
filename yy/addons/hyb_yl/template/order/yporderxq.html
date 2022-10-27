@@ -1,0 +1,651 @@
+{template './common/mainHeader'}
+<div class="app-container-right">
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="">挂号详情</a>
+		</li>
+	</ul>
+	<div class="app-content">
+		<div class="order-detail">
+			<div class="col-sm-4 padding-0">
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td width="150">下单人微信：</td>
+								<td>
+									<img src="{$itemone['u_thumb']}" style="width: 30px;height: 30px;margin-right: 5px;">{$itemone['u_name']}</td>
+							</tr>
+							<tr>
+								<td width="150">用户姓名：</td>
+								<td>{$itemone['userName']}</td>
+							</tr>
+							<tr>
+								<td width="150">用户电话：</td>
+								<td>{$itemone['u_tel']}</td>
+							</tr>
+							<tr>
+								<td width="150">收货地址：</td>
+								<td>{$itemone['region']}</td>
+							</tr>
+							<tr>
+								<td width="150">订单编号：</td>
+								<td>{$itemone['orderNo']}</td>
+							</tr>
+							<tr>
+								<td>下单时间：</td>
+								<td>{$itemone['createTime']}</td>
+							</tr>
+							{if $itemone['orderStatus'] == '1'}
+							<tr>
+								<td>发货时间：</td>
+								<td>{$itemone['deliveryTime']}</td>
+							</tr>
+							<tr>
+								<td>物流单号：</td>
+								<td>{$itemone['orderunique']}</td>
+							</tr>
+							{/if}
+							{if $itemone['orderStatus'] == '2'}
+							<tr>
+								<td>收货时间：</td>
+								<td>{$itemone['receiveTime']}</td>
+							</tr>
+							<tr>
+								<td>物流单号：</td>
+								<td>{$itemone['orderunique']}</td>
+							</tr>
+							{/if}
+							<tr>
+								<td>订单状态：</td>
+								<td>{if $itemone['mode']=='0'}
+									<span class="label label-info">
+										{if $itemone['orderStatus'] == '-3'}
+										用户拒收,
+										{else if $itemone['orderStatus'] == '-2'}
+										未付款,
+										{else if $itemone['orderStatus'] == '-1'}
+										用户取消,
+										{else if $itemone['orderStatus'] == '0'}
+										待发货,
+										{else if $itemone['orderStatus'] == '1'}
+										配送中,
+										{else if $itemone['orderStatus'] == '2'}
+										确认收货,
+										{/if}
+										{if $itemone['isRefund'] == '1'}
+										用户退款
+										{/if}
+									</span>
+									{else}
+									<span class="label label-info">
+										{if $itemone['orderStatus'] == '-3'}
+										用户拒收,
+										{else if $itemone['orderStatus'] == '-2'}
+										未付款,
+										{else if $itemone['orderStatus'] == '-1'}
+										用户取消,
+										{else if $itemone['orderStatus'] == '0'}
+										待取货,
+										{else if $itemone['orderStatus'] == '1'}
+										待取货,
+										{else if $itemone['orderStatus'] == '2'}
+										已取货,
+										{/if}
+										{if $itemone['isRefund'] == '1'}
+										用户退款
+										{/if}
+									</span>
+									{/if}
+								</td>
+							</tr>
+							<!-- <tr>
+							<td>付款方式：</td>
+							<td>
+																	<span class="label label-info">微信支付</span>
+															</td>
+						</tr> -->
+							<tr>
+								<!-- <td>有无处方</td>
+							<td>
+								
+									<span class="label label-warning">
+									{if $goods['ifcfy'] == '0'}
+									无
+									{else if $goods['ifcfy'] == '1'}
+									有
+									{/if}
+									</span>							
+							</td> -->
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单日志</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$itemone['createTime']} 订单提交成功</strong>
+									</p>
+									<p style="padding-left:15px; ">单号:{$itemone['orderNo']}，等待用户付款</p>
+								</td>
+							</tr>
+							{if $itemone['isPay'] == '1'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$itemone['createTime']} 订单支付成功</strong>
+									</p>
+									<p style="padding-left:15px; ">支付成功，等待确认发货</p>
+								</td>
+							</tr>
+							{/if}
+
+							{if $itemone['orderStatus'] == '-1'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$itemone['createTime']} 订单取消</strong>
+									</p>
+									<p style="padding-left:15px; ">单号:{$itemone['orderNo']}，用户取消</p>
+								</td>
+							</tr>
+							{/if}
+							{if $itemone['orderStatus'] == '0'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$itemone['createTime']} 订单支付成功</strong>
+									</p>
+									<p style="padding-left:15px; ">支付成功，等待确认发货</p>
+								</td>
+							</tr>
+							{/if}
+							{if $itemone['orderStatus'] == '1'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$itemone['deliveryTime']} 订单发货成功</strong>
+									</p>
+									<p style="padding-left:15px; ">发货成功，等待确认收货</p>
+								</td>
+							</tr>
+							{/if}
+							{if $itemone['orderStatus'] == '2'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$itemone['receiveTime']} 订单收货成功</strong>
+									</p>
+									<p style="padding-left:15px; ">单号:{$itemone['orderNo']}，收货成功</p>
+								</td>
+							</tr>
+							{/if}
+							{if $itemone['orderStatus'] == '-3'}
+							<tr>
+								<td>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<strong>{$itemone['deliveryTime']} 订单发货成功</strong>
+									</p>
+									<p style="padding-left:15px; ">发货成功，用户拒绝收货</p>
+								</td>
+							</tr>
+							{/if}
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-8 padding-r-0">
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>订单费用</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td width="150">费用：</td>
+								<td>+￥ {$itemone['realTotalMoney']} </td>
+							</tr>
+						<tr>
+								<td width="150">分销推广支出：</td>
+								<td>-￥ {php echo empty($itemone['tkmoney']) ? '0.00' : $itemone['tkmoney']} </td>
+
+							</tr> 
+							<tr>
+								<td width="150">推荐人：</td>
+								<td>{php echo empty($itemone['tk']) ? '暂无' : $itemone['tk']} </td>
+
+							</tr>
+							<tr>
+							<td width="150">开方专家：</td>
+							<td>{php echo empty($itemone['z_name']) ? '暂无' : $itemone['z_name']} </td>
+							
+						</tr>
+						<tr>
+							<td width="150">会员抵扣：</td>
+							<td>-￥ {$itemone['vip_dk']}</td>
+
+						</tr> 
+						<tr>
+							<td width="150">开方提成支出：</td>
+							<td>-￥ {$itemone['docmoney']}</td>
+
+						</tr> 
+						<tr>
+							<td width="150">平台抽成：</td>
+							<td>-￥ {$itemone['ptmoney']} </td>
+
+						</tr> 
+							<tr>
+								<td width="150">机构实际收入：</td>
+								<td>
+									(本单用户实际支付:￥{$itemone['moneys']})</td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>药品信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th style="width: 20rem;">产品名</th>
+									<th>规格</th>
+									<th>数量</th>
+									<th>所属机构</th>
+									<th>费用(元)</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							{loop $goods $item}
+							<tr>
+								<td>
+									<img src="{$item['sthumb']}" style="width: 30px;height: 30px;margin-right: 5px;"> {$item['sname']}</td>
+								<td> {$item['gg_name']}</td>
+								<td>{$item['num']}盒</td>
+								<td>{$item['jigou']}</td>
+								<td>{$item['smoney']} 元</td>
+								<td class="text-right">
+									<a class="btn btn-primary btn-sm" target="_blank" href="{php echo $this->createWeburl('medicine',array('op'=>'add','sid'=>$item['sid']))}">查看详情</a>
+								</td>
+							</tr>
+							{/loop}
+						</table>
+					</div>
+				</div>
+	
+				<div class="panel panel-display">
+					<div class="panel-heading">
+						<h3>处方信息</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<td width="150">用户：{$itemone['userName']}</td>
+								<td>
+
+								</td>
+							</tr>
+							<tr>
+								<td width="150">开方类型：</td>
+								<td>{if $itemone['ifCf'] == '0'}
+									无处方
+									{else if $itemone['ifCf'] == '1'}
+									有处方
+									{/if}
+								</td>
+							</tr>
+							{if $itemone['ifshop']=='1'}
+							<tr>
+								<td width="150"></td>
+								<td>
+									<div class="btn btn-primary btn-xs btnGoInfo" data-id="{$itemone['id']}">查看处方</div>
+
+								</td>
+							</tr>
+							{/if}
+							{if $itemone['ifshop']=='0'}
+							{loop $itemone['conets']['upload_picture_list'] $item}
+							<img src="{$item}" style="width: 50px">
+								<a class="btn btn-primary btn-xs " data-id="{$itemone['id']}" href="{$item}" target="_blank">查看处方</a>
+							{/loop}
+							{/if}
+						</table>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+
+		<div class="modal fade" id="addCateModal" aria-hidden="false">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button data-dismiss="modal" class="close" type="button">×</button>
+						<h4 class="modal-title">新建分类</h4>
+					</div>
+					<div class="modal-body form-horizontal">
+						<div class="form-group">
+							<div class="col-sm-2 control-label must">分类名称</div>
+							<div class="col-sm-10">
+								<input class="form-control input-sm" placeholder="请输入分类名称" id="saveTempName" value="未命名分类" />
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<div class="btn btn-primary" id="saveCate">保存</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		$("#addRemark").unbind('click').click(function () {
+		        $("#addCateModal").modal();
+		        $("#saveCate").unbind('click').click(function () {
+		            var status = $(this).data('status');
+		            if(status) {
+		                tip.msgbox.err("正在保存，请稍候。");
+		                return;
+		            }
+		            var name = $.trim($("#saveTempName").val());
+		            if(!name) {
+		                tip.msgbox.err("请填写备注内容！");
+		                $("#saveTempName").focus();
+		                return;
+		            }
+		            $(this).data('status',1).text('保存中')
+		            $.post("http://www.webstrongtech.com/web/index.php?c=site&a=entry&m=weliam_merchant&p=rush&ac=category&do=add&", {
+		                name: name
+		            }, function (ret) {
+		                if(ret.status==0){
+		                    tip.msgbox.err(ret.result.message);
+		                }else{
+		                    tip.msgbox.suc("保存成功！");
+		                }
+		                $("#addCateModal .close").trigger('click');
+		                setTimeout(function () {
+		                    location.reload();
+		                }, 500);
+		            }, 'json');
+		        });
+		    });
+	</script>
+
+</div>
+</div>
+</div>
+
+<!-- 处方单详情 -->
+<div id="module-menus-doc"></div>
+<style type="text/css">
+    .el-dialog__wrapper {
+     position:fixed;
+     top:0;
+     right:0;
+     bottom:0;
+     left:0;
+     overflow:auto;
+     margin:0;
+     background: rgba(0,0,0,0.5);
+    }
+    .el-dialog {
+     position:relative;
+     margin:0 auto 50px;
+     border-radius:2px;
+     -webkit-box-shadow:0 1px 3px rgba(0,0,0,.3);
+     box-shadow:0 1px 3px rgba(0,0,0,.3);
+     -webkit-box-sizing:border-box;
+     box-sizing:border-box;
+     width:50%;
+     background: #fff;
+    
+    }
+    .el-dialog__body {
+     padding:30px 20px;
+     color:#606266;
+     font-size:14px;
+     word-break:break-all;
+    }
+     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain {
+     margin:0;
+     width:calc(100% - 26px);
+     position:relative;
+     border-radius:4px;
+     background-color:#fff;
+     padding:24px 13px 30px 13px
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain p {
+     margin:0
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead {
+     color:#b9b9b9;
+     font-size:14px;
+     line-height:14px;
+     border-bottom:1px dashed rgba(0,0,0,.15)
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead .title {
+     color:#4a4a4a;
+     font-size:16px;
+     line-height:16px;
+     text-align:center;
+     margin-top:33px
+    }
+     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead .presType {
+     color:#4a4a4a;
+     font-size:20px;
+     line-height:20px;
+     text-align:center;
+     margin-top:17px;
+     margin-bottom:44px
+    }
+     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardHead .row1 {
+     margin-bottom:22px;
+     padding:0 25px 0 12px
+    }
+    .floatR {
+     float:right;
+    }
+    .flex{
+      display: flex;
+    }
+    .justyBetween{
+      justify-content: space-between;
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody.chinese {
+        padding: 30px 25px 100px 12px;
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody {
+        color: #6b6b6b;
+        font-size: 14px;
+    }
+    .rp {
+        color: #4a4a4a;
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .itemMed.read.chinese {
+        display: inline-block;
+        width: 33%;
+        border-bottom: none;
+        padding: 0;
+        margin-top: 22px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .yellow {
+        color: #ffa726;
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .chineseTotalRead {
+        color: #6b6b6b;
+        font-size: 14px;
+    }
+     .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .chineseTotalRead p:first-child {
+        margin: 20px 0 25px;
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .chineseTotalRead p {
+        margin-top: 12px;
+    }
+    .area {
+        display: inline-block;
+        min-width: 60px;
+        border-bottom: 1px solid #6b6b6b;
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__footer .el-button.el-button--primary:hover {
+        background-color: #2f6eb4;
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__footer .el-button {
+        padding: 0;
+        height: 32px;
+        line-height: 32px;
+        width: 100px;
+    }
+    .el-button {
+        display: inline-block;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid #dcdfe6;
+        color: #606266;
+        -webkit-appearance: none;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        outline: 0;
+        margin: 0;
+        -webkit-transition: .1s;
+        transition: .1s;
+        font-weight: 500;
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__footer .el-button {
+        padding: 0;
+        height: 32px;
+        line-height: 32px;
+        width: 100px;
+        background: 
+    }
+    .el-dialog__footer {
+        padding: 10px 35px 25px;
+    }
+    .el-dialog__footer {
+        text-align: right;
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__footer .el-button.el-button--primary {
+        background-color: #4381c6;
+    }
+    .el-button--primary {
+        color: #fff;
+        background-color: #409eff;
+        border-color: #409eff;
+    }
+    .el-dialog__wrapper .el-dialog .el-dialog__body .boxPresMain .cardBody .boxSign {
+        position: absolute;
+        bottom: 20px;
+        left: 34px;
+        right: 34px;
+    }
+</style>
+<!--处方单详情结束  -->
+
+
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_itemone">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>微擎</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<script>
+    function showOrHide(a,b){
+                $('#profile_'+b).toggle()
+                $('#profile_'+a).toggle()
+            
+            }
+            $('#tab3 ul li').on('click',function(){
+              console.log($(this))
+                $('#tab3 ul li').removeClass('ractive')
+                $(this).addClass('ractive')
+            })
+              
+              $(document).on('click','.remove',function(){
+                $(this).parents('tbody').remove()
+              })
+              $('.btnGoInfo').click(function(e){
+                  
+                $('.el-dialog__wrapper').show()
+                var id = e.currentTarget.dataset.id
+                var url ="/index.php?c=site&a=entry&do=copysite&m=hyb_yl&act=profile.userchufang&id="+id
+             
+                $.ajax({
+                    url:url,
+                    type: "POST",  
+                    dataType: "html",  
+                    cache:false, 
+
+                    success:function(res){
+                        console.log(res)
+                        $('#module-menus-doc').html(res)
+                    }
+                })
+              })
+
+</script>
+
+
+<script>
+	require(['bootstrap'], function ($) {
+			    $('[data-toggle="tooltip"]').tooltip({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="popover"]').popover({
+		            container: $(document.body)
+		        });
+		        $('[data-toggle="dropdown"]').dropdown({
+		            container: $(document.body)
+		        });
+		    });
+			myrequire(['js/init']);
+					$('.app-login-info-name, .app-login-info-sel').mouseover(function(){
+				$('.app-login-info-sel').show();
+			});
+			$('.app-login-info-name, .app-login-info-sel').mouseout(function(){
+				$('.app-login-info-sel').hide();
+			});
+			$('.app-login-info-sel .login-out').hover(function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#1ab394 transparent transparent transparent');
+			},function(){
+				$('.app-login-info-sel-arrow').css('border-color', '#f2f2f2 transparent transparent transparent');
+			});
+</script>
+</body>
+</html>

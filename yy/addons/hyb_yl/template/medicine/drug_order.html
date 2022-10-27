@@ -1,0 +1,306 @@
+	{template '/common/mainHeader'}	
+<style type='text/css'>
+		.trhead td{background:#efefef;text-align: center}
+		.trbody td{text-align: center;vertical-align:top;border-left:1px solid #f2f2f2;overflow: hidden;font-size:12px;}
+		.trorder{background:#f8f8f8;border:1px solid #f2f2f2;text-align:left;}
+		.ops{border-right:1px solid #f2f2f2;text-align: center;}
+		.ops a,.ops span{margin: 3px 0;}
+		.table-top{padding: 0 20px;background: #f7f7f7;border-bottom: 1px solid #e5e5e5;}
+		.table-top .op:hover{color: #000;}
+		.tables{border:1px solid #e5e5e5;font-size: 14px;line-height: 18px;}
+		.tables:hover{border:1px solid #1ab394;}
+		.table-row,.table-header,.table-footer,.table-top{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;justify-content: center;-webkit-justify-content: center;-webkit-align-content: space-around;align-content: space-around;}
+		.tables .table-row.table-top>div{padding: 10.5px 0;}
+		.tables .table-row .ops.list-inner{border-right:none;}
+		.tables .table-row .buyremark{background:#fdeeee;color:red;flex: 1;padding: 10px 20px!important;}
+		.tables .table-row .remark{background:#ffffcc;color:red;flex: 1;padding: 10px 20px!important;}
+		.tables .list-inner{border-right: 1px solid #efefef;vertical-align: middle;}
+		.table-row .goods-des .title{width:180px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+		.table-row .goods-des{border-right: 1px solid #efefef;vertical-align: middle;width:400px;text-align: left;padding: 14px 0;}
+		.table-row .list-inner{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;text-align: center;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-align-items: center;align-items: center;-webkit-justify-content: center;justify-content: center;-webkit-flex-direction: column;flex-direction: column;}
+		.saler>div{width:130px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+		.table-row .list-inner.ops, .table-row .list-inner.paystyle{-webkit-flex-direction: column;flex-direction: column;-webkit-justify-content: center;justify-content: center;}
+		.table-header{background:#f8f8f8;height: 40px;line-height: 40px;padding: 0 20px;font-weight: 600;}
+		.table-header .others{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;text-align: center;}
+		.table-footer{border-top: 1px solid #efefef;margin:0 20px;padding: 10.5px 0;}
+		.table-footer>div, .table-top>div{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;/*height:100%;*/}
+		.fixed-header div{padding:0;}
+		.fixed-header.table-header{display: none;}
+		.fixed-header.table-header.active{display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;}
+		.shop{display: inline-block;width:48px;height:18px;text-align: center;border:1px solid #1b86ff;color: #1b86ff;margin-right: 10px;}
+		.min_program{display: inline-block;width:48px;height:18px;text-align: center;border:1px solid #ff5555;color: #ff5555;margin-right: 10px;}
+		.ordertype{display: inline-block;height:18px;margin-right: 10px;border-radius: 0;font-weight: 500;}
+		.popover{border: 1px solid #efefef;border: 1px solid #efefef;border-radius: 6px;-webkit-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));-moz-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .1));-o-filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .1));filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));padding: 0!important;}
+		.popover-content{padding: 10px!important;font-size:12px;}
+		.popover-content table{margin-bottom: 0!important;}
+		.popover.right>.arrow{border-right-color: #efefef;}
+		.cored{color: orangered;}
+	</style>
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="javascript:;">药品订单</a>
+		</li>
+	</ul>
+	<div class="app-content">
+		<div class="app-filter">
+			<div class="filter-action">
+				当前订单:<span class="cored">{$total}</span>个，共计商品<span class="cored">{$total}</span>份，<span class="cored">{$money}</span>元;
+			</div>
+			<div class="filter-list">
+				<form action="" method="get" class="form-horizontal" role="form" id="form1">
+					<input type="hidden" name="c" value="site" />
+					<input type="hidden" name="a" value="entry" />
+					<input type="hidden" name="m" value="hyb_yl" />
+					<input type="hidden" name="op" value="drug_order" />
+					<input type="hidden" name="ac" value="drugstorelist" />
+					<input type="hidden" name="do" value="medicine" />
+					<input type="hidden" name="hid" value="{$_SESSION['hid']}" />
+					<input type="hidden" name="h_id" value="{$h_id}" />
+					<div class="form-group" style="max-width: 1180px;">
+						<label class="col-sm-2 control-label">订单状态</label>
+						<div class="col-sm-10">
+							<div class="btn-group">
+									
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>'','isRefund'=>'','keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $orderStatus == '' && $isRefund == ''} btn-primary {else} btn-default {/if}">不限</a>
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>'-2','isRefund'=>$isRefund,'keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $orderStatus == '-2'} btn-primary {else} btn-default {/if}">未支付</a>
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>'0','isRefund'=>$isRefund,'keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $orderStatus == '0'} btn-primary {else} btn-default {/if}">已支付,待发货</a>
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>'-3','isRefund'=>$isRefund,'keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $orderStatus == '-3'} btn-primary {else} btn-default {/if}">用户拒收</a>
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>'-1','isRefund'=>$isRefund,'keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $orderStatus == '-1'} btn-primary {else} btn-default {/if}">用户取消</a>
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>'1','isRefund'=>$isRefund,'keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $orderStatus == '1'} btn-primary {else} btn-default {/if}">配送中</a>
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>'2','isRefund'=>$isRefund,'keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $orderStatus == '2'} btn-primary {else} btn-default {/if}">用户确认收货</a>
+
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">是否允许退款</label>
+						<div class="col-sm-9">
+							<div class="btn-group">
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>$orderStatus,'isRefund'=>'','keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $isRefund == ''} btn-primary {else} btn-default {/if}">不限</a>
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>$orderStatus,'isRefund'=>'1','keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $isRefund == '1'} btn-primary {else} btn-default {/if}">允许退款</a>
+								<a href="{php echo $this->createWebUrl('medicine',array('op'=>'drug_order','ac'=>'drugstorelist','orderStatus'=>$orderStatus,'isRefund'=>'0','keywordtype'=>$keywordtype,'keyword'=>$keyword,'start'=>$start,'end'=>$end,'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" class="btn {if $isRefund == '0'} btn-primary {else} btn-default {/if}">拒绝退款</a>
+							</div>
+						</div>
+					</div>
+					<div class="form-group form-inline">
+						<label class="col-sm-2 control-label">订单搜索</label>
+						<div class="col-sm-9">
+							<select name="keywordtype" class="form-control">
+								<option value="" {if $keywordtype=='' } selected="" {/if}>订单搜索 </option>
+								<option value="1" {if $keywordtype=='1' } selected="" {/if}>订单号 </option>
+								<option value="2" {if $keywordtype=='2' } selected="" {/if}>商品名称 </option>
+								<option value="3" {if $keywordtype=='3' } selected="" {/if}>买家昵称 </option>
+								<option value="4" {if $keywordtype=='4' } selected="" {/if}>买家电话 </option>
+							</select>
+							<input type="text" name="keyword" class="form-control" value="{$keyword}" placeholder="请输入关键字" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">时间筛选</label>
+
+						<div class="col-md-2">
+
+							<script type="text/javascript">
+								require(["daterangepicker"], function(){
+										$(function(){
+											$(".daterange.daterange-date").each(function(){
+												var elm = this;
+												$(this).daterangepicker({
+													startDate: $(elm).prev().prev().val(),
+													endDate: $(elm).prev().val(),
+													format: "YYYY-MM-DD"
+												}, function(start, end){
+													$(elm).find(".date-title").html(start.toDateStr() + " 至 " + end.toDateStr());
+													$(elm).prev().prev().val(start.toDateStr());
+													$(elm).prev().val(end.toDateStr());
+												});
+											});
+										});
+									});
+							</script>
+
+							<input name="start" type="hidden" value="{$start}" />
+							<input name="end" type="hidden" value="{$end}" />
+							<button class="btn btn-default daterange daterange-date" type="button">
+								<span class="date-title">{$start} 至 {$end}</span>
+								<i class="fa fa-calendar"></i>
+							</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label"></label>
+						<div class="col-md-9">
+							<button class="btn btn-primary" id="search">筛选</button>
+							<button class="btn btn-warning min-width" onclick="$('#excelUpload').click();return false;"><i class="fa fa-upload"></i>  批量发货</button>
+							<input type="file" id="excelUpload" class="hide" />
+<!-- 							<button class="btn btn-default min-width" name="export" type="submit" value="export">
+								<i class="fa fa-download"></i> 导出记录
+							</button> -->
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+				<div class="app-table-list">
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>订单号</th>
+									<th>下单人信息</th>
+									<th>价格</th>
+									<th>订单信息</th>
+									<th>时间</th>
+									<th>支付/配送</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								{loop $list $item}
+								<tr>
+									<td>{$item['orderNo']}</td>
+									
+									
+									<td class="text-left">
+										<a href="/index.php?c=site&a=entry&op=adduser&do=copysite&m=hyb_yl&act=profile.adduser&ac=notice&u_id={$item['u_id']}&hid={$_SESSION['hid']}"> {$item['u_name']}</a>
+										<br />
+										{$item['u_name']}
+										<br />{$item['u_phone']}
+										<br />MID:{$item['u_ids']}
+										
+									</td>
+									<td class="text-left">
+										<a class="list-inner" data-toggle='popover' data-html='true' data-placement='right' data-trigger="hover" data-content="<table style='width:100%;'>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>商品小计：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['totalMoney']}</td>
+	                                    </tr>
+<tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>平台抽成：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['totalMoney']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>分销支出：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['tkmoney']}</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>开药服务费支出：</td>
+	                                        <td  style='border:none;text-align:right;padding: 5px!important;'>￥{$item['totalMoney']}</td>
+	                                    </tr>
+	                                        <td style='border:none;text-align:right;padding: 5px!important;'>机构实收款：</td>
+	                                        <td  style='border:none;text-align:right;color:green;padding: 5px!important;'>￥{$item['realTotalMoney']}</td>
+	                                    </tr>
+	
+	                                </table>
+	                    ">
+									<div style='text-align:center'>
+										￥{$item['totalMoney']} </div>
+									</td>
+									<td>
+										{loop $item['sid'] $itemarr}
+											<div class="title">
+												{$itemarr['sname']}
+												<br />
+												<span style="color: #999"> x{$itemarr['num']} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;￥{$itemarr['smoney']}</span>
+											</div>
+
+										{/loop}	
+									</td>
+									<td class="text-left">
+										<span> <i class="icow icow-yue text-warning" style="font-size: 13px;"></i><span>
+		                                <br/>下单：{$item['createTime']} <br/>
+		                                {if $item['orderStatus']=='0'}
+		                                支付：{$item['paytime']}
+		                                {/if}
+										
+									</td>
+									<td>
+										<span class="label label-warning">
+										{if $item['orderStatus'] == '-3'}
+										用户拒收
+										{else if $item['orderStatus'] == '-2'}
+										未付款
+										{else if $item['orderStatus'] == '-1'}
+										用户取消
+										{else if $item['orderStatus'] == '0'}
+										待发货
+										{else if $item['orderStatus'] == '1'}
+										配送中
+										{else if $item['orderStatus'] == '2'}
+										用户确认收货
+										{/if}
+									</span>
+									</td>
+									
+									<td style="position: relative;">
+									<a class="btn btn-primary btn-sm" href="{php echo $this->createWebUrl('medicine',array('op'=>'yporderxq','ac'=>'yporderxq','id'=>$item['id'],'h_id'=>$h_id,'hid'=>$_SESSION['hid']))}" title="">查看详情</a>
+					
+									
+                                     {if $item['orderStatus'] !== '2'}
+									  <a class="btn btn-info btn-sm" data-toggle="ajaxModal"  href="{php echo $this->createWebUrl('medicine',array('op'=>'yporderchange','addressId'=>$item['addressId'], 'ac'=>'yporderchange','id'=>$item['id'],'typs'=>'address','orderStatus'=>'1','hid'=>$_SESSION['hid'],'h_id'=>$h_id))}">{if $item['orderStatus'] == '0' }确定发货{else} 修改物流信息{/if}</a>
+									 {/if}
+
+									{if $item['orderStatus'] == '1'}
+									<a class="btn btn-info btn-sm" href="{php echo $this->createWebUrl('medicine',array('op'=>'yporderchangeshou','ac'=>'yporderchange','id'=>$item['id'],'orderStatus'=>'2','hid'=>$_SESSION['hid'],'h_id'=>$h_id))}">确认收货</a>
+									{/if}
+									{if $item['orderStatus'] == '-2' || $item['orderStatus'] == '0'}
+									<a class="btn btn-danger btn-sm" data-toggle="ajaxRemove" href="{php echo $this->createWebUrl('medicine',array('op'=>'yporderchange','ac'=>'yporderchange','id'=>$item['id'],'orderStatus'=>'-1','hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" data-confirm="确定要取消该记录吗？">取消订单</a>
+									{/if}
+									<a class="btn btn-danger btn-sm" data-toggle="ajaxRemove" href="{php echo $this->createWebUrl('medicine',array('op'=>'yporderdel','ac'=>'yporderdel','id'=>$item['id'],'hid'=>$_SESSION['hid'],'h_id'=>$h_id))}" data-confirm="确定要删除该记录吗？">删除订单</a>
+									</td>
+								</tr>
+								{/loop}
+							</tbody>
+						</table>
+						{$pager}
+					</div>
+					
+				</div>
+			</div>
+			<script>
+				var enabled = "1";
+					$('#de1').delegate('.pass','click',function(e){
+						e.stopPropagation();
+						var order_ids = [];
+						var $checks=$('.checkbox:checkbox:checked');
+						$checks.each(function() {
+							if (this.checked) {
+								order_ids.push(this.value);
+							};
+						});
+						var $this = $(this);
+						var ids = order_ids;
+						util.nailConfirm(this, function(state) {
+						if(!state) return;
+							if(enabled == 4){
+								var type = 2;
+							}else{
+								var type = 1;
+							}
+							$.post("{php echo $this->createWeburl('medicine',array('op'=>'editdrugstores'))}", { ids : ids ,type:type}, function(data){
+								if(!data.errno){
+								util.tips("删除成功！");
+								location.reload();
+								}else{
+								util.tips(data.message);	
+								};
+							}, 'json');
+						}, {html: '确认删除所选商户?'});
+					});
+			</script>
+		</div>
+	</div>
+</div>
+<div class="foot" id="footer">
+	<ul class="links ft">
+		<li class="links_item">
+			<div class="copyright">Powered by <a href="http://www.we7.cc">
+					<b>系统</b>
+				</a> v2.0.4 © 2014-2015 <a href="http://www.we7.cc">www.we7.cc</a>
+			</div>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

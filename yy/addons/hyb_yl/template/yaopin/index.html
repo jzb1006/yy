@@ -1,0 +1,1204 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+            </div>
+            <!-- headerbar -->
+            
+            <div class="contentpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs patient-tabs J-toggle-tabs">
+                    <input type="hidden" name="pharmacy_anchor" value="today">
+                    <li class="J-module-control active" data-permission="31,32"><a href="#receipts" data-toggle="tab"><strong>入库管理</strong></a></li>
+                    <li class="J-module-control" data-permission="33,34"><a href="#delivery" data-toggle="tab"><strong>出库管理</strong></a></li>
+                    <li class="J-module-control" data-permission="37"><a href="#stock" data-toggle="tab"><strong>当前库存</strong></a></li>
+                    <li class="J-module-control" data-permission="35,36"><a href="#inventory" data-toggle="tab"><strong>库存盘点</strong></a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- 入库单管理 -->
+                    <div class="tab-pane J-module-control active" data-permission="31,32" id="receipts">
+                        <div class="row mb10">
+                            <div class="col-sm-3 col-md-4 pr0">
+                                <div class="form-group J-module-control" data-permission="31">
+                                    <a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypadd'))}" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> 新增入库</a>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 col-md-8 col-custom-xs-12 pull-right">
+                                <form class="form-inline pull-right col-custom-xs-12" method="post" id="J-receipts-form">
+                                    <div class="form-group mr0">
+                                        <label class="control-label">入库日期：</label>
+                                        <div class="input-group col-custom-xs-12">
+                                            <input class="form-control input-sm2 radius3 J-start-date mbsc-comp" name="start_date" type="text" placeholder="入库时间" size="10" readonly="" id="mobiscroll1560605331297">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mr0"> - </div>
+                                    <div class="form-group mr5">
+                                        <div class="input-group col-custom-xs-12">
+                                            <input class="form-control input-sm2 radius3 J-end-date mbsc-comp" name="end_date" type="text" placeholder="入库时间" size="10" readonly="" id="mobiscroll1560605331298">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mr5">
+                                        <label class="control-label">入库类型：</label>
+                                        <select class="form-control input-xs2 J-type" name="method" data-placeholder="入库类型">
+                                            <option value="" selected="selected">全部</option>
+                                            <option value="1">采购入库</option>
+                                            <option value="2">其他入库</option>
+                                            <option value="3">导入入库</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mr5">
+                                        <div class="input-group col-custom-xs-12">
+                                            <input class="form-control input-sm2 radius3 J-id" name="id" type="text" placeholder="入库单号" size="10">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-default btn-sm col-custom-xs-12 J-receipts-submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>  
+
+                        <div class="table-responsive border-top">
+                            <table class="table table-hover shadow-none">
+                                <thead>
+                                    <tr>
+                                      <th class="pl20">入库单号</th>
+                                      <th>入库日期</th>
+                                      <th>入库方式</th>
+                                      <th>供应商</th>
+                                      <th>制单人</th>
+                                      <th>状态</th>
+                                      <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="J-receipts-list-wrap"><tr>
+        <td class="pl20">4353</td>
+        <td>2019-06-15</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>姚俊</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}" class="J-da-storage-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">4352</td>
+        <td>2019-06-14</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>余</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">4351</td>
+        <td>2019-06-14</td>
+        <td>采购入库</td>
+        <td>天元医药二公司</td>
+        <td>李军</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">4349</td>
+        <td>2019-06-13</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>zhengjc</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}" class="J-da-storage-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">4348</td>
+        <td>2019-06-12</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>吴朦佳</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}" class="J-da-storage-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">4347</td>
+        <td>2019-06-12</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>岳静</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}" class="J-da-storage-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">4345</td>
+        <td>2019-06-12</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>姚俊</td>
+        
+            <td><span class="badge badge-danger">待审核</span></td>
+            <td>
+                <a class="J-module-control" data-permission="31" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypupdate'))}"><i class="fa fa-pencil"></i> 修改  -  </a>
+                
+                    <a class="J-module-control" data-permission="32" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypshenhe'))}"><i class="fa fa-check-circle-o"></i> 审核  -  </a>
+                
+                <a data-toggle="modal" data-target="#myModal" data-id="4345" class="J-del-receipts"><i class="fa fa-trash-o"></i> 删除</a>
+            </td>
+        
+    </tr><tr>
+        <td class="pl20">4344</td>
+        <td>2019-06-11</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>吴朦佳</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}" class="J-da-storage-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">4343</td>
+        <td>2019-06-10</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>李女士</td>
+        
+            <td><span class="badge badge-danger">待审核</span></td>
+            <td>
+                <a class="J-module-control" data-permission="31" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypupdate'))}"><i class="fa fa-pencil"></i> 修改  -  </a>
+                
+                    <a class="J-module-control" data-permission="32" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypshenhe'))}"><i class="fa fa-check-circle-o"></i> 审核  -  </a>
+                
+                <a data-toggle="modal" data-target="#myModal" data-id="4343" class="J-del-receipts"><i class="fa fa-trash-o"></i> 删除</a>
+            </td>
+        
+    </tr><tr>
+        <td class="pl20">4341</td>
+        <td>2019-06-06</td>
+        <td>采购入库</td>
+        <td>天元医药二公司</td>
+        <td>李先生</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}" class="J-da-storage-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">4340</td>
+        <td>2019-06-06</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>龚航程</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}" class="J-da-storage-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">4339</td>
+        <td>2019-06-05</td>
+        <td>采购入库</td>
+        <td></td>
+        <td>龚航程</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}" class="J-da-storage-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr></tbody>
+                            </table>
+                        </div>
+                        <div class="J-pager-wrap1"><div class="base_page"><a href="#/start_date/2019-06-01/end_date/2019-06-15/method/null/id/null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/4</button><a href="#/start_date/2019-06-01/end_date/2019-06-15/method/null/id/null/page/2" type="button" data-page_num="2" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>         
+                    </div>
+                    <!-- 入库单管理 -->
+                    <!-- 出库管理 -->
+                    <div class="tab-pane J-module-control" data-permission="33,34" id="delivery">
+                      <div class="row mb10">
+                            <div class="col-sm-3 col-md-4 pr0">
+                                <div class="form-group J-module-control" data-permission="33">
+                                    <a href="{php echo $this->createWeburl('yaopin',array('op'=>'ckadd'))}" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> 新增出库</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-9 col-md-8 pull-right col-custom-xs-12">
+                                <form class="form-inline pull-right col-custom-xs-12" method="post" id="J-delivery-form">
+                                    <div class="form-group mr0">
+                                        <label class="control-label">出库日期：</label>
+                                        <div class="input-group col-custom-xs-12">
+                                            <input class="form-control input-sm2 radius3 J-delivery-start-date" name="start_date" type="text" placeholder="出库时间" size="10" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mr0"> - </div>
+                                    <div class="form-group mr5">
+                                        <div class="input-group col-custom-xs-12">
+                                            <input class="form-control input-sm2 radius3 J-delivery-end-date" name="end_date" type="text" placeholder="出库时间" size="10" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mr5">
+                                        <label class="control-label">出库类型：</label>
+                                        <select class="form-control input-xs2 J-delivery-type" name="method" data-placeholder="出库类型">
+                                            <option value="" selected="selected">全部</option>
+                                            <option value="1">科室出库</option>
+                                            <option value="2">报损出库</option>
+                                            <option value="3">退货出库</option>
+                                            <option value="4">其他出库</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mr5">
+                                        <div class="input-group col-custom-xs-12">
+                                            <input class="form-control input-sm2 radius3 J-delivery-id" name="id" type="text" placeholder="出库单号" size="10">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-default btn-sm col-custom-xs-12 J-delivery-submit"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="table-responsive border-top">
+                            <table class="table table-hover shadow-none">
+                                <thead>
+                                    <tr>
+                                        <th class="pl20">出库单号</th>
+                                        <th>出库日期</th>
+                                        <th>出库方式</th>
+                                        <th>领用科室</th>
+                                        <th>领用人员</th>
+                                        <th>出库人</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="J-delivery-list-wrap"><tr>
+        <td class="pl20">758</td>
+        <td>2019-06-13</td>
+        <td>科室出库</td>
+        <td></td>
+        <td></td>
+        <td>姚俊</td>
+        
+            <td><span class="badge badge-gray">已审核</span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ckdetail'))}" class="J-da-delivery-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        
+    </tr><tr>
+        <td class="pl20">757</td>
+        <td>2019-06-05</td>
+        <td>科室出库</td>
+        <td></td>
+        <td></td>
+        <td>尹小良</td>
+        
+            <td><span class="badge badge-danger">待审核</span></td>
+            <td>
+                <a class="J-module-control" data-permission="33" href="{php echo $this->createWeburl('yaopin',array('op'=>'ckupdate'))}"><i class="fa fa-pencil"></i> 修改</a>  -  
+                
+                    <a class="J-module-control" data-permission="34" href="{php echo $this->createWeburl('yaopin',array('op'=>'ckshenhe'))}"><i class="fa fa-check-circle-o"></i> 审核</a>  -  
+                
+                <a data-toggle="modal" data-target="#myModal" data-id="757" class="J-del-delivery"><i class="fa fa-trash-o"></i> 删除</a>
+            </td>
+        
+    </tr></tbody>
+                            </table>
+                        </div>
+                        <div class="J-pager-wrap3"></div>
+                    </div>
+                    <!-- 出库管理 -->
+                    <!-- 当前库存 -->
+                    <div class="tab-pane J-module-control" data-permission="37" id="stock">
+                        <div class="row mb10">
+                            <form class="form-inline" method="post" id="J-stock-form">
+                                <div class="col-sm-7 pull-left">
+                                    <div class="form-group mr5">
+                                        <div class="input-group input-group-sm mb10">
+                                            <input type="text" name="medicinename" class="form-control" id="J-stock-name" placeholder="商品名称或条形码" size="15">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default btn-search" id="J-stock-submit"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mtf10 mr5">
+                                        <input type="hidden" name="factory_id" class="J-factory-ids">
+                                        <input type="text" placeholder="供应商" class="form-control input-sm2 J-factory-names" size="15">
+                                    </div>
+                                    <div class="form-group mtf10 mr5">
+                                        <label class="control-label">类型：</label>
+                                        <select class="form-control input-xs2 J-medicine-type" name="medicineType" data-placeholder="入库类型">
+                                            <option value="" selected="selected">全部</option>
+                                            <option value="1">西/成药</option>
+                                            <option value="2">中药</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mtf10 mr5">
+                                        <label class="control-label">剩余数量：</label>
+                                        <select class="form-control input-xs2 J-medicine-number" name="include_zero" id="include_zero" data-placeholder="入库类型">
+                                            <option value="0">全部</option>
+                                            <option value="1" selected="selected">大于0</option>
+                                            <option value="2">等于0</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-5 pull-right text-right col-custom-xs-12">
+                                    <div class="form-group mr5 m-text-left">
+                                        <label class="control-label">筛选：</label>
+                                        <div class="input-group mt5 text-left">
+                                            <div class="ckbox ckbox-default">
+                                                <input type="checkbox" name="excludeDisabled" value="1" id="J-stock-excludeDisabled">
+                                                <label for="J-stock-excludeDisabled">药品状态正常</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="form-group mr5">
+                                        <div class="input-group mt5 text-left">
+                                            <div class="ckbox ckbox-default">
+                                                <input type="checkbox" name="include_zero" value="1" id="include_zero">
+                                                <label for="include_zero">数量大于0</label>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="form-group mr5">
+                                        <div class="input-group mt5 text-left">
+                                            <div class="ckbox ckbox-default">
+                                                <input type="checkbox" name="effective_date" value="1" id="effective_date">
+                                                <label for="effective_date">效期预警</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mr5">
+                                        <div class="input-group mt5 text-left">
+                                            <div class="ckbox ckbox-default">
+                                                <input type="checkbox" name="storage_num" value="1" id="storage_num">
+                                                <label for="storage_num">库存预警</label>
+                                            </div>
+                                        </div> 
+                                    </div>
+
+                                    <div class="form-group mr0">
+                                        <!-- <a href="https:///Clinic/Pharmacy/exportExcel.html" class="btn btn-sm btn-default J-download"><i class="fa fa-download"></i> 导出</a> -->
+                                        <a href="/japi/session/401013" class="btn btn-sm btn-default J-download"><i class="fa fa-download"></i> 导出</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="table-responsive border-top">
+                            <table class="table table-hover shadow-none">
+                                <thead>
+                                    <tr>
+                                        <th class="pl20">商品名称</th>
+                                        <th width="8%">规格</th>
+                                        <th width="5%">单位</th>
+                                        <th width="12%">生产厂商</th>
+                                        <th width="12%">供应商</th>
+                                        <th width="9%">零售价(￥)</th>
+                                        <th width="9%">成本价(￥)</th>
+                                        <th width="10%">批号</th>
+                                        <th width="12%">有效期</th>
+                                        <th>剩余数量</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="J-stock-list-wrap"><tr>
+        <td class="pl20 text-danger">0.9%氯化钠注射液（有国药准字）<span class="text-danger">（被停用）</span></td>
+        <td class="text-danger">100ml:</td>
+        <td class="text-danger">瓶</td>
+        <td class="text-danger">华东制药</td>
+        <td class="text-danger"></td>
+        <td class="text-danger">3.0000</td>
+        <td class="text-danger">1.2800</td>
+        <td class="text-danger">20170506</td>
+        <td class="text-danger">0210-01-31</td>
+        <td class="text-danger">35瓶</td>
+    </tr><tr>
+        <td class="pl20 text-danger">0.9%氯化钠注射液（有国药准字）<span class="text-danger">（被停用）</span></td>
+        <td class="text-danger">100ml:</td>
+        <td class="text-danger">瓶</td>
+        <td class="text-danger">华东制药</td>
+        <td class="text-danger"></td>
+        <td class="text-danger">3.0000</td>
+        <td class="text-danger">1.2900</td>
+        <td class="text-danger">101010</td>
+        <td class="text-danger">2001-10-10</td>
+        <td class="text-danger">25瓶</td>
+    </tr><tr>
+        <td class="pl20 text-danger">0.9%氯化钠注射液（有国药准字）<span class="text-danger">（被停用）</span></td>
+        <td class="text-danger">100ml:</td>
+        <td class="text-danger">瓶</td>
+        <td class="text-danger">华东制药</td>
+        <td class="text-danger"></td>
+        <td class="text-danger">3.0000</td>
+        <td class="text-danger">1.0000</td>
+        <td class="text-danger">123</td>
+        <td class="text-danger">2012-03-05</td>
+        <td class="text-danger">23瓶</td>
+    </tr><tr>
+        <td class="pl20 text-danger">0.9%氯化钠注射液（有国药准字）<span class="text-danger">（被停用）</span></td>
+        <td class="text-danger">100ml:</td>
+        <td class="text-danger">瓶</td>
+        <td class="text-danger">华东制药</td>
+        <td class="text-danger"></td>
+        <td class="text-danger">3.0000</td>
+        <td class="text-danger">1.0000</td>
+        <td class="text-danger">12345</td>
+        <td class="text-danger">2015-01-04</td>
+        <td class="text-danger">23瓶</td>
+    </tr><tr>
+        <td class="pl20 text-danger">灭菌注射用水</td>
+        <td class="text-danger">5ml×1支</td>
+        <td class="text-danger">盒</td>
+        <td class="text-danger"></td>
+        <td class="text-danger">浙江上药新欣医药有限公司</td>
+        <td class="text-danger">4.5000</td>
+        <td class="text-danger">4.5000</td>
+        <td class="text-danger">2016-11-18</td>
+        <td class="text-danger">2017-11-18</td>
+        <td class="text-danger">0盒2支</td>
+    </tr><tr>
+        <td class="pl20 text-danger">灭菌注射用水</td>
+        <td class="text-danger">5ml×1支</td>
+        <td class="text-danger">盒</td>
+        <td class="text-danger"></td>
+        <td class="text-danger"></td>
+        <td class="text-danger">4.5000</td>
+        <td class="text-danger">4.5000</td>
+        <td class="text-danger">20170417</td>
+        <td class="text-danger">2018-05-02</td>
+        <td class="text-danger">0盒1支</td>
+    </tr><tr>
+        <td class="pl20 text-danger">灭菌注射用水</td>
+        <td class="text-danger">5ml×1支</td>
+        <td class="text-danger">盒</td>
+        <td class="text-danger"></td>
+        <td class="text-danger"></td>
+        <td class="text-danger">4.5000</td>
+        <td class="text-danger">4.5000</td>
+        <td class="text-danger">123456</td>
+        <td class="text-danger">2018-06-03</td>
+        <td class="text-danger">0盒2支</td>
+    </tr><tr>
+        <td class="pl20 text-danger">灭菌注射用水</td>
+        <td class="text-danger">5ml×1支</td>
+        <td class="text-danger">盒</td>
+        <td class="text-danger"></td>
+        <td class="text-danger"></td>
+        <td class="text-danger">4.5000</td>
+        <td class="text-danger">4.5000</td>
+        <td class="text-danger">123456</td>
+        <td class="text-danger">2018-06-07</td>
+        <td class="text-danger">1盒6支</td>
+    </tr></tbody>
+                            </table>
+                        </div>
+                        <div class="J-pager-wrap2"></div>
+                        <!-- 当前库存-供应商 -->
+                        <div class="modal fade" id="factory-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title" id="myModalLabel">选择供应商</h4>
+                                    </div>
+                                    <div class="modal-body pl20">
+                                        <div class="row mt10 font16 J-factory-ckbox-warp">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer modal-btn-col2">
+                                        <button type="button" class="btn btn-primary J-factory-submit">确定</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 当前库存-供应商 -->
+                    </div>
+                    <!-- 当前库存 -->
+                    <!-- 库存盘点 -->
+                    <div class="tab-pane J-module-control" data-permission="35,36" id="inventory">
+                        <div class="row mb5">
+                            <div class="col-sm-3 col-md-4 pr0">
+                                <div class="form-group J-module-control" data-permission="35">
+                                    <a href="{php echo $this->createWeburl('yaopin',array('op'=>'pdadd'))}" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> 新增盘点</a>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9 col-md-8 pull-right"></div>
+                        </div>
+
+                        <div class="table-responsive border-top">
+                            <table class="table table-hover shadow-none mb0">
+                                <thead>
+                                <tr>
+                                    <th class="pl20">盘点单号</th>
+                                    <th>盘点日期</th>
+                                    <th>制单人</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="J-inventory-list-wrap"><tr>
+        <td class="pl20 J-inventory-id">578</td>
+        <td>2019-06-15</td>
+        <td>罗小小</td>
+        <td><span class="badge badge-danger">待审核</span>
+            
+        </td>
+        <td>
+                <a class="J-module-control" data-permission="35" href="{php echo $this->createWeburl('yaopin',array('op'=>'pdupdate'))}"><i class="fa fa-pencil"></i> 修改</a>  -  
+                <a class="J-module-control" data-permission="36" href="{php echo $this->createWeburl('yaopin',array('op'=>'pdshenhe'))}"><i class="fa fa-check-circle-o"></i> 审核</a>  -  
+                <a data-toggle="modal" data-target="#J-del-modal" class="J-inventory-del-btn"><i class="fa fa-trash-o"></i> 删除</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">576</td>
+        <td>2019-06-12</td>
+        <td>姚俊</td>
+        <td><span class="badge badge-danger">待审核</span>
+            
+        </td>
+        <td>
+                <a class="J-module-control" data-permission="35" href="{php echo $this->createWeburl('yaopin',array('op'=>'pdupdate'))}"><i class="fa fa-pencil"></i> 修改</a>  -  
+                <a class="J-module-control" data-permission="36" href="{php echo $this->createWeburl('yaopin',array('op'=>'pdshenhe'))}"><i class="fa fa-check-circle-o"></i> 审核</a>  -  
+                <a data-toggle="modal" data-target="#J-del-modal" class="J-inventory-del-btn"><i class="fa fa-trash-o"></i> 删除</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">575</td>
+        <td>2019-06-12</td>
+        <td>姚俊</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">573</td>
+        <td>2019-05-31</td>
+        <td>李志林</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">571</td>
+        <td>2019-05-24</td>
+        <td>李海林</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">570</td>
+        <td>2019-05-23</td>
+        <td>罗小小</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">569</td>
+        <td>2019-05-22</td>
+        <td>董小姐</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">568</td>
+        <td>2019-05-21</td>
+        <td>李志林</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">567</td>
+        <td>2019-05-21</td>
+        <td>李志林</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">566</td>
+        <td>2019-05-21</td>
+        <td>李海林</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">565</td>
+        <td>2019-05-20</td>
+        <td>戴微微</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">564</td>
+        <td>2019-05-20</td>
+        <td>戴微微</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">563</td>
+        <td>2019-05-20</td>
+        <td>戴微微</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">562</td>
+        <td>2019-05-20</td>
+        <td>戴微微</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">561</td>
+        <td>2019-05-20</td>
+        <td>戴微微</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">560</td>
+        <td>2019-05-19</td>
+        <td>李海林</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">559</td>
+        <td>2019-05-17</td>
+        <td>陈雪雪1</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">558</td>
+        <td>2019-05-16</td>
+        <td>李志林</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">551</td>
+        <td>2019-05-08</td>
+        <td>李海林</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr><tr>
+        <td class="pl20 J-inventory-id">550</td>
+        <td>2019-04-28</td>
+        <td>李志林</td>
+        <td><span class="badge badge-gray">已审核</span>
+            
+        </td>
+        <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'pddetail'))}0" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            
+        </td>
+    </tr></tbody>
+                            </table>
+                            <div class="J-page-wrap pd20 mb45">
+                                <!-- 分页 -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 库存盘点 -->
+                </div>
+            </div>
+        </div>
+        <!-- mainpanel -->
+    </section>
+    <!-- 删除库存单 -->
+    <div class="modal fade" id="J-del-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>是否删除整张入库单？</h4>
+                    <input type="hidden" class="J-inventory-del-id">
+                </div>
+
+                <div class="modal-footer modal-btn-col2">
+                    <button type="submit" class="btn btn-primary J-del-submit">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 删除库存单 -->
+    <!-- 入库单删除modal弹窗 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">系统提示</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>是否确定删除？</h4>
+                    <input type="hidden" name="delId" class="J-del-id" value="">
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-del-submit">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- start供应商模版 -->
+    <script type="text/template" id="J-factory-ckbox-tpl">
+        <% _.each(data, function (item, i) { %>
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-default">
+                        <input type="checkbox" name="factory_id[]" value="<%- item.id%>" id="ckbox<%- item.id%>">
+                        <label for="ckbox<%- item.id%>"><%- item.text%></label>
+                </div>
+            </div>
+        <% }) %>
+    </script>
+    <!-- end供应商模版 -->
+    <!-- 入库单管理模版 -->
+    <script type="text/template" id="receipts-list-tpl">
+        <td class="pl20"><%-id%></td>
+        <td><%-warehouse_time%></td>
+        <td><%-method%></td>
+        <td><%-factory%></td>
+        <td><%-creator%></td>
+        <%if(check_status == 1){%>
+            <td><span class="badge badge-danger"><%-status%></span></td>
+            <td>
+                <a class="module-hide J-module-control" data-permission="31" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypupdate'))}"><i class="fa fa-pencil"></i> 修改&ensp;&ensp;-&ensp;&ensp;</a>
+                <%if(show_receipts_check){%>
+                    <a class="module-hide J-module-control" data-permission="32" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypshenhe'))}"><i class="fa fa-check-circle-o"></i> 审核&ensp;&ensp;-&ensp;&ensp;</a>
+                <%}%>
+                <a data-toggle="modal" data-target="#myModal" data-id="<%-id%>" class="J-del-receipts"><i class="fa fa-trash-o"></i> 删除</a>
+            </td>
+        <%} else {%>
+            <td><span class="badge badge-gray"><%-status%></span></td>
+            <td><a href="{php echo $this->createWeburl('yaopin',array('op'=>'ypdetail'))}" class="J-da-storage-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        <%}%>
+    </script>
+    <!-- 出库单管理模版 -->
+    <script type="text/template" id="delivery-list-tpl">
+        <td class="pl20"><%-id%></td>
+        <td><%-exwarehouse_time%></td>
+        <td><%-method%></td>
+        <td><%-department%></td>
+        <td><%-worker%></td>
+        <td><%-creater%></td>
+        <%if(check_status == 1){%>
+            <td><span class="badge badge-danger"><%-status%></span></td>
+            <td>
+                <a class="module-hide J-module-control" data-permission="33" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypupdate'))}"><i class="fa fa-pencil"></i> 修改</a>&ensp;&ensp;-&ensp;&ensp;
+                <%if(show_delivery_check){%>
+                    <a class="module-hide J-module-control" data-permission="34" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypshenhe'))}"><i class="fa fa-check-circle-o"></i> 审核</a>&ensp;&ensp;-&ensp;&ensp;
+                <%}%>
+                <a data-toggle="modal" data-target="#myModal" data-id="<%-id%>" class="J-del-delivery"><i class="fa fa-trash-o"></i> 删除</a>
+            </td>
+        <%} else {%>
+            <td><span class="badge badge-gray"><%-status%></span></td>
+            <td><a href="<%- global_src_api %>/Pharmacy/deliveryView?id=<%-id%>" class="J-da-delivery-view"><i class="fa fa-eye"></i> 查看详情</a></td>
+        <%}%>
+    </script>
+    <!-- 库存盘点列表模板 -->
+    <script type="text/template" id="J-inventory-list-tpl">
+        <td class="pl20 J-inventory-id"><%- id%></td>
+        <td><%- new Date(inventoryTime).Format('yyyy-MM-dd')%></td>
+        <td><%- workerName%></td>
+        <td><%if(checkStatus == 1){%><span class="badge badge-danger">待审核</span>
+            <% }else if(checkStatus == 2){ %><span class="badge badge-gray">已审核</span>
+            <% } %>
+        </td>
+        <td><%if(checkStatus == 2){%><a href="<%- global_src_api %>/Pharmacy/inventoryView?id=<%- id%>" class="J-da-inventory-view"><i class="fa fa-eye"></i> 查看详情</a>
+            <% }else if(checkStatus == 1){ %>
+                <a class="module-hide J-module-control" data-permission="35" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypupdate'))}"><i class="fa fa-pencil"></i> 修改</a>  -  
+                <a class="module-hide J-module-control" data-permission="36" href="{php echo $this->createWeburl('yaopin',array('op'=>'ypshenhe'))}"><i class="fa fa-check-circle-o"></i> 审核</a>  -  
+                <a data-toggle="modal" data-target="#J-del-modal" class="J-inventory-del-btn"><i class="fa fa-trash-o"></i> 删除</a>
+            <% } %>
+        </td>
+    </script>
+    <!-- 当前库存列表模板 -->
+    <script type="text/template" id="stock-list-tpl">
+        <td class="pl20 <%-className%>"><%-medicinename%><%if(status != 1){%><span class="text-danger">（被停用）</span><% } %></td>
+        <td class="<%-className%>"><%-medicinespec%></td>
+        <td class="<%-className%>"><%-medicineunit%></td>
+        <td class="<%-className%>"><%-manufacturer%></td>
+        <td class="<%-className%>"><%-factory%></td>
+        <td class="<%-className%>"><%-medicineprice%></td>
+        <td class="<%-className%>"><%-cost_price%></td>
+        <td class="<%-className%>"><%-batch_number%></td>
+        <td class="<%-className%>"><%-validity%></td>
+        <td class="<%-className%>"><%-real_count%></td>
+    </script>
+    <!-- 订单管理 -->
+    <script type="text/template" id="order-list-tpl">
+        <thead>
+            <tr>
+                <th class="pl20 black bg-gray2" colspan="6">
+                    <i class="fa fa-clock-o mr10"></i><b><%-create_time%></b> &nbsp; <span class="gray">|</span> &nbsp; 
+                    <b>订单号：&nbsp; <%-order_id%></b> &nbsp; <span class="gray">|</span> &nbsp; 
+                    <%-patient_name%><%if(mobile){%>（<%-mobile%>）<%}%> &nbsp; <span class="gray">|</span> &nbsp; 
+                    <%if(fee_type == 1){%>立即支付<%}else if(fee_type == 2){%>货到付款<%}%>
+                    <span class="pull-right">
+                        <%if(status==1 || status==2){%>
+                        <a href="javascript:void(0);" class="J-change-order"><i class="fa fa-pencil"></i> 修改订单</a>&nbsp; 
+                        <span class="gray">|</span>&nbsp; 
+                        <%}%>
+                        <%if(status==0){%>
+                        <a href="javascript:void(0);" class="J-del-order"><i class="fa fa-times"></i> 删除订单</a>&nbsp;
+                        <span class="gray">|</span>&nbsp; 
+                        <%}%>
+                        <%if(status==0){%>
+                        <a href="javascript:void(0);" class="J-sure-order"><i class="fa fa-check"></i> 确认订单</a>
+                        <%}%>
+                        <%if(status==1 || status==2 || status == 3){%>
+                        <a href="javascript:void(0);" class="J-cancel-order"><i class="fa fa-times"></i> 取消订单</a>
+                        <%}%>
+                        <%if(status==4 || status==5){%>
+                        <a href="javascript:void(0);" class="J-order-detail"><i class="fa fa-eye"></i> 查看订单</a>
+                        <%}%>
+                    </span>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <%$.each(medicines, function(i, item) {%>
+            <tr class="bg-white">
+                <td width="23%" class="pl20"><%-item.medicinename%> <%-item.medicinespec%></td>
+                <td width="16%"><%-item.manufacturer%></td>
+                <td width="17%">￥<%-item.medicineprice%>（零售价）</td>
+                <td width="12%"><%-item.medicinecount%><%-item.countunit%>（数量）</td>
+                <td width="9%" class="text-center">
+                    <%if(status==0 || status==1 || status==2 || status==3){%>
+                    <span class="badge badge-danger"><%-status_text%></span>
+                    <%} else if(status==4 || status == 5 || status == 6 || status == 7 || status == 8 || status == 9 || status == 10 || status == 11){%>
+                    <span class="badge badge-gray"><%-status_text%></span>
+                    <%} else {%>
+                    <span class="badge badge-danger"><%-status_text%></span>
+                    <%}%>
+                </td>
+            </tr>
+            <%});%>
+            <tr class="bg-white">
+                <td colspan="5" class="text-right">
+                    合计：<b>￥<%- (medicine_price*1 + express_price*1).toFixed(2) %></b><span class="font12">（含快递费 <%-express_price%> 元）</span>
+                </td>
+            </tr>
+        </tbody>
+    </script>
+    <!-- 新增订单 -->
+    <script type="text/template" id="order-sure-tpl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel">订单号：<%-order_id%> \ <%-patient_name%><%if(mobile){%>（<%-mobile%>）<%}%></h4>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <input type="hidden" name="id" value="<%-id%>">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="bg-gray pl20">商品名</th>
+                            <th class="bg-gray">生产厂商</th>
+                            <th class="bg-gray">付款总额</th>
+                            <th class="bg-gray">数量</th>
+                            <th class="bg-gray">费用合计</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%$.each(medicines, function(i, item) {%>
+                        <%if(i==0){%>
+                        <tr class="bg-white">
+                            <td class="pl20"><%-item.medicinename%> <%-item.medicinespec%></td>
+                            <td><%-item.manufacturer%></td>
+                            <td>￥<%-item.medicineprice%></td>
+                            <td class="border-right"><%-item.medicinecount%><%-item.countunit%></td>
+                            <td rowspan="<%-medicines.length%>">￥<%-medicine_price%></td>
+                        </tr>
+                        <%}else{%>
+                        <tr class="bg-white">
+                            <td class="pl20"><%-item.medicinename%> <%-item.medicinespec%></td>
+                            <td><%-item.manufacturer%></td>
+                            <td>￥<%-item.medicineprice%></td>
+                            <td class="border-right"><%-item.medicinecount%><%-item.countunit%></td>
+                        </tr>
+                        <%}%>
+                        <%});%>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">支付方式：</label>
+                <div class="col-sm-10">
+                    <select class="form-control input-sm mt0" name="feeType" required>
+                        <option value="2" selected="selected">货到付款</option>
+                        <option value="1">立即支付</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">快递费用：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control J-express-price" readonly="true" name="expressPrice" value="<%-express_price%>" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">收货人姓名：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="receiver_name" value="<%-receiver_name%>" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">手机号：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control cellphone" name="mobile" value="<%-mobile%>" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">收货地址：</label>
+                <div class="col-sm-2">
+                    <select class="form-control input-sm mt0 J-location-pro" data-placeholder="请选择" required>
+                        <option value="<%-province_code%>" selected="selected"></option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control input-sm mt0 J-location-city" data-placeholder="请选择" name="cityCode" required>
+                        <option value="<%-city_code%>" selected="selected"></option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control input-sm mt0 J-location-area" data-placeholder="请选择" name="areaCode">
+                        <option value="<%-area_code%>" selected="selected"></option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control J-order-address" name="address" value="<%-address%>" required>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer modal-btn-col2">
+            <button type="button" class="btn btn-primary J-sure-submit">保存</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+    </script>
+    <!-- 更新订单 -->
+    <script type="text/template" id="order-update-tpl">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel">订单号：<%-order_id%> \ <%-patient_name%><%if(mobile){%>（<%-mobile%>）<%}%></h4>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <input type="hidden" name="id" value="<%-id%>">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="bg-gray pl20">商品名</th>
+                            <th class="bg-gray">生产厂商</th>
+                            <th class="bg-gray">付款总额</th>
+                            <th class="bg-gray">数量</th>
+                            <th class="bg-gray">费用合计</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%$.each(medicines, function(i, item) {%>
+                        <%if(i==0){%>
+                        <tr class="bg-white">
+                            <td class="pl20"><%-item.medicinename%> <%-item.medicinespec%></td>
+                            <td><%-item.manufacturer%></td>
+                            <td>￥<%-item.medicineprice%></td>
+                            <td class="border-right"><%-item.medicinecount%><%-item.countunit%></td>
+                            <td rowspan="<%-medicines.length%>">￥<%-medicine_price%></td>
+                        </tr>
+                        <%}else{%>
+                        <tr class="bg-white">
+                            <td class="pl20"><%-item.medicinename%> <%-item.medicinespec%></td>
+                            <td><%-item.manufacturer%></td>
+                            <td>￥<%-item.medicineprice%></td>
+                            <td class="border-right"><%-item.medicinecount%><%-item.countunit%></td>
+                        </tr>
+                        <%}%>
+                        <%});%>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">支付方式：</label>
+                <div class="col-sm-10">
+                    <select class="form-control input-sm mt0" name="feeType" required disabled>
+                        <option value="2" <%if(fee_type==2){%>selected="selected"<%}%>>货到付款</option>
+                        <option value="1" <%if(fee_type==1){%>selected="selected"<%}%>>立即支付</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">快递费用：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control J-express-price" readonly="true" name="expressPrice" value="<%-express_price%>" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">收货人姓名：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="receiver_name" value="<%-receiver_name%>" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">手机号：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control cellphone" name="mobile" value="<%-mobile%>" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label pl20">收货地址：</label>
+                <div class="col-sm-2">
+                    <select class="form-control input-sm mt0 J-location-pro" data-placeholder="请选择" required>
+                        <option value="<%-province_code%>" selected="selected"></option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control input-sm mt0 J-location-city" data-placeholder="请选择" name="cityCode" required>
+                        <option value="<%-city_code%>" selected="selected"></option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select class="form-control input-sm mt0 J-location-area" data-placeholder="请选择" name="areaCode">
+                        <option value="<%-area_code%>" selected="selected"></option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control J-order-address" name="address" value="<%-address%>" required>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer modal-btn-col2">
+            <button type="button" class="btn btn-primary J-update-submit">保存</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+    </script>
+    <!-- 查看订单 -->
+    <script type="text/template" id="order-detail-tpl">
+      <%if(data && data.length){%>
+        <ul class="order_status">
+            <%$.each(data, function(i, item){%>
+            <li>
+                <p><%-item.processRemark%><br/><%-item.processTime%></p>
+            </li>
+            <%});%>
+        </ul>
+      <%}%>
+    </script>
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">系统通知</h4>
+                    </div>
+                    <div class="modal-body pd20">
+                            <form>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    为了保护您的账号安全，我们建议您定期修改密码。
+                                            </div>
+                                            <div class="col-sm-12 mt10">
+                                                    <div class="form-group">
+                                                            <label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                            <label class="control-label">确认密码 <span class="asterisk">*</span></label>
+                                                            <input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required="">
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </form>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+                    </div>
+            </div>
+    </div>
+</div>
+<!-- <script type="text/javascript">
+    if(window.location.href.indexOf('dxy.net') < 0) {
+        document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+        $(function(){
+            window.KF5SupportBoxAPI.init();
+            window.KF5SupportBoxAPI.ready(function()
+            {
+                // 移除默认按钮
+                window.KF5SupportBoxAPI.removeButton();
+
+                $('.kf5-support-btn').on('click', function() {
+                    window.KF5SupportBoxAPI.open();
+                })
+            }); 
+        });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['pharmacy_manage']);
+    </script>
+
+
+<div style="display: none; position: fixed; width: 40px; height: 40px; background: rgb(31, 37, 48); cursor: pointer; bottom: 40px; right: 40px; border-radius: 5px;" class="goup-container" title=""><div class="goup-arrow" style="width: 0px; height: 0px; margin: 0px auto; padding-top: 13px; border-style: solid; border-width: 0px 10px 10px; border-color: transparent transparent rgb(255, 255, 255);"></div></div></body></html>

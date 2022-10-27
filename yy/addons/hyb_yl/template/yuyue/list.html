@@ -1,0 +1,1253 @@
+{template './common/mainHeader'}
+<!-- 订阅消息列表 -->
+
+        </div>
+        <!-- headerbar -->
+        <div class="pageheader hidden">
+            <h2><i class="fa fa-table"></i> 预约</h2>
+        </div>
+        <div class="contentpanel">
+            <ul class="nav nav-tabs patient-tabs">
+                <li class="active"><a href="#today" data-toggle="tab"><strong>预约管理</strong></a></li>
+                <li class="module-hide J-module-control" data-permission="14"><a href="#history" data-toggle="tab"><strong>预约设置</strong></a></li>
+            </ul>
+            <div class="tab-content pd0 radius3">
+                <!-- 预约 -->
+                <div class="tab-pane active" id="today">
+                    <div class="row pd20 mbf40">
+                        <div class="col-sm-3 col-md-3 pr0">
+                            <div class="btn-group mr5">
+                                <a href="{php echo $this->createWeburl('yuyue',array('op'=>'add'))}" class="btn btn-sm btn-default J-add-reservation"><i class="fa fa-plus"></i> 新增预约</a>
+                            </div>
+                            <div class="btn-group">
+                                <a href="{php echo $this->createWeburl('yuyue',array('op'=>'display'))}" class="btn btn-sm btn-default J-calendar-page"><i class="fa fa-calendar"></i> 日历</a>
+                                <a href="{php echo $this->createWeburl('yuyue',array('op'=>'list'))}" class="btn btn-sm btn-default active J-reservation-list"><i class="fa fa-th-large"></i> 列表</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-md-9 pull-right">
+                            <form class="form-inline pull-right" method="post" id="J-search-form">
+                                <div class="form-group mr5">
+                                    <input type="text" size="15" placeholder="输入患者姓名或手机号" name="patient_name" class="form-control input-sm2" id="j_search_input">
+                                </div>
+
+                                <div class="form-group mr0 hidden">
+                                    <label class="control-label">预约日期：</label>
+                                    <div class="input-group">
+                                        <input class="form-control input-sm2 radius3 date J-reservationDateStart" size="10" name="reservationDateStart" type="text" placeholder="预约开始日期">
+                                    </div>
+                                </div>
+                                <div class="form-group mr0 hidden"> - </div>
+                                <div class="form-group mr5 hidden">
+                                    <div class="input-group">
+                                        <input class="form-control input-sm2 radius3 date J-reservationDateEnd" size="10" name="reservationDateEnd" type="text" placeholder="预约结束日期">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group mr5">
+                                    <div class="input-group">
+                                        <input class="form-control input-sm2 radius3 appDate J-select-reservationDate" type="text" placeholder="预约日期" size="21">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mr5 w20">
+                                    <input type="text" placeholder="选择科室" name="department" class="form-control input-sm2 hidden J-department" value="" id="J-department">
+                                    <input type="text" placeholder="选择科室" class="form-control input-sm2 width100 J-department-name" value="">
+                                </div>
+                                <div class="form-group mr5 report_medical_select">
+                                    <input type="hidden" name="reservation_doctor" class="mtf3 J-doctorName" id="J-doctorId" data-placeholder="选择医生" tabindex="-1">
+                                </div>
+                                <button type="submit" class="btn btn-default btn-sm" id="j_search_submit" onclick="return false;"><i class="fa fa-search"></i></button>
+                            </form>
+                            <!-- 随访日期弹窗 -->
+                            <div class="modal fade" id="J-reservationDateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">预约信息</h4>
+                </div>
+                <div class="modal-body pd0">
+                    <div class="">
+                        <table class="table table-hover shadow-none mb0">
+                            <thead>
+                                <tr>
+                                    <th width="8%" class="pl20"></th>
+                                    <th width="12%">姓名</th>
+                                    <th width="8%">年龄</th>
+                                    <th width="12%">预约科室</th>
+                                    <th width="12%">预约医生</th>
+                                    <th width="17%">预约时间</th>
+                                    <th width="17%">预约内容</th>
+                                    <th class="pr20">备注</th>
+                                </tr>
+                            </thead>
+                            <tbody id="patient-list">
+        
+            <tr>
+                <td data-patient-id="00020123001" class="pl20 pre-relative J-action">
+                  <img class="user" src="//assets.dxycdn.com/app/DXYClinic/test/business/images/unknown-avatar.png">
+                  
+                  <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="9折会员"></span>
+                  
+                </td>
+                <td class="c-428bca J-action" data-patient-id="00020123001">
+                    展素之
+                </td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    43岁
+                </td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    中西医结合科（
+                        初诊）</td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    张琳涛</td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    2019-06-13
+                        <br>
+                        星期四 08:00
+                </td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    
+                </td>
+                <td>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control J-reservation-input" size="10" placeholder="填写备注" value="" reservationid="10014299">
+                        <span class="input-group-btn J-save-remark">
+                            <button type="button" class="btn btn-default"><i class="fa fa-save"></i></button>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+          
+            <tr>
+                <td data-patient-id="00020123011" class="pl20 pre-relative J-action">
+                  <img class="user" src="//assets.dxycdn.com/app/DXYClinic/test/business/images/unknown-avatar.png">
+                  
+                  <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="普通会员a"></span>
+                  
+                </td>
+                <td class="c-428bca J-action" data-patient-id="00020123011">
+                    李白
+                </td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    12岁0月4天
+                </td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    郑兴趣科室（
+                        初诊）</td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    张锡好</td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    2019-06-13
+                        <br>
+                        星期四 08:00
+                </td>
+                <td class="J-jump-blank" data-href="{php echo $this->createWeburl('shoufei',array('op'=>'baogao'))}">
+                    
+                </td>
+                <td>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control J-reservation-input" size="10" placeholder="填写备注" value="" reservationid="10014308">
+                        <span class="input-group-btn J-save-remark">
+                            <button type="button" class="btn btn-default"><i class="fa fa-save"></i></button>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+          
+    </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer modal-btn-col1">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+                                </div>
+                            </div>
+                            <!-- 随访日期弹窗 -->
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading bgfc">
+                            <div class="row pt20">
+                                <div class="col-sm-3 col-md-4">
+                                    <h4 class="panel-title">预约信息</h4>
+                                </div>
+                                <div class="col-sm-9 col-md-8 pull-right">
+                                    <form class="form-inline pull-right">
+
+                                        <div class="form-group mr0 hidden">
+                                            <label class="control-label">创建日期：</label>
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 date J-createDateStart" size="10" name="createDateStart" type="text" placeholder="创建开始日期">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mr0 hidden"> - </div>
+                                        <div class="form-group mr5 hidden">
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 date J-createDateEnd" size="10" name="createDateEnd" type="text" placeholder="创建结束日期">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group mr5">
+                                            <div class="input-group">
+                                                <input class="form-control input-sm2 radius3 appDate J-select-createDate" type="text" placeholder="创建日期" size="21">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mr5">
+                                            <select class="form-control input-xs2" data-placeholder="请选择预约类型" name="reservation_type" id="j_search_type">
+                                                <option value="">预约类型</option>
+                                                <option value="1"  >初诊</option><option value="2"  >复诊</option><option value="3"  >儿童体检</option><option value="4"  >成人体检</option>                                            </select>
+                                        </div>
+                                        <div class="form-group mr5">
+                                            <select class="form-control input-xs2" name="status" data-placeholder="预约状态" id="J-status">
+                                                <option value="">预约状态</option>
+                                                <option value="1">已预约</option>
+                                                <option value="2">已就诊</option>
+                                                <option value="3">失约</option>
+                                                <option value="4">已取消</option>
+                                            </select>
+                                        </div>
+                                        <input type="hidden">
+                                        <a class="btn btn-sm btn-default J-download" href="/japi/session/300004?isExport=1"><i class="fa fa-download"></i> 导出</a>
+                                    </form>
+                                    <!-- 创建日期弹窗 -->
+                                    <div class="modal fade" id="J-createDateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h4 class="modal-title">创建日期</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="pt10 pb10">
+                                                        <form class="form-inline" method="post">
+                                                            <div class="form-group mr0">
+                                                                <div class="input-group">
+                                                                    <input class="form-control input-sm2 radius3 date J-common-startDate" type="text" placeholder="开始日期">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mr0">至</div>
+                                                            <div class="form-group mr5">
+                                                                <div class="input-group">
+                                                                    <input class="form-control input-sm2 radius3 date J-common-endDate" type="text" placeholder="结束日期">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer modal-btn-col2">
+                                                    <button type="button" class="btn btn-primary J-create-submit">确定</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 创建日期弹窗 -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <!-- 病人列表 -->
+                            <div class="bloglist row" id="J-patient-list-wrap"><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-danger panel-alt widget-photoday img-list">
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-danger room-tag">
+                                
+                                已预约
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=" class="white name-nowrap J-action">王照陆</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="32岁5月14天">（男 32岁）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=&amp;reservation_id=10014314">
+                            <!-- <span>预约号：10014314</span> -->
+                            <span>创建时间：2019-06-14 14:10:46</span>
+                            <span class="text-nowrap">预约：张琳涛 (眼科、初诊)</span>
+                            <span>预约时间：2019-06-22 13:50:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">修改</a></li>
+                            
+                            <li><a href="#" data-toggle="modal" data-target="#myModal" class="J-btn-cancel" data-id="10014314">取消</a></li>
+                            
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-danger panel-alt widget-photoday img-list">
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=00020123012" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-danger room-tag">
+                                
+                                已预约
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=00020123012" class="white name-nowrap J-action">Tai-Chiou Yu</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="20岁3月27天">（男 20岁）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=00020123012&amp;reservation_id=10014313">
+                            <!-- <span>预约号：10014313</span> -->
+                            <span>创建时间：2019-06-14 00:43:48</span>
+                            <span class="text-nowrap">预约：胡馨月 (泌尿科、复诊)</span>
+                            <span>预约时间：2019-06-17 10:00:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">修改</a></li>
+                            
+                            <li><a href="#" data-toggle="modal" data-target="#myModal" class="J-btn-cancel" data-id="10014313">取消</a></li>
+                            
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-end panel-alt widget-photoday img-list">
+                
+                <div class="p-relative">
+                    <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="一级会员"></span>
+                </div>
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=00020122978" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-end room-tag">
+                                
+                                失约
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=00020122978" class="white name-nowrap J-action">哈哈</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="25岁10月23天">（男 25岁）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=00020122978&amp;reservation_id=10014312">
+                            <!-- <span>预约号：10014312</span> -->
+                            <span>创建时间：2019-06-13 10:14:23</span>
+                            <span class="text-nowrap">预约：张琳涛 (儿内科、初诊)</span>
+                            <span>预约时间：2019-06-13 10:20:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-end panel-alt widget-photoday img-list">
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/child-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-end room-tag">
+                                
+                                    <i class="fa fa-wechat tooltips" data-toggle="tooltip" data-placement="top" data-original-title="来自微信预约"></i>
+                                
+                                失约
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=" class="white name-nowrap J-action">李白</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="12岁0月4天">（男 12岁0月4天）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=&amp;reservation_id=10014311">
+                            <!-- <span>预约号：10014311</span> -->
+                            <span>创建时间：2019-06-12 20:48:51</span>
+                            <span class="text-nowrap">预约：张锡好 (郑兴趣科室、初诊)</span>
+                            <span>预约时间：2019-06-13 20:00:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                                <li><a href="{php echo $this->createWeburl('weixin',array('op'=>'detail'))}" class="J-jump-blank">微信交流</a></li>
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-success panel-alt widget-photoday img-list">
+                
+                <div class="p-relative">
+                    <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="普通会员a"></span>
+                </div>
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=00020123011" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/child-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-success room-tag">
+                                
+                                    <i class="fa fa-wechat tooltips" data-toggle="tooltip" data-placement="top" data-original-title="来自微信预约"></i>
+                                
+                                已就诊
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=00020123011" class="white name-nowrap J-action">李白</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="12岁0月4天">（男 12岁0月4天）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=00020123011&amp;reservation_id=10014308">
+                            <!-- <span>预约号：10014308</span> -->
+                            <span>创建时间：2019-06-12 19:57:17</span>
+                            <span class="text-nowrap">预约：张锡好 (郑兴趣科室、初诊)</span>
+                            <span>预约时间：2019-06-13 08:00:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                                <li><a href="{php echo $this->createWeburl('weixin',array('op'=>'detail'))}" class="J-jump-blank">微信交流</a></li>
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-end panel-alt widget-photoday img-list">
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/child-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-end room-tag">
+                                
+                                    <i class="fa fa-wechat tooltips" data-toggle="tooltip" data-placement="top" data-original-title="来自微信预约"></i>
+                                
+                                失约
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=" class="white name-nowrap J-action">李白</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="12岁0月4天">（男 12岁0月4天）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=&amp;reservation_id=10014307">
+                            <!-- <span>预约号：10014307</span> -->
+                            <span>创建时间：2019-06-12 17:54:58</span>
+                            <span class="text-nowrap">预约：张锡好 (郑兴趣科室、初诊)</span>
+                            <span>预约时间：2019-06-12 18:20:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                                <li><a href="{php echo $this->createWeburl('weixin',array('op'=>'detail'))}" class="J-jump-blank">微信交流</a></li>
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-end panel-alt widget-photoday img-list">
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/child-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-end room-tag">
+                                
+                                    <i class="fa fa-wechat tooltips" data-toggle="tooltip" data-placement="top" data-original-title="来自微信预约"></i>
+                                
+                                失约
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=" class="white name-nowrap J-action">李白</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="12岁0月4天">（男 12岁0月4天）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=&amp;reservation_id=10014306">
+                            <!-- <span>预约号：10014306</span> -->
+                            <span>创建时间：2019-06-12 15:15:18</span>
+                            <span class="text-nowrap">预约：张锡好 (郑兴趣科室、初诊)</span>
+                            <span>预约时间：2019-06-12 16:30:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                                <li><a href="{php echo $this->createWeburl('weixin',array('op'=>'detail'))}" class="J-jump-blank">微信交流</a></li>
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-dark panel-alt widget-photoday img-list">
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/child-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-dark room-tag">
+                                
+                                    <i class="fa fa-wechat tooltips" data-toggle="tooltip" data-placement="top" data-original-title="来自微信预约"></i>
+                                
+                                已取消
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=" class="white name-nowrap J-action">李白</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="12岁0月4天">（男 12岁0月4天）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=&amp;reservation_id=10014305">
+                            <!-- <span>预约号：10014305</span> -->
+                            <span>创建时间：2019-06-12 15:11:45</span>
+                            <span class="text-nowrap">预约：张锡好 (儿童保健(演示用)、儿童体检)</span>
+                            <span>预约时间：2019-06-12 15:40:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                                <li><a href="{php echo $this->createWeburl('weixin',array('op'=>'detail'))}" class="J-jump-blank">微信交流</a></li>
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-dark panel-alt widget-photoday img-list">
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/child-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-dark room-tag">
+                                
+                                    <i class="fa fa-wechat tooltips" data-toggle="tooltip" data-placement="top" data-original-title="来自微信预约"></i>
+                                
+                                已取消
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=" class="white name-nowrap J-action">李白</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="12岁0月4天">（男 12岁0月4天）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=&amp;reservation_id=10014304">
+                            <!-- <span>预约号：10014304</span> -->
+                            <span>创建时间：2019-06-12 14:48:40</span>
+                            <span class="text-nowrap">预约：张锡好 (郑兴趣科室、初诊)</span>
+                            <span>预约时间：2019-06-12 16:50:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                                <li><a href="{php echo $this->createWeburl('weixin',array('op'=>'detail'))}" class="J-jump-blank">微信交流</a></li>
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-success panel-alt widget-photoday img-list">
+                
+                <div class="p-relative">
+                    <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="武林一号"></span>
+                </div>
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=00020122988" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-success room-tag">
+                                
+                                已就诊
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=00020122988" class="white name-nowrap J-action">武林</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="30岁5月14天">（男 30岁）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=00020122988&amp;reservation_id=10014303">
+                            <!-- <span>预约号：10014303</span> -->
+                            <span>创建时间：2019-06-12 14:07:36</span>
+                            <span class="text-nowrap">预约：张琳涛 (泌尿科、初诊)</span>
+                            <span>预约时间：2019-06-12 14:10:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-end panel-alt widget-photoday img-list">
+                
+                <div class="p-relative">
+                    <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="一级会员"></span>
+                </div>
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=00020122978" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/male-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-end room-tag">
+                                
+                                失约
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=00020122978" class="white name-nowrap J-action">哈哈</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="25岁10月23天">（男 25岁）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=00020122978&amp;reservation_id=10014302">
+                            <!-- <span>预约号：10014302</span> -->
+                            <span>创建时间：2019-06-11 20:19:43</span>
+                            <span class="text-nowrap">预约：张琳涛 (泌尿科、初诊)</span>
+                            <span>预约时间：2019-06-13 09:00:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div><div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-success panel-alt widget-photoday img-list">
+                
+                <div class="p-relative">
+                    <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="一级会员"></span>
+                </div>
+                
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="/Clinic/Patient/profile?patient_id=00020122979" class="J-action"><img src="//assets.dxycdn.com/app/DXYClinic/test/business/images/female-avatar.png" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-success room-tag">
+                                
+                                已就诊
+                            </span>
+                            <h3><a href="/Clinic/Patient/profile?patient_id=00020122979" class="white name-nowrap J-action">嘻嘻</a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="26岁0月10天">（女 26岁）</small></h3>
+                          <a class="white J-jump-blank" href="/Clinic/Reservation/reservation.html?patient_id=00020122979&amp;reservation_id=10014301">
+                            <!-- <span>预约号：10014301</span> -->
+                            <span>创建时间：2019-06-11 20:18:56</span>
+                            <span class="text-nowrap">预约：张琳涛 (儿内科、初诊)</span>
+                            <span>预约时间：2019-06-12 07:20:00</span>
+                            <span class="text-nowrap">预约内容：</span>
+                            <span class="text-nowrap">备注：</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         
+                            
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}" class="J-jump-blank">查看</a></li>
+                        
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </div></div>
+                            <!-- 病人列表 -->
+                            <div class="J-pager-wrap"><div class="base_page"><a href="#/patient_name/@null/reservation_doctor/@null/reservation_type/@null/department/@null/reservationDateStart/@null/reservationDateEnd/@null/createDateStart/@null/createDateEnd/@null/status/@null/page/1" type="button" data-page_num="1" class="btn btn-default j_page_prev_btn pull-left"><i class="fa fa-chevron-left"></i></a><button href="" type="button" class="btn btn-default j_page_info base_page_info pull-left" disabled="disabled">1/1037</button><a href="#/patient_name/@null/reservation_doctor/@null/reservation_type/@null/department/@null/reservationDateStart/@null/reservationDateEnd/@null/createDateStart/@null/createDateEnd/@null/status/@null/page/2" type="button" data-page_num="2" class="btn btn-default j_page_next_btn pull-left"><i class="fa fa-chevron-right"></i></a><input class="form-control base_page_search_input pull-left" id="j_madule_page_search_input" type="text"><a class="btn btn-default j_madule_page_search_submit pull-left ml5" type="button">Go</a></div></div>
+                        </div>
+                    </div>
+                    <!-- 筛选条件科室 -->
+                    <div class="modal fade" id="department-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title" id="myModalLabel">选择科室</h4>
+                                </div>
+                                <div class="modal-body pl20">
+                                    <div class="row mt10 font16 J-department-ckbox-warp">
+                                        
+                                    </div>
+                                </div>
+                                <div class="modal-footer modal-btn-col2">
+                                    <button type="button" class="btn btn-primary J-department-selected">确定</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 筛选条件科室 -->
+                </div>
+                <!-- 预约 -->
+                <!-- 号源 -->
+                <div class="tab-pane" id="history">
+                    <div class="panel panel-default">
+                        <div class="panel-body pt30 J-resetvation-set-panel">
+                            <div class="table-responsive">
+                                <table width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td width="30%">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-white J-time-btn-prev"><i class="fa fa-angle-left"></i> <span class="J-prev-text">上一月</span></button>
+                                                    <button type="button" class="btn btn-sm btn-white J-time-btn-next"><span class="J-next-text">下一月</span> <i class="fa fa-angle-right"></i></button>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-white J-time-btn-current"><span class="J-current-text">本月</span></button>
+                                                </div>
+                                                                                            </td>
+                                            <td width="40%" align="center">
+                                                <h4 class="pb5 font18 black J-time-title"></h4>
+                                            </td>
+                                            <td align="right" width="30%">
+                                                <div class="btn-group">
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-default J-select-mode" data-mode="1"><i class="fa fa-check hidden"></i> 按周设置</a>
+                                                    <a href="javascript:void(0);" class="btn btn-sm btn-default J-select-mode active" data-mode="0"><i class="fa fa-check"></i> 按月设置</a>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <input type="hidden" id="J-search-sch-date" value="">
+                                                    <button type="button" class="btn btn-sm btn-white J-copy-modal J-copy-last-month">复制上月</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <form class="form-inline table-responsive">
+                                    <input type="hidden" id="J-time-step" value=30>
+                                    <input type="hidden" id="J-time-during" value=[{"start":"00:00","end":"05:30"},{"start":"23:00","end":"23:59"}]>
+                                    <table class="table table-bordered table-hover table-fixed-header fixed-header-setting pos-relative J-setting-list fixed-data-table J-table-fixed">
+                                        <thead class="header">
+                                            <tr>
+                                                <th>日期</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-time-lsit-fixed-warp">
+                                            <!-- 日期 -->
+                                        </tbody>
+                                    </table>
+                                    <table class="table table-bordered table-hover table-fixed-header fixed-header-setting pos-relative J-setting-list margin-left-200 J-table-active">
+                                        <thead class="header">
+                                            <tr id="J-setting-header-wrap">
+                                                <!-- 预约设置头 -->
+                                            </tr>
+                                        </thead>
+                                        <tbody id="J-time-list-wrap">
+                                        </tbody>
+                                    </table>
+                                </form>
+                                <!-- 复制上月 -->
+                                <div class="modal fade" id="copySchedule-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">提示</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>此操作会覆盖当前设置，请谨慎操作！</h4>
+                                            </div>
+                                            <div class="modal-footer modal-btn-col2">
+                                                <button type="button" class="btn btn-primary J-copy-pre">确定</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 复制上月 -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 设置预约医生 -->
+                    <div class="modal fade" id="setting-doctor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <form lpformnum="2">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h4 class="modal-title J-department-title" id="myModalLabel"></h4>
+                                    </div>
+                                    <div class="modal-body pd0">
+                                        <div class="table-responsive">
+                                            <input type="hidden" name="group_id" value="">
+                                            <input type="hidden" name="time" value="">
+                                            <table class="table table-hover shadow-none mb0">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="50%" class="pl20">允许预约时间段</th>
+                                                        <th width="30%">医生数量</th>
+                                                        <th width="20%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="J-add-time-wrap">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer modal-btn-col2">
+                                        <button type="button" class="btn btn-primary J-save-setting">保存</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 设置预约医生 -->
+                    
+                                    </div>
+                <!-- 号源 -->
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- 取消预约 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">取消预约</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>是否确定取消该预约记录？</h4>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="control-label">取消原因</label>
+                                <textarea id="autoResizeTB" class="form-control" rows="5" name="cancel_reason"></textarea>
+                            </div>
+                        </div>
+                        <!-- col-sm-4 -->
+                    </div>
+                    <!-- row -->
+                </div>
+                <div class="modal-footer modal-btn-col2">
+                    <button type="button" class="btn btn-primary J-btn-submit">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                </div>
+            </div>
+            <!-- modal-content -->
+        </div>
+        <!-- modal-dialog -->
+    </div>
+    <!-- 取消预约 -->
+    <!-- 冲突提示 -->
+    <div class="modal fade" id="conflict-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">冲突提示</h4>
+                </div>
+                <div class="modal-body pd0">
+                    <div class="">
+                        <table class="table table-hover shadow-none mb0">
+                            <thead>
+                                <tr>
+                                    <th width="8%" class="pl20"></th>
+                                    <th width="12%">姓名</th>
+                                    <th width="15%">预约科室</th>
+                                    <th width="17%">预约时间</th>
+                                    <th width="17%">预约内容</th>
+                                    <th class="pr20">备注</th>
+                                </tr>
+                            </thead>
+                            <tbody id="conflict-patient-list">
+                                <!-- 预约列表 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer modal-btn-col1">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 冲突提示 -->
+    <!-- 预约科室列表模板 -->
+    <script type="text/template" id="J-department-ckbox-tpl">
+        <% _.each(data, function (item, i) { %>
+            <div class="col-sm-6">
+                <div class="ckbox ckbox-default">
+                        <input type="checkbox" value="<%- item.id%>" id="ckbox<%- item.id%>">
+                        <label for="ckbox<%- item.id%>"><%- item.text%></label>
+                </div>
+            </div>
+        <% }) %>
+    </script>
+    <!-- 预约科室列表模板 -->
+    <!-- 冲突提示模板 -->
+    <script type="text/template" id="J-conflict-patient-list-tpl">
+        <%for(var i = 0,len=data.length;i<len;i++) {%>
+            <tr>
+                <td data-patient-id="<%- data[i].patient_id %>" class="pl20 pre-relative J-action">
+                  <img class="user" src="<%- data[i].image?data[i].image:global_img_src %>">
+                  <%if(data[i].member_type && data[i].member_type_status == 1){%>
+                  <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%- data[i].member_type %>"></span>
+                  <%} else if(data[i].member_type && data[i].member_type_status == 2){%>
+                  <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%- data[i].member_type(已到期)%>"></span>
+                  <%}%>
+                </td>
+                <td class="c-428bca J-action" data-patient-id="<%- data[i].patient_id %>">
+                    <%- data[i].name %>
+                </td>
+                <td class="J-jump-blank" data-href="<%- data[i].url %>">
+                    <%- data[i].department %>（
+                        <%- data[i].reservation_type %>）</td>
+                <td class="J-jump-blank" data-href="<%- data[i].url %>">
+                    <%- data[i].reservation_date %>
+                        <br />
+                        <%- data[i].week %>
+                </td>
+                <td class="J-jump-blank" data-href="<%- data[i].url %>">
+                    <%if(data[i].hasAttachment){%><i class="fa fa-paperclip"></i><%}%><%- data[i].reservation_content %>
+                </td>
+                <td class="J-jump-blank" data-href="<%- data[i].url %>">
+                    <%- data[i].remark %>
+                </td>
+            </tr>
+        <%}%>
+    </script>
+    <!-- 冲突提示模板 -->
+    <!-- 预约 -->
+    <script type="text/template" id="patient-list-tpl">
+          <div class="blog-item shadow-none">
+            <div class="blog-details">
+
+             <div class="panel panel-<%- className %> panel-alt widget-photoday img-list">
+                <%if(member_type && member_type_status == 1){%>
+                <div class="p-relative">
+                    <span class="icon-vip tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>"></span>
+                </div>
+                <%} else if(member_type && member_type_status == 2){%>
+                <div class="p-relative">
+                    <span class="icon-vip-expire tooltips" data-toggle="tooltip" data-placement="top" data-original-title="<%-member_type%>(已到期)"></span>
+                </div>
+                <% }%>
+                <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-4">
+                            <a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>" class="J-action"><img src="<%- image %>" class="img-sm img-border" alt="profile"></a>
+                        </div>
+                        <div class="col-sm-8 pl0">
+                            <span class="widget-label badge badge-<%- className %> room-tag">
+                                <% if(reservation_source==1){%>
+                                    <i class="fa fa-wechat tooltips" data-toggle="tooltip" data-placement="top" data-original-title="来自微信预约"></i>
+                                <% } else if (reservation_source==4) { %>
+                                    <i class="fa fa-mobile tooltips" data-toggle="tooltip" data-placement="top" data-original-title="来自微信小程序预约"></i>
+                                <% } %>
+                                <%- status %>
+                            </span>
+                            <h3><a href="<%- global_src_api %>/Patient/profile?patient_id=<%- patient_id %>" class="white name-nowrap J-action"><%- name %></a> <small class="media-span tooltips" data-toggle="tooltip" data-placement="bottom" data-original-title="<%- age.age_info %>">（<%- sex_name %><%if(age.age_number*1){%><%if(age.age_number*1 < 14){%> <%- age.age_info %><%} else {%> <%-age.age%><%}%><%}%>）</small></h3>
+                          <a class="white J-jump-blank" href="<%- global_src_api %>/Reservation/reservation.html?patient_id=<%- patient_id %>&reservation_id=<%- reservation_id %>">
+                            <!-- <span>预约号：<%- reservation_id %></span> -->
+                            <span>创建时间：<%- create_time %></span>
+                            <span class="text-nowrap">预约：<%- doctor %></span>
+                            <span>预约时间：<%- wait_time %></span>
+                            <span class="text-nowrap">预约内容：<%if(hasAttachment){%><i class="fa fa-paperclip"></i><%}%><%- content %></span>
+                            <span class="text-nowrap">备注：<%- other %></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body text-center">
+                     <ul class="photo-meta">
+                         <% if(status_code==0){%>
+                            <% if(wechatid != 0 && reservation_source!=4) {%>
+                                <li><a href="{php echo $this->createWeburl('weixin',array('op'=>'detail'))}" class="J-jump-blank">微信交流</a></li>
+                            <% }%>
+                            <li><a href="<%- global_src_api %>/Reservation/reservation.html?patient_id=<%- patient_id %>&reservation_id=<%- reservation_id %>" class="J-jump-blank">修改</a></li>
+                            <% if(reservation_source!=4){%>
+                            <li><a href="#" data-toggle="modal" data-target="#myModal" class="J-btn-cancel" data-id=<%- reservation_id %>>取消</a></li>
+                            <%}%>
+                        <% } else { %>
+                            <% if(wechatid != 0 && reservation_source!=4) {%>
+                                <li><a href="{php echo $this->createWeburl('weixin',array('op'=>'detail'))}" class="J-jump-blank">微信交流</a></li>
+                            <% }%>
+                            <li><a href="{php echo $this->createWeburl('yuyue',array('op'=>'yuyue'))}">查看</a></li>
+                        <% } %>
+                     </ul>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+    </script>
+    <!-- 预约设置头 -->
+    <script type="text/template" id="setting-header-tpl">
+        <!-- <th width="15%" class="text-center font-bold">日期</th> -->
+        <%$.each(groups, function(i, obj) {%>
+        <th class="font-bold"><%- obj.name%></th>
+        <%});%>
+    </script>
+    <!-- 预约设置头 -->
+    <!-- 预约设置 -->
+    <script type="text/template" id="time-list-tpl">
+        <!-- <td align="center"><%-time%> <%-week%></td> -->
+        <%$.each(lst, function(i, obj) {%>
+        <td>
+            <%if(obj.content && obj.content.content && obj.content.content.length){%>
+                <div class="pull-left">
+                <%$.each(obj.content.content, function(i1, obj1) {%>
+                    <span class="J-item"><i class="fa fa-clock-o"></i> <span class="J-begin"><%-obj1.begin%></span> - <span class="J-end"><%-obj1.end%></span><span class="gray font13">（医生数量 <font class="text-success J-num"><%-obj1.docNum%></font>）</span></span><%if(i1 < obj.content.content.length - 1){%><br /><%}%>
+                <%});%>
+                </div>
+                <div class="pull-right J-change-time <%if(!status){%>disabled<%}%>" data-time="<%-time%>" data-name="<%-obj.name%>" data-id="<%-obj.id%>">
+                    <a href="javascript:void(0);" class="btn btn-white btn-sm border-none background-transparent mt5" ><i class="fa fa-pencil"></i></a>
+                </div>
+            <%} else {%>
+                <button type="button" class="btn btn-default btn-sm J-set-time <%if(!status){%>disabled<%}%>" data-time="<%-time%>" data-name="<%-obj.name%>" data-id="<%-obj.id%>">设置医生</button>
+            <%}%>
+        </td>
+        <%});%>
+    </script>
+    <!-- 预约设置 -->
+    <!-- 固定日期模板 -->
+    <script type="text/template" id="J-time-lsit-fixed-tpl">
+        <%$.each(configs, function(i, obj) {%>
+            <tr>
+                <td></td>
+            </tr>
+        <%})%>
+    </script>
+    <!-- 固定日期模板 -->
+    <!-- 添加修改预约设置 -->
+    <script type="text/template" id="add-time-tpl">
+    <%$.each(lst, function(i, obj) {%>
+        <tr class="item-list">
+            <td class="pl20">
+                <div class="form-inline">
+                    <input type="text" class="form-control number w40 J-date J-start-date" value="<%-obj.begin%>"> -
+                    <input type="text" class="form-control number w40 J-date J-end-date" value="<%-obj.end%>">
+                </div>
+            </td>
+            <td>
+                <input type="number" class="form-control J-doctor-num" value="<%-obj.docNum%>">
+            </td>
+            <td>
+                <a class="btn input-sm mt0 btn-white J-btn-delete-item"><i class="fa fa-minus"></i></a>
+                <a class="btn input-sm mt0 btn-white J-btn-add-item"><i class="fa fa-plus"></i></a>
+            </td>
+        </tr>
+    <%})%>
+    </script>
+    <!-- 添加修改预约设置 -->
+    <!-- 添加修改批量预约设置 -->
+    <script type="text/template" id="J-batch-set-tpl">
+        <tr class="item-list">
+            <td class="pl20">
+                <div class="form-inline">
+                    <input type="text" class="form-control number w40 J-date J-start-date" value=""> -
+                    <input type="text" class="form-control number w40 J-date J-end-date" value="">
+                </div>
+            </td>
+            <td>
+                <input type="number" class="form-control J-doctor-num" value="">
+            </td>
+            <td>
+                <a class="btn input-sm mt0 btn-white J-btn-batchDelete-item"><i class="fa fa-minus"></i></a>
+                <a class="btn input-sm mt0 btn-white J-btn-batchAdd-item"><i class="fa fa-plus"></i></a>
+            </td>
+        </tr>
+    </script>
+    <!-- 添加修改批量预约设置 -->
+    <script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/vendor.js?t=1560312126"></script>
+<!--[if IE]>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/html5shiv.js?t=1560312126"></script>
+<script src="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond.min.js?t=1560312126"></script>
+<link href="//assets.dxycdn.com/app/DXYClinic/test/vendor/lib/bootstrap/respond-proxy.html?t=1560312126" id="respond-proxy" rel="respond-proxy" />
+<link href="/Public/sites/crossdomain/respond.proxy.gif?t=1560312126" id="respond-redirect" rel="respond-redirect" />
+<script src="/Public/sites/crossdomain/respond.proxy.js?t=1560312126"></script>
+<![endif]-->
+<script src="//assets.dxycdn.com/app/DXYClinic/test/business/dist/common/core.js?t=1560312126"></script>
+<!-- 修改密码 -->
+<div class="modal fade" id="globalChangePassModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+			<div class="modal-content">
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">系统通知</h4>
+					</div>
+					<div class="modal-body pd20">
+							<form>
+									<div class="row">
+											<div class="col-sm-12">
+													为了保护您的账号安全，我们建议您定期修改密码。
+											</div>
+											<div class="col-sm-12 mt10">
+													<div class="form-group">
+															<label class="control-label">新登录密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd" class="form-control J-user-password" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-sm-12">
+													<div class="form-group">
+															<label class="control-label">确认密码 <span class="asterisk">*</span></label>
+															<input type="password" name="pwd2" class="form-control J-user-repassword" autocomplete="off" value="" required>
+													</div>
+											</div>
+									</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-primary J-change-pass-sub">保存</button>
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">返回</button>
+					</div>
+			</div>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	if(window.location.href.indexOf('dxy.net') < 0) {
+	    document.write('<script src="\/\/assets.kf5.com\/supportbox\/main.js?' + (new Date).getDay() + '" id="kf5-provide-supportBox" kf5-domain="clinicdxy.kf5.com" charset="utf-8"><\/script>');
+	    $(function(){
+	    	window.KF5SupportBoxAPI.init();
+	    	window.KF5SupportBoxAPI.ready(function()
+			{
+		        // 移除默认按钮
+		        window.KF5SupportBoxAPI.removeButton();
+
+		        $('.kf5-support-btn').on('click', function() {
+		        	window.KF5SupportBoxAPI.open();
+		        })
+			});	
+	    });
+   }
+</script> -->
+    <script type="text/javascript">
+    require(['reservation']);
+    </script>
+  </body>
+</html>

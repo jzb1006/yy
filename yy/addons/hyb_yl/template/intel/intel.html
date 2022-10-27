@@ -1,0 +1,1310 @@
+
+{template './common/mainHeader'}
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--  <link rel="stylesheet" type="text/css" href="{php echo HYB_YL_ADMIN}/index_t.css"> -->
+    <style type="text/css">
+      * {
+    padding: 0;
+    margin:0 ;
+    list-style: none;
+    box-sizing:border-box;
+}
+
+a {
+    text-decoration: none;
+
+}
+/*body{
+    background: #fff;
+}*/
+img{
+    border: 0;
+}
+.box{
+  /*margin: 20px;*/
+  margin-left: 280px;
+  margin-top: 80px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+.state{
+    padding: 10px;
+    display: flex;
+    font-size: 14px;
+    color: #333;
+}
+.state .right{
+    margin-left:10px ;
+    font-size: 14px;
+    color: #d60e0ecc;
+}
+.state .right label{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+.addCont,.saveCont{
+    height: 38px;
+    line-height: 38px;
+    margin: 10px;
+    padding: 0 18px;
+    background: #428bca;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+}
+.cont{
+    width: 98%;
+    background: #f2f2f2;
+    border-left: 4px solid #428bca;
+    margin: 0 auto 5px;
+    padding: 20px;
+}
+.cont .top{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.cont .top .title{
+    font-size: 14px;
+    color: #333333;
+    white-space: nowrap;
+}
+.cont .top input{
+    width: 86%;
+    padding: 5px;
+    height: 38px;
+    margin-left: 20px;
+    border: 1px solid #dedbdb;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.add{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background: #428bca;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+}
+.remove{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background: red;
+    color: #fff;
+    text-align: center;
+}
+.bottom{
+    display: flex;
+}
+.right1{
+    width: 50px;
+}
+.imgBox{
+    width: 38px;
+    height: 34px;
+    padding: 5px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+img{
+    width: 100%;
+}
+.cont .bottom{
+    display: flex;
+    justify-content: start;
+    /*align-items: center;*/
+    /*margin-bottom: 20px;*/
+}
+.dataBox{
+    display: flex;
+    flex-wrap: wrap;
+}
+.data{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.data input{
+    height: 38px;
+    border: 1px solid #eee;
+    border-left: 0px;
+    background-color: #fff; 
+}
+.bottom .title{
+    line-height: 38px;
+    margin-left: 12px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.data button{
+  border-color: #eee;
+}
+.data text{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 5px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    border: 1px solid #eee;
+}
+.remove1{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+.addImg{
+    width: 38px;
+    height: 38px;
+    padding: 5px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+}
+button{
+    outline: none;
+    border: 0;
+}
+.box{
+  border:none!important;
+
+}
+.nav-tabs{
+  border:none!important;
+}
+.imgBox1{
+    width: 38px;
+    height: 38px;
+    padding: 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f2f2f2;
+    border-left: 0;
+    border-right: 0;
+}
+.score{
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.score div{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.score input{
+    height: 38px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.score text{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 5px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+.addScore,.loseScore{
+    margin-top: 10px;
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background: #428bca;
+    color: #ffffff;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+.inputCheck{
+    margin-top: 10px;
+}
+.form1{
+  display: flex;
+}
+.yy,.yy1{
+  margin-left: 5px;
+}
+.close{
+    display:none;
+}
+.open{
+    display:block;
+}
+#checkYP,#checkYS{
+    width: 25%;
+    border: 2px solid #cccccc;
+    position: fixed;
+    top: 300px;
+    left: 500px;
+    background-color: #fff;
+    opacity: 1;
+}
+.checkTop{
+    display:flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #cccccc;
+    padding: 20px;
+    font-size: 25px;
+}
+.quexiao{
+    font-size: 25px;
+}
+#checkYP ul,#checkYS ul{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #cccccc;
+    padding: 20px 20px 0 20px;
+}
+#checkYP ul li,#checkYS ul li{
+  display: flex;
+    width: 100px;
+    margin-bottom: 20px;
+}
+#checkYP ul li textarea,#checkYS ul li textarea{
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.checkBottomBox{
+    height: 80px;
+}
+.checkBottom{
+    display: flex;
+    float: right;
+    padding: 20px 20px 0 20px;
+}
+.checkBottom input{
+    height: 38px;
+    width: 50px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+.queren{
+    background: #428bca;
+}
+select{
+  border: 1px solid #e8e9eb !important;
+}
+.form-group{
+  padding:0 10px;
+}
+.btn-primary{
+  margin: 30px 0 30px 10px;
+  background: #428bca;
+  border-color: #428bca;
+}
+#checkYP span,#checkYS span{
+  font-size: 14px; 
+}
+.checkTop{
+  font-size: 16px;
+}
+.queren,.quxiao{
+  font-size: 14px;
+}
+.queren {
+    background: #428bca!important;
+    color: #fff!important;
+}
+
+.zhe , .zhe1{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.zhe .cont1 ,.zhe1 .cont1{
+    background: #fff;
+    width: 800px;
+    height: 400px;
+    display: flex;
+    justify-content:space-between;
+}
+.box1{
+    background: #fff;
+    padding: 30px;
+    position: relative;
+
+}
+.cont1 .left{
+    width: 200px;
+    border: 1px solid #ccc;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.cont1 .left li{
+    border-bottom: 1px solid #ccc;
+
+}
+.cont1 .left .name{
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.cont1 .left .name .zhankai{
+    width: 20px;
+}
+.cont1 .right{
+    width: 100%;
+    border: 1px solid #ccc;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    padding: 20px;
+}
+.cont1 .right div{
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-right: 10px;
+    height: 40px;
+    cursor: pointer;
+}
+.cont2{
+    border-top: 1px solid #ccc;
+}
+.cont2 div{
+    padding: 10px;
+    cursor: pointer;
+}
+.selection{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+.selection div{
+    padding: 10px;
+    border: 1px solid #428bca;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.cont2{
+    display: none;
+}
+.active1{
+    border: 1px solid #428bca!important;
+}
+#btn , #btn1{
+    background: #428bca;
+    color: #fff;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+.conts{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.conts .btn1,.conts .btn2{
+    cursor: pointer;
+}
+.close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    display: block;
+}
+.conts input,.conts  textarea{
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 35px;
+}
+.conts textarea{
+    float: left;
+}
+.btn1,.btn2{
+    display: flex;
+    align-items: center;
+}
+.btn1 div,.btn2 div{
+    background: #428bca;
+    color: #fff;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+}
+.removeScore{
+    height: 38px;
+    line-height: 38px;
+    padding: 0 18px;
+    background: #428bca;
+    color: #ffffff;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+.btnAdd{
+    width: 120px;
+    height: 40px;
+    background: #428bca;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    margin: 10px;
+    cursor: pointer;
+    }
+.liActive .cont2{
+    display: block;
+}
+.liActive .zhankai{
+    transform: rotate(90deg);
+}
+.contActive{
+    background: #428bca;
+    color: #fff;
+}
+
+    </style>
+</head>
+<body>
+{if $val =='list'}
+
+<div class="basics">
+<i class="layui-icon layui-icon-face-smile" style="color: red;">列表显示症状二级分类,若为空请先添加症状</i> 
+    <div class="gai_huanzhe">
+         <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control active" data-permission="8">
+                <a  href="{php echo $this->createWeburl('intel',array('val'=>'list','type_id'=>$type_id))}" ><strong>诊断列表</strong></a>
+            </li>
+        </ul>
+        <div class="gai_huanzhe_jinri gai_huanzhe_jinris">
+            <div class="panel-heading bgfc pt20" style="border-left: 1px solid #ddd;">
+                <div class="row form-inline">
+                    <div class="col-sm-2 col-md-2">
+                        <div class="form-group mt5">
+                            <h4 class="panel-title">自主诊断</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="" method="post" class="form1">
+                <div class="panel panel-default" style="width: 100%;">
+                    <div class="panel-body collapse in">
+                        <div class="gai_yaopin_uls" style="margin-top: 0;border: none;">
+                            <div class="gai_yaopin_lis_header" style="margin-top: 0;">
+                                <!-- 选择 -->
+                                <div class="gai_yaopin_lis_select">
+                                    选择
+                                </div>
+                                <!-- 入库单号 -->
+                                <div class="gai_yaopin_lis_odd">
+                                    ID
+                                </div>
+                                <!-- 药品名称 -->
+                                <div class="gai_yaopin_lis_name">
+                                    症状
+                                </div>
+                                <!-- 缩略图 -->
+                                <div class="gai_yaopin_lis_img">
+                                    图标
+                                </div>
+                                <div class="gai_yaopin_lis_name">
+                                    推荐
+                                </div>             
+                                <!-- 操作 -->
+                                <div class="gai_yaopin_lis_operation">
+                                    操作
+                                </div>
+                            </div>
+                            {loop $list $item}
+
+                            <div class="gai_yaopin_lis_lis" style="height: 64px;" id="stuName">
+                                <!-- 选择 -->
+                                <input type="button" class="btn btn-danger" value="{$item['id']}"   style="display: none;">
+                                <div class="gai_yaopin_lis_select">
+                                    <span data-zt="0"  class="gai_yaopin_lis_select_xuanze"></span>
+                                </div>
+                                <!-- 入库单号 -->
+                                <div class="gai_yaopin_lis_odd" style="display: flex;">
+                                    {$item['id']}<div style="opacity: 0">,</div>
+                                </div>
+                                <!-- 药品名称 -->
+                                <div class="gai_yaopin_lis_name">
+                                    {$item['name']} 
+                                </div>
+                                <!-- 缩略图 -->
+                                <div class="gai_yaopin_lis_img">
+                                     <img src="{media $item['icon']}">
+                                </div>
+                                <div class="gai_yaopin_lis_name">
+                                {if $item['enabled'] =='1'}
+                                    <span class="gai_yaopin_lis_state_span">是</span>
+                                {else}
+                                    <span class="badge badge-danger" style="background-color: #D9534F;">否</span>
+                                {/if}
+                                </div>
+                                <!-- 操作 -->
+                                <div class="gai_yaopin_lis_operation">  
+                                     <div class="wei_shenhe">
+                                       {if $item['ifkq']=='1'}
+                                          <a href="<?php echo $this->createWeburl('intel');?>&id={$item['id']}&val=add&type_id={$type_id}">
+                                              <i class="fa fa-pencil"></i>
+                                              <span>查看诊断题目</span>
+                                          </a>
+                                          {else}
+                                          <a href="<?php echo $this->createWeburl('intel');?>&id={$item['id']}&val=add&type_id={$type_id}">
+                                              <i class="fa fa-pencil"></i>
+                                              <span>添加诊断题目</span>
+                                          </a>
+                                        {/if}
+
+                                        <span>-</span>
+                                            <i class="fa fa-trash-o"></i>
+                                            <span class="gai_delete" id="{$item['id']}">删除</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {/loop}
+
+                        </div>
+                        <div class="gai_yaopin_delete">
+                            <button class="gai_yaopin_delete_quanxuan gau_btn_yangshi1" id="checkAll">全选</button>
+                            <button class="gai_yaopin_delete_quxiao gau_btn_yangshi1">取消</button>
+                            <button class="gai_yaopin_delete_tuijina gau_btn_yangshi1">推荐</button>
+                            <button class="gai_yaopin_delete_delete gau_btn_yangshi2">删除</button>
+                            <button class="gai_jiezhne2 gau_btn_yangshi2" style="width:6%">取消推荐</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+           <tfoot>
+                <tr>
+                    <td colspan="4">
+                        {template "pagenation"}
+                    </td>
+                </tr>
+            </tfoot>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="{php echo HYB_YL_ADMIN}/js/list_all.js"></script>
+{/if}
+{if $val =='add'}
+ <form action="" method="post" class="form">
+    <div class="box">
+        <ul class="nav nav-tabs patient-tabs J-panel-tabs">
+            <li class="J-module-control " data-permission="8">
+                <a  href="{php echo $this->createWeburl('intel',array('val'=>'list','type_id'=>$type_id))}" ><strong>诊断列表</strong></a>
+            </li>
+            
+            <li class="J-module-control active" data-permission="10">
+                <a href="{php echo $this->createWeburl('intel',array('val'=>'add','type_id'=>$type_id))}" ><strong>{if $id}查看栏目{else}添加栏目{/if}</strong></a>
+            </li>
+
+        </ul>
+    <div class="state">
+
+        <div class="right">
+            <div>此功能只适合单选,分数不在小程序端展示,只做建议参考</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="control-label col-sm-2" >选择症状</label>
+           <select name="pid" id="sel" class='control-label col-sm-2' style="padding-left: 30px;padding-top: 0px;";>
+              <option>请选择症状</option>
+                  {loop $categories $item} 
+                    <option  value="{$item['id']}" {if $item['id'] == $res['pp_id'] || $id == $item['id']} selected="selected" {/if}>{$item['name']}</option>
+                 {/loop}        
+              </select>
+    </div>
+    <button class="addCont" type="button">添加栏目</button>
+    <div id="contBox">
+        {loop $result2 $k $item}
+        <div class="cont">
+            <div class="top">
+               <div class="title">题目</div>
+                <input class="topInput" data-index="{$k}" type="text" name="spec[spec][{$k}][title]" value="{$item['title']}"> 
+                <div class="imgBox"><img src="{php echo HYB_YL_ADMIN}/images/tuozhuai.png" alt=""></div>
+                <button type="button" class="add">添加选择项</button>
+                <button type="button" class="remove">X</button>
+            </div>
+            <div class="bottom">
+                <div class="right1"></div>
+                <div class="dataBox">
+                 {loop $item['items'] $kk $it}
+                  <div class="data" style="" data-index="{$kk}">
+                        <button class="addImg btn btn-default" type="button">选项</button>
+                        <input type="text" name="spec[spec][{$k}][items][{$kk}][title]" value="{$it['title']}">
+                        <text>分数</text>
+                        <input type="text" name="spec[spec][{$k}][items][{$kk}][score]" value="{$it['score']}">
+                        <div class="imgBox1"><img src="https://weiqing1.webstrongtech.net/addons/hyb_yl/public/admin/images/tuozhuai.png" alt=""></div>
+                        <button type="button" class="remove1">X</button>
+                    </div>
+                {/loop}
+
+                </div>
+            </div>
+        </div>
+        {/loop}
+    </div>
+
+<div class="btnAdd">添加得分</div >
+
+<div class="bottomBox">
+{loop $num $item}
+    <div class="conts">
+        <div class="state">得分</div>
+        <div ><input type="text" name="start[]" value="{$item['start']}"></div>
+        <div><textarea type="text" placeholder="建议" name="suggest[]" value="">{$item['suggest']}</textarea></div>
+        <div class="btn1">
+            <input type="text" class="yq yp1" disabled="" value="{$item['ypname']}" />
+            <input type="hidden" class="yq"  name="ypname[]" value="{$item['ypname']}" />
+            <input type="hidden" name="ypid[]" value="{$item['yp']}" class="yqId">
+            <div>
+            选择药品
+            </div>
+        </div>
+        <div class="btn2">
+            <input type="text" class="ys"  disabled="" value="{$item['ysname']}"/>
+            <input type="hidden" class="ys" name="ysname[]"  value="{$item['ysname']}"/>
+            <input type="hidden" name="ysid[]" value="{$item['ys']}" class="ysId">
+            <div>
+            选择医生
+            </div>
+        </div>
+        <button type="button" class="removeScore">-</button>
+
+    </div>
+   {/loop} 
+</div>
+<div class="tankuang">
+    <div class="zhe" style="display: none">
+        <div class="box1">
+            <div class="cont1">
+                <div class="left">
+                    <ul>
+                    {loop $drugs $item}
+                        <li>
+                            <div class="name">
+                                <div class="data-fid" data-fid="{$item['fid']}">{$item['fenlname']}</div>
+                                <div class="zhankai"><img src="{php echo HYB_YL_ADMIN}/images/zhankai.png" alt=""></div>
+                            </div>
+                        </li>
+                    {/loop}
+                    </ul>
+                </div>
+                <div class="right">
+                    
+                </div>
+            </div>
+            <div class="selection">已选：</div>
+            <div id="btn">确认</div>
+            <div class="close">X</div>
+        </div>
+
+    </div>
+    <div class="zhe1" style="display: none">
+        <div class="box1">
+            <div class="cont1">
+                <div class="left">
+                    <ul>
+                    {loop $categ $item}
+                    
+                    <li>
+                            <div class="name">
+                                <div class="data-fid" >{$item['name']}</div>
+                                <div class="zhankai"><img src="{php echo HYB_YL_ADMIN}/images/zhankai.png" alt=""></div>
+                            </div>
+                            <div class="cont2" >
+                              {loop $item['parent'] $v}
+                                <div id='patid' data-patid="{$v['id']}">{$v['name']}</div>
+                              {/loop}
+                            </div>
+                        </li>
+                    {/loop}
+                    </ul>
+                </div>
+                <div class="right">
+                    
+                </div>
+            </div>
+            <div class="selection">已选：</div>
+            <div id="btn1">确认</div>
+            <div class="close">X</div>
+        </div>
+
+    </div>
+</div>
+    <!-- type="submit" &type_id={$type_id}-->
+            <input type="hidden" name="type_id" value="{$type_id}">
+            <button class="btn btn-primary btn-sml J-submit-btn saveCont" >保存</button>            
+            <input name="token" type="hidden" value="{$_W['token']}" />
+    </div>
+
+  </form> 
+</div>
+{/if}
+</body>
+</html>
+
+
+<script type="text/javascript">
+ $("#sel").on("change",function(){
+      var url=window.location.href;
+      pID = $("option:selected",this).val();//需求主键
+     //查询是否已经添加
+       $.ajax({  
+            type: "POST",  
+            url: url,  
+            dataType: "json",  
+            cache:false, 
+            data: {pid:pID,type:'sel'},  
+            success: function(json){ 
+            console.log(json) 
+               if(json.message.errno==0){
+                  popup({type:'error',msg:"症状已存在诊断题目",delay:1000,callBack:function(){
+                    window.location.href="{$_W['siteroot']}web/index.php?i={$uniacid}&c=site&a=entry&do=intel&op=intel&m=hyb_yl";
+                  }});
+               }
+            }
+        });
+ });
+ var arr=[
+    {
+        start:"",
+        last:"",
+        suggest:"",
+        drugs:[],
+        doctor:[]
+    }
+    ]
+
+
+  $(function () {
+    $("#contBox").sortable();
+    $(".cont").disableSelection();
+});
+  if($('.topInput').eq(-1).attr('data-index')){
+      var $idx = $('.topInput').eq(-1).attr('data-index')*1+1
+  }else{
+  var $idx = 0
+
+  }
+
+//添加栏目
+
+$(".addCont").on("click",function () {
+    $("#contBox").append("<div class=\"cont\">\n" +
+        "            <div class=\"top\">\n" +
+        "                    <div class=\"title\">题目</div>\n" +
+        "                <input class=\"topInput\" data-index="+$idx+" type=\"text\" name=\"spec[spec]["+$idx+"][title]\">\n" +
+        "                <div class=\"imgBox\"><img src=\"{php echo HYB_YL_ADMIN}/images/tuozhuai.png\" alt=\"\"></div>\n" +
+        "                <div class=\"add\">添加选择项</div>\n" +
+        "                <button type=\"button\" class=\"remove\">X</button>\n" +
+        "            </div>\n" +
+        "            <div class=\"bottom\">\n" +
+        "                <div class=\"right1\"></div>"+
+        "                <div class=\"dataBox\">\n" +
+        "                </div>\n" +
+        "            </div>\n" +
+        "        </div>");
+    $idx++
+
+
+});
+$("#contBox").on("click",".remove",function () {
+    $(this).parents(".cont").remove();
+})
+//添加规格项
+$("#contBox").on("click",".add",function (ev) {
+  var index=$(this).parents('.cont').find('.topInput').attr('data-index')
+  var $idx1=$(this).parents('.cont').find('.data').eq(-1).attr('data-index')
+  if($idx1){
+      var $idx1=$idx1*1+1
+  }else{
+      var $idx1=0
+  }
+        $(this).parents(".cont").find(".dataBox").append("<div data-index="+$idx1+" class=\"data\" >\n" +
+            "                        <button class=\"addImg btn btn-default\" type=\"button\">选项</button>\n" +
+            "                        <input type=\"text\" name=\"spec[spec]["+index+"][items]["+$idx1+"][title]\">\n" +
+            "                        <text>分数</text>\n" + 
+            "                        <input type=\"text\" name=\"spec[spec]["+index+"][items]["+$idx1+"][score]\">\n" +
+            "                        <div class=\"imgBox1\"><img src=\"{php echo HYB_YL_ADMIN}/images/tuozhuai.png\" alt=\"\"></div>\n" +
+            "                        <button type=\"button\" class=\"remove1\">X</button>\n" +
+            "                    </div>");
+        $idx1++
+});
+
+$( function() {
+    $( ".dataBox" ).sortable();
+    $( ".data" ).disableSelection();
+} );
+//删除规格项
+$("#contBox").on("click",".remove1",function () {
+    $(this).parent().remove();
+})
+
+
+$("#scoreBox").on("click",".loseScore",function () {
+    var index=$('.loseScore').index(this);
+    arr.splice(index,1);
+    $(this).parent().remove();
+})
+
+//保存
+//保存
+$(".saveCont").on("click",function () {
+    $("#scoreBox input[name=start]").each(function(key,value){
+        arr[key].start=$(value).val();
+    });
+    $("#scoreBox input[name=last]").each(function(key,value){
+        arr[key].last=$(value).val();
+    });
+    $("#scoreBox input[name=suggest]").each(function(key,value){
+        arr[key].suggest=$(value).val();
+    });
+    arr.splice(0,1);
+    console.log(arr);
+})
+
+
+</script>
+<script>
+    var url=window.location.href;
+    var arr = [];
+    var idArr=[];
+    function jiazai(){
+        $('.yp1').each(function(index,val){
+            console.log(index)
+            arr.push({yp: [], ys: []});
+            idArr.push({yp: [], ys: []});
+            var yqId=$('.yqId').eq(index).val()
+            console.log($('.yq').eq(index).val())
+            if($('.yq').eq(index).val()==''){
+                arr[index].yp=[]
+                arr[index].yp=[]
+            }else{  
+                arr[index].yp=$('.yq').eq(index).val().split(',')
+                idArr[index].yp=$('.yqId').eq(index).val().split(',')
+                
+            }
+            if($('.ys').eq(index).val()==''){
+                arr[index].ys=[]
+                idArr[index].ys=[]
+            }else{
+            arr[index].ys=$('.ys').eq(index).val().split(',')
+            idArr[index].ys=$('.ysId').eq(index).val().split(',')
+            }
+
+               $('body').append(`<div class="tankuang">
+    <div class="zhe" style="display: none">
+        <div class="box1">
+            <div class="cont1">
+                <div class="left">
+                    <ul>
+                    {loop $drugs $item}
+                        <li>
+                            <div class="name">
+                                <div class="data-fid" data-fid="{$item['fid']}">{$item['fenlname']}</div>
+                                <div class="zhankai"><img src="{php echo HYB_YL_ADMIN}/images/zhankai.png" alt=""></div>
+                            </div>
+                        </li>
+                    {/loop}
+                    </ul>
+                </div>
+                <div class="right">
+                
+                </div>
+            </div>
+            <div class="selection">已选：</div>
+            <div id="btn">确认</div>
+            <div class="close">X</div>
+        </div>
+    </div>
+    <div class="zhe1" style="display: none">
+        <div class="box1">
+            <div class="cont1">
+                <div class="left">
+                    <ul>
+                    {loop $categ $item}
+                    <li>
+                            <div class="name">
+                                <div class="data-fid">{$item['name']}</div>
+                                <div class="zhankai"><img src="{php echo HYB_YL_ADMIN}/images/zhankai.png" alt=""></div>
+                            </div>
+                            <div class="cont2" >
+                               {loop $item['parent'] $v}
+                                <div id='patid' data-patid="{$v['id']}">{$v['name']}</div>
+                               {/loop}
+                            </div>
+                        </li>
+                    {/loop}
+                    </ul>
+                </div>
+                <div class="right">
+                    
+                </div>
+            </div>
+            <div class="selection">已选：</div>
+            <div id="btn1">确认</div>
+            <div class="close">X</div>
+        </div>
+
+    </div>
+   </div>`)
+        })
+    }
+        jiazai()
+    $('.btnAdd').on('click', function () {
+        arr.push({yp: [], ys: []});
+        idArr.push({yp: [], ys: []});
+   $('body').append(`<div class="tankuang">
+    <div class="zhe" style="display: none">
+        <div class="box1">
+            <div class="cont1">
+                <div class="left">
+                    <ul>
+                    {loop $drugs $item}
+                        <li>
+                            <div class="name">
+                                <div class="data-fid" data-fid="{$item['fid']}">{$item['fenlname']}</div>
+                                <div class="zhankai"><img src="{php echo HYB_YL_ADMIN}/images/zhankai.png" alt=""></div>
+                            </div>
+                        </li>
+                    {/loop}
+                    </ul>
+                </div>
+                <div class="right">
+                
+                </div>
+            </div>
+            <div class="selection">已选：</div>
+            <div id="btn">确认</div>
+            <div class="close">X</div>
+        </div>
+    </div>
+    <div class="zhe1" style="display: none">
+        <div class="box1">
+            <div class="cont1">
+                <div class="left">
+                    <ul>
+                    {loop $categ $item}
+                    <li>
+                            <div class="name">
+                                <div class="data-fid" >{$item['name']}</div>
+                                <div class="zhankai"><img src="{php echo HYB_YL_ADMIN}/images/zhankai.png" alt=""></div>
+                            </div>
+                            <div class="cont2" >
+                               {loop $item['parent'] $v}
+                                <div id='patid' data-patid="{$v['id']}">{$v['name']}</div>
+                               {/loop}
+                            </div>
+                        </li>
+                    {/loop}
+                    </ul>
+                </div>
+                <div class="right">
+                    
+                </div>
+            </div>
+            <div class="selection">已选：</div>
+            <div id="btn1">确认</div>
+            <div class="close">X</div>
+        </div>
+
+    </div>
+   </div>`)
+
+        $('.bottomBox').append(`<div class="conts">
+        <div class="state">得分</div>
+        <div ><input type="text" name="start[]"></div>
+        <div><textarea type="text" placeholder="建议" name="suggest[]"></textarea></div>
+        <div class="btn1">
+            <input type="text" class="yq yp1" disabled="" value="" />
+            <input type="hidden" class="yq"  value="" name="ypname[]"/>
+            <input type="hidden" name="ypid[]" class="yqId">
+            <div>
+            选择药品
+            </div>
+        </div>
+        <div class="btn2">
+            <input type="text" class="ys" disabled="" />
+            <input type="hidden" class="ys"  name="ysname[]"/>
+            <input type="hidden" name="ysid[]" class="ysId">
+
+            <div>
+            选择医生
+            </div>
+        </div>
+        <button type="button" class="removeScore">-</button>
+
+    </div>`);
+        
+    });
+    //二级
+    $(document).on('click', '.zhe1 .cont1 .left li', function (event) {
+        $('.cont1 .left li').removeClass('liActive')
+        $(this).addClass('liActive')
+    });
+
+    //点击已选标签
+    $(document).on('click', '.selection div', function () {
+        var arr1 = []
+        $(this).parents('.box1').find('.cont1 .right div').each(function (index, key) {
+            arr1.push($(this).parents('.box1').find('.cont1 .right div').eq(index).text())
+        })
+        for (var i = 0; i < arr1.length; i++) {
+            if ($(this).text().trim() == $(this).parents('.box1').find('.cont1 .right div').eq(i).text().trim()) {
+                $(this).parents('.box1').find('.cont1 .right div').eq(i).removeClass('active1')
+                if ($(this).parents('.box1').parent('div').attr('class') == 'zhe') {
+                    for (var i = 0; i < arr[yqIdnex].yp.length; i++) {
+                        if ($(this).text().trim() == arr[yqIdnex].yp[i].trim()) {
+                            arr[yqIdnex].yp.splice(i, 1);
+                            idArr[yqIdnex].yp.splice(i, 1);
+                        }
+                    }
+                } else {
+                    for (var i = 0; i < arr[ysIdnex].ys.length; i++) {
+                        if ($(this).text().trim() == arr[ysIdnex].ys[i].trim()) {
+                            arr[ysIdnex].ys.splice(i, 1);
+                            idArr[ysIdnex].ys.splice(i, 1);
+                        }
+                    }
+                }
+
+                $(this).remove()
+            }
+        }
+
+    });
+    //药品
+    $(document).on('click', '.btn1', function () {
+        yq = $(this);
+        yqIdnex = $('.btn1').index(this);
+        console.log(yqIdnex)
+        console.log(arr)
+        arr1=arr[yqIdnex].yp;
+        idArr1=idArr[yqIdnex].yp;
+        $('.tankuang').eq(yqIdnex).find('.zhe').css({display: 'flex'})
+        console.log()
+    });
+    $(document).on('click', '#btn', function () {
+        arr[yqIdnex].yp=arr1;
+        idArr[yqIdnex].yp=idArr1;
+        var value=arr[yqIdnex].yp.join(',')
+        yq.find('.yq').val(value);
+        yq.find('.yqId').val(idArr[yqIdnex].yp.join(','));
+        $('.zhe').hide()
+    });
+    $(document).on('click', '.zhe .right div', function () {
+        if ($(this).attr('class') != 'active1') {
+            $(this).addClass('active1');
+            arr1.push(
+                $(this).text().trim()
+            )
+            idArr1.push(
+                $(this).attr('data-id')
+                )
+            $('.tankuang').eq(yqIdnex).find('.zhe .selection').append(`<div>${arr1[arr1.length - 1]}</div>`)
+
+        } else {
+            $(this).removeClass('active1')
+            if(arr[yqIdnex].yp.length!=0){
+                for (var i = 0; i < arr[yqIdnex].yp.length; i++) {
+                    if ($(this).text().trim() == arr[yqIdnex].yp[i].trim()) {
+                        arr[yqIdnex].yp.splice(i, 1);
+                        idArr[yqIdnex].yp.splice(i, 1);
+                        $('.tankuang').eq(yqIdnex).find('.zhe .selection').find('div').eq(i).remove()
+                    }
+                }
+            }else {
+                for (var i = 0; i < arr1.length; i++) {
+                    if ($(this).text().trim() == arr1[i].trim()) {
+                        arr1.splice(i, 1);
+                        idArr1.splice(i, 1);
+
+                        $('.tankuang').eq(yqIdnex).find('.zhe .selection').find('div').eq(i).remove()
+                    }
+                }
+            }
+
+        }
+    });
+    //    医生
+    $(document).on('click', '.btn2', function () {
+        ys = $(this);
+        ysIdnex = $('.btn2').index(this);
+        arr2=arr[ysIdnex].ys;
+        idArr2=idArr[ysIdnex].ys;
+        $('.tankuang').eq(ysIdnex).find('.zhe1').css({display: 'flex'})
+    });
+    $(document).on('click', '#btn1', function () {
+        arr[ysIdnex].ys=arr2;
+        idArr[ysIdnex].ys=idArr2;
+        ys.find('.ys').val(arr[ysIdnex].ys.join(','));
+        ys.find('.ysId').val(idArr[ysIdnex].ys.join(','));
+        $('.zhe1').hide()
+    });
+    $(document).on('click', '.zhe1 .right div', function () {
+        if ($(this).attr('class') != 'active1') {
+            $(this).addClass('active1');
+            arr2.push(
+                $(this).text().trim()
+            )
+            idArr2.push(
+                $(this).attr('data-id')
+            )
+            $('.tankuang').eq(ysIdnex).find('.zhe1 .selection').append(`<div>${arr2[arr2.length - 1]}</div>`)
+
+        } else {
+            $(this).removeClass('active1')
+            if(arr[ysIdnex].ys.length!=0){
+                for (var i = 0; i < arr[ysIdnex].ys.length; i++) {
+                    if ($(this).text().trim() == arr[ysIdnex].ys[i].trim()) {
+                        arr[ysIdnex].ys.splice(i, 1);
+                        idArr[ysIdnex].ys.splice(i, 1);
+                        $('.tankuang').eq(ysIdnex).find('.zhe1 .selection').find('div').eq(i).remove()
+                    }
+                }
+            }else {
+                for (var i = 0; i < arr2.length; i++) {
+                    if ($(this).text().trim() == arr2[i].trim()) {
+                        arr2.splice(i, 1);
+                        idArr2.splice(i, 1);
+                        $('.tankuang').eq(ysIdnex).find('.zhe1 .selection').find('div').eq(i).remove()
+                    }
+                }
+            }
+
+        }
+    });
+//    关闭
+    $(document).on('click','.close',function () {
+        $(this).parents('.zhe').hide()
+        $(this).parents('.zhe1').hide()
+        console.log(arr)
+    })
+    // 二级列表数据
+    var doc_test='';
+    $(document).on('click','.cont2 div',function(){
+        $('.cont2 div').removeClass('contActive')
+        $(this).addClass('contActive')
+        var id = $(this).data("patid");//获取data-appid的值
+        console.log(id)
+        $.ajax({  
+            type: "POST",  
+            url: url,  
+            dataType: "json",  
+            cache:false, 
+            async:false, 
+            data: {parentid:id,type:'doctor'},  
+            success: function(json){ 
+            console.log(json) 
+                doc_test = json.message.message
+            }
+        });
+          console.log('a',doc_test)
+        $(this).parents('.cont1').find('.right').html('')
+            for(var i=0;i<doc_test.length;i++){
+                        console.log(doc_test[i])
+                $(this).parents('.cont1').find('.right').append(`
+                    <div data-id="${doc_test[i].zid}">${doc_test[i].z_name}</div>
+                  `)
+            }
+
+    })
+    // 删除
+    $(document).on('click','.removeScore',function(){
+        var index=$('.removeScore').index(this)
+        console.log(index)
+        arr.splice(index,1)
+        $(this).parents('.conts').remove()
+    })
+
+        var test='';
+        $(document).on('click','.zhe .cont1 .left li',function(){
+            $('.zhe .cont1 .left li').removeClass('contActive')
+        $(this).addClass('contActive')
+        var fid = $(this).find('.data-fid').attr('data-fid')
+        $.ajax({  
+            type: "POST",  
+            url: url,  
+            dataType: "json",  
+            cache:false, 
+            async:false, 
+            data: {fid:fid,type:'drug'},  
+            success: function(json){  
+                test = json.message.message
+            }
+        });
+          
+            $(this).parents('.cont1').find('.right').html('')
+            for(var i=0;i<test.length;i++){
+                        console.log(test[i])
+                $(this).parents('.cont1').find('.right').append(`
+                    <div data-id="${test[i].sid}">${test[i].sname}</div>
+                  `)
+            }
+
+    })
+        $(function(){
+             // 默认选中第一个
+        $('.zhe .left').each(function(){
+            $(this).find('li').eq(0).addClass('contActive')
+            var fid=$(this).find('li').eq(0).find('.data-fid').attr('data-fid')
+        $.ajax({  
+            type: "POST",  
+            url: url,  
+            dataType: "json",  
+            cache:false, 
+            async:false, 
+            data: {fid:fid,type:'drug'},  
+            success: function(json){  
+                test = json.message.message
+            }
+        });
+
+            $(this).parents('.cont1').find('.right').html('')
+            for(var i=0;i<test.length;i++){
+                $(this).parents('.cont1').find('.right').append(`
+                    <div data-id="${test[i].sid}">${test[i].sname}</div>
+                  `)
+            }
+        })
+        })
+       
+</script>
+
+

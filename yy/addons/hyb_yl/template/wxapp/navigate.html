@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    user-scalable=no,initial-scale=1.0,maximum=1.0,minimum=1.0">
+    <title></title>
+    <!-- 引入jquery-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 引入 1.3.2的js-sdk文件 -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+</head>
+ 
+<body>
+ 
+</body>
+<script>
+    function getCode() {
+        var code = "{$code}";
+        console.log(code)
+        wx.miniProgram.redirectTo({ 
+            url: '/hyb_yl/tabBar/index/index?code=' + code
+        })
+    }
+    getCode()
+    // 截取url中的code方法
+    function getUrlCode() {
+        var url = location.search;
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            var strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = strs[i].split("=")[1];
+            }
+        }
+        return theRequest;
+    }
+</script>
+ 
+</html>

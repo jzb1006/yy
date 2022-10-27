@@ -1,0 +1,312 @@
+{template 'public/header'}
+{template 'public/comhead'}
+<style>
+	.form-group{display: -webkit-inline-box;}
+</style>
+{if $op == "display"}
+<div class="region-goods-details row">
+	<div class="region-goods-left  col-sm-2">
+		规格
+	</div>
+	<div class="region-goods-right  col-sm-10">
+		<div class="form-group">
+			<div class="col-sm-11" style='padding-left:30px;'>
+				
+				<label class="checkbox-inline">
+					<input type="checkbox" id="hasoption" value="1" name="hasoption" {if $item['hasoption']==1}checked{/if} />启用商品规格
+				</label>
+				<span class="help-block">启用商品规格后，商品的价格及库存以商品规格为准,库存设置为0则会到”已售罄“中，手机也不会显示, -1为不限制</span>
+
+			</div>
+		</div>
+
+		<div id='tboption' style="padding-left:15px;" >
+			<div class="alert alert-info">
+				1. 拖动规格可调整规格显示顺序, 更改规格及规格项后请点击下方的【刷新规格项目表】来更新数据。<br/>
+				2. 每一种规格代表不同型号，例如颜色为一种规格，尺寸为一种规格，如果设置多规格，手机用户必须每一种规格都选择一个规格项，才能添加购物车或购买。
+			</div>
+			<div id='specs'>
+				{loop $allspecs $specs}
+				<!-- {template 'web/goods_guige_spec'} -->
+
+				{/loop}
+			</div>
+			<table class="table">
+				<tr>
+					<td>
+						<h4><a href="javascript:;" class='btn btn-primary' id='add-spec' onclick="addSpec()" style="margin-top:10px;margin-bottom:10px;" title="添加规格"><i class='fa fa-plus'></i> 添加规格</a>
+						<a href="javascript:;" onclick="refreshOptions();" title="刷新规格项目表" class="btn btn-primary"><i class="fa fa-refresh"></i> 刷新规格项目表</a>
+						</h4>
+							
+					</td>
+				</tr>
+			</table>
+		<div id="options" style="padding:0;">{$html}</div>
+	</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		
+		require(['jquery.ui'],function(){
+			$('#specs').sortable({
+				stop: function(){
+					refreshOptions();
+				}
+			});
+			
+	    });
+	})
+	function addSpec(){
+		$("#add-spec").html("正在处理...").attr("disabled", "true").toggleClass("btn-primary");
+		$.ajax({
+			"url": "{php echo $this->createWebUrl('goods_guige', array('tpl' =>'spec'))}",
+			success:function(data){
+				$("#add-spec").html('<i class="fa fa-plus"></i> 添加规格').removeAttr("disabled").toggleClass("btn-primary"); ;
+				$('#specs').append(data);
+				var len = $(".add-specitem").length -1;
+				$(".add-specitem:eq(" +len+ ")").focus();
+				refreshOptions()
+			}
+		});
+	}
+	function removeSpec(specid){
+		console.log( "removeSpec"+specid)
+		if (confirm('确认要删除此规格?')){
+			$("#spec_" + specid).remove();
+			refreshOptions()
+		}
+	}
+	function addSpecItem(obj,specid){
+		// console.log(obj)
+		console.log( "addSpecItem"+specid)
+        $("#add-specitem-" + specid).html("正在处理...").attr("disabled", "true");
+        $.ajax({
+            "url": "{php echo $this->createWebUrl('goods_guige', array('tpl' =>'specitem'))}",
+            success:function(data){
+                // return false;
+                $("#add-specitem-" + specid).html('<i class="fa fa-plus"></i> 添加规格项').removeAttr("disabled");
+                $('#spec_item_' + specid).append(data);
+                var len = $("#spec_" + specid + " .spec_item_title").length -1;
+                $("#spec_" + specid + " .spec_item_title:eq(" +len+ ")").focus();
+                refreshOptions()
+            }
+        });
+        console.log($(".spec_title").val())
+    }
+    function selectSpecItemImage(obj){
+        util.image('',function(val){
+            $(obj).attr('src',val.url).popover({
+                trigger: 'hover',
+                html: true,
+                container: $(document.body),
+                content: "<img src='" + val.url  + "' style='width:100px;height:100px;' />",
+                placement: 'top'
+            });
+
+            var group  =$(obj).parent();
+
+            group.find(':hidden').val(val.attachment), group.find('i').show().unbind('click').click(function(){
+                $(obj).attr('src',"/addons/hyb_yl/public/images/admin/add.png");
+                group.find(':hidden').val('');
+                group.find('i').hide();
+                $(obj).popover('destroy');
+            });
+        });
+    }
+    function removeSpecItem(obj){
+        $(obj).closest('.spec_item_item').remove();
+        refreshOptions()
+    }
+    
+    function refreshOptions(){
+        // 刷新后重置
+        window.optionchanged = false;
+        $('#optiontip').hide();
+
+        var html = '<table class="table table-bordered table-condensed"><thead><tr class="active">';
+        var specs = [];
+        if($('.spec_item').length<=0){
+            $("#options").html('');
+            return;
+        }
+        $(".spec_item").each(function(i){
+            console.log(i)
+            var _this = $(this);
+            console.log( _this.find(".spec_id").val())
+            var spec = {
+                id:  _this.find(".spec_id").val(),
+                // id:i,
+                title: _this.find(".spec_title").val()
+            };
+            var items = [];
+            _this.find(".spec_item_item").each(function(j){
+                var __this = $(this);
+                console.log(__this.find(".spec_item_id").val())
+                // j=__this.find(".spec_item_id").val()
+                var item = {
+                    id:__this.find(".spec_item_id").val(),
+                    // id:j,
+                    title: __this.find(".spec_item_title").val(),
+                    virtual: __this.find(".spec_item_virtual").val(),
+                    // show:__this.find(".spec_item_show").get(0).checked?"1":"0"
+                }
+
+                items.push(item);
+            });
+            spec.items = items;
+            specs.push(spec);
+
+            console.log(items)
+            // console.log(spec)
+            console.log(specs)
+        });
+        // specs.sort(function(x,y){
+        //     if (x.items.length > y.items.length){
+        //         return 1;
+        //     }
+        //     if (x.items.length < y.items.length) {
+        //         return -1;
+        //     }
+        // });
+        var len = specs.length;
+        var newlen = 1;
+        var h = new Array(len);
+        var rowspans = new Array(len);
+        for(var i=0;i<len;i++){
+            html+="<th>" + specs[i].title + "</th>";
+            var itemlen = specs[i].items.length;
+            if(itemlen<=0) { itemlen = 1 };
+            newlen*=itemlen;
+            h[i] = new Array(newlen);
+            for(var j=0;j<newlen;j++){
+                h[i][j] = new Array();
+            }
+            var l = specs[i].items.length;
+            rowspans[i] = 1;
+            for(j=i+1;j<len;j++){
+                rowspans[i]*= specs[j].items.length;
+            }
+        }
+
+        html += '<th><div class=""><div style="padding-bottom:10px;text-align:center;">库存</div><div class="input-group"><input type="text" class="form-control  input-sm option_stock_all"VALUE=""/><span class="input-group-addon"><a href="javascript:;" class="fa fa-angle-double-down" title="批量设置" onclick="setCol(\'option_stock\');"></a></span></div></div></th>';
+        
+
+        html += '<th class="type-4"><div class=""><div style="padding-bottom:10px;text-align:center;">预售价</div><div class="input-group"><input type="text" class="form-control  input-sm option_presell_all"VALUE=""/><span class="input-group-addon"><a href="javascript:;" class="fa fa-angle-double-down" title="批量设置" onclick="setCol(\'option_presell\');"></a></span></div></div></th>';
+        html += '<th class="type-4"><div class=""><div style="padding-bottom:10px;text-align:center;">现价</div><div class="input-group"><input type="text" class="form-control  input-sm option_marketprice_all"VALUE=""/><span class="input-group-addon"><a href="javascript:;" class="fa fa-angle-double-down" title="批量设置" onclick="setCol(\'option_marketprice\');"></a></span></div></div></th>';
+        html+='<th class="type-4"><div class=""><div style="padding-bottom:10px;text-align:center;">原价</div><div class="input-group"><input type="text" class="form-control  input-sm option_productprice_all"VALUE=""/><span class="input-group-addon"><a href="javascript:;" class="fa fa-angle-double-down" title="批量设置" onclick="setCol(\'option_productprice\');"></a></span></div></div></th>';
+        html+='<th class="type-4"><div class=""><div style="padding-bottom:10px;text-align:center;">成本价</div><div class="input-group"><input type="text" class="form-control  input-sm option_costprice_all"VALUE=""/><span class="input-group-addon"><a href="javascript:;" class="fa fa-angle-double-down" title="批量设置" onclick="setCol(\'option_costprice\');"></a></span></div></div></th>';
+        html+='<th><div class=""><div style="padding-bottom:10px;text-align:center;">编码</div><div class="input-group"><input type="text" class="form-control  input-sm option_goodssn_all"VALUE=""/><span class="input-group-addon"><a href="javascript:;" class="fa fa-angle-double-down" title="批量设置" onclick="setCol(\'option_goodssn\');"></a></span></div></div></th>';
+        html+='<th><div class=""><div style="padding-bottom:10px;text-align:center;">条码</div><div class="input-group"><input type="text" class="form-control  input-sm option_productsn_all"VALUE=""/><span class="input-group-addon"><a href="javascript:;" class="fa fa-angle-double-down" title="批量设置" onclick="setCol(\'option_productsn\');"></a></span></div></div></th>';
+        html+='<th><div class=""><div style="padding-bottom:10px;text-align:center;">重量（克）</div><div class="input-group"><input type="text" class="form-control  input-sm option_weight_all"VALUE=""/><span class="input-group-addon"><a href="javascript:;" class="fa fa-angle-double-down" title="批量设置" onclick="setCol(\'option_weight\');"></a></span></div></div></th>';
+        html+='</tr></thead>';
+
+
+        for(var m=0;m<len;m++){
+            var k = 0,kid = 0,n=0;
+            for(var j=0;j<newlen;j++){
+                var rowspan = rowspans[m];
+                var spec_item = specs[m].items[kid] || {};
+                var spec_item_title = spec_item.title;
+                if(!spec_item_title || spec_item_title == 'undefined'){
+                    spec_item_title = '';
+                }
+                if( j % rowspan==0){
+                    h[m][j]={title: spec_item_title, virtual: spec_item.virtual,html: "<td class='full' rowspan='" +rowspan + "'><input value='"+spec_item_title+"' class='form-control' disabled></td>\r\n",id: spec_item.id};
+                }
+                else{
+                    h[m][j]={title:spec_item_title,virtual: spec_item.virtual, html: "",id: spec_item.id};
+                }
+                n++;
+                if(n==rowspan){
+                kid++; if(kid>specs[m].items.length-1) { kid=0; }
+                n=0;
+                }
+            }
+        }
+        var hh = "";
+        for(var i=0;i<newlen;i++){
+            hh+="<tr>";
+            var ids = [];
+            var titles = [];
+            var virtuals = [];
+            for(var j=0;j<len;j++){
+                hh+=h[j][i].html;
+                ids.push( h[j][i].id);
+                titles.push( h[j][i].title);
+                virtuals.push( h[j][i].virtual);
+            }
+
+            var sortarr  = permute([],ids);
+            titles= titles.join('+');
+            ids = ids.join('_');
+            var val ={ id : "",title:titles, stock : "",presell : "",costprice : "",productprice : "",marketprice : "",weight:"",productsn:"",goodssn:"",virtual:virtuals };
+            for(var kkk=0;kkk<sortarr.length;kkk++) {
+                var sids = sortarr[kkk].join('_');
+                if ($(".option_id_" + sids).length > 0) {
+                    val = {
+                        id: $(".option_id_" + sids + ":eq(0)").val(),
+                        title: titles,
+                        stock: $(".option_stock_" + sids + ":eq(0)").val(),
+                        presell: $(".option_presell_" + sids + ":eq(0)").val(),
+                        costprice: $(".option_costprice_" + sids + ":eq(0)").val(),
+                        productprice: $(".option_productprice_" + sids + ":eq(0)").val(),
+                        marketprice: $(".option_marketprice_" + sids + ":eq(0)").val(),
+                        goodssn: $(".option_goodssn_" + sids + ":eq(0)").val(),
+                        productsn: $(".option_productsn_" + sids + ":eq(0)").val(),
+                        weight: $(".option_weight_" + sids + ":eq(0)").val(),
+                        virtual: virtuals
+                    }
+                    break;
+                }
+            }
+            hh += '<td>'
+            hh += '<input data-name="option_stock_' + ids +'" type="text" class="form-control option_stock option_stock_' + ids +'" value="' +(val.stock=='undefined'?'':val.stock )+'"/></td>';
+            hh += '<input data-name="option_id_' + ids+'" type="hidden" class="form-control option_id option_id_' + ids +'" value="' +(val.id=='undefined'?'':val.id )+'"/>';
+            hh += '<input data-name="option_ids" type="hidden" class="form-control option_ids option_ids_' + ids +'" value="' + ids +'"/>';
+            hh += '<input data-name="option_title_' + ids +'" type="hidden" class="form-control option_title option_title_' + ids +'" value="' +(val.title=='undefined'?'':val.title )+'"/></td>';
+            hh += '<input data-name="option_virtual_' + ids +'" type="hidden" class="form-control option_virtual option_virtual_' + ids +'" value="' +(val.virtual=='undefined'?'':val.virtual )+'"/></td>';
+            hh += '</td>';
+            hh += '<td class="type-4"><input data-name="option_presell_' + ids+'" type="text" class="form-control option_presell option_presell_' + ids +'" value="' +(val.presell=='undefined'?'':val.presell )+'"/></td>';
+            hh += '<td class="type-4"><input data-name="option_marketprice_' + ids+'" type="text" class="form-control option_marketprice option_marketprice_' + ids +'" value="' +(val.marketprice=='undefined'?'':val.marketprice )+'"/></td>';
+            hh += '<td class="type-4"><input data-name="option_productprice_' + ids+'" type="text" class="form-control option_productprice option_productprice_' + ids +'" " value="' +(val.productprice=='undefined'?'':val.productprice )+'"/></td>';
+            hh += '<td class="type-4"><input data-name="option_costprice_' +ids+'" type="text" class="form-control option_costprice option_costprice_' + ids +'" " value="' +(val.costprice=='undefined'?'':val.costprice )+'"/></td>';
+            hh += '<td><input data-name="option_goodssn_' +ids+'" type="text" class="form-control option_goodssn option_goodssn_' + ids +'" " value="' +(val.goodssn=='undefined'?'':val.goodssn )+'"/></td>';
+            hh += '<td><input data-name="option_productsn_' +ids+'" type="text" class="form-control option_productsn option_productsn_' + ids +'" " value="' +(val.productsn=='undefined'?'':val.productsn )+'"/></td>';
+            hh += '<td><input data-name="option_weight_' + ids +'" type="text" class="form-control option_weight option_weight_' + ids +'" " value="' +(val.weight=='undefined'?'':val.weight )+'"/></td>';
+            hh += "</tr>";
+        }
+        html+=hh;
+        html+="</table>";
+        $("#options").html(html);
+        // refreshDiscount();
+        // refreshIsDiscount();
+        // isdiscount_change();
+    }
+
+    function permute(temArr,testArr){
+        var permuteArr=[];
+        var arr = testArr;
+        function innerPermute(temArr){
+           for(var i=0,len=arr.length; i<len; i++) {
+                if(temArr.length == len - 1) {
+                    if(temArr.indexOf(arr[i]) < 0) {
+                        permuteArr.push(temArr.concat(arr[i]));
+                    }
+                    continue;
+                }
+                if(temArr.indexOf(arr[i]) < 0) {
+                    innerPermute(temArr.concat(arr[i]));
+                }
+            }
+        }
+        innerPermute(temArr);
+        return permuteArr;
+    }
+    // 批量设置
+    function setCol(cls){
+        $("."+cls).val( $("."+cls+"_all").val());
+    }
+</script>
+{/if}
+{template "common/footer"}
