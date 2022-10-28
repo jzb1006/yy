@@ -449,8 +449,30 @@
     }else{
       $res['vip'] = false;
     }
+
+    // 積分會員
+     // 計算今年的開始時間和結束時間
+    $year = date('Y');
+    $start = strtotime($year.'-01-01 00:00:00');
+    $end = strtotime($year.'-12-31 23:59:59');
+    $num = pdo_fetchcolumn("select sum(num) from ".tablename("hyb_yl_userinfo_credit_record") .  " where openid= "."'".$openid."'" ."  and num > 0 and createtime > ".$start." and createtime < ".$end);
+    // 星粉卡
+    if($num <= 10000)
+    {
+      $res['vip'] = "vip1";
+    }else if ($num > 10001 && $num <= 50000) {
+      $res['vip'] = "vip2";
+    } else if ($num > 50001 && $num <= 100000) {
+      $res['vip'] = "vip3";
+    } else if ($num > 100001 && $num <= 300000) {
+      $res['vip'] = "vip4";
+    } else if ($num > 300000) {
+      $res['vip'] = "vip5";
+    }
+    $res["jf"] = $num;
     echo json_encode($res);
   }
+
   public function tuikuan(){
       global $_GPC, $_W;
       $uniacid = $_W['uniacid'];
