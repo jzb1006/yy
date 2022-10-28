@@ -61,6 +61,29 @@ $_W['plugin'] ='member';
 		foreach ($listarray as &$value) {
 
 			$useropenid = $value['u_openid'];
+            // 计算用户会员等级
+            $year = date('Y');
+            $start = strtotime($year.'-01-01 00:00:00');
+            $end = strtotime($year.'-12-31 23:59:59');
+            $num = pdo_fetchcolumn("select sum(num) from ".tablename("hyb_yl_userinfo_credit_record") .  " where openid= "."'".$useropenid."'" ."  and num > 0 and createtime > ".$start." and createtime < ".$end);
+            // 星粉卡
+            if($num <= 10000)
+            {
+                $res['vip'] = "vip1";
+            }else if ($num > 10001 && $num <= 50000) {
+                $res['vip'] = "vip2";
+            } else if ($num > 50001 && $num <= 100000) {
+                $res['vip'] = "vip3";
+            } else if ($num > 100001 && $num <= 300000) {
+                $res['vip'] = "vip4";
+            } else if ($num > 300000) {
+                $res['vip'] = "vip5";
+            }
+            $value['vip'] = $res['vip'];
+            $value['num'] = $num;
+
+
+
 			$value['u_thumb'] = tomedia($value['u_thumb']);
 			//查询每个人的处方单
 			$value['cfcount'] = pdo_fetchcolumn('SELECT COUNT(*) FROM ' .tablename("hyb_yl_goodsorders")."  where uniacid=:uniacid and openid=:openid",array(":uniacid"=>$uniacid,":openid"=>$useropenid));

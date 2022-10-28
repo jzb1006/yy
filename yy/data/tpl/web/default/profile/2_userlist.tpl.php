@@ -162,6 +162,8 @@
                             <th style="">优惠券</th>
                             <th style="">患者标签</th>
                             <th style="">用户身份</th>
+                            <th style="">会员等级</th>
+                            <th style="">用户积分</th>
                             <th style="">注册时间</th>
                             <th style="">最后登录时间</th>
                             <th style="width: 350px;text-align: right;">操作</th>
@@ -223,6 +225,8 @@
                             <td style="position: relative;">
                                 <span class="text-info"><?php  if($item['admintype'] =='1') { ?>会员用户<?php  } else { ?> 普通用户<?php  } ?></span>
                             </td>
+                            <td style="position: relative;"> <?php  echo $item['vip'];?></td>
+                            <td style="position: relative;"> <?php  echo $item['num'];?></td>
                             <td style="position: relative;"> <?php  echo $item['zctime'];?></td>
                             <td style="position: relative;"> <?php  echo $item['longtime'];?></td>
 
